@@ -25,6 +25,7 @@ from io import BytesIO
 from PIL import ImageTk
 from urllib.parse import urlparse
 import difflib
+import concurrent.futures
 
 # 设置日志
 logging.basicConfig(
@@ -255,6 +256,20 @@ class BazaarHelper:
             logging.error(f"图像预处理失败: {e}")
             return img
 
+    def ocr_with_timeout(self, processed_img, timeout=3):
+        def ocr_task():
+            return pytesseract.image_to_string(
+                processed_img,
+                config='--psm 6 --oem 3 -l eng'
+            ).strip()
+        with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
+            future = executor.submit(ocr_task)
+            try:
+                return future.result(timeout=timeout)
+            except concurrent.futures.TimeoutError:
+                logging.warning("OCR识别超时，已跳过本次识别。")
+                return None
+
     def find_best_match(self, text):
         """统一识别怪物或事件，返回('monster'/'event', 名称)或(None, None)"""
         if not text:
@@ -264,22 +279,27 @@ class BazaarHelper:
                 return ""
             s = re.sub(r'[^a-zA-Z\s]', '', s)
             return ' '.join(s.split()).lower()
-        lines = [clean_text(line.strip()) for line in str(text).split('\n') if len(line.strip()) >= 2]
+        # 只保留长度>=3的行
+        lines = [clean_text(line.strip()) for line in str(text).split('\n') if len(clean_text(line.strip())) >= 3]
+        print("lines:", lines)  # 调试输出
         best_type = None
         best_name = None
         best_ratio = 0.0
-        # 怪物
         for monster_name in self.monster_data:
             monster_clean = clean_text(monster_name)
             for line in lines:
+                # 完全匹配
                 if line == monster_clean:
                     return 'monster', monster_name
+                # 包含匹配（长度接近才允许）
+                if (monster_clean in line or line in monster_clean) and abs(len(line) - len(monster_clean)) < 3:
+                    return 'monster', monster_name
+                # 相似度匹配
                 ratio = difflib.SequenceMatcher(None, line, monster_clean).ratio()
                 if ratio > best_ratio:
                     best_ratio = ratio
                     best_type = 'monster'
                     best_name = monster_name
-        # 事件
         for event in self.events:
             event_clean = clean_text(event['name'])
             for line in lines:
@@ -290,7 +310,7 @@ class BazaarHelper:
                     best_ratio = ratio
                     best_type = 'event'
                     best_name = event['name']
-        if best_ratio > 0.82:
+        if best_ratio > 0.8:
             return best_type, best_name
         return None, None
 
@@ -317,7 +337,11 @@ class BazaarHelper:
             y2 = window_rect[3]  # 窗口下边界
 
             # 截取区域图像
-            screenshot = ImageGrab.grab(bbox=(x1, y1, x2, y2))
+            try:
+                screenshot = ImageGrab.grab(bbox=(x1, y1, x2, y2))
+            except Exception as e:
+                logging.error(f'截图失败: {e}')
+                return None
             img_array = np.array(screenshot)
             
             # 保存调试图像
@@ -333,11 +357,7 @@ class BazaarHelper:
             processed_img = self.preprocess_image(img_array)
             
             # OCR识别
-            text = pytesseract.image_to_string(
-                processed_img,
-                config='--psm 6 --oem 3 -l eng'  # 使用更准确的识别模式
-            ).strip()
-            
+            text = self.ocr_with_timeout(processed_img, timeout=3)
             logging.debug(f"OCR原始识别结果:\n{text}")
             
             # 如果识别结果为空，尝试其他PSM模式
@@ -345,10 +365,7 @@ class BazaarHelper:
                 logging.debug("尝试其他PSM模式")
                 psm_modes = [3, 4, 7, 11]  # 尝试不同的页面分割模式
                 for psm in psm_modes:
-                    text = pytesseract.image_to_string(
-                        processed_img,
-                        config=f'--psm {psm} --oem 3 -l eng'
-                    ).strip()
+                    text = self.ocr_with_timeout(processed_img, timeout=3)
                     if text:
                         logging.debug(f"使用PSM {psm}成功识别文本")
                         break
@@ -711,13 +728,16 @@ class BazaarHelper:
                     
                     # 只在Alt键刚被按下时执行一次识别
                     if alt_is_pressed and not alt_was_pressed:
+                        logging.debug("检测到Alt键按下，准备识别")
                         cursor_x, cursor_y = win32gui.GetCursorPos()
                         text = self.get_text_at_cursor()
                         if text:
+                            logging.debug("识别到文本，更新信息显示")
                             self.update_info_display(text, cursor_x, cursor_y)
                     
                     # 当松开Alt键时
                     elif not alt_is_pressed and alt_was_pressed:
+                        logging.debug("Alt键松开，隐藏信息窗口")
                         self.hide_info()
                     
                     # 更新Alt键状态

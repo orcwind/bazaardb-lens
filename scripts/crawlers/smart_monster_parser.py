@@ -4,6 +4,7 @@ import logging
 from bs4 import BeautifulSoup
 import re
 from pathlib import Path
+import requests
 
 def natural_key(s):
     """用于文件名自然排序"""
@@ -234,6 +235,23 @@ def parse_monster_html_html(html_path):
         "items": items
     }
 
+def download_icon(url, icon_dir='icons'):
+    if not url:
+        return
+    from urllib.parse import urlparse
+    filename = os.path.basename(urlparse(url).path)
+    icon_path = os.path.join(icon_dir, filename)
+    if not os.path.exists(icon_path):
+        try:
+            resp = requests.get(url, timeout=10)
+            if resp.status_code == 200:
+                os.makedirs(icon_dir, exist_ok=True)
+                with open(icon_path, "wb") as f:
+                    f.write(resp.content)
+                print(f"已下载图标: {filename}")
+        except Exception as e:
+            print(f"下载图标失败: {filename}，错误: {e}")
+
 def main():
     html_dir = 'data/monsters'
     all_htmls = sorted([f for f in os.listdir(html_dir) if f.endswith('.html')], key=natural_key)
@@ -246,6 +264,25 @@ def main():
     for f in rest_htmls:
         html_path = os.path.join(html_dir, f)
         monsters.append(parse_monster_html_html(html_path))
+
+    # 后处理：对前5之外的怪物，参考前5个怪物的分组方式区分技能和物品
+    for idx, m in enumerate(monsters):
+        if idx < 5:
+            continue  # 前5个怪物已正确分组
+        all_entries = m.get('skills', []) + m.get('items', [])
+        new_skills = []
+        new_items = []
+        for entry in all_entries:
+            icon_url = entry.get('icon', '').lower()
+            if '/skill/' in icon_url:
+                new_skills.append(entry)
+            elif '/item/' in icon_url:
+                new_items.append(entry)
+            else:
+                new_items.append(entry)
+        m['skills'] = new_skills
+        m['items'] = new_items
+
     # 统一name字段去前缀
     for idx, m in enumerate(monsters):
         if m['name'].startswith('monster_detail_'):
@@ -274,6 +311,16 @@ def main():
     with open('output/smart_all_monsters.json', 'w', encoding='utf-8') as f:
         json.dump({'monsters': monsters}, f, ensure_ascii=False, indent=2)
     print(f"已完成，合并共{len(monsters)}个怪物，结果已保存到 output/smart_all_monsters.json")
+
+    # 批量下载所有图标
+    all_icons = set()
+    for m in monsters:
+        for entry in m.get('skills', []) + m.get('items', []):
+            icon_url = entry.get('icon', '')
+            if icon_url:
+                all_icons.add(icon_url)
+    for url in all_icons:
+        download_icon(url)
 
 if __name__ == '__main__':
     main()

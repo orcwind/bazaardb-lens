@@ -168,15 +168,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_MON_LashOut_01@256.webp?v=0",
           "description": "At the start of each fight, Poison 3 » 6 » 9 » 12.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Gland",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Gland@256.webp?v=0",
           "description": "When you sell this, you gain 1 » 2 » 3 » 4 Regeneration.",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Toxic Fang",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Fangs@256.webp?v=0",
@@ -205,15 +205,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_MON_Withdraw_01@256.webp?v=0",
           "description": "The first time you fall below half health each fight, Shield equal to 20% » 30% » 40% » 50% of your Max Health.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Coconut",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Coconut@256.webp?v=0",
           "description": "When you sell this, permanently gain 10 » 20 » 30 » 40 Max Health.",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Crusher Claw",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/CrusherClaw@256.webp?v=0",
@@ -279,15 +279,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_RearShielding@256.webp?v=0",
           "description": "Your rightmost Shield item has +20 » +30 » +40 » +50 Shield.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Scrap",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Scrap@256.webp?v=0",
           "description": "When you sell this, your leftmost Shield item gains +3 » +6 » +12 » +24 Shield.",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Tusked Helm",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/TuskBayonets@256.webp?v=0",
@@ -383,15 +383,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_MON_RogueScrapper_01@256.webp?v=0",
           "description": "At the start of each fight, Slow 1 item(s) for 3 » 5 » 7 » 9 second(s).",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Scrap",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Scrap@256.webp?v=0",
           "description": "When you sell this, your leftmost Shield item gains +3 » +6 » +12 » +24 Shield.",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Gearnola Bar",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/GearnolaBar@256.webp?v=0",
@@ -432,15 +432,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_MON_DabblingApprentice_01@256.webp?v=0",
           "description": "The first time you fall below 50% health each fight, Reload 2 » 4 » 6 » 8 items.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Vial of Blood",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/VialOfBlood@256.webp?v=0",
           "description": "When you sell this, gain 1 » 2 » 3 XP.",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Bottled Lightning",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/BottledLightning@256.webp?v=0",
@@ -475,15 +475,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_MON_FlameWall_01@256.webp?v=0",
           "description": "Your Burn items have +5% » +10% » +15% » +20% Crit Chance.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Cinders",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Cinder@256.webp?v=0",
           "description": "When you sell this, your leftmost Burn item gains +1 » +2 » +3 » +4 Burn.",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Bar of Gold",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/GoldBar@256.webp?v=0",
@@ -524,15 +524,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_MON_TheColdShoulder_01@256.webp?v=0",
           "description": "When you Freeze, your Weapons gain 2 » 4 » 6 » 8 Damage for the fight.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Icicle",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Snowball@256.webp?v=0",
           "description": "At the start of each fight, Freeze 1 item(s) for 3 » 4 » 5 » 6 second(s).",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Weights",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Weights@256.webp?v=0",
@@ -567,15 +567,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_MON_RogueScrapper_01@256.webp?v=0",
           "description": "At the start of each fight, Slow 1 item(s) for 3 » 5 » 7 » 9 second(s).",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Scrap",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Scrap@256.webp?v=0",
           "description": "When you sell this, your leftmost Shield item gains +3 » +6 » +12 » +24 Shield.",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Gearnola Bar",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/GearnolaBar@256.webp?v=0",
@@ -616,15 +616,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_MON_SmallRefresh@256.webp?v=0",
           "description": "When you use a small item, Heal 5 » 10 » 15 » 20.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Red Piggles R",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/PigglesRed@256.webp?v=0",
           "description": "The Weapon to the right of this gains +4 » +8 » +12 » +16 Damage for the fight.",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Yo-Yo",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/YoYo@256.webp?v=0",
@@ -659,15 +659,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_MON_Rigged@256.webp?v=0",
           "description": "At the start of each fight, Haste 2 » 3 » 4 » 5 items for 3 second(s).",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Scrap",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Scrap@256.webp?v=0",
           "description": "When you sell this, your leftmost Shield item gains +3 » +6 » +12 » +24 Shield.",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Force Field",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Forcefield@256.webp?v=0",
@@ -696,15 +696,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_Gunner@256.webp?v=0",
           "description": "Your items have +1 » +2 » +3 Max Ammo.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Gunpowder",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Gunpowder@256.webp?v=0",
           "description": "When you sell this, your leftmost Ammo item gains 1 » 2 » 3 Max Ammo.",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Laser Pistol",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/LaserPistol@256.webp?v=0",
@@ -812,15 +812,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_KeenEye@256.webp?v=0",
           "description": "Your items have +4% » +8% » +12% » +16% Crit Chance.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Bar of Gold",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/GoldBar@256.webp?v=0",
           "description": "Sells for gold",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Shoe Blade",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/ShoeBlade@256.webp?v=0",
@@ -861,15 +861,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_MON_ToxicAlacrity@256.webp?v=0",
           "description": "Your leftmost Ammo item has +1 » +2 » +3 » +4 Max Ammo.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Bar of Gold",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/GoldBar@256.webp?v=0",
           "description": "Sells for gold",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Crow's Nest",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/CrowsNest@256.webp?v=0",
@@ -910,15 +910,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_SKILL_MON_ExtremeComfort@256.webp?v=0",
           "description": "When you Heal, your Shield items gain 1 » 2 » 3 » 4 Shield for the fight.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Spare Change",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/SpareChange@256.webp?v=0",
           "description": "Sells for gold",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Succulents",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Succulents@256.webp?v=0",
@@ -953,7 +953,8 @@
     },
     {
       "name": "Ahexa",
-      "skills": [
+      "skills": [],
+      "items": [
         {
           "name": "Crypto",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Crypto@256.webp?v=0",
@@ -965,9 +966,7 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Nitro@256.webp?v=0",
           "description": "Burn both players 4 » 6 » 8.",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Virus",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Virus@256.webp?v=0",
@@ -1002,15 +1001,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_MON_LivingFlame_01@256.webp?v=0",
           "description": "The first time your enemy falls below half health each fight, Burn 10 » 15 » 20 » 25.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Lighter",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Lighter@256.webp?v=0",
           "description": "Burn 2 » 4 » 6 » 8.",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Magma Core",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/MagmaCore@256.webp?v=0",
@@ -1051,15 +1050,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_LeftHanded@256.webp?v=0",
           "description": "Your leftmost Weapon deals +20 » +30 » +40 » +50 Damage.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Med Kit",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/MedKit@256.webp?v=0",
           "description": "When you sell this, your leftmost Heal item gains 5 » 10 » 20 » 40 Heal.",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Haladie",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Haladie@256.webp?v=0",
@@ -1155,15 +1154,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_MON_AllTalk_02@256.webp?v=0",
           "description": "While you have more than half Health, your Weapons have +25 » +50 Damage.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Gunpowder",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Gunpowder@256.webp?v=0",
           "description": "When you sell this, your leftmost Ammo item gains 1 » 2 » 3 Max Ammo.",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Powder Flask",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/PowderFlask@256.webp?v=0",
@@ -1210,15 +1209,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_MON_DiamondFangs@256.webp?v=0",
           "description": "Your Small Diamond-tier items have their cooldowns reduced by 30% » 40% » 50% » 60%.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Pelt",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Pelt@256.webp?v=0",
           "description": "Sells for gold",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Pelt",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Pelt@256.webp?v=0",
@@ -1283,15 +1282,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_MON_LivingFlame_01@256.webp?v=0",
           "description": "The first time your enemy falls below half health each fight, Burn 10 » 15 » 20 » 25.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Lighter",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Lighter@256.webp?v=0",
           "description": "Burn 2 » 4 » 6 » 8.",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Magma Core",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/MagmaCore@256.webp?v=0",
@@ -1387,15 +1386,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_MON_DeathWish_02@256.webp?v=0",
           "description": "Your leftmost and rightmost items have their cooldowns reduced by 5% » 10% » 15%.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Restorative Fire Claw",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/FireClaw@256.webp?v=0",
           "description": "Burn 6 » 9 » 12.",
           "aspect_ratio": 1.0
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Cinders",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Cinder@256.webp?v=0",
@@ -1430,15 +1429,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_MON_Counterattack@256.webp?v=0",
           "description": "The first 5 times your enemy uses a Weapon, Charge 1 » 2 » 3 item(s) 1 second(s).",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Insect Wing",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/InsectWing@256.webp?v=0",
           "description": "When you sell this, reduce your leftmost item's cooldown by 3% » 6% » 9% » 12%.",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Junkyard Lance",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/JunkyardLance@256.webp?v=0",
@@ -1485,15 +1484,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_ParalyticPoison@256.webp?v=0",
           "description": "The first time you Poison each fight, Freeze 1 item(s) for 2 » 3 » 4 second(s).",
           "aspect_ratio": 1.0
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Initial Dose",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_InitialDose@256.webp?v=0",
           "description": "Your leftmost Poison item has +2 » +4 » +6 » +8 Poison.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Vial of Blood",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/VialOfBlood@256.webp?v=0",
@@ -1540,15 +1539,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_DOO_BeautifulFriendship@256.webp?v=0",
           "description": "When you use a Friend, your Weapons gain 3 » 6 Damage for the fight.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Crypto",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Crypto@256.webp?v=0",
           "description": "At the start of each hour, set this item's value to a number between 0 and 5 » 10 » 20 » 40.",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "First Aiden",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/FirstAiden@256.webp?v=0",
@@ -1644,15 +1643,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_Fiery@256.webp?v=0",
           "description": "Your Burn items have +1 » +2 » +3 » +4 Burn.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Cinders",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Cinder@256.webp?v=0",
           "description": "When you sell this, your leftmost Burn item gains +1 » +2 » +3 » +4 Burn.",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Curry",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Curry@256.webp?v=0",
@@ -1693,15 +1692,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_MON_PackLoyalty_04@256.webp?v=0",
           "description": "When you use a Weapon, it gains +2% » +4% » +6% » +8% Crit Chance for the fight.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Pelt",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Pelt@256.webp?v=0",
           "description": "Sells for gold",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Broken Shackles",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/BrokenShackles@256.webp?v=0",
@@ -1754,15 +1753,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_MON_Drain_01@256.webp?v=0",
           "description": "When you Slow, Haste a Weapon 1 » 2 second(s).",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Insect Wing",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/InsectWing@256.webp?v=0",
           "description": "When you sell this, reduce your leftmost item's cooldown by 3% » 6% » 9% » 12%.",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Insect Wing",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/InsectWing@256.webp?v=0",
@@ -1815,15 +1814,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_SKILL_MON_ToxicFriendship@256.webp?v=0",
           "description": "When you use a Friend, Poison 1 » 2.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Pelt",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Pelt@256.webp?v=0",
           "description": "Sells for gold",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Dragon Whelp",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/DragonWhelp@256.webp?v=0",
@@ -1870,15 +1869,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_FlashyMechanic@256.webp?v=0",
           "description": "When you use a Tool, items adjacent to it gain 3% » 6% » 9% Crit Chance.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Scrap",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Scrap@256.webp?v=0",
           "description": "When you sell this, your leftmost Shield item gains +3 » +6 » +12 » +24 Shield.",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Chris Army Knife",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/ChrisArmyKnife@256.webp?v=0",
@@ -1919,15 +1918,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_MON_ALittleOfEverything_01@256.webp?v=0",
           "description": "When you use an Ammo item, Reload the item to the left of it 1 » 2 » 3 Ammo.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Junkyard Catapult",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/JunkyardCatapult@256.webp?v=0",
           "description": "Deal 25 » 50 » 100 Damage.",
           "aspect_ratio": 1.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Plasma Grenade",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/PlasmaGrenade@256.webp?v=0",
@@ -1974,15 +1973,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_ExposingToxins@256.webp?v=0",
           "description": "When you Poison, your items gain +1% » +2% » +3% Crit Chance for the fight.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Extract",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Extract@256.webp?v=0",
           "description": "When you sell this, your leftmost Poison item gains +2 » +2 » +3 » +4 Poison.",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Bandages",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Bandages@256.webp?v=0",
@@ -2090,15 +2089,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_TracerFire@256.webp?v=0",
           "description": "When you Burn, your items gain +1% » +2% » +3% Crit Chance for the fight.",
           "aspect_ratio": 1.0
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Strength",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_Strenght@256.webp?v=0",
           "description": "Your Weapons deal +10 » +15 » +20 » +25 Damage.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Cinders",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Cinder@256.webp?v=0",
@@ -2218,15 +2217,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_SKILL_MON_CleanStorefront@256.webp?v=0",
           "description": "Your leftmost item has +15 » +30 » +50 value during combat.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Dishwasher",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Dishwasher@256.webp?v=0",
           "description": "Haste your Tools for 1 » 2 » 3 » 4 second(s).",
           "aspect_ratio": 1.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Hogwash",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Hogwash@256.webp?v=0",
@@ -2261,15 +2260,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_MON_RevitalizingToxins@256.webp?v=0",
           "description": "When you Poison, gain 2 » 4 » 6 » 8 Regeneration for the fight.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Gland",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Gland@256.webp?v=0",
           "description": "When you sell this, you gain 1 » 2 » 3 » 4 Regeneration.",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Extract",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Extract@256.webp?v=0",
@@ -2596,15 +2595,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_ReachingTheSummit@256.webp?v=0",
           "description": "When you Freeze, your items gain +3% » +6% Crit Chance for the fight.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Icicle",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Snowball@256.webp?v=0",
           "description": "At the start of each fight, Freeze 1 item(s) for 3 » 4 » 5 » 6 second(s).",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Ice Cubes",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/IceCubes@256.webp?v=0",
@@ -2639,15 +2638,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_TracerFire@256.webp?v=0",
           "description": "When you Burn, your items gain +1% » +2% » +3% Crit Chance for the fight.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Welding Helmet",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/WeldingHelmet@256.webp?v=0",
           "description": "Shield 10 » 20 » 30 » 40.",
           "aspect_ratio": 1.0
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Plasma Grenade",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/PlasmaGrenade@256.webp?v=0",
@@ -2999,15 +2998,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_MON_Pyromania_01@256.webp?v=0",
           "description": "At the start of each fight, Burn 17 » 25 » 35.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Trebuchet",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Trebuchet@256.webp?v=0",
           "description": "Deal 40 » 60 » 80 » 100 Damage.",
           "aspect_ratio": 1.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Rocket Launcher",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/RocketLauncher@256.webp?v=0",
@@ -3054,15 +3053,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_MON_WatersofInfinity@256.webp?v=0",
           "description": "You have +10 » +15 » +20 Regeneration for each non-Weapon item you have.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Ouroboros Statue",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/OuroborusStatue@256.webp?v=0",
           "description": "Poison 4 » 6 » 8.",
           "aspect_ratio": 1.0
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Venomander",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Venomander@256.webp?v=0",
@@ -3103,15 +3102,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_MON_SharpenedSteel@256.webp?v=0",
           "description": "When you use a Weapon, Adjacent items gain 4% » 8% » 12% Crit Chance for the fight.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Cybersecurity",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/AvantGuard@256.webp?v=0",
           "description": "Deal 15 » 30 » 60 Damage for each Weapon or Tech item you have.",
           "aspect_ratio": 1.0
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Pulse Rifle",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/PulseRifle@256.webp?v=0",
@@ -3152,15 +3151,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_SlowBurn@256.webp?v=0",
           "description": "The first 5 » 10 times you Slow each fight, Charge 1 Burn item 1 second(s).",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Induction Aegis",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/InductionAegis@256.webp?v=0",
           "description": "Shield 20.",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Weakpoint Detector",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/WeakpointDetector@256.webp?v=0",
@@ -3195,15 +3194,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_MON_Neophiliac@256.webp?v=0",
           "description": "The first time you Freeze, Burn, Slow, Poison, and Haste each fight, Charge 1 item(s) 2 » 3 second(s).",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Lightning Rod",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/LightningRod@256.webp?v=0",
           "description": "Deal 10 » 20 Damage.",
           "aspect_ratio": 1.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Lightbulb",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Lightbulb@256.webp?v=0",
@@ -3397,15 +3396,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_MON_WatersofInfinity@256.webp?v=0",
           "description": "You have +10 » +15 » +20 Regeneration for each non-Weapon item you have.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Ouroboros Statue",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/OuroborusStatue@256.webp?v=0",
           "description": "Poison 4 » 6 » 8.",
           "aspect_ratio": 1.0
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Venomander",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Venomander@256.webp?v=0",
@@ -3525,15 +3524,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_LeftHanded@256.webp?v=0",
           "description": "Your leftmost Weapon deals +20 » +30 » +40 » +50 Damage.",
           "aspect_ratio": 1.0
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Right-Handed",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_RightHanded@256.webp?v=0",
           "description": "Your rightmost Weapon has +20 » +30 » +40 » +50 Damage.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Shadowed Cloak",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/ShadowedCloak@256.webp?v=0",
@@ -3653,15 +3652,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_FollowUpCare@256.webp?v=0",
           "description": "Your rightmost Heal item has +20 » +35 » +50 » +65 Heal.",
           "aspect_ratio": 1.0
-        }
-      ],
-      "items": [
+        },
         {
           "name": "First Responder",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_FirstResponder@256.webp?v=0",
           "description": "Your leftmost Heal item has +20 » +35 » +50 » +65 Heal.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Tropical Island",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/TropicalIsland@256.webp?v=0",
@@ -3860,15 +3859,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_DeadlyEye@256.webp?v=0",
           "description": "Your Weapons have +5% » +10% » +15% » +20% Crit Chance.",
           "aspect_ratio": 1.0
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Desperate Cleanse",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_DesperateFreeze@256.webp?v=0",
           "description": "The first time you fall below half health each fight, remove Freeze and Slow from your items and Cleanse half your Burn and Poison.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Sapphire",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Saphire@256.webp?v=0",
@@ -3915,15 +3914,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_Strenght@256.webp?v=0",
           "description": "Your Weapons deal +10 » +15 » +20 » +25 Damage.",
           "aspect_ratio": 1.0
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Keen Eye",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_KeenEye@256.webp?v=0",
           "description": "Your items have +4% » +8% » +12% » +16% Crit Chance.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Weakpoint Detector",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/WeakpointDetector@256.webp?v=0",
@@ -4043,15 +4042,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_MON_EmergencyReload@256.webp?v=0",
           "description": "When you use a Tool, Reload an adjacent item.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Mortar & Pestle",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/MortarandPestle@256.webp?v=0",
           "description": "Your Lifesteal Weapons gain +10 » +15 » +20 » +25 Damage for the fight.",
           "aspect_ratio": 1.0
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Refractor",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Refractor@256.webp?v=0",
@@ -4098,15 +4097,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_Trader@256.webp?v=0",
           "description": "Your items have +1 » +2 value.",
           "aspect_ratio": 1.0
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Big Numbers",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_BigNumbers@256.webp?v=0",
           "description": "Your large items have +25% » +50% Crit Chance",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Skyscraper",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Skyscraper@256.webp?v=0",
@@ -4141,15 +4140,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_MON_TrashTitan_02@256.webp?v=0",
           "description": "When you use a small item, Charge a large item for 1 second(s).",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Venom",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Venom@256.webp?v=0",
           "description": "When you use the Weapon to the left of this, Poison 2 » 3 » 4 » 5.",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Emerald",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Emerald@256.webp?v=0",
@@ -4318,15 +4317,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_MON_LordOfWastes_01@256.webp?v=0",
           "description": "When any player uses an item, all items gain 2% » 4% Crit Chance for the fight.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Shoe Blade",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/ShoeBlade@256.webp?v=0",
           "description": "Deal 20 » 40 » 60 » 80 Damage.",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Flamberge",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Flamberge@256.webp?v=0",
@@ -4428,15 +4427,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_Toughness@256.webp?v=0",
           "description": "Your Shield items have +10 » +15 » +20 » +25 Shield.",
           "aspect_ratio": 1.0
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Trickle Down Economics",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_MON_BananaBreak_01@256.webp?v=0",
           "description": "When you use a large item, Haste another item for 3 » 4 second(s).",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Landscraper",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Landscraper@256.webp?v=0",
@@ -4471,15 +4470,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_MON_Unrelenting@256.webp?v=0",
           "description": "When you use an item, Shield 20 » 40.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Thrusters",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Thrusters@256.webp?v=0",
           "description": "The item to the left of this is a Vehicle and has its cooldown reduced by 5% » 10% » 15%.",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Gatling Gun",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/GatlingGun@256.webp?v=0",
@@ -4721,15 +4720,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_MON_Ambush@256.webp?v=0",
           "description": "At the start of each fight, deal Damage equal to 15% » 30% of the enemy's Max Health.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Revolver",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/Revolver@256.webp?v=0",
           "description": "Deal 8 » 16 » 24 » 32 Damage.",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Thrown Net",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/ThrownNet@256.webp?v=0",
@@ -4776,15 +4775,15 @@
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/skill/Icon_Skill_MON_BarrelOfThieves_01@256.webp?v=0",
           "description": "If you have exactly 2 Weapons, your items have +50% Crit Chance.",
           "aspect_ratio": 1.0
-        },
+        }
+      ],
+      "items": [
         {
           "name": "Incendiary Rounds",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/IncendiaryRounds@256.webp?v=0",
           "description": "When you use an adjacent item, Burn 1 » 2 » 3.",
           "aspect_ratio": 0.5
-        }
-      ],
-      "items": [
+        },
         {
           "name": "Incendiary Rounds",
           "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/IncendiaryRounds@256.webp?v=0",
