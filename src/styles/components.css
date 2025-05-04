@@ -1,0 +1,64 @@
+.icon-container {
+    width: 144px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.icon {
+    width: 96px;
+    height: 96px;
+    object-fit: contain;
+}
+
+.icon-small {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.name {
+    color: #FFFFFF;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 8px 0;
+}
+
+.description {
+    color: #E8C088;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 8px 0;
+}
+
+/* 特殊图标尺寸 */
+.icon-skill {
+    width: 72px;
+    height: 72px;
+}
+
+.icon-item {
+    width: 64px;
+    height: 64px;
+}
+
+.icon-event {
+    width: 96px;
+    height: 96px;
+}
+
+/* 容器布局 */
+.content-container {
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(144px, 1fr));
+    gap: 16px;
+    padding: 16px;
+} 

@@ -1,0 +1,544 @@
+[
+  {
+    "name": "Jules' Cafe",
+    "icon": "data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\"/>",
+    "options": [
+      {
+        "name": "Relax",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_Rest_D@256.webp?v=0",
+        "description": "Gain 10% of your Max Health for the rest of the day."
+      },
+      {
+        "name": "Rejuvenating Blend",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_Heal_D@256.webp?v=0",
+        "description": "Your Heal items gain 50 Heal for the rest of the day."
+      },
+      {
+        "name": "Strong Brew",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_Workout_D@256.webp?v=0",
+        "description": "Your Weapons gain 25 Damage for the rest of the day."
+      }
+    ]
+  },
+  {
+    "name": "Mountain Pass",
+    "icon": "data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\"/>",
+    "options": [
+      {
+        "name": "Guide the Convoy",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_Whisper_D@256.webp?v=0",
+        "description": "Gain 2 Gold and 1 XP."
+      },
+      {
+        "name": "Work for the Convoy",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_Workout_D@256.webp?v=0",
+        "description": "Gain 5 gold"
+      },
+      {
+        "name": "Escort the Convoy",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_Fight_D@256.webp?v=0",
+        "description": "Risky! Anything could happen here."
+      },
+      {
+        "name": "Invest in the Convoy",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_Invest_D@256.webp?v=0",
+        "description": "Gain 2 Income"
+      }
+    ]
+  },
+  {
+    "name": "The Lost Crate",
+    "icon": "data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\"/>",
+    "options": [
+      {
+        "name": "Open It",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_Nice_D@256.webp?v=0",
+        "description": "Get a Medium item"
+      },
+      {
+        "name": "Return It",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_Naughty_D@256.webp?v=0",
+        "description": "Get a Skill"
+      }
+    ]
+  },
+  {
+    "name": "Aerodrome",
+    "icon": "data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\"/>",
+    "options": []
+  },
+  {
+    "name": "Artisan Dunes",
+    "icon": "data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\"/>",
+    "options": [
+      {
+        "name": "Apprentice Weaponsmith",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_LargeWeapon_D@256.webp?v=0",
+        "description": "Your leftmost Weapon gains + 5 Damage ."
+      },
+      {
+        "name": "Apprentice Flamewright",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_SmallWeapon_D@256.webp?v=0",
+        "description": "Your leftmost Burn item gains + 1 Burn ."
+      },
+      {
+        "name": "Apprentice Banehand",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_DrinkGoodPotion_D@256.webp?v=0",
+        "description": "Your leftmost Poison item gains + 1 Poison ."
+      },
+      {
+        "name": "Find Better Craftsman",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_PileOfCoins_D@256.webp?v=0",
+        "description": "Double the effects of the offered options."
+      }
+    ]
+  },
+  {
+    "name": "BazaarCON",
+    "icon": "data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\"/>",
+    "options": [
+      {
+        "name": "Networking",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_Whisper_D@256.webp?v=0",
+        "description": "Gain 2 XP."
+      },
+      {
+        "name": "Swag Collector",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_GrabbyClaw_D@256.webp?v=0",
+        "description": "Get 3 Small items from the Bazaar."
+      },
+      {
+        "name": "Artist Alley",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_Contract_D@256.webp?v=0",
+        "description": "Get a Diamond-tier item from the Bazaar."
+      },
+      {
+        "name": "Self Promotion",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_BusinessCard@256.webp?v=0",
+        "description": "(if you have a Business Card)\nGain 3 XP."
+      }
+    ]
+  },
+  {
+    "name": "Finn's Big Bite",
+    "icon": "https://s.bazaardb.gg/v0/z1.0.0/encounter/FinnsBigBiteChar@256.webp?v=0",
+    "options": [
+      {
+        "name": "Guardian's Gravy Plate",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_Armor_D@256.webp?v=0",
+        "description": "You gain 5% Max Health and your Shield items gain 10 Shield ."
+      },
+      {
+        "name": "Restorative Risotto",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_Heal_D@256.webp?v=0",
+        "description": "You gain 5% Max Health and your Heal items gain 20 Heal ."
+      },
+      {
+        "name": "Vitality Stew",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_DrinkGoodPotion_D@256.webp?v=0",
+        "description": "You gain 5% Max Health and 5 Regeneration ."
+      }
+    ]
+  },
+  {
+    "name": "Grandmaster",
+    "icon": "https://s.bazaardb.gg/v0/z1.0.0/encounter/GrandmasterChar@256.webp?v=0",
+    "options": []
+  },
+  {
+    "name": "Pearl's Dig Site",
+    "icon": "https://s.bazaardb.gg/v0/z1.0.0/encounter/PearlsDigSiteChar@256.webp?v=0",
+    "options": []
+  },
+  {
+    "name": "Shrouded Figure",
+    "icon": "https://s.bazaardb.gg/v0/z1.0.0/encounter/ShroudedFigureChar@256.webp?v=0",
+    "options": [
+      {
+        "name": "Seek Wealth",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_PileOfCoins_D@256.webp?v=0",
+        "description": "Gain 5 to 10 Gold"
+      },
+      {
+        "name": "Seek Knowledge",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_Mind_D@256.webp?v=0",
+        "description": "Gain 2 to 4 XP"
+      },
+      {
+        "name": "Seek Health",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_GainMaxHealth_D@256.webp?v=0",
+        "description": "Gain 200 to 600 Max Health ."
+      }
+    ]
+  },
+  {
+    "name": "A Strange Mushroom",
+    "icon": "https://s.bazaardb.gg/v0/z1.0.0/encounter/StrangeMushroomChar@256.webp?v=0",
+    "options": [
+      {
+        "name": "Trade It for Something",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_ImbalancedScales_D@256.webp?v=0",
+        "description": "Gain a Neutral Item"
+      },
+      {
+        "name": "Sell It",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_HandCoins_D@256.webp?v=0",
+        "description": "Gain 4 gold."
+      },
+      {
+        "name": "Add It to Your Bushel",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_Bushel@256.webp?v=0",
+        "description": "(if you have a Bushel) Your Bushel gains 20 Heal ."
+      },
+      {
+        "name": "Brew a Potion",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_DrinkBadPotion_D@256.webp?v=0",
+        "description": "(if you are Mak) Get a Small Silver-tier Potion ."
+      }
+    ]
+  },
+  {
+    "name": "Bounty Hunters",
+    "icon": "https://s.bazaardb.gg/v0/z1.0.0/encounter/BountyHuntersChar@256.webp?v=0",
+    "options": [
+      {
+        "name": "Rise to the Challenge",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_Fight_D@256.webp?v=0",
+        "description": "Stand your ground and fight for your freedom"
+      },
+      {
+        "name": "Escape to the Sea",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_SpeedUpClock_D@256.webp?v=0",
+        "description": "(if you have Flagship or Submarine) Gain 5 XP."
+      }
+    ]
+  },
+  {
+    "name": "Dooley's Workshop",
+    "icon": "data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\"/>",
+    "options": [
+      {
+        "name": "Find a Friend",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_Love_D@256.webp?v=0",
+        "description": "Choose a free Friend"
+      },
+      {
+        "name": "Firmware Upgrade",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_Rewind_D@256.webp?v=0",
+        "description": "Upgrade the Core and gain +10% Max Health ."
+      },
+      {
+        "name": "Improve Friendship",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_Upgrade_D@256.webp?v=0",
+        "description": "Upgrade your leftmost Friend ."
+      }
+    ]
+  },
+  {
+    "name": "Form",
+    "icon": "https://s.bazaardb.gg/v0/z1.0.0/encounter/FormChar@256.webp?v=0",
+    "options": [
+      {
+        "name": "Exploit",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_SmallWeapon_D@256.webp?v=0",
+        "description": "Your leftmost Weapon gains + 25 % Crit Chance ."
+      },
+      {
+        "name": "Sharpen Weapon",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_Hammer_D@256.webp?v=0",
+        "description": "Your Weapons gain 10 Damage ."
+      },
+      {
+        "name": "Upgrade an Item",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_Upgrade_D@256.webp?v=0",
+        "description": "Upgrade your leftmost Weapon ."
+      },
+      {
+        "name": "Engrave",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_SmallWeapon_D@256.webp?v=0",
+        "description": "Enchant your leftmost Weapon ."
+      }
+    ]
+  },
+  {
+    "name": "Haddy",
+    "icon": "https://s.bazaardb.gg/v0/z1.0.0/encounter/HaddyChar@256.webp?v=0",
+    "options": [
+      {
+        "name": "Bag of Gold",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_HandCoins_D@256.webp?v=0",
+        "description": "Gain 20 Gold."
+      },
+      {
+        "name": "Enchanted Item",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_TakeItem_D@256.webp?v=0",
+        "description": "Gain a random enchanted item"
+      },
+      {
+        "name": "Gold Skill",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_ThirdEye_D@256.webp?v=0",
+        "description": "Gain a Gold-tier skill."
+      },
+      {
+        "name": "Diamond Skill",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_ThirdEye_D@256.webp?v=0",
+        "description": "Gain a Diamond-tier skill."
+      },
+      {
+        "name": "Mystery Bundle",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_TakeItem_D@256.webp?v=0",
+        "description": "Get 3 Diamond-tier Loot items"
+      },
+      {
+        "name": "Magician's Top Hat",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/item/MagiciansTopHat@256.webp?v=0",
+        "description": "When you sell this, upgrade your leftmost item."
+      }
+    ]
+  },
+  {
+    "name": "Investment Pitch",
+    "icon": "https://s.bazaardb.gg/v0/z1.0.0/encounter/InvestmentPitchChar@256.webp?v=0",
+    "options": [
+      {
+        "name": "Mentor's Guidance",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_Mind_D@256.webp?v=0",
+        "description": "Gain 4 XP."
+      },
+      {
+        "name": "Hard Assets",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_ImbalancedScales_D@256.webp?v=0",
+        "description": "Upgrade your leftmost Property ."
+      },
+      {
+        "name": "Appreciated Value",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_HandCoins_D@256.webp?v=0",
+        "description": "Double the value of your leftmost item."
+      },
+      {
+        "name": "Investment Package",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_Grandstand_D@256.webp?v=0",
+        "description": "Double your Income"
+      }
+    ]
+  },
+  {
+    "name": "The Cult",
+    "icon": "https://s.bazaardb.gg/v0/z1.0.0/encounter/TheCultChar@256.webp?v=0",
+    "options": [
+      {
+        "name": "Steal Dagger",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_RitualDagger@256.webp?v=0",
+        "description": "Get a Ritual Dagger."
+      },
+      {
+        "name": "Blood Price",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_DrinkGoodPotion_D@256.webp?v=0",
+        "description": "Lose 10% Max Health and gain + 25 Regeneration ."
+      },
+      {
+        "name": "Deadly Covenant",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_SmallWeapon_D@256.webp?v=0",
+        "description": "Lose 20% Max Health and enchant your leftmost Weapon with Deadly ( Crit Chance )."
+      },
+      {
+        "name": "Vital Sacrifice",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_RunicDoubleBow@256.webp?v=0",
+        "description": "Lose 30% Max Health and get a Diamond-tier Runic Double Bow."
+      }
+    ]
+  },
+  {
+    "name": "Thieves Guild",
+    "icon": "data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\"/>",
+    "options": [
+      {
+        "name": "Hostile Takeover",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_Fight_D@256.webp?v=0",
+        "description": "Fight Mr. Moo"
+      },
+      {
+        "name": "Dodge Taxes",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_ImbalancedScales_D@256.webp?v=0",
+        "description": "Double your Income."
+      },
+      {
+        "name": "Raid the Vault",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_HandCoins_D@256.webp?v=0",
+        "description": "Grab everything from the vault"
+      }
+    ]
+  },
+  {
+    "name": "Eating Contest",
+    "icon": "data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\"/>",
+    "options": [
+      {
+        "name": "Basic Chocolate Bars",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_DeliciousFood_D@256.webp?v=0",
+        "description": "Get 5 bronze Chocolate Bars."
+      },
+      {
+        "name": "Deluxe Chocolate Bars",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_DeliciousFood_D@256.webp?v=0",
+        "description": "Get 5 silver Chocolate Bars."
+      },
+      {
+        "name": "Premium Chocolate Bars",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_DeliciousFood_D@256.webp?v=0",
+        "description": "Get 5 Gold-tier Chocolate Bars."
+      }
+    ]
+  },
+  {
+    "name": "Jungle Ruins",
+    "icon": "data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\"/>",
+    "options": [
+      {
+        "name": "Grab the Loot",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_Mind_D@256.webp?v=0",
+        "description": "Get 2 Bronze-tier Loot items"
+      },
+      {
+        "name": "Enjoy the Scenery",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_Rest_D@256.webp?v=0",
+        "description": "Gain 3 Regeneration"
+      },
+      {
+        "name": "Plunder for Treasure",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_Excavate_D@256.webp?v=0",
+        "description": "(if you are Vanessa) Gain a Small Silver-tier item."
+      },
+      {
+        "name": "Setup Tourist Attraction",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_Invest_D@256.webp?v=0",
+        "description": "(if you are Pygmalien) Gain 2 Income."
+      },
+      {
+        "name": "Hunt for Reagents",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_DrinkBadPotion_D@256.webp?v=0",
+        "description": "(if you are Mak) Get a Silver-tier Reagent ."
+      }
+    ]
+  },
+  {
+    "name": "Mandala",
+    "icon": "https://s.bazaardb.gg/v0/z1.0.0/encounter/MandalaChar@256.webp?v=0",
+    "options": [
+      {
+        "name": "Transform Small",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_ThirdEye_D@256.webp?v=0",
+        "description": "Transform your leftmost Small item into another item of the same size and tier."
+      },
+      {
+        "name": "Transform Medium",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_ThirdEye_D@256.webp?v=0",
+        "description": "Transform your leftmost Medium item into another item of the same size and tier."
+      },
+      {
+        "name": "Transform Large",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_ThirdEye_D@256.webp?v=0",
+        "description": "Transform your leftmost Large item into another item of the same size and tier."
+      }
+    ]
+  },
+  {
+    "name": "Regenerative Tincture",
+    "icon": "data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\"/>",
+    "options": []
+  },
+  {
+    "name": "The Docks",
+    "icon": "data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\"/>",
+    "options": [
+      {
+        "name": "Work as Security",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_LargeWeapon_D@256.webp?v=0",
+        "description": "Gain 2 Gold and a Weapon ."
+      },
+      {
+        "name": "Work as Dockhand",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_GrabbyClaw_D@256.webp?v=0",
+        "description": "Gain 2 Gold and a Tool ."
+      },
+      {
+        "name": "Work as Maintenance",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_Upgrade_D@256.webp?v=0",
+        "description": "Gain 2 Gold and a Shield item."
+      },
+      {
+        "name": "Work as Navigator",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_Astrolabe@256.webp?v=0",
+        "description": "(if you have an Astrolabe)\nGain 5 Gold and 1 XP."
+      },
+      {
+        "name": "Work as Navigator",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_StarChart@256.webp?v=0",
+        "description": "(if you have Star Chart)\nGain 5 Gold and 1 XP."
+      }
+    ]
+  },
+  {
+    "name": "Tiny Furry Monster",
+    "icon": "https://s.bazaardb.gg/v0/z1.0.0/encounter/TinyFurryCreatureChar@256.webp?v=0",
+    "options": [
+      {
+        "name": "Pet It",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_Love_D@256.webp?v=0",
+        "description": "Gain 25 Max Health ."
+      },
+      {
+        "name": "Scare It",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_Naughty_D@256.webp?v=0",
+        "description": "Get a Silver-tier Loot item."
+      },
+      {
+        "name": "Feed It",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_DeliciousFood_D@256.webp?v=0",
+        "description": "(if you have a Food ) Gain 1 XP."
+      },
+      {
+        "name": "Play With It",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_Nice_D@256.webp?v=0",
+        "description": "(if you have a Toy ) Gain 1 XP."
+      },
+      {
+        "name": "Play Hide and Seek",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_Whisper_D@256.webp?v=0",
+        "description": "(if you have a Friend ) Gain 1 XP."
+      }
+    ]
+  },
+  {
+    "name": "Economic Seminar",
+    "icon": "data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\"/>",
+    "options": [
+      {
+        "name": "Free Session",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_HandCoins_D@256.webp?v=0",
+        "description": "Get an Economic item or skill."
+      },
+      {
+        "name": "Premium Pass",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_HandCoins_D@256.webp?v=0",
+        "description": "Get 2 Economic items or skills"
+      }
+    ]
+  },
+  {
+    "name": "Gumball Machine",
+    "icon": "https://s.bazaardb.gg/v0/z1.0.0/encounter/GumballMachineChar@256.webp?v=0",
+    "options": [
+      {
+        "name": "Get a Gumball",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_DeliciousFood_D@256.webp?v=0",
+        "description": "Get a Gumball."
+      },
+      {
+        "name": "Get 5 Gumballs",
+        "icon": "https://s.bazaardb.gg/v0/z1.0.0/reward/Reward_DeliciousFood_D@256.webp?v=0",
+        "description": "Get 5 Gumballs."
+      }
+    ]
+  }
+]
