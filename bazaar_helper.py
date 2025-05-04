@@ -26,6 +26,7 @@ from PIL import ImageTk
 from urllib.parse import urlparse
 import difflib
 import concurrent.futures
+import io
 
 # 设置日志
 logging.basicConfig(
@@ -36,6 +37,21 @@ logging.basicConfig(
         logging.StreamHandler(sys.stdout)  # 同时输出到控制台
     ]
 )
+
+# 顶层定义ocr_task，确保无缩进
+def ocr_task(img_bytes):
+    from PIL import Image
+    import pytesseract
+    import io
+    try:
+        pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+        img = Image.open(io.BytesIO(img_bytes))
+        return pytesseract.image_to_string(
+            img,
+            config='--psm 6 --oem 3 -l eng'
+        ).strip()
+    except Exception as e:
+        return f"OCR_ERROR: {e}"
 
 def check_dependencies():
     """检查必要的依赖和文件"""
@@ -94,6 +110,16 @@ class IconFrame(tk.Frame):
         self.text_container = tk.Frame(self, bg='#2C1810')
         self.text_container.pack(side='left', fill='both', expand=True, pady=1)
         
+        # 新增：名称标签
+        self.name_label = tk.Label(
+            self.text_container,
+            font=('Segoe UI', 14, 'bold'),
+            fg='#FFFFFF',
+            bg='#2C1810',
+            anchor='w'
+        )
+        self.name_label.pack(fill='x', anchor='w')
+        
         # 创建描述标签，左对齐
         self.desc_label = tk.Label(
             self.text_container,
@@ -117,6 +143,9 @@ class IconFrame(tk.Frame):
         self.icon_container.configure(bg=bg_color)
         self.text_container.configure(bg=bg_color)
         self.desc_label.configure(bg=bg_color)
+        self.name_label.configure(bg=bg_color)
+        # 新增：设置名称
+        self.name_label.config(text=name)
         # 更新描述
         self.desc_label.config(text=description, anchor='w', justify='left')
         
@@ -155,11 +184,14 @@ class IconFrame(tk.Frame):
 
 class BazaarHelper:
     def __init__(self):
+        self.keyboard_listener = None  # 新增键盘监听器引用
+        self.force_quit = False       # 新增强制退出标志
         try:
             logging.info("初始化OCR助手...")
             
             self.running = True
             self.showing_info = False
+            self.ocr_executor = concurrent.futures.ThreadPoolExecutor(max_workers=1)  # 全局单例线程池
             
             # 加载怪物数据
             self.load_monster_data()
@@ -257,13 +289,11 @@ class BazaarHelper:
             return img
 
     def ocr_with_timeout(self, processed_img, timeout=3):
-        def ocr_task():
-            return pytesseract.image_to_string(
-                processed_img,
-                config='--psm 6 --oem 3 -l eng'
-            ).strip()
-        with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
-            future = executor.submit(ocr_task)
+        buf = io.BytesIO()
+        Image.fromarray(processed_img).save(buf, format='PNG')
+        img_bytes = buf.getvalue()
+        with concurrent.futures.ProcessPoolExecutor(max_workers=1) as executor:
+            future = executor.submit(ocr_task, img_bytes)
             try:
                 return future.result(timeout=timeout)
             except concurrent.futures.TimeoutError:
@@ -382,44 +412,39 @@ class BazaarHelper:
         try:
             self.root = tk.Tk()
             self.root.withdraw()
-            
             # 创建信息窗口
             self.info_window = tk.Toplevel(self.root)
             self.info_window.overrideredirect(True)  # 无边框窗口
             self.info_window.attributes('-topmost', True)  # 保持在最顶层
             self.info_window.attributes('-alpha', 0.95)  # 稍微调整透明度
-            
             # 设置窗口背景色
             self.info_window.configure(bg='#2C1810')
-            
-            # 创建内容框架
-            self.content_frame = tk.Frame(
-                self.info_window,
-                bg='#2C1810'  # 深褐色背景
-            )
-            self.content_frame.pack(fill='both', expand=True, padx=1, pady=1)
-            
+            # 创建Canvas作为内容区
+            self.content_canvas = tk.Canvas(self.info_window, bg='#2C1810', highlightthickness=0)
+            self.content_canvas.pack(fill='both', expand=True, padx=1, pady=1)
+            # 在Canvas中创建Frame
+            self.content_frame = tk.Frame(self.content_canvas, bg='#2C1810')
+            self.content_window = self.content_canvas.create_window((0, 0), window=self.content_frame, anchor='nw')
+            # 绑定内容区大小变化事件
+            def resize_content(event):
+                self.content_canvas.config(scrollregion=self.content_canvas.bbox('all'))
+            self.content_frame.bind('<Configure>', resize_content)
             # 创建子框架
             self.event_options_frame = tk.Frame(
                 self.content_frame,
                 bg='#2C1810'
             )
-            
             self.skills_frame = tk.Frame(
                 self.content_frame,
-                bg='#232323'  # 深灰色背景
+                bg='#232323'
             )
-            
             self.items_frame = tk.Frame(
                 self.content_frame,
                 bg='#2C1810'
             )
-            
             # 隐藏窗口
             self.info_window.withdraw()
-            
             logging.info("信息窗口创建完成")
-            
         except Exception as e:
             logging.error(f"创建信息窗口失败: {e}")
             raise
@@ -446,10 +471,16 @@ class BazaarHelper:
             screen_height = self.info_window.winfo_screenheight()
             if pos_x + window_width > screen_width:
                 pos_x = max(0, screen_width - window_width)
-            if pos_y + window_height > screen_height:
-                pos_y = max(0, screen_height - window_height)
+            # 新增：内容溢出时窗口顶格显示
+            if window_height >= max_window_height * 0.9:
+                pos_y = game_rect[1]
+            else:
+                if pos_y + window_height > screen_height:
+                    pos_y = max(0, screen_height - window_height)
             self.info_window.geometry(f"{window_width}x{window_height}+{pos_x}+{pos_y}")
             logging.info(f"窗口大小调整完成: {window_width}x{window_height}, 位置: {pos_x}, {pos_y}")
+            # Canvas裁剪内容区
+            self.content_canvas.config(height=window_height, width=window_width)
         except Exception as e:
             logging.error(f"调整窗口大小失败: {e}")
             logging.error(traceback.format_exc())
@@ -713,19 +744,16 @@ class BazaarHelper:
             logging.error(f"隐藏信息窗口失败: {e}")
 
     def run(self):
-        """运行助手"""
+        """运行助手（主线程轮询Alt键状态）"""
         logging.info("开始运行OCR助手...")
         logging.info("按住Alt键识别文字")
         logging.info("按Esc键退出")
-        
         try:
             alt_was_pressed = False
-            
             while self.running:
                 try:
                     # 检测Alt键
                     alt_is_pressed = keyboard.is_pressed('alt')
-                    
                     # 只在Alt键刚被按下时执行一次识别
                     if alt_is_pressed and not alt_was_pressed:
                         logging.debug("检测到Alt键按下，准备识别")
@@ -734,33 +762,26 @@ class BazaarHelper:
                         if text:
                             logging.debug("识别到文本，更新信息显示")
                             self.update_info_display(text, cursor_x, cursor_y)
-                    
                     # 当松开Alt键时
                     elif not alt_is_pressed and alt_was_pressed:
                         logging.debug("Alt键松开，隐藏信息窗口")
                         self.hide_info()
-                    
                     # 更新Alt键状态
                     alt_was_pressed = alt_is_pressed
-                    
                     # 检测Esc键退出
                     if keyboard.is_pressed('esc'):
                         logging.info("检测到Esc键，程序退出")
                         self.running = False
                         break
-                    
                     # 确保窗口保持在最顶层
                     if self.info_window.winfo_viewable():
                         self.info_window.lift()
                         self.info_window.attributes('-topmost', True)
-                    
                     time.sleep(0.01)
-                    
                 except Exception as e:
                     logging.error(f"运行时出错: {e}")
                     logging.error(traceback.format_exc())
                     time.sleep(1)
-                    
         except Exception as e:
             logging.error(f"程序运行出错: {e}")
             logging.error(traceback.format_exc())
@@ -770,15 +791,26 @@ class BazaarHelper:
                 self.root.destroy()
             logging.info("程序已退出")
 
+    def stop(self):
+        """增强的停止方法"""
+        self.force_quit = True
+        if self.keyboard_listener:
+            self.keyboard_listener.stop()
+        if self.root:
+            self.root.quit()
+        os._exit(0)  # 强制退出
+
 if __name__ == "__main__":
+    helper = None
     try:
-        # 检查是否以管理员权限运行
         if not is_admin():
             run_as_admin()
         else:
             helper = BazaarHelper()
             helper.run()
-    except Exception as e:
-        logging.error(f"程序崩溃: {e}")
-        logging.error(traceback.format_exc())
-        input("按Enter键退出...") 
+    except KeyboardInterrupt:
+        pass
+    finally:
+        if helper:
+            helper.stop()
+        os._exit(0) 
