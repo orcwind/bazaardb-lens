@@ -412,39 +412,44 @@ class BazaarHelper:
         try:
             self.root = tk.Tk()
             self.root.withdraw()
+            
             # 创建信息窗口
             self.info_window = tk.Toplevel(self.root)
             self.info_window.overrideredirect(True)  # 无边框窗口
             self.info_window.attributes('-topmost', True)  # 保持在最顶层
             self.info_window.attributes('-alpha', 0.95)  # 稍微调整透明度
+            
             # 设置窗口背景色
             self.info_window.configure(bg='#2C1810')
-            # 创建Canvas作为内容区
-            self.content_canvas = tk.Canvas(self.info_window, bg='#2C1810', highlightthickness=0)
-            self.content_canvas.pack(fill='both', expand=True, padx=1, pady=1)
-            # 在Canvas中创建Frame
-            self.content_frame = tk.Frame(self.content_canvas, bg='#2C1810')
-            self.content_window = self.content_canvas.create_window((0, 0), window=self.content_frame, anchor='nw')
-            # 绑定内容区大小变化事件
-            def resize_content(event):
-                self.content_canvas.config(scrollregion=self.content_canvas.bbox('all'))
-            self.content_frame.bind('<Configure>', resize_content)
+            
+            # 创建内容框架
+            self.content_frame = tk.Frame(
+                self.info_window,
+                bg='#2C1810'  # 深褐色背景
+            )
+            self.content_frame.pack(fill='both', expand=True, padx=15, pady=15)
+            
             # 创建子框架
             self.event_options_frame = tk.Frame(
                 self.content_frame,
                 bg='#2C1810'
             )
+            
             self.skills_frame = tk.Frame(
                 self.content_frame,
-                bg='#232323'
+                bg='#2C1810'
             )
+            
             self.items_frame = tk.Frame(
                 self.content_frame,
                 bg='#2C1810'
             )
+            
             # 隐藏窗口
             self.info_window.withdraw()
+            
             logging.info("信息窗口创建完成")
+            
         except Exception as e:
             logging.error(f"创建信息窗口失败: {e}")
             raise
@@ -471,16 +476,10 @@ class BazaarHelper:
             screen_height = self.info_window.winfo_screenheight()
             if pos_x + window_width > screen_width:
                 pos_x = max(0, screen_width - window_width)
-            # 新增：内容溢出时窗口顶格显示
-            if window_height >= max_window_height * 0.9:
-                pos_y = game_rect[1]
-            else:
-                if pos_y + window_height > screen_height:
-                    pos_y = max(0, screen_height - window_height)
+            if pos_y + window_height > screen_height:
+                pos_y = max(0, screen_height - window_height)
             self.info_window.geometry(f"{window_width}x{window_height}+{pos_x}+{pos_y}")
             logging.info(f"窗口大小调整完成: {window_width}x{window_height}, 位置: {pos_x}, {pos_y}")
-            # Canvas裁剪内容区
-            self.content_canvas.config(height=window_height, width=window_width)
         except Exception as e:
             logging.error(f"调整窗口大小失败: {e}")
             logging.error(traceback.format_exc())
@@ -707,8 +706,7 @@ class BazaarHelper:
                     self.info_window.geometry(f"+{pos_x}+{pos_y}")
                     self.info_window.update()
                     self.content_frame.update()
-                    # 用 after 延迟调整窗口大小，确保内容已渲染
-                    self.info_window.after(50, lambda: self.adjust_window_size(pos_x, pos_y))
+                    self.adjust_window_size(pos_x, pos_y)
                     logging.info(f"事件信息显示完成，位置: {pos_x}, {pos_y}")
                     return
                 else:
@@ -721,8 +719,7 @@ class BazaarHelper:
                     self.info_window.geometry(f"+{pos_x}+{pos_y}")
                     self.info_window.update()
                     self.content_frame.update()
-                    # 用 after 延迟调整窗口大小，确保内容已渲染
-                    self.info_window.after(50, lambda: self.adjust_window_size(pos_x, pos_y))
+                    self.adjust_window_size(pos_x, pos_y)
                     logging.info(f"怪物信息显示完成，位置: {pos_x}, {pos_y}")
                     return
                 else:
