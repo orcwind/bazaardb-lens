@@ -60,28 +60,37 @@ def parse_monster_html(file_path):
         skill_list_div = skill_section.find_next_sibling('div')
         if skill_list_div:
             for skill_div in skill_list_div.find_all('div', class_='_w', recursive=False):
-                skill = {}
-                # 图标
-                img = skill_div.find('img')
-                if img:
-                    skill['icon'] = img['src']
+                # 顺序：名称，图标，描述，aspect_ratio
+                name = None
+                icon = None
+                description = None
+                aspect_ratio = 1.0
                 # 名称
                 h3 = skill_div.find('h3', class_='_ac')
                 if h3:
                     span = h3.find('span')
                     if span:
-                        skill['name'] = span.text.strip()
+                        name = span.text.strip()
+                # 图标
+                img = skill_div.find('img')
+                if img:
+                    icon = img['src']
                 # 描述
                 desc_div = skill_div.find('div', class_='_bi')
                 if desc_div:
-                    skill['description'] = desc_div.get_text(strip=True)
+                    description = desc_div.get_text(strip=True)
                 # aspect-ratio
                 ap_div = skill_div.find('div', class_='_ap')
                 if ap_div and 'aspect-ratio' in ap_div.get('style', ''):
                     m = re.search(r'aspect-ratio\s*:\s*([\d\.]+)', ap_div['style'])
                     if m:
-                        skill['aspect_ratio'] = float(m.group(1))
-                skills.append(skill)
+                        aspect_ratio = float(m.group(1))
+                skills.append({
+                    'name': name or '',
+                    'icon': icon or '',
+                    'description': description or '',
+                    'aspect_ratio': aspect_ratio
+                })
     result['skills'] = skills
     # 物品
     items = []
@@ -90,28 +99,37 @@ def parse_monster_html(file_path):
         item_list_div = item_section.find_next_sibling('div')
         if item_list_div:
             for item_div in item_list_div.find_all('div', class_='_w', recursive=False):
-                item = {}
-                # 图标
-                img = item_div.find('img')
-                if img:
-                    item['icon'] = img['src']
+                # 顺序：名称，图标，描述，aspect_ratio
+                name = None
+                icon = None
+                description = None
+                aspect_ratio = 1.0
                 # 名称
                 h3 = item_div.find('h3', class_='_ac')
                 if h3:
                     span = h3.find('span')
                     if span:
-                        item['name'] = span.text.strip()
+                        name = span.text.strip()
+                # 图标
+                img = item_div.find('img')
+                if img:
+                    icon = img['src']
                 # 描述
                 desc_div = item_div.find('div', class_='_bi')
                 if desc_div:
-                    item['description'] = desc_div.get_text(strip=True)
+                    description = desc_div.get_text(strip=True)
                 # aspect-ratio
                 ap_div = item_div.find('div', class_='_ap')
                 if ap_div and 'aspect-ratio' in ap_div.get('style', ''):
                     m = re.search(r'aspect-ratio\s*:\s*([\d\.]+)', ap_div['style'])
                     if m:
-                        item['aspect_ratio'] = float(m.group(1))
-                items.append(item)
+                        aspect_ratio = float(m.group(1))
+                items.append({
+                    'name': name or '',
+                    'icon': icon or '',
+                    'description': description or '',
+                    'aspect_ratio': aspect_ratio
+                })
     result['items'] = items
     return result
 

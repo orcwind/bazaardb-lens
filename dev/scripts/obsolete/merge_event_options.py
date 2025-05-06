@@ -1,6 +1,8 @@
 import os
 import json
 from bs4 import BeautifulSoup
+import requests
+from urllib.parse import urlparse
 
 def parse_event_options(html_file):
     with open(html_file, 'r', encoding='utf-8') as f:
@@ -41,10 +43,10 @@ def parse_event_options(html_file):
         if desc_div:
             option['description'] = desc_div.text.strip()
         
-        # 获取选项图片
+        # 获取选项图片（保留原始URL）
         img = div.find('img')
         if img:
-            option['icon'] = img.get('alt', '')
+            option['icon'] = img.get('src', '')
         
         if 'name' in option and 'description' in option:
             options.append(option)
@@ -60,6 +62,22 @@ def parse_event_options(html_file):
         'description': event_description,
         'options': options
     }
+
+def download_icon(url, icon_dir='icons'):
+    if not url or not url.startswith('http'):
+        return
+    filename = os.path.basename(urlparse(url).path)
+    icon_path = os.path.join(icon_dir, filename)
+    if not os.path.exists(icon_path):
+        try:
+            resp = requests.get(url, timeout=10)
+            if resp.status_code == 200:
+                os.makedirs(icon_dir, exist_ok=True)
+                with open(icon_path, "wb") as f:
+                    f.write(resp.content)
+                print(f"已下载图标: {filename}")
+        except Exception as e:
+            print(f"下载图标失败: {filename}，错误: {e}")
 
 def main():
     events_dir = 'dev/html/events'
@@ -81,6 +99,16 @@ def main():
         json.dump(events, f, ensure_ascii=False, indent=2)
     
     print(f"已完成，共处理{len(events)}个事件，结果已保存到 {output_file}")
+    
+    # 批量下载所有选项icon
+    all_icons = set()
+    for event in events:
+        for option in event.get('options', []):
+            icon_url = option.get('icon', '')
+            if icon_url and icon_url.startswith('http'):
+                all_icons.add(icon_url)
+    for url in all_icons:
+        download_icon(url)
 
 if __name__ == '__main__':
     main() 

@@ -150,7 +150,6 @@ class IconFrame(tk.Frame):
         self.name_label.config(text=name)
         # 更新描述
         self.desc_label.config(text=description, anchor='w', justify='left')
-        
         # 处理图标
         if icon_path and os.path.exists(icon_path):
             try:
@@ -169,12 +168,12 @@ class IconFrame(tk.Frame):
                 # 加载并调整图标大小
                 img = Image.open(icon_path)
                 img = img.resize((target_width, target_height), Image.Resampling.LANCZOS)
-                photo = ImageTk.PhotoImage(img, master=self)
+                photo = ImageTk.PhotoImage(img, master=self.icon_label)
                 self.icon_label.config(image=photo, width=target_width, height=target_height)
                 self.icon_label.image = photo  # 保持强引用，防止被GC
                 # 居中显示
                 self.icon_label.place(relx=0.5, rely=0.5, anchor='center', width=target_width, height=target_height)
-                self.icon_container.pack(side='left', padx=0, pady=0)
+                self.icon_container.pack(side='left', padx=1, pady=1)
             except Exception as e:
                 logging.error(f"加载图标失败: {e}")
                 if self.icon_container:
@@ -285,49 +284,32 @@ class BazaarHelper:
             return img
 
     def ocr_with_timeout(self, processed_img, timeout=3):
-        try:
-            # 保存临时图片
-            with tempfile.NamedTemporaryFile(suffix='.png', delete=False) as tmp_img:
-                Image.fromarray(processed_img).save(tmp_img, format='PNG')
-                img_path = tmp_img.name
-            # 临时输出文件
-            with tempfile.NamedTemporaryFile(suffix='.txt', delete=False) as tmp_txt:
-                txt_path = tmp_txt.name
-            # 构造tesseract命令
-            tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-            cmd = [
-                tesseract_cmd,
-                img_path,
-                txt_path.replace('.txt', ''),  # tesseract要求不带扩展名
-                '--psm', '6',
-                '--oem', '3',
-                '-l', 'eng'
-            ]
+        buf = io.BytesIO()
+        Image.fromarray(processed_img).save(buf, format='PNG')
+        img_bytes = buf.getvalue()
+        # 新增：卡死计数
+        if not hasattr(self, '_ocr_fail_count'):
+            self._ocr_fail_count = 0
+        import sys
+        with concurrent.futures.ProcessPoolExecutor(max_workers=1) as executor:
+            future = executor.submit(ocr_task, img_bytes)
             try:
-                subprocess.run(cmd, timeout=timeout, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                # 读取结果
-                with open(txt_path, 'r', encoding='utf-8') as f:
-                    result = f.read().strip()
+                result = future.result(timeout=timeout)
+                self._ocr_fail_count = 0  # 成功则清零
                 return result
-            except subprocess.TimeoutExpired:
-                logging.warning('OCR识别超时，已跳过本次识别。')
+            except concurrent.futures.TimeoutError:
+                self._ocr_fail_count += 1
+                logging.warning("OCR识别超时，已跳过本次识别。")
                 return None
             except Exception as e:
-                logging.warning(f'OCR识别异常: {e}')
-                return None
-            finally:
-                # 清理临时文件
-                try:
-                    os.remove(img_path)
-                except Exception:
-                    pass
-                try:
-                    os.remove(txt_path)
-                except Exception:
-                    pass
-        except Exception as e:
-            logging.error(f'OCR调用subprocess异常: {e}')
-            return None
+                self._ocr_fail_count += 1
+                logging.warning(f"OCR识别异常: {e}")
+        # 超过3次自动重启
+        if self._ocr_fail_count >= 3:
+            logging.error("OCR连续多次卡死，自动重启程序！")
+            python = sys.executable
+            os.execv(python, [python] + sys.argv)
+        return None
 
     def find_best_match(self, text):
         """统一识别怪物或事件，返回('monster'/'event', 名称)或(None, None)"""
@@ -439,14 +421,21 @@ class BazaarHelper:
     def create_info_window(self):
         """创建信息窗口"""
         try:
-            self.root = tk.Tk()
-            self.root.withdraw()
+            if not hasattr(self, 'root'):
+                self.root = tk.Tk()
+                self.root.withdraw()
             
             # 创建信息窗口
             self.info_window = tk.Toplevel(self.root)
+            self.info_window.withdraw()  # 先隐藏窗口
+            
+            # 设置窗口样式
             self.info_window.overrideredirect(True)  # 无边框窗口
             self.info_window.attributes('-topmost', True)  # 保持在最顶层
             self.info_window.attributes('-alpha', 0.95)  # 稍微调整透明度
+            
+            # 确保窗口在任务栏中不显示
+            self.info_window.attributes('-toolwindow', True)
             
             # 设置窗口背景色
             self.info_window.configure(bg='#2C1810')
@@ -454,9 +443,11 @@ class BazaarHelper:
             # 创建内容框架
             self.content_frame = tk.Frame(
                 self.info_window,
-                bg='#2C1810'  # 深褐色背景
+                bg='#FF0000',  # 红色，便于调试
+                highlightthickness=1,
+                highlightbackground='#3D2419'
             )
-            self.content_frame.pack(fill='both', expand=True, padx=0, pady=0)
+            self.content_frame.pack(fill='both', expand=True, padx=2, pady=2)
             
             # 创建子框架
             self.event_options_frame = tk.Frame(
@@ -474,13 +465,15 @@ class BazaarHelper:
                 bg='#2C1810'
             )
             
-            # 隐藏窗口
-            self.info_window.withdraw()
+            # 在self.content_frame下加
+            # test_label = tk.Label(self.content_frame, text='TEST', fg='white', bg='#2C1810')
+            # test_label.pack()
             
             logging.info("信息窗口创建完成")
             
         except Exception as e:
             logging.error(f"创建信息窗口失败: {e}")
+            logging.error(traceback.format_exc())
             raise
 
     def adjust_window_size(self, pos_x, pos_y):
@@ -531,15 +524,27 @@ class BazaarHelper:
             if isinstance(widget, tk.Frame) and widget not in [self.event_options_frame, self.skills_frame, self.items_frame]:
                 widget.destroy()
 
-    def get_local_icon_path(self, url):
-        """只从本地icons文件夹查找图标，不自动下载"""
-        if not url:
+    def get_local_icon_path(self, icon_url, icons_dir='icons'):
+        """优先本地查找，找不到则自动下载，命名与URL一致"""
+        if not icon_url or not icon_url.startswith('http'):
             return None
+        import requests
         from urllib.parse import urlparse
-        # 如果是http链接，取文件名，否则直接用url作为文件名
-        filename = os.path.basename(urlparse(url).path) if url.startswith('http') else url
-        icon_path = os.path.join('icons', filename)
-        return icon_path if os.path.exists(icon_path) else None
+        filename = os.path.basename(urlparse(icon_url).path)
+        local_path = os.path.join(icons_dir, filename)
+        if os.path.exists(local_path):
+            return local_path
+        # 本地没有，尝试下载
+        try:
+            resp = requests.get(icon_url, timeout=10)
+            if resp.status_code == 200:
+                os.makedirs(icons_dir, exist_ok=True)
+                with open(local_path, 'wb') as f:
+                    f.write(resp.content)
+                return local_path
+        except Exception as e:
+            logging.warning(f"下载图标失败: {icon_url}，错误: {e}")
+        return None
 
     def format_monster_info(self, monster_name):
         """格式化怪物信息显示"""
@@ -558,7 +563,6 @@ class BazaarHelper:
                     "未找到该怪物的数据，请稍后再试。",
                     None
                 )
-                self.content_frame.update_idletasks()
                 return True
             monster = self.monster_data[monster_name]
             logging.debug(f"怪物原始数据: {monster}")
@@ -570,7 +574,7 @@ class BazaarHelper:
                 self.skills_frame.pack(fill='x', pady=0, padx=0)
                 for skill in monster['skills']:
                     skill_frame = IconFrame(self.skills_frame)
-                    skill_frame.pack(fill='x', pady=0)
+                    skill_frame.pack(fill='x', pady=1)
                     icon_path = self.get_local_icon_path(skill.get('icon'))
                     aspect_ratio = skill.get('aspect_ratio', 1.0)
                     skill_frame.update_content(
@@ -593,7 +597,14 @@ class BazaarHelper:
                 for idx, item_name in enumerate(item_keys):
                     item = items_info[item_name]
                     item_frame = IconFrame(self.items_frame)
-                    item_frame.pack(fill='x', pady=0)
+                    if len(item_keys) == 1:
+                        item_frame.pack(fill='x', pady=0)
+                    elif idx == 0:
+                        item_frame.pack(fill='x', pady=(0, 4))
+                    elif idx == len(item_keys) - 1:
+                        item_frame.pack(fill='x', pady=(4, 0))
+                    else:
+                        item_frame.pack(fill='x', pady=(4, 4))
                     display_name = item_name
                     if items_count[item_name] > 1:
                         display_name += f" x{items_count[item_name]}"
@@ -606,7 +617,15 @@ class BazaarHelper:
                         'item',
                         aspect_ratio
                     )
-            self.content_frame.update_idletasks()
+            if not has_skills and not has_items:
+                self.skills_frame.pack(fill='x', pady=0, padx=0)
+                not_found_frame = IconFrame(self.skills_frame)
+                not_found_frame.pack(fill='x', pady=0)
+                not_found_frame.update_content(
+                    monster_name,
+                    "未找到该怪物的数据，请稍后再试。",
+                    None
+                )
             return True
         except Exception as e:
             logging.error(f"格式化怪物信息失败: {e}")
@@ -685,19 +704,29 @@ class BazaarHelper:
             self.clear_frames()
 
             # 显示事件选项框架
-            self.event_options_frame.pack(fill='x', pady=0)
+            self.event_options_frame.pack(fill='x', pady=1)
 
             for option in options:
                 icon_path = self.get_local_icon_path(option.get('icon', ''))
                 option_frame = IconFrame(self.event_options_frame)
-                option_frame.pack(fill='x', pady=0)
+                option_frame.pack(fill='x', pady=1)
                 option_frame.update_content(
                     option.get('name', ''),
                     option.get('description', ''),
                     icon_path,
                     'event'
                 )
-            self.content_frame.update_idletasks()
+
+            if not options:
+                self.event_options_frame.pack(fill='x', pady=1)
+                not_found_frame = IconFrame(self.event_options_frame)
+                not_found_frame.pack(fill='x', pady=0)
+                not_found_frame.update_content(
+                    event_name,
+                    "未找到该事件的数据，请稍后再试。",
+                    None
+                )
+
             return True
 
         except Exception as e:
@@ -705,63 +734,55 @@ class BazaarHelper:
             logging.error(traceback.format_exc())
             return False
 
-    def destroy_info_window(self):
-        """销毁信息窗口及相关Frame"""
-        try:
-            if hasattr(self, 'info_window') and self.info_window:
-                self.info_window.destroy()
-                self.info_window = None
-            if hasattr(self, 'content_frame') and self.content_frame:
-                self.content_frame = None
-            if hasattr(self, 'event_options_frame') and self.event_options_frame:
-                self.event_options_frame = None
-            if hasattr(self, 'skills_frame') and self.skills_frame:
-                self.skills_frame = None
-            if hasattr(self, 'items_frame') and self.items_frame:
-                self.items_frame = None
-        except Exception as e:
-            logging.error(f"销毁信息窗口失败: {e}")
-
     def update_info_display(self, text, pos_x, pos_y):
         """更新信息显示（统一怪物/事件识别），每次都重建窗口"""
         try:
+            # 销毁旧窗口
             self.destroy_info_window()
+            
+            # 创建新窗口
             self.create_info_window()
+            
             logging.info(f"开始更新信息显示，OCR文本: {text}")
             match_type, match_name = self.find_best_match(text)
+            
+            display_success = False
             if match_type == 'event':
-                logging.info(f"找到匹配事件: {match_name}")
-                if self.format_event_info(match_name):
-                    self.showing_info = True
-                    self.info_window.deiconify()
-                    self.info_window.geometry(f"+{pos_x}+{pos_y}")
-                    self.info_window.update()
-                    self.content_frame.update()
-                    self.info_window.after(50, lambda: self.adjust_window_size(pos_x, pos_y))
-                    logging.info(f"事件信息显示完成，位置: {pos_x}, {pos_y}")
-                    return
-                else:
-                    logging.warning(f"未能格式化事件 {match_name} 的信息")
+                display_success = self.format_event_info(match_name)
             elif match_type == 'monster':
-                logging.info(f"找到匹配怪物: {match_name}")
-                if self.format_monster_info(match_name):
-                    self.showing_info = True
-                    self.info_window.deiconify()
-                    self.info_window.geometry(f"+{pos_x}+{pos_y}")
-                    self.info_window.update()
-                    self.content_frame.update()
-                    self.info_window.after(50, lambda: self.adjust_window_size(pos_x, pos_y))
-                    logging.info(f"怪物信息显示完成，位置: {pos_x}, {pos_y}")
-                    return
+                display_success = self.format_monster_info(match_name)
+                
+            if not display_success:
+                if match_type:
+                    self.show_info_message(f"未找到该{match_type}的数据，请稍后再试。", None)
                 else:
-                    logging.warning(f"未能格式化怪物 {match_name} 的信息")
-            else:
-                logging.info("未找到匹配的事件或怪物，隐藏窗口")
-                self.hide_info()
+                    self.show_info_message("未能识别到怪物或事件名称。", None)
+                return
+                
+            # 设置初始位置
+            self.info_window.geometry(f"+{pos_x}+{pos_y}")
+            
+            # 更新所有挂起的空闲任务
+            self.info_window.update()
+            self.content_frame.update()
+            self.content_frame.update_idletasks()
+            
+            # 调整窗口大小
+            self.adjust_window_size(pos_x, pos_y)
+            
+            # 延迟50ms后再次调整窗口大小，确保内容完全加载
+            self.info_window.after(50, lambda: self.adjust_window_size(pos_x, pos_y))
+            
+            # 显示窗口并置顶
+            self.info_window.deiconify()
+            self.info_window.lift()
+            self.info_window.attributes('-topmost', True)
+            
+            logging.info(f"{match_type}信息显示完成，位置: {pos_x}, {pos_y}")
+            
         except Exception as e:
-            logging.error(f"更新信息显示时出错: {e}")
+            logging.error(f"信息显示异常: {e}")
             logging.error(traceback.format_exc())
-            self.hide_info()
 
     def hide_info(self):
         """隐藏信息窗口"""
@@ -827,6 +848,41 @@ class BazaarHelper:
         if self.root:
             self.root.quit()
         os._exit(0)  # 强制退出
+
+    def destroy_info_window(self):
+        """销毁信息窗口及相关Frame"""
+        try:
+            # 先隐藏窗口
+            if hasattr(self, 'info_window') and self.info_window:
+                self.info_window.withdraw()
+                
+            # 清理所有子Frame
+            if hasattr(self, 'content_frame') and self.content_frame:
+                for widget in self.content_frame.winfo_children():
+                    widget.destroy()
+                self.content_frame.destroy()
+                self.content_frame = None
+                
+            if hasattr(self, 'event_options_frame') and self.event_options_frame:
+                self.event_options_frame.destroy()
+                self.event_options_frame = None
+                
+            if hasattr(self, 'skills_frame') and self.skills_frame:
+                self.skills_frame.destroy()
+                self.skills_frame = None
+                
+            if hasattr(self, 'items_frame') and self.items_frame:
+                self.items_frame.destroy()
+                self.items_frame = None
+                
+            # 最后销毁主窗口
+            if hasattr(self, 'info_window') and self.info_window:
+                self.info_window.destroy()
+                self.info_window = None
+                
+        except Exception as e:
+            logging.error(f"销毁信息窗口失败: {e}")
+            logging.error(traceback.format_exc())
 
 if __name__ == "__main__":
     helper = None
