@@ -27,6 +27,8 @@ from urllib.parse import urlparse
 import difflib
 import concurrent.futures
 import io
+import tempfile
+import subprocess
 
 # 设置日志
 logging.basicConfig(
@@ -217,9 +219,8 @@ class BazaarHelper:
     def load_monster_data(self):
         """加载怪物数据"""
         try:
-            with open('output/smart_all_monsters.json', 'r', encoding='utf-8') as f:
+            with open('data/monsters.json', 'r', encoding='utf-8') as f:
                 data = json.load(f)
-                # 将列表转换为以名称为键的字典
                 self.monster_data = {monster['name']: monster for monster in data['monsters']}
             logging.info(f"成功加载怪物数据，共 {len(self.monster_data)} 个怪物")
         except Exception as e:
@@ -229,21 +230,16 @@ class BazaarHelper:
     def load_event_data(self):
         """加载事件数据"""
         try:
-            # 加载事件列表
-            with open('data/events/events.json', 'r', encoding='utf-8') as f:
+            with open('data/events.json', 'r', encoding='utf-8') as f:
                 self.events = json.load(f)
                 logging.info(f"已加载 {len(self.events)} 个事件")
-            # 加载所有事件选项
+            # 直接从 events.json 提取所有事件选项
             self.event_options = {}
-            all_options_path = 'data/events/all_events_options.json'
-            if os.path.exists(all_options_path):
-                with open(all_options_path, 'r', encoding='utf-8') as f:
-                    all_options = json.load(f)
-                    for event in all_options:
-                        self.event_options[event['name']] = event['options']
-                    logging.info(f"已加载所有事件选项（共 {len(self.event_options)} 个事件）")
-            else:
-                logging.warning("未找到 all_events_options.json")
+            for event in self.events:
+                if 'name' in event and 'options' in event:
+                    self.event_options[event['name']] = event['options']
+                else:
+                    logging.warning(f"事件 {event.get('name', '')} 缺少 options 字段")
         except Exception as e:
             logging.error(f"加载事件数据时出错: {e}")
             self.events = []
@@ -289,30 +285,49 @@ class BazaarHelper:
             return img
 
     def ocr_with_timeout(self, processed_img, timeout=3):
-        buf = io.BytesIO()
-        Image.fromarray(processed_img).save(buf, format='PNG')
-        img_bytes = buf.getvalue()
-        # 新增：卡死计数
-        if not hasattr(self, '_ocr_fail_count'):
-            self._ocr_fail_count = 0
-        with concurrent.futures.ProcessPoolExecutor(max_workers=1) as executor:
-            future = executor.submit(ocr_task, img_bytes)
+        try:
+            # 保存临时图片
+            with tempfile.NamedTemporaryFile(suffix='.png', delete=False) as tmp_img:
+                Image.fromarray(processed_img).save(tmp_img, format='PNG')
+                img_path = tmp_img.name
+            # 临时输出文件
+            with tempfile.NamedTemporaryFile(suffix='.txt', delete=False) as tmp_txt:
+                txt_path = tmp_txt.name
+            # 构造tesseract命令
+            tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+            cmd = [
+                tesseract_cmd,
+                img_path,
+                txt_path.replace('.txt', ''),  # tesseract要求不带扩展名
+                '--psm', '6',
+                '--oem', '3',
+                '-l', 'eng'
+            ]
             try:
-                result = future.result(timeout=timeout)
-                self._ocr_fail_count = 0  # 成功则清零
+                subprocess.run(cmd, timeout=timeout, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                # 读取结果
+                with open(txt_path, 'r', encoding='utf-8') as f:
+                    result = f.read().strip()
                 return result
-            except concurrent.futures.TimeoutError:
-                self._ocr_fail_count += 1
-                logging.warning("OCR识别超时，已跳过本次识别。")
+            except subprocess.TimeoutExpired:
+                logging.warning('OCR识别超时，已跳过本次识别。')
+                return None
             except Exception as e:
-                self._ocr_fail_count += 1
-                logging.warning(f"OCR识别异常: {e}")
-        # 超过3次自动重启
-        if self._ocr_fail_count >= 3:
-            logging.error("OCR连续多次卡死，自动重启程序！")
-            python = sys.executable
-            os.execv(python, [python] + sys.argv)
-        return None
+                logging.warning(f'OCR识别异常: {e}')
+                return None
+            finally:
+                # 清理临时文件
+                try:
+                    os.remove(img_path)
+                except Exception:
+                    pass
+                try:
+                    os.remove(txt_path)
+                except Exception:
+                    pass
+        except Exception as e:
+            logging.error(f'OCR调用subprocess异常: {e}')
+            return None
 
     def find_best_match(self, text):
         """统一识别怪物或事件，返回('monster'/'event', 名称)或(None, None)"""
@@ -490,8 +505,8 @@ class BazaarHelper:
             screen_height = self.info_window.winfo_screenheight()
             if pos_x + window_width > screen_width:
                 pos_x = max(0, screen_width - window_width)
-            if pos_y + window_height > screen_height:
-                pos_y = max(0, screen_height - window_height)
+                if pos_y + window_height > screen_height:
+                    pos_y = max(0, screen_height - window_height)
             self.info_window.geometry(f"{window_width}x{window_height}+{pos_x}+{pos_y}")
             logging.info(f"窗口大小调整完成: {window_width}x{window_height}, 位置: {pos_x}, {pos_y}")
         except Exception as e:
@@ -517,25 +532,13 @@ class BazaarHelper:
                 widget.destroy()
 
     def get_local_icon_path(self, url):
-        """获取图标的本地路径，如无则自动下载"""
+        """只从本地icons文件夹查找图标，不自动下载"""
         if not url:
             return None
         from urllib.parse import urlparse
-        filename = os.path.basename(urlparse(url).path)
+        # 如果是http链接，取文件名，否则直接用url作为文件名
+        filename = os.path.basename(urlparse(url).path) if url.startswith('http') else url
         icon_path = os.path.join('icons', filename)
-        if not os.path.exists(icon_path):
-            # 自动下载图标
-            try:
-                resp = requests.get(url, timeout=10)
-                if resp.status_code == 200:
-                    os.makedirs('icons', exist_ok=True)
-                    with open(icon_path, "wb") as f:
-                        f.write(resp.content)
-                    logging.info(f"自动下载图标成功: {filename}")
-                else:
-                    logging.warning(f"自动下载图标失败: {filename}，状态码: {resp.status_code}")
-            except Exception as e:
-                logging.warning(f"自动下载图标异常: {filename}，错误: {e}")
         return icon_path if os.path.exists(icon_path) else None
 
     def format_monster_info(self, monster_name):

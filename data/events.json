@@ -1,0 +1,524 @@
+[
+  {
+    "name": "Jules' Cafe",
+    "description": "SilverEventEncounterCommon",
+    "options": [
+      {
+        "name": "Relax",
+        "description": "Gain 10% of your Max Health for the rest of the day.",
+        "icon": "Relax"
+      },
+      {
+        "name": "Rejuvenating Blend",
+        "description": "Your Heal items gain 50 Heal for the rest of the day.",
+        "icon": "Rejuvenating Blend"
+      },
+      {
+        "name": "Strong Brew",
+        "description": "Your Weapons gain 25 Damage for the rest of the day.",
+        "icon": "Strong Brew"
+      }
+    ]
+  },
+  {
+    "name": "Mountain Pass",
+    "description": "SilverEventEncounterCommon",
+    "options": [
+      {
+        "name": "Guide the Convoy",
+        "description": "Gain 2 Gold and 1 XP.",
+        "icon": "Guide the Convoy"
+      },
+      {
+        "name": "Work for the Convoy",
+        "description": "Gain 5 gold",
+        "icon": "Work for the Convoy"
+      },
+      {
+        "name": "Escort the Convoy",
+        "description": "Risky! Anything could happen here.",
+        "icon": "Escort the Convoy"
+      },
+      {
+        "name": "Invest in the Convoy",
+        "description": "Gain 2 Income",
+        "icon": "Invest in the Convoy"
+      }
+    ]
+  },
+  {
+    "name": "The Lost Crate",
+    "description": "SilverEventEncounterCommon",
+    "options": [
+      {
+        "name": "Open It",
+        "description": "Get a Medium item",
+        "icon": "Open It"
+      },
+      {
+        "name": "Return It",
+        "description": "Get a Skill",
+        "icon": "Return It"
+      }
+    ]
+  },
+  {
+    "name": "Artisan Dunes",
+    "description": "GoldEventEncounterCommon",
+    "options": [
+      {
+        "name": "Apprentice Weaponsmith",
+        "description": "Your leftmost Weapon gains +5 Damage.",
+        "icon": "Apprentice Weaponsmith"
+      },
+      {
+        "name": "Apprentice Flamewright",
+        "description": "Your leftmost Burn item gains +1 Burn.",
+        "icon": "Apprentice Flamewright"
+      },
+      {
+        "name": "Apprentice Banehand",
+        "description": "Your leftmost Poison item gains +1 Poison.",
+        "icon": "Apprentice Banehand"
+      },
+      {
+        "name": "Find Better Craftsman",
+        "description": "Double the effects of the offered options.",
+        "icon": "Find Better Craftsman"
+      }
+    ]
+  },
+  {
+    "name": "BazaarCON",
+    "description": "GoldEventEncounterCommon",
+    "options": [
+      {
+        "name": "Networking",
+        "description": "Gain 2 XP.",
+        "icon": "Networking"
+      },
+      {
+        "name": "Swag Collector",
+        "description": "Get 3 Small items from the Bazaar.",
+        "icon": "Swag Collector"
+      },
+      {
+        "name": "Artist Alley",
+        "description": "Get a Diamond-tier item from the Bazaar.",
+        "icon": "Artist Alley"
+      },
+      {
+        "name": "Self Promotion",
+        "description": "(if you have a Business Card)\nGain 3 XP.",
+        "icon": "Self Promotion"
+      }
+    ]
+  },
+  {
+    "name": "Finn's Big Bite",
+    "description": "GoldEventEncounterPYGVANDOOJULSTEMAK",
+    "options": [
+      {
+        "name": "Guardian's Gravy Plate",
+        "description": "You gain 5% Max Health and your Shield items gain 10 Shield.",
+        "icon": "Guardian's Gravy Plate"
+      },
+      {
+        "name": "Restorative Risotto",
+        "description": "You gain 5% Max Health and your Heal items gain 20 Heal.",
+        "icon": "Restorative Risotto"
+      },
+      {
+        "name": "Vitality Stew",
+        "description": "You gain 5% Max Health and 5 Regeneration.",
+        "icon": "Vitality Stew"
+      }
+    ]
+  },
+  {
+    "name": "Shrouded Figure",
+    "description": "GoldEventEncounterCommon",
+    "options": [
+      {
+        "name": "Seek Wealth",
+        "description": "Gain 5 to 10 Gold",
+        "icon": "Seek Wealth"
+      },
+      {
+        "name": "Seek Knowledge",
+        "description": "Gain 2 to 4 XP",
+        "icon": "Seek Knowledge"
+      },
+      {
+        "name": "Seek Health",
+        "description": "Gain 200 to 600 Max Health.",
+        "icon": "Seek Health"
+      }
+    ]
+  },
+  {
+    "name": "A Strange Mushroom",
+    "description": "BronzeEventEncounterCommonDamage",
+    "options": [
+      {
+        "name": "Trade It for Something",
+        "description": "Gain a Neutral Item",
+        "icon": "Trade It for Something"
+      },
+      {
+        "name": "Sell It",
+        "description": "Gain 4 gold.",
+        "icon": "Sell It"
+      },
+      {
+        "name": "Add It to Your Bushel",
+        "description": "(if you have a Bushel) Your Bushel gains 20 Heal.",
+        "icon": "Add It to Your Bushel"
+      },
+      {
+        "name": "Brew a Potion",
+        "description": "(if you are Mak) Get a Small Silver-tier Potion.",
+        "icon": "Brew a Potion"
+      }
+    ]
+  },
+  {
+    "name": "Bounty Hunters",
+    "description": "DiamondEventEncounterVAN",
+    "options": [
+      {
+        "name": "Rise to the Challenge",
+        "description": "Stand your ground and fight for your freedom",
+        "icon": "Rise to the Challenge"
+      },
+      {
+        "name": "Escape to the Sea",
+        "description": "(if you have Flagship or Submarine) Gain 5 XP.",
+        "icon": "Escape to the Sea"
+      }
+    ]
+  },
+  {
+    "name": "Dooley's Workshop",
+    "description": "DiamondEventEncounterDOO",
+    "options": [
+      {
+        "name": "Find a Friend",
+        "description": "Choose a free Friend",
+        "icon": "Find a Friend"
+      },
+      {
+        "name": "Firmware Upgrade",
+        "description": "Upgrade the Core and gain +10% Max Health.",
+        "icon": "Firmware Upgrade"
+      },
+      {
+        "name": "Improve Friendship",
+        "description": "Upgrade your leftmost Friend.",
+        "icon": "Improve Friendship"
+      }
+    ]
+  },
+  {
+    "name": "Form",
+    "description": "DiamondEventEncounterCommon",
+    "options": [
+      {
+        "name": "Exploit",
+        "description": "Your leftmost Weapon gains +25% Crit Chance.",
+        "icon": "Exploit"
+      },
+      {
+        "name": "Sharpen Weapon",
+        "description": "Your Weapons gain 10 Damage.",
+        "icon": "Sharpen Weapon"
+      },
+      {
+        "name": "Upgrade an Item",
+        "description": "Upgrade your leftmost Weapon.",
+        "icon": "Upgrade an Item"
+      },
+      {
+        "name": "Engrave",
+        "description": "Enchant your leftmost Weapon.",
+        "icon": "Engrave"
+      }
+    ]
+  },
+  {
+    "name": "Haddy",
+    "description": "DiamondEventEncounterCommon",
+    "options": [
+      {
+        "name": "Bag of Gold",
+        "description": "Gain 20 Gold.",
+        "icon": "Bag of Gold"
+      },
+      {
+        "name": "Enchanted Item",
+        "description": "Gain a random enchanted item",
+        "icon": "Enchanted Item"
+      },
+      {
+        "name": "Gold Skill",
+        "description": "Gain a Gold-tier skill.",
+        "icon": "Gold Skill"
+      },
+      {
+        "name": "Diamond Skill",
+        "description": "Gain a Diamond-tier skill.",
+        "icon": "Diamond Skill"
+      },
+      {
+        "name": "Mystery Bundle",
+        "description": "Get 3 Diamond-tier Loot items",
+        "icon": "Mystery Bundle"
+      },
+      {
+        "name": "Magician's Top Hat",
+        "description": "When you sell this, upgrade your leftmost item.",
+        "icon": "Magician's Top Hat"
+      }
+    ]
+  },
+  {
+    "name": "Investment Pitch",
+    "description": "DiamondEventEncounterPYG",
+    "options": [
+      {
+        "name": "Mentor's Guidance",
+        "description": "Gain 4 XP.",
+        "icon": "Mentor's Guidance"
+      },
+      {
+        "name": "Hard Assets",
+        "description": "Upgrade your leftmost Property.",
+        "icon": "Hard Assets"
+      },
+      {
+        "name": "Appreciated Value",
+        "description": "Double the value of your leftmost item.",
+        "icon": "Appreciated Value"
+      },
+      {
+        "name": "Investment Package",
+        "description": "Double your Income",
+        "icon": "Investment Package"
+      }
+    ]
+  },
+  {
+    "name": "The Cult",
+    "description": "DiamondEventEncounterCommon",
+    "options": [
+      {
+        "name": "Steal Dagger",
+        "description": "Get a Ritual Dagger.",
+        "icon": "Steal Dagger"
+      },
+      {
+        "name": "Blood Price",
+        "description": "Lose 10% Max Health and gain +25 Regeneration.",
+        "icon": "Blood Price"
+      },
+      {
+        "name": "Deadly Covenant",
+        "description": "Lose 20% Max Health and enchant your leftmost Weapon with Deadly (Crit Chance).",
+        "icon": "Deadly Covenant"
+      },
+      {
+        "name": "Vital Sacrifice",
+        "description": "Lose 30% Max Health and get a Diamond-tier Runic Double Bow.",
+        "icon": "Vital Sacrifice"
+      }
+    ]
+  },
+  {
+    "name": "Thieves Guild",
+    "description": "DiamondEventEncounterCommon",
+    "options": [
+      {
+        "name": "Hostile Takeover",
+        "description": "Fight Mr. Moo",
+        "icon": "Hostile Takeover"
+      },
+      {
+        "name": "Dodge Taxes",
+        "description": "Double your Income.",
+        "icon": "Dodge Taxes"
+      },
+      {
+        "name": "Raid the Vault",
+        "description": "Grab everything from the vault",
+        "icon": "Raid the Vault"
+      }
+    ]
+  },
+  {
+    "name": "Eating Contest",
+    "description": "BronzeEventEncounterCommon",
+    "options": [
+      {
+        "name": "Basic Chocolate Bars",
+        "description": "Get 5 bronze Chocolate Bars.",
+        "icon": "Basic Chocolate Bars"
+      },
+      {
+        "name": "Deluxe Chocolate Bars",
+        "description": "Get 5 silver Chocolate Bars.",
+        "icon": "Deluxe Chocolate Bars"
+      },
+      {
+        "name": "Premium Chocolate Bars",
+        "description": "Get 5 Gold-tier Chocolate Bars.",
+        "icon": "Premium Chocolate Bars"
+      }
+    ]
+  },
+  {
+    "name": "Jungle Ruins",
+    "description": "BronzeEventEncounterCommonDamage",
+    "options": [
+      {
+        "name": "Grab the Loot",
+        "description": "Get 2 Bronze-tier Loot items",
+        "icon": "Grab the Loot"
+      },
+      {
+        "name": "Enjoy the Scenery",
+        "description": "Gain 3 Regeneration",
+        "icon": "Enjoy the Scenery"
+      },
+      {
+        "name": "Plunder for Treasure",
+        "description": "(if you are Vanessa) Gain a Small Silver-tier item.",
+        "icon": "Plunder for Treasure"
+      },
+      {
+        "name": "Setup Tourist Attraction",
+        "description": "(if you are Pygmalien) Gain 2 Income.",
+        "icon": "Setup Tourist Attraction"
+      },
+      {
+        "name": "Hunt for Reagents",
+        "description": "(if you are Mak) Get a Silver-tier Reagent.",
+        "icon": "Hunt for Reagents"
+      }
+    ]
+  },
+  {
+    "name": "Mandala",
+    "description": "BronzeEventEncounterCommon",
+    "options": [
+      {
+        "name": "Transform Small",
+        "description": "Transform your leftmost Small item into another item of the same size and tier.",
+        "icon": "Transform Small"
+      },
+      {
+        "name": "Transform Medium",
+        "description": "Transform your leftmost Medium item into another item of the same size and tier.",
+        "icon": "Transform Medium"
+      },
+      {
+        "name": "Transform Large",
+        "description": "Transform your leftmost Large item into another item of the same size and tier.",
+        "icon": "Transform Large"
+      }
+    ]
+  },
+  {
+    "name": "The Docks",
+    "description": "BronzeEventEncounterCommon",
+    "options": [
+      {
+        "name": "Work as Security",
+        "description": "Gain 2 Gold and a Weapon.",
+        "icon": "Work as Security"
+      },
+      {
+        "name": "Work as Dockhand",
+        "description": "Gain 2 Gold and a Tool.",
+        "icon": "Work as Dockhand"
+      },
+      {
+        "name": "Work as Maintenance",
+        "description": "Gain 2 Gold and a Shield item.",
+        "icon": "Work as Maintenance"
+      },
+      {
+        "name": "Work as Navigator",
+        "description": "(if you have an Astrolabe)\nGain 5 Gold and 1 XP.",
+        "icon": "Work as Navigator"
+      },
+      {
+        "name": "Work as Navigator",
+        "description": "(if you have Star Chart)\nGain 5 Gold and 1 XP.",
+        "icon": "Work as Navigator"
+      }
+    ]
+  },
+  {
+    "name": "Tiny Furry Monster",
+    "description": "BronzeEventEncounterCommon",
+    "options": [
+      {
+        "name": "Pet It",
+        "description": "Gain 25 Max Health.",
+        "icon": "Pet It"
+      },
+      {
+        "name": "Scare It",
+        "description": "Get a Silver-tier Loot item.",
+        "icon": "Scare It"
+      },
+      {
+        "name": "Feed It",
+        "description": "(if you have a Food) Gain 1 XP.",
+        "icon": "Feed It"
+      },
+      {
+        "name": "Play With It",
+        "description": "(if you have a Toy) Gain 1 XP.",
+        "icon": "Play With It"
+      },
+      {
+        "name": "Play Hide and Seek",
+        "description": "(if you have a Friend) Gain 1 XP.",
+        "icon": "Play Hide and Seek"
+      }
+    ]
+  },
+  {
+    "name": "Economic Seminar",
+    "description": "SilverEventEncounterPYG",
+    "options": [
+      {
+        "name": "Free Session",
+        "description": "Get an Economic item or skill.",
+        "icon": "Free Session"
+      },
+      {
+        "name": "Premium Pass",
+        "description": "Get 2 Economic items or skills",
+        "icon": "Premium Pass"
+      }
+    ]
+  },
+  {
+    "name": "Gumball Machine",
+    "description": "SilverEventEncounterCommon",
+    "options": [
+      {
+        "name": "Get a Gumball",
+        "description": "Get a Gumball.",
+        "icon": "Get a Gumball"
+      },
+      {
+        "name": "Get 5 Gumballs",
+        "description": "Get 5 Gumballs.",
+        "icon": "Get 5 Gumballs"
+      }
+    ]
+  }
+]
