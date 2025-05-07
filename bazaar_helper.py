@@ -102,9 +102,9 @@ class IconFrame(tk.Frame):
         self.configure(bg='#2C1810')
         
         # 创建左侧图标容器，固定宽度
-        self.icon_container = tk.Frame(self, bg='#2C1810', width=96, height=96)
+        self.icon_container = tk.Frame(self, bg='#2C1810', width=144, height=96)
         self.icon_container.pack_propagate(False)
-        self.icon_container.pack(side='left', padx=8, pady=8)
+        self.icon_container.pack(side='left', padx=0, pady=0)
         
         # 创建图标标签
         self.icon_label = tk.Label(self.icon_container, bg='#2C1810')
@@ -112,7 +112,7 @@ class IconFrame(tk.Frame):
         
         # 创建右侧文本容器
         self.text_frame = tk.Frame(self, bg='#2C1810')
-        self.text_frame.pack(side='left', fill='both', expand=True, padx=8, pady=8)
+        self.text_frame.pack(side='left', fill='both', expand=True, padx=0, pady=0)
         
         # 创建名称标签
         self.name_label = tk.Label(
@@ -123,7 +123,7 @@ class IconFrame(tk.Frame):
             anchor='w',
             justify='left'
         )
-        self.name_label.pack(fill='x', anchor='w', pady=(0, 4))
+        self.name_label.pack(fill='x', anchor='w', pady=0)
         
         # 创建描述标签
         self.desc_label = tk.Label(
@@ -146,7 +146,7 @@ class IconFrame(tk.Frame):
             # 名称左对齐
             if name:
                 self.name_label.config(text=name, anchor='w', justify='left')
-                self.name_label.pack(fill='x', anchor='w', pady=(0, 4))
+                self.name_label.pack(fill='x', anchor='w', pady=0)
             else:
                 self.name_label.pack_forget()
             # 描述左对齐
@@ -180,7 +180,7 @@ class IconFrame(tk.Frame):
                     self.clear_icon()
             else:
                 self.clear_icon()
-            self.icon_container.pack(side='left', padx=8, pady=8)
+            self.icon_container.pack(side='left', padx=0, pady=0)
             self.update()
         except Exception as e:
             logging.error(f"更新内容失败: {e}")
@@ -504,7 +504,7 @@ class BazaarHelper:
             highlightthickness=1,  # 添加边框
             highlightbackground='#3D2419'  # 边框颜色
         )
-        self.content_frame.pack(fill='both', expand=True, padx=2, pady=2)
+        self.content_frame.pack(fill='both', expand=True, padx=0, pady=0)
         
         # 创建子框架
         self.event_options_frame = tk.Frame(
@@ -521,10 +521,6 @@ class BazaarHelper:
             self.content_frame,
             bg='#2C1810'
         )
-        
-        # 在self.content_frame下加
-        # test_label = tk.Label(self.content_frame, text='TEST', fg='white', bg='#2C1810')
-        # test_label.pack()
         
         logging.info("信息窗口创建完成")
 
@@ -649,7 +645,7 @@ class BazaarHelper:
                 self.skills_frame.pack(fill='x', pady=0, padx=0)
                 for skill in monster['skills']:
                     skill_frame = IconFrame(self.skills_frame)
-                    skill_frame.pack(fill='x', pady=1)
+                    skill_frame.pack(fill='x', pady=0)
                     # 获取技能图标
                     icon_path = None
                     if skill.get('icon'):
@@ -682,14 +678,7 @@ class BazaarHelper:
                     item_frame = IconFrame(self.items_frame)
                     
                     # 设置物品框架的边距
-                    if len(item_keys) == 1:
-                        item_frame.pack(fill='x', pady=0)
-                    elif idx == 0:
-                        item_frame.pack(fill='x', pady=(0, 4))
-                    elif idx == len(item_keys) - 1:
-                        item_frame.pack(fill='x', pady=(4, 0))
-                    else:
-                        item_frame.pack(fill='x', pady=(4, 4))
+                    item_frame.pack(fill='x', pady=0)
                         
                     # 处理物品名称（如果有多个相同物品，显示数量）
                     display_name = item_name
@@ -798,14 +787,14 @@ class BazaarHelper:
             self.clear_frames()
 
             # 显示事件选项框架
-            self.event_options_frame.pack(fill='x', pady=1)
+            self.event_options_frame.pack(fill='x', pady=0)
 
             for option in options:
                 icon_path = None
                 if option.get('icon'):
                     icon_path = self.get_local_icon_path(option['icon'])
                 option_frame = IconFrame(self.event_options_frame)
-                option_frame.pack(fill='x', pady=1)
+                option_frame.pack(fill='x', pady=0)
                 option_frame.update_content(
                     option.get('name', ''),
                     option.get('description', ''),
@@ -813,7 +802,7 @@ class BazaarHelper:
                 )
 
             if not options:
-                self.event_options_frame.pack(fill='x', pady=1)
+                self.event_options_frame.pack(fill='x', pady=0)
                 not_found_frame = IconFrame(self.event_options_frame)
                 not_found_frame.pack(fill='x', pady=0)
                 not_found_frame.update_content(
@@ -1009,13 +998,13 @@ class BazaarHelper:
         print(f"本地图标路径: {icon_path}")
         
         frame = IconFrame(self.content_frame)
-        frame.pack(fill='both', expand=True, padx=4, pady=4)  # 修改为fill='both'和expand=True
+        frame.pack(fill='both', expand=True, padx=0, pady=0)  # 修改为fill='both'和expand=True
         frame.update_content(name, description, icon_path)
         
         # 更新窗口大小和位置
         self.info_window.update_idletasks()
         window_width = 600
-        window_height = max(self.content_frame.winfo_reqheight() + 4, 100)  # 设置最小高度
+        window_height = max(self.content_frame.winfo_reqheight(), 100)  # 设置最小高度
         print(f"窗口大小: {window_width}x{window_height}")
         
         # 如果提供了位置，就移动窗口
