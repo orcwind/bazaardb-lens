@@ -99,27 +99,29 @@ class IconFrame(tk.Frame):
     """用于显示图标和文本的框架"""
     def __init__(self, parent, **kwargs):
         super().__init__(parent, **kwargs)
-        self.configure(bg='#2C1810')
+        # 获取父容器的背景色，如果没有指定则使用默认的浅蓝色
+        parent_bg = parent.cget('bg') if parent else '#E6F0FF'
+        self.configure(bg=parent_bg)
         
         # 创建左侧图标容器，固定宽度
-        self.icon_container = tk.Frame(self, bg='#2C1810', width=144, height=96)
+        self.icon_container = tk.Frame(self, bg=parent_bg, width=144, height=96)
         self.icon_container.pack_propagate(False)
         self.icon_container.pack(side='left', padx=0, pady=0)
         
         # 创建图标标签
-        self.icon_label = tk.Label(self.icon_container, bg='#2C1810')
+        self.icon_label = tk.Label(self.icon_container, bg=parent_bg)
         self.icon_label.pack(expand=True)
         
         # 创建右侧文本容器
-        self.text_frame = tk.Frame(self, bg='#2C1810')
+        self.text_frame = tk.Frame(self, bg=parent_bg)
         self.text_frame.pack(side='left', fill='both', expand=True, padx=0, pady=0)
         
         # 创建名称标签
         self.name_label = tk.Label(
             self.text_frame,
             font=('Segoe UI', 14, 'bold'),
-            fg='#FFFFFF',
-            bg='#2C1810',
+            fg='#000000',  # 深色背景使用白色文字
+            bg=parent_bg,
             anchor='w',
             justify='left'
         )
@@ -129,8 +131,8 @@ class IconFrame(tk.Frame):
         self.desc_label = tk.Label(
             self.text_frame,
             font=('Segoe UI', 13),
-            fg='#E8C088',
-            bg='#2C1810',
+            fg='#333333',  # 浅色背景使用深灰色文字
+            bg=parent_bg,
             anchor='w',
             wraplength=400,
             justify='left'
@@ -143,45 +145,64 @@ class IconFrame(tk.Frame):
 
     def update_content(self, name, description, icon_path=None, aspect_ratio=1.0):
         try:
+            # 获取当前背景色
+            bg_color = self.cget('bg')
+            
             # 名称左对齐
             if name:
-                self.name_label.config(text=name, anchor='w', justify='left')
+                self.name_label.config(text=name, anchor='w', justify='left', bg=bg_color)
                 self.name_label.pack(fill='x', anchor='w', pady=0)
             else:
                 self.name_label.pack_forget()
+            
             # 描述左对齐
             if description:
-                self.desc_label.config(text=description, anchor='w', justify='left')
+                self.desc_label.config(text=description, anchor='w', justify='left', bg=bg_color)
                 self.desc_label.pack(fill='both', expand=True)
             else:
                 self.desc_label.pack_forget()
+            
             # 图标处理
             icon_container_width = 144
             icon_container_height = 96
-            self.icon_container.config(width=icon_container_width, height=icon_container_height)
+            self.icon_container.config(width=icon_container_width, height=icon_container_height, bg=bg_color)
+            
             if icon_path and os.path.exists(icon_path):
                 try:
-                    img = Image.open(icon_path).convert('RGBA')
+                    # 处理图标路径中的@符号
+                    real_icon_path = icon_path
+                    if '@' in icon_path:
+                        # 保持@符号，不进行替换
+                        real_icon_path = icon_path
+                    
+                    img = Image.open(real_icon_path).convert('RGBA')
                     icon_height = icon_container_height
                     icon_width = int(icon_height * aspect_ratio)
                     icon_width = min(icon_width, icon_container_width)
                     img = img.resize((icon_width, icon_height), Image.Resampling.LANCZOS)
+                    
                     # 创建透明底图，保证居中
                     bg = Image.new('RGBA', (icon_container_width, icon_container_height), (0, 0, 0, 0))
                     offset_x = (icon_container_width - icon_width) // 2
                     bg.paste(img, (offset_x, 0), img)
+                    
                     # 关键：转为PNG内存流再交给PhotoImage
                     with io.BytesIO() as output:
                         bg.save(output, format='PNG')
                         photo = ImageTk.PhotoImage(data=output.getvalue())
-                    self.icon_label.configure(image=photo)
+                    
+                    self.icon_label.configure(image=photo, bg=bg_color)
                     self._photo_refs.append(photo)
+                    
                 except Exception as e:
+                    logging.error(f"加载图标失败: {e}")
                     self.clear_icon()
             else:
                 self.clear_icon()
+            
             self.icon_container.pack(side='left', padx=0, pady=0)
             self.update()
+            
         except Exception as e:
             logging.error(f"更新内容失败: {e}")
             self.clear_icon()
@@ -189,49 +210,94 @@ class IconFrame(tk.Frame):
     def clear_icon(self):
         """清理图标"""
         try:
-            self.icon_label.configure(image='')
+            bg_color = self.cget('bg')
+            self.icon_label.configure(image='', bg=bg_color)
             self._photo_refs.clear()
         except Exception as e:
             logging.error(f"清理图标失败: {e}")
 
     def destroy(self):
-        """销毁时清理资源"""
-        self.clear_icon()
-        super().destroy()
+        """重写destroy方法，确保清理所有资源"""
+        try:
+            self.clear_icon()
+            super().destroy()
+        except Exception as e:
+            logging.error(f"销毁IconFrame失败: {e}")
 
 class BazaarHelper:
     def __init__(self):
-        self.keyboard_listener = None  # 新增键盘监听器引用
-        self.force_quit = False       # 新增强制退出标志
+        """初始化BazaarHelper"""
+        self.alt_pressed = False
+        self.last_check_time = time.time()
+        self.check_interval = 0.1  # 缩短检查间隔到0.1秒
+        self.is_running = True
+        self.info_window = None
+        self.current_text = None
+        self.monster_data = {}
+        self.event_data = {}
+        
+        # 加载数据
+        self.load_monster_data()
+        self.load_event_data()
+        
+        # 创建信息窗口
+        self.create_info_window()
+        
+        # 启动保活线程
+        self.keep_alive_thread = threading.Thread(target=self.keep_alive, daemon=True)
+        self.keep_alive_thread.start()
+    
+    def keep_alive(self):
+        """保活机制，检查Alt键状态和程序响应"""
+        VK_MENU = 0x12  # Alt键的虚拟键码
+        
+        while self.is_running:
+            try:
+                # 使用win32api检查Alt键状态
+                alt_state = win32api.GetAsyncKeyState(VK_MENU)
+                is_alt_pressed = (alt_state & 0x8000) != 0
+                
+                # Alt键状态发生变化
+                if is_alt_pressed != self.alt_pressed:
+                    self.alt_pressed = is_alt_pressed
+                    if is_alt_pressed:
+                        # Alt键被按下，获取并显示信息
+                        text = self.get_text_at_cursor()
+                        if text:
+                            x, y = pyautogui.position()
+                            self.update_info_display(text, x, y)
+                    else:
+                        # Alt键释放，隐藏信息
+                        self.hide_info()
+                
+                # 更新窗口位置（如果窗口显示中）
+                if self.alt_pressed and self.info_window and self.info_window.winfo_exists():
+                    x, y = pyautogui.position()
+                    self.adjust_window_size(x, y)
+                
+                # 短暂休眠以减少CPU使用
+                time.sleep(0.01)
+                
+            except Exception as e:
+                logging.error(f"保活线程异常: {e}")
+                time.sleep(1)  # 发生异常时稍长的休眠
+                continue
+    
+    def run(self):
+        """运行主程序"""
         try:
-            logging.info("初始化OCR助手...")
-            
-            self.running = True
-            self.showing_info = False
-            self.ocr_executor = concurrent.futures.ThreadPoolExecutor(max_workers=1)  # 全局单例线程池
-            
-            # 加载怪物数据
-            self.load_monster_data()
-            
-            # 加载事件数据
-            self.load_event_data()
-            
-            # 配置OCR
-            pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-            
-            # 创建主窗口
-            self.root = tk.Tk()
-            self.root.withdraw()
-            self.info_window = None
-            
-            # 创建图标缓存
-            self.icon_cache = {}
-            
-            logging.info("初始化完成")
-            
+            if self.info_window:
+                self.info_window.mainloop()
         except Exception as e:
-            logging.error(f"初始化出错: {e}")
-            raise
+            logging.error(f"主程序运行异常: {e}")
+            self.stop()
+    
+    def stop(self):
+        """停止程序"""
+        self.is_running = False
+        if self.keep_alive_thread and self.keep_alive_thread.is_alive():
+            self.keep_alive_thread.join(timeout=1)
+        self.destroy_info_window()
 
     def load_monster_data(self):
         """加载怪物数据"""
@@ -251,16 +317,16 @@ class BazaarHelper:
                 self.events = json.load(f)
                 logging.info(f"已加载 {len(self.events)} 个事件")
             # 直接从 events.json 提取所有事件选项
-            self.event_options = {}
+            self.event_data = {}
             for event in self.events:
                 if 'name' in event and 'options' in event:
-                    self.event_options[event['name']] = event['options']
+                    self.event_data[event['name']] = event['options']
                 else:
                     logging.warning(f"事件 {event.get('name', '')} 缺少 options 字段")
         except Exception as e:
             logging.error(f"加载事件数据时出错: {e}")
             self.events = []
-            self.event_options = {}
+            self.event_data = {}
 
     def get_game_window(self):
         """获取游戏窗口句柄和位置"""
@@ -487,42 +553,44 @@ class BazaarHelper:
             return None
 
     def create_info_window(self):
-        """创建信息窗口"""
-        if self.info_window is not None:
-            self.info_window.destroy()
-        self.info_window = tk.Toplevel(self.root)
-        self.info_window.withdraw()
-        self.info_window.overrideredirect(True)
-        self.info_window.attributes('-topmost', True)
-        self.info_window.attributes('-alpha', 0.95)
-        self.info_window.configure(bg='#2C1810')
-        
-        # 创建内容框架
-        self.content_frame = tk.Frame(
-            self.info_window,
-            bg='#2C1810',  # 深棕色背景
-            highlightthickness=1,  # 添加边框
-            highlightbackground='#3D2419'  # 边框颜色
-        )
-        self.content_frame.pack(fill='both', expand=True, padx=0, pady=0)
-        
-        # 创建子框架
-        self.event_options_frame = tk.Frame(
-            self.content_frame,
-            bg='#2C1810'
-        )
-        
-        self.skills_frame = tk.Frame(
-            self.content_frame,
-            bg='#2C1810'
-        )
-        
-        self.items_frame = tk.Frame(
-            self.content_frame,
-            bg='#2C1810'
-        )
-        
-        logging.info("信息窗口创建完成")
+        """创建信息显示窗口"""
+        try:
+            # 创建主窗口
+            self.info_window = tk.Toplevel()
+            self.info_window.title("The Bazaar Helper")
+            self.info_window.attributes('-alpha', 0.95)  # 设置透明度
+            self.info_window.overrideredirect(True)  # 无边框窗口
+            self.info_window.attributes('-topmost', True)  # 保持在顶层
+            
+            # 设置窗口背景色
+            self.info_window.configure(bg='#E6F0FF')
+            
+            # 创建主容器
+            self.content_frame = tk.Frame(self.info_window, bg='#E6F0FF')
+            self.content_frame.pack(fill='both', expand=True, padx=10, pady=10)
+            
+            # 创建事件选项容器
+            self.event_options_frame = tk.Frame(self.content_frame, bg='#E6F0FF')
+            self.event_options_frame.pack(fill='x', expand=True)
+            
+            # 创建技能容器
+            self.skills_frame = tk.Frame(self.content_frame, bg='#E6F0FF')
+            self.skills_frame.pack(fill='x', expand=True)
+            
+            # 创建物品容器
+            self.items_frame = tk.Frame(self.content_frame, bg='#E6F0FF')
+            self.items_frame.pack(fill='x', expand=True)
+            
+            # 初始隐藏窗口
+            self.info_window.withdraw()
+            
+            logging.info("信息窗口创建成功")
+            
+        except Exception as e:
+            logging.error(f"创建信息窗口失败: {e}")
+            if self.info_window:
+                self.info_window.destroy()
+                self.info_window = None
 
     def adjust_window_size(self, pos_x, pos_y):
         """调整窗口大小"""
@@ -774,11 +842,11 @@ class BazaarHelper:
     def format_event_info(self, event_name):
         """格式化事件信息显示"""
         try:
-            if event_name not in self.event_options:
+            if event_name not in self.event_data:
                 logging.error(f"找不到事件选项数据: {event_name}")
                 return False
 
-            options = self.event_options[event_name]
+            options = self.event_data[event_name]
             if not options:
                 logging.error(f"事件选项数据为空: {event_name}")
                 return False
@@ -876,110 +944,6 @@ class BazaarHelper:
         except Exception as e:
             logging.error(f"隐藏信息窗口失败: {e}")
 
-    def run(self):
-        print("开始运行程序")
-        print(f"已加载 {len(self.monster_data)} 个怪物数据")
-        print(f"已加载 {len(self.event_options)} 个事件数据")
-        
-        alt_was_pressed = False
-        while True:
-            try:
-                alt_is_pressed = keyboard.is_pressed('alt')
-                if alt_is_pressed and not alt_was_pressed:
-                    # 获取鼠标位置
-                    pos_x, pos_y = win32gui.GetCursorPos()
-                    print(f"鼠标位置: ({pos_x}, {pos_y})")
-                    
-                    # 获取游戏窗口
-                    hwnd, game_rect = self.get_game_window()
-                    if hwnd and game_rect:
-                        print(f"游戏窗口: {game_rect}")
-                        # 检查鼠标是否在游戏窗口内
-                        if (game_rect[0] <= pos_x <= game_rect[2] and 
-                            game_rect[1] <= pos_y <= game_rect[3]):
-                            print("鼠标在游戏窗口内")
-                            
-                            # 获取鼠标位置的文本
-                            text = self.get_text_at_cursor()
-                            if text:
-                                print(f"识别到文本: {text}")
-                                # 查找最佳匹配
-                                match_type, match_name = self.find_best_match(text)
-                                if match_type == 'monster':
-                                    monster = self.monster_data.get(match_name)
-                                    if monster:
-                                        print(f"显示怪物: {monster['name']}")
-                                        self.update_info_display(text, pos_x, pos_y)
-                                    else:
-                                        print(f"未找到怪物数据: {match_name}")
-                                elif match_type == 'event':
-                                    print(f"显示事件: {match_name}")
-                                    self.update_info_display(text, pos_x, pos_y)
-                                else:
-                                    print("未识别到怪物或事件")
-                            else:
-                                print("未识别到文本")
-                        else:
-                            print("鼠标不在游戏窗口内")
-                    else:
-                        print("未找到游戏窗口")
-                elif not alt_is_pressed and alt_was_pressed:
-                    print("Alt键松开，隐藏窗口")
-                    self.hide_info()
-                alt_was_pressed = alt_is_pressed
-                self.root.update()
-            except Exception as e:
-                print(f"运行时错误: {e}")
-                import traceback
-                print(traceback.format_exc())
-
-    def stop(self):
-        """增强的停止方法"""
-        self.force_quit = True
-        if self.keyboard_listener:
-            self.keyboard_listener.stop()
-        if self.root:
-            self.root.quit()
-        os._exit(0)  # 强制退出
-
-    def destroy_info_window(self):
-        """销毁信息窗口及相关Frame"""
-        try:
-            # 先隐藏窗口
-            if hasattr(self, 'info_window') and self.info_window:
-                self.info_window.withdraw()
-                
-            # 清理所有子Frame
-            if hasattr(self, 'content_frame') and self.content_frame:
-                for widget in self.content_frame.winfo_children():
-                    if isinstance(widget, IconFrame):
-                        widget.destroy()  # 这会触发 IconFrame 的 destroy 方法
-                    else:
-                        widget.destroy()
-                self.content_frame.destroy()
-                self.content_frame = None
-                
-            if hasattr(self, 'event_options_frame') and self.event_options_frame:
-                self.event_options_frame.destroy()
-                self.event_options_frame = None
-                
-            if hasattr(self, 'skills_frame') and self.skills_frame:
-                self.skills_frame.destroy()
-                self.skills_frame = None
-                
-            if hasattr(self, 'items_frame') and self.items_frame:
-                self.items_frame.destroy()
-                self.items_frame = None
-                
-            # 最后销毁主窗口
-            if hasattr(self, 'info_window') and self.info_window:
-                self.info_window.destroy()
-                self.info_window = None
-                
-        except Exception as e:
-            logging.error(f"销毁信息窗口失败: {e}")
-            logging.error(traceback.format_exc())
-
     def show_info_message(self, message, icon_url):
         # 实现显示信息消息的逻辑
         print(f"显示信息消息: {message}")
@@ -1028,6 +992,44 @@ class BazaarHelper:
         self.info_window.lift()
         self.info_window.attributes('-topmost', True)
         print("窗口已显示")
+
+    def destroy_info_window(self):
+        """销毁信息窗口及相关Frame"""
+        try:
+            # 先隐藏窗口
+            if hasattr(self, 'info_window') and self.info_window:
+                self.info_window.withdraw()
+                
+            # 清理所有子Frame
+            if hasattr(self, 'content_frame') and self.content_frame:
+                for widget in self.content_frame.winfo_children():
+                    if isinstance(widget, IconFrame):
+                        widget.destroy()  # 这会触发 IconFrame 的 destroy 方法
+                    else:
+                        widget.destroy()
+                self.content_frame.destroy()
+                self.content_frame = None
+                
+            if hasattr(self, 'event_options_frame') and self.event_options_frame:
+                self.event_options_frame.destroy()
+                self.event_options_frame = None
+                
+            if hasattr(self, 'skills_frame') and self.skills_frame:
+                self.skills_frame.destroy()
+                self.skills_frame = None
+                
+            if hasattr(self, 'items_frame') and self.items_frame:
+                self.items_frame.destroy()
+                self.items_frame = None
+                
+            # 最后销毁主窗口
+            if hasattr(self, 'info_window') and self.info_window:
+                self.info_window.destroy()
+                self.info_window = None
+                
+        except Exception as e:
+            logging.error(f"销毁信息窗口失败: {e}")
+            logging.error(traceback.format_exc())
 
 if __name__ == "__main__":
     helper = None

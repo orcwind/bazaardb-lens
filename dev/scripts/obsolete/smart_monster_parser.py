@@ -78,7 +78,22 @@ def parse_monster_html(file_path):
                 # 描述
                 desc_div = skill_div.find('div', class_='_bi')
                 if desc_div:
-                    description = desc_div.get_text(strip=True)
+                    # 修复描述中单词间空格丢失的问题
+                    description = ""
+                    for element in desc_div.contents:
+                        if element.name == 'span' and 'class' in element.attrs and '_by' in element.attrs['class']:
+                            # 保留关键词标签
+                            description += element.text.strip()
+                        else:
+                            # 普通文本
+                            text = element.text if hasattr(element, 'text') else str(element)
+                            # 确保关键词和数字之间有空格
+                            text = re.sub(r'([a-zA-Z])(\d)', r'\1 \2', text)
+                            # 确保数字和单词之间有空格
+                            text = re.sub(r'(\d)([a-zA-Z])', r'\1 \2', text)
+                            # 确保单词之间有空格
+                            text = re.sub(r'([a-z])([A-Z])', r'\1 \2', text)
+                            description += text
                 # aspect-ratio
                 ap_div = skill_div.find('div', class_='_ap')
                 if ap_div and 'aspect-ratio' in ap_div.get('style', ''):
@@ -117,7 +132,22 @@ def parse_monster_html(file_path):
                 # 描述
                 desc_div = item_div.find('div', class_='_bi')
                 if desc_div:
-                    description = desc_div.get_text(strip=True)
+                    # 修复描述中单词间空格丢失的问题
+                    description = ""
+                    for element in desc_div.contents:
+                        if element.name == 'span' and 'class' in element.attrs and '_by' in element.attrs['class']:
+                            # 保留关键词标签
+                            description += element.text.strip()
+                        else:
+                            # 普通文本
+                            text = element.text if hasattr(element, 'text') else str(element)
+                            # 确保关键词和数字之间有空格
+                            text = re.sub(r'([a-zA-Z])(\d)', r'\1 \2', text)
+                            # 确保数字和单词之间有空格
+                            text = re.sub(r'(\d)([a-zA-Z])', r'\1 \2', text)
+                            # 确保单词之间有空格
+                            text = re.sub(r'([a-z])([A-Z])', r'\1 \2', text)
+                            description += text
                 # aspect-ratio
                 ap_div = item_div.find('div', class_='_ap')
                 if ap_div and 'aspect-ratio' in ap_div.get('style', ''):
