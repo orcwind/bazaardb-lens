@@ -1,13 +1,11 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 const path = require('path');
-const https = require('https');
 
 class EventCrawler {
     constructor(options = {}) {
         this.baseUrl = 'https://bazaardb.gg';
         this.outputDir = options.outputDir || 'dev/html/events';
-        this.iconsDir = path.join(process.cwd(), 'icons');
         this.browser = null;
         this.page = null;
         this.events = [];
@@ -23,70 +21,12 @@ class EventCrawler {
     }
 
     ensureDirectories() {
-        const dirs = [this.outputDir, this.iconsDir];
+        const dirs = [this.outputDir];
         for (const dir of dirs) {
             if (!fs.existsSync(dir)) {
                 fs.mkdirSync(dir, { recursive: true });
                 console.log(`创建目录: ${dir}`);
             }
-        }
-    }
-
-    async downloadImage(url, filename) {
-        if (!url) return null;
-        
-        try {
-            // 处理SVG格式的图片
-            if (url.startsWith('data:image/svg+xml')) {
-                const svgContent = decodeURIComponent(url.split(',')[1]);
-                const safeFilename = filename.replace(/[^a-zA-Z0-9]/g, '_') + '.svg';
-                const filePath = path.join(this.iconsDir, safeFilename);
-                
-                if (fs.existsSync(filePath)) {
-                    console.log(`SVG图标已存在: ${safeFilename}`);
-                    return filePath;
-                }
-                
-                fs.writeFileSync(filePath, svgContent);
-                console.log(`已保存SVG图标: ${safeFilename}`);
-                return filePath;
-            }
-            
-            // 处理普通图片URL
-            const cleanUrl = decodeURIComponent(url.split('?')[0]);
-            const ext = path.extname(cleanUrl) || '.png';
-            const safeFilename = filename.replace(/[^a-zA-Z0-9]/g, '_') + ext;
-            const filePath = path.join(this.iconsDir, safeFilename);
-            
-            if (fs.existsSync(filePath)) {
-                console.log(`图标已存在: ${safeFilename}`);
-                return filePath;
-            }
-
-            console.log(`下载图标: ${cleanUrl}`);
-            return new Promise((resolve, reject) => {
-                https.get(cleanUrl, (response) => {
-                    if (response.statusCode !== 200) {
-                        console.log(`下载图标失败: ${response.statusCode}`);
-                        resolve(null);
-                        return;
-                    }
-
-                    const fileStream = fs.createWriteStream(filePath);
-                    response.pipe(fileStream);
-                    fileStream.on('finish', () => {
-                        fileStream.close();
-                        console.log(`图标已保存: ${safeFilename}`);
-                        resolve(filePath);
-                    });
-                }).on('error', (err) => {
-                    console.log(`下载图标失败: ${err.message}`);
-                    resolve(null);
-                });
-            });
-        } catch (error) {
-            console.log(`处理图标URL时出错: ${error.message}`);
-            return null;
         }
     }
 
@@ -249,17 +189,6 @@ class EventCrawler {
                 };
             });
             
-            // 保存选项图片
-            if (eventData.options && eventData.options.length > 0) {
-                console.log(`找到 ${eventData.options.length} 个选项`);
-                for (const option of eventData.options) {
-                    // 用 text + imageUrl 的主要部分做唯一文件名
-                    const urlPart = option.imageUrl.split('/').pop().split('@')[0].replace(/[^a-zA-Z0-9]/g, '_');
-                    const optionFileName = `${event.name}_option_${option.text.replace(/[^a-zA-Z0-9]/g, '_')}_${urlPart}`;
-                    option.imagePath = await this.downloadImage(option.imageUrl, optionFileName);
-                }
-            }
-            
             // 保存页面HTML
             fs.writeFileSync(filePath, eventData.html);
             console.log(`已保存到文件: ${fileName}`);
@@ -303,7 +232,7 @@ class EventCrawler {
             }
 
             // 检查图标文件
-            const iconPath = path.join(this.iconsDir, `${event.name.replace(/[^a-zA-Z0-9]/g, '_')}.png`);
+            const iconPath = path.join(this.outputDir, `${event.name.replace(/[^a-zA-Z0-9]/g, '_')}.png`);
             if (!fs.existsSync(iconPath)) {
                 missingIcons++;
             }

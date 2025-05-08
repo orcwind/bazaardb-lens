@@ -1,13 +1,11 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 const path = require('path');
-const https = require('https');
 
 class MonsterCrawler {
     constructor(options = {}) {
         this.baseUrl = 'https://bazaardb.gg';
         this.outputDir = options.outputDir || 'dev/html/monsters';
-        this.iconsDir = path.join(process.cwd(), 'icons');
         this.browser = null;
         this.page = null;
         this.monsters = [];
@@ -22,7 +20,7 @@ class MonsterCrawler {
     }
 
     ensureDirectories() {
-        const dirs = [this.outputDir, this.iconsDir];
+        const dirs = [this.outputDir];
         for (const dir of dirs) {
             if (!fs.existsSync(dir)) {
                 fs.mkdirSync(dir, { recursive: true });
@@ -150,46 +148,6 @@ class MonsterCrawler {
         }
     }
 
-    async downloadImage(url, filename) {
-        if (!url) return null;
-        
-        // 移除URL中的查询参数
-        const cleanUrl = url.split('?')[0];
-        const ext = path.extname(cleanUrl) || '.png';
-        const safeFilename = filename.replace(/[^a-zA-Z0-9]/g, '_') + ext;
-        const filePath = path.join(this.iconsDir, safeFilename);
-        
-        if (fs.existsSync(filePath)) {
-            return filePath;
-        }
-
-        return new Promise((resolve, reject) => {
-            const req = https.get(cleanUrl, (response) => {
-                if (response.statusCode !== 200) {
-                    reject(new Error(`下载图片失败: ${response.statusCode}`));
-                    return;
-                }
-
-                const fileStream = fs.createWriteStream(filePath);
-                response.pipe(fileStream);
-                fileStream.on('finish', () => {
-                    fileStream.close();
-                    resolve(filePath);
-                });
-            });
-
-            req.setTimeout(15000, () => { // 15秒超时
-                req.abort();
-                console.log(`下载图标超时: ${cleanUrl}`);
-                resolve(null);
-            });
-            req.on('error', (err) => {
-                this.log(`下载图片失败: ${err.message}`);
-                resolve(null); // 返回null而不是reject，让程序继续执行
-            });
-        });
-    }
-
     async fetchCardDescription(cardUrl) {
         try {
             await this.retry(async () => {
@@ -214,17 +172,11 @@ class MonsterCrawler {
         if (!card.name || !card.icon) return card;
 
         try {
-            // 下载图标
-            const iconExt = path.extname(card.icon) || '.png';
-            const iconFilename = `${card.name.replace(/[^a-zA-Z0-9]/g, '_')}${iconExt}`;
-            const iconPath = await this.downloadImage(card.icon, iconFilename);
-            
             // 获取描述
             const description = await this.fetchCardDescription(card.url);
             
             return {
                 ...card,
-                iconPath,
                 description
             };
         } catch (error) {
@@ -283,25 +235,6 @@ class MonsterCrawler {
                     html: document.documentElement.outerHTML
                 };
             });
-            
-            // 下载主背景图
-            if (monsterData.bgUrl) {
-                this.log(`找到怪物主背景图URL: ${monsterData.bgUrl}`);
-                const safeName = monster.name.replace(/[^a-zA-Z0-9]/g, '_');
-                const imagePath = await this.downloadImage(monsterData.bgUrl, `monster_bg_${safeName}`);
-                this.log(`已下载怪物主背景图: ${imagePath}`);
-            } else {
-                this.log(`警告: 未找到怪物 ${monster.name} 的主背景图`);
-            }
-            // 下载角色形象图
-            if (monsterData.charUrl) {
-                this.log(`找到怪物角色图URL: ${monsterData.charUrl}`);
-                const safeName = monster.name.replace(/[^a-zA-Z0-9]/g, '_');
-                const imagePath = await this.downloadImage(monsterData.charUrl, `monster_char_${safeName}`);
-                this.log(`已下载怪物角色图: ${imagePath}`);
-            } else {
-                this.log(`警告: 未找到怪物 ${monster.name} 的角色图`);
-            }
             
             // 保存页面HTML
             fs.writeFileSync(filePath, monsterData.html);

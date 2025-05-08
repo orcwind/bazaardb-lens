@@ -1,0 +1,1047 @@
+# 标准库导入
+import os
+import sys
+import json
+import logging
+import traceback
+import re
+import difflib
+from urllib.parse import urlparse
+
+# 第三方库导入
+import keyboard
+import win32gui
+import requests
+import tkinter as tk
+from PIL import Image, ImageTk
+import pyautogui
+import win32con
+import win32api
+import cv2
+import numpy as np
+from PIL import ImageGrab, Image, ImageDraw, ImageFont
+import pytesseract
+import time
+from tkinter import ttk
+import ctypes
+from ctypes import wintypes
+import win32com.client
+import threading
+import concurrent.futures
+import io
+import tempfile
+import subprocess
+
+# 设置日志
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('bazaar_helper.log', encoding='utf-8'),
+        logging.StreamHandler()
+    ]
+)
+
+# 顶层定义ocr_task，确保无缩进
+def ocr_task(img_bytes):
+    from PIL import Image
+    import pytesseract
+    import io
+    try:
+        pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+        img = Image.open(io.BytesIO(img_bytes))
+        return pytesseract.image_to_string(
+            img,
+            config='--psm 6 --oem 3 -l eng'
+        ).strip()
+    except Exception as e:
+        return f"OCR_ERROR: {e}"
+
+def check_dependencies():
+    """检查必要的依赖和文件"""
+    try:
+        # 检查 Tesseract
+        if not os.path.exists(r'C:\Program Files\Tesseract-OCR\tesseract.exe'):
+            logging.error("错误：未安装 Tesseract-OCR")
+            return False
+            
+        # 检查字体文件
+        if not os.path.exists(os.path.join(os.environ['WINDIR'], 'Fonts', 'msyh.ttc')):
+            logging.warning("警告：找不到微软雅黑字体，将使用默认字体")
+            
+        return True
+    except Exception as e:
+        logging.error(f"检查依赖时出错: {e}")
+        return False
+
+def is_admin():
+    """检查是否具有管理员权限"""
+    try:
+        return ctypes.windll.shell32.IsUserAnAdmin()
+    except Exception as e:
+        logging.error(f"检查管理员权限时出错: {e}")
+        return False
+
+def run_as_admin():
+    """以管理员权限重新运行程序"""
+    if not is_admin():
+        try:
+            logging.info("尝试以管理员权限重新运行程序...")
+            ctypes.windll.shell32.ShellExecuteW(
+                None, "runas", sys.executable, f'"{__file__}"', None, 1
+            )
+        except Exception as e:
+            logging.error(f"获取管理员权限失败: {e}")
+            input("按Enter键退出...")
+        sys.exit()
+
+class IconFrame(tk.Frame):
+    """用于显示图标和文本的框架"""
+    def __init__(self, parent, **kwargs):
+        super().__init__(parent, **kwargs)
+        # 获取父容器的背景色，如果没有指定则使用默认的浅蓝色
+        parent_bg = parent.cget('bg') if parent else '#E6F0FF'
+        self.configure(bg=parent_bg)
+        
+        # 创建左侧图标容器，固定宽度
+        self.icon_container = tk.Frame(self, bg=parent_bg, width=144, height=96)
+        self.icon_container.pack_propagate(False)
+        self.icon_container.pack(side='left', padx=0, pady=0)
+        
+        # 创建图标标签
+        self.icon_label = tk.Label(self.icon_container, bg=parent_bg)
+        self.icon_label.pack(expand=True)
+        
+        # 创建右侧文本容器
+        self.text_frame = tk.Frame(self, bg=parent_bg)
+        self.text_frame.pack(side='left', fill='both', expand=True, padx=0, pady=0)
+        
+        # 创建名称标签
+        self.name_label = tk.Label(
+            self.text_frame,
+            font=('Segoe UI', 14, 'bold'),
+            fg='#000000',  # 深色背景使用白色文字
+            bg=parent_bg,
+            anchor='w',
+            justify='left'
+        )
+        self.name_label.pack(fill='x', anchor='w', pady=0)
+        
+        # 创建描述标签
+        self.desc_label = tk.Label(
+            self.text_frame,
+            font=('Segoe UI', 13),
+            fg='#333333',  # 浅色背景使用深灰色文字
+            bg=parent_bg,
+            anchor='w',
+            wraplength=400,
+            justify='left'
+        )
+        self.desc_label.pack(fill='both', expand=True, anchor='w')
+        
+        # 保存当前图像
+        self.current_photo = None
+        self._photo_refs = []  # 用于保存所有PhotoImage对象的引用
+
+    def update_content(self, name, description, icon_path=None, aspect_ratio=1.0):
+        try:
+            # 获取当前背景色
+            bg_color = self.cget('bg')
+            
+            # 名称左对齐
+            if name:
+                self.name_label.config(text=name, anchor='w', justify='left', bg=bg_color)
+                self.name_label.pack(fill='x', anchor='w', pady=0)
+            else:
+                self.name_label.pack_forget()
+            
+            # 描述左对齐
+            if description:
+                self.desc_label.config(text=description, anchor='w', justify='left', bg=bg_color)
+                self.desc_label.pack(fill='both', expand=True)
+            else:
+                self.desc_label.pack_forget()
+            
+            # 图标处理
+            icon_container_width = 144
+            icon_container_height = 96
+            self.icon_container.config(width=icon_container_width, height=icon_container_height, bg=bg_color)
+            
+            if icon_path and os.path.exists(icon_path):
+                try:
+                    # 处理图标路径中的@符号
+                    real_icon_path = icon_path
+                    if '@' in icon_path:
+                        # 保持@符号，不进行替换
+                        real_icon_path = icon_path
+                    
+                    img = Image.open(real_icon_path).convert('RGBA')
+                    icon_height = icon_container_height
+                    icon_width = int(icon_height * aspect_ratio)
+                    icon_width = min(icon_width, icon_container_width)
+                    img = img.resize((icon_width, icon_height), Image.Resampling.LANCZOS)
+                    
+                    # 创建透明底图，保证居中
+                    bg = Image.new('RGBA', (icon_container_width, icon_container_height), (0, 0, 0, 0))
+                    offset_x = (icon_container_width - icon_width) // 2
+                    bg.paste(img, (offset_x, 0), img)
+                    
+                    # 关键：转为PNG内存流再交给PhotoImage
+                    with io.BytesIO() as output:
+                        bg.save(output, format='PNG')
+                        photo = ImageTk.PhotoImage(data=output.getvalue())
+                    
+                    self.icon_label.configure(image=photo, bg=bg_color)
+                    self._photo_refs.append(photo)
+                    
+                except Exception as e:
+                    logging.error(f"加载图标失败: {e}")
+                    self.clear_icon()
+            else:
+                self.clear_icon()
+            
+            self.icon_container.pack(side='left', padx=0, pady=0)
+            self.update()
+            
+        except Exception as e:
+            logging.error(f"更新内容失败: {e}")
+            self.clear_icon()
+
+    def clear_icon(self):
+        """清理图标"""
+        try:
+            bg_color = self.cget('bg')
+            self.icon_label.configure(image='', bg=bg_color)
+            self._photo_refs.clear()
+        except Exception as e:
+            logging.error(f"清理图标失败: {e}")
+
+    def destroy(self):
+        """重写destroy方法，确保清理所有资源"""
+        try:
+            self.clear_icon()
+            super().destroy()
+        except Exception as e:
+            logging.error(f"销毁IconFrame失败: {e}")
+
+class BazaarHelper:
+    def __init__(self):
+        """初始化BazaarHelper"""
+        self.alt_pressed = False
+        self.last_check_time = time.time()
+        self.check_interval = 0.1  # 缩短检查间隔到0.1秒
+        self.is_running = True
+        self.info_window = None
+        self.current_text = None
+        self.monster_data = {}
+        self.event_data = {}
+        
+        # 加载数据
+        self.load_monster_data()
+        self.load_event_data()
+        
+        # 创建信息窗口
+        self.create_info_window()
+        
+        # 启动保活线程
+        self.keep_alive_thread = threading.Thread(target=self.keep_alive, daemon=True)
+        self.keep_alive_thread.start()
+    
+    def keep_alive(self):
+        """保活机制，检查Alt键状态和程序响应"""
+        VK_MENU = 0x12  # Alt键的虚拟键码
+        
+        while self.is_running:
+            try:
+                # 使用win32api检查Alt键状态
+                alt_state = win32api.GetAsyncKeyState(VK_MENU)
+                is_alt_pressed = (alt_state & 0x8000) != 0
+                
+                # Alt键状态发生变化
+                if is_alt_pressed != self.alt_pressed:
+                    self.alt_pressed = is_alt_pressed
+                    if is_alt_pressed:
+                        # Alt键被按下，获取并显示信息
+                        text = self.get_text_at_cursor()
+                        if text:
+                            x, y = pyautogui.position()
+                            self.update_info_display(text, x, y)
+                    else:
+                        # Alt键释放，隐藏信息
+                        self.hide_info()
+                
+                # 更新窗口位置（如果窗口显示中）
+                if self.alt_pressed and self.info_window and self.info_window.winfo_exists():
+                    x, y = pyautogui.position()
+                    self.adjust_window_size(x, y)
+                
+                # 短暂休眠以减少CPU使用
+                time.sleep(0.01)
+                
+            except Exception as e:
+                logging.error(f"保活线程异常: {e}")
+                time.sleep(1)  # 发生异常时稍长的休眠
+                continue
+    
+    def run(self):
+        """运行主程序"""
+        try:
+            if self.info_window:
+                self.info_window.mainloop()
+        except Exception as e:
+            logging.error(f"主程序运行异常: {e}")
+            self.stop()
+    
+    def stop(self):
+        """停止程序"""
+        self.is_running = False
+        if self.keep_alive_thread and self.keep_alive_thread.is_alive():
+            self.keep_alive_thread.join(timeout=1)
+        self.destroy_info_window()
+
+    def load_monster_data(self):
+        """加载怪物数据"""
+        try:
+            with open('data/monsters.json', 'r', encoding='utf-8') as f:
+                data = json.load(f)
+                self.monster_data = {monster['name']: monster for monster in data['monsters']}
+            logging.info(f"成功加载怪物数据，共 {len(self.monster_data)} 个怪物")
+        except Exception as e:
+            logging.error(f"加载怪物数据失败: {e}")
+            self.monster_data = {}
+
+    def load_event_data(self):
+        """加载事件数据"""
+        try:
+            with open('data/events.json', 'r', encoding='utf-8') as f:
+                self.events = json.load(f)
+                logging.info(f"已加载 {len(self.events)} 个事件")
+            # 直接从 events.json 提取所有事件选项
+            self.event_data = {}
+            for event in self.events:
+                if 'name' in event and 'options' in event:
+                    self.event_data[event['name']] = event['options']
+                else:
+                    logging.warning(f"事件 {event.get('name', '')} 缺少 options 字段")
+        except Exception as e:
+            logging.error(f"加载事件数据时出错: {e}")
+            self.events = []
+            self.event_data = {}
+
+    def get_game_window(self):
+        """获取游戏窗口句柄和位置"""
+        try:
+            hwnd = win32gui.FindWindow(None, "The Bazaar")
+            if not hwnd:
+                hwnd = win32gui.FindWindow(None, "The Bazaar - DirectX 11")
+            if not hwnd:
+                hwnd = win32gui.FindWindow(None, "The Bazaar - DirectX 12")
+                
+            if hwnd:
+                win32gui.SetForegroundWindow(hwnd)
+                rect = win32gui.GetWindowRect(hwnd)
+                logging.debug(f"找到游戏窗口: {rect}")
+                return hwnd, rect
+                
+            logging.warning("未找到游戏窗口")
+            return None, None
+        except Exception as e:
+            logging.error(f"获取游戏窗口失败: {e}")
+            return None, None
+
+    def preprocess_image(self, img):
+        """图像预处理优化"""
+        try:
+            # 转换为灰度图
+            gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
+            
+            # 二值化
+            _, binary = cv2.threshold(gray, 200, 255, cv2.THRESH_BINARY)
+            
+            # 保存二值化图像用于调试
+            cv2.imwrite('debug_binary.png', binary)
+            
+            return binary
+            
+        except Exception as e:
+            logging.error(f"图像预处理失败: {e}")
+            return img
+
+    def ocr_with_timeout(self, processed_img, timeout=3):
+        buf = io.BytesIO()
+        Image.fromarray(processed_img).save(buf, format='PNG')
+        img_bytes = buf.getvalue()
+        # 新增：卡死计数
+        if not hasattr(self, '_ocr_fail_count'):
+            self._ocr_fail_count = 0
+        import sys
+        with concurrent.futures.ProcessPoolExecutor(max_workers=1) as executor:
+            future = executor.submit(ocr_task, img_bytes)
+            try:
+                result = future.result(timeout=timeout)
+                self._ocr_fail_count = 0  # 成功则清零
+                return result
+            except concurrent.futures.TimeoutError:
+                self._ocr_fail_count += 1
+                logging.warning("OCR识别超时，已跳过本次识别。")
+                return None
+            except Exception as e:
+                self._ocr_fail_count += 1
+                logging.warning(f"OCR识别异常: {e}")
+        # 超过3次自动重启
+        if self._ocr_fail_count >= 3:
+            logging.error("OCR连续多次卡死，自动重启程序！")
+            python = sys.executable
+            os.execv(python, [python] + sys.argv)
+        return None
+
+    def find_best_match(self, text):
+        """统一识别怪物或事件，返回('monster'/'event', 名称)或(None, None)"""
+        if not text:
+            return None, None
+            
+        def clean_text(s):
+            if not isinstance(s, str):
+                return ""
+            # 保留字母和空格，移除其他字符
+            s = re.sub(r'[^a-zA-Z\s]', ' ', s)
+            # 合并多个空格为单个空格并转小写
+            return ' '.join(s.split()).lower()
+            
+        # 只保留长度>=3的行
+        lines = [clean_text(line.strip()) for line in str(text).split('\n') if len(clean_text(line.strip())) >= 3]
+        logging.info(f"OCR文本行: {lines}")
+        
+        best_type = None
+        best_name = None
+        best_ratio = 0.0
+        
+        # 记录所有匹配结果用于调试
+        all_matches = []
+        
+        for monster_name in self.monster_data:
+            monster_clean = clean_text(monster_name)
+            for line in lines:
+                # 完全匹配
+                if line == monster_clean:
+                    logging.info(f"找到完全匹配的怪物: {monster_name}")
+                    return 'monster', monster_name
+                    
+                # 包含匹配（检查单词级别的匹配）
+                monster_words = set(monster_clean.split())
+                line_words = set(line.split())
+                common_words = monster_words & line_words
+                
+                if len(common_words) > 0:
+                    # 如果有共同单词，计算相似度
+                    ratio = difflib.SequenceMatcher(None, line, monster_clean).ratio()
+                    all_matches.append({
+                        'type': 'monster',
+                        'name': monster_name,
+                        'line': line,
+                        'ratio': ratio,
+                        'common_words': list(common_words)
+                    })
+                    if ratio > best_ratio:
+                        best_ratio = ratio
+                        best_type = 'monster'
+                        best_name = monster_name
+                        
+        for event in self.events:
+            event_clean = clean_text(event['name'])
+            for line in lines:
+                if line == event_clean:
+                    logging.info(f"找到完全匹配的事件: {event['name']}")
+                    return 'event', event['name']
+                    
+                # 对事件也使用相同的单词级别匹配
+                event_words = set(event_clean.split())
+                line_words = set(line.split())
+                common_words = event_words & line_words
+                
+                if len(common_words) > 0:
+                    ratio = difflib.SequenceMatcher(None, line, event_clean).ratio()
+                    all_matches.append({
+                        'type': 'event',
+                        'name': event['name'],
+                        'line': line,
+                        'ratio': ratio,
+                        'common_words': list(common_words)
+                    })
+                    if ratio > best_ratio:
+                        best_ratio = ratio
+                        best_type = 'event'
+                        best_name = event['name']
+        
+        # 输出所有匹配结果用于调试
+        logging.info("所有匹配结果:")
+        for match in sorted(all_matches, key=lambda x: x['ratio'], reverse=True)[:5]:
+            logging.info(f"- {match['type']}: {match['name']}")
+            logging.info(f"  行: {match['line']}")
+            logging.info(f"  相似度: {match['ratio']:.2f}")
+            logging.info(f"  共同单词: {match['common_words']}")
+        
+        # 降低匹配阈值，但要求至少有一个共同单词
+        if best_ratio > 0.6:
+            logging.info(f"找到最佳匹配: {best_type} - {best_name} (相似度: {best_ratio:.2f})")
+            return best_type, best_name
+            
+        logging.info("未找到足够相似的匹配")
+        return None, None
+
+    def get_text_at_cursor(self):
+        """获取鼠标指向位置的文字"""
+        try:
+            # 获取游戏窗口
+            hwnd, window_rect = self.get_game_window()
+            if not hwnd or not window_rect:
+                logging.warning("未找到游戏窗口")
+                return None
+
+            # 获取鼠标位置
+            cursor_x, cursor_y = win32gui.GetCursorPos()
+            
+            # 计算鼠标相对于窗口的位置
+            relative_x = cursor_x - window_rect[0]
+            relative_y = cursor_y - window_rect[1]
+            
+            # 定义截图区域（以鼠标位置为左边界，其他边界为游戏窗口）
+            x1 = cursor_x  # 鼠标位置作为左边界
+            y1 = window_rect[1]  # 窗口上边界
+            x2 = window_rect[2]  # 窗口右边界
+            y2 = window_rect[3]  # 窗口下边界
+
+            # 截取区域图像
+            try:
+                screenshot = ImageGrab.grab(bbox=(x1, y1, x2, y2))
+            except Exception as e:
+                logging.error(f'截图失败: {e}')
+                return None
+            img_array = np.array(screenshot)
+            
+            # 保存调试图像
+            debug_img = img_array.copy()
+            # 在调试图像上画一个红色十字光标
+            center_x = relative_x - (x1 - window_rect[0])
+            center_y = relative_y - (y1 - window_rect[1])
+            cv2.line(debug_img, (center_x-10, center_y), (center_x+10, center_y), (0,0,255), 2)
+            cv2.line(debug_img, (center_x, center_y-10), (center_x, center_y+10), (0,0,255), 2)
+            cv2.imwrite('debug_capture.png', cv2.cvtColor(debug_img, cv2.COLOR_RGB2BGR))
+            
+            # 预处理图像
+            processed_img = self.preprocess_image(img_array)
+            
+            # OCR识别
+            text = self.ocr_with_timeout(processed_img, timeout=3)
+            logging.debug(f"OCR原始识别结果:\n{text}")
+            
+            # 如果识别结果为空，尝试其他PSM模式
+            if not text:
+                logging.debug("尝试其他PSM模式")
+                psm_modes = [3, 4, 7, 11]  # 尝试不同的页面分割模式
+                for psm in psm_modes:
+                    text = self.ocr_with_timeout(processed_img, timeout=3)
+                    if text:
+                        logging.debug(f"使用PSM {psm}成功识别文本")
+                        break
+            
+            return text if text else None
+            
+        except Exception as e:
+            logging.error(f"获取文字失败: {e}")
+            logging.error(traceback.format_exc())
+            return None
+
+    def create_info_window(self):
+        """创建信息窗口"""
+        try:
+            # 创建主窗口
+            self.info_window = tk.Toplevel()
+            self.info_window.title("The Bazaar Helper")
+            self.info_window.attributes('-alpha', 0.95)  # 设置透明度
+            self.info_window.overrideredirect(True)  # 无边框窗口
+            self.info_window.attributes('-topmost', True)  # 保持在顶层
+            
+            # 设置窗口背景色
+            self.info_window.configure(bg='#E6F0FF')
+            
+            # 创建主容器
+            self.content_frame = tk.Frame(self.info_window, bg='#E6F0FF')
+            self.content_frame.pack(fill='both', expand=True, padx=10, pady=10)
+            
+            # 创建事件选项容器
+            self.event_options_frame = tk.Frame(self.content_frame, bg='#E6F0FF')
+            self.event_options_frame.pack(fill='x', expand=True)
+            
+            # 创建技能容器
+            self.skills_frame = tk.Frame(self.content_frame, bg='#E6F0FF')
+            self.skills_frame.pack(fill='x', expand=True)
+            
+            # 创建物品容器
+            self.items_frame = tk.Frame(self.content_frame, bg='#E6F0FF')
+            self.items_frame.pack(fill='x', expand=True)
+            
+            # 初始隐藏窗口
+            self.info_window.withdraw()
+            
+            logging.debug("信息窗口创建成功")
+            
+        except Exception as e:
+            logging.error(f"创建信息窗口失败: {e}")
+            if self.info_window:
+                self.info_window.destroy()
+                self.info_window = None
+
+    def adjust_window_size(self, pos_x, pos_y):
+        """调整窗口大小"""
+        try:
+            # 获取游戏窗口大小
+            _, game_rect = self.get_game_window()
+            if not game_rect:
+                return
+            # 计算最大窗口高度（游戏窗口高度的80%）
+            game_height = game_rect[3] - game_rect[1]
+            max_window_height = int(game_height * 0.8)
+            # 固定窗口宽度
+            window_width = 600
+            # 获取内容实际需要的高度
+            self.info_window.update_idletasks()
+            content_height = self.content_frame.winfo_reqheight()
+            # 不留底部空白，窗口高度正好包裹内容
+            window_height = min(content_height + 2, max_window_height)
+            # 调整窗口位置（确保不超出屏幕边界）
+            screen_width = self.info_window.winfo_screenwidth()
+            screen_height = self.info_window.winfo_screenheight()
+            if pos_x + window_width > screen_width:
+                pos_x = max(0, screen_width - window_width)
+                if pos_y + window_height > screen_height:
+                    pos_y = max(0, screen_height - window_height)
+            self.info_window.geometry(f"{window_width}x{window_height}+{pos_x}+{pos_y}")
+            logging.debug(f"窗口大小调整完成: {window_width}x{window_height}, 位置: {pos_x}, {pos_y}")
+        except Exception as e:
+            logging.error(f"调整窗口大小失败: {e}")
+            logging.error(traceback.format_exc())
+
+    def clear_frames(self):
+        """清空所有内容框架"""
+        # 只清空子元素，不destroy主Frame本身
+        for widget in self.event_options_frame.winfo_children():
+            widget.destroy()
+        for widget in self.skills_frame.winfo_children():
+            widget.destroy()
+        for widget in self.items_frame.winfo_children():
+            widget.destroy()
+        # 控制框架的显示/隐藏
+        self.event_options_frame.pack_forget()
+        self.skills_frame.pack_forget()
+        self.items_frame.pack_forget()
+        # 清理content_frame下的所有spacer（Frame），只destroy不是三大主Frame的spacer
+        for widget in self.content_frame.winfo_children():
+            if isinstance(widget, tk.Frame) and widget not in [self.event_options_frame, self.skills_frame, self.items_frame]:
+                widget.destroy()
+
+    def get_local_icon_path(self, icon_url, icons_dir='icons'):
+        """始终从工作目录下的icons文件夹获取图标，找不到则自动下载"""
+        if not icon_url or not icon_url.startswith('http'):
+            logging.warning(f"无效的图标URL: {icon_url}")
+            return None
+
+        try:
+            # 清理文件名，移除查询参数
+            parsed_url = urlparse(icon_url)
+            filename = os.path.basename(parsed_url.path)
+            # 允许@字符
+            filename = re.sub(r'[^\w\-_.@]', '_', filename)
+
+            # 只用工作目录下的 icons 文件夹
+            workspace_dir = os.path.abspath(os.path.dirname(__file__))  # 当前脚本所在目录
+            icons_path = os.path.join(workspace_dir, icons_dir)
+            icon_file_path = os.path.join(icons_path, filename)
+
+            logging.info(f"查找本地图标路径: {icon_file_path}")
+            if os.path.exists(icon_file_path):
+                logging.info(f"找到本地图标: {icon_file_path}")
+                return icon_file_path
+
+            # 本地没有，尝试下载
+            logging.info(f"开始下载图标: {icon_url}")
+            headers = {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+            }
+            resp = requests.get(icon_url, headers=headers, timeout=10, verify=False)
+            if resp.status_code == 200:
+                os.makedirs(icons_path, exist_ok=True)
+                with open(icon_file_path, 'wb') as f:
+                    f.write(resp.content)
+                logging.info(f"图标下载成功: {icon_file_path}")
+                return icon_file_path
+            else:
+                logging.warning(f"下载图标失败，状态码: {resp.status_code}")
+                return None
+
+        except Exception as e:
+            logging.error(f"处理图标失败: {e}")
+            logging.error(traceback.format_exc())
+            return None
+
+    def format_monster_info(self, monster_name):
+        """格式化怪物信息显示"""
+        try:
+            if not monster_name:
+                return False
+                
+            if monster_name not in self.monster_data:
+                logging.warning(f"未找到怪物数据: {monster_name}")
+                self.clear_frames()
+                # 显示未找到数据的提示
+                self.skills_frame.pack(fill='x', pady=0, padx=0)
+                not_found_frame = IconFrame(self.skills_frame)
+                not_found_frame.pack(fill='x', pady=0)
+                not_found_frame.update_content(
+                    monster_name,
+                    "未找到该怪物的数据，请稍后再试。",
+                    None
+                )
+                return True
+                
+            monster = self.monster_data[monster_name]
+            logging.info(f"怪物数据: {monster}")
+            self.clear_frames()
+            
+            # 显示技能
+            if monster.get('skills'):
+                self.skills_frame.pack(fill='x', pady=0, padx=0)
+                for skill in monster['skills']:
+                    skill_frame = IconFrame(self.skills_frame)
+                    skill_frame.pack(fill='x', pady=0)
+                    # 获取技能图标
+                    icon_path = None
+                    if skill.get('icon'):
+                        icon_path = self.get_local_icon_path(skill['icon'])
+                    aspect_ratio = float(skill.get('aspect_ratio', 1.0))
+                    skill_frame.update_content(
+                        skill.get('name', ''),
+                        skill.get('description', ''),
+                        icon_path,
+                        aspect_ratio
+                    )
+                    
+            # 显示物品
+            if monster.get('items'):
+                self.items_frame.pack(fill='x', pady=0, padx=0)
+                # 统计相同物品的数量
+                items_count = {}
+                items_info = {}
+                for item in monster['items']:
+                    name = item.get('name', '')
+                    if name:
+                        items_count[name] = items_count.get(name, 0) + 1
+                        if name not in items_info:
+                            items_info[name] = item
+                            
+                # 显示物品信息
+                item_keys = list(items_info.keys())
+                for idx, item_name in enumerate(item_keys):
+                    item = items_info[item_name]
+                    item_frame = IconFrame(self.items_frame)
+                    
+                    # 设置物品框架的边距
+                    item_frame.pack(fill='x', pady=0)
+                        
+                    # 处理物品名称（如果有多个相同物品，显示数量）
+                    display_name = item_name
+                    if items_count[item_name] > 1:
+                        display_name += f" x{items_count[item_name]}"
+                        
+                    # 获取物品图标
+                    icon_path = None
+                    if item.get('icon'):
+                        icon_path = self.get_local_icon_path(item['icon'])
+                    aspect_ratio = float(item.get('aspect_ratio', 1.0))
+                    item_frame.update_content(
+                        display_name,
+                        item.get('description', ''),
+                        icon_path,
+                        aspect_ratio
+                    )
+                    
+            # 如果既没有技能也没有物品，显示提示信息
+            if not monster.get('skills') and not monster.get('items'):
+                self.skills_frame.pack(fill='x', pady=0, padx=0)
+                not_found_frame = IconFrame(self.skills_frame)
+                not_found_frame.pack(fill='x', pady=0)
+                not_found_frame.update_content(
+                    monster_name,
+                    "该怪物没有技能和物品数据。",
+                    None
+                )
+                
+            return True
+            
+        except Exception as e:
+            logging.error(f"格式化怪物信息失败: {e}")
+            logging.error(traceback.format_exc())
+            return False
+
+    def find_best_event_match(self, text):
+        """查找最佳匹配的事件"""
+        if not text:
+            return None
+            
+        def clean_text(text):
+            if not isinstance(text, str):
+                return ""
+            # 只保留字母和空格
+            cleaned = re.sub(r'[^a-zA-Z\s]', '', text)
+            # 移除多余空格并转换为小写
+            return ' '.join(cleaned.split()).lower()
+        
+        try:
+            # 将OCR结果按行分割并清理
+            lines = str(text).split('\n')
+            cleaned_lines = []
+            for line in lines:
+                cleaned = clean_text(line.strip())
+                if len(cleaned) >= 3:  # 只保留有意义的行（至少3个字母）
+                    cleaned_lines.append(cleaned)
+                    
+            logging.debug(f"清理后的文本行: {cleaned_lines}")
+            
+            # 遍历所有事件寻找匹配
+            for line in cleaned_lines:
+                if not line:
+                    continue
+                    
+                # 遍历所有事件寻找匹配
+                for event in self.events:
+                    clean_event_name = clean_text(event['name'])
+                    
+                    # 完全匹配
+                    if line == clean_event_name:
+                        logging.info(f"找到完全匹配的事件: {event['name']}")
+                        return event
+                    
+                    # 部分匹配（事件名称是行的一部分）
+                    if clean_event_name in line:
+                        logging.info(f"找到部分匹配的事件: {event['name']}")
+                        return event
+                    
+                    # 反向部分匹配（行是事件名称的一部分）
+                    if len(line) >= 3 and line in clean_event_name:
+                        logging.info(f"找到反向部分匹配的事件: {event['name']}")
+                        return event
+            
+            logging.debug("未找到匹配的事件")
+            return None
+            
+        except Exception as e:
+            logging.error(f"事件匹配时出错: {e}")
+            logging.error(traceback.format_exc())
+            return None
+
+    def format_event_info(self, event_name):
+        """格式化事件信息显示"""
+        try:
+            if event_name not in self.event_data:
+                logging.error(f"找不到事件选项数据: {event_name}")
+                return False
+
+            options = self.event_data[event_name]
+            if not options:
+                logging.error(f"事件选项数据为空: {event_name}")
+                return False
+
+            # 清除现有内容
+            self.clear_frames()
+
+            # 显示事件选项框架
+            self.event_options_frame.pack(fill='x', pady=0)
+
+            for option in options:
+                icon_path = None
+                if option.get('icon'):
+                    icon_path = self.get_local_icon_path(option['icon'])
+                option_frame = IconFrame(self.event_options_frame)
+                option_frame.pack(fill='x', pady=0)
+                option_frame.update_content(
+                    option.get('name', ''),
+                    option.get('description', ''),
+                    icon_path
+                )
+
+            if not options:
+                self.event_options_frame.pack(fill='x', pady=0)
+                not_found_frame = IconFrame(self.event_options_frame)
+                not_found_frame.pack(fill='x', pady=0)
+                not_found_frame.update_content(
+                    event_name,
+                    "未找到该事件的数据，请稍后再试。",
+                    None
+                )
+
+            return True
+
+        except Exception as e:
+            logging.error(f"格式化事件信息时出错: {e}")
+            logging.error(traceback.format_exc())
+            return False
+
+    def update_info_display(self, text, pos_x, pos_y):
+        """更新信息显示（统一怪物/事件识别），每次都重建窗口"""
+        try:
+            # 销毁旧窗口
+            self.destroy_info_window()
+            
+            # 创建新窗口
+            self.create_info_window()
+            
+            logging.debug(f"开始更新信息显示，OCR文本: {text}")
+            match_type, match_name = self.find_best_match(text)
+            
+            display_success = False
+            if match_type == 'event':
+                display_success = self.format_event_info(match_name)
+            elif match_type == 'monster':
+                display_success = self.format_monster_info(match_name)
+                
+            if not display_success:
+                if match_type:
+                    self.show_info_message(f"未找到该{match_type}的数据，请稍后再试。", None)
+                else:
+                    self.show_info_message("未能识别到怪物或事件名称。", None)
+                return
+                
+            # 设置初始位置
+            self.info_window.geometry(f"+{pos_x}+{pos_y}")
+            
+            # 更新所有挂起的空闲任务
+            self.info_window.update()
+            self.content_frame.update()
+            self.content_frame.update_idletasks()
+            
+            # 调整窗口大小
+            self.adjust_window_size(pos_x, pos_y)
+            
+            # 延迟50ms后再次调整窗口大小，确保内容完全加载
+            self.info_window.after(50, lambda: self.adjust_window_size(pos_x, pos_y))
+            
+            # 显示窗口并置顶
+            self.info_window.deiconify()
+            self.info_window.lift()
+            self.info_window.attributes('-topmost', True)
+            
+            logging.debug(f"{match_type}信息显示完成，位置: {pos_x}, {pos_y}")
+            
+        except Exception as e:
+            logging.error(f"信息显示异常: {e}")
+            logging.error(traceback.format_exc())
+
+    def hide_info(self):
+        """隐藏信息窗口"""
+        try:
+            if self.info_window:
+                self.info_window.withdraw()
+        except Exception as e:
+            logging.error(f"隐藏信息窗口失败: {e}")
+
+    def show_info_message(self, message, icon_url):
+        # 实现显示信息消息的逻辑
+        print(f"显示信息消息: {message}")
+
+    def show_info(self, name, description, icon_url, pos_x=None, pos_y=None):
+        print(f"显示信息: {name}")
+        print(f"描述: {description}")
+        print(f"图标URL: {icon_url}")
+        
+        # 清除现有内容
+        for widget in self.content_frame.winfo_children():
+            widget.destroy()
+        
+        # 创建新的内容框架
+        icon_path = self.get_local_icon_path(icon_url)
+        print(f"本地图标路径: {icon_path}")
+        
+        frame = IconFrame(self.content_frame)
+        frame.pack(fill='both', expand=True, padx=0, pady=0)  # 修改为fill='both'和expand=True
+        frame.update_content(name, description, icon_path)
+        
+        # 更新窗口大小和位置
+        self.info_window.update_idletasks()
+        window_width = 600
+        window_height = max(self.content_frame.winfo_reqheight(), 100)  # 设置最小高度
+        print(f"窗口大小: {window_width}x{window_height}")
+        
+        # 如果提供了位置，就移动窗口
+        if pos_x is not None and pos_y is not None:
+            screen_width = self.info_window.winfo_screenwidth()
+            screen_height = self.info_window.winfo_screenheight()
+            print(f"屏幕大小: {screen_width}x{screen_height}")
+            print(f"原始位置: {pos_x}, {pos_y}")
+            
+            # 确保窗口不会超出屏幕边界
+            if pos_x + window_width > screen_width:
+                pos_x = screen_width - window_width
+            if pos_y + window_height > screen_height:
+                pos_y = screen_height - window_height
+            print(f"调整后位置: {pos_x}, {pos_y}")
+                
+            self.info_window.geometry(f"{window_width}x{window_height}+{pos_x}+{pos_y}")
+        
+        # 显示窗口
+        self.info_window.deiconify()
+        self.info_window.lift()
+        self.info_window.attributes('-topmost', True)
+        print("窗口已显示")
+
+    def destroy_info_window(self):
+        """销毁信息窗口及相关Frame"""
+        try:
+            # 先隐藏窗口
+            if hasattr(self, 'info_window') and self.info_window:
+                self.info_window.withdraw()
+                
+            # 清理所有子Frame
+            if hasattr(self, 'content_frame') and self.content_frame:
+                for widget in self.content_frame.winfo_children():
+                    if isinstance(widget, IconFrame):
+                        widget.destroy()  # 这会触发 IconFrame 的 destroy 方法
+                    else:
+                        widget.destroy()
+                self.content_frame.destroy()
+                self.content_frame = None
+                
+            if hasattr(self, 'event_options_frame') and self.event_options_frame:
+                self.event_options_frame.destroy()
+                self.event_options_frame = None
+                
+            if hasattr(self, 'skills_frame') and self.skills_frame:
+                self.skills_frame.destroy()
+                self.skills_frame = None
+                
+            if hasattr(self, 'items_frame') and self.items_frame:
+                self.items_frame.destroy()
+                self.items_frame = None
+                
+            # 最后销毁主窗口
+            if hasattr(self, 'info_window') and self.info_window:
+                self.info_window.destroy()
+                self.info_window = None
+                
+        except Exception as e:
+            logging.error(f"销毁信息窗口失败: {e}")
+            logging.error(traceback.format_exc())
+
+if __name__ == "__main__":
+    helper = None
+    try:
+        if not is_admin():
+            run_as_admin()
+        else:
+            helper = BazaarHelper()
+            helper.run()
+    except KeyboardInterrupt:
+        pass
+    finally:
+        if helper:
+            helper.stop()
+        os._exit(0) 

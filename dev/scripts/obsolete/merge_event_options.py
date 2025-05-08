@@ -19,7 +19,7 @@ def parse_event_options(html_file):
     event_name = title.text.strip()
     
     # 获取事件描述 - 使用新的选择器
-    description = soup.find('div', class_='_bq')
+    description = soup.find('div', class_='_bk')
     if not description:
         print(f"警告: {html_file} 中未找到事件描述")
         return None
@@ -28,7 +28,7 @@ def parse_event_options(html_file):
     
     # 获取所有选项 - 使用新的选择器
     options = []
-    option_divs = soup.find_all('div', class_='_w')
+    option_divs = soup.find_all('div', class_='_ah')
     
     for div in option_divs:
         option = {}
@@ -38,8 +38,8 @@ def parse_event_options(html_file):
         if name_span:
             option['name'] = name_span.text.strip()
         
-        # 获取选项描述 - 在 _bq class 中
-        desc_div = div.find('div', class_='_bq')
+        # 获取选项描述 - 在 _bk class 中
+        desc_div = div.find('div', class_='_bk')
         if desc_div:
             option['description'] = desc_div.text.strip()
         
@@ -64,10 +64,14 @@ def parse_event_options(html_file):
     }
 
 def download_icon(url, icon_dir='icons'):
+    """下载图标并保持原有命名规则"""
     if not url or not url.startswith('http'):
         return
+    
+    # 保持原有的文件名
     filename = os.path.basename(urlparse(url).path)
     icon_path = os.path.join(icon_dir, filename)
+    
     if not os.path.exists(icon_path):
         try:
             resp = requests.get(url, timeout=10)
@@ -76,8 +80,10 @@ def download_icon(url, icon_dir='icons'):
                 with open(icon_path, "wb") as f:
                     f.write(resp.content)
                 print(f"已下载图标: {filename}")
+                return True
         except Exception as e:
             print(f"下载图标失败: {filename}，错误: {e}")
+    return False
 
 def main():
     events_dir = 'dev/html/events'
@@ -100,15 +106,22 @@ def main():
     
     print(f"已完成，共处理{len(events)}个事件，结果已保存到 {output_file}")
     
-    # 批量下载所有选项icon
+    # 开始下载所有图标
+    print("\n开始下载图标...")
     all_icons = set()
     for event in events:
         for option in event.get('options', []):
             icon_url = option.get('icon', '')
             if icon_url and icon_url.startswith('http'):
                 all_icons.add(icon_url)
-    for url in all_icons:
-        download_icon(url)
+    
+    total_icons = len(all_icons)
+    success_count = 0
+    for i, url in enumerate(all_icons, 1):
+        print(f"\r正在下载图标 ({i}/{total_icons})...", end='')
+        if download_icon(url):
+            success_count += 1
+    print(f"\n图标下载完成，成功: {success_count}/{total_icons}")
 
 if __name__ == '__main__':
     main() 

@@ -31,6 +31,9 @@ import concurrent.futures
 import io
 import tempfile
 import subprocess
+import pystray
+import psutil
+import webbrowser
 
 # 设置日志
 logging.basicConfig(
@@ -99,8 +102,8 @@ class IconFrame(tk.Frame):
     """用于显示图标和文本的框架"""
     def __init__(self, parent, **kwargs):
         super().__init__(parent, **kwargs)
-        # 获取父容器的背景色，如果没有指定则使用默认的浅蓝色
-        parent_bg = parent.cget('bg') if parent else '#E6F0FF'
+        # 获取父容器的背景色，如果没有指定则使用深色主题
+        parent_bg = parent.cget('bg') if parent else '#1C1810'
         self.configure(bg=parent_bg)
         
         # 创建左侧图标容器，固定宽度
@@ -120,7 +123,7 @@ class IconFrame(tk.Frame):
         self.name_label = tk.Label(
             self.text_frame,
             font=('Segoe UI', 14, 'bold'),
-            fg='#000000',  # 深色背景使用白色文字
+            fg='#E8D4B9',  # 浅色文字
             bg=parent_bg,
             anchor='w',
             justify='left'
@@ -131,7 +134,7 @@ class IconFrame(tk.Frame):
         self.desc_label = tk.Label(
             self.text_frame,
             font=('Segoe UI', 13),
-            fg='#333333',  # 浅色背景使用深灰色文字
+            fg='#BFA98F',  # 稍暗的浅色文字用于描述
             bg=parent_bg,
             anchor='w',
             wraplength=400,
@@ -240,13 +243,16 @@ class BazaarHelper:
         self.load_monster_data()
         self.load_event_data()
         
-        # 创建信息窗口
+        # 创建信息窗口（但保持隐藏状态）
         self.create_info_window()
         
         # 启动保活线程
         self.keep_alive_thread = threading.Thread(target=self.keep_alive, daemon=True)
         self.keep_alive_thread.start()
-    
+
+        # 创建系统托盘
+        self.system_tray = SystemTray(self)
+
     def keep_alive(self):
         """保活机制，检查Alt键状态和程序响应"""
         VK_MENU = 0x12  # Alt键的虚拟键码
@@ -267,10 +273,11 @@ class BazaarHelper:
                             x, y = pyautogui.position()
                             self.update_info_display(text, x, y)
                     else:
-                        # Alt键释放，隐藏信息
-                        self.hide_info()
+                        # Alt键释放，立即隐藏信息
+                        if self.info_window and self.info_window.winfo_exists():
+                            self.info_window.withdraw()
                 
-                # 更新窗口位置（如果窗口显示中）
+                # 更新窗口位置（如果窗口显示中且Alt键仍然按下）
                 if self.alt_pressed and self.info_window and self.info_window.winfo_exists():
                     x, y = pyautogui.position()
                     self.adjust_window_size(x, y)
@@ -553,7 +560,7 @@ class BazaarHelper:
             return None
 
     def create_info_window(self):
-        """创建信息显示窗口"""
+        """创建信息窗口"""
         try:
             # 创建主窗口
             self.info_window = tk.Toplevel()
@@ -562,29 +569,31 @@ class BazaarHelper:
             self.info_window.overrideredirect(True)  # 无边框窗口
             self.info_window.attributes('-topmost', True)  # 保持在顶层
             
-            # 设置窗口背景色
-            self.info_window.configure(bg='#E6F0FF')
+            # 设置窗口背景色为深色
+            bg_color = '#1C1810'  # 深褐色背景
+            fg_color = '#E8D4B9'  # 浅色文字
+            self.info_window.configure(bg=bg_color)
             
             # 创建主容器
-            self.content_frame = tk.Frame(self.info_window, bg='#E6F0FF')
+            self.content_frame = tk.Frame(self.info_window, bg=bg_color)
             self.content_frame.pack(fill='both', expand=True, padx=10, pady=10)
             
             # 创建事件选项容器
-            self.event_options_frame = tk.Frame(self.content_frame, bg='#E6F0FF')
+            self.event_options_frame = tk.Frame(self.content_frame, bg=bg_color)
             self.event_options_frame.pack(fill='x', expand=True)
             
             # 创建技能容器
-            self.skills_frame = tk.Frame(self.content_frame, bg='#E6F0FF')
+            self.skills_frame = tk.Frame(self.content_frame, bg=bg_color)
             self.skills_frame.pack(fill='x', expand=True)
             
             # 创建物品容器
-            self.items_frame = tk.Frame(self.content_frame, bg='#E6F0FF')
+            self.items_frame = tk.Frame(self.content_frame, bg=bg_color)
             self.items_frame.pack(fill='x', expand=True)
             
             # 初始隐藏窗口
             self.info_window.withdraw()
             
-            logging.info("信息窗口创建成功")
+            logging.debug("信息窗口创建成功")
             
         except Exception as e:
             logging.error(f"创建信息窗口失败: {e}")
@@ -617,7 +626,7 @@ class BazaarHelper:
                 if pos_y + window_height > screen_height:
                     pos_y = max(0, screen_height - window_height)
             self.info_window.geometry(f"{window_width}x{window_height}+{pos_x}+{pos_y}")
-            logging.info(f"窗口大小调整完成: {window_width}x{window_height}, 位置: {pos_x}, {pos_y}")
+            logging.debug(f"窗口大小调整完成: {window_width}x{window_height}, 位置: {pos_x}, {pos_y}")
         except Exception as e:
             logging.error(f"调整窗口大小失败: {e}")
             logging.error(traceback.format_exc())
@@ -708,8 +717,10 @@ class BazaarHelper:
             logging.info(f"怪物数据: {monster}")
             self.clear_frames()
             
+            has_skills = False
             # 显示技能
             if monster.get('skills'):
+                has_skills = True
                 self.skills_frame.pack(fill='x', pady=0, padx=0)
                 for skill in monster['skills']:
                     skill_frame = IconFrame(self.skills_frame)
@@ -728,6 +739,11 @@ class BazaarHelper:
                     
             # 显示物品
             if monster.get('items'):
+                if has_skills:
+                    # 添加分隔条
+                    separator = tk.Frame(self.content_frame, height=2, bg='#3A7BBA')
+                    separator.pack(fill='x', pady=5, padx=10)
+                
                 self.items_frame.pack(fill='x', pady=0, padx=0)
                 # 统计相同物品的数量
                 items_count = {}
@@ -895,7 +911,7 @@ class BazaarHelper:
             # 创建新窗口
             self.create_info_window()
             
-            logging.info(f"开始更新信息显示，OCR文本: {text}")
+            logging.debug(f"开始更新信息显示，OCR文本: {text}")
             match_type, match_name = self.find_best_match(text)
             
             display_success = False
@@ -922,15 +938,13 @@ class BazaarHelper:
             # 调整窗口大小
             self.adjust_window_size(pos_x, pos_y)
             
-            # 延迟50ms后再次调整窗口大小，确保内容完全加载
-            self.info_window.after(50, lambda: self.adjust_window_size(pos_x, pos_y))
-            
             # 显示窗口并置顶
-            self.info_window.deiconify()
-            self.info_window.lift()
-            self.info_window.attributes('-topmost', True)
+            if self.alt_pressed:  # 只在Alt键按下时显示窗口
+                self.info_window.deiconify()
+                self.info_window.lift()
+                self.info_window.attributes('-topmost', True)
             
-            logging.info(f"{match_type}信息显示完成，位置: {pos_x}, {pos_y}")
+            logging.debug(f"{match_type}信息显示完成，位置: {pos_x}, {pos_y}")
             
         except Exception as e:
             logging.error(f"信息显示异常: {e}")
@@ -1031,14 +1045,192 @@ class BazaarHelper:
             logging.error(f"销毁信息窗口失败: {e}")
             logging.error(traceback.format_exc())
 
+    def reset_game(self, icon, item):
+        """重置游戏（关闭进程并清理配置）"""
+        try:
+            # 查找游戏进程
+            game_process = None
+            for proc in psutil.process_iter(['name']):
+                try:
+                    if proc.name() == "The Bazaar.exe":
+                        game_process = proc
+                        break
+                except (psutil.NoSuchProcess, psutil.AccessDenied):
+                    continue
+
+            if game_process:
+                # 关闭游戏进程
+                game_process.terminate()
+                game_process.wait(timeout=5)
+
+            # 清理游戏配置文件
+            appdata_local = os.environ.get('LOCALAPPDATA', '')
+            appdata_roaming = os.environ.get('APPDATA', '')
+            
+            # 可能的配置文件路径
+            config_paths = [
+                os.path.join(appdata_local, 'TheBazaar'),
+                os.path.join(appdata_roaming, 'TheBazaar'),
+                os.path.join(appdata_local, 'Tempo', 'TheBazaar'),
+                os.path.join(os.environ.get('USERPROFILE', ''), 'Documents', 'TheBazaar')
+            ]
+            
+            # 清理配置文件
+            for path in config_paths:
+                if os.path.exists(path):
+                    try:
+                        # 只删除特定的缓存文件，保留用户设置
+                        for root, dirs, files in os.walk(path):
+                            for file in files:
+                                if file.lower() in ['cache.dat', 'temp.dat', 'session.dat', 'network.dat', 'connection.dat']:
+                                    full_path = os.path.join(root, file)
+                                    os.remove(full_path)
+                                    logging.info(f"已删除缓存文件: {full_path}")
+                    except Exception as e:
+                        logging.error(f"清理配置文件失败: {e}")
+
+            # 重置网络设置
+            self.reset_network()
+
+            logging.info("游戏重置完成，请重新启动游戏")
+                
+        except Exception as e:
+            logging.error(f"重置游戏失败: {e}")
+            logging.error(traceback.format_exc())
+
+    def reset_network(self):
+        """重置网络设置"""
+        try:
+            # 清理DNS缓存
+            subprocess.run(['ipconfig', '/flushdns'], shell=True, check=True)
+            logging.info("DNS缓存已清理")
+
+            # 重置网络适配器
+            subprocess.run(['netsh', 'winsock', 'reset'], shell=True, check=True)
+            subprocess.run(['netsh', 'int', 'ip', 'reset'], shell=True, check=True)
+            logging.info("网络适配器已重置")
+
+            # 重置防火墙规则
+            subprocess.run(['netsh', 'advfirewall', 'reset'], shell=True, check=True)
+            logging.info("防火墙规则已重置")
+
+            # 添加游戏到防火墙例外
+            game_path = None
+            steam_path = os.path.join(os.environ.get('ProgramFiles(x86)', ''), 'Steam', 'steamapps', 'common', 'TheBazaar')
+            if os.path.exists(steam_path):
+                game_path = os.path.join(steam_path, 'The Bazaar.exe')
+                
+            if game_path and os.path.exists(game_path):
+                subprocess.run([
+                    'netsh', 'advfirewall', 'firewall', 'add', 'rule',
+                    'name="The Bazaar"',
+                    f'dir=in', 'action=allow',
+                    f'program="{game_path}"',
+                    'enable=yes', 'profile=any'
+                ], shell=True, check=True)
+                logging.info("已将游戏添加到防火墙例外")
+
+            # 优化网络设置
+            subprocess.run(['netsh', 'interface', 'tcp', 'set', 'global', 'autotuninglevel=normal'], shell=True, check=True)
+            subprocess.run(['netsh', 'interface', 'tcp', 'set', 'global', 'chimney=enabled'], shell=True, check=True)
+            subprocess.run(['netsh', 'interface', 'tcp', 'set', 'global', 'rss=enabled'], shell=True, check=True)
+            logging.info("网络设置已优化")
+
+        except Exception as e:
+            logging.error(f"重置网络设置失败: {e}")
+            logging.error(traceback.format_exc())
+
+class SystemTray:
+    def __init__(self, helper):
+        self.helper = helper
+        self.icon = None
+        self.create_tray_icon()
+        
+    def create_tray_icon(self):
+        """创建系统托盘图标"""
+        try:
+            # 创建托盘图标
+            image = Image.open("Bazaar_Lens.ico")
+            menu = (
+                pystray.MenuItem("说明", self.show_info),
+                pystray.MenuItem("关闭", self.quit_app)
+            )
+            self.icon = pystray.Icon("BazaarHelper", image, "Bazaar Helper", menu)
+            
+        except Exception as e:
+            logging.error(f"创建系统托盘图标失败: {e}")
+            logging.error(traceback.format_exc())
+
+    def show_info(self, icon, item):
+        """显示说明信息"""
+        try:
+            # 创建说明窗口
+            info_window = tk.Toplevel()
+            info_window.title("使用说明")
+            info_window.geometry("600x400")
+            
+            # 创建文本框
+            text_widget = tk.Text(info_window, wrap=tk.WORD, padx=10, pady=10)
+            text_widget.pack(fill=tk.BOTH, expand=True)
+            
+            # 添加滚动条
+            scrollbar = tk.Scrollbar(info_window, command=text_widget.yview)
+            scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+            text_widget.config(yscrollcommand=scrollbar.set)
+            
+            try:
+                # 读取 Info.txt 文件
+                with open("Info.txt", "r", encoding="utf-8") as f:
+                    content = f.read()
+                text_widget.insert(tk.END, content)
+            except Exception as e:
+                text_widget.insert(tk.END, f"无法读取说明文件：{e}")
+            
+            # 设置文本框为只读
+            text_widget.config(state=tk.DISABLED)
+            
+        except Exception as e:
+            logging.error(f"显示说明信息失败: {e}")
+            
+    def quit_app(self, icon, item):
+        """退出应用程序"""
+        try:
+            # 先停止图标
+            icon.stop()
+            # 停止主程序
+            if self.helper:
+                self.helper.stop()
+            # 确保程序完全退出
+            os._exit(0)
+        except Exception as e:
+            logging.error(f"退出程序时出错: {e}")
+            os._exit(1)  # 强制退出
+            
+    def run(self):
+        """运行系统托盘"""
+        if self.icon:
+            self.icon.run()
+
 if __name__ == "__main__":
     helper = None
     try:
         if not is_admin():
             run_as_admin()
         else:
+            # 创建并隐藏 tk 根窗口
+            root = tk.Tk()
+            root.withdraw()
+            
+            # 创建主程序实例
             helper = BazaarHelper()
+            
+            # 创建并运行系统托盘（在新线程中运行）
+            tray_thread = threading.Thread(target=lambda: helper.system_tray.run(), daemon=True)
+            tray_thread.start()
+            
+            # 运行主程序
             helper.run()
+            
     except KeyboardInterrupt:
         pass
     finally:
