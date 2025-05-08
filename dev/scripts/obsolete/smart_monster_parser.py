@@ -95,11 +95,13 @@ def parse_monster_html(file_path):
                             text = re.sub(r'([a-z])([A-Z])', r'\1 \2', text)
                             description += text
                 # aspect-ratio
-                ap_div = skill_div.find('div', class_='_ap')
-                if ap_div and 'aspect-ratio' in ap_div.get('style', ''):
-                    m = re.search(r'aspect-ratio\s*:\s*([\d\.]+)', ap_div['style'])
-                    if m:
-                        aspect_ratio = float(m.group(1))
+                icon_div = skill_div.find('div', class_='_aA')
+                if icon_div and 'style' in icon_div.attrs:
+                    style = icon_div['style']
+                    # 检查是否直接设置了aspect-ratio
+                    aspect_match = re.search(r'aspect-ratio:\s*([\d.]+)', style)
+                    if aspect_match:
+                        aspect_ratio = float(aspect_match.group(1))
                 if name and description:
                     skills.append({
                         'name': name,
@@ -114,18 +116,22 @@ def parse_monster_html(file_path):
     if item_section:
         item_list_div = item_section.find_next_sibling('div')
         if item_list_div:
+            # 用于统计相同物品的数量
+            item_counts = {}
             for item_div in item_list_div.find_all('div', class_='_ah', recursive=False):
                 # 顺序：名称，图标，描述，aspect_ratio
                 name = None
                 icon = None
                 description = None
-                aspect_ratio = 1.0
+                aspect_ratio = 0.5  # 默认物品比例为0.5:1
                 # 名称
                 h3 = item_div.find('h3')
                 if h3:
                     span = h3.find('span')
                     if span:
                         name = span.text.strip()
+                        # 先移除已有的数量标记
+                        name = re.sub(r'\s*x\d+\s*$', '', name)
                 # 图标
                 img = item_div.find('img')
                 if img:
@@ -150,18 +156,41 @@ def parse_monster_html(file_path):
                             text = re.sub(r'([a-z])([A-Z])', r'\1 \2', text)
                             description += text
                 # aspect-ratio
-                ap_div = item_div.find('div', class_='_ap')
-                if ap_div and 'aspect-ratio' in ap_div.get('style', ''):
-                    m = re.search(r'aspect-ratio\s*:\s*([\d\.]+)', ap_div['style'])
-                    if m:
-                        aspect_ratio = float(m.group(1))
+                icon_div = item_div.find('div', class_='_aA')
+                if icon_div and 'style' in icon_div.attrs:
+                    style = icon_div['style']
+                    # 检查是否直接设置了aspect-ratio
+                    aspect_match = re.search(r'aspect-ratio:\s*([\d.]+)', style)
+                    if aspect_match:
+                        aspect_ratio = float(aspect_match.group(1))
+                
                 if name and description:
-                    items.append({
-                        'name': name,
-                        'icon': icon or '',
-                        'description': description,
-                        'aspect_ratio': aspect_ratio
-                    })
+                    # 创建物品的唯一标识（名称+描述）
+                    item_key = f"{name}|{description}"
+                    if item_key in item_counts:
+                        item_counts[item_key]['count'] += 1
+                    else:
+                        item_counts[item_key] = {
+                            'name': name,
+                            'icon': icon or '',
+                            'description': description,
+                            'aspect_ratio': aspect_ratio,
+                            'count': 1
+                        }
+            
+            # 将统计后的物品添加到结果中
+            for item_data in item_counts.values():
+                name = item_data['name']
+                count = item_data['count']
+                if count > 1:
+                    name = f"{name} 【x{count}】"  # 使用中文方括号，更加醒目
+                items.append({
+                    'name': name,
+                    'icon': item_data['icon'],
+                    'description': item_data['description'],
+                    'aspect_ratio': item_data['aspect_ratio']
+                })
+    
     result['items'] = items
     return result
 

@@ -15,19 +15,19 @@
           "name": "Med Kit",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/MedKit@256.webp?v=0",
           "description": "When you sell this, your leftmost Heal item gains 5 » 10 » 20 » 40 Heal.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Bluenanas",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/BlueBananas@256.webp?v=0",
           "description": "Heal 10 » 20 » 40 » 80.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Duct Tape",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/DuctTape@256.webp?v=0",
           "description": "Slow 1 item(s) for 1 » 2 » 3 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -46,25 +46,25 @@
           "name": "Pelt",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Pelt@256.webp?v=0",
           "description": "Sells for gold",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Fang",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Fangs@256.webp?v=0",
           "description": "Deal 5 » 10 » 15 » 20 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Fang",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Fangs@256.webp?v=0",
           "description": "Deal 5 » 10 » 15 » 20 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Pelt",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Pelt@256.webp?v=0",
           "description": "Sells for gold",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -76,7 +76,7 @@
           "name": "Scrap",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Scrap@256.webp?v=0",
           "description": "When you sell this, your leftmost Shield item gains +3 » +6 » +12 » +24 Shield.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Silk Scarf",
@@ -88,7 +88,7 @@
           "name": "Scrap",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Scrap@256.webp?v=0",
           "description": "When you sell this, your leftmost Shield item gains +3 » +6 » +12 » +24 Shield.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -107,13 +107,13 @@
           "name": "Insect Wing",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/InsectWing@256.webp?v=0",
           "description": "When you sell this, reduce your leftmost item's cooldown by 3% » 6% » 9% » 12%.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Stinger",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Stinger@256.webp?v=0",
           "description": "Deal 5 » 10 » 20 » 40 Damage.Slow 1 item for 1 » 2 » 3 » 4 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Langxian",
@@ -125,7 +125,7 @@
           "name": "Eagle Talisman",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/EagleTalisman@256.webp?v=0",
           "description": "When you sell this, your leftmost item gains 5% » 10% » 15% » 20% Crit Chance.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -144,19 +144,19 @@
           "name": "Cinders",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Cinder@256.webp?v=0",
           "description": "When you sell this, your leftmost Burn item gains +1 » +2 » +3 » +4 Burn.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Lighter",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Lighter@256.webp?v=0",
           "description": "Burn 2 » 4 » 6 » 8.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Cinders",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Cinder@256.webp?v=0",
           "description": "When you sell this, your leftmost Burn item gains +1 » +2 » +3 » +4 Burn.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -175,25 +175,25 @@
           "name": "Gland",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Gland@256.webp?v=0",
           "description": "When you sell this, you gain 1 » 2 » 3 » 4 Regen.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Toxic Fang",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Fangs@256.webp?v=0",
           "description": "Deal 5 » 10 » 15 » 20 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Fang",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Fangs@256.webp?v=0",
           "description": "Deal 5 » 10 » 15 » 20 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Extract",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Extract@256.webp?v=0",
           "description": "When you sell this, your leftmost Poison item gains +1 » +2 » +3 » +4 Poison.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -212,7 +212,7 @@
           "name": "Coconut",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Coconut@256.webp?v=0",
           "description": "When you sell this, permanently gain 10 » 20 » 30 » 40 Max Health.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Crusher Claw",
@@ -224,7 +224,7 @@
           "name": "Sea Shell",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/SeaShell@256.webp?v=0",
           "description": "Shield 10 » 15 » 20 » 25 for each Aquatic item you have.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -249,25 +249,25 @@
           "name": "Insect Wing",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/InsectWing@256.webp?v=0",
           "description": "When you sell this, reduce your leftmost item's cooldown by 3% » 6% » 9% » 12%.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Proboscis",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Proboscis@256.webp?v=0",
           "description": "When you Slow, deal 4 » 8 » 12 » 16 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Amber",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Amber@256.webp?v=0",
           "description": "Slow 1 » 2 » 3 item(s) for 3 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Insect Wing",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/InsectWing@256.webp?v=0",
           "description": "When you sell this, reduce your leftmost item's cooldown by 3% » 6% » 9% » 12%.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -304,7 +304,7 @@
           "name": "Concealed Dagger",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/ConcealedDagger@256.webp?v=0",
           "description": "Deal 30 » 40 » 50 Damage.Gain 1 » 2 » 3 gold.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Grindstone",
@@ -316,7 +316,7 @@
           "name": "Sharpening Stone",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/SharpeningStone@256.webp?v=0",
           "description": "When you sell this, your leftmost Weapon gains 5 » 10 » 15 » 20 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -335,13 +335,13 @@
           "name": "Scrap",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Scrap@256.webp?v=0",
           "description": "When you sell this, your leftmost Shield item gains +3 » +6 » +12 » +24 Shield.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Gearnola Bar",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/GearnolaBar@256.webp?v=0",
           "description": "Shield 30 » 60 » 90 » 120.Ammo: 2 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Junkyard Club",
@@ -359,13 +359,13 @@
           "name": "Barbed Wire",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/BarbedWire@256.webp?v=0",
           "description": "Deal 10 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Med Kit",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/MedKit@256.webp?v=0",
           "description": "When you sell this, your leftmost Heal item gains 5 » 10 » 20 » 40 Heal.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -384,31 +384,31 @@
           "name": "Scrap",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Scrap@256.webp?v=0",
           "description": "When you sell this, your leftmost Shield item gains +3 » +6 » +12 » +24 Shield.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Tusked Helm",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/TuskBayonets@256.webp?v=0",
           "description": "Deal 10 » 15 » 20 » 25 Damage.Shield 10 » 15 » 20 » 25.Multicast: 2",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Old Sword",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/OldSword@256.webp?v=0",
           "description": "Deal 5 » 10 » 20 » 40 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Hatchet",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Hatchet@256.webp?v=0",
           "description": "Deal 6 » 12 » 24 » 48 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Shoe Blade",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/ShoeBlade@256.webp?v=0",
           "description": "Deal 20 » 40 » 60 » 80 Damage.Crit Chance: 15 » 30 » 50 » 100﻿%",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Lumboars",
@@ -420,7 +420,7 @@
           "name": "Sharpening Stone",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/SharpeningStone@256.webp?v=0",
           "description": "When you sell this, your leftmost Weapon gains 5 » 10 » 15 » 20 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -439,31 +439,31 @@
           "name": "Vial of Blood",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/VialOfBlood@256.webp?v=0",
           "description": "When you sell this, gain 1 » 2 » 3 XP.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Bottled Lightning",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/BottledLightning@256.webp?v=0",
           "description": "Deal 20 » 30 » 40 » 50 Damage.Burn 2 » 3 » 4 » 5.Ammo: 1 Crit Chance: 100﻿%",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Tazidian Dagger",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/TazidianDagger@256.webp?v=0",
           "description": "Deal 5 » 10 » 15 » 20 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Fire Potion",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/FirePotion@256.webp?v=0",
           "description": "Burn 6 » 8 » 10 » 12.Ammo: 1 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Vial of Blood",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/VialOfBlood@256.webp?v=0",
           "description": "When you sell this, gain 1 » 2 » 3 XP.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -482,13 +482,13 @@
           "name": "Scrap",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Scrap@256.webp?v=0",
           "description": "When you sell this, your leftmost Shield item gains +3 » +6 » +12 » +24 Shield.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Gearnola Bar",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/GearnolaBar@256.webp?v=0",
           "description": "Shield 30 » 60 » 90 » 120.Ammo: 2 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Junkyard Club",
@@ -506,13 +506,13 @@
           "name": "Barbed Wire",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/BarbedWire@256.webp?v=0",
           "description": "Deal 10 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Med Kit",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/MedKit@256.webp?v=0",
           "description": "When you sell this, your leftmost Heal item gains 5 » 10 » 20 » 40 Heal.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -531,13 +531,13 @@
           "name": "Cinders",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Cinder@256.webp?v=0",
           "description": "When you sell this, your leftmost Burn item gains +1 » +2 » +3 » +4 Burn.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Bar of Gold",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/GoldBar@256.webp?v=0",
           "description": "Sells for gold",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Fiery Cutlass",
@@ -555,13 +555,13 @@
           "name": "Bar of Gold",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/GoldBar@256.webp?v=0",
           "description": "Sells for gold",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Sharpening Stone",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/SharpeningStone@256.webp?v=0",
           "description": "When you sell this, your leftmost Weapon gains 5 » 10 » 15 » 20 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -580,31 +580,31 @@
           "name": "Red Piggles R",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/PigglesRed@256.webp?v=0",
           "description": "The Weapon to the right of this gains +4 » +8 » +12 » +16 Damage for the fight.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Yo-Yo",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/YoYo@256.webp?v=0",
           "description": "Deal 1 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Blue Piggles L",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/PigglesBlue@256.webp?v=0",
           "description": "The item to the left of this gains 4% » 8% » 12% » 16% Crit Chance for the fight.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Piggles",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Piggles@256.webp?v=0",
           "description": "Charge adjacent Small items 1 » 2 » 3 » 4 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Red Piggles X",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/PigglesRed@256.webp?v=0",
           "description": "Your Weapons gain 1 » 2 » 3 » 4 Damage for the fight.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -623,7 +623,7 @@
           "name": "Icicle",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Snowball@256.webp?v=0",
           "description": "At the start of each fight, Freeze 1 item(s) for 3 » 4 » 5 » 6 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Weights",
@@ -635,7 +635,7 @@
           "name": "Handaxe",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Handaxe@256.webp?v=0",
           "description": "Deal 10 » 15 » 20 » 25 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Frozen Bludgeon",
@@ -666,25 +666,25 @@
           "name": "Scrap",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Scrap@256.webp?v=0",
           "description": "When you sell this, your leftmost Shield item gains +3 » +6 » +12 » +24 Shield.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Force Field",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Forcefield@256.webp?v=0",
           "description": "Shield 30 » 40 » 50.Deal Damage equal to your Shield.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Goggles",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Goggles@256.webp?v=0",
           "description": "Shield 15 » 30 » 60 » 120.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Barbed Wire",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/BarbedWire@256.webp?v=0",
           "description": "Deal 10 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -703,25 +703,25 @@
           "name": "Gunpowder",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Gunpowder@256.webp?v=0",
           "description": "When you sell this, your leftmost Ammo item gains 1 » 2 » 3 Max Ammo.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Laser Pistol",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/LaserPistol@256.webp?v=0",
           "description": "Deal 8 » 16 » 24 » 32 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Uzi",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Uzi@256.webp?v=0",
           "description": "Deal 10 Damage.Ammo: 6 » 8 » 10 » 12 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Bolas",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Bolas@256.webp?v=0",
           "description": "Deal 40 » 60 » 80 » 100 Damage.Slow 1 item for 2 » 3 » 4 » 5 second(s).Ammo: 2 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Weakpoint Detector",
@@ -733,13 +733,13 @@
           "name": "Grappling Hook",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/GrapplingHook@256.webp?v=0",
           "description": "Deal 12 » 18 » 24 » 32 Damage.Slow 1 item for 2 » 3 » 4 » 5 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Eagle Talisman",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/EagleTalisman@256.webp?v=0",
           "description": "When you sell this, your leftmost item gains 5% » 10% » 15% » 20% Crit Chance.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -764,19 +764,19 @@
           "name": "Sharpening Stone",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/SharpeningStone@256.webp?v=0",
           "description": "When you sell this, your leftmost Weapon gains 5 » 10 » 15 » 20 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Orbital Polisher",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/OrbitalPolisher@256.webp?v=0",
           "description": "Adjacent Weapons gain 5 » 10 Damage for the fight.Adjacent Shield items gain 5 » 10 Shield for the fight.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Goggles",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Goggles@256.webp?v=0",
           "description": "Shield 15 » 30 » 60 » 120.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Toolbox",
@@ -788,19 +788,19 @@
           "name": "Multitool",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Multitool@256.webp?v=0",
           "description": "Haste 1 item for 1 » 2 » 3 » 4 second(s).Slow 1 item for 1 » 2 » 3 » 4 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Energy Potion",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/EnergyPotion@256.webp?v=0",
           "description": "Haste your other items for 1 » 2 » 3 second(s).Ammo: 1 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Eagle Talisman",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/EagleTalisman@256.webp?v=0",
           "description": "When you sell this, your leftmost item gains 5% » 10% » 15% » 20% Crit Chance.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -819,13 +819,13 @@
           "name": "Bar of Gold",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/GoldBar@256.webp?v=0",
           "description": "Sells for gold",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Shoe Blade",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/ShoeBlade@256.webp?v=0",
           "description": "Deal 20 » 40 » 60 » 80 Damage.Crit Chance: 15 » 30 » 50 » 100﻿%",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Clockwork Blades",
@@ -843,13 +843,13 @@
           "name": "Shoe Blade",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/ShoeBlade@256.webp?v=0",
           "description": "Deal 20 » 40 » 60 » 80 Damage.Crit Chance: 15 » 30 » 50 » 100﻿%",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Bar of Gold",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/GoldBar@256.webp?v=0",
           "description": "Sells for gold",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -868,37 +868,37 @@
           "name": "Bar of Gold",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/GoldBar@256.webp?v=0",
           "description": "Sells for gold",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Crow's Nest",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/CrowsNest@256.webp?v=0",
           "description": "Your Weapons have +20% » +40% » +60% » +80% Crit Chance.If you have exactly one Weapon, that Weapon has lifesteal.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Powder Flask",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/PowderFlask@256.webp?v=0",
           "description": "Reload the item to the right of this 1 » 2 » 3 » 4 Ammo.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Revolver",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Revolver@256.webp?v=0",
           "description": "Deal 8 » 16 » 24 » 32 Damage.Ammo: 6 Crit Chance: 20﻿%",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Cannonball",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Cannonball@256.webp?v=0",
           "description": "Adjacent items have +1 » +2 » +3 » +4 Max Ammo.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Invulnerability Potion",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/ShieldPotion@256.webp?v=0",
           "description": "You take no Damage for 1 » 2 second(s).Ammo: 1 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -917,13 +917,13 @@
           "name": "Spare Change",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/SpareChange@256.webp?v=0",
           "description": "Sells for gold",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Succulents",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Succulents@256.webp?v=0",
           "description": "Heal 1 » 2 » 3 » 4.This permanently gains +1 » +2 » +3 » +4 Heal.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Golf Clubs",
@@ -941,13 +941,13 @@
           "name": "Bandages",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Bandages@256.webp?v=0",
           "description": "Heal 5 » 10 » 20 » 40.Shield 5 » 10 » 20 » 40.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Med Kit",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/MedKit@256.webp?v=0",
           "description": "When you sell this, your leftmost Heal item gains 5 » 10 » 20 » 40 Heal.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -959,37 +959,37 @@
           "name": "Crypto",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Crypto@256.webp?v=0",
           "description": "At the start of each hour, set this item's value to a number between 0 and 5 » 10 » 20 » 40.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Nitro",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Nitro@256.webp?v=0",
           "description": "Burn both players 4 » 6 » 8.Charge 1 item 1 » 2 » 3 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Virus",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Virus@256.webp?v=0",
           "description": "Poison yourself 1 » 2 » 3 » 4 for each Virus on your board.Transform another non-legendary small item on each player's board into Virus for the rest of the fight.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Solar Farm",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/SolarPanels@256.webp?v=0",
           "description": "Haste your other items for 1 » 2 » 3 second(s).Gain 6 » 9 » 12 Regen for the fight.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Virus",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Virus@256.webp?v=0",
           "description": "Poison yourself 1 » 2 » 3 » 4 for each Virus on your board.Transform another non-legendary small item on each player's board into Virus for the rest of the fight.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Crypto",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Crypto@256.webp?v=0",
           "description": "At the start of each hour, set this item's value to a number between 0 and 5 » 10 » 20 » 40.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -1008,13 +1008,13 @@
           "name": "Med Kit",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/MedKit@256.webp?v=0",
           "description": "When you sell this, your leftmost Heal item gains 5 » 10 » 20 » 40 Heal.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Haladie",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Haladie@256.webp?v=0",
           "description": "Deal 4 » 8 » 16 » 32 Damage.Multicast: 2",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Ganjo",
@@ -1032,7 +1032,7 @@
           "name": "Scrap",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Scrap@256.webp?v=0",
           "description": "When you sell this, your leftmost Shield item gains +3 » +6 » +12 » +24 Shield.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -1057,43 +1057,43 @@
           "name": "Coconut",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Coconut@256.webp?v=0",
           "description": "When you sell this, permanently gain 10 » 20 » 30 » 40 Max Health.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Chum",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Chum@256.webp?v=0",
           "description": "Your Aquatic items gain +4% » +6% » +8% » +10% Crit Chance for the fight.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Piranha",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Piranha@256.webp?v=0",
           "description": "Deal 6 » 12 » 18 » 24 Damage.Crit Chance: 20﻿%",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "IllusoRay",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/IllusoRay@256.webp?v=0",
           "description": "Slow 1 item(s) for 1 » 2 » 3 » 4 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Narwhal",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Narwhal@256.webp?v=0",
           "description": "Deal 10 » 20 » 30 » 40 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Electric Eels",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/ElectricEels@256.webp?v=0",
           "description": "Deal 50 Damage.Slow 1 item for 2 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Citrus",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Citrus@256.webp?v=0",
           "description": "When you sell this, permanently gain 1 » 2 » 3 » 4 Regen.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -1112,37 +1112,37 @@
           "name": "Lighter",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Lighter@256.webp?v=0",
           "description": "Burn 2 » 4 » 6 » 8.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Magma Core",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/MagmaCore@256.webp?v=0",
           "description": "At the start of each fight, Burn 6 » 9 » 12 » 15.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Magma Core",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/MagmaCore@256.webp?v=0",
           "description": "At the start of each fight, Burn 6 » 9 » 12 » 15.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Magma Core",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/MagmaCore@256.webp?v=0",
           "description": "At the start of each fight, Burn 6 » 9 » 12 » 15.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Magma Core",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/MagmaCore@256.webp?v=0",
           "description": "At the start of each fight, Burn 6 » 9 » 12 » 15.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Cinders",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Cinder@256.webp?v=0",
           "description": "When you sell this, your leftmost Burn item gains +1 » +2 » +3 » +4 Burn.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -1161,25 +1161,25 @@
           "name": "Gunpowder",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Gunpowder@256.webp?v=0",
           "description": "When you sell this, your leftmost Ammo item gains 1 » 2 » 3 Max Ammo.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Powder Flask",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/PowderFlask@256.webp?v=0",
           "description": "Reload the item to the right of this 1 » 2 » 3 » 4 Ammo.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Revolver",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Revolver@256.webp?v=0",
           "description": "Deal 8 » 16 » 24 » 32 Damage.Ammo: 6 Crit Chance: 20﻿%",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Cannonball",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Cannonball@256.webp?v=0",
           "description": "Adjacent items have +1 » +2 » +3 » +4 Max Ammo.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Pistol Sword",
@@ -1191,13 +1191,13 @@
           "name": "Throwing Knives",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/ThrowingKnives@256.webp?v=0",
           "description": "Deal 33 Damage.Ammo: 3 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Gunpowder",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Gunpowder@256.webp?v=0",
           "description": "When you sell this, your leftmost Ammo item gains 1 » 2 » 3 Max Ammo.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -1216,61 +1216,61 @@
           "name": "Pelt",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Pelt@256.webp?v=0",
           "description": "Sells for gold",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Pelt",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Pelt@256.webp?v=0",
           "description": "Sells for gold",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Pelt",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Pelt@256.webp?v=0",
           "description": "Sells for gold",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Pelt",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Pelt@256.webp?v=0",
           "description": "Sells for gold",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Shiny Fang",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Fangs@256.webp?v=0",
           "description": "Deal 5 » 10 » 15 » 20 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Shiny Fang",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Fangs@256.webp?v=0",
           "description": "Deal 5 » 10 » 15 » 20 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Pelt",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Pelt@256.webp?v=0",
           "description": "Sells for gold",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Pelt",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Pelt@256.webp?v=0",
           "description": "Sells for gold",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Pelt",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Pelt@256.webp?v=0",
           "description": "Sells for gold",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Pelt",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Pelt@256.webp?v=0",
           "description": "Sells for gold",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -1289,37 +1289,37 @@
           "name": "Lighter",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Lighter@256.webp?v=0",
           "description": "Burn 2 » 4 » 6 » 8.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Magma Core",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/MagmaCore@256.webp?v=0",
           "description": "At the start of each fight, Burn 6 » 9 » 12 » 15.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Magma Core",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/MagmaCore@256.webp?v=0",
           "description": "At the start of each fight, Burn 6 » 9 » 12 » 15.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Magma Core",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/MagmaCore@256.webp?v=0",
           "description": "At the start of each fight, Burn 6 » 9 » 12 » 15.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Magma Core",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/MagmaCore@256.webp?v=0",
           "description": "At the start of each fight, Burn 6 » 9 » 12 » 15.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Cinders",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Cinder@256.webp?v=0",
           "description": "When you sell this, your leftmost Burn item gains +1 » +2 » +3 » +4 Burn.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -1344,7 +1344,7 @@
           "name": "Eagle Talisman",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/EagleTalisman@256.webp?v=0",
           "description": "When you sell this, your leftmost item gains 5% » 10% » 15% » 20% Crit Chance.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Shadowed Cloak",
@@ -1356,7 +1356,7 @@
           "name": "Harkuvian Launcher",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/HakurvanLauncher@256.webp?v=0",
           "description": "Deal 75 » 150 » 300 » 600 Damage.Ammo: 2 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Rocket Boots",
@@ -1368,13 +1368,13 @@
           "name": "Goggles",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Goggles@256.webp?v=0",
           "description": "Shield 15 » 30 » 60 » 120.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Gunpowder",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Gunpowder@256.webp?v=0",
           "description": "When you sell this, your leftmost Ammo item gains 1 » 2 » 3 Max Ammo.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -1399,7 +1399,7 @@
           "name": "Cinders",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Cinder@256.webp?v=0",
           "description": "When you sell this, your leftmost Burn item gains +1 » +2 » +3 » +4 Burn.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Sunlight Spear",
@@ -1411,7 +1411,7 @@
           "name": "Cinders",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Cinder@256.webp?v=0",
           "description": "When you sell this, your leftmost Burn item gains +1 » +2 » +3 » +4 Burn.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Restorative Fire Claw",
@@ -1436,37 +1436,37 @@
           "name": "Insect Wing",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/InsectWing@256.webp?v=0",
           "description": "When you sell this, reduce your leftmost item's cooldown by 3% » 6% » 9% » 12%.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Junkyard Lance",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/JunkyardLance@256.webp?v=0",
           "description": "Deal 15 » 30 » 60 » 100 Damage for each Small item you have (including Stash).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Busy Bee",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/BusyBees@256.webp?v=0",
           "description": "Deal 10 » 20 » 30 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Busy Bee",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/BusyBees@256.webp?v=0",
           "description": "Deal 10 » 20 » 30 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Busy Bee",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/BusyBees@256.webp?v=0",
           "description": "Deal 10 » 20 » 30 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Insect Wing",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/InsectWing@256.webp?v=0",
           "description": "When you sell this, reduce your leftmost item's cooldown by 3% » 6% » 9% » 12%.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -1497,13 +1497,13 @@
           "name": "Vial of Blood",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/VialOfBlood@256.webp?v=0",
           "description": "When you sell this, gain 1 » 2 » 3 XP.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Black Rose",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/BlackRose@256.webp?v=0",
           "description": "Gain 4 Regen for the fight.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Toxic Clockwork Blades",
@@ -1521,13 +1521,13 @@
           "name": "Trained Spider",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/TrainedSpider@256.webp?v=0",
           "description": "Poison 1 » 2 » 3 » 4.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Basilisk Fang",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/BasiliskFang@256.webp?v=0",
           "description": "Deal 10 » 20 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -1546,43 +1546,43 @@
           "name": "Crypto",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Crypto@256.webp?v=0",
           "description": "At the start of each hour, set this item's value to a number between 0 and 5 » 10 » 20 » 40.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "First Aiden",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/FirstAiden@256.webp?v=0",
           "description": "Heal 20 » 30 » 40 » 50.Haste 1 item for 1 » 2 » 3 » 4 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Chris Army Knife",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/ChrisArmyKnife@256.webp?v=0",
           "description": "Deal 15 Damage.Shield 15.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Bill Dozer",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/BillDozer@256.webp?v=0",
           "description": "Deal 10 » 20 » 40 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Bomb Squad",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/BombSquad@256.webp?v=0",
           "description": "Burn 6.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Char Cole",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Fireballs@256.webp?v=0",
           "description": "Burn 2 » 3 » 4.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Crypto",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Crypto@256.webp?v=0",
           "description": "At the start of each hour, set this item's value to a number between 0 and 5 » 10 » 20 » 40.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -1607,13 +1607,13 @@
           "name": "Sharpening Stone",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/SharpeningStone@256.webp?v=0",
           "description": "When you sell this, your leftmost Weapon gains 5 » 10 » 15 » 20 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Shielded Brass Knuckles",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/BrassKnuckles@256.webp?v=0",
           "description": "Deal 8 » 16 » 24 » 32 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Dog",
@@ -1625,13 +1625,13 @@
           "name": "Temporary Shelter",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/TemporaryShelter@256.webp?v=0",
           "description": "Shield 10 » 20 » 40 » 80.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Pepper Spray",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/PepperSpray@256.webp?v=0",
           "description": "Deal 10 » 15 » 20 » 25 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -1650,13 +1650,13 @@
           "name": "Cinders",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Cinder@256.webp?v=0",
           "description": "When you sell this, your leftmost Burn item gains +1 » +2 » +3 » +4 Burn.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Curry",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Curry@256.webp?v=0",
           "description": "Burn 4 » 6 » 8.Charge another small item 3 » 4 » 5 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Skillet",
@@ -1668,13 +1668,13 @@
           "name": "Black Pepper",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/PepperMill@256.webp?v=0",
           "description": "Burn 2 » 3 » 4.Charge adjacent items 1 » 2 » 3 second(s).Multicast: 2",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Hot Sauce",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/HotSauce@256.webp?v=0",
           "description": "Burn 10 » 20.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Pickled Peppers",
@@ -1699,49 +1699,49 @@
           "name": "Pelt",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Pelt@256.webp?v=0",
           "description": "Sells for gold",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Broken Shackles",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/BrokenShackles@256.webp?v=0",
           "description": "Your Weapons gain 4 » 8 » 12 Damage for the fight.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Claws",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Claws@256.webp?v=0",
           "description": "Deal 10 » 20 » 30 » 40 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Obsidian Fang",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Fangs@256.webp?v=0",
           "description": "Deal 5 » 10 » 15 » 20 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Obsidian Fang",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Fangs@256.webp?v=0",
           "description": "Deal 5 » 10 » 15 » 20 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Claws",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Claws@256.webp?v=0",
           "description": "Deal 10 » 20 » 30 » 40 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Eagle Talisman",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/EagleTalisman@256.webp?v=0",
           "description": "When you sell this, your leftmost item gains 5% » 10% » 15% » 20% Crit Chance.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Pelt",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Pelt@256.webp?v=0",
           "description": "Sells for gold",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -1760,49 +1760,49 @@
           "name": "Insect Wing",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/InsectWing@256.webp?v=0",
           "description": "When you sell this, reduce your leftmost item's cooldown by 3% » 6% » 9% » 12%.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Insect Wing",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/InsectWing@256.webp?v=0",
           "description": "When you sell this, reduce your leftmost item's cooldown by 3% » 6% » 9% » 12%.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Amber",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Amber@256.webp?v=0",
           "description": "Slow 1 » 2 » 3 item(s) for 3 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Proboscis",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Proboscis@256.webp?v=0",
           "description": "When you Slow, deal 4 » 8 » 12 » 16 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Neural Toxin",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/NeuralToxin@256.webp?v=0",
           "description": "When you use an adjacent Weapon, Slow 1 item(s) for 1 » 2 » 3 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Stinger",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Stinger@256.webp?v=0",
           "description": "Deal 5 » 10 » 20 » 40 Damage.Slow 1 item for 1 » 2 » 3 » 4 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Insect Wing",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/InsectWing@256.webp?v=0",
           "description": "When you sell this, reduce your leftmost item's cooldown by 3% » 6% » 9% » 12%.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Insect Wing",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/InsectWing@256.webp?v=0",
           "description": "When you sell this, reduce your leftmost item's cooldown by 3% » 6% » 9% » 12%.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -1821,13 +1821,13 @@
           "name": "Pelt",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Pelt@256.webp?v=0",
           "description": "Sells for gold",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Dragon Whelp",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/DragonWhelp@256.webp?v=0",
           "description": "Deal 1 Damage.Burn equal to this item's Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Crook",
@@ -1851,13 +1851,13 @@
           "name": "Trained Spider",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/TrainedSpider@256.webp?v=0",
           "description": "Poison 1 » 2 » 3 » 4.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Pelt",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Pelt@256.webp?v=0",
           "description": "Sells for gold",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -1876,37 +1876,37 @@
           "name": "Scrap",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Scrap@256.webp?v=0",
           "description": "When you sell this, your leftmost Shield item gains +3 » +6 » +12 » +24 Shield.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Chris Army Knife",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/ChrisArmyKnife@256.webp?v=0",
           "description": "Deal 15 Damage.Shield 15.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Power Sander",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/PowerSander@256.webp?v=0",
           "description": "Haste the item to the right of this for 1 » 2 » 3 » 4 second(s).Slow the item to the left of this for 1 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Crane",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Crane@256.webp?v=0",
           "description": "Deal 100 » 200 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Forklift",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/ForkLift@256.webp?v=0",
           "description": "Deal 100 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Cog",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Cog@256.webp?v=0",
           "description": "Haste 1 adjacent item for 1 » 2 » 3 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -1925,37 +1925,37 @@
           "name": "Junkyard Catapult",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/JunkyardCatapult@256.webp?v=0",
           "description": "Deal 25 » 50 » 100 Damage.Burn 6 » 8 » 10.Poison 4 » 6 » 8 Ammo: 1 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Plasma Grenade",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/PlasmaGrenade@256.webp?v=0",
           "description": "Burn both players 5 » 10 » 15 » 20.Slow all enemy items for 1 » 2 » 3 » 4 second(s).Ammo: 1 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Grenade",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Grenade@256.webp?v=0",
           "description": "Deal 50 » 100 » 150 » 200 Damage.Ammo: 1 Crit Chance: 25﻿%",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Noxious Potion",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/SustainingPotion@256.webp?v=0",
           "description": "Poison 3 » 6 » 9 » 12.Ammo: 1 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Rainbow Potion",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/RainbowPotion@256.webp?v=0",
           "description": "Burn 3 » 6 » 9.\n \n Poison 3 » 6 » 9.Freeze 1 small item for 1 » 2 » 3 second(s).Slow 1 item for 2 » 3 » 4 second(s).Ammo: 1 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Grapeshot",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Grapeshot@256.webp?v=0",
           "description": "Deal 15 » 30 » 60 Damage.Ammo: 2 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Powder Keg",
@@ -1980,13 +1980,13 @@
           "name": "Extract",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Extract@256.webp?v=0",
           "description": "When you sell this, your leftmost Poison item gains +1 » +2 » +3 » +4 Poison.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Bandages",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Bandages@256.webp?v=0",
           "description": "Heal 5 » 10 » 20 » 40.Shield 5 » 10 » 20 » 40.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Ouroboros Statue",
@@ -2004,25 +2004,25 @@
           "name": "Thurible",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Thurible@256.webp?v=0",
           "description": "Burn 3 » 5 » 7 » 9.Gain 1 » 2 » 3 » 4 Regen for the fight.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Ectoplasm",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Ectoplasm@256.webp?v=0",
           "description": "Poison 1 » 2 » 3.Heal equal to your enemy's Poison.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Bandages",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Bandages@256.webp?v=0",
           "description": "Heal 5 » 10 » 20 » 40.Shield 5 » 10 » 20 » 40.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Vial of Blood",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/VialOfBlood@256.webp?v=0",
           "description": "When you sell this, gain 1 » 2 » 3 XP.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -2102,7 +2102,7 @@
           "name": "Cinders",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Cinder@256.webp?v=0",
           "description": "When you sell this, your leftmost Burn item gains +1 » +2 » +3 » +4 Burn.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Fire Claw",
@@ -2114,31 +2114,31 @@
           "name": "Magma Core",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/MagmaCore@256.webp?v=0",
           "description": "At the start of each fight, Burn 6 » 9 » 12 » 15.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Infernal Greatsword",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/InfernalGreatsword@256.webp?v=0",
           "description": "Deal 2 Damage.Burn equal to this item's Damage.This gains Damage equal to your enemy's Burn for the fight.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Magma Core",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/MagmaCore@256.webp?v=0",
           "description": "At the start of each fight, Burn 6 » 9 » 12 » 15.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Ruby",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Ruby@256.webp?v=0",
           "description": "Burn 3 » 6 » 9 » 12.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Cinders",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Cinder@256.webp?v=0",
           "description": "When you sell this, your leftmost Burn item gains +1 » +2 » +3 » +4 Burn.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -2169,13 +2169,13 @@
           "name": "Ectoplasm",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Ectoplasm@256.webp?v=0",
           "description": "Poison 1 » 2 » 3.Heal equal to your enemy's Poison.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Icicle",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Snowball@256.webp?v=0",
           "description": "At the start of each fight, Freeze 1 item(s) for 3 » 4 » 5 » 6 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Necronomicon",
@@ -2187,25 +2187,25 @@
           "name": "Icicle",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Snowball@256.webp?v=0",
           "description": "At the start of each fight, Freeze 1 item(s) for 3 » 4 » 5 » 6 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Wand",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Wand@256.webp?v=0",
           "description": "Charge your other non-Weapon items 1 » 2 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Emerald",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Emerald@256.webp?v=0",
           "description": "Poison 1 » 2 » 3 » 4.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Soul Ring",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Ring@256.webp?v=0",
           "description": "Poison equal to your Regen.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -2224,25 +2224,25 @@
           "name": "Dishwasher",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Dishwasher@256.webp?v=0",
           "description": "Haste your Tools for 1 » 2 » 3 » 4 second(s).Your Weapons gain +10 » +20 » +40 » +80 Damage for the fight.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Hogwash",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Hogwash@256.webp?v=0",
           "description": "Heal equal to 5% » 10% » 15% of your Max Health.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Rivet Gun",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/RivetGun@256.webp?v=0",
           "description": "Deal 20 » 40 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Orbital Polisher",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/OrbitalPolisher@256.webp?v=0",
           "description": "Adjacent Weapons gain 5 » 10 Damage for the fight.Adjacent Shield items gain 5 » 10 Shield for the fight.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Hydraulic Squeezer",
@@ -2267,61 +2267,61 @@
           "name": "Gland",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Gland@256.webp?v=0",
           "description": "When you sell this, you gain 1 » 2 » 3 » 4 Regen.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Extract",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Extract@256.webp?v=0",
           "description": "When you sell this, your leftmost Poison item gains +1 » +2 » +3 » +4 Poison.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Venom",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Venom@256.webp?v=0",
           "description": "When you use the Weapon to the left of this, Poison 2 » 3 » 4 » 5.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Toxic Fang",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Fangs@256.webp?v=0",
           "description": "Deal 5 » 10 » 15 » 20 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Basilisk Fang",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/BasiliskFang@256.webp?v=0",
           "description": "Deal 10 » 20 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Venom",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Venom@256.webp?v=0",
           "description": "When you use the Weapon to the left of this, Poison 2 » 3 » 4 » 5.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Copper Ed",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/CopperEd@256.webp?v=0",
           "description": "Poison 3.Shield 15.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Noxious Potion",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/SustainingPotion@256.webp?v=0",
           "description": "Poison 3 » 6 » 9 » 12.Ammo: 1 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Extract",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Extract@256.webp?v=0",
           "description": "When you sell this, your leftmost Poison item gains +1 » +2 » +3 » +4 Poison.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Gland",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Gland@256.webp?v=0",
           "description": "When you sell this, you gain 1 » 2 » 3 » 4 Regen.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -2346,13 +2346,13 @@
           "name": "Feather",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Feather@256.webp?v=0",
           "description": "When you sell this, reduce your items' cooldowns by 2% » 4% » 6% » 8%.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Cosmic Amulet",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/CosmicAmulet@256.webp?v=0",
           "description": "Shield 50 » 100.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Cosmic Plumage",
@@ -2364,13 +2364,13 @@
           "name": "Claws",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Claws@256.webp?v=0",
           "description": "Deal 10 » 20 » 30 » 40 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Claws",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Claws@256.webp?v=0",
           "description": "Deal 10 » 20 » 30 » 40 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Cosmic Plumage",
@@ -2382,13 +2382,13 @@
           "name": "Cosmic Amulet",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/CosmicAmulet@256.webp?v=0",
           "description": "Shield 50 » 100.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Feather",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Feather@256.webp?v=0",
           "description": "When you sell this, reduce your items' cooldowns by 2% » 4% » 6% » 8%.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -2413,25 +2413,25 @@
           "name": "Extract",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Extract@256.webp?v=0",
           "description": "When you sell this, your leftmost Poison item gains +1 » +2 » +3 » +4 Poison.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Black Rose",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/BlackRose@256.webp?v=0",
           "description": "Gain 4 Regen for the fight.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Poppy Field",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/PoppyField@256.webp?v=0",
           "description": "When you use a Weapon, Poison 4 » 5 » 6.Your Weapons have + Damage equal to 50% » 75% » 100% of the Poison on your enemy.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Floor Spike",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/FloorSpike@256.webp?v=0",
           "description": "Deal 20 » 40 » 60 Damage.Poison 2 » 4 » 6.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Bushel",
@@ -2443,13 +2443,13 @@
           "name": "Toxic Succulents",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Succulents@256.webp?v=0",
           "description": "Heal 1 » 2 » 3 » 4.This permanently gains +1 » +2 » +3 » +4 Heal.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Extract",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Extract@256.webp?v=0",
           "description": "When you sell this, your leftmost Poison item gains +1 » +2 » +3 » +4 Poison.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -2474,13 +2474,13 @@
           "name": "Bar of Gold",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/GoldBar@256.webp?v=0",
           "description": "Sells for gold",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Toxic Concealed Dagger",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/ConcealedDagger@256.webp?v=0",
           "description": "Deal 30 » 40 » 50 Damage.Gain 1 » 2 » 3 gold.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Anchor",
@@ -2498,7 +2498,7 @@
           "name": "Spices",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Spices@256.webp?v=0",
           "description": "Your Weapons gain Damage equal to your weakest Weapon's Damage for the fight.Ammo: 1 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Junkyard Club",
@@ -2510,7 +2510,7 @@
           "name": "Toxic Brass Knuckles",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/BrassKnuckles@256.webp?v=0",
           "description": "Deal 8 » 16 » 24 » 32 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -2535,19 +2535,19 @@
           "name": "Bag of Jewels",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/BagofJewels@256.webp?v=0",
           "description": "Sells for gold",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Seaweed",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Seaweed@256.webp?v=0",
           "description": "Heal 20.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Sea Shell",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/SeaShell@256.webp?v=0",
           "description": "Shield 10 » 15 » 20 » 25 for each Aquatic item you have.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Turtle Shell",
@@ -2559,31 +2559,31 @@
           "name": "Catfish",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Catfish@256.webp?v=0",
           "description": "Poison 3.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Pearl",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Pearl@256.webp?v=0",
           "description": "Shield 10 » 20 » 30 » 40.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Clamera",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Clamera@256.webp?v=0",
           "description": "Slow 1 » 2 » 3 » 4 item(s) for 1 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Bar of Gold",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/GoldBar@256.webp?v=0",
           "description": "Sells for gold",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Bag of Jewels",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/BagofJewels@256.webp?v=0",
           "description": "Sells for gold",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -2602,19 +2602,19 @@
           "name": "Icicle",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Snowball@256.webp?v=0",
           "description": "At the start of each fight, Freeze 1 item(s) for 3 » 4 » 5 » 6 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Ice Cubes",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/IceCubes@256.webp?v=0",
           "description": "Freeze 3 small items for 1 » 2 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Ice Cream Truck",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/IceCreamTruck@256.webp?v=0",
           "description": "Freeze 1 » 2 » 3 item(s) for 1 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Hammock",
@@ -2626,7 +2626,7 @@
           "name": "Igloo",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Snowtel@256.webp?v=0",
           "description": "Freeze 1 » 2 » 3 item(s) for 1 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         }
       ]
     },
@@ -2651,13 +2651,13 @@
           "name": "Plasma Grenade",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/PlasmaGrenade@256.webp?v=0",
           "description": "Burn both players 5 » 10 » 15 » 20.Slow all enemy items for 1 » 2 » 3 » 4 second(s).Ammo: 1 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Nitro",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Nitro@256.webp?v=0",
           "description": "Burn both players 4 » 6 » 8.Charge 1 item 1 » 2 » 3 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Welding Torch",
@@ -2675,13 +2675,13 @@
           "name": "Incendiary Rounds",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/IncendiaryRounds@256.webp?v=0",
           "description": "When you use an adjacent item, Burn 1 » 2 » 3.Adjacent items have +1 Ammo.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Induction Aegis",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/InductionAegis@256.webp?v=0",
           "description": "Shield 20.Burn 2.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -2706,13 +2706,13 @@
           "name": "Cinders",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Cinder@256.webp?v=0",
           "description": "When you sell this, your leftmost Burn item gains +1 » +2 » +3 » +4 Burn.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Nitro",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Nitro@256.webp?v=0",
           "description": "Burn both players 4 » 6 » 8.Charge 1 item 1 » 2 » 3 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Micro Dave",
@@ -2724,37 +2724,37 @@
           "name": "Bomb Squad",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/BombSquad@256.webp?v=0",
           "description": "Burn 6.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Char Cole",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Fireballs@256.webp?v=0",
           "description": "Burn 2 » 3 » 4.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Curry",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Curry@256.webp?v=0",
           "description": "Burn 4 » 6 » 8.Charge another small item 3 » 4 » 5 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Hot Sauce",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/HotSauce@256.webp?v=0",
           "description": "Burn 10 » 20.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Black Pepper",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/PepperMill@256.webp?v=0",
           "description": "Burn 2 » 3 » 4.Charge adjacent items 1 » 2 » 3 second(s).Multicast: 2",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Lighter",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Lighter@256.webp?v=0",
           "description": "Burn 2 » 4 » 6 » 8.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -2791,7 +2791,7 @@
           "name": "Grappling Hook",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/GrapplingHook@256.webp?v=0",
           "description": "Deal 12 » 18 » 24 » 32 Damage.Slow 1 item for 2 » 3 » 4 » 5 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Anchor",
@@ -2815,7 +2815,7 @@
           "name": "Lighthouse",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Lighthouse@256.webp?v=0",
           "description": "Burn 20.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         }
       ]
     },
@@ -2840,13 +2840,13 @@
           "name": "Feather",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Feather@256.webp?v=0",
           "description": "When you sell this, reduce your items' cooldowns by 2% » 4% » 6% » 8%.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Cosmic Amulet",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/CosmicAmulet@256.webp?v=0",
           "description": "Shield 50 » 100.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Cosmic Plumage",
@@ -2858,13 +2858,13 @@
           "name": "Claws",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Claws@256.webp?v=0",
           "description": "Deal 10 » 20 » 30 » 40 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Claws",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Claws@256.webp?v=0",
           "description": "Deal 10 » 20 » 30 » 40 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Cosmic Plumage",
@@ -2876,13 +2876,13 @@
           "name": "Cosmic Amulet",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/CosmicAmulet@256.webp?v=0",
           "description": "Shield 50 » 100.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Feather",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Feather@256.webp?v=0",
           "description": "When you sell this, reduce your items' cooldowns by 2% » 4% » 6% » 8%.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -2907,25 +2907,25 @@
           "name": "Extract",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Extract@256.webp?v=0",
           "description": "When you sell this, your leftmost Poison item gains +1 » +2 » +3 » +4 Poison.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Black Rose",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/BlackRose@256.webp?v=0",
           "description": "Gain 4 Regen for the fight.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Poppy Field",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/PoppyField@256.webp?v=0",
           "description": "When you use a Weapon, Poison 4 » 5 » 6.Your Weapons have + Damage equal to 50% » 75% » 100% of the Poison on your enemy.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Floor Spike",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/FloorSpike@256.webp?v=0",
           "description": "Deal 20 » 40 » 60 Damage.Poison 2 » 4 » 6.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Bushel",
@@ -2937,13 +2937,13 @@
           "name": "Toxic Succulents",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Succulents@256.webp?v=0",
           "description": "Heal 1 » 2 » 3 » 4.This permanently gains +1 » +2 » +3 » +4 Heal.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Extract",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Extract@256.webp?v=0",
           "description": "When you sell this, your leftmost Poison item gains +1 » +2 » +3 » +4 Poison.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -2980,13 +2980,13 @@
           "name": "Laser Pistol",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/LaserPistol@256.webp?v=0",
           "description": "Deal 8 » 16 » 24 » 32 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Sunderer",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Sunderer@256.webp?v=0",
           "description": "Deal 10 » 20 » 30 » 40 Damage.Your enemy's Shield items lose 5 » 10 » 15 » 20 Shield for the fight.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Gatling Gun",
@@ -3017,7 +3017,7 @@
           "name": "Goggles",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Goggles@256.webp?v=0",
           "description": "Shield 15 » 30 » 60 » 120.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Sirens",
@@ -3047,7 +3047,7 @@
           "name": "Cog",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Cog@256.webp?v=0",
           "description": "Haste 1 adjacent item for 1 » 2 » 3 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -3066,7 +3066,7 @@
           "name": "Trebuchet",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Trebuchet@256.webp?v=0",
           "description": "Deal 40 » 60 » 80 » 100 Damage.Burn 4 » 6 » 8 » 10.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Rocket Launcher",
@@ -3078,31 +3078,31 @@
           "name": "Pop Snappers",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/PopSnappers@256.webp?v=0",
           "description": "Burn 4 » 6 » 8 » 10.Ammo: 3 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Incendiary Rounds",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/IncendiaryRounds@256.webp?v=0",
           "description": "When you use an adjacent item, Burn 1 » 2 » 3.Adjacent items have +1 Ammo.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Pop Snappers",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/PopSnappers@256.webp?v=0",
           "description": "Burn 4 » 6 » 8 » 10.Ammo: 3 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Thrusters",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Thrusters@256.webp?v=0",
           "description": "The item to the left of this is a Vehicle and has its cooldown reduced by 5% » 10% » 15%.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Thrusters",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Thrusters@256.webp?v=0",
           "description": "The item to the left of this is a Vehicle and has its cooldown reduced by 5% » 10% » 15%.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -3121,7 +3121,7 @@
           "name": "Induction Aegis",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/InductionAegis@256.webp?v=0",
           "description": "Shield 20.Burn 2.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Weakpoint Detector",
@@ -3133,7 +3133,7 @@
           "name": "Pylon",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Pylon@256.webp?v=0",
           "description": "Slow 1 item(s) for 1 » 2 » 3 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Thermal Lance",
@@ -3164,13 +3164,13 @@
           "name": "Lightning Rod",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/LightningRod@256.webp?v=0",
           "description": "Deal 10 » 20 Damage.Shield 10 » 20.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Lightbulb",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Lightbulb@256.webp?v=0",
           "description": "Charge the Tech item to the right of this 1 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Tesla Coil",
@@ -3182,13 +3182,13 @@
           "name": "Cog",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Cog@256.webp?v=0",
           "description": "Haste 1 adjacent item for 1 » 2 » 3 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Weather Machine",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/WeatherMachine@256.webp?v=0",
           "description": "Burn 4 » 6.Freeze 1 item for 1 » 2 second(s).Slow 1 item for 2 » 3 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         }
       ]
     },
@@ -3213,25 +3213,25 @@
           "name": "Venomander",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Venomander@256.webp?v=0",
           "description": "Poison 1 » 2 » 3 » 4.Gain 1 » 2 » 3 » 4 Regen for the fight.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Sleeping Potion",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/SleepingPotion@256.webp?v=0",
           "description": "Slow the slowest enemy item for 3 » 4 » 5 » 6 second(s).Ammo: 1 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Incense",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Incense@256.webp?v=0",
           "description": "Slow 1 » 2 » 3 » 4 item(s) for 1 second(s).Gain 1 » 3 » 5 » 7 Regen for the fight.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Magnus' Femur",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/FossilFemur@256.webp?v=0",
           "description": "Deal 300 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Nightshade",
@@ -3262,37 +3262,37 @@
           "name": "Electric Eels",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/ElectricEels@256.webp?v=0",
           "description": "Deal 50 Damage.Slow 1 item for 2 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Catfish",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Catfish@256.webp?v=0",
           "description": "Poison 3.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Jellyfish",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Jellyfish@256.webp?v=0",
           "description": "Poison 3 » 6 » 9 » 12.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Piranha",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Piranha@256.webp?v=0",
           "description": "Deal 6 » 12 » 18 » 24 Damage.Crit Chance: 20﻿%",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Amber",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Amber@256.webp?v=0",
           "description": "Slow 1 » 2 » 3 item(s) for 3 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Seaweed",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Seaweed@256.webp?v=0",
           "description": "Heal 20.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Pufferfish",
@@ -3372,13 +3372,13 @@
           "name": "Crow's Nest",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/CrowsNest@256.webp?v=0",
           "description": "Your Weapons have +20% » +40% » +60% » +80% Crit Chance.If you have exactly one Weapon, that Weapon has lifesteal.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Pesky Pete",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/PeskyPete@256.webp?v=0",
           "description": "Burn 4 » 6.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Captain's Wheel",
@@ -3390,13 +3390,13 @@
           "name": "Pop Snappers",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/PopSnappers@256.webp?v=0",
           "description": "Burn 4 » 6 » 8 » 10.Ammo: 3 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Flagship",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Flagship@256.webp?v=0",
           "description": "Deal 50 » 75 » 100 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         }
       ]
     },
@@ -3421,7 +3421,7 @@
           "name": "Goggles",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Goggles@256.webp?v=0",
           "description": "Shield 15 » 30 » 60 » 120.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Nargile",
@@ -3433,31 +3433,31 @@
           "name": "Abacus",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Abacus@256.webp?v=0",
           "description": "Shield equal to 1 x » 2 x the value of the adjacent items.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Shielded Salt",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Salt@256.webp?v=0",
           "description": "Adjacent items gain +10% » +15% » +20% Crit Chance for the fight.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Shielded Blue Piggles L",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/PigglesBlue@256.webp?v=0",
           "description": "The item to the left of this gains 4% » 8% » 12% » 16% Crit Chance for the fight.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Piggles",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Piggles@256.webp?v=0",
           "description": "Charge adjacent Small items 1 » 2 » 3 » 4 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Blue Piggles R",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/PigglesBlue@256.webp?v=0",
           "description": "The item to the right of this gains 4% » 8% » 12% » 16% Crit Chance for the fight.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Obsidian Cargo Shorts",
@@ -3488,49 +3488,49 @@
           "name": "Revolver",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Revolver@256.webp?v=0",
           "description": "Deal 8 » 16 » 24 » 32 Damage.Ammo: 6 Crit Chance: 20﻿%",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Powder Flask",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/PowderFlask@256.webp?v=0",
           "description": "Reload the item to the right of this 1 » 2 » 3 » 4 Ammo.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Revolver",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Revolver@256.webp?v=0",
           "description": "Deal 8 » 16 » 24 » 32 Damage.Ammo: 6 Crit Chance: 20﻿%",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Shoe Blade",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/ShoeBlade@256.webp?v=0",
           "description": "Deal 20 » 40 » 60 » 80 Damage.Crit Chance: 15 » 30 » 50 » 100﻿%",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Butterfly Swords",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/ButterflySwords@256.webp?v=0",
           "description": "Deal 5 Damage.Multicast: 2 » 3 » 4",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Butterfly Swords",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/ButterflySwords@256.webp?v=0",
           "description": "Deal 5 Damage.Multicast: 2 » 3 » 4",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Spices",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Spices@256.webp?v=0",
           "description": "Your Weapons gain Damage equal to your weakest Weapon's Damage for the fight.Ammo: 1 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Holsters",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Holsters@256.webp?v=0",
           "description": "At the start of each fight, your Small items gain Haste for 1 » 2 » 3 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Knife Set",
@@ -3561,25 +3561,25 @@
           "name": "Venomander",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Venomander@256.webp?v=0",
           "description": "Poison 1 » 2 » 3 » 4.Gain 1 » 2 » 3 » 4 Regen for the fight.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Sleeping Potion",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/SleepingPotion@256.webp?v=0",
           "description": "Slow the slowest enemy item for 3 » 4 » 5 » 6 second(s).Ammo: 1 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Incense",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Incense@256.webp?v=0",
           "description": "Slow 1 » 2 » 3 » 4 item(s) for 1 second(s).Gain 1 » 3 » 5 » 7 Regen for the fight.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Magnus' Femur",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/FossilFemur@256.webp?v=0",
           "description": "Deal 300 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Nightshade",
@@ -3616,49 +3616,49 @@
           "name": "Tropical Island",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/TropicalIsland@256.webp?v=0",
           "description": "When you Slow, gain 5 » 10 Regen for the fight.At the start of each hour, get a Coconut or Citrus.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Sea Shell",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/SeaShell@256.webp?v=0",
           "description": "Shield 10 » 15 » 20 » 25 for each Aquatic item you have.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Pet Rock",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/PetRock@256.webp?v=0",
           "description": "Deal 8 » 16 » 24 » 32 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Catfish",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Catfish@256.webp?v=0",
           "description": "Poison 3.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Jellyfish",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Jellyfish@256.webp?v=0",
           "description": "Poison 3 » 6 » 9 » 12.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Seaweed",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Seaweed@256.webp?v=0",
           "description": "Heal 20.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Seaweed",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Seaweed@256.webp?v=0",
           "description": "Heal 20.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Clamera",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Clamera@256.webp?v=0",
           "description": "Slow 1 » 2 » 3 » 4 item(s) for 1 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -3701,7 +3701,7 @@
           "name": "Silencer",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Silencer@256.webp?v=0",
           "description": "The Weapon to the left of this has +10 » +20 » +30 » +50 Damage.If you have exactly one Weapon, reduce its cooldown by 15% » 20% » 25% » 30%.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Barrel",
@@ -3719,7 +3719,7 @@
           "name": "Energy Potion",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/EnergyPotion@256.webp?v=0",
           "description": "Haste your other items for 1 » 2 » 3 second(s).Ammo: 1 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -3744,49 +3744,49 @@
           "name": "Cog",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Cog@256.webp?v=0",
           "description": "Haste 1 adjacent item for 1 » 2 » 3 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Kinetic Cannon",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/KineticCannon@256.webp?v=0",
           "description": "Deal 100 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Battery",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Battery@256.webp?v=0",
           "description": "Charge the item to the left of this 1 » 2 » 3 » 4 second(s).Ammo: 4 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Coolant",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Coolant@256.webp?v=0",
           "description": "Freeze 1 » 2 » 3 item(s) for 1 second(s).Cleanse half your Burn.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "First Aiden",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/FirstAiden@256.webp?v=0",
           "description": "Heal 20 » 30 » 40 » 50.Haste 1 item for 1 » 2 » 3 » 4 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Laser Pistol",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/LaserPistol@256.webp?v=0",
           "description": "Deal 8 » 16 » 24 » 32 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Power Sander",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/PowerSander@256.webp?v=0",
           "description": "Haste the item to the right of this for 1 » 2 » 3 » 4 second(s).Slow the item to the left of this for 1 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Uzi",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Uzi@256.webp?v=0",
           "description": "Deal 10 Damage.Ammo: 6 » 8 » 10 » 12 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -3811,13 +3811,13 @@
           "name": "Soul Ring",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Ring@256.webp?v=0",
           "description": "Poison equal to your Regen.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Emerald",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Emerald@256.webp?v=0",
           "description": "Poison 1 » 2 » 3 » 4.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Ouroboros Statue",
@@ -3835,25 +3835,25 @@
           "name": "Basilisk Fang",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/BasiliskFang@256.webp?v=0",
           "description": "Deal 10 » 20 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Ectoplasm",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Ectoplasm@256.webp?v=0",
           "description": "Poison 1 » 2 » 3.Heal equal to your enemy's Poison.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Thurible",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Thurible@256.webp?v=0",
           "description": "Burn 3 » 5 » 7 » 9.Gain 1 » 2 » 3 » 4 Regen for the fight.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Bandages",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Bandages@256.webp?v=0",
           "description": "Heal 5 » 10 » 20 » 40.Shield 5 » 10 » 20 » 40.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -3884,7 +3884,7 @@
           "name": "Sapphire",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Saphire@256.webp?v=0",
           "description": "Freeze 1 » 2 » 3 item(s) for 1 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Shadowed Cloak",
@@ -3908,7 +3908,7 @@
           "name": "Runic Great Axe",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/RunicGreatAxe@256.webp?v=0",
           "description": "Deal 80 » 120 » 160 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         }
       ]
     },
@@ -3951,19 +3951,19 @@
           "name": "Bayonet",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Bayonet@256.webp?v=0",
           "description": "When you use the Weapon to the left of this, deal 10 » 15 » 20 » 25 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Grappling Hook",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/GrapplingHook@256.webp?v=0",
           "description": "Deal 12 » 18 » 24 » 32 Damage.Slow 1 item for 2 » 3 » 4 » 5 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Jitte",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Jitte@256.webp?v=0",
           "description": "Deal 10 » 20 » 30 Damage.Slow 1 item for 1 » 2 » 3 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Katana",
@@ -3975,7 +3975,7 @@
           "name": "Bayonet",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Bayonet@256.webp?v=0",
           "description": "When you use the Weapon to the left of this, deal 10 » 15 » 20 » 25 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -4000,49 +4000,49 @@
           "name": "Athanor",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Athanor@256.webp?v=0",
           "description": "Reload adjacent items.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Bottled Lightning",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/BottledLightning@256.webp?v=0",
           "description": "Deal 20 » 30 » 40 » 50 Damage.Burn 2 » 3 » 4 » 5.Ammo: 1 Crit Chance: 100﻿%",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Energy Potion",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/EnergyPotion@256.webp?v=0",
           "description": "Haste your other items for 1 » 2 » 3 second(s).Ammo: 1 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Fire Potion",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/FirePotion@256.webp?v=0",
           "description": "Burn 6 » 8 » 10 » 12.Ammo: 1 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Rainbow Potion",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/RainbowPotion@256.webp?v=0",
           "description": "Burn 3 » 6 » 9.\n \n Poison 3 » 6 » 9.Freeze 1 small item for 1 » 2 » 3 second(s).Slow 1 item for 2 » 3 » 4 second(s).Ammo: 1 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Noxious Potion",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/SustainingPotion@256.webp?v=0",
           "description": "Poison 3 » 6 » 9 » 12.Ammo: 1 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Noxious Potion",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/SustainingPotion@256.webp?v=0",
           "description": "Poison 3 » 6 » 9 » 12.Ammo: 1 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Rainbow Potion",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/RainbowPotion@256.webp?v=0",
           "description": "Burn 3 » 6 » 9.\n \n Poison 3 » 6 » 9.Freeze 1 small item for 1 » 2 » 3 second(s).Slow 1 item for 2 » 3 » 4 second(s).Ammo: 1 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -4073,7 +4073,7 @@
           "name": "Rainbow Potion",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/RainbowPotion@256.webp?v=0",
           "description": "Burn 3 » 6 » 9.\n \n Poison 3 » 6 » 9.Freeze 1 small item for 1 » 2 » 3 second(s).Slow 1 item for 2 » 3 » 4 second(s).Ammo: 1 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Cauldron",
@@ -4085,7 +4085,7 @@
           "name": "Rainbow Potion",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/RainbowPotion@256.webp?v=0",
           "description": "Burn 3 » 6 » 9.\n \n Poison 3 » 6 » 9.Freeze 1 small item for 1 » 2 » 3 second(s).Slow 1 item for 2 » 3 » 4 second(s).Ammo: 1 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Weather Glass",
@@ -4110,13 +4110,13 @@
           "name": "Shoe Blade",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/ShoeBlade@256.webp?v=0",
           "description": "Deal 20 » 40 » 60 » 80 Damage.Crit Chance: 15 » 30 » 50 » 100﻿%",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Flamberge",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Flamberge@256.webp?v=0",
           "description": "Deal 200 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Pendulum",
@@ -4134,13 +4134,13 @@
           "name": "Myrrh",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Myrrh@256.webp?v=0",
           "description": "Gain 1 » 3 » 5 » 7 Regen for the fight.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Bar of Gold",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/GoldBar@256.webp?v=0",
           "description": "Sells for gold",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -4159,49 +4159,49 @@
           "name": "Venom",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Venom@256.webp?v=0",
           "description": "When you use the Weapon to the left of this, Poison 2 » 3 » 4 » 5.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Emerald",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Emerald@256.webp?v=0",
           "description": "Poison 1 » 2 » 3 » 4.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Catalyst",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Catalyst@256.webp?v=0",
           "description": "When you sell this, transform your leftmost Small item.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Junkyard Lance",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/JunkyardLance@256.webp?v=0",
           "description": "Deal 15 » 30 » 60 » 100 Damage for each Small item you have (including Stash).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Hemlock",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Hemlock@256.webp?v=0",
           "description": "Poison 2 » 3 » 4 » 5.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Ectoplasm",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Ectoplasm@256.webp?v=0",
           "description": "Poison 1 » 2 » 3.Heal equal to your enemy's Poison.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Ectoplasm",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Ectoplasm@256.webp?v=0",
           "description": "Poison 1 » 2 » 3.Heal equal to your enemy's Poison.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Venomander",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Venomander@256.webp?v=0",
           "description": "Poison 1 » 2 » 3 » 4.Gain 1 » 2 » 3 » 4 Regen for the fight.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -4238,7 +4238,7 @@
           "name": "Stopwatch",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Stopwatch@256.webp?v=0",
           "description": "Freeze both players' items for 1 » 2 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Icebreaker",
@@ -4250,19 +4250,19 @@
           "name": "Ice Pick",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Sickle@256.webp?v=0",
           "description": "Deal 36 » 48 » 60 Damage.Freeze 1 for 1 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Frost Potion",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/FrostPotion@256.webp?v=0",
           "description": "Freeze 1 » 2 » 3 item(s) for 1 second(s).Ammo: 1 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Icicle",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Snowball@256.webp?v=0",
           "description": "At the start of each fight, Freeze 1 item(s) for 3 » 4 » 5 » 6 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -4287,7 +4287,7 @@
           "name": "Iceberg",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Iceberg@256.webp?v=0",
           "description": "When your enemy uses an item, Freeze it for 0.5 » 1 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Nitrogen Hammer",
@@ -4299,7 +4299,7 @@
           "name": "Sapphire",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Saphire@256.webp?v=0",
           "description": "Freeze 1 » 2 » 3 item(s) for 1 second(s).",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Frozen Bludgeon",
@@ -4311,13 +4311,13 @@
           "name": "Frost Potion",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/FrostPotion@256.webp?v=0",
           "description": "Freeze 1 » 2 » 3 item(s) for 1 second(s).Ammo: 1 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Snowflake",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Snowflake@256.webp?v=0",
           "description": "When you sell this, your leftmost Freeze item gains +0.5 Freeze duration.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -4348,25 +4348,25 @@
           "name": "Skyscraper",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Skyscraper@256.webp?v=0",
           "description": "Deal Damage equal to 3 times the value of your items.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Subscraper",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Subscraper@256.webp?v=0",
           "description": "Heal equal to 4 » 6 times the value of your items.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Billboard",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Billboard@256.webp?v=0",
           "description": "Shield 200 » 300.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Keychain",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Keychain@256.webp?v=0",
           "description": "Use a Property.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -4391,7 +4391,7 @@
           "name": "Ruby",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Ruby@256.webp?v=0",
           "description": "Burn 3 » 6 » 9 » 12.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Void Ray",
@@ -4403,7 +4403,7 @@
           "name": "Eye of the Colossus",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/EyeOfTheColossus@256.webp?v=0",
           "description": "Destroy an enemy item for the fight.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Void Ray",
@@ -4446,7 +4446,7 @@
           "name": "Landscraper",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Landscraper@256.webp?v=0",
           "description": "Shield 200.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Soul of the District",
@@ -4458,7 +4458,7 @@
           "name": "Spacescraper",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Spacescraper@256.webp?v=0",
           "description": "Shield equal to 2 » 3 times the value of your items.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Balcony",
@@ -4495,7 +4495,7 @@
           "name": "Vitality Potion",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/VitalityPotion@256.webp?v=0",
           "description": "Heal equal to 50% » 100% of your Max Health.Ammo: 1 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Gatling Gun",
@@ -4507,13 +4507,13 @@
           "name": "The Eclipse",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/TheEclipse@256.webp?v=0",
           "description": "Use all your other items.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 1.5
         },
         {
           "name": "Arken's Ring",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/ArkensRing@256.webp?v=0",
           "description": "When you sell this, recover 5 Prestige.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Gatling Gun",
@@ -4525,7 +4525,7 @@
           "name": "Thrusters",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Thrusters@256.webp?v=0",
           "description": "The item to the left of this is a Vehicle and has its cooldown reduced by 5% » 10% » 15%.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -4556,25 +4556,25 @@
           "name": "Tiny Cutlass",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Cutlass@256.webp?v=0",
           "description": "Deal 6 » 12 » 24 » 48 Damage.Multicast: 2",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Tiny Cutlass",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Cutlass@256.webp?v=0",
           "description": "Deal 6 » 12 » 24 » 48 Damage.Multicast: 2",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Tiny Cutlass",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Cutlass@256.webp?v=0",
           "description": "Deal 6 » 12 » 24 » 48 Damage.Multicast: 2",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Tiny Cutlass",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Cutlass@256.webp?v=0",
           "description": "Deal 6 » 12 » 24 » 48 Damage.Multicast: 2",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Octopus",
@@ -4586,25 +4586,25 @@
           "name": "Tiny Cutlass",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Cutlass@256.webp?v=0",
           "description": "Deal 6 » 12 » 24 » 48 Damage.Multicast: 2",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Tiny Cutlass",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Cutlass@256.webp?v=0",
           "description": "Deal 6 » 12 » 24 » 48 Damage.Multicast: 2",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Tiny Cutlass",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Cutlass@256.webp?v=0",
           "description": "Deal 6 » 12 » 24 » 48 Damage.Multicast: 2",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Tiny Cutlass",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Cutlass@256.webp?v=0",
           "description": "Deal 6 » 12 » 24 » 48 Damage.Multicast: 2",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -4629,7 +4629,7 @@
           "name": "Singularity",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Singularity@256.webp?v=0",
           "description": "Destroy a small enemy item for the fight.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Void Ray",
@@ -4659,7 +4659,7 @@
           "name": "Spices",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Spices@256.webp?v=0",
           "description": "Your Weapons gain Damage equal to your weakest Weapon's Damage for the fight.Ammo: 1 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -4684,61 +4684,61 @@
           "name": "Heavy Fang",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Fangs@256.webp?v=0",
           "description": "Deal 5 » 10 » 15 » 20 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Icy Fang",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Fangs@256.webp?v=0",
           "description": "Deal 5 » 10 » 15 » 20 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Fiery Fang",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Fangs@256.webp?v=0",
           "description": "Deal 5 » 10 » 15 » 20 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Obsidian Fang",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Fangs@256.webp?v=0",
           "description": "Deal 5 » 10 » 15 » 20 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Shiny Fang",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Fangs@256.webp?v=0",
           "description": "Deal 5 » 10 » 15 » 20 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Shiny Fang",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Fangs@256.webp?v=0",
           "description": "Deal 5 » 10 » 15 » 20 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Obsidian Fang",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Fangs@256.webp?v=0",
           "description": "Deal 5 » 10 » 15 » 20 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Fiery Fang",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Fangs@256.webp?v=0",
           "description": "Deal 5 » 10 » 15 » 20 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Icy Fang",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Fangs@256.webp?v=0",
           "description": "Deal 5 » 10 » 15 » 20 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Heavy Fang",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Fangs@256.webp?v=0",
           "description": "Deal 5 » 10 » 15 » 20 Damage.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -4757,7 +4757,7 @@
           "name": "Revolver",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Revolver@256.webp?v=0",
           "description": "Deal 8 » 16 » 24 » 32 Damage.Ammo: 6 Crit Chance: 20﻿%",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Thrown Net",
@@ -4769,7 +4769,7 @@
           "name": "Revolver",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/Revolver@256.webp?v=0",
           "description": "Deal 8 » 16 » 24 » 32 Damage.Ammo: 6 Crit Chance: 20﻿%",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Cutlass",
@@ -4787,13 +4787,13 @@
           "name": "Flashbang",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/FlashGrenade@256.webp?v=0",
           "description": "Slow all enemy items for 3 » 4 » 5 second(s).Ammo: 1 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Broken Shackles",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/BrokenShackles@256.webp?v=0",
           "description": "Your Weapons gain 4 » 8 » 12 Damage for the fight.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     },
@@ -4812,61 +4812,61 @@
           "name": "Incendiary Rounds",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/IncendiaryRounds@256.webp?v=0",
           "description": "When you use an adjacent item, Burn 1 » 2 » 3.Adjacent items have +1 Ammo.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Incendiary Rounds",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/IncendiaryRounds@256.webp?v=0",
           "description": "When you use an adjacent item, Burn 1 » 2 » 3.Adjacent items have +1 Ammo.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Incendiary Rounds",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/IncendiaryRounds@256.webp?v=0",
           "description": "When you use an adjacent item, Burn 1 » 2 » 3.Adjacent items have +1 Ammo.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Tommoo Gun",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/TommyGun@256.webp?v=0",
           "description": "Deal Damage equal to this item's Ammo.Ammo: 50 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Incendiary Rounds",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/IncendiaryRounds@256.webp?v=0",
           "description": "When you use an adjacent item, Burn 1 » 2 » 3.Adjacent items have +1 Ammo.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Incendiary Rounds",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/IncendiaryRounds@256.webp?v=0",
           "description": "When you use an adjacent item, Burn 1 » 2 » 3.Adjacent items have +1 Ammo.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Tommoo Gun",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/TommyGun@256.webp?v=0",
           "description": "Deal Damage equal to this item's Ammo.Ammo: 50 ",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Incendiary Rounds",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/IncendiaryRounds@256.webp?v=0",
           "description": "When you use an adjacent item, Burn 1 » 2 » 3.Adjacent items have +1 Ammo.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Incendiary Rounds",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/IncendiaryRounds@256.webp?v=0",
           "description": "When you use an adjacent item, Burn 1 » 2 » 3.Adjacent items have +1 Ammo.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         },
         {
           "name": "Incendiary Rounds",
           "icon": "https://s.bazaardb.gg/v0/z2.0.0/item/IncendiaryRounds@256.webp?v=0",
           "description": "When you use an adjacent item, Burn 1 » 2 » 3.Adjacent items have +1 Ammo.",
-          "aspect_ratio": 1.0
+          "aspect_ratio": 0.5
         }
       ]
     }

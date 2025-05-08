@@ -45,6 +45,15 @@ logging.basicConfig(
     ]
 )
 
+def hide_console():
+    """隐藏控制台窗口"""
+    try:
+        whnd = ctypes.windll.kernel32.GetConsoleWindow()
+        if whnd != 0:
+            ctypes.windll.user32.ShowWindow(whnd, 0)
+    except Exception as e:
+        logging.error(f"隐藏控制台失败: {e}")
+
 # 顶层定义ocr_task，确保无缩进
 def ocr_task(img_bytes):
     from PIL import Image
@@ -119,16 +128,31 @@ class IconFrame(tk.Frame):
         self.text_frame = tk.Frame(self, bg=parent_bg)
         self.text_frame.pack(side='left', fill='both', expand=True, padx=0, pady=0)
         
+        # 创建名称和数量的容器
+        self.name_container = tk.Frame(self.text_frame, bg=parent_bg)
+        self.name_container.pack(fill='x', anchor='w', pady=0)
+        
         # 创建名称标签
         self.name_label = tk.Label(
-            self.text_frame,
+            self.name_container,
             font=('Segoe UI', 14, 'bold'),
             fg='#E8D4B9',  # 浅色文字
             bg=parent_bg,
             anchor='w',
             justify='left'
         )
-        self.name_label.pack(fill='x', anchor='w', pady=0)
+        self.name_label.pack(side='left', anchor='w')
+        
+        # 创建数量标签
+        self.quantity_label = tk.Label(
+            self.name_container,
+            font=('Segoe UI', 16, 'bold'),  # 更大的字体
+            fg='#FFD700',  # 金色文字
+            bg=parent_bg,
+            anchor='w',
+            justify='left'
+        )
+        self.quantity_label.pack(side='left', padx=(5, 0))
         
         # 创建描述标签
         self.desc_label = tk.Label(
@@ -151,12 +175,22 @@ class IconFrame(tk.Frame):
             # 获取当前背景色
             bg_color = self.cget('bg')
             
-            # 名称左对齐
+            # 处理名称和数量
             if name:
-                self.name_label.config(text=name, anchor='w', justify='left', bg=bg_color)
-                self.name_label.pack(fill='x', anchor='w', pady=0)
+                # 分离名称和数量
+                quantity_match = re.search(r'^(.*?)\s*x(\d+)\s*$', name)
+                if quantity_match:
+                    base_name = quantity_match.group(1)
+                    quantity = quantity_match.group(2)
+                    self.name_label.config(text=base_name, anchor='w', justify='left', bg=bg_color)
+                    self.quantity_label.config(text=f"×{quantity}", bg=bg_color)  # 使用中文乘号
+                    self.quantity_label.pack(side='left', padx=(5, 0))
+                else:
+                    self.name_label.config(text=name, anchor='w', justify='left', bg=bg_color)
+                    self.quantity_label.pack_forget()
+                self.name_container.pack(fill='x', anchor='w', pady=0)
             else:
-                self.name_label.pack_forget()
+                self.name_container.pack_forget()
             
             # 描述左对齐
             if description:
@@ -767,7 +801,7 @@ class BazaarHelper:
                     # 处理物品名称（如果有多个相同物品，显示数量）
                     display_name = item_name
                     if items_count[item_name] > 1:
-                        display_name += f" x{items_count[item_name]}"
+                        display_name = f"{item_name} x{items_count[item_name]}"
                         
                     # 获取物品图标
                     icon_path = None
@@ -1214,6 +1248,9 @@ class SystemTray:
 if __name__ == "__main__":
     helper = None
     try:
+        # 隐藏控制台窗口
+        hide_console()
+        
         if not is_admin():
             run_as_admin()
         else:
