@@ -19,7 +19,11 @@ a = Analysis(
     pathex=[],
     binaries=[],
     datas=[
-        ('Tesseract-OCR', 'Tesseract-OCR'),  # 包含Tesseract-OCR
+        ('tesseract-ocr-w64-setup-5.5.0.20241111.exe', '.'),  # Tesseract-OCR安装程序
+        ('icons', 'icons'),  # icons文件夹
+        ('data', 'data'),    # 数据文件夹
+        ('Info.txt', '.'),   # 说明文件
+        ('Bazaar_Lens.ico', '.'),  # 程序图标
     ],
     hiddenimports=['win32api', 'win32gui', 'win32con', 'keyboard'],
     hookspath=[],
@@ -41,7 +45,7 @@ exe = EXE(
     a.zipfiles,
     a.datas,
     [],
-    name='TheBazaarHelper',
+    name='Bazaar_Lens',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
@@ -53,8 +57,8 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    icon='icon.ico',  # 添加图标
-    uac_admin=True,  # 请求管理员权限
+    icon='Bazaar_Lens.ico',
+    uac_admin=True,
 )
 '''
     
@@ -62,11 +66,32 @@ exe = EXE(
     with open('Bazaar_Lens.spec', 'w', encoding='utf-8') as f:
         f.write(spec_content)
     
+    print("\n打包内容清单：")
+    print("1. 主程序文件：")
+    print("   - Bazaar_Lens.py")
+    print("\n2. 资源文件：")
+    print("   - icons/（所有游戏图标）")
+    print("   - data/（怪物和事件数据）")
+    print("   - Info.txt（使用说明）")
+    print("   - Bazaar_Lens.ico（程序图标）")
+    print("\n3. 依赖程序：")
+    print("   - tesseract-ocr-w64-setup-5.5.0.20241111.exe")
+    print("\n4. Python依赖库：")
+    print("   - win32api, win32gui, win32con")
+    print("   - keyboard")
+    print("   - PIL (Pillow)")
+    print("   - opencv-python (cv2)")
+    print("   - numpy")
+    print("   - pytesseract")
+    print("   - requests")
+    print("   - pystray")
+    print("   - psutil")
+    
     # 运行PyInstaller
     subprocess.run(['pyinstaller', 'Bazaar_Lens.spec', '--clean'])
     
-    print("构建完成！")
-    print("可执行文件位于: dist/TheBazaarHelper.exe")
+    print("\n构建完成！")
+    print("可执行文件位于: dist/Bazaar_Lens.exe")
 
 if __name__ == "__main__":
     build_exe() 
