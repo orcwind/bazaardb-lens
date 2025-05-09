@@ -1,0 +1,1 @@
+1. 运行monster crawler.js, event crawler.js,抓取怪物和事件的html文件。 运行smart_monster_parser.py生成smart_all_monsters.json. 运行主程序Bazaar_Lens.py.

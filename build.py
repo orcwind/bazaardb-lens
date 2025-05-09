@@ -15,7 +15,7 @@ def build_exe():
 block_cipher = None
 
 a = Analysis(
-    ['bazaar_helper.py'],
+    ['Bazaar_Lens.py'],
     pathex=[],
     binaries=[],
     datas=[
@@ -59,11 +59,11 @@ exe = EXE(
 '''
     
     # 写入spec文件
-    with open('bazaar_helper.spec', 'w', encoding='utf-8') as f:
+    with open('Bazaar_Lens.spec', 'w', encoding='utf-8') as f:
         f.write(spec_content)
     
     # 运行PyInstaller
-    subprocess.run(['pyinstaller', 'bazaar_helper.spec', '--clean'])
+    subprocess.run(['pyinstaller', 'Bazaar_Lens.spec', '--clean'])
     
     print("构建完成！")
     print("可执行文件位于: dist/TheBazaarHelper.exe")
