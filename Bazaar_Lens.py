@@ -285,6 +285,83 @@ class IconFrame(tk.Frame):
         except Exception as e:
             logging.error(f"销毁IconFrame失败: {e}")
 
+class ScrollableFrame(tk.Frame):
+    """可滚动的框架类"""
+    def __init__(self, parent, **kwargs):
+        bg_color = kwargs.pop('bg', '#1C1810')
+        super().__init__(parent, **kwargs)
+        self.configure(bg=bg_color)
+        self.grid_rowconfigure(0, weight=1)
+        self.grid_columnconfigure(0, weight=1)
+        
+        # 创建Canvas
+        self.canvas = tk.Canvas(self, bg=bg_color, highlightthickness=0)
+        self.canvas.grid(row=0, column=0, sticky="nsew")
+        
+        # 创建滚动条
+        self.scrollbar = ttk.Scrollbar(self, orient="vertical", command=self.canvas.yview)
+        self.scrollbar.grid(row=0, column=1, sticky="ns")
+        
+        # 配置Canvas
+        self.canvas.configure(yscrollcommand=self.scrollbar.set)
+        
+        # 创建内部框架
+        self.inner_frame = tk.Frame(self.canvas, bg=bg_color)
+        self.inner_frame_id = self.canvas.create_window((0, 0), window=self.inner_frame, anchor="nw")
+        
+        # 绑定事件
+        self.canvas.bind("<Configure>", self._on_canvas_configure)
+        self.inner_frame.bind("<Configure>", self._on_frame_configure)
+        self.bind_all("<MouseWheel>", self._on_mousewheel)
+        
+        # 初始隐藏滚动条
+        self.scrollbar.grid_remove()
+        
+    def _on_canvas_configure(self, event):
+        """当Canvas大小改变时，调整内部窗口宽度"""
+        self.canvas.itemconfig(self.inner_frame_id, width=event.width)
+        
+    def _on_frame_configure(self, event):
+        """当内部框架大小改变时，更新滚动区域"""
+        # 更新Canvas的滚动区域
+        self.canvas.configure(scrollregion=self.canvas.bbox("all"))
+        
+        # 检查是否需要显示滚动条
+        inner_height = self.inner_frame.winfo_reqheight()
+        canvas_height = self.canvas.winfo_height()
+        
+        if inner_height > canvas_height:
+            # 内容高度超过Canvas高度，显示滚动条
+            self.scrollbar.grid()
+        else:
+            # 内容高度不超过Canvas高度，隐藏滚动条
+            self.scrollbar.grid_remove()
+        
+    def _on_mousewheel(self, event):
+        """处理鼠标滚轮事件"""
+        # 只有当滚动条显示时才处理滚轮事件
+        if self.scrollbar.winfo_ismapped():
+            self.canvas.yview_scroll(int(-1 * (event.delta / 120)), "units")
+            
+    def update_scrollregion(self):
+        """手动更新滚动区域"""
+        self.canvas.configure(scrollregion=self.canvas.bbox("all"))
+        
+        # 检查是否需要显示滚动条
+        inner_height = self.inner_frame.winfo_reqheight()
+        canvas_height = self.canvas.winfo_height()
+        
+        if inner_height > canvas_height:
+            # 内容高度超过Canvas高度，显示滚动条
+            self.scrollbar.grid()
+        else:
+            # 内容高度不超过Canvas高度，隐藏滚动条
+            self.scrollbar.grid_remove()
+            
+    def get_inner_frame(self):
+        """获取内部框架"""
+        return self.inner_frame
+
 class BazaarHelper:
     def __init__(self):
         """初始化BazaarHelper"""
@@ -711,9 +788,12 @@ class BazaarHelper:
             fg_color = '#E8D4B9'  # 浅色文字
             self.info_window.configure(bg=bg_color)
             
-            # 创建主容器
-            self.content_frame = tk.Frame(self.info_window, bg=bg_color)
-            self.content_frame.pack(fill='both', expand=True, padx=10, pady=10)
+            # 创建可滚动框架
+            self.scrollable_frame = ScrollableFrame(self.info_window, bg=bg_color)
+            self.scrollable_frame.pack(fill='both', expand=True, padx=10, pady=10)
+            
+            # 获取内部框架作为内容容器
+            self.content_frame = self.scrollable_frame.get_inner_frame()
             
             # 创建事件选项容器
             self.event_options_frame = tk.Frame(self.content_frame, bg=bg_color)
@@ -750,19 +830,32 @@ class BazaarHelper:
             max_window_height = int(game_height * 0.8)
             # 固定窗口宽度
             window_width = 600
-            # 获取内容实际需要的高度
-            self.info_window.update_idletasks()
-            content_height = self.content_frame.winfo_reqheight()
-            # 不留底部空白，窗口高度正好包裹内容
-            window_height = min(content_height + 2, max_window_height)
+            
+            # 更新内容框架以获取实际高度
+            self.content_frame.update_idletasks()
+            content_height = self.content_frame.winfo_reqheight() + 20  # 添加一些额外空间
+            
+            # 根据内容高度确定窗口高度
+            if content_height <= max_window_height:
+                # 内容不多，窗口高度适应内容
+                window_height = content_height
+            else:
+                # 内容超出最大高度，使用最大高度
+                window_height = max_window_height
+            
             # 调整窗口位置（确保不超出屏幕边界）
             screen_width = self.info_window.winfo_screenwidth()
             screen_height = self.info_window.winfo_screenheight()
             if pos_x + window_width > screen_width:
                 pos_x = max(0, screen_width - window_width)
-                if pos_y + window_height > screen_height:
-                    pos_y = max(0, screen_height - window_height)
+            if pos_y + window_height > screen_height:
+                pos_y = max(0, screen_height - window_height)
+                
             self.info_window.geometry(f"{window_width}x{window_height}+{pos_x}+{pos_y}")
+            
+            # 更新滚动区域，决定是否显示滚动条
+            self.scrollable_frame.update_scrollregion()
+            
             logging.debug(f"窗口大小调整完成: {window_width}x{window_height}, 位置: {pos_x}, {pos_y}")
         except Exception as e:
             logging.error(f"调整窗口大小失败: {e}")
@@ -1151,6 +1244,13 @@ class BazaarHelper:
             if hasattr(self, 'info_window') and self.info_window:
                 self.info_window.withdraw()
                 
+            # 解绑鼠标滚轮事件
+            if hasattr(self, 'scrollable_frame') and self.scrollable_frame:
+                try:
+                    self.scrollable_frame.unbind_all("<MouseWheel>")
+                except Exception:
+                    pass
+                
             # 清理所有子Frame
             if hasattr(self, 'content_frame') and self.content_frame:
                 for widget in self.content_frame.winfo_children():
@@ -1158,19 +1258,20 @@ class BazaarHelper:
                         widget.destroy()  # 这会触发 IconFrame 的 destroy 方法
                     else:
                         widget.destroy()
-                self.content_frame.destroy()
+                
+            # 清理滚动框架
+            if hasattr(self, 'scrollable_frame') and self.scrollable_frame:
+                self.scrollable_frame.destroy()
+                self.scrollable_frame = None
                 self.content_frame = None
                 
             if hasattr(self, 'event_options_frame') and self.event_options_frame:
-                self.event_options_frame.destroy()
                 self.event_options_frame = None
                 
             if hasattr(self, 'skills_frame') and self.skills_frame:
-                self.skills_frame.destroy()
                 self.skills_frame = None
                 
             if hasattr(self, 'items_frame') and self.items_frame:
-                self.items_frame.destroy()
                 self.items_frame = None
                 
             # 最后销毁主窗口

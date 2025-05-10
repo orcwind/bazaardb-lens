@@ -22,7 +22,7 @@ Name: "{group}\\Bazaar_Lens"; Filename: "{app}\\Bazaar_Lens.exe"
 Name: "{commondesktop}\\Bazaar_Lens"; Filename: "{app}\\Bazaar_Lens.exe"; Tasks: desktopicon
 
 [Run]
-Filename: "{tmp}\\tesseract-ocr-w64-setup-5.5.0.20241111.exe"; Parameters: "/SILENT"; StatusMsg: "正在安装Tesseract-OCR..."; Flags: waituntilterminated
+Filename: "{tmp}\\tesseract-ocr-w64-setup-5.5.0.20241111.exe"; Parameters: "/SILENT /DIR=\"C:\\Program Files\\Tesseract-OCR\""; StatusMsg: "正在安装Tesseract-OCR..."; Flags: waituntilterminated
 
 [UninstallRun]
 Filename: "{cmd}"; Parameters: "/C taskkill /F /IM Bazaar_Lens.exe /T"; Flags: runhidden
