@@ -46,13 +46,13 @@ logging.basicConfig(
 )
 
 def hide_console():
-    """隐藏控制台窗口"""
+    """显示控制台窗口"""
     try:
         whnd = ctypes.windll.kernel32.GetConsoleWindow()
         if whnd != 0:
-            ctypes.windll.user32.ShowWindow(whnd, 0)
+            ctypes.windll.user32.ShowWindow(whnd, 1)  # 1表示显示窗口
     except Exception as e:
-        logging.error(f"隐藏控制台失败: {e}")
+        logging.error(f"显示控制台失败: {e}")
 
 # 顶层定义ocr_task，确保无缩进
 def ocr_task(img_bytes):
@@ -264,7 +264,7 @@ class IconFrame(tk.Frame):
 class BazaarHelper:
     def __init__(self):
         """初始化BazaarHelper"""
-        self.alt_pressed = False
+        self.ctrl_pressed = False
         self.last_check_time = time.time()
         self.check_interval = 0.1  # 缩短检查间隔到0.1秒
         self.is_running = True
@@ -288,31 +288,31 @@ class BazaarHelper:
         self.system_tray = SystemTray(self)
 
     def keep_alive(self):
-        """保活机制，检查Alt键状态和程序响应"""
-        VK_MENU = 0x12  # Alt键的虚拟键码
+        """保活机制，检查Ctrl键状态和程序响应"""
+        VK_CONTROL = 0x11  # Ctrl键的虚拟键码
         
         while self.is_running:
             try:
-                # 使用win32api检查Alt键状态
-                alt_state = win32api.GetAsyncKeyState(VK_MENU)
-                is_alt_pressed = (alt_state & 0x8000) != 0
+                # 使用win32api检查Ctrl键状态
+                ctrl_state = win32api.GetAsyncKeyState(VK_CONTROL)
+                is_ctrl_pressed = (ctrl_state & 0x8000) != 0
                 
-                # Alt键状态发生变化
-                if is_alt_pressed != self.alt_pressed:
-                    self.alt_pressed = is_alt_pressed
-                    if is_alt_pressed:
-                        # Alt键被按下，获取并显示信息
+                # Ctrl键状态发生变化
+                if is_ctrl_pressed != self.ctrl_pressed:
+                    self.ctrl_pressed = is_ctrl_pressed
+                    if is_ctrl_pressed:
+                        # Ctrl键被按下，获取并显示信息
                         text = self.get_text_at_cursor()
                         if text:
                             x, y = pyautogui.position()
                             self.update_info_display(text, x, y)
                     else:
-                        # Alt键释放，立即隐藏信息
+                        # Ctrl键释放，立即隐藏信息
                         if self.info_window and self.info_window.winfo_exists():
                             self.info_window.withdraw()
                 
-                # 更新窗口位置（如果窗口显示中且Alt键仍然按下）
-                if self.alt_pressed and self.info_window and self.info_window.winfo_exists():
+                # 更新窗口位置（如果窗口显示中且Ctrl键仍然按下）
+                if self.ctrl_pressed and self.info_window and self.info_window.winfo_exists():
                     x, y = pyautogui.position()
                     self.adjust_window_size(x, y)
                 
@@ -701,13 +701,13 @@ class BazaarHelper:
             icons_path = os.path.join(workspace_dir, icons_dir)
             icon_file_path = os.path.join(icons_path, filename)
 
-            logging.info(f"查找本地图标路径: {icon_file_path}")
+            logging.debug(f"查找本地图标路径: {icon_file_path}")
             if os.path.exists(icon_file_path):
-                logging.info(f"找到本地图标: {icon_file_path}")
+                logging.debug(f"找到本地图标: {icon_file_path}")
                 return icon_file_path
 
             # 本地没有，尝试下载
-            logging.info(f"开始下载图标: {icon_url}")
+            logging.debug(f"开始下载图标: {icon_url}")
             headers = {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
             }
@@ -716,7 +716,7 @@ class BazaarHelper:
                 os.makedirs(icons_path, exist_ok=True)
                 with open(icon_file_path, 'wb') as f:
                     f.write(resp.content)
-                logging.info(f"图标下载成功: {icon_file_path}")
+                logging.debug(f"图标下载成功: {icon_file_path}")
                 return icon_file_path
             else:
                 logging.warning(f"下载图标失败，状态码: {resp.status_code}")
@@ -748,7 +748,7 @@ class BazaarHelper:
                 return True
                 
             monster = self.monster_data[monster_name]
-            logging.info(f"怪物数据: {monster}")
+            logging.debug(f"怪物数据: {monster}")
             self.clear_frames()
             
             has_skills = False
@@ -973,7 +973,7 @@ class BazaarHelper:
             self.adjust_window_size(pos_x, pos_y)
             
             # 显示窗口并置顶
-            if self.alt_pressed:  # 只在Alt键按下时显示窗口
+            if self.ctrl_pressed:  # 只在Ctrl键按下时显示窗口
                 self.info_window.deiconify()
                 self.info_window.lift()
                 self.info_window.attributes('-topmost', True)
@@ -1248,7 +1248,7 @@ class SystemTray:
 if __name__ == "__main__":
     helper = None
     try:
-        # 隐藏控制台窗口
+        # 显示控制台窗口
         hide_console()
         
         if not is_admin():
