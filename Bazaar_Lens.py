@@ -18,6 +18,7 @@ import keyboard
 import win32gui
 import requests
 import tkinter as tk
+from tkinter import ttk, filedialog, messagebox
 from PIL import Image, ImageTk
 import pyautogui
 import win32con
@@ -27,7 +28,6 @@ import numpy as np
 from PIL import ImageGrab, Image, ImageDraw, ImageFont
 import pytesseract
 import time
-from tkinter import ttk
 import ctypes
 from ctypes import wintypes
 import win32com.client
@@ -68,7 +68,7 @@ def ocr_task(img_bytes):
     import pytesseract
     import io
     try:
-        pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+        # 使用全局设置的tesseract_cmd路径
         img = Image.open(io.BytesIO(img_bytes))
         return pytesseract.image_to_string(
             img,
@@ -84,7 +84,7 @@ def direct_ocr(img_bytes):
     import pytesseract
     import io
     try:
-        pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+        # 使用全局设置的tesseract_cmd路径
         img = Image.open(io.BytesIO(img_bytes))
         return pytesseract.image_to_string(
             img,
@@ -92,23 +92,6 @@ def direct_ocr(img_bytes):
         ).strip()
     except Exception as e:
         return f"OCR_ERROR: {e}"
-
-def check_dependencies():
-    """检查必要的依赖和文件"""
-    try:
-        # 检查 Tesseract
-        if not os.path.exists(r'C:\Program Files\Tesseract-OCR\tesseract.exe'):
-            logging.error("错误：未安装 Tesseract-OCR")
-            return False
-            
-        # 检查字体文件
-        if not os.path.exists(os.path.join(os.environ['WINDIR'], 'Fonts', 'msyh.ttc')):
-            logging.warning("警告：找不到微软雅黑字体，将使用默认字体")
-            
-        return True
-    except Exception as e:
-        logging.error(f"检查依赖时出错: {e}")
-        return False
 
 def is_admin():
     """检查是否具有管理员权限"""
@@ -362,6 +345,63 @@ class ScrollableFrame(tk.Frame):
         """获取内部框架"""
         return self.inner_frame
 
+class ConfigManager:
+    """配置管理类，用于保存和加载配置"""
+    def __init__(self):
+        self.config_file = "bazaar_lens_config.json"
+        self.default_config = {
+            "tesseract_path": r"C:\Program Files\Tesseract-OCR\tesseract.exe",
+            "last_update_check": "",
+            "auto_update": True
+        }
+        self.config = self.load_config()
+        
+    def load_config(self):
+        """加载配置文件"""
+        try:
+            if os.path.exists(self.config_file):
+                with open(self.config_file, 'r', encoding='utf-8') as f:
+                    config = json.load(f)
+                # 确保所有默认配置项都存在
+                for key, value in self.default_config.items():
+                    if key not in config:
+                        config[key] = value
+                return config
+            else:
+                return self.default_config.copy()
+        except Exception as e:
+            logging.error(f"加载配置文件失败: {e}")
+            return self.default_config.copy()
+            
+    def save_config(self):
+        """保存配置到文件"""
+        try:
+            with open(self.config_file, 'w', encoding='utf-8') as f:
+                json.dump(self.config, f, ensure_ascii=False, indent=4)
+            return True
+        except Exception as e:
+            logging.error(f"保存配置文件失败: {e}")
+            return False
+            
+    def get(self, key, default=None):
+        """获取配置项"""
+        return self.config.get(key, default)
+        
+    def set(self, key, value):
+        """设置配置项并保存"""
+        self.config[key] = value
+        return self.save_config()
+        
+    def get_tesseract_path(self):
+        """获取Tesseract OCR路径"""
+        return self.get("tesseract_path", r"C:\Program Files\Tesseract-OCR\tesseract.exe")
+        
+    def set_tesseract_path(self, path):
+        """设置Tesseract OCR路径"""
+        if path and os.path.exists(path) and os.path.isfile(path):
+            return self.set("tesseract_path", path)
+        return False
+
 class BazaarHelper:
     def __init__(self):
         """初始化BazaarHelper"""
@@ -374,6 +414,9 @@ class BazaarHelper:
         self.monster_data = {}
         self.event_data = {}
         
+        # 添加配置管理器
+        self.config = ConfigManager()
+        
         # 添加OCR线程锁
         self.ocr_lock = threading.Lock()
         
@@ -383,6 +426,10 @@ class BazaarHelper:
             logging.info("检测到打包环境，使用简化OCR策略")
         else:
             logging.info("检测到开发环境，使用标准OCR策略")
+            
+        # 检查OCR依赖
+        if not self.check_tesseract():
+            self.show_tesseract_error()
         
         # 加载数据
         self.load_monster_data()
@@ -1378,6 +1425,98 @@ class BazaarHelper:
             logging.error(f"重置网络设置失败: {e}")
             logging.error(traceback.format_exc())
 
+    def check_tesseract(self):
+        """检查Tesseract OCR是否可用"""
+        try:
+            # 获取配置中的Tesseract路径
+            tesseract_path = self.config.get_tesseract_path()
+            
+            # 检查文件是否存在
+            if os.path.exists(tesseract_path) and os.path.isfile(tesseract_path):
+                # 设置全局路径
+                pytesseract.pytesseract.tesseract_cmd = tesseract_path
+                logging.info(f"Tesseract OCR路径设置为: {tesseract_path}")
+                return True
+            else:
+                logging.error(f"Tesseract OCR路径不存在: {tesseract_path}")
+                return False
+        except Exception as e:
+            logging.error(f"检查Tesseract OCR时出错: {e}")
+            return False
+            
+    def show_tesseract_error(self):
+        """显示Tesseract OCR错误提示"""
+        try:
+            # 创建提示窗口
+            error_window = tk.Toplevel()
+            error_window.title("Tesseract OCR未找到")
+            error_window.geometry("500x200")
+            error_window.resizable(False, False)
+            error_window.attributes('-topmost', True)
+            
+            # 设置窗口图标
+            try:
+                icon_paths = [
+                    "Bazaar_Lens.ico",
+                    os.path.join(os.path.dirname(__file__), "Bazaar_Lens.ico"),
+                    os.path.join("icons", "app_icon.ico")
+                ]
+                for path in icon_paths:
+                    if os.path.exists(path):
+                        error_window.iconbitmap(path)
+                        break
+            except Exception:
+                pass
+                
+            # 创建提示信息
+            frame = tk.Frame(error_window, padx=20, pady=20)
+            frame.pack(fill='both', expand=True)
+            
+            label = tk.Label(
+                frame, 
+                text="未找到Tesseract OCR程序，OCR功能将无法使用。\n\n"
+                     "请安装Tesseract OCR或从系统托盘菜单中设置正确的路径。\n"
+                     "推荐安装版本: tesseract-ocr-w64-setup-5.5.0.20241111.exe",
+                justify='left',
+                wraplength=460
+            )
+            label.pack(pady=(0, 20))
+            
+            # 当前路径显示
+            path_frame = tk.Frame(frame)
+            path_frame.pack(fill='x', pady=(0, 10))
+            
+            path_label = tk.Label(path_frame, text="当前路径:")
+            path_label.pack(side='left')
+            
+            current_path = tk.Entry(path_frame, width=50)
+            current_path.insert(0, self.config.get_tesseract_path())
+            current_path.config(state='readonly')
+            current_path.pack(side='left', padx=(5, 0), fill='x', expand=True)
+            
+            # 按钮区域
+            button_frame = tk.Frame(frame)
+            button_frame.pack(fill='x', pady=(10, 0))
+            
+            # 下载按钮
+            download_button = tk.Button(
+                button_frame, 
+                text="下载Tesseract OCR", 
+                command=lambda: webbrowser.open("https://github.com/UB-Mannheim/tesseract/wiki")
+            )
+            download_button.pack(side='left', padx=(0, 10))
+            
+            # 继续按钮
+            continue_button = tk.Button(
+                button_frame, 
+                text="继续使用", 
+                command=error_window.destroy
+            )
+            continue_button.pack(side='right')
+            
+        except Exception as e:
+            logging.error(f"显示Tesseract OCR错误提示时出错: {e}")
+
 class SystemTray:
     def __init__(self, helper):
         self.helper = helper
@@ -1415,8 +1554,9 @@ class SystemTray:
                 image = Image.new('RGB', (64, 64), color = (73, 109, 137))
             
             menu = (
-                pystray.MenuItem("说明", self.show_info),
-                pystray.MenuItem("关闭", self.quit_app)
+                pystray.MenuItem("Help", self.show_help),
+                pystray.MenuItem("Set tesseract-ocr.exe Path", self.set_ocr_path_simple),
+                pystray.MenuItem("Quit", self.quit_app)
             )
             self.icon = pystray.Icon("BazaarHelper", image, "Bazaar Helper", menu)
             
@@ -1424,37 +1564,69 @@ class SystemTray:
             logging.error(f"创建系统托盘图标失败: {e}")
             logging.error(traceback.format_exc())
 
-    def show_info(self, icon, item):
-        """显示说明信息"""
+    def show_help(self, icon, item):
+        """显示帮助信息"""
         try:
-            # 创建说明窗口
-            info_window = tk.Toplevel()
-            info_window.title("使用说明")
-            info_window.geometry("600x400")
+            # 创建帮助窗口
+            help_window = tk.Toplevel()
+            help_window.title("Help")
             
-            # 创建文本框
-            text_widget = tk.Text(info_window, wrap=tk.WORD, padx=10, pady=10)
-            text_widget.pack(fill=tk.BOTH, expand=True)
+            # 尝试加载Help.png图片
+            help_image_path = "Help.png"
+            help_image_paths = [
+                "Help.png",  # 当前目录
+                os.path.join(os.path.dirname(__file__), "Help.png"),  # 脚本所在目录
+                os.path.join("icons", "Help.png"),  # icons子目录
+            ]
             
-            # 添加滚动条
-            scrollbar = tk.Scrollbar(info_window, command=text_widget.yview)
-            scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
-            text_widget.config(yscrollcommand=scrollbar.set)
+            # 查找图片文件
+            image_path = None
+            for path in help_image_paths:
+                if os.path.exists(path):
+                    image_path = path
+                    break
             
-            try:
-                # 读取 Info.txt 文件
-                with open("Info.txt", "r", encoding="utf-8") as f:
-                    content = f.read()
-                text_widget.insert(tk.END, content)
-            except Exception as e:
-                text_widget.insert(tk.END, f"无法读取说明文件：{e}")
-            
-            # 设置文本框为只读
-            text_widget.config(state=tk.DISABLED)
+            if image_path:
+                try:
+                    # 加载图片
+                    img = Image.open(image_path)
+                    width, height = img.size
+                    
+                    # 设置窗口大小
+                    help_window.geometry(f"{width}x{height}")
+                    
+                    # 创建PhotoImage
+                    photo = ImageTk.PhotoImage(img)
+                    
+                    # 创建标签显示图片
+                    label = tk.Label(help_window, image=photo)
+                    label.image = photo  # 保持引用，防止被垃圾回收
+                    label.pack(fill='both', expand=True)
+                    
+                    logging.info(f"已加载帮助图片: {image_path}")
+                except Exception as e:
+                    logging.error(f"加载帮助图片失败: {e}")
+                    self.show_help_error(help_window)
+            else:
+                logging.error("未找到Help.png图片")
+                self.show_help_error(help_window)
             
         except Exception as e:
-            logging.error(f"显示说明信息失败: {e}")
-            
+            logging.error(f"显示帮助信息失败: {e}")
+    
+    def show_help_error(self, parent_window):
+        """显示帮助图片加载失败的错误信息"""
+        frame = tk.Frame(parent_window, padx=20, pady=20)
+        frame.pack(fill='both', expand=True)
+        
+        label = tk.Label(
+            frame, 
+            text="无法加载帮助图片。\n请确保Help.png文件存在于程序目录中。",
+            font=("Arial", 12),
+            justify='center'
+        )
+        label.pack(pady=20)
+
     def quit_app(self, icon, item):
         """退出应用程序"""
         try:
@@ -1473,6 +1645,68 @@ class SystemTray:
         """运行系统托盘"""
         if self.icon:
             self.icon.run()
+
+    def set_ocr_path_simple(self, icon, item):
+        """设置OCR路径"""
+        try:
+            # 创建临时的顶层窗口作为文件对话框的父窗口
+            root = tk.Tk()
+            root.withdraw()  # 隐藏主窗口
+            
+            # 获取当前OCR路径的目录作为初始目录
+            current_path = self.helper.config.get_tesseract_path()
+            initial_dir = os.path.dirname(current_path) if os.path.exists(os.path.dirname(current_path)) else "C:/"
+            
+            # 打开文件选择对话框
+            file_path = filedialog.askopenfilename(
+                parent=root,
+                title="选择 tesseract-ocr.exe 文件",
+                filetypes=[("可执行文件", "*.exe")],
+                initialdir=initial_dir
+            )
+            
+            # 销毁临时窗口
+            root.destroy()
+            
+            if file_path:
+                # 验证选择的文件是否为tesseract.exe
+                if os.path.basename(file_path).lower() == "tesseract.exe":
+                    # 更新配置
+                    if self.helper.config.set_tesseract_path(file_path):
+                        # 更新全局路径
+                        pytesseract.pytesseract.tesseract_cmd = file_path
+                        # 提示成功
+                        logging.info(f"Tesseract OCR路径已设置为: {file_path}")
+                        # 显示成功消息
+                        self.show_message("设置成功", f"Tesseract OCR路径已设置为:\n{file_path}")
+                        return True
+                    else:
+                        logging.error("保存OCR路径配置失败")
+                        self.show_message("错误", "保存OCR路径配置失败")
+                else:
+                    logging.error("选择的文件不是tesseract.exe")
+                    self.show_message("错误", "请选择正确的tesseract.exe文件")
+            return False
+        except Exception as e:
+            logging.error(f"设置OCR路径时出错: {e}")
+            logging.error(traceback.format_exc())  # 添加详细错误信息
+            return False
+            
+    def show_message(self, title, message):
+        """显示消息对话框"""
+        try:
+            # 创建临时的顶层窗口
+            root = tk.Tk()
+            root.withdraw()  # 隐藏主窗口
+            
+            # 显示消息
+            messagebox.showinfo(title, message, parent=root)
+            
+            # 销毁临时窗口
+            root.destroy()
+        except Exception as e:
+            logging.error(f"显示消息时出错: {e}")
+            logging.error(traceback.format_exc())  # 添加详细错误信息
 
 if __name__ == "__main__":
     # 防止多次启动
