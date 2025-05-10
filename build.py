@@ -25,7 +25,10 @@ a = Analysis(
         ('Info.txt', '.'),   # 说明文件
         ('Bazaar_Lens.ico', '.'),  # 程序图标
     ],
-    hiddenimports=['win32api', 'win32gui', 'win32con', 'keyboard'],
+    hiddenimports=['win32api', 'win32gui', 'win32con', 'keyboard', 'multiprocessing', 
+                   'PIL.Image', 'pytesseract', 'win32process', 'concurrent.futures', 
+                   'multiprocessing.pool', 'multiprocessing.managers', 'queue', 
+                   'PIL._tkinter_finder'],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],

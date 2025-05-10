@@ -8,6 +8,11 @@ import re
 import difflib
 from urllib.parse import urlparse
 
+# 检测是否在打包环境中运行
+def is_packaged_environment():
+    """检测当前是否在打包后的环境中运行"""
+    return getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS')
+
 # 第三方库导入
 import keyboard
 import win32gui
@@ -34,6 +39,9 @@ import subprocess
 import pystray
 import psutil
 import webbrowser
+import win32event
+import winerror
+import win32process
 
 # 设置日志
 logging.basicConfig(
@@ -56,6 +64,22 @@ def hide_console():
 
 # 顶层定义ocr_task，确保无缩进
 def ocr_task(img_bytes):
+    from PIL import Image
+    import pytesseract
+    import io
+    try:
+        pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+        img = Image.open(io.BytesIO(img_bytes))
+        return pytesseract.image_to_string(
+            img,
+            config='--psm 6 --oem 3 -l eng'
+        ).strip()
+    except Exception as e:
+        return f"OCR_ERROR: {e}"
+
+# 添加不使用进程池的OCR函数
+def direct_ocr(img_bytes):
+    """直接在当前线程执行OCR，不使用进程池"""
     from PIL import Image
     import pytesseract
     import io
@@ -273,6 +297,16 @@ class BazaarHelper:
         self.monster_data = {}
         self.event_data = {}
         
+        # 添加OCR线程锁
+        self.ocr_lock = threading.Lock()
+        
+        # 检测运行环境
+        self.is_packaged = is_packaged_environment()
+        if self.is_packaged:
+            logging.info("检测到打包环境，使用简化OCR策略")
+        else:
+            logging.info("检测到开发环境，使用标准OCR策略")
+        
         # 加载数据
         self.load_monster_data()
         self.load_event_data()
@@ -290,9 +324,12 @@ class BazaarHelper:
     def keep_alive(self):
         """保活机制，检查Ctrl键状态和程序响应"""
         VK_CONTROL = 0x11  # Ctrl键的虚拟键码
+        last_action_time = 0  # 上次执行动作的时间
+        debounce_delay = 0.5  # 防抖动延迟(秒)
         
         while self.is_running:
             try:
+                current_time = time.time()
                 # 使用win32api检查Ctrl键状态
                 ctrl_state = win32api.GetAsyncKeyState(VK_CONTROL)
                 is_ctrl_pressed = (ctrl_state & 0x8000) != 0
@@ -301,11 +338,14 @@ class BazaarHelper:
                 if is_ctrl_pressed != self.ctrl_pressed:
                     self.ctrl_pressed = is_ctrl_pressed
                     if is_ctrl_pressed:
-                        # Ctrl键被按下，获取并显示信息
-                        text = self.get_text_at_cursor()
-                        if text:
-                            x, y = pyautogui.position()
-                            self.update_info_display(text, x, y)
+                        # 添加防抖动: 检查距离上次动作的时间是否足够
+                        if current_time - last_action_time >= debounce_delay:
+                            # Ctrl键被按下，获取并显示信息
+                            text = self.get_text_at_cursor()
+                            if text:
+                                x, y = pyautogui.position()
+                                self.update_info_display(text, x, y)
+                                last_action_time = current_time
                     else:
                         # Ctrl键释放，立即隐藏信息
                         if self.info_window and self.info_window.winfo_exists():
@@ -339,6 +379,22 @@ class BazaarHelper:
         if self.keep_alive_thread and self.keep_alive_thread.is_alive():
             self.keep_alive_thread.join(timeout=1)
         self.destroy_info_window()
+        # 清理临时文件
+        self.cleanup_temp_files()
+
+    def cleanup_temp_files(self):
+        """清理临时文件"""
+        try:
+            temp_files = ['debug_binary.png', 'debug_capture.png']
+            for filename in temp_files:
+                if os.path.exists(filename):
+                    try:
+                        os.remove(filename)
+                        logging.info(f"已删除临时文件: {filename}")
+                    except Exception as e:
+                        logging.warning(f"删除临时文件失败: {filename}, 错误: {e}")
+        except Exception as e:
+            logging.error(f"清理临时文件时出错: {e}")
 
     def load_monster_data(self):
         """加载怪物数据"""
@@ -379,7 +435,25 @@ class BazaarHelper:
                 hwnd = win32gui.FindWindow(None, "The Bazaar - DirectX 12")
                 
             if hwnd:
-                win32gui.SetForegroundWindow(hwnd)
+                try:
+                    # 使用AttachThreadInput方法处理SetForegroundWindow错误
+                    foreground_hwnd = win32gui.GetForegroundWindow()
+                    foreground_thread_id = win32process.GetWindowThreadProcessId(foreground_hwnd)[0]
+                    current_thread_id = win32api.GetCurrentThreadId()
+                    
+                    # 将线程输入关联起来
+                    if foreground_thread_id != current_thread_id:
+                        win32process.AttachThreadInput(foreground_thread_id, current_thread_id, True)
+                        win32gui.SetForegroundWindow(hwnd)
+                        win32process.AttachThreadInput(foreground_thread_id, current_thread_id, False)
+                    else:
+                        win32gui.SetForegroundWindow(hwnd)
+                except Exception as e:
+                    # 如果设置前台窗口失败，记录错误但继续
+                    logging.warning(f"设置游戏窗口为前台失败: {e}")
+                    # 保持静默，不影响正常功能
+                    pass
+                
                 rect = win32gui.GetWindowRect(hwnd)
                 logging.debug(f"找到游戏窗口: {rect}")
                 return hwnd, rect
@@ -409,32 +483,61 @@ class BazaarHelper:
             return img
 
     def ocr_with_timeout(self, processed_img, timeout=3):
-        buf = io.BytesIO()
-        Image.fromarray(processed_img).save(buf, format='PNG')
-        img_bytes = buf.getvalue()
-        # 新增：卡死计数
-        if not hasattr(self, '_ocr_fail_count'):
-            self._ocr_fail_count = 0
-        import sys
-        with concurrent.futures.ProcessPoolExecutor(max_workers=1) as executor:
-            future = executor.submit(ocr_task, img_bytes)
-            try:
-                result = future.result(timeout=timeout)
-                self._ocr_fail_count = 0  # 成功则清零
-                return result
-            except concurrent.futures.TimeoutError:
-                self._ocr_fail_count += 1
-                logging.warning("OCR识别超时，已跳过本次识别。")
-                return None
-            except Exception as e:
-                self._ocr_fail_count += 1
-                logging.warning(f"OCR识别异常: {e}")
-        # 超过3次自动重启
-        if self._ocr_fail_count >= 3:
-            logging.error("OCR连续多次卡死，自动重启程序！")
-            python = sys.executable
-            os.execv(python, [python] + sys.argv)
-        return None
+        """使用超时机制执行OCR，避免使用进程池"""
+        # 使用线程锁防止并发调用
+        if not self.ocr_lock.acquire(blocking=False):
+            logging.info("OCR已在进行中，跳过本次识别")
+            return None
+            
+        try:
+            # 准备图像数据
+            buf = io.BytesIO()
+            Image.fromarray(processed_img).save(buf, format='PNG')
+            img_bytes = buf.getvalue()
+            
+            # 根据环境选择OCR策略
+            if getattr(self, 'is_packaged', False):
+                # 打包环境使用直接调用
+                try:
+                    return direct_ocr(img_bytes)
+                except Exception as e:
+                    logging.error(f"直接OCR调用失败: {e}")
+                    return None
+            else:
+                # 开发环境使用线程超时
+                # 初始化结果变量和事件
+                result = [None]  # 使用列表存储结果，便于线程间共享
+                ocr_done = threading.Event()
+                
+                # 定义OCR线程
+                def ocr_thread():
+                    try:
+                        # 直接在线程中执行OCR，不使用进程池
+                        ocr_result = direct_ocr(img_bytes)
+                        result[0] = ocr_result
+                        ocr_done.set()
+                    except Exception as e:
+                        logging.error(f"OCR线程异常: {e}")
+                        ocr_done.set()
+                
+                # 启动OCR线程
+                thread = threading.Thread(target=ocr_thread, daemon=True)
+                thread.start()
+                
+                # 等待OCR完成或超时
+                if ocr_done.wait(timeout=timeout):
+                    return result[0]
+                else:
+                    logging.warning("OCR识别超时，已跳过本次识别")
+                    # 超时但不终止线程，让它在后台继续运行
+                    return None
+                
+        except Exception as e:
+            logging.error(f"OCR处理异常: {e}")
+            return None
+        finally:
+            # 确保释放锁
+            self.ocr_lock.release()
 
     def find_best_match(self, text):
         """统一识别怪物或事件，返回('monster'/'event', 名称)或(None, None)"""
@@ -1183,8 +1286,33 @@ class SystemTray:
     def create_tray_icon(self):
         """创建系统托盘图标"""
         try:
-            # 创建托盘图标
-            image = Image.open("Bazaar_Lens.ico")
+            # 创建托盘图标，尝试多个位置查找图标文件
+            icon_path = "Bazaar_Lens.ico"
+            icon_paths = [
+                "Bazaar_Lens.ico",  # 当前目录
+                os.path.join(os.path.dirname(__file__), "Bazaar_Lens.ico"),  # 脚本所在目录
+                os.path.join(os.path.abspath("."), "Bazaar_Lens.ico"),  # 绝对路径
+                os.path.join("icons", "app_icon.ico"),  # icons子目录
+            ]
+            
+            # 尝试不同路径加载图标
+            loaded = False
+            for path in icon_paths:
+                try:
+                    if os.path.exists(path):
+                        image = Image.open(path)
+                        loaded = True
+                        logging.info(f"成功加载图标: {path}")
+                        break
+                except Exception as e:
+                    logging.warning(f"尝试加载图标失败: {path}, 错误: {e}")
+            
+            # 如果所有路径都失败，使用内存中创建的简单图标
+            if not loaded:
+                logging.warning("无法加载图标文件，使用内存创建的图标")
+                # 创建一个简单的彩色图标
+                image = Image.new('RGB', (64, 64), color = (73, 109, 137))
+            
             menu = (
                 pystray.MenuItem("说明", self.show_info),
                 pystray.MenuItem("关闭", self.quit_app)
@@ -1246,6 +1374,14 @@ class SystemTray:
             self.icon.run()
 
 if __name__ == "__main__":
+    # 防止多次启动
+    # 创建互斥锁
+    mutex_name = "Global\\BazaarLens_SingleInstance"
+    mutex = win32event.CreateMutex(None, False, mutex_name)
+    if win32api.GetLastError() == winerror.ERROR_ALREADY_EXISTS:
+        logging.warning("程序已经在运行！")
+        sys.exit(0)
+    
     helper = None
     try:
         # 显示控制台窗口
@@ -1271,6 +1407,8 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         pass
     finally:
+        # 释放互斥锁和资源
         if helper:
             helper.stop()
-        os._exit(0) 
+        # 使用sys.exit代替os._exit以允许清理
+        sys.exit(0) 
