@@ -24,7 +24,6 @@ imports:
  &#8226;   <a href="#PIL.ImageFont">PIL.ImageFont</a>
  &#8226;   <a href="#PIL.ImageGrab">PIL.ImageGrab</a>
  &#8226;   <a href="#PIL.ImageTk">PIL.ImageTk</a>
- &#8226;   <a href="#PIL._tkinter_finder">PIL._tkinter_finder</a>
  &#8226;   <a href="#_collections_abc">_collections_abc</a>
  &#8226;   <a href="#_weakrefset">_weakrefset</a>
  &#8226;   <a href="#abc">abc</a>
@@ -36,6 +35,7 @@ imports:
  &#8226;   <a href="#ctypes">ctypes</a>
  &#8226;   <a href="#ctypes.wintypes">ctypes.wintypes</a>
  &#8226;   <a href="#cv2">cv2</a>
+ &#8226;   <a href="#datetime">datetime</a>
  &#8226;   <a href="#difflib">difflib</a>
  &#8226;   <a href="#encodings">encodings</a>
  &#8226;   <a href="#encodings.aliases">encodings.aliases</a>
@@ -170,9 +170,6 @@ imports:
  &#8226;   <a href="#linecache">linecache</a>
  &#8226;   <a href="#locale">locale</a>
  &#8226;   <a href="#logging">logging</a>
- &#8226;   <a href="#multiprocessing">multiprocessing</a>
- &#8226;   <a href="#multiprocessing.managers">multiprocessing.managers</a>
- &#8226;   <a href="#multiprocessing.pool">multiprocessing.pool</a>
  &#8226;   <a href="#ntpath">ntpath</a>
  &#8226;   <a href="#numpy">numpy</a>
  &#8226;   <a href="#operator">operator</a>
@@ -189,10 +186,10 @@ imports:
  &#8226;   <a href="#pyi_rth_pywintypes.py">pyi_rth_pywintypes.py</a>
  &#8226;   <a href="#pystray">pystray</a>
  &#8226;   <a href="#pytesseract">pytesseract</a>
- &#8226;   <a href="#queue">queue</a>
  &#8226;   <a href="#re">re</a>
  &#8226;   <a href="#reprlib">reprlib</a>
  &#8226;   <a href="#requests">requests</a>
+ &#8226;   <a href="#shutil">shutil</a>
  &#8226;   <a href="#sre_compile">sre_compile</a>
  &#8226;   <a href="#sre_constants">sre_constants</a>
  &#8226;   <a href="#sre_parse">sre_parse</a>
@@ -773,7 +770,6 @@ imported by:
  &#8226;   <a href="#PIL._imagingft">PIL._imagingft</a>
  &#8226;   <a href="#PIL._imagingmath">PIL._imagingmath</a>
  &#8226;   <a href="#PIL._imagingtk">PIL._imagingtk</a>
- &#8226;   <a href="#PIL._tkinter_finder">PIL._tkinter_finder</a>
  &#8226;   <a href="#PIL._typing">PIL._typing</a>
  &#8226;   <a href="#PIL._util">PIL._util</a>
  &#8226;   <a href="#PIL._version">PIL._version</a>
@@ -2998,24 +2994,6 @@ imported by:
 </div>
 
 <div class="node">
-  <a name="PIL._tkinter_finder"></a>
-  <a target="code" href="///C:/Users/vivi/AppData/Local/Programs/Python/Python310/lib/site-packages/PIL/_tkinter_finder.py" type="text/plain"><tt>PIL._tkinter_finder</tt></a>
-<span class="moduletype">SourceModule</span>  <div class="import">
-imports:
-    <a href="#PIL">PIL</a>
- &#8226;   <a href="#__future__">__future__</a>
- &#8226;   <a href="#sys">sys</a>
-
-  </div>
-  <div class="import">
-imported by:
-    <a href="#Bazaar_Lens.py">Bazaar_Lens.py</a>
-
-  </div>
-
-</div>
-
-<div class="node">
   <a name="PIL._typing"></a>
   <a target="code" href="///C:/Users/vivi/AppData/Local/Programs/Python/Python310/lib/site-packages/PIL/_typing.py" type="text/plain"><tt>PIL._typing</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
@@ -3311,7 +3289,6 @@ imported by:
  &#8226;   <a href="#PIL.XpmImagePlugin">PIL.XpmImagePlugin</a>
  &#8226;   <a href="#PIL._binary">PIL._binary</a>
  &#8226;   <a href="#PIL._deprecate">PIL._deprecate</a>
- &#8226;   <a href="#PIL._tkinter_finder">PIL._tkinter_finder</a>
  &#8226;   <a href="#PIL._typing">PIL._typing</a>
  &#8226;   <a href="#PIL._util">PIL._util</a>
  &#8226;   <a href="#PIL._version">PIL._version</a>
@@ -7158,7 +7135,8 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#PIL._imagingcms">PIL._imagingcms</a>
+    <a href="#Bazaar_Lens.py">Bazaar_Lens.py</a>
+ &#8226;   <a href="#PIL._imagingcms">PIL._imagingcms</a>
  &#8226;   <a href="#_strptime">_strptime</a>
  &#8226;   <a href="#calendar">calendar</a>
  &#8226;   <a href="#email.utils">email.utils</a>
@@ -12582,8 +12560,7 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#Bazaar_Lens.py">Bazaar_Lens.py</a>
- &#8226;   <a href="#concurrent.futures.process">concurrent.futures.process</a>
+    <a href="#concurrent.futures.process">concurrent.futures.process</a>
  &#8226;   <a href="#multiprocessing">multiprocessing</a>
  &#8226;   <a href="#multiprocessing.connection">multiprocessing.connection</a>
  &#8226;   <a href="#multiprocessing.context">multiprocessing.context</a>
@@ -12895,8 +12872,7 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#Bazaar_Lens.py">Bazaar_Lens.py</a>
- &#8226;   <a href="#multiprocessing.context">multiprocessing.context</a>
+    <a href="#multiprocessing.context">multiprocessing.context</a>
 
   </div>
 
@@ -12926,8 +12902,7 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#Bazaar_Lens.py">Bazaar_Lens.py</a>
- &#8226;   <a href="#multiprocessing">multiprocessing</a>
+    <a href="#multiprocessing">multiprocessing</a>
  &#8226;   <a href="#multiprocessing.context">multiprocessing.context</a>
  &#8226;   <a href="#multiprocessing.dummy">multiprocessing.dummy</a>
  &#8226;   <a href="#multiprocessing.managers">multiprocessing.managers</a>
@@ -23634,8 +23609,7 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#Bazaar_Lens.py">Bazaar_Lens.py</a>
- &#8226;   <a href="#concurrent.futures.process">concurrent.futures.process</a>
+    <a href="#concurrent.futures.process">concurrent.futures.process</a>
  &#8226;   <a href="#concurrent.futures.thread">concurrent.futures.thread</a>
  &#8226;   <a href="#keyboard">keyboard</a>
  &#8226;   <a href="#keyboard._generic">keyboard._generic</a>
@@ -24525,7 +24499,8 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#PIL.EpsImagePlugin">PIL.EpsImagePlugin</a>
+    <a href="#Bazaar_Lens.py">Bazaar_Lens.py</a>
+ &#8226;   <a href="#PIL.EpsImagePlugin">PIL.EpsImagePlugin</a>
  &#8226;   <a href="#PIL.ImageGrab">PIL.ImageGrab</a>
  &#8226;   <a href="#PIL.ImageShow">PIL.ImageShow</a>
  &#8226;   <a href="#argparse">argparse</a>
@@ -25099,7 +25074,6 @@ imported by:
  &#8226;   <a href="#PIL.JpegImagePlugin">PIL.JpegImagePlugin</a>
  &#8226;   <a href="#PIL.SpiderImagePlugin">PIL.SpiderImagePlugin</a>
  &#8226;   <a href="#PIL._imagingcms">PIL._imagingcms</a>
- &#8226;   <a href="#PIL._tkinter_finder">PIL._tkinter_finder</a>
  &#8226;   <a href="#PIL._typing">PIL._typing</a>
  &#8226;   <a href="#PIL.features">PIL.features</a>
  &#8226;   <a href="#_aix_support">_aix_support</a>

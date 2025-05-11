@@ -1,11 +1,11 @@
-Bazaar Lens 0.1 使用说明
+Bazaar Lens 1.0.0 使用说明
 
    - 在游戏中按住 Ctrl 键可以查看鼠标指向位置的怪物或事件信息;
    - 请确保以管理员权限运行程序;
    - 如果tesseract-ocr.exe不是安装在默认位置，请在选项Set tesseract-ocr.exe Path中重新选择安装位置。   
    - 如有bug或其他问题，请联系bazaarlens@gmail.com，谢谢！
 
-Bazaar Lens 0.1 User Guide
+Bazaar Lens 1.0.0 User Guide
 
    - Hold Ctrl key in the game to view monster or event information at the mouse pointer position;
    - Please ensure to run the program with administrator privileges;

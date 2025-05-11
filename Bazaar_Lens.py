@@ -56,6 +56,15 @@ logging.basicConfig(
 )
 
 def hide_console():
+    """隐藏控制台窗口"""
+    try:
+        whnd = ctypes.windll.kernel32.GetConsoleWindow()
+        if whnd != 0:
+            ctypes.windll.user32.ShowWindow(whnd, 0)  # 0表示隐藏窗口
+    except Exception as e:
+        logging.error(f"隐藏控制台失败: {e}")
+
+def show_console():
     """显示控制台窗口"""
     try:
         whnd = ctypes.windll.kernel32.GetConsoleWindow()
@@ -354,7 +363,8 @@ class ConfigManager:
         self.default_config = {
             "tesseract_path": r"C:\Program Files\Tesseract-OCR\tesseract.exe",
             "last_update_check": "",
-            "auto_update": True
+            "auto_update": True,
+            "show_console": False
         }
         self.config = self.load_config()
         
@@ -450,6 +460,10 @@ class BazaarHelper:
         # 启动自动更新检查
         if self.config.get("auto_update", True):
             self.check_for_updates()
+
+        # 根据配置决定是否显示控制台
+        if not self.config.get("show_console", False):
+            hide_console()
 
     def keep_alive(self):
         """保活机制，检查Ctrl键状态和程序响应"""
@@ -1827,6 +1841,7 @@ class SystemTray:
                 pystray.MenuItem("Set tesseract-ocr.exe Path", self.set_ocr_path_simple),
                 pystray.MenuItem("Auto Update", self.toggle_auto_update, checked=lambda item: self.helper.config.get("auto_update", True)),
                 pystray.MenuItem("Check for Updates", self.check_for_updates),
+                pystray.MenuItem("Show Console", self.toggle_console, checked=lambda item: self.helper.config.get("show_console", False)),
                 pystray.MenuItem("Quit", self.quit_app)
             )
             self.icon = pystray.Icon("BazaarHelper", image, "Bazaar Helper", menu)
@@ -1971,6 +1986,23 @@ class SystemTray:
         except Exception as e:
             logging.error(f"显示消息时出错: {e}")
             logging.error(traceback.format_exc())  # 添加详细错误信息
+
+    def toggle_console(self, icon, item):
+        """切换控制台显示状态"""
+        try:
+            current_setting = self.helper.config.get("show_console", False)
+            new_setting = not current_setting
+            self.helper.config.set("show_console", new_setting)
+            
+            if new_setting:
+                show_console()
+            else:
+                hide_console()
+                
+            logging.info(f"控制台显示设置已更改为: {new_setting}")
+        except Exception as e:
+            logging.error(f"切换控制台显示状态失败: {e}")
+            self.show_message("错误", "更改控制台显示设置失败")
 
 if __name__ == "__main__":
     # 防止多次启动

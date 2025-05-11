@@ -131,3 +131,4 @@ config.ini
 
 # OCR data files
 *.traineddata
+/build/Bazaar_Lens
