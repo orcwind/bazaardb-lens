@@ -48,19 +48,19 @@ logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler('bazaar_lens.log', encoding='utf-8'),
+        logging.FileHandler('bazaar_helper.log', encoding='utf-8'),
         logging.StreamHandler()
     ]
 )
 
 def hide_console():
-    """隐藏控制台窗口"""
+    """显示控制台窗口"""
     try:
         whnd = ctypes.windll.kernel32.GetConsoleWindow()
         if whnd != 0:
-            ctypes.windll.user32.ShowWindow(whnd, 0)  # 0表示隐藏窗口
+            ctypes.windll.user32.ShowWindow(whnd, 1)  # 1表示显示窗口
     except Exception as e:
-        logging.error(f"隐藏控制台失败: {e}")
+        logging.error(f"显示控制台失败: {e}")
 
 # 顶层定义ocr_task，确保无缩进
 def ocr_task(img_bytes):
@@ -72,7 +72,7 @@ def ocr_task(img_bytes):
         img = Image.open(io.BytesIO(img_bytes))
         return pytesseract.image_to_string(
             img,
-            config='--psm 6 --oem 3 -l eng -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789\'-_., '
+            config='--psm 6 --oem 3 -l eng'
         ).strip()
     except Exception as e:
         return f"OCR_ERROR: {e}"
@@ -88,7 +88,7 @@ def direct_ocr(img_bytes):
         img = Image.open(io.BytesIO(img_bytes))
         return pytesseract.image_to_string(
             img,
-            config='--psm 6 --oem 3 -l eng -c tessedit_char_whitelist=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789\'-_., '
+            config='--psm 6 --oem 3 -l eng'
         ).strip()
     except Exception as e:
         return f"OCR_ERROR: {e}"
@@ -402,9 +402,9 @@ class ConfigManager:
             return self.set("tesseract_path", path)
         return False
 
-class BazaarLens:
+class BazaarHelper:
     def __init__(self):
-        """初始化BazaarLens"""
+        """初始化BazaarHelper"""
         self.ctrl_pressed = False
         self.last_check_time = time.time()
         self.check_interval = 0.1  # 缩短检查间隔到0.1秒
@@ -594,21 +594,8 @@ class BazaarLens:
             # 转换为灰度图
             gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)
             
-            # 应用高斯模糊减少噪点
-            blurred = cv2.GaussianBlur(gray, (5, 5), 0)
-            
-            # 自适应阈值处理，更好地处理不同亮度条件下的文本
-            binary = cv2.adaptiveThreshold(
-                blurred, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, 
-                cv2.THRESH_BINARY, 11, 2
-            )
-            
-            # 形态学操作：开运算消除小噪声
-            kernel = np.ones((1, 1), np.uint8)
-            binary = cv2.morphologyEx(binary, cv2.MORPH_OPEN, kernel)
-            
-            # 反转颜色确保文本为黑色背景为白色（提高识别率）
-            binary = cv2.bitwise_not(binary)
+            # 二值化
+            _, binary = cv2.threshold(gray, 200, 255, cv2.THRESH_BINARY)
             
             # 保存二值化图像用于调试
             cv2.imwrite('debug_binary.png', binary)
@@ -838,7 +825,7 @@ class BazaarLens:
         try:
             # 创建主窗口
             self.info_window = tk.Toplevel()
-            self.info_window.title("Bazaar_Lens")
+            self.info_window.title("The Bazaar Helper")
             self.info_window.attributes('-alpha', 0.95)  # 设置透明度
             self.info_window.overrideredirect(True)  # 无边框窗口
             self.info_window.attributes('-topmost', True)  # 保持在顶层
@@ -1449,20 +1436,6 @@ class BazaarLens:
                 # 设置全局路径
                 pytesseract.pytesseract.tesseract_cmd = tesseract_path
                 logging.info(f"Tesseract OCR路径设置为: {tesseract_path}")
-                
-                # 检查语言数据文件
-                tessdata_dir = os.path.join(os.path.dirname(tesseract_path), "tessdata")
-                eng_traineddata = os.path.join(tessdata_dir, "eng.traineddata")
-                
-                if not os.path.exists(eng_traineddata):
-                    logging.error(f"eng.traineddata 文件不存在: {eng_traineddata}")
-                    return False
-                    
-                # 检查文件大小是否为0
-                if os.path.getsize(eng_traineddata) < 1000:  # 如果小于1KB，认为文件无效
-                    logging.error(f"eng.traineddata 文件无效（文件大小太小）: {eng_traineddata}")
-                    return False
-                    
                 return True
             else:
                 logging.error(f"Tesseract OCR路径不存在: {tesseract_path}")
@@ -1476,8 +1449,8 @@ class BazaarLens:
         try:
             # 创建提示窗口
             error_window = tk.Toplevel()
-            error_window.title("Tesseract OCR配置问题")
-            error_window.geometry("550x250")
+            error_window.title("Tesseract OCR未找到")
+            error_window.geometry("500x200")
             error_window.resizable(False, False)
             error_window.attributes('-topmost', True)
             
@@ -1499,31 +1472,13 @@ class BazaarLens:
             frame = tk.Frame(error_window, padx=20, pady=20)
             frame.pack(fill='both', expand=True)
             
-            # 检查语言文件问题
-            tesseract_path = self.config.get_tesseract_path()
-            if os.path.exists(tesseract_path) and os.path.isfile(tesseract_path):
-                tessdata_dir = os.path.join(os.path.dirname(tesseract_path), "tessdata")
-                eng_traineddata = os.path.join(tessdata_dir, "eng.traineddata")
-                
-                if not os.path.exists(eng_traineddata):
-                    error_message = "未找到英语语言数据文件 (eng.traineddata)。\n\n" \
-                                   "OCR功能将无法使用。请点击'下载语言文件'按钮修复此问题。"
-                elif os.path.getsize(eng_traineddata) < 1000:
-                    error_message = "英语语言数据文件 (eng.traineddata) 已损坏或无效。\n\n" \
-                                   "OCR功能将无法使用。请点击'下载语言文件'按钮修复此问题。"
-                else:
-                    error_message = "Tesseract OCR配置有问题，OCR功能可能无法正常工作。\n\n" \
-                                   "请确保Tesseract OCR已正确安装。"
-            else:
-                error_message = "未找到Tesseract OCR程序，OCR功能将无法使用。\n\n" \
-                             "请安装Tesseract OCR或从系统托盘菜单中设置正确的路径。\n" \
-                             "推荐安装版本: tesseract-ocr-w64-setup-5.5.0.20241111.exe"
-            
             label = tk.Label(
                 frame, 
-                text=error_message,
+                text="未找到Tesseract OCR程序，OCR功能将无法使用。\n\n"
+                     "请安装Tesseract OCR或从系统托盘菜单中设置正确的路径。\n"
+                     "推荐安装版本: tesseract-ocr-w64-setup-5.5.0.20241111.exe",
                 justify='left',
-                wraplength=510
+                wraplength=460
             )
             label.pack(pady=(0, 20))
             
@@ -1543,21 +1498,13 @@ class BazaarLens:
             button_frame = tk.Frame(frame)
             button_frame.pack(fill='x', pady=(10, 0))
             
-            # 下载Tesseract OCR按钮
+            # 下载按钮
             download_button = tk.Button(
                 button_frame, 
                 text="下载Tesseract OCR", 
                 command=lambda: webbrowser.open("https://github.com/UB-Mannheim/tesseract/wiki")
             )
-            download_button.pack(side='left', padx=(0, 5))
-            
-            # 添加下载语言文件按钮
-            download_lang_button = tk.Button(
-                button_frame, 
-                text="下载语言文件", 
-                command=lambda: self.download_language_file(error_window)
-            )
-            download_lang_button.pack(side='left', padx=5)
+            download_button.pack(side='left', padx=(0, 10))
             
             # 继续按钮
             continue_button = tk.Button(
@@ -1569,112 +1516,6 @@ class BazaarLens:
             
         except Exception as e:
             logging.error(f"显示Tesseract OCR错误提示时出错: {e}")
-        
-    def download_language_file(self, parent_window=None):
-        """下载并安装语言文件"""
-        try:
-            # 创建提示窗口
-            if parent_window:
-                parent_window.destroy()
-            
-            progress_window = tk.Toplevel()
-            progress_window.title("下载语言文件")
-            progress_window.geometry("400x150")
-            progress_window.resizable(False, False)
-            progress_window.attributes('-topmost', True)
-            
-            # 设置窗口图标
-            try:
-                icon_paths = [
-                    "Bazaar_Lens.ico",
-                    os.path.join(os.path.dirname(__file__), "Bazaar_Lens.ico"),
-                    os.path.join("icons", "app_icon.ico")
-                ]
-                for path in icon_paths:
-                    if os.path.exists(path):
-                        progress_window.iconbitmap(path)
-                        break
-            except Exception:
-                pass
-            
-            # 创建提示信息
-            frame = tk.Frame(progress_window, padx=20, pady=20)
-            frame.pack(fill='both', expand=True)
-            
-            label = tk.Label(
-                frame, 
-                text="正在下载语言文件，请稍候...\n这可能需要几分钟时间。",
-                justify='left'
-            )
-            label.pack(pady=(0, 10))
-            
-            # 进度条
-            progress = ttk.Progressbar(frame, mode='indeterminate', length=350)
-            progress.pack(pady=10)
-            progress.start()
-            
-            # 开始下载
-            def download_thread():
-                try:
-                    # 获取Tesseract路径
-                    tesseract_path = self.config.get_tesseract_path()
-                    tessdata_dir = os.path.join(os.path.dirname(tesseract_path), "tessdata")
-                    
-                    # 确保目录存在
-                    os.makedirs(tessdata_dir, exist_ok=True)
-                    
-                    # 语言文件路径
-                    eng_traineddata = os.path.join(tessdata_dir, "eng.traineddata")
-                    
-                    # 下载语言文件
-                    url = "https://github.com/tesseract-ocr/tessdata/raw/main/eng.traineddata"
-                    logging.info(f"开始下载语言文件: {url}")
-                    
-                    # 使用requests下载
-                    response = requests.get(url, stream=True)
-                    response.raise_for_status()
-                    
-                    # 写入文件
-                    with open(eng_traineddata, 'wb') as f:
-                        for chunk in response.iter_content(chunk_size=8192):
-                            f.write(chunk)
-                    
-                    logging.info(f"语言文件下载完成: {eng_traineddata}")
-                    
-                    # 在主线程更新UI
-                    progress_window.after(0, lambda: show_success())
-                except Exception as e:
-                    logging.error(f"下载语言文件时出错: {e}")
-                    logging.error(traceback.format_exc())
-                    progress_window.after(0, lambda: show_error(str(e)))
-            
-            # 显示成功消息
-            def show_success():
-                progress.stop()
-                progress_window.destroy()
-                
-                messagebox.showinfo(
-                    "下载成功", 
-                    "语言文件下载成功！OCR功能现在应该可以正常工作了。"
-                )
-            
-            # 显示错误消息
-            def show_error(error_msg):
-                progress.stop()
-                progress_window.destroy()
-                
-                messagebox.showerror(
-                    "下载失败", 
-                    f"语言文件下载失败: {error_msg}\n\n"
-                    "您可以尝试手动下载语言文件，或检查网络连接后重试。"
-                )
-            
-            # 启动下载线程
-            threading.Thread(target=download_thread, daemon=True).start()
-            
-        except Exception as e:
-            logging.error(f"下载语言文件时出错: {e}")
-            logging.error(traceback.format_exc())
 
 class SystemTray:
     def __init__(self, helper):
@@ -1717,7 +1558,7 @@ class SystemTray:
                 pystray.MenuItem("Set tesseract-ocr.exe Path", self.set_ocr_path_simple),
                 pystray.MenuItem("Quit", self.quit_app)
             )
-            self.icon = pystray.Icon("Bazaar_Lens", image, "Bazaar_Lens", menu)
+            self.icon = pystray.Icon("BazaarHelper", image, "Bazaar Helper", menu)
             
         except Exception as e:
             logging.error(f"创建系统托盘图标失败: {e}")
@@ -1878,7 +1719,7 @@ if __name__ == "__main__":
     
     helper = None
     try:
-        # 隐藏控制台窗口
+        # 显示控制台窗口
         hide_console()
         
         if not is_admin():
@@ -1889,7 +1730,7 @@ if __name__ == "__main__":
             root.withdraw()
             
             # 创建主程序实例
-            helper = BazaarLens()
+            helper = BazaarHelper()
             
             # 创建并运行系统托盘（在新线程中运行）
             tray_thread = threading.Thread(target=lambda: helper.system_tray.run(), daemon=True)
