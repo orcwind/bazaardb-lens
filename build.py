@@ -22,7 +22,7 @@ a = Analysis(
         ('tesseract-ocr-w64-setup-5.5.0.20241111.exe', '.'),  # Tesseract-OCR安装程序
         ('icons', 'icons'),  # icons文件夹
         ('data', 'data'),    # 数据文件夹
-        ('Info.txt', '.'),   # 说明文件
+        ('Help.png', '.'),   # 帮助图片
         ('Bazaar_Lens.ico', '.'),  # 程序图标
     ],
     hiddenimports=['win32api', 'win32gui', 'win32con', 'keyboard', 'multiprocessing', 
@@ -55,7 +55,7 @@ exe = EXE(
     upx=True,
     upx_exclude=[],
     runtime_tmpdir=None,
-    console=True,
+    console=False,
     disable_windowed_traceback=False,
     target_arch=None,
     codesign_identity=None,
@@ -75,7 +75,7 @@ exe = EXE(
     print("\n2. 资源文件：")
     print("   - icons/（所有游戏图标）")
     print("   - data/（怪物和事件数据）")
-    print("   - Info.txt（使用说明）")
+    print("   - Help.png（帮助图片）")
     print("   - Bazaar_Lens.ico（程序图标）")
     print("\n3. 依赖程序：")
     print("   - tesseract-ocr-w64-setup-5.5.0.20241111.exe")

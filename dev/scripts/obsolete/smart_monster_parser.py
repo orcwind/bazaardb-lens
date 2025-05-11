@@ -103,12 +103,12 @@ def parse_monster_html(file_path):
                     if aspect_match:
                         aspect_ratio = float(aspect_match.group(1))
                 if name and description:
-                    skills.append({
+                skills.append({
                         'name': name,
-                        'icon': icon or '',
+                    'icon': icon or '',
                         'description': description,
-                        'aspect_ratio': aspect_ratio
-                    })
+                    'aspect_ratio': aspect_ratio
+                })
     result['skills'] = skills
     # 物品
     items = []
