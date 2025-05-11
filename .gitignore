@@ -90,3 +90,38 @@ typings/
 
 # Electron-Forge
 out/
+Bazaar_Lens.spec
+Bazaar_Lens_backup.py
+Bazaar_Lens_Installer - 副本.iss.backup 202505111922
+build - 副本.py backup 202505111922
+/build
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Virtual Environment
+venv/
+env/
+
+# IDE
+.idea/
+.vscode/
+
+# Debug files
+debug_*.png
+tesstest.png
+
+# Build output
+Output/
+*.exe
+
+# Temporary files
+*.log
+*.tmp
