@@ -24,6 +24,7 @@ imports:
  &#8226;   <a href="#PIL.ImageFont">PIL.ImageFont</a>
  &#8226;   <a href="#PIL.ImageGrab">PIL.ImageGrab</a>
  &#8226;   <a href="#PIL.ImageTk">PIL.ImageTk</a>
+ &#8226;   <a href="#PIL._tkinter_finder">PIL._tkinter_finder</a>
  &#8226;   <a href="#_collections_abc">_collections_abc</a>
  &#8226;   <a href="#_weakrefset">_weakrefset</a>
  &#8226;   <a href="#abc">abc</a>
@@ -169,6 +170,9 @@ imports:
  &#8226;   <a href="#linecache">linecache</a>
  &#8226;   <a href="#locale">locale</a>
  &#8226;   <a href="#logging">logging</a>
+ &#8226;   <a href="#multiprocessing">multiprocessing</a>
+ &#8226;   <a href="#multiprocessing.managers">multiprocessing.managers</a>
+ &#8226;   <a href="#multiprocessing.pool">multiprocessing.pool</a>
  &#8226;   <a href="#ntpath">ntpath</a>
  &#8226;   <a href="#numpy">numpy</a>
  &#8226;   <a href="#operator">operator</a>
@@ -185,6 +189,7 @@ imports:
  &#8226;   <a href="#pyi_rth_pywintypes.py">pyi_rth_pywintypes.py</a>
  &#8226;   <a href="#pystray">pystray</a>
  &#8226;   <a href="#pytesseract">pytesseract</a>
+ &#8226;   <a href="#queue">queue</a>
  &#8226;   <a href="#re">re</a>
  &#8226;   <a href="#reprlib">reprlib</a>
  &#8226;   <a href="#requests">requests</a>
@@ -198,6 +203,8 @@ imports:
  &#8226;   <a href="#threading">threading</a>
  &#8226;   <a href="#time">time</a>
  &#8226;   <a href="#tkinter">tkinter</a>
+ &#8226;   <a href="#tkinter.filedialog">tkinter.filedialog</a>
+ &#8226;   <a href="#tkinter.messagebox">tkinter.messagebox</a>
  &#8226;   <a href="#tkinter.ttk">tkinter.ttk</a>
  &#8226;   <a href="#traceback">traceback</a>
  &#8226;   <a href="#types">types</a>
@@ -208,7 +215,10 @@ imports:
  &#8226;   <a href="#win32api">win32api</a>
  &#8226;   <a href="#win32com.client">win32com.client</a>
  &#8226;   <a href="#win32con">win32con</a>
+ &#8226;   <a href="#win32event">win32event</a>
  &#8226;   <a href="#win32gui">win32gui</a>
+ &#8226;   <a href="#win32process">win32process</a>
+ &#8226;   <a href="#winerror">winerror</a>
 
   </div>
 
@@ -763,6 +773,7 @@ imported by:
  &#8226;   <a href="#PIL._imagingft">PIL._imagingft</a>
  &#8226;   <a href="#PIL._imagingmath">PIL._imagingmath</a>
  &#8226;   <a href="#PIL._imagingtk">PIL._imagingtk</a>
+ &#8226;   <a href="#PIL._tkinter_finder">PIL._tkinter_finder</a>
  &#8226;   <a href="#PIL._typing">PIL._typing</a>
  &#8226;   <a href="#PIL._util">PIL._util</a>
  &#8226;   <a href="#PIL._version">PIL._version</a>
@@ -2987,6 +2998,24 @@ imported by:
 </div>
 
 <div class="node">
+  <a name="PIL._tkinter_finder"></a>
+  <a target="code" href="///C:/Users/vivi/AppData/Local/Programs/Python/Python310/lib/site-packages/PIL/_tkinter_finder.py" type="text/plain"><tt>PIL._tkinter_finder</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#PIL">PIL</a>
+ &#8226;   <a href="#__future__">__future__</a>
+ &#8226;   <a href="#sys">sys</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#Bazaar_Lens.py">Bazaar_Lens.py</a>
+
+  </div>
+
+</div>
+
+<div class="node">
   <a name="PIL._typing"></a>
   <a target="code" href="///C:/Users/vivi/AppData/Local/Programs/Python/Python310/lib/site-packages/PIL/_typing.py" type="text/plain"><tt>PIL._typing</tt></a>
 <span class="moduletype">SourceModule</span>  <div class="import">
@@ -3282,6 +3311,7 @@ imported by:
  &#8226;   <a href="#PIL.XpmImagePlugin">PIL.XpmImagePlugin</a>
  &#8226;   <a href="#PIL._binary">PIL._binary</a>
  &#8226;   <a href="#PIL._deprecate">PIL._deprecate</a>
+ &#8226;   <a href="#PIL._tkinter_finder">PIL._tkinter_finder</a>
  &#8226;   <a href="#PIL._typing">PIL._typing</a>
  &#8226;   <a href="#PIL._util">PIL._util</a>
  &#8226;   <a href="#PIL._version">PIL._version</a>
@@ -10389,6 +10419,7 @@ imported by:
  &#8226;   <a href="#glob">glob</a>
  &#8226;   <a href="#pathlib">pathlib</a>
  &#8226;   <a href="#shutil">shutil</a>
+ &#8226;   <a href="#tkinter.filedialog">tkinter.filedialog</a>
  &#8226;   <a href="#tracemalloc">tracemalloc</a>
  &#8226;   <a href="#unittest.loader">unittest.loader</a>
  &#8226;   <a href="#urllib.request">urllib.request</a>
@@ -12302,6 +12333,7 @@ imported by:
  &#8226;   <a href="#_strptime">_strptime</a>
  &#8226;   <a href="#calendar">calendar</a>
  &#8226;   <a href="#gettext">gettext</a>
+ &#8226;   <a href="#tkinter.filedialog">tkinter.filedialog</a>
 
   </div>
 
@@ -12550,7 +12582,8 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#concurrent.futures.process">concurrent.futures.process</a>
+    <a href="#Bazaar_Lens.py">Bazaar_Lens.py</a>
+ &#8226;   <a href="#concurrent.futures.process">concurrent.futures.process</a>
  &#8226;   <a href="#multiprocessing">multiprocessing</a>
  &#8226;   <a href="#multiprocessing.connection">multiprocessing.connection</a>
  &#8226;   <a href="#multiprocessing.context">multiprocessing.context</a>
@@ -12862,7 +12895,8 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#multiprocessing.context">multiprocessing.context</a>
+    <a href="#Bazaar_Lens.py">Bazaar_Lens.py</a>
+ &#8226;   <a href="#multiprocessing.context">multiprocessing.context</a>
 
   </div>
 
@@ -12892,7 +12926,8 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#multiprocessing">multiprocessing</a>
+    <a href="#Bazaar_Lens.py">Bazaar_Lens.py</a>
+ &#8226;   <a href="#multiprocessing">multiprocessing</a>
  &#8226;   <a href="#multiprocessing.context">multiprocessing.context</a>
  &#8226;   <a href="#multiprocessing.dummy">multiprocessing.dummy</a>
  &#8226;   <a href="#multiprocessing.managers">multiprocessing.managers</a>
@@ -20437,6 +20472,7 @@ imported by:
  &#8226;   <a href="#tempfile">tempfile</a>
  &#8226;   <a href="#threading">threading</a>
  &#8226;   <a href="#tkinter">tkinter</a>
+ &#8226;   <a href="#tkinter.filedialog">tkinter.filedialog</a>
  &#8226;   <a href="#tkinter.ttk">tkinter.ttk</a>
  &#8226;   <a href="#unittest.loader">unittest.loader</a>
  &#8226;   <a href="#unittest.main">unittest.main</a>
@@ -23598,7 +23634,8 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#concurrent.futures.process">concurrent.futures.process</a>
+    <a href="#Bazaar_Lens.py">Bazaar_Lens.py</a>
+ &#8226;   <a href="#concurrent.futures.process">concurrent.futures.process</a>
  &#8226;   <a href="#concurrent.futures.thread">concurrent.futures.thread</a>
  &#8226;   <a href="#keyboard">keyboard</a>
  &#8226;   <a href="#keyboard._generic">keyboard._generic</a>
@@ -25062,6 +25099,7 @@ imported by:
  &#8226;   <a href="#PIL.JpegImagePlugin">PIL.JpegImagePlugin</a>
  &#8226;   <a href="#PIL.SpiderImagePlugin">PIL.SpiderImagePlugin</a>
  &#8226;   <a href="#PIL._imagingcms">PIL._imagingcms</a>
+ &#8226;   <a href="#PIL._tkinter_finder">PIL._tkinter_finder</a>
  &#8226;   <a href="#PIL._typing">PIL._typing</a>
  &#8226;   <a href="#PIL.features">PIL.features</a>
  &#8226;   <a href="#_aix_support">_aix_support</a>
@@ -25245,6 +25283,7 @@ imported by:
  &#8226;   <a href="#tempfile">tempfile</a>
  &#8226;   <a href="#threading">threading</a>
  &#8226;   <a href="#tkinter">tkinter</a>
+ &#8226;   <a href="#tkinter.filedialog">tkinter.filedialog</a>
  &#8226;   <a href="#tokenize">tokenize</a>
  &#8226;   <a href="#traceback">traceback</a>
  &#8226;   <a href="#types">types</a>
@@ -25616,7 +25655,10 @@ imports:
  &#8226;   <a href="#os">os</a>
  &#8226;   <a href="#re">re</a>
  &#8226;   <a href="#sys">sys</a>
+ &#8226;   <a href="#tkinter.commondialog">tkinter.commondialog</a>
  &#8226;   <a href="#tkinter.constants">tkinter.constants</a>
+ &#8226;   <a href="#tkinter.filedialog">tkinter.filedialog</a>
+ &#8226;   <a href="#tkinter.messagebox">tkinter.messagebox</a>
  &#8226;   <a href="#tkinter.ttk">tkinter.ttk</a>
  &#8226;   <a href="#traceback">traceback</a>
  &#8226;   <a href="#types">types</a>
@@ -25627,8 +25669,31 @@ imported by:
     <a href="#Bazaar_Lens.py">Bazaar_Lens.py</a>
  &#8226;   <a href="#mouseinfo">mouseinfo</a>
  &#8226;   <a href="#pymsgbox">pymsgbox</a>
+ &#8226;   <a href="#tkinter.commondialog">tkinter.commondialog</a>
  &#8226;   <a href="#tkinter.constants">tkinter.constants</a>
+ &#8226;   <a href="#tkinter.dialog">tkinter.dialog</a>
+ &#8226;   <a href="#tkinter.filedialog">tkinter.filedialog</a>
+ &#8226;   <a href="#tkinter.messagebox">tkinter.messagebox</a>
+ &#8226;   <a href="#tkinter.simpledialog">tkinter.simpledialog</a>
  &#8226;   <a href="#tkinter.ttk">tkinter.ttk</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="tkinter.commondialog"></a>
+  <a target="code" href="///C:/Users/vivi/AppData/Local/Programs/Python/Python310/lib/tkinter/commondialog.py" type="text/plain"><tt>tkinter.commondialog</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#tkinter">tkinter</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#tkinter">tkinter</a>
+ &#8226;   <a href="#tkinter.filedialog">tkinter.filedialog</a>
+ &#8226;   <a href="#tkinter.messagebox">tkinter.messagebox</a>
 
   </div>
 
@@ -25645,6 +25710,82 @@ imports:
   <div class="import">
 imported by:
     <a href="#tkinter">tkinter</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="tkinter.dialog"></a>
+  <a target="code" href="///C:/Users/vivi/AppData/Local/Programs/Python/Python310/lib/tkinter/dialog.py" type="text/plain"><tt>tkinter.dialog</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#tkinter">tkinter</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#tkinter.filedialog">tkinter.filedialog</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="tkinter.filedialog"></a>
+  <a target="code" href="///C:/Users/vivi/AppData/Local/Programs/Python/Python310/lib/tkinter/filedialog.py" type="text/plain"><tt>tkinter.filedialog</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#fnmatch">fnmatch</a>
+ &#8226;   <a href="#locale">locale</a>
+ &#8226;   <a href="#os">os</a>
+ &#8226;   <a href="#sys">sys</a>
+ &#8226;   <a href="#tkinter">tkinter</a>
+ &#8226;   <a href="#tkinter.commondialog">tkinter.commondialog</a>
+ &#8226;   <a href="#tkinter.dialog">tkinter.dialog</a>
+ &#8226;   <a href="#tkinter.simpledialog">tkinter.simpledialog</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#Bazaar_Lens.py">Bazaar_Lens.py</a>
+ &#8226;   <a href="#tkinter">tkinter</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="tkinter.messagebox"></a>
+  <a target="code" href="///C:/Users/vivi/AppData/Local/Programs/Python/Python310/lib/tkinter/messagebox.py" type="text/plain"><tt>tkinter.messagebox</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#tkinter">tkinter</a>
+ &#8226;   <a href="#tkinter.commondialog">tkinter.commondialog</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#Bazaar_Lens.py">Bazaar_Lens.py</a>
+ &#8226;   <a href="#tkinter">tkinter</a>
+ &#8226;   <a href="#tkinter.simpledialog">tkinter.simpledialog</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="tkinter.simpledialog"></a>
+  <a target="code" href="///C:/Users/vivi/AppData/Local/Programs/Python/Python310/lib/tkinter/simpledialog.py" type="text/plain"><tt>tkinter.simpledialog</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#tkinter">tkinter</a>
+ &#8226;   <a href="#tkinter.messagebox">tkinter.messagebox</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#tkinter.filedialog">tkinter.filedialog</a>
 
   </div>
 
@@ -28404,7 +28545,8 @@ imported by:
   <a name="win32event"></a>
   <tt>win32event</tt> <span class="moduletype"><tt>C:\Users\vivi\AppData\Local\Programs\Python\Python310\lib\site-packages\win32\win32event.pyd</tt></span>  <div class="import">
 imported by:
-    <a href="#win32com.client.gencache">win32com.client.gencache</a>
+    <a href="#Bazaar_Lens.py">Bazaar_Lens.py</a>
+ &#8226;   <a href="#win32com.client.gencache">win32com.client.gencache</a>
 
   </div>
 
@@ -28425,6 +28567,16 @@ imported by:
   <tt>win32pdh</tt> <span class="moduletype"><tt>C:\Users\vivi\AppData\Local\Programs\Python\Python310\lib\site-packages\win32\win32pdh.pyd</tt></span>  <div class="import">
 imported by:
     <a href="#numpy.testing._private.utils">numpy.testing._private.utils</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="win32process"></a>
+  <tt>win32process</tt> <span class="moduletype"><tt>C:\Users\vivi\AppData\Local\Programs\Python\Python310\lib\site-packages\win32\win32process.pyd</tt></span>  <div class="import">
+imported by:
+    <a href="#Bazaar_Lens.py">Bazaar_Lens.py</a>
 
   </div>
 
@@ -28485,7 +28637,8 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#win32com.client">win32com.client</a>
+    <a href="#Bazaar_Lens.py">Bazaar_Lens.py</a>
+ &#8226;   <a href="#win32com.client">win32com.client</a>
  &#8226;   <a href="#win32com.client.build">win32com.client.build</a>
  &#8226;   <a href="#win32com.client.dynamic">win32com.client.dynamic</a>
  &#8226;   <a href="#win32com.server.policy">win32com.server.policy</a>

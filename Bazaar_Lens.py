@@ -1,4 +1,4 @@
-# 标准库导入
+﻿# 标准库导入
 import os
 import sys
 import json
@@ -7,6 +7,8 @@ import traceback
 import re
 import difflib
 from urllib.parse import urlparse
+import datetime
+import shutil
 
 # 检测是否在打包环境中运行
 def is_packaged_environment():
@@ -444,6 +446,10 @@ class BazaarHelper:
 
         # 创建系统托盘
         self.system_tray = SystemTray(self)
+
+        # 启动自动更新检查
+        if self.config.get("auto_update", True):
+            self.check_for_updates()
 
     def keep_alive(self):
         """保活机制，检查Ctrl键状态和程序响应"""
@@ -1517,6 +1523,268 @@ class BazaarHelper:
         except Exception as e:
             logging.error(f"显示Tesseract OCR错误提示时出错: {e}")
 
+    def check_for_updates(self, manual=False):
+        """检查更新
+        manual: 是否为手动检查更新
+        """
+        try:
+            # 如果不是手动检查，且24小时内已经检查过，则跳过
+            if not manual:
+                last_check = self.config.get("last_update_check", "")
+                if last_check:
+                    last_check_time = datetime.datetime.strptime(last_check, "%Y-%m-%d %H:%M:%S")
+                    if datetime.datetime.now() - last_check_time < datetime.timedelta(hours=24):
+                        logging.info("24小时内已检查过更新，跳过检查")
+                        return
+
+            # 更新检查线程
+            update_thread = threading.Thread(target=self._check_updates_thread, args=(manual,))
+            update_thread.daemon = True
+            update_thread.start()
+
+        except Exception as e:
+            logging.error(f"启动更新检查失败: {e}")
+            if manual:
+                self.system_tray.show_message("错误", "检查更新失败")
+
+    def _check_updates_thread(self, manual):
+        """更新检查线程"""
+        try:
+            # 记录检查时间
+            current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            self.config.set("last_update_check", current_time)
+
+            # 获取当前版本
+            current_version = VERSION
+
+            # 从服务器获取最新版本信息
+            update_info = self._get_latest_version()
+            if not update_info:
+                if manual:
+                    self.system_tray.show_message("更新检查", "当前已是最新版本")
+                return
+
+            latest_version = update_info.get("version")
+            if not latest_version:
+                return
+
+            # 比较版本号
+            if self._compare_versions(latest_version, current_version) > 0:
+                # 有新版本可用
+                self._show_update_dialog(update_info)
+            elif manual:
+                self.system_tray.show_message("更新检查", "当前已是最新版本")
+
+        except Exception as e:
+            logging.error(f"检查更新失败: {e}")
+            if manual:
+                self.system_tray.show_message("错误", "检查更新失败")
+
+    def _get_latest_version(self):
+        """从服务器获取最新版本信息"""
+        try:
+            # 加载更新配置
+            update_config_path = os.path.join(os.path.dirname(__file__), "update_config.json")
+            if not os.path.exists(update_config_path):
+                logging.error("更新配置文件不存在")
+                return None
+
+            with open(update_config_path, 'r', encoding='utf-8') as f:
+                update_config = json.load(f)
+
+            # 获取更新API地址
+            update_url = update_config.get("update_api")
+            if not update_url:
+                logging.error("更新API地址未配置")
+                return None
+
+            # 创建临时目录
+            temp_dir = update_config.get("temp_dir", "temp")
+            os.makedirs(temp_dir, exist_ok=True)
+
+            # 发送请求获取最新版本信息
+            headers = {
+                "User-Agent": "BazaarLens/1.0",
+                "Accept": "application/vnd.github.v3+json"
+            }
+            response = requests.get(update_url, headers=headers, timeout=10)
+            
+            if response.status_code == 200:
+                release_info = response.json()
+                
+                # 解析GitHub Release信息
+                update_info = {
+                    "version": release_info["tag_name"].lstrip("v"),  # 移除版本号前的'v'
+                    "description": release_info["body"],
+                    "download_url": release_info["assets"][0]["browser_download_url"],
+                    "release_date": release_info["published_at"],
+                    "release_title": release_info["name"]
+                }
+                return update_info
+            else:
+                logging.error(f"获取更新信息失败，状态码: {response.status_code}")
+                return None
+
+        except Exception as e:
+            logging.error(f"获取最新版本信息失败: {e}")
+            return None
+
+    def _compare_versions(self, version1, version2):
+        """比较版本号，返回1表示version1更新，-1表示version2更新，0表示相同"""
+        try:
+            v1_parts = [int(x) for x in version1.split(".")]
+            v2_parts = [int(x) for x in version2.split(".")]
+            
+            for i in range(max(len(v1_parts), len(v2_parts))):
+                v1 = v1_parts[i] if i < len(v1_parts) else 0
+                v2 = v2_parts[i] if i < len(v2_parts) else 0
+                if v1 > v2:
+                    return 1
+                elif v1 < v2:
+                    return -1
+            return 0
+        except Exception as e:
+            logging.error(f"比较版本号失败: {e}")
+            return 0
+
+    def _show_update_dialog(self, update_info):
+        """显示更新对话框"""
+        try:
+            root = tk.Tk()
+            root.withdraw()
+            
+            message = f"发现新版本: {update_info['version']}\n\n"
+            message += f"更新说明:\n{update_info.get('description', '无')}\n\n"
+            message += "是否现在更新？"
+            
+            if messagebox.askyesno("发现新版本", message):
+                self._download_and_install_update(update_info)
+            
+            root.destroy()
+        except Exception as e:
+            logging.error(f"显示更新对话框失败: {e}")
+
+    def _download_and_install_update(self, update_info):
+        """下载并安装更新"""
+        try:
+            # 加载更新配置
+            update_config_path = os.path.join(os.path.dirname(__file__), "update_config.json")
+            with open(update_config_path, 'r', encoding='utf-8') as f:
+                update_config = json.load(f)
+
+            # 创建临时目录和备份目录
+            temp_dir = update_config.get("temp_dir", "temp")
+            backup_dir = update_config.get("backup_dir", "backups")
+            os.makedirs(temp_dir, exist_ok=True)
+            os.makedirs(backup_dir, exist_ok=True)
+
+            # 创建进度条窗口
+            progress_window = tk.Toplevel()
+            progress_window.title("正在更新")
+            progress_window.geometry("300x150")
+            progress_window.resizable(False, False)
+            
+            # 进度标签
+            status_label = tk.Label(progress_window, text="正在下载更新...")
+            status_label.pack(pady=20)
+            
+            # 进度条
+            progress_bar = ttk.Progressbar(progress_window, length=200, mode='determinate')
+            progress_bar.pack(pady=10)
+            
+            def update_progress(current, total):
+                progress = int((current / total) * 100)
+                progress_bar['value'] = progress
+                status_label.config(text=f"正在下载更新... {progress}%")
+                progress_window.update()
+            
+            # 下载文件
+            download_url = update_info['download_url']
+            local_file = os.path.join(temp_dir, f"BazaarLens_v{update_info['version']}.exe")
+            
+            # 设置下载请求头
+            headers = {
+                "User-Agent": "BazaarLens/1.0"
+            }
+            
+            response = requests.get(download_url, headers=headers, stream=True)
+            total_size = int(response.headers.get('content-length', 0))
+            
+            with open(local_file, 'wb') as f:
+                downloaded = 0
+                for data in response.iter_content(chunk_size=4096):
+                    downloaded += len(data)
+                    f.write(data)
+                    update_progress(downloaded, total_size)
+            
+            # 关闭进度窗口
+            progress_window.destroy()
+            
+            # 备份当前程序
+            if update_config.get("auto_backup", True):
+                current_exe = os.path.join(os.path.dirname(__file__), "Bazaar_Lens.exe")
+                if os.path.exists(current_exe):
+                    backup_file = os.path.join(backup_dir, f"Bazaar_Lens_backup_v{VERSION}.exe")
+                    shutil.copy2(current_exe, backup_file)
+                    logging.info(f"已备份当前版本到: {backup_file}")
+            
+            # 替换当前程序
+            try:
+                os.replace(local_file, "Bazaar_Lens.exe")
+            except PermissionError:
+                # 如果直接替换失败，使用批处理文件在重启后替换
+                self._create_update_batch(local_file)
+                if messagebox.askyesno("更新准备就绪", "更新文件已准备就绪，需要重启程序才能完成更新。\n是否现在重启？"):
+                    self.restart_application()
+                return
+            
+            # 提示重启
+            if messagebox.askyesno("更新完成", "更新已完成，需要重启程序才能生效。\n是否现在重启？"):
+                self.restart_application()
+            
+        except Exception as e:
+            logging.error(f"下载安装更新失败: {e}")
+            messagebox.showerror("错误", "更新失败，请稍后重试")
+
+    def _create_update_batch(self, update_file):
+        """创建更新批处理文件"""
+        try:
+            batch_content = f'''@echo off
+:check
+tasklist | find /i "Bazaar_Lens.exe" > nul
+if errorlevel 1 (
+    timeout /t 1 /nobreak
+    copy /y "{update_file}" "Bazaar_Lens.exe"
+    start "" "Bazaar_Lens.exe"
+    del "%~f0"
+) else (
+    timeout /t 2 /nobreak
+    goto check
+)
+'''
+            batch_file = "update.bat"
+            with open(batch_file, 'w', encoding='utf-8') as f:
+                f.write(batch_content)
+            
+            # 启动批处理文件
+            subprocess.Popen(['start', 'update.bat'], shell=True)
+            
+        except Exception as e:
+            logging.error(f"创建更新批处理文件失败: {e}")
+            raise
+
+    def restart_application(self):
+        """重启应用程序"""
+        try:
+            # 启动新进程
+            subprocess.Popen([sys.executable] + sys.argv)
+            # 退出当前进程
+            self.stop()
+            sys.exit(0)
+        except Exception as e:
+            logging.error(f"重启程序失败: {e}")
+            messagebox.showerror("错误", "重启程序失败，请手动重启")
+
 class SystemTray:
     def __init__(self, helper):
         self.helper = helper
@@ -1553,9 +1821,12 @@ class SystemTray:
                 # 创建一个简单的彩色图标
                 image = Image.new('RGB', (64, 64), color = (73, 109, 137))
             
+            # 添加自动更新菜单项
             menu = (
                 pystray.MenuItem("Help", self.show_help),
                 pystray.MenuItem("Set tesseract-ocr.exe Path", self.set_ocr_path_simple),
+                pystray.MenuItem("Auto Update", self.toggle_auto_update, checked=lambda item: self.helper.config.get("auto_update", True)),
+                pystray.MenuItem("Check for Updates", self.check_for_updates),
                 pystray.MenuItem("Quit", self.quit_app)
             )
             self.icon = pystray.Icon("BazaarHelper", image, "Bazaar Helper", menu)
@@ -1564,68 +1835,62 @@ class SystemTray:
             logging.error(f"创建系统托盘图标失败: {e}")
             logging.error(traceback.format_exc())
 
+    def toggle_auto_update(self, icon, item):
+        """切换自动更新设置"""
+        try:
+            current_setting = self.helper.config.get("auto_update", True)
+            new_setting = not current_setting
+            self.helper.config.set("auto_update", new_setting)
+            logging.info(f"自动更新设置已更改为: {new_setting}")
+            self.show_message("设置已更改", f"自动更新已{'启用' if new_setting else '禁用'}")
+        except Exception as e:
+            logging.error(f"切换自动更新设置失败: {e}")
+            self.show_message("错误", "更改自动更新设置失败")
+
+    def check_for_updates(self, manual=False):
+        """手动检查更新"""
+        try:
+            self.helper.check_for_updates(manual=True)
+        except Exception as e:
+            logging.error(f"检查更新失败: {e}")
+            self.show_message("错误", "检查更新失败")
+
     def show_help(self, icon, item):
         """显示帮助信息"""
         try:
-            # 创建帮助窗口
-            help_window = tk.Toplevel()
-            help_window.title("Help")
-            
-            # 尝试加载Help.png图片
-            help_image_path = "Help.png"
-            help_image_paths = [
-                "Help.png",  # 当前目录
-                os.path.join(os.path.dirname(__file__), "Help.png"),  # 脚本所在目录
-                os.path.join("icons", "Help.png"),  # icons子目录
+            # 尝试找到Help.txt文件
+            help_file_paths = [
+                "Help.txt",  # 当前目录
+                os.path.join(os.path.dirname(__file__), "Help.txt"),  # 脚本所在目录
             ]
             
-            # 查找图片文件
-            image_path = None
-            for path in help_image_paths:
+            help_file = None
+            for path in help_file_paths:
                 if os.path.exists(path):
-                    image_path = path
+                    help_file = path
                     break
             
-            if image_path:
-                try:
-                    # 加载图片
-                    img = Image.open(image_path)
-                    width, height = img.size
-                    
-                    # 设置窗口大小
-                    help_window.geometry(f"{width}x{height}")
-                    
-                    # 创建PhotoImage
-                    photo = ImageTk.PhotoImage(img)
-                    
-                    # 创建标签显示图片
-                    label = tk.Label(help_window, image=photo)
-                    label.image = photo  # 保持引用，防止被垃圾回收
-                    label.pack(fill='both', expand=True)
-                    
-                    logging.info(f"已加载帮助图片: {image_path}")
-                except Exception as e:
-                    logging.error(f"加载帮助图片失败: {e}")
-                    self.show_help_error(help_window)
+            if help_file:
+                # 使用默认文本编辑器打开Help.txt
+                if sys.platform == 'win32':
+                    os.startfile(help_file)
+                else:
+                    subprocess.run(['xdg-open', help_file])
+                logging.info(f"已打开帮助文件: {help_file}")
             else:
-                logging.error("未找到Help.png图片")
-                self.show_help_error(help_window)
+                logging.error("未找到Help.txt文件")
+                self.show_help_error()
             
         except Exception as e:
             logging.error(f"显示帮助信息失败: {e}")
-    
-    def show_help_error(self, parent_window):
-        """显示帮助图片加载失败的错误信息"""
-        frame = tk.Frame(parent_window, padx=20, pady=20)
-        frame.pack(fill='both', expand=True)
-        
-        label = tk.Label(
-            frame, 
-            text="无法加载帮助图片。\n请确保Help.png文件存在于程序目录中。",
-            font=("Arial", 12),
-            justify='center'
-        )
-        label.pack(pady=20)
+            self.show_help_error()
+
+    def show_help_error(self):
+        """显示帮助文件加载失败的错误信息"""
+        root = tk.Tk()
+        root.withdraw()
+        messagebox.showerror("错误", "无法打开帮助文件。\n请确保Help.txt文件存在于程序目录中。")
+        root.destroy()
 
     def quit_app(self, icon, item):
         """退出应用程序"""
@@ -1690,8 +1955,7 @@ class SystemTray:
         except Exception as e:
             logging.error(f"设置OCR路径时出错: {e}")
             logging.error(traceback.format_exc())  # 添加详细错误信息
-            return False
-            
+
     def show_message(self, title, message):
         """显示消息对话框"""
         try:

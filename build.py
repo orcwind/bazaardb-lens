@@ -1,100 +1,32 @@
-import os
-import shutil
-import subprocess
+import PyInstaller.__main__
+import sys
+from version import VERSION
 
-def build_exe():
-    # 清理旧的构建文件
-    for dir_name in ['build', 'dist']:
-        if os.path.exists(dir_name):
-            shutil.rmtree(dir_name)
-    
-    # 创建spec文件内容
-    spec_content = '''
-# -*- mode: python ; coding: utf-8 -*-
+# 将版本号转换为元组格式
+version_parts = VERSION.split('.')
+version_tuple = tuple(int(part) for part in version_parts) + (0,) * (4 - len(version_parts))
 
-block_cipher = None
+# 更新version_info.txt中的版本号
+with open('version_info.txt', 'r', encoding='utf-8') as f:
+    content = f.read()
 
-a = Analysis(
-    ['Bazaar_Lens.py'],
-    pathex=[],
-    binaries=[],
-    datas=[
-        ('tesseract-ocr-w64-setup-5.5.0.20241111.exe', '.'),  # Tesseract-OCR安装程序
-        ('icons', 'icons'),  # icons文件夹
-        ('data', 'data'),    # 数据文件夹
-        ('Help.png', '.'),   # 帮助图片
-        ('Bazaar_Lens.ico', '.'),  # 程序图标
-    ],
-    hiddenimports=['win32api', 'win32gui', 'win32con', 'keyboard', 'multiprocessing', 
-                   'PIL.Image', 'pytesseract', 'win32process', 'concurrent.futures', 
-                   'multiprocessing.pool', 'multiprocessing.managers', 'queue', 
-                   'PIL._tkinter_finder'],
-    hookspath=[],
-    hooksconfig={},
-    runtime_hooks=[],
-    excludes=[],
-    win_no_prefer_redirects=False,
-    win_private_assemblies=False,
-    cipher=block_cipher,
-    noarchive=False,
-)
+content = content.replace('filevers=(0, 1, 0, 0)', f'filevers={version_tuple}')
+content = content.replace('prodvers=(0, 1, 0, 0)', f'prodvers={version_tuple}')
+content = content.replace("u'FileVersion', u'0.1.0'", f"u'FileVersion', u'{VERSION}'")
+content = content.replace("u'ProductVersion', u'0.1.0'", f"u'ProductVersion', u'{VERSION}'")
 
-pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
+with open('version_info.txt', 'w', encoding='utf-8') as f:
+    f.write(content)
 
-exe = EXE(
-    pyz,
-    a.scripts,
-    a.binaries,
-    a.zipfiles,
-    a.datas,
-    [],
-    name='Bazaar_Lens',
-    debug=False,
-    bootloader_ignore_signals=False,
-    strip=False,
-    upx=True,
-    upx_exclude=[],
-    runtime_tmpdir=None,
-    console=False,
-    disable_windowed_traceback=False,
-    target_arch=None,
-    codesign_identity=None,
-    entitlements_file=None,
-    icon='Bazaar_Lens.ico',
-    uac_admin=True,
-)
-'''
-    
-    # 写入spec文件
-    with open('Bazaar_Lens.spec', 'w', encoding='utf-8') as f:
-        f.write(spec_content)
-    
-    print("\n打包内容清单：")
-    print("1. 主程序文件：")
-    print("   - Bazaar_Lens.py")
-    print("\n2. 资源文件：")
-    print("   - icons/（所有游戏图标）")
-    print("   - data/（怪物和事件数据）")
-    print("   - Help.png（帮助图片）")
-    print("   - Bazaar_Lens.ico（程序图标）")
-    print("\n3. 依赖程序：")
-    print("   - tesseract-ocr-w64-setup-5.5.0.20241111.exe")
-    print("\n4. Python依赖库：")
-    print("   - win32api, win32gui, win32con")
-    print("   - keyboard")
-    print("   - PIL (Pillow)")
-    print("   - opencv-python (cv2)")
-    print("   - numpy")
-    print("   - pytesseract")
-    print("   - requests")
-    print("   - pystray")
-    print("   - psutil")
-    
-    # 运行PyInstaller
-    subprocess.run(['pyinstaller', 'Bazaar_Lens.spec', '--clean'])
-    
-    print("\n构建完成！")
-    print("可执行文件位于: dist/Bazaar_Lens.exe")
+# PyInstaller参数
+args = [
+    'Bazaar_Lens.py',
+    '--onefile',
+    '--windowed',
+    '--icon=Bazaar_Lens.ico',
+    '--version-file=version_info.txt',
+    '--add-data=icons;icons',
+    '--add-data=data;data',
+]
 
-if __name__ == "__main__":
-    build_exe() 
+PyInstaller.__main__.run(args) 

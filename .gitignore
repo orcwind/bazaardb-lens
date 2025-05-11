@@ -105,6 +105,7 @@ __pycache__/
 dist/
 build/
 *.egg-info/
+*.exe
 
 # Virtual Environment
 venv/
@@ -118,10 +119,15 @@ env/
 debug_*.png
 tesstest.png
 
-# Build output
-Output/
-*.exe
-
 # Temporary files
 *.log
 *.tmp
+temp/
+backups/
+
+# Config files with sensitive information
+config.ini
+*.cfg
+
+# OCR data files
+*.traineddata

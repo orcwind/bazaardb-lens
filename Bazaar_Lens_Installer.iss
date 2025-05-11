@@ -1,9 +1,10 @@
 [Setup]
 AppName=Bazaar_Lens
-AppVersion=1.0
-DefaultDirName={pf}\\Bazaar_Lens
+#define MyAppVersion GetFileVersion("dist\Bazaar_Lens.exe")
+AppVersion={#MyAppVersion}
+DefaultDirName={pf}\Bazaar_Lens
 DefaultGroupName=Bazaar_Lens
-OutputBaseFilename=Bazaar_Lens_Installer
+OutputBaseFilename=Bazaar_Lens_Installer_v{#MyAppVersion}
 Compression=lzma
 SolidCompression=yes
 
@@ -17,6 +18,7 @@ Source: "data\\*"; DestDir: "{app}\\data"; Flags: ignoreversion recursesubdirs c
 Source: "tesseract-ocr-w64-setup-5.5.0.20241111.exe"; DestDir: "{tmp}"; Flags: ignoreversion
 Source: "Bazaar_Lens.ico"; DestDir: "{app}"; Flags: ignoreversion
 Source: "Help.png"; DestDir: "{app}"; Flags: ignoreversion
+Source: "Help.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "eng.traineddata"; DestDir: "{tmp}"; Flags: ignoreversion
 Source: "osd.traineddata"; DestDir: "{tmp}"; Flags: ignoreversion
 Source: "How to Install.png"; DestDir: "{app}"; Flags: ignoreversion
