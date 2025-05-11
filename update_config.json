@@ -1,5 +1,5 @@
 {
-    "update_api": "https://api.github.com/repos/YOUR_USERNAME/bazaardb-desktop/releases/latest",
+    "update_api": "https://api.github.com/repos/orcwind/bazaardb-lens/releases/latest",
     "check_interval_hours": 24,
     "auto_backup": true,
     "backup_dir": "backups",
