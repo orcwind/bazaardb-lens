@@ -1,5 +1,5 @@
-游戏数据提取流程
-==================
+游戏数据提取流程 (V3版本)
+==========================================
 
 步骤1: 抓取HTML文件
 -------------------
@@ -27,14 +27,88 @@ python fetch_event_name.py
 输出文件: unique_events.json
 
 
-步骤4: 获取怪物详细信息（技能/掉落物）
+步骤4: 获取怪物详细信息（V3完整版）
 -------------------
 cd "d:\PythonProject\BazaarInfo\bazaardb-desktop\6.0\crawlers"
-python fetch_monster_details.py
+python selenium_monster_v3.py
 
-输出目录: monster_details/
-  - monsters_details.json (怪物详细信息)
-  - icons/ (技能和掉落物图标)
+功能：
+  - 从meta描述提取技能和物品名称
+  - 从HTML中提取图标URL
+  - 访问详情页获取描述
+  - 下载所有图标并保存到本地（格式：怪物名_卡片名.webp）
+  - 增量保存（每处理完一个怪物立即保存）
+  - 自动跳过已处理的怪物
+  - 生成错误日志
+
+输出目录: monster_details_v3/
+  - monsters_v3.json (完整的怪物数据)
+  - icons/ (所有技能和物品图标)
+  - logs/ (错误日志)
+
+当前统计（2025-10-08）:
+  - 怪物总数: 104
+  - 技能总数: 155
+  - 物品总数: 561
+  - 图标总数: 716
+  - 完整度: 100%
 
 
-刚才对monster也只是获取清单。但我们还需要做的事： 事件，事件各选择名称及描述。 怪物，怪物技能/掉落物名称，以及技能/掉落物的描述。 还需要下载所有的图标（事件各选择，怪物技能/掉落物 ），同时还需要将下载图标和对应的项目匹配上。
+步骤5: 重试失败的项
+-------------------
+cd "d:\PythonProject\BazaarInfo\bazaardb-desktop\6.0\crawlers"
+python retry_failed_items.py
+
+功能：
+  - 读取最新的错误日志
+  - 重新抓取完全失败的怪物
+  - 重新下载失败的图标
+  - 自动更新JSON文件
+
+
+步骤6: 检查数据完整性
+-------------------
+cd "d:\PythonProject\BazaarInfo\bazaardb-desktop\6.0\crawlers"
+python check_data_completeness.py
+
+功能：
+  - 统计怪物、技能、物品数量
+  - 检查缺失的图标、描述
+  - 识别无技能/无物品的怪物
+  - 计算数据完整度
+
+
+步骤7: 修复特定问题（可选）
+-------------------
+cd "d:\PythonProject\BazaarInfo\bazaardb-desktop\6.0\crawlers"
+
+
+用于修复特定技能/物品的问题
+
+
+已知问题：
+-------------------
+1. 4个Trap类怪物没有技能（正常现象）:
+   - Blowguns Trap
+   - Caltrops Trap
+   - Boulder Trap
+   - Ahexa
+
+2. 4个项目缺少描述（需要手动获取）:
+   - Viper Tyrant - Copper Ed (物品)
+   - Annex Trooper - Induction Aegis (物品)
+   - Yerdan - Relax Bro (技能)
+   - Burninator Bot - Induction Aegis (物品)
+
+
+下一步计划：
+-------------------
+✓ 怪物数据 - 已完成
+  - 怪物技能/掉落物名称 ✓
+  - 技能/掉落物描述 ✓
+  - 所有图标下载 ✓
+  
+□ 事件数据 - 待处理
+  - 事件基本信息
+  - 事件各选择名称及描述
+  - 事件图标下载

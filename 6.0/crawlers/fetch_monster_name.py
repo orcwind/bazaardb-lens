@@ -1,106 +1,115 @@
-import re
 import json
+import re
 from html import unescape
 
-def extract_combat_encounters(html_file_path):
+def extract_combat_encounters(html_content):
     """
-    从HTML文件中提取战斗遭遇怪物名称
+    从HTML内容中提取战斗遭遇信息
     """
-    print("=" * 80)
-    print("开始提取怪物名称...")
-    print("=" * 80)
+    # 正则表达式匹配 "Type":"CombatEncounter","Title":{"Text":"..."} 模式
+    pattern = r'"Type":"CombatEncounter","Title":\s*{\s*"Text":\s*"([^"]+)"'
     
-    # 步骤1: 读取HTML文件
-    print(f"\n[步骤1] 读取HTML文件: {html_file_path}")
-    with open(html_file_path, 'r', encoding='utf-8') as f:
-        content = f.read()
-    print(f"  文件大小: {len(content)} 字符")
+    # 查找所有匹配项
+    matches = re.findall(pattern, html_content)
     
-    # 步骤2: 查找所有CombatEncounter出现的位置
-    print("\n[步骤2] 查找所有 CombatEncounter...")
-    all_matches = list(re.finditer(r'CombatEncounter', content))
-    print(f"  总共找到 {len(all_matches)} 个 CombatEncounter")
+    # 处理HTML转义字符
+    cleaned_matches = [unescape(match) for match in matches]
     
-    # 步骤3: 提取每个CombatEncounter后面的80个字符
-    print("\n[步骤3] 提取片段...")
-    snippets = []
-    for i, match in enumerate(all_matches, 1):
-        end_pos = match.end()
-        next_80_chars = content[end_pos:end_pos+80]
-        snippets.append({
-            "index": i,
-            "snippet": next_80_chars
-        })
-    print(f"  已提取 {len(snippets)} 个片段")
-    
-    # 步骤4: 从片段中提取怪物名称
-    print("\n[步骤4] 从片段中提取怪物名称...")
-    monster_names = []
-    pattern = r'\\"Title\\":\{\\"Text\\":\\"([^"\\]+)\\"'
-    
-    for item in snippets:
-        snippet = item['snippet']
-        match = re.search(pattern, snippet)
-        if match:
-            name = unescape(match.group(1))
-            monster_names.append({
-                "index": item['index'],
-                "name": name
-            })
-    
-    print(f"  成功提取 {len(monster_names)} 个怪物名称")
-    
-    # 步骤5: 去重
-    print("\n[步骤5] 去除重复...")
-    unique_names = []
-    seen = set()
-    for item in monster_names:
-        if item['name'] not in seen:
-            seen.add(item['name'])
-            unique_names.append(item['name'])
-    
-    print(f"  去重后剩余 {len(unique_names)} 个唯一怪物名称")
-    
-    # 步骤6: 保存结果
-    print("\n[步骤6] 保存结果...")
-    
-    # 保存去重后的怪物列表（每行一个名称，不带中括号）
-    with open('unique_monsters.json', 'w', encoding='utf-8') as f:
-        for name in unique_names:
-            f.write(f'"{name}"\n')
-    print("  ✓ 已保存: unique_monsters.json")
-    
-    # 显示结果预览
-    print("\n" + "=" * 80)
-    print(f"提取完成！共 {len(unique_names)} 个唯一怪物")
-    print("=" * 80)
-    print("\n前20个怪物名称：")
-    for i, name in enumerate(unique_names[:20], 1):
-        print(f"  {i:2d}. {name}")
-    
-    if len(unique_names) > 20:
-        print(f"  ... 还有 {len(unique_names) - 20} 个怪物")
-    
-    print("\n" + "=" * 80)
-    
-    return unique_names
+    return cleaned_matches
 
+def save_to_json(data, output_file):
+    """
+    将数据保存为JSON文件
+    """
+    with open(output_file, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
 
-if __name__ == "__main__":
-    # 设置HTML文件路径
-    html_file = 'debug_monsters.html'
+def main():
+    # 配置输入和输出文件
+    input_html_file = "6.0\crawlers\6.0\debug_monsters.html"  # 替换为您的HTML文件路径
+    output_json_file = "combat_encounters.json"
     
     try:
-        # 执行提取
-        monsters = extract_combat_encounters(html_file)
+        # 读取HTML文件
+        print(f"正在读取文件: {input_html_file}")
+        with open(input_html_file, 'r', encoding='utf-8') as f:
+            html_content = f.read()
         
-        print(f"\n✓ 成功提取 {len(monsters)} 个唯一怪物名称")
-        print(f"✓ 结果已保存到 unique_monsters.json")
+        # 提取战斗遭遇信息
+        print("正在提取战斗遭遇信息...")
+        combat_encounters = extract_combat_encounters(html_content)
         
+        # 创建结构化的数据
+        structured_data = {
+            "combat_encounters": [
+                {"title": title} for title in combat_encounters
+            ],
+            "count": len(combat_encounters),
+            "extracted_titles": combat_encounters
+        }
+        
+        # 保存到JSON文件
+        save_to_json(structured_data, output_json_file)
+        
+        print(f"成功提取 {len(combat_encounters)} 个战斗遭遇")
+        print(f"结果已保存到: {output_json_file}")
+        
+        # 显示前几个结果作为预览
+        print("\n前5个提取的战斗遭遇标题:")
+        for i, title in enumerate(combat_encounters[:5], 1):
+            print(f"{i}. {title}")
+            
+        if len(combat_encounters) > 5:
+            print(f"... 还有 {len(combat_encounters) - 5} 个")
+            
     except FileNotFoundError:
-        print(f"\n✗ 错误: 找不到文件 {html_file}")
-        print("  请确认文件路径是否正确")
+        print(f"错误: 找不到文件 {input_html_file}")
     except Exception as e:
-        print(f"\n✗ 发生错误: {e}")
-        import traceback
-        traceback.print_exc()
+        print(f"处理文件时发生错误: {str(e)}")
+
+# 更强大的版本，可以处理更复杂的JSON结构
+def extract_combat_encounters_advanced(html_content):
+    """
+    更高级的提取函数，可以处理更复杂的JSON结构
+    """
+    encounters = []
+    
+    # 匹配更完整的模式，可能包含在更大的JSON结构中
+    pattern = r'"Type":\s*"CombatEncounter"[^}]*"Title":\s*{\s*"Text":\s*"([^"]+)"[^}]*}'
+    
+    matches = re.findall(pattern, html_content)
+    
+    # 处理HTML转义字符
+    cleaned_matches = [unescape(match) for match in matches]
+    
+    return cleaned_matches
+
+# 如果需要提取更多字段，可以使用这个版本
+def extract_complete_encounter_data(html_content):
+    """
+    提取完整的遭遇战数据（如果JSON结构中有更多字段）
+    """
+    # 这个模式会匹配包含CombatEncounter的完整对象
+    pattern = r'{\s*"Type":\s*"CombatEncounter"[^}]+}'
+    
+    matches = re.findall(pattern, html_content)
+    
+    complete_data = []
+    for match in matches:
+        try:
+            # 尝试解析JSON
+            data = json.loads(match)
+            complete_data.append(data)
+        except json.JSONDecodeError:
+            # 如果JSON不完整，尝试手动提取标题
+            title_match = re.search(r'"Text":\s*"([^"]+)"', match)
+            if title_match:
+                complete_data.append({
+                    "Type": "CombatEncounter",
+                    "Title": {"Text": unescape(title_match.group(1))}
+                })
+    
+    return complete_data
+
+if __name__ == "__main__":
+    main()

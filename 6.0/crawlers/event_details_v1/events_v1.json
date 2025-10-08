@@ -1,0 +1,119 @@
+[
+  {
+    "name": "A Strange Mushroom",
+    "url": "https://bazaardb.gg/card/boa7agty4t9e2tbcgyc210tqh/A-Strange-Mushroom",
+    "choices": []
+  },
+  {
+    "name": "Eating Contest",
+    "url": "https://bazaardb.gg/card/4897x10kxlgio5kczivskl39b/Eating-Contest",
+    "choices": []
+  },
+  {
+    "name": "Jungle Ruins",
+    "url": "https://bazaardb.gg/card/1sm39pt13kdvae67r7a860aek/Jungle-Ruins",
+    "choices": []
+  },
+  {
+    "name": "Mandala",
+    "url": "https://bazaardb.gg/card/27m413ad4h8t10x2i8i5clx7f/Mandala",
+    "choices": []
+  },
+  {
+    "name": "Regenerative Tincture",
+    "url": "https://bazaardb.gg/card/f2bony41vi3h44kvahyh1i32q/Regenerative-Tincture",
+    "choices": []
+  },
+  {
+    "name": "The Docks",
+    "url": "https://bazaardb.gg/card/ex39ksp350t0zrgi3khiibvqd/The-Docks",
+    "choices": []
+  },
+  {
+    "name": "Tiny Furry Monster",
+    "url": "https://bazaardb.gg/card/50jsvy9vfct80rb2r9uoq0a56/Tiny-Furry-Monster",
+    "choices": []
+  },
+  {
+    "name": "Economic Seminar",
+    "url": "https://bazaardb.gg/card/9an2dvoqw0jslmosv51j6cgmn/Economic-Seminar",
+    "choices": []
+  },
+  {
+    "name": "Gumball Machine",
+    "url": "https://bazaardb.gg/card/adgaqv7h9yq2d6u2af7bd8i47/Gumball-Machine",
+    "choices": []
+  },
+  {
+    "name": "Jules' Cafe",
+    "url": "https://bazaardb.gg/card/1fwes2ti61nbpwscjf3k8u4fx/Jules'-Cafe",
+    "choices": []
+  },
+  {
+    "name": "Likit",
+    "url": "https://bazaardb.gg/card/bimp5nh5u5mkoi2fxqgd7mlqj/Likit",
+    "choices": [
+      {
+        "name": "Candy Mail",
+        "url": "https://bazaardb.gg/card/96ymrav737zxuuueofg721x7e/Candy-Mail",
+        "icon": "icons/Likit_Candy Mail.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z5.0.0/item/1e57b01458c7fc4d3475a3a28ed712056fef3625@256.webp?v=0",
+        "description": "Adjacent Shield items permanently gain +1 » +2 » +3 » +4 Shield. This permanently loses 1 Max Ammo and Destroy this if it has 0 Max Ammo"
+      },
+      {
+        "name": "Epicurean Chocolate",
+        "url": "https://bazaardb.gg/card/bz3kr0tn9944e9qhogk1qkln7/Epicurean-Chocolate",
+        "icon": "icons/Likit_Epicurean Chocolate.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z5.0.0/item/34c187c99d208e945c035e555cd258bb3e735e55@256.webp?v=0",
+        "description": "Adjacent Weapons permanently gain +1 » +2 » +3 » +4 Damage. This permanently loses 1 Max Ammo and Destroy this if it has 0 Max Ammo"
+      },
+      {
+        "name": "Super Syrup",
+        "url": "https://bazaardb.gg/card/82onpq1v47ckzqs1yqv2j7c89/Super-Syrup",
+        "icon": "icons/Likit_Super Syrup.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z5.0.0/item/2ac38a56e2b9af92f5f32f5b84925a13c36457f4@256.webp?v=0",
+        "description": "Adjacent items permanently gain 1% » 2% » 3% » 4% Crit Chance. This permanently loses 1 Max Ammo and Destroy this if it has 0 Max Ammo"
+      }
+    ]
+  },
+  {
+    "name": "The Lost Crate",
+    "url": "https://bazaardb.gg/card/81dlbkgzgtnazqxj8zn4513c4/The-Lost-Crate",
+    "choices": []
+  },
+  {
+    "name": "Aerodrome",
+    "url": "https://bazaardb.gg/card/ea1hi0t7soma5javpc0xv9pcz/Aerodrome",
+    "choices": []
+  },
+  {
+    "name": "Artisan Dunes",
+    "url": "https://bazaardb.gg/card/9t7g2syvsaiw5o1sq2v02icin/Artisan-Dunes",
+    "choices": []
+  },
+  {
+    "name": "BazaarCON",
+    "url": "https://bazaardb.gg/card/6jjh11h62jzf15ubdq1ksld41/BazaarCON",
+    "choices": []
+  },
+  {
+    "name": "Finn's Big Bite",
+    "url": "https://bazaardb.gg/card/d338thlh3b9nrci3jo6zn7d9/Finn's-Big-Bite",
+    "choices": []
+  },
+  {
+    "name": "Grandmaster",
+    "url": "https://bazaardb.gg/card/14gh24mziunxoo7g89z08wvhb/Grandmaster",
+    "choices": []
+  },
+  {
+    "name": "Pearl's Dig Site",
+    "url": "https://bazaardb.gg/card/d0m0zsg717x0g1cpj9ppxm5bl/Pearl's-Dig-Site",
+    "choices": []
+  },
+  {
+    "name": "Shrouded Figure",
+    "url": "https://bazaardb.gg/card/7o4so5fubdmow0onsmx74eg38/Shrouded-Figure",
+    "choices": []
+  }
+]
