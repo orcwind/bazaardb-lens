@@ -1,0 +1,258 @@
+[
+  {
+    "name": "Banannibal",
+    "url": "https://bazaardb.gg/card/1q3zi7wtui5kfes7wxor9hgla/Banannibal",
+    "skills": [
+      {
+        "name": "Healthy Jolt",
+        "url": "https://bazaardb.gg/card/6r8afpa0mffhx4qyiaf7fjb9i/Healthy-Jolt",
+        "icon": "icons/Banannibal_Healthy Jolt.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z5.0.0/skill/bfc11d96aa6be9e1043680f677cbb42e06c94e86@256.webp?v=0",
+        "description": "The first time you Over-Heal each fight, Haste your items for 2 » 4 second(s)."
+      }
+    ],
+    "items": [
+      {
+        "name": "Med Kit",
+        "url": "https://bazaardb.gg/card/cxltxpmojw7m7r9l2e01d6z87/Med-Kit",
+        "icon": "icons/Banannibal_Med Kit.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z5.0.0/item/28cc996b3f7d7fbc01733e536119ba4798d2f538@256.webp?v=0",
+        "description": "When you sell this, your leftmost Heal item gains 5 » 10 » 20 » 40 Heal."
+      },
+      {
+        "name": "Bluenanas",
+        "url": "https://bazaardb.gg/card/3cjwc0is10acecapoaw4zv96r/Bluenanas",
+        "icon": "icons/Banannibal_Bluenanas.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z5.0.0/item/1e07d9de60690a49f0938b0356ff839bf1c5c827@256.webp?v=0",
+        "description": "Heal 10 » 20 » 40 » 80. When you sell this, gain 20 » 60 » 120 » 200 Max Health."
+      },
+      {
+        "name": "Duct Tape",
+        "url": "https://bazaardb.gg/card/k1ecn5ocril4oi4xb93a23o3/Duct-Tape",
+        "icon": "icons/Banannibal_Duct Tape.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z5.0.0/item/5f3caf8137c5552c88635c2c74b167ed1f2c9836@256.webp?v=0",
+        "description": "Slow an item for 1 » 2 » 3 » 4 second(s). When you use the item to the left of this, Shield 5 » 10 » 15 » 20."
+      }
+    ]
+  },
+  {
+    "name": "Bloodreef Captain",
+    "url": "https://bazaardb.gg/card/6ykeb1zvis8d2duq0idm1nu6e/Bloodreef-Captain",
+    "skills": [
+      {
+        "name": "Full Arsenal",
+        "url": "https://bazaardb.gg/card/3byoyew95udepg7ld4bf33bg0/Full-Arsenal",
+        "icon": "icons/Bloodreef Captain_Full Arsenal.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z5.0.0/skill/1a374178ab2055829f6c01910d849c392f566d8d@256.webp?v=0",
+        "description": "Your item's Cooldowns are reduced by 5% » 10% if you have a Vehicle, reduced by 5% » 10% if you have a Weapon, and reduced by 5% » 10% if you have a Tool."
+      },
+      {
+        "name": "Heavy Firepower",
+        "url": "https://bazaardb.gg/card/dmmss0wz61xbqg4smxquuw8nc/Heavy-Firepower",
+        "icon": "icons/Bloodreef Captain_Heavy Firepower.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z5.0.0/skill/fe3386516604c9c2abda996aeb84535ef6fa0d2f@256.webp?v=0",
+        "description": "If you have 5 or fewer items, your Weapons have +25 » +50 » +75 Damage."
+      }
+    ],
+    "items": [
+      {
+        "name": "Crow's Nest",
+        "url": "https://bazaardb.gg/card/4e4eo5afof8afl38nlhjtjw5z/Crow's-Nest",
+        "icon": "icons/Bloodreef Captain_Crow's Nest.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z5.0.0/item/c4991dad4d23ee6836b090d1fa5f1d1fc528ed5c@256.webp?v=0",
+        "description": "Your Weapons have +40% » +60% » +80% Crit Chance.. If you have exactly one Weapon, that Weapon has Lifesteal."
+      },
+      {
+        "name": "Pesky Pete",
+        "url": "https://bazaardb.gg/card/b4lmg9cae2e7np60aaxm3qk12/Pesky-Pete",
+        "icon": "icons/Bloodreef Captain_Pesky Pete.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z5.0.0/item/503ae08f647fa378e8936f8c45a959d7bd4f10a9@256.webp?v=0",
+        "description": "Burn 2 » 4 » 6. For each adjacent Friend or Property, this gains +1 Multicast."
+      },
+      {
+        "name": "Captain's Wheel",
+        "url": "https://bazaardb.gg/card/66lc1mkru0sat18gqibh8wfry/Captain's-Wheel",
+        "icon": "icons/Bloodreef Captain_Captain's Wheel.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z5.0.0/item/c16a074f62884af82966b05848b7629a95b86a6e@256.webp?v=0",
+        "description": "Haste adjacent items for 1 » 2 » 3 second(s). If you have a Vehicle or Large item, this item's Cooldown is halved."
+      },
+      {
+        "name": "Pop Snappers",
+        "url": "https://bazaardb.gg/card/16k84qzb1suowrb2sa77ks8gg/Pop-Snappers",
+        "icon": "icons/Bloodreef Captain_Pop Snappers.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z5.0.0/item/312791507fcf5f8b3ce30394622df8a6ef49e7c3@256.webp?v=0",
+        "description": "Burn 4 » 6 » 8 » 10"
+      },
+      {
+        "name": "Flagship",
+        "url": "https://bazaardb.gg/card/7ycf9l5qjuk48mavgqsleh6ct/Flagship",
+        "icon": "icons/Bloodreef Captain_Flagship.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z5.0.0/item/11c3b986d7873307a5a77fdfaa79387347202654@256.webp?v=0",
+        "description": "Deal 50 Damage. If you have another Tool, Property, Friend, or Ammo item this has +1 Multicast for each."
+      }
+    ]
+  },
+  {
+    "name": "Blowguns Trap",
+    "url": "https://bazaardb.gg/card/6yas6dv3680c5znh1j81joink/Blowguns-Trap",
+    "skills": [],
+    "items": [
+      {
+        "name": "Blowgun",
+        "url": "https://bazaardb.gg/card/35ehesq53xighy16cultblj46/Blowgun",
+        "icon": "icons/Blowguns Trap_Blowgun.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z5.0.0/item/d1cdd10f2b385f6d24983fc6975ba3dc4e58e31b@256.webp?v=0",
+        "description": "Deal 2 Damage. Poison equal to this item's Damage"
+      },
+      {
+        "name": "Lockbox",
+        "url": "https://bazaardb.gg/card/ab0f9mk4836joehfgj8h6wx26/Lockbox",
+        "icon": "icons/Blowguns Trap_Lockbox.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z5.0.0/item/2b26dddaa505e6f79aad44d214f3d71bb40dfa4d@256.webp?v=0",
+        "description": "When you win a fight, this permanently gains 3 » 6 » 9 value.. Your Weapons have + Damage equal to this item's value."
+      }
+    ]
+  },
+  {
+    "name": "Boilerroom Brawler",
+    "url": "https://bazaardb.gg/card/4eai9exahsjht1l272magduy6/Boilerroom-Brawler",
+    "skills": [
+      {
+        "name": "Flashy Mechanic",
+        "url": "https://bazaardb.gg/card/3sjqh13rn9ky9j8d8erw9j5mh/Flashy-Mechanic",
+        "icon": "icons/Boilerroom Brawler_Flashy Mechanic.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z5.0.0/skill/1a654019c979ca30c1a689a81e69ae07e30f23d4@256.webp?v=0",
+        "description": "When you use a Tool, items adjacent to it gain 3% » 6% » 9% Crit Chance."
+      },
+      {
+        "name": "Time to Tinker",
+        "url": "https://bazaardb.gg/card/auwou3lrnvr3rt3j8x4e3sxzi/Time-to-Tinker",
+        "icon": "icons/Boilerroom Brawler_Time to Tinker.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z5.0.0/skill/c3d7a43540fbafea050543fcf24f1e80cb76c300@256.webp?v=0",
+        "description": "When you Haste, Shield 10 » 20 » 30 » 40."
+      }
+    ],
+    "items": [
+      {
+        "name": "Sharpening Stone",
+        "url": "https://bazaardb.gg/card/d1drj8f58dspvvkoatyign3i5/Sharpening-Stone",
+        "icon": "icons/Boilerroom Brawler_Sharpening Stone.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z5.0.0/item/c90c857576fe5c54436e8d1abfcafcb9088e1ebf@256.webp?v=0",
+        "description": "When you sell this, your leftmost Weapon gains 5 » 10 » 15 » 20 Damage."
+      },
+      {
+        "name": "Orbital Polisher",
+        "url": "https://bazaardb.gg/card/cob5ssuouy4pc4xc5c51itp4t/Orbital-Polisher",
+        "icon": "icons/Boilerroom Brawler_Orbital Polisher.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z5.0.0/item/54c2f36b34a0de7debc9d281f667493ffc4722f0@256.webp?v=0",
+        "description": "When you sell this, Enchant your leftmost Small item of the same or lower tier with Shiny."
+      },
+      {
+        "name": "Goggles",
+        "url": "https://bazaardb.gg/card/eq24269mu2kuzfbjau4e11n81/Goggles",
+        "icon": "icons/Boilerroom Brawler_Goggles.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z5.0.0/item/3428ff32b5518790a1f6da32c04d2f925f2e3eda@256.webp?v=0",
+        "description": "Shield 20 » 40 » 60 » 80. When you Haste, adjacent items gain +2% » +4% » +6% » +8% Crit Chance for the fight."
+      },
+      {
+        "name": "Toolbox",
+        "url": "https://bazaardb.gg/card/4k1akskmofbx7awgc12i4fb22/Toolbox",
+        "icon": "icons/Boilerroom Brawler_Toolbox.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z5.0.0/item/01393ab9364928a223a206214a77af5045a8e38b@256.webp?v=0",
+        "description": "Haste the Tool to the right of this for 2 seconds. At the start of each day, get a Small Tool."
+      },
+      {
+        "name": "Multitool",
+        "url": "https://bazaardb.gg/card/1gg8udwt0q7u1vrfo28pfha7b/Multitool",
+        "icon": "icons/Boilerroom Brawler_Multitool.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z5.0.0/item/75042140ab0b1a338e0a1fe225139db56a483cd9@256.webp?v=0",
+        "description": "Haste 1 » 2 » 3 item(s) for 1 second(s). Slow 1 » 2 » 3 item(s) for 1 second(s)"
+      },
+      {
+        "name": "Energy Potion",
+        "url": "https://bazaardb.gg/card/4z283i6ml183v33gg4cop007f/Energy-Potion",
+        "icon": "icons/Boilerroom Brawler_Energy Potion.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z5.0.0/item/b6be18e839fb94a186626f5f8b4b364b4ff5ce37@256.webp?v=0",
+        "description": "Haste your other items for 1 » 2 » 3 second(s)"
+      },
+      {
+        "name": "Eagle Talisman",
+        "url": "https://bazaardb.gg/card/af3yupziovi9uj9g3ktr1mm/Eagle-Talisman",
+        "icon": "icons/Boilerroom Brawler_Eagle Talisman.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z5.0.0/item/05ad0d069c61f616e7f0a2fbf673c222cf3b8766@256.webp?v=0",
+        "description": "When you sell this, your leftmost item gains 5% » 10% » 15% » 20% Crit Chance."
+      }
+    ]
+  },
+  {
+    "name": "Boss Harrow",
+    "url": "https://bazaardb.gg/card/4jow7axchp7xof4z1i3tva588/Boss-Harrow",
+    "skills": [
+      {
+        "name": "Assault Focus",
+        "url": "https://bazaardb.gg/card/ihw0ef6ojoqo4rrc1xxcnltp/Assault-Focus",
+        "icon": "icons/Boss Harrow_Assault Focus.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z5.0.0/skill/aa24e6328ec53e82ad8de7ff88aa8dc4fcaa0056@256.webp?v=0",
+        "description": "When any non-Weapon item is used, Slow it for 1 » 2 » 3 second(s)."
+      },
+      {
+        "name": "Strength",
+        "url": "https://bazaardb.gg/card/ewjs1pwcqcz9zbpktftyj83po/Strength",
+        "icon": "icons/Boss Harrow_Strength.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z5.0.0/skill/2a918dd1eacbe3dafffb2cfc55a08234b0d66c98@256.webp?v=0",
+        "description": "Your Weapons deal +10 » +15 » +20 » +25 Damage."
+      },
+      {
+        "name": "Keen Eye",
+        "url": "https://bazaardb.gg/card/aoy1hqxiooayx9ssnd48xrpze/Keen-Eye",
+        "icon": "icons/Boss Harrow_Keen Eye.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z5.0.0/skill/8d1fab1c6ef29826a2e61c8178110967005c6652@256.webp?v=0",
+        "description": "Your items have +4% » +8% » +12% » +16% Crit Chance."
+      }
+    ],
+    "items": [
+      {
+        "name": "Weakpoint Detector",
+        "url": "https://bazaardb.gg/card/exh4hinz7upn6fkjq4c67tzs2/Weakpoint-Detector",
+        "icon": "icons/Boss Harrow_Weakpoint Detector.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z5.0.0/item/b4a26a7e997916d46eefb1db985f64ed53269f41@256.webp?v=0",
+        "description": "Your Weapons gain +5 » +10 » +15 » +20 Damage for the fight. When you Slow, Charge this 2 second(s)."
+      },
+      {
+        "name": "Runic Double Bow",
+        "url": "https://bazaardb.gg/card/egi39o5trpi8z5jutmdbssnz8/Runic-Double-Bow",
+        "icon": "icons/Boss Harrow_Runic Double Bow.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z5.0.0/item/29ada607868e426890eed1071e694ac4329f7fa5@256.webp?v=0",
+        "description": "Deal 20 » 40 » 60 Damage. This deals double Crit Damage."
+      },
+      {
+        "name": "Bayonet",
+        "url": "https://bazaardb.gg/card/5rbo6tz2n42uv1wprvzsd2q3q/Bayonet",
+        "icon": "icons/Boss Harrow_Bayonet.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z5.0.0/item/2f7625debdf6b645de9857551a55366af1bb64c2@256.webp?v=0",
+        "description": "When you use the Weapon to the left of this, deal 10 » 15 » 20 » 25 Damage."
+      },
+      {
+        "name": "Grappling Hook",
+        "url": "https://bazaardb.gg/card/41v9q80kmiyv3z82catg6zlox/Grappling-Hook",
+        "icon": "icons/Boss Harrow_Grappling Hook.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z5.0.0/item/72204145138ab05ed300d581412a7e1e2e115222@256.webp?v=0",
+        "description": "Deal 12 » 18 » 24 » 32 Damage. Slow 1 » 2 » 3 » 4 item(s) for 1 second(s)"
+      },
+      {
+        "name": "Jitte",
+        "url": "https://bazaardb.gg/card/d9yc7k3zoktfx6kps79hwgzcm/Jitte",
+        "icon": "icons/Boss Harrow_Jitte.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z5.0.0/item/5fded8c4ee2059aa347ffffe0689faf475e5fc9a@256.webp?v=0",
+        "description": "Deal 20 Damage. Slow an item for 1 » 2 » 3 second(s). When you Slow, this gains 10 » 20 » 30 Damage for the fight."
+      },
+      {
+        "name": "Katana",
+        "url": "https://bazaardb.gg/card/513qroz76xl1kpbo6yvqwk31o/Katana",
+        "icon": "icons/Boss Harrow_Katana.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z5.0.0/item/7215fff59af9861362aef19ecd276d099d0b427b@256.webp?v=0",
+        "description": "Deal 5 » 10 » 15 » 20 Damage"
+      }
+    ]
+  }
+]

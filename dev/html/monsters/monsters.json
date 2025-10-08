@@ -1,7 +1,7 @@
 [
   {
-    "name": "Banannabal",
-    "link": "https://bazaardb.gg/card/1q3zi7wtui5kfes7wxor9hgla/Banannabal"
+    "name": "Banannibal",
+    "link": "https://bazaardb.gg/card/1q3zi7wtui5kfes7wxor9hgla/Banannibal"
   },
   {
     "name": "Fanged Inglet",
@@ -28,14 +28,6 @@
     "link": "https://bazaardb.gg/card/2ekzzpudqbrr66k31n4ymd73w/Coconut-Crab"
   },
   {
-    "name": "Giant Mosquito",
-    "link": "https://bazaardb.gg/card/brak7ndwg6qxcz77e7maq44xj/Giant-Mosquito"
-  },
-  {
-    "name": "Covetous Thief",
-    "link": "https://bazaardb.gg/card/61ozghfd0n2wnatxlwj7gqor7/Covetous-Thief"
-  },
-  {
     "name": "Rogue Scrapper",
     "link": "https://bazaardb.gg/card/1tdaxp2m7undcyzf4ruk1jaj8/Rogue-Scrapper"
   },
@@ -44,32 +36,44 @@
     "link": "https://bazaardb.gg/card/aytczupepj5k6szvb4uao8eot/Boarrior"
   },
   {
-    "name": "Dabbling Apprentice",
-    "link": "https://bazaardb.gg/card/8f43qyhogjaai4z2tt8ag0hw5/Dabbling-Apprentice"
-  },
-  {
-    "name": "Rogue Scrapper",
-    "link": "https://bazaardb.gg/card/6olsfhjn0vko9f8h9bxxebz84/Rogue-Scrapper"
-  },
-  {
-    "name": "Tempest Flamedancer",
-    "link": "https://bazaardb.gg/card/a1gw8ccep86e4aqakr9inric/Tempest-Flamedancer"
-  },
-  {
-    "name": "Degenerate",
-    "link": "https://bazaardb.gg/card/3ujj5k09q2x73kk1d5cyiuni8/Degenerate"
-  },
-  {
-    "name": "Frost Street Challenger",
-    "link": "https://bazaardb.gg/card/517282el3lk485elu5f17wl2l/Frost-Street-Challenger"
+    "name": "Covetous Thief",
+    "link": "https://bazaardb.gg/card/61ozghfd0n2wnatxlwj7gqor7/Covetous-Thief"
   },
   {
     "name": "Eccentric Etherwright",
     "link": "https://bazaardb.gg/card/2zc1texj6ipghfhkbp0u2qptb/Eccentric-Etherwright"
   },
   {
-    "name": "Hooverbike Hooligan",
-    "link": "https://bazaardb.gg/card/3ckuokpc7mwezycz2yadea87s/Hooverbike-Hooligan"
+    "name": "Ventriloquist",
+    "link": "https://bazaardb.gg/card/3w6jcf0q5vxg3p0jufveo2q29/Ventriloquist"
+  },
+  {
+    "name": "Dabbling Apprentice",
+    "link": "https://bazaardb.gg/card/8f43qyhogjaai4z2tt8ag0hw5/Dabbling-Apprentice"
+  },
+  {
+    "name": "Tempest Bravo",
+    "link": "https://bazaardb.gg/card/a1gw8ccep86e4aqakr9inric/Tempest-Bravo"
+  },
+  {
+    "name": "Frost Street Challenger",
+    "link": "https://bazaardb.gg/card/517282el3lk485elu5f17wl2l/Frost-Street-Challenger"
+  },
+  {
+    "name": "Product Demonstrator",
+    "link": "https://bazaardb.gg/card/36qsei4a6xe9e476165dd3z7d/Product-Demonstrator"
+  },
+  {
+    "name": "Street Gamer",
+    "link": "https://bazaardb.gg/card/3ujj5k09q2x73kk1d5cyiuni8/Street-Gamer"
+  },
+  {
+    "name": "Giant Mosquito",
+    "link": "https://bazaardb.gg/card/brak7ndwg6qxcz77e7maq44xj/Giant-Mosquito"
+  },
+  {
+    "name": "Hoverbike Hooligan",
+    "link": "https://bazaardb.gg/card/3ckuokpc7mwezycz2yadea87s/Hoverbike-Hooligan"
   },
   {
     "name": "Boilerroom Brawler",
@@ -104,16 +108,16 @@
     "link": "https://bazaardb.gg/card/c8hilfrw74bvpgh9l9fipj8ov/Flame-Juggler"
   },
   {
+    "name": "Grandfather Klok",
+    "link": "https://bazaardb.gg/card/d5arl08bdaft6ei7b5pvjc7gv/Grandfather-Klok"
+  },
+  {
     "name": "Preening Duelist",
     "link": "https://bazaardb.gg/card/aazmrov66atfwm5py2fiirfy8/Preening-Duelist"
   },
   {
     "name": "Sabretooth",
     "link": "https://bazaardb.gg/card/48x6xu2e056x3y1t9iwdfk06d/Sabretooth"
-  },
-  {
-    "name": "Flame Juggler",
-    "link": "https://bazaardb.gg/card/32ibtnyyjtowmy5lk22p12sqn/Flame-Juggler"
   },
   {
     "name": "Harkuvian Rocket Trooper",
@@ -148,10 +152,6 @@
     "link": "https://bazaardb.gg/card/73x1hj7ol7vrjo8c2iz78lbxj/Dire-Inglet"
   },
   {
-    "name": "Dire Mosquito",
-    "link": "https://bazaardb.gg/card/b5h7mrzh1euij470peicaqgrt/Dire-Mosquito"
-  },
-  {
     "name": "Zookeeper",
     "link": "https://bazaardb.gg/card/6s7giwl91cfod3ww2i1z7srtc/Zookeeper"
   },
@@ -160,12 +160,16 @@
     "link": "https://bazaardb.gg/card/9mtp52valjof734zc8bi9nglt/Foreman"
   },
   {
+    "name": "Foundation Weeper",
+    "link": "https://bazaardb.gg/card/8w24eg3vfpyqgf6taqrmor4ri/Foundation-Weeper"
+  },
+  {
     "name": "Trash Golem",
     "link": "https://bazaardb.gg/card/a1o8nquddakkswvjyf6yttnjl/Trash-Golem"
   },
   {
-    "name": "Enclave Weeper",
-    "link": "https://bazaardb.gg/card/8w24eg3vfpyqgf6taqrmor4ri/Enclave-Weeper"
+    "name": "Dire Mosquito",
+    "link": "https://bazaardb.gg/card/b5h7mrzh1euij470peicaqgrt/Dire-Mosquito"
   },
   {
     "name": "Loan Shark",
@@ -188,44 +192,40 @@
     "link": "https://bazaardb.gg/card/213dd8hb2x95dzxlystmri10q/Viper-Tyrant"
   },
   {
-    "name": "Cosmic Roc",
-    "link": "https://bazaardb.gg/card/9qpaf7r4ub8hz07l1qx746fic/Cosmic-Roc"
+    "name": "Ghost Pepper",
+    "link": "https://bazaardb.gg/card/enqw6tlghjmwdwkj08jtwe79r/Ghost-Pepper"
   },
   {
     "name": "Joyful Jack",
     "link": "https://bazaardb.gg/card/yv1pig72jr6mludd9p47t3os/Joyful-Jack"
   },
   {
-    "name": "Thug",
-    "link": "https://bazaardb.gg/card/2johvw7kkazu8wgrde7lhy52l/Thug"
-  },
-  {
     "name": "Treasure Turtle",
     "link": "https://bazaardb.gg/card/7b4vcmxkq4uj5p9zvdyn2j7ti/Treasure-Turtle"
+  },
+  {
+    "name": "Annex Trooper",
+    "link": "https://bazaardb.gg/card/cwedhpb3ptx9rzosp7my7nopq/Annex-Trooper"
   },
   {
     "name": "Chilly Charles",
     "link": "https://bazaardb.gg/card/23y0ae6ept0y3d25b053gu8p3/Chilly-Charles"
   },
   {
-    "name": "Shock Trooper",
-    "link": "https://bazaardb.gg/card/cwedhpb3ptx9rzosp7my7nopq/Shock-Trooper"
-  },
-  {
-    "name": "Ghost Pepper",
-    "link": "https://bazaardb.gg/card/enqw6tlghjmwdwkj08jtwe79r/Ghost-Pepper"
+    "name": "Thug",
+    "link": "https://bazaardb.gg/card/2johvw7kkazu8wgrde7lhy52l/Thug"
   },
   {
     "name": "Radiant Corsair",
     "link": "https://bazaardb.gg/card/5psi4khquo5ndlelx9k3audlw/Radiant-Corsair"
   },
   {
-    "name": "Cosmic Roc",
-    "link": "https://bazaardb.gg/card/6rhumdk5iw8t6n530778zqw20/Cosmic-Roc"
+    "name": "Cloudtop Officer",
+    "link": "https://bazaardb.gg/card/75do0jvltn8sja5htm1gi8oj1/Cloudtop-Officer"
   },
   {
-    "name": "Joyful Jack",
-    "link": "https://bazaardb.gg/card/2894firmpa6iproya0u4i86g0/Joyful-Jack"
+    "name": "Cosmic Roc",
+    "link": "https://bazaardb.gg/card/6rhumdk5iw8t6n530778zqw20/Cosmic-Roc"
   },
   {
     "name": "Bouncertron",
@@ -264,20 +264,20 @@
     "link": "https://bazaardb.gg/card/6ykeb1zvis8d2duq0idm1nu6e/Bloodreef-Captain"
   },
   {
-    "name": "Yerdan",
-    "link": "https://bazaardb.gg/card/9q5yvnajxwdfip8d8lo2nc1qa/Yerdan"
+    "name": "Cloudtop Admiral",
+    "link": "https://bazaardb.gg/card/ehlr6f8ulet3qgs68y9nvpqu5/Cloudtop-Admiral"
   },
   {
     "name": "Elite Duelist",
     "link": "https://bazaardb.gg/card/31vz0i378e5p1bh3jdg0ptafb/Elite-Duelist"
   },
   {
-    "name": "Oasis Guardian",
-    "link": "https://bazaardb.gg/card/ny44zag86rgnmu84yl3j80ec/Oasis-Guardian"
-  },
-  {
     "name": "Roaming Isle",
     "link": "https://bazaardb.gg/card/27hh7csilp9vhx9zbf5lxhc37/Roaming-Isle"
+  },
+  {
+    "name": "Terrorform",
+    "link": "https://bazaardb.gg/card/3p7nwl8ed650uevb5uevb6csn/Terrorform"
   },
   {
     "name": "Ferros Khan",
@@ -288,12 +288,16 @@
     "link": "https://bazaardb.gg/card/comhv64e4nalnj1l1082ev8sg/Weapons-Platform"
   },
   {
-    "name": "Enclave Revenant",
-    "link": "https://bazaardb.gg/card/exlljqmu5l9myla8zv837384e/Enclave-Revenant"
+    "name": "Yerdan",
+    "link": "https://bazaardb.gg/card/9q5yvnajxwdfip8d8lo2nc1qa/Yerdan"
   },
   {
-    "name": "Death Knight Reaper",
-    "link": "https://bazaardb.gg/card/b9x9ygb3e9qnz3l1c776ngnxl/Death-Knight-Reaper"
+    "name": "Foundation Revenant",
+    "link": "https://bazaardb.gg/card/exlljqmu5l9myla8zv837384e/Foundation-Revenant"
+  },
+  {
+    "name": "Void Knight",
+    "link": "https://bazaardb.gg/card/b9x9ygb3e9qnz3l1c776ngnxl/Void-Knight"
   },
   {
     "name": "Boss Harrow",
@@ -308,12 +312,36 @@
     "link": "https://bazaardb.gg/card/9z0586a264eajg1w7aeu12lh5/Master-Alchemist"
   },
   {
+    "name": "Infernal Dreadnought",
+    "link": "https://bazaardb.gg/card/3kfqgfq6w353sf42ne26ykjoj/Infernal-Dreadnought"
+  },
+  {
     "name": "Lord of the Wastes",
     "link": "https://bazaardb.gg/card/extzgbvonfmsxlo4sv8mq1kuo/Lord-of-the-Wastes"
   },
   {
+    "name": "Test Subject Alpha",
+    "link": "https://bazaardb.gg/card/f0bz7ctp7yfhlroqy7tp3qae3/Test-Subject-Alpha"
+  },
+  {
+    "name": "Tortuga",
+    "link": "https://bazaardb.gg/card/2kilks9zak6lshlm5c0w7mx4v/Tortuga"
+  },
+  {
     "name": "Trash Titan",
     "link": "https://bazaardb.gg/card/1s784hdkwrcp0afi47l1yd1ip/Trash-Titan"
+  },
+  {
+    "name": "Awakened Primordial",
+    "link": "https://bazaardb.gg/card/dk8zigog81xur2xmoyhbwmn6o/Awakened-Primordial"
+  },
+  {
+    "name": "Dooltron",
+    "link": "https://bazaardb.gg/card/28wdtovxm6z8157f1zk6pgn0y/Dooltron"
+  },
+  {
+    "name": "Rex Spex",
+    "link": "https://bazaardb.gg/card/2d770a31di65i8dmx1hsd8wu4/Rex-Spex"
   },
   {
     "name": "Volkas Enforcer",
@@ -336,20 +364,48 @@
     "link": "https://bazaardb.gg/card/evc50xui047wub3qs2vc14v21/Awakened-District"
   },
   {
-    "name": "Lord Arken",
-    "link": "https://bazaardb.gg/card/8hqkvizzoop8x82ktgygqc1rk/Lord-Arken"
+    "name": "Eight Arm Davvy",
+    "link": "https://bazaardb.gg/card/8w4pkpod4vyolvr8nd4kwxggm/Eight-Arm-Davvy"
   },
   {
-    "name": "Veteran Octopus",
-    "link": "https://bazaardb.gg/card/8w4pkpod4vyolvr8nd4kwxggm/Veteran-Octopus"
+    "name": "Morguloth",
+    "link": "https://bazaardb.gg/card/1xbgsr63vvsyexy9meorw1srz/Morguloth"
   },
   {
     "name": "Void Golem",
     "link": "https://bazaardb.gg/card/54gs4h6ract9gbbbsh8pzv33d/Void-Golem"
   },
   {
+    "name": "Blowguns Trap",
+    "link": "https://bazaardb.gg/card/6yas6dv3680c5znh1j81joink/Blowguns-Trap"
+  },
+  {
+    "name": "Mythkeeper",
+    "link": "https://bazaardb.gg/card/4jwdtj5qzlqzxx9iyvbgf2uc5/Mythkeeper"
+  },
+  {
+    "name": "Caltrops Trap",
+    "link": "https://bazaardb.gg/card/8wo0z8ct32jk474k3l61xa4e4/Caltrops-Trap"
+  },
+  {
+    "name": "Greenheart Guardian",
+    "link": "https://bazaardb.gg/card/cf9qzl4uloxlpwqb5spnho7k1/Greenheart-Guardian"
+  },
+  {
     "name": "Mimic",
     "link": "https://bazaardb.gg/card/7w0e9vtmtokqil6ia8ucbddkr/Mimic"
+  },
+  {
+    "name": "Boulder Trap",
+    "link": "https://bazaardb.gg/card/3hubb2tfg5adpuuh44ayslo6z/Boulder-Trap"
+  },
+  {
+    "name": "Qomatz",
+    "link": "https://bazaardb.gg/card/9rsphyh83amw7r066in8wz0hy/Qomatz"
+  },
+  {
+    "name": "Aleppa Tantius",
+    "link": "https://bazaardb.gg/card/azfcpn2rs9gxthrr7cddxnyve/Aleppa-Tantius"
   },
   {
     "name": "Bounty Hunter",

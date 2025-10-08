@@ -132,3 +132,5 @@ config.ini
 # OCR data files
 *.traineddata
 /build/Bazaar_Lens
+/backup
+/6.0/crawlers/monster_details_v3/icons

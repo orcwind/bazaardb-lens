@@ -1,0 +1,40 @@
+游戏数据提取流程
+==================
+
+步骤1: 抓取HTML文件
+-------------------
+cd "d:\PythonProject\BazaarInfo\bazaardb-desktop\6.0\crawlers"
+python simple_crawler.py
+
+输出文件: 
+  - debug_monsters.html
+  - debug_events.html
+
+
+步骤2: 提取怪物名称
+-------------------
+cd "d:\PythonProject\BazaarInfo\bazaardb-desktop\6.0\crawlers"
+python fetch_monster_name.py
+
+输出文件: unique_monsters.json
+
+
+步骤3: 提取事件名称
+-------------------
+cd "d:\PythonProject\BazaarInfo\bazaardb-desktop\6.0\crawlers"
+python fetch_event_name.py
+
+输出文件: unique_events.json
+
+
+步骤4: 获取怪物详细信息（技能/掉落物）
+-------------------
+cd "d:\PythonProject\BazaarInfo\bazaardb-desktop\6.0\crawlers"
+python fetch_monster_details.py
+
+输出目录: monster_details/
+  - monsters_details.json (怪物详细信息)
+  - icons/ (技能和掉落物图标)
+
+
+刚才对monster也只是获取清单。但我们还需要做的事： 事件，事件各选择名称及描述。 怪物，怪物技能/掉落物名称，以及技能/掉落物的描述。 还需要下载所有的图标（事件各选择，怪物技能/掉落物 ），同时还需要将下载图标和对应的项目匹配上。

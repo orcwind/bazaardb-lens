@@ -131,8 +131,24 @@ class MonsterCrawler {
                     }).filter(monster => monster.name && monster.link);
                 });
 
+                // 去重：根据name去重，保留第一个
+                const uniqueMonsters = [];
+                const seenNames = new Set();
+                for (const monster of this.monsters) {
+                    if (!seenNames.has(monster.name)) {
+                        seenNames.add(monster.name);
+                        uniqueMonsters.push(monster);
+                    }
+                }
+                
+                const duplicateCount = this.monsters.length - uniqueMonsters.length;
+                if (duplicateCount > 0) {
+                    this.log(`发现 ${duplicateCount} 个重复怪物，已去重`);
+                }
+                
+                this.monsters = uniqueMonsters;
                 this.totalCount = this.monsters.length;
-                this.log(`找到 ${this.totalCount} 个怪物`);
+                this.log(`找到 ${this.totalCount} 个唯一怪物`);
                 
                 // 输出找到的怪物信息
                 this.monsters.forEach((monster, index) => {
