@@ -25,6 +25,7 @@ cd "d:\PythonProject\BazaarInfo\bazaardb-desktop\6.0\crawlers"
 python fetch_event_name.py
 
 输出文件: unique_events.json
+这部分需要手动修正。
 
 
 步骤4: 获取怪物详细信息（V3完整版）
@@ -78,37 +79,63 @@ python check_data_completeness.py
   - 计算数据完整度
 
 
-步骤7: 修复特定问题（可选）
+步骤7: 手动更新缺失信息
+
+
+步骤8: 获取事件详细信息（完整版）
 -------------------
 cd "d:\PythonProject\BazaarInfo\bazaardb-desktop\6.0\crawlers"
+python selenium_event_final.py
 
+功能：
+  - 从pool数据提取选择信息（名称、URL、图标URL）
+  - 从DOM中提取选择的描述
+  - 下载所有选择图标并保存到本地（格式：事件名/选择名.webp）
+  - 增量保存（每处理完一个事件立即保存）
+  - 自动跳过已处理的事件
+  - 生成详细的错误日志和统计报告
 
-用于修复特定技能/物品的问题
+输出目录: event_details_final/
+  - events_final.json (完整的事件数据)
+  - icons/ (所有选择图标，按事件分目录)
+  - logs/ (错误日志)
 
-
-已知问题：
+步骤9: 手动修正失败项
 -------------------
-1. 4个Trap类怪物没有技能（正常现象）:
-   - Blowguns Trap
-   - Caltrops Trap
-   - Boulder Trap
-   - Ahexa
-
-2. 4个项目缺少描述（需要手动获取）:
-   - Viper Tyrant - Copper Ed (物品)
-   - Annex Trooper - Induction Aegis (物品)
-   - Yerdan - Relax Bro (技能)
-   - Burninator Bot - Induction Aegis (物品)
+根据错误日志手动处理：
+  1. 下载超时的图标
+  2. 补充缺失的描述
+  3. 更新JSON文件中的对应字段
 
 
-下一步计划：
--------------------
-✓ 怪物数据 - 已完成
-  - 怪物技能/掉落物名称 ✓
-  - 技能/掉落物描述 ✓
-  - 所有图标下载 ✓
-  
-□ 事件数据 - 待处理
-  - 事件基本信息
-  - 事件各选择名称及描述
-  - 事件图标下载
+==========================================
+完整操作流程（快速参考）
+==========================================
+
+怪物数据提取：
+--------------
+1. 运行 simple_crawler.py          → 获取 debug_monsters.html
+2. 运行 fetch_monster_name.py      → 获取 unique_monsters.json
+3. 运行 selenium_monster_v3.py     → 获取完整怪物数据（monster_details_v3/）
+4. 运行 retry_failed_items.py      → 重试失败的项（可选）
+5. 运行 check_data_completeness.py → 检查数据完整性
+6. 手动修正缺失的图标和描述       → 根据错误日志处理
+
+事件数据提取：
+--------------
+1. 运行 simple_crawler.py          → 获取 debug_events.html
+2. 运行 fetch_event_name.py        → 获取 unique_events.json
+3. 手动修正 unique_events.json     → 检查并修正事件名称
+4. 运行 selenium_event_final.py    → 获取完整事件数据（event_details_final/）
+5. 手动修正缺失的图标和描述       → 根据错误日志处理
+
+最终输出：
+----------
+- 怪物数据: 6.0/crawlers/monster_details_v3/monsters_v3.json + icons/
+- 事件数据: 6.0/crawlers/event_details_final/events_final.json + icons/
+
+注意事项：
+----------
+- 所有脚本支持增量保存，中断后可继续运行
+- 错误日志位于各输出目录的 logs/ 子目录
+- 手动修正后无需重新运行整个流程
