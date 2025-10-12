@@ -1,6 +1,6 @@
 {
     "tesseract_path": "C:\\Program Files\\Tesseract-OCR\\tesseract.exe",
-    "last_update_check": "2025-05-11 22:18:15",
+    "last_update_check": "2025-10-12 16:50:30",
     "auto_update": true,
-    "show_console": false
+    "show_console": true
 }

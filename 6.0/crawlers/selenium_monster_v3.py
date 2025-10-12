@@ -211,53 +211,185 @@ def extract_icons_from_html(html_content):
     return icons
 
 
+def extract_card_size(html):
+    """从HTML中提取卡片尺寸
+    
+    Returns:
+        尺寸字符串 (Small/Medium/Large) 或 None
+    """
+    # 尝试多种正则表达式模式
+    size_patterns = [
+        r'<span[^>]*>\s*(Small|Medium|Large)\s*</span>',
+        r'<div[^>]*>\s*(Small|Medium|Large)\s*</div>',
+        r'"size"\s*:\s*"(Small|Medium|Large)"',
+        r'Size["\s:]*(["\s]*)(Small|Medium|Large)',
+        r'class="[^"]*"[^>]*>\s*(Small|Medium|Large)\s*<',
+    ]
+    
+    for pattern in size_patterns:
+        match = re.search(pattern, html, re.IGNORECASE)
+        if match:
+            # 返回第一个捕获组（尺寸）
+            groups = match.groups()
+            for group in groups:
+                if group and group.strip() in ['Small', 'Medium', 'Large', 'small', 'medium', 'large']:
+                    return group.capitalize()
+    
+    return None
+
+
+def size_to_aspect_ratio(size):
+    """将卡片尺寸转换为图标长宽比
+    
+    Args:
+        size: 卡片尺寸 (Small/Medium/Large/None)
+    
+    Returns:
+        长宽比: Small=0.5 (竖长), Medium=1.0 (正方), Large=1.5 (横长)
+    """
+    if not size:
+        return 1.0
+    
+    size_upper = size.upper()
+    if size_upper == 'SMALL':
+        return 0.5
+    elif size_upper == 'MEDIUM':
+        return 1.0
+    elif size_upper == 'LARGE':
+        return 1.5
+    else:
+        return 1.0
+
+
+def smart_merge_skill_data(existing_skill, new_skill):
+    """智能合并技能数据
+    
+    规则：
+    1. 如果新数据为空或无效，保留原有数据
+    2. 如果新数据有效，使用新数据覆盖
+    3. 图标路径：如果新图标下载成功，使用新路径；否则保留原有
+    
+    Args:
+        existing_skill: 已有的技能数据
+        new_skill: 新抓取的技能数据
+    
+    Returns:
+        合并后的技能数据
+    """
+    merged = existing_skill.copy()
+    
+    # 描述：只有新描述不为空时才覆盖
+    if new_skill.get('description', '').strip():
+        merged['description'] = new_skill['description']
+    
+    # URL：只有新URL不为空时才覆盖
+    if new_skill.get('url', '').strip():
+        merged['url'] = new_skill['url']
+    
+    # 图标URL：只有新图标URL不为空时才覆盖
+    if new_skill.get('icon_url', '').strip():
+        merged['icon_url'] = new_skill['icon_url']
+    
+    # 图标路径：只有新图标下载成功时才覆盖
+    if new_skill.get('icon', '').strip() and not new_skill['icon'].startswith('icons/'):
+        # 如果新图标路径不是默认路径，说明下载成功
+        merged['icon'] = new_skill['icon']
+    
+    # 长宽比：只有新长宽比有效时才覆盖
+    if new_skill.get('aspect_ratio') is not None:
+        merged['aspect_ratio'] = new_skill['aspect_ratio']
+    
+    return merged
+
+
+def smart_merge_item_data(existing_item, new_item):
+    """智能合并物品数据（逻辑同技能）"""
+    return smart_merge_skill_data(existing_item, new_item)
+
+
 def get_card_description(driver, card_url, card_type='skill'):
-    """访问卡片详情页获取描述"""
+    """访问卡片详情页获取描述和尺寸
+    
+    Returns:
+        (description, size) - 描述和尺寸（Small/Medium/Large）
+    """
     try:
         driver.get(card_url)
         time.sleep(3)  # 等待页面加载
         
         html = driver.page_source
         
-        # 从页面中查找所有 <div class="_bM"> 中的描述文本
-        # 这些描述包含实际的技能/物品效果
+        # 提取尺寸信息
+        size = extract_card_size(html)
+        
+        # 方法1: 尝试从HTML源码中提取（旧方法）
         desc_matches = re.findall(r'<div class="_bM">(.*?)</div>', html, re.DOTALL)
         
+        description = ""
         if desc_matches:
             # 收集所有有效的描述
             valid_descriptions = []
             
             for description_html in desc_matches:
                 # 清理HTML标签和注释
-                description = re.sub(r'<[^>]+>', '', description_html)
-                description = re.sub(r'<!--\s*-->', '', description)
+                desc = re.sub(r'<[^>]+>', '', description_html)
+                desc = re.sub(r'<!--\s*-->', '', desc)
                 # 清理HTML实体
-                description = description.replace('&nbsp;', ' ')
-                description = description.replace('&amp;', '&')
-                description = description.replace('&lt;', '<')
-                description = description.replace('&gt;', '>')
-                description = description.replace('&#x27;', "'")
-                description = description.strip()
+                desc = desc.replace('&nbsp;', ' ')
+                desc = desc.replace('&amp;', '&')
+                desc = desc.replace('&lt;', '<')
+                desc = desc.replace('&gt;', '>')
+                desc = desc.replace('&#x27;', "'")
+                desc = desc.strip()
                 
                 # 过滤掉无效描述
-                if (len(description) > 10 and 
-                    'Offered by' not in description and 
-                    'Dropped by' not in description and
-                    'Found in' not in description):
-                    valid_descriptions.append(description)
+                if (len(desc) > 10 and 
+                    'Offered by' not in desc and 
+                    'Dropped by' not in desc and
+                    'Found in' not in desc):
+                    valid_descriptions.append(desc)
             
             # 合并所有有效描述，用句号分隔
             if valid_descriptions:
-                return '. '.join(valid_descriptions)
+                description = '. '.join(valid_descriptions)
         
-        return ""
+        # 方法2: 如果方法1失败，尝试从渲染后的页面文本中提取
+        if not description:
+            try:
+                # 获取渲染后的页面所有文本
+                page_text = driver.execute_script("return document.body.innerText;")
+                lines = [line.strip() for line in page_text.split('\n') if line.strip()]
+                
+                # 查找包含游戏术语的文本行（可能是描述）
+                for line in lines:
+                    if (len(line) > 20 and 
+                        len(line) < 500 and
+                        any(keyword in line for keyword in ['Deal', 'Gain', 'When', 'Shield', 'Damage', 'Heal', 'Haste', 'Slow', 'Poison', 'Burn', 'Charge', 'Cooldown', 'Max Health', 'Regen', 'Freeze'])):
+                        # 过滤掉明显不是描述的行
+                        if not any(skip in line for skip in ['Offered by', 'Dropped by', 'Found in', 'Level', 'Day', 'Gold', 'XP', 'Enchantment', 'Tier']):
+                            description = line
+                            break
+            except Exception as e:
+                print(f"        ⚠ 方法2提取失败: {e}")
+        
+        return description, size
     except Exception as e:
-        print(f"      ✗ 获取描述失败: {e}")
-        return ""
+        print(f"      ✗ 获取卡片信息失败: {e}")
+        return "", None
 
 
-def extract_monster_details(driver, monster_name, detail_url):
-    """从详情页提取怪物信息"""
+def extract_monster_details(driver, monster_name, detail_url, existing_monster=None):
+    """从详情页提取怪物信息
+    
+    Args:
+        driver: Selenium WebDriver
+        monster_name: 怪物名称
+        detail_url: 详情页URL
+        existing_monster: 已有的怪物数据（用于智能覆盖）
+    
+    Returns:
+        怪物数据字典
+    """
     print(f"\n  [2/4] 访问怪物详情页...")
     driver.get(detail_url)
     time.sleep(5)
@@ -297,6 +429,11 @@ def extract_monster_details(driver, monster_name, detail_url):
     print(f"\n  处理技能详情...")
     skill_icon_urls = list(icons['skills'].values())  # 按顺序获取图标URL
     
+    # 获取已有技能数据（用于智能覆盖）
+    existing_skills = {}
+    if existing_monster:
+        existing_skills = {skill['name']: skill for skill in existing_monster.get('skills', [])}
+    
     for idx, skill_name in enumerate(skill_names):
         print(f"    [{skill_name}]")
         
@@ -311,24 +448,47 @@ def extract_monster_details(driver, monster_name, detail_url):
             # 下载图标
             skill_icon_path = download_icon(skill_icon_url, monster_name, skill_name, 'skill')
             
-            # 获取描述
-            description = get_card_description(driver, skill_url, 'skill')
+            # 获取描述和尺寸
+            description, size = get_card_description(driver, skill_url, 'skill')
             
-            monster_data["skills"].append({
+            # 智能覆盖逻辑
+            skill_data = {
                 "name": skill_name,
                 "url": skill_url,
                 "icon": skill_icon_path,
                 "icon_url": skill_icon_url,
-                "description": description
-            })
-            print(f"      ✓ 描述: {description[:50]}...")
+                "description": description,
+                "aspect_ratio": size_to_aspect_ratio(size)
+            }
+            
+            # 如果已有数据，进行智能合并
+            if skill_name in existing_skills:
+                existing_skill = existing_skills[skill_name]
+                skill_data = smart_merge_skill_data(existing_skill, skill_data)
+                print(f"      🔄 智能合并已有数据")
+            
+            monster_data["skills"].append(skill_data)
+            
+            if size:
+                print(f"      ✓ 描述: {description[:50]}... [{size}, 比例:{skill_data['aspect_ratio']}]")
+            else:
+                print(f"      ✓ 描述: {description[:50]}... [比例:{skill_data['aspect_ratio']}]")
         else:
             print(f"      ✗ 未找到URL")
+            # 如果已有数据，保留
+            if skill_name in existing_skills:
+                monster_data["skills"].append(existing_skills[skill_name])
+                print(f"      ℹ️  保留已有技能数据")
     
     # 处理物品（去重）
     print(f"\n  处理物品详情...")
     unique_items = list(dict.fromkeys(item_names))  # 保持顺序的去重
     item_icon_urls = list(icons['items'].values())  # 按顺序获取图标URL
+    
+    # 获取已有物品数据（用于智能覆盖）
+    existing_items = {}
+    if existing_monster:
+        existing_items = {item['name']: item for item in existing_monster.get('items', [])}
     
     if len(unique_items) < len(item_names):
         print(f"    去重: {len(item_names)} -> {len(unique_items)} 个唯一物品")
@@ -347,19 +507,37 @@ def extract_monster_details(driver, monster_name, detail_url):
             # 下载图标
             item_icon_path = download_icon(item_icon_url, monster_name, item_name, 'item')
             
-            # 获取描述
-            description = get_card_description(driver, item_url, 'item')
+            # 获取描述和尺寸
+            description, size = get_card_description(driver, item_url, 'item')
             
-            monster_data["items"].append({
+            # 智能覆盖逻辑
+            item_data = {
                 "name": item_name,
                 "url": item_url,
                 "icon": item_icon_path,
                 "icon_url": item_icon_url,
-                "description": description
-            })
-            print(f"      ✓ 描述: {description[:50]}...")
+                "description": description,
+                "aspect_ratio": size_to_aspect_ratio(size)
+            }
+            
+            # 如果已有数据，进行智能合并
+            if item_name in existing_items:
+                existing_item = existing_items[item_name]
+                item_data = smart_merge_item_data(existing_item, item_data)
+                print(f"      🔄 智能合并已有数据")
+            
+            monster_data["items"].append(item_data)
+            
+            if size:
+                print(f"      ✓ 描述: {description[:50]}... [{size}, 比例:{item_data['aspect_ratio']}]")
+            else:
+                print(f"      ✓ 描述: {description[:50]}... [比例:{item_data['aspect_ratio']}]")
         else:
             print(f"      ✗ 未找到URL")
+            # 如果已有数据，保留
+            if item_name in existing_items:
+                monster_data["items"].append(existing_items[item_name])
+                print(f"      ℹ️  保留已有物品数据")
     
     return monster_data
 
@@ -393,10 +571,101 @@ def load_existing_monsters(output_file):
     return []
 
 
+def check_missing_aspect_ratios(monsters):
+    """检查缺失长宽比的项目
+    
+    Returns:
+        需要更新的怪物列表 [(monster_index, card_list)]
+    """
+    monsters_need_update = []
+    
+    for idx, monster in enumerate(monsters):
+        cards_need_update = []
+        
+        for skill in monster.get('skills', []):
+            if 'aspect_ratio' not in skill and skill.get('url'):
+                cards_need_update.append({
+                    'type': 'skill',
+                    'name': skill.get('name'),
+                    'url': skill.get('url'),
+                    'data': skill
+                })
+        
+        for item in monster.get('items', []):
+            if 'aspect_ratio' not in item and item.get('url'):
+                cards_need_update.append({
+                    'type': 'item',
+                    'name': item.get('name'),
+                    'url': item.get('url'),
+                    'data': item
+                })
+        
+        if cards_need_update:
+            monsters_need_update.append((idx, monster, cards_need_update))
+    
+    return monsters_need_update
+
+
+def update_missing_aspect_ratios(driver, all_monsters):
+    """为已有怪物补充缺失的长宽比"""
+    print("\n" + "="*80)
+    print("检查并更新缺失的长宽比")
+    print("="*80)
+    
+    monsters_need_update = check_missing_aspect_ratios(all_monsters)
+    
+    if not monsters_need_update:
+        print("✓ 所有怪物已有完整的长宽比信息")
+        return 0
+    
+    total_cards = sum(len(cards) for _, _, cards in monsters_need_update)
+    print(f"\n发现 {len(monsters_need_update)} 个怪物需要更新长宽比")
+    print(f"共 {total_cards} 个卡片缺失长宽比")
+    
+    updated_count = 0
+    
+    for monster_idx, monster, cards in monsters_need_update:
+        monster_name = monster.get('name', 'Unknown')
+        print(f"\n[更新] {monster_name} - {len(cards)} 个项目")
+        
+        for card in cards:
+            card_name = card['name']
+            card_url = card['url']
+            card_data = card['data']
+            
+            print(f"  {card['type']}: {card_name}")
+            
+            try:
+                # 访问详情页获取尺寸
+                driver.get(card_url)
+                time.sleep(2)
+                html = driver.page_source
+                size = extract_card_size(html)
+                aspect_ratio = size_to_aspect_ratio(size)
+                
+                # 更新数据
+                card_data['aspect_ratio'] = aspect_ratio
+                
+                if size:
+                    print(f"    ✓ {size} → {aspect_ratio}")
+                else:
+                    print(f"    ⚠ 未找到尺寸，使用默认 → {aspect_ratio}")
+                
+                updated_count += 1
+                
+            except Exception as e:
+                print(f"    ✗ 更新失败: {e}")
+                # 使用默认值
+                card_data['aspect_ratio'] = 1.0
+    
+    print(f"\n✓ 已更新 {updated_count} 个卡片的长宽比")
+    return updated_count
+
+
 def main():
     """主函数"""
     print("=" * 80)
-    print("Selenium怪物爬虫 V3 - 处理所有怪物（增量保存）")
+    print("Selenium怪物爬虫 V3 - 处理所有怪物（增量保存 + 长宽比更新）")
     print("=" * 80)
 
     monster_names = load_monster_names(MONSTERS_FILE)
@@ -417,15 +686,27 @@ def main():
     print(f"已处理: {len(processed_names)}")
     print(f"待处理: {len(remaining_monsters)}")
     
-    if not remaining_monsters:
-        print("\n✓ 所有怪物已处理完成！")
-        return
-    
-    print(f"\n将继续处理剩余的 {len(remaining_monsters)} 个怪物...")
-    
+    # 启动浏览器
     driver = setup_driver()
     total_skills = 0
     total_items = 0
+    
+    # 步骤1: 补充已有怪物的长宽比（如果缺失）
+    if all_monsters:
+        updated_aspect_count = update_missing_aspect_ratios(driver, all_monsters)
+        if updated_aspect_count > 0:
+            # 保存更新后的数据
+            save_monsters_to_json(all_monsters, output_file)
+            print(f"✓ 长宽比已更新并保存")
+    
+    # 步骤2: 爬取新怪物
+    if not remaining_monsters:
+        print("\n✓ 所有怪物已处理完成！")
+        driver.quit()
+        return
+    
+    print(f"\n将继续处理剩余的 {len(remaining_monsters)} 个怪物...")
+    print("="*80)
 
     try:
         for i, monster_name in enumerate(remaining_monsters, 1):
@@ -443,7 +724,19 @@ def main():
                     print(f"    ✓ 找到: {detail_url}")
                     
                     # 步骤2-4: 提取详细信息
-                    monster_details = extract_monster_details(driver, monster_name, detail_url)
+                    # 检查是否已有此怪物的数据
+                    existing_monster = None
+                    for existing in all_monsters:
+                        if existing['name'] == monster_name:
+                            existing_monster = existing
+                            break
+                    
+                    monster_details = extract_monster_details(driver, monster_name, detail_url, existing_monster)
+                    
+                    if existing_monster:
+                        # 更新已有怪物数据
+                        all_monsters = [m for m in all_monsters if m['name'] != monster_name]
+                    
                     all_monsters.append(monster_details)
                     
                     # 立即保存到JSON文件

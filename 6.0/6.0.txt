@@ -1,5 +1,7 @@
 游戏数据提取流程 (V3版本)
 ==========================================
+!!!!!!! 重要信息， 最新的更新方法，从https://playthebazaar-cdn.azureedge.net/thebazaar/PatchNotes.html获取patch note， 复制其中关于事件，怪物，物品，技能部分的更新，通过cursor，手动修正。！！！！！！！！！！！！
+
 
 步骤1: 抓取HTML文件
 -------------------
@@ -36,8 +38,11 @@ python selenium_monster_v3.py
 功能：
   - 从meta描述提取技能和物品名称
   - 从HTML中提取图标URL
-  - 访问详情页获取描述
+  - 访问详情页获取描述和尺寸
   - 下载所有图标并保存到本地（格式：怪物名_卡片名.webp）
+  - 自动计算并添加长宽比（根据卡片尺寸）
+  - 自动补充已有数据缺失的长宽比
+  - 智能覆盖机制：只覆盖有效的新数据，保留手动修正
   - 增量保存（每处理完一个怪物立即保存）
   - 自动跳过已处理的怪物
   - 生成错误日志
@@ -123,11 +128,9 @@ python selenium_event_final.py
 
 事件数据提取：
 --------------
-1. 运行 simple_crawler.py          → 获取 debug_events.html
-2. 运行 fetch_event_name.py        → 获取 unique_events.json
-3. 手动修正 unique_events.json     → 检查并修正事件名称
-4. 运行 selenium_event_final.py    → 获取完整事件数据（event_details_final/）
-5. 手动修正缺失的图标和描述       → 根据错误日志处理
+1. 从db网站截取事件列表图片，直接cursor识别生成 unique_events.json 文件。
+2. 运行 selenium_event_final.py    → 获取完整事件数据（event_details_final/）
+3. 手动修正缺失的图标和描述       → 根据错误日志处理
 
 最终输出：
 ----------
@@ -139,3 +142,209 @@ python selenium_event_final.py
 - 所有脚本支持增量保存，中断后可继续运行
 - 错误日志位于各输出目录的 logs/ 子目录
 - 手动修正后无需重新运行整个流程
+
+
+==========================================
+游戏更新后的安全更新流程（新增）⭐
+==========================================
+
+当游戏更新后，需要更新数据但又要保留手动修正的内容：
+
+步骤1: 备份当前数据（必须！）
+-------------------
+cd "d:\PythonProject\BazaarInfo\bazaardb-desktop\6.0\crawlers"
+python backup_current_data.py
+
+功能：
+  - 自动备份所有怪物和事件数据
+  - 备份所有图标文件
+  - 创建带时间戳的备份目录
+  - 生成备份摘要报告
+
+输出目录: backups/backup_YYYYMMDD_HHMMSS/
+  - monster_details_v3/ (怪物数据备份)
+  - event_details_final/ (事件数据备份)
+  - unique_monsters.json (名称列表备份)
+  - unique_events.json (名称列表备份)
+  - backup_summary.json (备份摘要)
+
+
+步骤2: 获取最新名称列表
+-------------------
+cd "d:\PythonProject\BazaarInfo\bazaardb-desktop\6.0\crawlers"
+python simple_crawler.py
+python fetch_monster_name.py
+python fetch_event_name.py
+
+手动修正: 检查并修正 unique_events.json（如需要）
+
+
+步骤3: 对比找出新增项
+-------------------
+cd "d:\PythonProject\BazaarInfo\bazaardb-desktop\6.0\crawlers"
+python compare_names.py
+
+功能：
+  - 对比新旧 unique_monsters.json
+  - 对比新旧 unique_events.json
+  - 找出新增的怪物和事件
+  - 生成只包含新增项的列表文件
+
+输出文件:
+  - new_monsters.json (新增怪物列表)
+  - new_events.json (新增事件列表)
+
+输出示例:
+  总怪物数: 110
+  已有怪物: 104
+  新增怪物: 6
+  
+  新增的怪物:
+    + New Monster 1
+    + New Monster 2
+    ...
+
+
+步骤4: 爬取新增项（自动跳过已有）
+-------------------
+cd "d:\PythonProject\BazaarInfo\bazaardb-desktop\6.0\crawlers"
+
+# 方式A: 直接运行（推荐）
+python selenium_monster_v3.py
+python selenium_event_final.py
+
+# 爬虫会自动：
+#   1. 加载已有数据
+#   2. 跳过已处理的项
+#   3. 只处理新增项
+#   4. 保留所有手动修正
+
+说明：
+  - 爬虫内置增量更新机制
+  - 自动跳过已存在的怪物/事件
+  - 手动修正的内容完全不会被覆盖
+  - 图标文件如已存在会自动跳过下载
+
+
+步骤5: 检查更新结果
+-------------------
+cd "d:\PythonProject\BazaarInfo\bazaardb-desktop\6.0\crawlers"
+python check_data_completeness.py
+
+检查项：
+  - 新增项是否全部爬取成功
+  - 图标是否下载完整
+  - 数据完整性统计
+
+
+步骤6: 手动处理失败项（如需要）
+-------------------
+根据 logs/error_log_*.json 手动处理：
+  - 下载失败的图标
+  - 补充缺失的描述
+  - 修正错误数据
+
+
+安全更新流程总结：
+------------------
+1. backup_current_data.py         → 备份所有数据（必须！）
+2. simple_crawler.py              → 获取最新网页
+3. fetch_monster_name.py          → 提取怪物名称
+4. fetch_event_name.py            → 提取事件名称
+5. [手动修正 unique_events.json]  → 修正事件名称（如需要）
+6. compare_names.py               → 对比找出新增项
+7. selenium_monster_v3.py         → 爬取新增怪物（自动跳过已有）
+8. selenium_event_final.py        → 爬取新增事件（自动跳过已有）
+9. check_data_completeness.py     → 检查数据完整性
+10. [手动处理失败项]              → 根据错误日志处理
+
+优势：
+------
+✅ 自动备份，安全可靠
+✅ 增量更新，只添加新内容
+✅ 保留手动修正，不会覆盖
+✅ 自动跳过已有项，效率高
+✅ 完整的对比和检查机制
+
+详细说明：
+----------
+参见 "安全更新指南.md" 获取完整的图文教程和问题排查
+
+
+==========================================
+辅助工具脚本说明
+==========================================
+
+backup_current_data.py
+----------------------
+功能: 自动备份所有数据
+用途: 每次更新前必须运行
+输出: backups/backup_YYYYMMDD_HHMMSS/
+
+compare_names.py
+----------------
+功能: 对比新旧名称列表，生成新增项列表
+用途: 找出游戏更新后新增的怪物和事件
+输出: new_monsters.json, new_events.json
+
+merge_data.py
+-------------
+功能: 智能合并临时数据到正式数据
+用途: 如果需要手动合并数据时使用
+注意: 通常不需要，爬虫已支持自动合并
+
+check_data_completeness.py
+--------------------------
+功能: 检查数据完整性
+用途: 验证数据是否完整，找出缺失项
+输出: 统计报告和缺失项列表
+
+test_extract_size.py
+--------------------
+功能: 测试卡片尺寸提取功能
+用途: 验证能否正确从网页提取尺寸信息
+说明: 测试 Ahexa 的4个物品（3种不同比例）
+注意: 测试通过后，selenium_monster_v3.py 会自动使用此方法
+
+
+==========================================
+图标长宽比说明（新增）⭐
+==========================================
+
+长宽比（aspect_ratio）用于正确显示图标：
+- 0.5 = 竖长图 (宽:高 = 1:2) - Small 卡片
+- 1.0 = 正方形 (宽:高 = 1:1) - Medium 卡片
+- 1.5 = 横长图 (宽:高 = 3:2) - Large 卡片
+
+卡片尺寸 → 长宽比映射：
+- Small → 0.5 (竖长)
+- Medium → 1.0 (正方形)
+- Large → 1.5 (横长)
+
+数据分布：
+- 技能图标: 通常为 Medium (1.0)
+- 事件选择图标: 全部为 Medium (1.0) ← 不需要更新
+- 物品图标: 根据卡片尺寸自动确定 (0.5/1.0/1.5)
+
+工作原理：
+1. 爬虫访问卡片详情页
+2. 从HTML提取尺寸标签 (Small/Medium/Large)
+3. 根据尺寸映射计算长宽比
+4. 保存到JSON的 aspect_ratio 字段
+
+使用方法：
+---------
+方式1: 直接运行爬虫（推荐）⭐
+  python selenium_monster_v3.py
+  → 自动完成所有工作：
+    1. 检查并更新已有数据的长宽比
+    2. 爬取新怪物（自动包含长宽比）
+  
+方式2: 测试验证
+  python test_extract_size.py
+  → 测试 Ahexa 的4个物品，验证提取功能
+
+注意：
+- 事件数据不需要更新（所有选择都是1.0）
+- 下载的图标都是256x256，无法从文件获取真实比例
+- 必须从网页HTML中提取卡片尺寸信息

@@ -57,8 +57,41 @@ def load_event_names(file_path):
         return []
 
 
+def get_icon_aspect_ratio(filepath):
+    """获取图标的长宽比
+    
+    Args:
+        filepath: 图标文件路径
+    
+    Returns:
+        长宽比 (width/height)，如果失败则返回 1.0
+    """
+    try:
+        from PIL import Image
+        with Image.open(filepath) as img:
+            width, height = img.size
+            if height == 0:
+                return 1.0
+            aspect_ratio = width / height
+            
+            # 四舍五入到最接近的标准比例 (0.5, 1.0, 1.5)
+            if aspect_ratio < 0.75:
+                return 0.5
+            elif aspect_ratio < 1.25:
+                return 1.0
+            else:
+                return 1.5
+    except Exception as e:
+        print(f"        ⚠ 获取长宽比失败: {e}")
+        return 1.0
+
+
 def download_icon(icon_url, event_name, choice_name):
-    """下载图标"""
+    """下载图标并返回路径和长宽比
+    
+    Returns:
+        (本地图标路径, 长宽比) 或 ("", 1.0) 如果下载失败
+    """
     try:
         # 清理文件名
         safe_event_name = "".join([c for c in event_name if c.isalnum() or c in (' ', '-', '_')]).strip()
@@ -76,16 +109,20 @@ def download_icon(icon_url, event_name, choice_name):
         # 保存路径
         icon_path = event_dir / f"{safe_choice_name}.{ext}"
         
-        # 如果已存在，跳过下载
+        # 如果已存在，获取长宽比并返回
         if icon_path.exists():
-            return str(icon_path.relative_to(OUTPUT_DIR))
+            aspect_ratio = get_icon_aspect_ratio(icon_path)
+            return str(icon_path.relative_to(OUTPUT_DIR)), aspect_ratio
         
         # 下载图标
         response = requests.get(icon_url, timeout=10)
         if response.status_code == 200:
             with open(icon_path, 'wb') as f:
                 f.write(response.content)
-            return str(icon_path.relative_to(OUTPUT_DIR))
+            
+            # 获取长宽比
+            aspect_ratio = get_icon_aspect_ratio(icon_path)
+            return str(icon_path.relative_to(OUTPUT_DIR)), aspect_ratio
         else:
             ERROR_LOG['failed_choice_downloads'].append({
                 'event': event_name,
@@ -93,7 +130,7 @@ def download_icon(icon_url, event_name, choice_name):
                 'url': icon_url,
                 'status': response.status_code
             })
-            return ""
+            return "", 1.0
     except Exception as e:
         ERROR_LOG['failed_choice_downloads'].append({
             'event': event_name,
@@ -101,7 +138,49 @@ def download_icon(icon_url, event_name, choice_name):
             'url': icon_url,
             'error': str(e)
         })
-        return ""
+        return "", 1.0
+
+
+def smart_merge_choice_data(existing_choice, new_choice):
+    """智能合并事件选择数据
+    
+    规则：
+    1. 如果新数据为空或无效，保留原有数据
+    2. 如果新数据有效，使用新数据覆盖
+    3. 图标路径：如果新图标下载成功，使用新路径；否则保留原有
+    
+    Args:
+        existing_choice: 已有的选择数据
+        new_choice: 新抓取的选择数据
+    
+    Returns:
+        合并后的选择数据
+    """
+    merged = existing_choice.copy()
+    
+    # 描述：只有新描述不为空时才覆盖
+    if new_choice.get('description', '').strip():
+        merged['description'] = new_choice['description']
+    
+    # URL：只有新URL不为空时才覆盖
+    if new_choice.get('url', '').strip():
+        merged['url'] = new_choice['url']
+    
+    # 图标URL：只有新图标URL不为空时才覆盖
+    if new_choice.get('icon_url', '').strip():
+        merged['icon_url'] = new_choice['icon_url']
+    
+    # 图标路径：只有新图标下载成功时才覆盖
+    if (new_choice.get('icon', '').strip() and 
+        new_choice['icon'] != "icons/placeholder.webp" and
+        not new_choice['icon'].startswith('icons/placeholder')):
+        merged['icon'] = new_choice['icon']
+    
+    # 长宽比：只有新长宽比有效时才覆盖
+    if new_choice.get('aspect_ratio') is not None:
+        merged['aspect_ratio'] = new_choice['aspect_ratio']
+    
+    return merged
 
 
 def extract_pool_from_html(html_content):
@@ -200,8 +279,18 @@ def extract_descriptions_from_page(driver, choice_names):
     return descriptions
 
 
-def extract_event_details(driver, event_name, detail_url):
-    """从详情页提取事件信息"""
+def extract_event_details(driver, event_name, detail_url, existing_event=None):
+    """从详情页提取事件信息
+    
+    Args:
+        driver: Selenium WebDriver
+        event_name: 事件名称
+        detail_url: 详情页URL
+        existing_event: 已有的事件数据（用于智能覆盖）
+    
+    Returns:
+        事件数据字典
+    """
     print(f"\n  [2/3] 访问事件详情页...")
     driver.get(detail_url)
     time.sleep(5)  # 等待页面加载
@@ -218,6 +307,10 @@ def extract_event_details(driver, event_name, detail_url):
             'url': detail_url
         })
         print(f"    ⚠️  未找到选择")
+        # 如果已有数据，返回已有数据
+        if existing_event:
+            print(f"    ℹ️  保留已有数据")
+            return existing_event
         return None
     
     print(f"    ✓ 找到 {len(choices)} 个选择")
@@ -232,14 +325,19 @@ def extract_event_details(driver, event_name, detail_url):
         "choices": []
     }
     
+    # 获取已有选择数据（用于智能覆盖）
+    existing_choices = {}
+    if existing_event:
+        existing_choices = {choice['name']: choice for choice in existing_event.get('choices', [])}
+    
     # 处理每个选择
     print(f"\n  下载选择图标和提取描述...")
     for idx, choice in enumerate(choices, 1):
         choice_name = choice['name']
         print(f"    [{idx}/{len(choices)}] {choice_name}")
         
-        # 下载图标
-        icon_path = download_icon(choice['icon_url'], event_name, choice_name)
+        # 下载图标并获取长宽比
+        icon_path, aspect_ratio = download_icon(choice['icon_url'], event_name, choice_name)
         
         # 获取描述
         description = descriptions.get(choice_name, "")
@@ -252,13 +350,23 @@ def extract_event_details(driver, event_name, detail_url):
                 'choice': choice_name
             })
         
-        event_data["choices"].append({
+        # 智能覆盖逻辑
+        choice_data = {
             "name": choice_name,
             "url": choice['url'],
             "icon": icon_path,
             "icon_url": choice['icon_url'],
-            "description": description
-        })
+            "description": description,
+            "aspect_ratio": aspect_ratio
+        }
+        
+        # 如果已有数据，进行智能合并
+        if choice_name in existing_choices:
+            existing_choice = existing_choices[choice_name]
+            choice_data = smart_merge_choice_data(existing_choice, choice_data)
+            print(f"      🔄 智能合并已有数据")
+        
+        event_data["choices"].append(choice_data)
     
     return event_data
 
@@ -351,10 +459,17 @@ def main():
         events_data = existing_events.copy()
         
         for idx, event_name in enumerate(event_names, 1):
-            # 跳过已处理的事件
-            if event_name in processed_names:
-                print(f"\n[{idx}/{len(event_names)}] {event_name} - 已处理，跳过")
-                continue
+            # 检查是否已有此事件的数据
+            existing_event = None
+            for existing in existing_events:
+                if existing['name'] == event_name:
+                    existing_event = existing
+                    break
+            
+            if existing_event:
+                print(f"\n[{idx}/{len(event_names)}] {event_name} - 更新已有数据")
+            else:
+                print(f"\n[{idx}/{len(event_names)}] {event_name} - 新事件")
             
             print(f"\n{'=' * 80}")
             print(f"[{idx}/{len(event_names)}] 处理事件: {event_name}")
@@ -372,9 +487,12 @@ def main():
                 print(f"  ✓ 详情页: {detail_url}")
                 
                 # 提取事件详情
-                event_data = extract_event_details(driver, event_name, detail_url)
+                event_data = extract_event_details(driver, event_name, detail_url, existing_event)
                 
                 if event_data:
+                    if existing_event:
+                        # 更新已有事件数据
+                        events_data = [e for e in events_data if e['name'] != event_name]
                     events_data.append(event_data)
                     processed_names.add(event_name)
                     

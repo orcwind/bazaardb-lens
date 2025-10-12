@@ -2,7 +2,71 @@ import re
 import json
 from html import unescape
 
-def extract_event_encounters(html_file_path):
+def extract_event_encounters(html_content):
+    """
+    从HTML内容中提取事件遭遇信息
+    """
+    # 处理转义的JSON数据 - 先搜索转义版本
+    escaped_pattern = r'\\"Type\\":\\"EventEncounter\\",\\"Title\\":\s*{\s*\\"Text\\":\s*\\"([^"]+)\\"'
+    matches = re.findall(escaped_pattern, html_content)
+    
+    # 如果没找到转义版本，尝试普通版本
+    if not matches:
+        pattern = r'"Type":"EventEncounter","Title":\s*{\s*"Text":\s*"([^"]+)"'
+        matches = re.findall(pattern, html_content)
+    
+    # 处理HTML转义字符
+    cleaned_matches = [unescape(match) for match in matches]
+    
+    return cleaned_matches
+
+def save_to_json(data, output_file):
+    """
+    将数据保存为JSON文件
+    """
+    with open(output_file, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+
+def main():
+    # 配置输入和输出文件
+    input_html_file = "debug_events.html"  # 替换为您的HTML文件路径
+    output_json_file = "unique_events.json"
+    
+    try:
+        # 读取HTML文件
+        print(f"正在读取文件: {input_html_file}")
+        with open(input_html_file, 'r', encoding='utf-8') as f:
+            html_content = f.read()
+        
+        # 提取事件遭遇信息
+        print("正在提取事件遭遇信息...")
+        event_encounters = extract_event_encounters(html_content)
+        
+        # 去重并排序
+        unique_events = sorted(list(set(event_encounters)))
+        
+        # 保存到JSON文件（只保存事件名称列表）
+        with open(output_json_file, 'w', encoding='utf-8') as f:
+            for event in unique_events:
+                f.write(f'"{event}"\n')
+        
+        print(f"成功提取 {len(event_encounters)} 个事件遭遇，去重后 {len(unique_events)} 个事件")
+        print(f"结果已保存到: {output_json_file}")
+        
+        # 显示前几个结果作为预览
+        print("\n前10个事件名称:")
+        for i, title in enumerate(unique_events[:10], 1):
+            print(f"{i}. {title}")
+            
+        if len(unique_events) > 10:
+            print(f"... 还有 {len(unique_events) - 10} 个")
+            
+    except FileNotFoundError:
+        print(f"错误: 找不到文件 {input_html_file}")
+    except Exception as e:
+        print(f"处理文件时发生错误: {str(e)}")
+
+def extract_event_encounters_old(html_file_path):
     """
     从HTML文件中提取事件遭遇名称
     """

@@ -1,0 +1,459 @@
+{
+  "combat_encounters": [
+    {
+      "title": "Banannibal"
+    },
+    {
+      "title": "Bloodreef Captain"
+    },
+    {
+      "title": "Blowguns Trap"
+    },
+    {
+      "title": "Blowguns Trap"
+    },
+    {
+      "title": "Blowguns Trap"
+    },
+    {
+      "title": "Boilerroom Brawler"
+    },
+    {
+      "title": "Boss Harrow"
+    },
+    {
+      "title": "Cloudtop Admiral"
+    },
+    {
+      "title": "Cloudtop Officer"
+    },
+    {
+      "title": "Coconut Crab"
+    },
+    {
+      "title": "Cosmic Roc"
+    },
+    {
+      "title": "Dabbling Apprentice"
+    },
+    {
+      "title": "Dire Inglet"
+    },
+    {
+      "title": "Elite Duelist"
+    },
+    {
+      "title": "Fanged Inglet"
+    },
+    {
+      "title": "Grandfather Klok"
+    },
+    {
+      "title": "Haunted Kimono"
+    },
+    {
+      "title": "Hulking Experiment"
+    },
+    {
+      "title": "Joyful Jack"
+    },
+    {
+      "title": "Kyver Drone"
+    },
+    {
+      "title": "Master Alchemist"
+    },
+    {
+      "title": "Mythkeeper"
+    },
+    {
+      "title": "Outlands Dervish"
+    },
+    {
+      "title": "Preening Duelist"
+    },
+    {
+      "title": "Pyro"
+    },
+    {
+      "title": "Rogue Scrapper"
+    },
+    {
+      "title": "Sabretooth"
+    },
+    {
+      "title": "Sergeant Suds"
+    },
+    {
+      "title": "Tempest Bravo"
+    },
+    {
+      "title": "Viper Tyrant"
+    },
+    {
+      "title": "Zookeeper"
+    },
+    {
+      "title": "Bloodreef Raider"
+    },
+    {
+      "title": "Boarrior"
+    },
+    {
+      "title": "Bouncertron"
+    },
+    {
+      "title": "Caltrops Trap"
+    },
+    {
+      "title": "Caltrops Trap"
+    },
+    {
+      "title": "Caltrops Trap"
+    },
+    {
+      "title": "Car Conductor"
+    },
+    {
+      "title": "Covetous Thief"
+    },
+    {
+      "title": "Foreman"
+    },
+    {
+      "title": "Foundation Weeper"
+    },
+    {
+      "title": "Frost Street Challenger"
+    },
+    {
+      "title": "Ghost Pepper"
+    },
+    {
+      "title": "Greenheart Guardian"
+    },
+    {
+      "title": "Harkuvian Rocket Trooper"
+    },
+    {
+      "title": "Infernal Dreadnought"
+    },
+    {
+      "title": "Infernal Envoy"
+    },
+    {
+      "title": "Infernal Frigate"
+    },
+    {
+      "title": "Joyful Jack"
+    },
+    {
+      "title": "Kyver Commander"
+    },
+    {
+      "title": "Lord of the Wastes"
+    },
+    {
+      "title": "Mimic"
+    },
+    {
+      "title": "Oasis Guardian"
+    },
+    {
+      "title": "Product Demonstrator"
+    },
+    {
+      "title": "Retiree"
+    },
+    {
+      "title": "Roaming Isle"
+    },
+    {
+      "title": "Street Gamer"
+    },
+    {
+      "title": "Terrorform"
+    },
+    {
+      "title": "Test Subject Alpha"
+    },
+    {
+      "title": "Tortuga"
+    },
+    {
+      "title": "Trash Golem"
+    },
+    {
+      "title": "Trash Titan"
+    },
+    {
+      "title": "Treasure Turtle"
+    },
+    {
+      "title": "Viper"
+    },
+    {
+      "title": "Ahexa"
+    },
+    {
+      "title": "Annex Trooper"
+    },
+    {
+      "title": "Awakened Primordial"
+    },
+    {
+      "title": "Boulder Trap"
+    },
+    {
+      "title": "Boulder Trap"
+    },
+    {
+      "title": "Boulder Trap"
+    },
+    {
+      "title": "Burninator Bot"
+    },
+    {
+      "title": "Chilly Charles"
+    },
+    {
+      "title": "Dire Mosquito"
+    },
+    {
+      "title": "Dooltron"
+    },
+    {
+      "title": "Dr. Vortex"
+    },
+    {
+      "title": "Eccentric Etherwright"
+    },
+    {
+      "title": "Ferros Khan"
+    },
+    {
+      "title": "Giant Mosquito"
+    },
+    {
+      "title": "Gorgon Noble"
+    },
+    {
+      "title": "Hellbilly"
+    },
+    {
+      "title": "Hoverbike Hooligan"
+    },
+    {
+      "title": "Loan Shark"
+    },
+    {
+      "title": "Mod Squad"
+    },
+    {
+      "title": "Oasis Guardian"
+    },
+    {
+      "title": "Prince Marianas"
+    },
+    {
+      "title": "Qomatz"
+    },
+    {
+      "title": "Rex Spex"
+    },
+    {
+      "title": "Trashtown Mayor"
+    },
+    {
+      "title": "Ventriloquist"
+    },
+    {
+      "title": "Volkas Enforcer"
+    },
+    {
+      "title": "Wandering Shoal"
+    },
+    {
+      "title": "Weapons Platform"
+    },
+    {
+      "title": "Yerdan"
+    },
+    {
+      "title": "Aleppa Tantius"
+    },
+    {
+      "title": "Bounty Hunter"
+    },
+    {
+      "title": "Flame Juggler"
+    },
+    {
+      "title": "Foundation Revenant"
+    },
+    {
+      "title": "Frost Street Champion"
+    },
+    {
+      "title": "Gibbus"
+    },
+    {
+      "title": "Infernal"
+    },
+    {
+      "title": "Mr. Moo"
+    },
+    {
+      "title": "Property Baron"
+    },
+    {
+      "title": "Scovyle"
+    },
+    {
+      "title": "Thug"
+    },
+    {
+      "title": "Void Colossus"
+    },
+    {
+      "title": "Awakened District"
+    },
+    {
+      "title": "Dragon"
+    },
+    {
+      "title": "Eight Arm Davvy"
+    },
+    {
+      "title": "Lich"
+    },
+    {
+      "title": "Morguloth"
+    },
+    {
+      "title": "Radiant Corsair"
+    },
+    {
+      "title": "Void Golem"
+    },
+    {
+      "title": "Void Knight"
+    }
+  ],
+  "count": 113,
+  "extracted_titles": [
+    "Banannibal",
+    "Bloodreef Captain",
+    "Blowguns Trap",
+    "Blowguns Trap",
+    "Blowguns Trap",
+    "Boilerroom Brawler",
+    "Boss Harrow",
+    "Cloudtop Admiral",
+    "Cloudtop Officer",
+    "Coconut Crab",
+    "Cosmic Roc",
+    "Dabbling Apprentice",
+    "Dire Inglet",
+    "Elite Duelist",
+    "Fanged Inglet",
+    "Grandfather Klok",
+    "Haunted Kimono",
+    "Hulking Experiment",
+    "Joyful Jack",
+    "Kyver Drone",
+    "Master Alchemist",
+    "Mythkeeper",
+    "Outlands Dervish",
+    "Preening Duelist",
+    "Pyro",
+    "Rogue Scrapper",
+    "Sabretooth",
+    "Sergeant Suds",
+    "Tempest Bravo",
+    "Viper Tyrant",
+    "Zookeeper",
+    "Bloodreef Raider",
+    "Boarrior",
+    "Bouncertron",
+    "Caltrops Trap",
+    "Caltrops Trap",
+    "Caltrops Trap",
+    "Car Conductor",
+    "Covetous Thief",
+    "Foreman",
+    "Foundation Weeper",
+    "Frost Street Challenger",
+    "Ghost Pepper",
+    "Greenheart Guardian",
+    "Harkuvian Rocket Trooper",
+    "Infernal Dreadnought",
+    "Infernal Envoy",
+    "Infernal Frigate",
+    "Joyful Jack",
+    "Kyver Commander",
+    "Lord of the Wastes",
+    "Mimic",
+    "Oasis Guardian",
+    "Product Demonstrator",
+    "Retiree",
+    "Roaming Isle",
+    "Street Gamer",
+    "Terrorform",
+    "Test Subject Alpha",
+    "Tortuga",
+    "Trash Golem",
+    "Trash Titan",
+    "Treasure Turtle",
+    "Viper",
+    "Ahexa",
+    "Annex Trooper",
+    "Awakened Primordial",
+    "Boulder Trap",
+    "Boulder Trap",
+    "Boulder Trap",
+    "Burninator Bot",
+    "Chilly Charles",
+    "Dire Mosquito",
+    "Dooltron",
+    "Dr. Vortex",
+    "Eccentric Etherwright",
+    "Ferros Khan",
+    "Giant Mosquito",
+    "Gorgon Noble",
+    "Hellbilly",
+    "Hoverbike Hooligan",
+    "Loan Shark",
+    "Mod Squad",
+    "Oasis Guardian",
+    "Prince Marianas",
+    "Qomatz",
+    "Rex Spex",
+    "Trashtown Mayor",
+    "Ventriloquist",
+    "Volkas Enforcer",
+    "Wandering Shoal",
+    "Weapons Platform",
+    "Yerdan",
+    "Aleppa Tantius",
+    "Bounty Hunter",
+    "Flame Juggler",
+    "Foundation Revenant",
+    "Frost Street Champion",
+    "Gibbus",
+    "Infernal",
+    "Mr. Moo",
+    "Property Baron",
+    "Scovyle",
+    "Thug",
+    "Void Colossus",
+    "Awakened District",
+    "Dragon",
+    "Eight Arm Davvy",
+    "Lich",
+    "Morguloth",
+    "Radiant Corsair",
+    "Void Golem",
+    "Void Knight"
+  ]
+}

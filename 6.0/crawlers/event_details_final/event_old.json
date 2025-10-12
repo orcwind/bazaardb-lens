@@ -1,0 +1,850 @@
+@ -0,0 +1,849 @@
+[
+  {
+    "name": "A Strange Mushroom",
+    "url": "https://bazaardb.gg/card/boa7agty4t9e2tbcgyc210tqh/A-Strange-Mushroom",
+    "choices": [
+      {
+        "name": "Trade It for Something",
+        "url": "https://bazaardb.gg/card/6zsxdwjvusw7j4vse7486pm6c/Trade-It-for-Something",
+        "icon": "icons\\A Strange Mushroom\\Trade It for Something.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/f6bd0ca046eb309520998f0430d2a06d61f25f2c@256.webp?v=0",
+        "description": "Gain a Neutral item"
+      },
+      {
+        "name": "Sell It",
+        "url": "https://bazaardb.gg/card/9wjoaijkmyu06xvu4uauo8pma/Sell-It",
+        "icon": "icons\\A Strange Mushroom\\Sell It.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/2d22ef1e78cb1df8c15f62779ee76cb9ff01d4a7@256.webp?v=0",
+        "description": "Gain 4 Gold."
+      },
+      {
+        "name": "Add It to Your Bushel",
+        "url": "https://bazaardb.gg/card/c6sjiabqoyrbp0wxcgbogzwzl/Add-It-to-Your-Bushel",
+        "icon": "icons\\A Strange Mushroom\\Add It to Your Bushel.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/56bc09bc21d5f4699392c39964be441982a269cb@256.webp?v=0",
+        "description": "(if you have a Bushel) Your Bushel gains +20 Heal."
+      },
+      {
+        "name": "Brew a Potion",
+        "url": "https://bazaardb.gg/card/cdsgdv9zkvnn329j92chy1k04/Brew-a-Potion",
+        "icon": "icons\\A Strange Mushroom\\Brew a Potion.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/d55cb24da01341d8f7c26e3974b3a455e65d120f@256.webp?v=0",
+        "description": "(if you are Mak) Get a Small Silver-tier Potion."
+      },
+      {
+        "name": "Share It With a Friend",
+        "url": "https://bazaardb.gg/card/ecc9ky8090kbulcv8jg41uynt/Share-It-With-a-Friend",
+        "icon": "icons\\A Strange Mushroom\\Share It With a Friend.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/d55cb24da01341d8f7c26e3974b3a455e65d120f@256.webp?v=0",
+        "description": "(if you are Dooley) Get a Small Silver-tier Friend."
+      }
+    ]
+  },
+  {
+    "name": "Eating Contest",
+    "url": "https://bazaardb.gg/card/4897x10kxlgio5kczivskl39b/Eating-Contest",
+    "choices": [
+      {
+        "name": "Basic Chocolate Bars",
+        "url": "https://bazaardb.gg/card/c0zu8gihykcbtrz8w88y941vq/Basic-Chocolate-Bars",
+        "icon": "icons\\Eating Contest\\Basic Chocolate Bars.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/9e87fdd32a907ac84295b085e542ccb9a6ed5950@256.webp?v=0",
+        "description": "Get 5 Bronze Chocolate Bars."
+      },
+      {
+        "name": "Deluxe Chocolate Bars",
+        "url": "https://bazaardb.gg/card/cc24zcuf78x3djiti5ugt7rrs/Deluxe-Chocolate-Bars",
+        "icon": "icons\\Eating Contest\\Deluxe Chocolate Bars.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/9e87fdd32a907ac84295b085e542ccb9a6ed5950@256.webp?v=0",
+        "description": "Get 5 Silver Chocolate Bars."
+      },
+      {
+        "name": "Premium Chocolate Bars",
+        "url": "https://bazaardb.gg/card/41zkwmu8kyv0cpw8gow0z3nju/Premium-Chocolate-Bars",
+        "icon": "icons\\Eating Contest\\Premium Chocolate Bars.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/9e87fdd32a907ac84295b085e542ccb9a6ed5950@256.webp?v=0",
+        "description": "Get 5 Gold-tier Chocolate Bars."
+      }
+    ]
+  },
+  {
+    "name": "Jungle Ruins",
+    "url": "https://bazaardb.gg/card/1sm39pt13kdvae67r7a860aek/Jungle-Ruins",
+    "choices": [
+      {
+        "name": "Grab the Loot",
+        "url": "https://bazaardb.gg/card/81hjlarbhnak5ppbkvixfqxdm/Grab-the-Loot",
+        "icon": "icons\\Jungle Ruins\\Grab the Loot.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/cd5e5aac1f0fa2565f07e0bb907afed5545396e0@256.webp?v=0",
+        "description": "Get 5 Loot items"
+      },
+      {
+        "name": "Enjoy the Scenery",
+        "url": "https://bazaardb.gg/card/dv1sgnyjmau9rkl9kotyu6dpn/Enjoy-the-Scenery",
+        "icon": "icons\\Jungle Ruins\\Enjoy the Scenery.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/afa39dddba33d1fa93a5a49f395fac9e55cfa2b4@256.webp?v=0",
+        "description": "Gain 3 Regen"
+      },
+      {
+        "name": "Search the Bodies",
+        "url": "https://bazaardb.gg/card/2pd4i4n61xiep14k7l48pof1a/Search-the-Bodies",
+        "icon": "icons\\Jungle Ruins\\Search the Bodies.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/19fcd8b8e897ae4e6a894e2cd983c83d23a61ce9@256.webp?v=0",
+        "description": "(if you are Vanessa) Get a Small Silver-tier Weapon or Apparel from any Hero."
+      },
+      {
+        "name": "Setup Tourist Attraction",
+        "url": "https://bazaardb.gg/card/4q9cp7ku6ljwehemo9gyjh3az/Setup-Tourist-Attraction",
+        "icon": "icons\\Jungle Ruins\\Setup Tourist Attraction.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/f804ce00dc371d9ec5fc98998dc7f0a61c32d087@256.webp?v=0",
+        "description": "(if you are Pygmalien) Gain 2 Income."
+      },
+      {
+        "name": "Hunt for Reagents",
+        "url": "https://bazaardb.gg/card/94lkt6zk7yf4nlaqrp9iwv86k/Hunt-for-Reagents",
+        "icon": "icons\\Jungle Ruins\\Hunt for Reagents.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/d55cb24da01341d8f7c26e3974b3a455e65d120f@256.webp?v=0",
+        "description": "(if you are Mak) Get a Silver-tier Reagent."
+      },
+      {
+        "name": "Search for Abandoned Tools",
+        "url": "https://bazaardb.gg/card/6aum05s4zckjgjetskwbd5zai/Search-for-Abandoned-Tools",
+        "icon": "icons\\Jungle Ruins\\Search for Abandoned Tools.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/d55cb24da01341d8f7c26e3974b3a455e65d120f@256.webp?v=0",
+        "description": "(if you are Dooley or Stelle) Get a Small Silver-tier Tool from any Hero."
+      }
+    ]
+  },
+  {
+    "name": "Mandala",
+    "url": "https://bazaardb.gg/card/27m413ad4h8t10x2i8i5clx7f/Mandala",
+    "choices": [
+      {
+        "name": "Transform",
+        "url": "https://bazaardb.gg/card/71enpvwe7dehhcumyajjl675n/Transform",
+        "icon": "icons\\Mandala\\Transform.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/c632ffee88843cbc72742debd5e51efe787b75f9@256.webp?v=0",
+        "description": "Transform your leftmost item into another item of the same size and tier."
+      }
+    ]
+  },
+  {
+    "name": "The Docks",
+    "url": "https://bazaardb.gg/card/ex39ksp350t0zrgi3khiibvqd/The-Docks",
+    "choices": [
+      {
+        "name": "Work as Security",
+        "url": "https://bazaardb.gg/card/3beaoxrvhjje1qekfqt70hu8x/Work-as-Security",
+        "icon": "icons\\The Docks\\Work as Security.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/9499f2042ebd596690b416c1adffc91134abd305@256.webp?v=0",
+        "description": "Gain 2 Gold and a Weapon."
+      },
+      {
+        "name": "Work as Dockhand",
+        "url": "https://bazaardb.gg/card/51q7t7t5azlamtigc8v29dotu/Work-as-Dockhand",
+        "icon": "icons\\The Docks\\Work as Dockhand.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/b8b4d196bd6da5018337b87e8f613dc129ba3e34@256.webp?v=0",
+        "description": "Gain 2 Gold and a Tool."
+      },
+      {
+        "name": "Work as Maintenance",
+        "url": "https://bazaardb.gg/card/7ny089pxhs543rvekori20hf/Work-as-Maintenance",
+        "icon": "icons\\The Docks\\Work as Maintenance.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/ca2a0af3dccea935511ace991afec7321f9c06f6@256.webp?v=0",
+        "description": "Gain 2 Gold and a Shield item."
+      },
+      {
+        "name": "Work as Navigator",
+        "url": "https://bazaardb.gg/card/7a9wzlo7x0l2vwf7itdpkhdyg/Work-as-Navigator",
+        "icon": "icons\\The Docks\\Work as Navigator.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/4a514cff8f4434c2e97dfe4772ca9c00abd1b681@256.webp?v=0",
+        "description": "(if you have an Astrolabe) Gain 5 Gold and 1 XP."
+      },
+      {
+        "name": "Work as Navigator",
+        "url": "https://bazaardb.gg/card/4v733mnxnp6avkzaoduf69ejt/Work-as-Navigator",
+        "icon": "icons\\The Docks\\Work as Navigator.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/07c3bd24b525bf17d1fa274025e5773d6db13ef2@256.webp?v=0",
+        "description": "(if you have an Astrolabe) Gain 5 Gold and 1 XP."
+      }
+    ]
+  },
+  {
+    "name": "Tiny Furry Monster",
+    "url": "https://bazaardb.gg/card/50jsvy9vfct80rb2r9uoq0a56/Tiny-Furry-Monster",
+    "choices": [
+      {
+        "name": "Pet It",
+        "url": "https://bazaardb.gg/card/62jkbxrxjtkp2cwjmb57d1ynb/Pet-It",
+        "icon": "icons\\Tiny Furry Monster\\Pet It.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/b88eb62b25f76bac94e5a6bd94366445cbb5ed26@256.webp?v=0",
+        "description": "Gain 25 Max Health."
+      },
+      {
+        "name": "Scare It",
+        "url": "https://bazaardb.gg/card/el4to00zu1r75uxvra75pa7xm/Scare-It",
+        "icon": "icons\\Tiny Furry Monster\\Scare It.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/cbb49bf14c74da1f75f823d4ddda6b78cf683e7f@256.webp?v=0",
+        "description": "Get a Silver-tier Loot item."
+      },
+      {
+        "name": "Feed It",
+        "url": "https://bazaardb.gg/card/6zgku8jkv8h5iuqksgi057izw/Feed-It",
+        "icon": "icons\\Tiny Furry Monster\\Feed It.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/9e87fdd32a907ac84295b085e542ccb9a6ed5950@256.webp?v=0",
+        "description": "(if you have a Food) Choose 1 of 2 Skills."
+      },
+      {
+        "name": "Play With It",
+        "url": "https://bazaardb.gg/card/8rmjipv43s25nwyrlt9cjib7l/Play-With-It",
+        "icon": "icons\\Tiny Furry Monster\\Play With It.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/5e8680805323062779cc0c4ad3bbef79135d0c77@256.webp?v=0",
+        "description": "(if you have a Toy or Drone) Choose 1 of 2 Skills."
+      },
+      {
+        "name": "Play Hide and Seek",
+        "url": "https://bazaardb.gg/card/7f3sq65xr6z98fqsuij9y8vhg/Play-Hide-and-Seek",
+        "icon": "icons\\Tiny Furry Monster\\Play Hide and Seek.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/86e6518ae0c6815cf9809eee7962008e352e9a4c@256.webp?v=0",
+        "description": "(if you have a Friend) Choose 1 of 2 Skills."
+      }
+    ]
+  },
+  {
+    "name": "Economic Seminar",
+    "url": "https://bazaardb.gg/card/9an2dvoqw0jslmosv51j6cgmn/Economic-Seminar",
+    "choices": [
+      {
+        "name": "Free Session",
+        "url": "https://bazaardb.gg/card/1y2o17sh7dye8zv18op0mdoyk/Free-Session",
+        "icon": "icons\\Economic Seminar\\Free Session.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/2d22ef1e78cb1df8c15f62779ee76cb9ff01d4a7@256.webp?v=0",
+        "description": "Get an Economic item or skill."
+      },
+      {
+        "name": "Premium Pass",
+        "url": "https://bazaardb.gg/card/9d88r7yadri7j8oprxa5ieord/Premium-Pass",
+        "icon": "icons\\Economic Seminar\\Premium Pass.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/2d22ef1e78cb1df8c15f62779ee76cb9ff01d4a7@256.webp?v=0",
+        "description": "Get 2 Economic items or skills"
+      }
+    ]
+  },
+  {
+    "name": "Gumball Machine",
+    "url": "https://bazaardb.gg/card/adgaqv7h9yq2d6u2af7bd8i47/Gumball-Machine",
+    "choices": [
+      {
+        "name": "Get a Gumball",
+        "url": "https://bazaardb.gg/card/2lh3lwhl9db010egajnpuaovt/Get-a-Gumball",
+        "icon": "icons\\Gumball Machine\\Get a Gumball.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/9e87fdd32a907ac84295b085e542ccb9a6ed5950@256.webp?v=0",
+        "description": "Get a Gumball."
+      },
+      {
+        "name": "Get 5 Gumballs",
+        "url": "https://bazaardb.gg/card/4ibcbcvhcw0vqr5zxp7lna7de/Get-5-Gumballs",
+        "icon": "icons\\Gumball Machine\\Get 5 Gumballs.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/9e87fdd32a907ac84295b085e542ccb9a6ed5950@256.webp?v=0",
+        "description": "Get 5 Gumballs."
+      }
+    ]
+  },
+  {
+    "name": "Jules' Cafe",
+    "url": "https://bazaardb.gg/card/1fwes2ti61nbpwscjf3k8u4fx/Jules'-Cafe",
+    "choices": [
+      {
+        "name": "Relax",
+        "url": "https://bazaardb.gg/card/6e2mk87w6c6sh87xgsjnp1yb/Relax",
+        "icon": "icons\\Jules Cafe\\Relax.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/afa39dddba33d1fa93a5a49f395fac9e55cfa2b4@256.webp?v=0",
+        "description": "Gain 10% of your Max Health for the rest of the day."
+      },
+      {
+        "name": "Rejuvenating Blend",
+        "url": "https://bazaardb.gg/card/96cyck0g08c28lrb2g8m3bzda/Rejuvenating-Blend",
+        "icon": "icons\\Jules Cafe\\Rejuvenating Blend.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/4c06ba9d665cd1f78b983635b24dd98b9cb3d66a@256.webp?v=0",
+        "description": "Your Heal items gain 50 Heal for the rest of the day."
+      },
+      {
+        "name": "Strong Brew",
+        "url": "https://bazaardb.gg/card/dbpuqdajgktk7ai5f882jscc3/Strong-Brew",
+        "icon": "icons\\Jules Cafe\\Strong Brew.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/fb710df7e103b0339dca3664d09cae523da76372@256.webp?v=0",
+        "description": "Your Weapons gain 25 Damage for the rest of the day."
+      }
+    ]
+  },
+  {
+    "name": "Likit",
+    "url": "https://bazaardb.gg/card/bimp5nh5u5mkoi2fxqgd7mlqj/Likit",
+    "choices": [
+      {
+        "name": "Candy Mail",
+        "url": "https://bazaardb.gg/card/96ymrav737zxuuueofg721x7e/Candy-Mail",
+        "icon": "icons\\Likit\\Candy Mail.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/item/1e57b01458c7fc4d3475a3a28ed712056fef3625@256.webp?v=0",
+        "description": "Adjacent Shield items permanently gain +2 » +3 » +4 » +5 Shield,This permanently loses 1 Max Ammo. Ammo:10"
+      },
+      {
+        "name": "Epicurean Chocolate",
+        "url": "https://bazaardb.gg/card/bz3kr0tn9944e9qhogk1qkln7/Epicurean-Chocolate",
+        "icon": "icons\\Likit\\Epicurean Chocolate.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/item/34c187c99d208e945c035e555cd258bb3e735e55@256.webp?v=0",
+        "description": "Adjacent Weapons permanently gain +2 » +3 » +4 » +5 Damage,This permanently loses 1 Max Ammo. Ammo:10"
+      },
+      {
+        "name": "Super Syrup",
+        "url": "https://bazaardb.gg/card/82onpq1v47ckzqs1yqv2j7c89/Super-Syrup",
+        "icon": "icons\\Likit\\Super Syrup.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/item/2ac38a56e2b9af92f5f32f5b84925a13c36457f4@256.webp?v=0",
+        "description": "Adjacent items permanently gain 1% » 2% » 3% » 4% Crit Chance,This permanently loses 1 Max Ammo. Ammo:10"
+      }
+    ]
+  },
+  {
+    "name": "The Lost Crate",
+    "url": "https://bazaardb.gg/card/81dlbkgzgtnazqxj8zn4513c4/The-Lost-Crate",
+    "choices": [
+      {
+        "name": "Open It",
+        "url": "https://bazaardb.gg/card/2bdsv4woo0wdcj25o6snvq90m/Open-It",
+        "icon": "icons\\The Lost Crate\\Open It.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/5e8680805323062779cc0c4ad3bbef79135d0c77@256.webp?v=0",
+        "description": "Get a Medium item."
+      },
+      {
+        "name": "Return It",
+        "url": "https://bazaardb.gg/card/56pvhzhciffwroqnrt37u8ncn/Return-It",
+        "icon": "icons\\The Lost Crate\\Return It.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/cbb49bf14c74da1f75f823d4ddda6b78cf683e7f@256.webp?v=0",
+        "description": "Get a Skill"
+      }
+    ]
+  },
+  {
+    "name": "Artisan Dunes",
+    "url": "https://bazaardb.gg/card/9t7g2syvsaiw5o1sq2v02icin/Artisan-Dunes",
+    "choices": [
+      {
+        "name": "Apprentice Weaponsmith",
+        "url": "https://bazaardb.gg/card/7h77c2glvigokmofiiey0wizx/Apprentice-Weaponsmith",
+        "icon": "icons\\Artisan Dunes\\Apprentice Weaponsmith.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/9499f2042ebd596690b416c1adffc91134abd305@256.webp?v=0",
+        "description": "Your Weapons gain +5 Damage."
+      },
+      {
+        "name": "Apprentice Flamewright",
+        "url": "https://bazaardb.gg/card/3u3iea4oue48ch5trzl2g094n/Apprentice-Flamewright",
+        "icon": "icons\\Artisan Dunes\\Apprentice Flamewright.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/dc425d9c9ecba3ebeaaa834d8b3e230c0301518d@256.webp?v=0",
+        "description": "Your Burn items gain +1 Burn."
+      },
+      {
+        "name": "Apprentice Banehand",
+        "url": "https://bazaardb.gg/card/3or1obk8iz836nu93uj2p579g/Apprentice-Banehand",
+        "icon": "icons\\Artisan Dunes\\Apprentice Banehand.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/c4df20f8fb67032f5f24461efc1611fa1bdc81e5@256.webp?v=0",
+        "description": "Your Poison items gain +1 Poison."
+      },
+      {
+        "name": "Find Better Craftsman",
+        "url": "https://bazaardb.gg/card/e1er7d1yp8auiw0m7pdnw60bw/Find-Better-Craftsman",
+        "icon": "icons\\Artisan Dunes\\Find Better Craftsman.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/f1244602cc24b3a9ff98601ee725d1350afe2066@256.webp?v=0",
+        "description": "Double the effects of the offered options."
+      }
+    ]
+  },
+  {
+    "name": "BazaarCON",
+    "url": "https://bazaardb.gg/card/6jjh11h62jzf15ubdq1ksld41/BazaarCON",
+    "choices": [
+      {
+        "name": "Networking",
+        "url": "https://bazaardb.gg/card/espdfd5yiwem33vq4z4dtfsst/Networking",
+        "icon": "icons\\BazaarCON\\Networking.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/86e6518ae0c6815cf9809eee7962008e352e9a4c@256.webp?v=0",
+        "description": "Gain 2 Income and 1 XP."
+      },
+      {
+        "name": "Swag Collector",
+        "url": "https://bazaardb.gg/card/bqtymfrjpf60onfxxyq9j3uxy/Swag-Collector",
+        "icon": "icons\\BazaarCON\\Swag Collector.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/b8b4d196bd6da5018337b87e8f613dc129ba3e34@256.webp?v=0",
+        "description": "Get 3 Small Enchanted items from the Bazaar."
+      },
+      {
+        "name": "Artist Alley",
+        "url": "https://bazaardb.gg/card/9cm3m6b70necwywp7ud5mmemz/Artist-Alley",
+        "icon": "icons\\BazaarCON\\Artist Alley.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/e26b957dd6de9d86a630d5266acb0a359f0dc5b4@256.webp?v=0",
+        "description": "Get a Diamond-tier item from the Bazaar."
+      },
+      {
+        "name": "Self Promotion",
+        "url": "https://bazaardb.gg/card/58n5bxythbzop51zb835ezgn1/Self-Promotion",
+        "icon": "icons\\BazaarCON\\Self Promotion.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/b59fab22a8c21a8738b9c5434f1ae200c5b64ad2@256.webp?v=0",
+        "description": "(if you have a Business Card) Gain 3 XP."
+      }
+    ]
+  },
+  {
+    "name": "Finn's Big Bite",
+    "url": "https://bazaardb.gg/card/d338thlh3b9nrci3jo6zn7d9/Finn's-Big-Bite",
+    "choices": [
+      {
+        "name": "Guardian's Gravy Plate",
+        "url": "https://bazaardb.gg/card/3t0f68hzpwhzbssrimdihc4py/Guardian's-Gravy-Plate",
+        "icon": "icons\\Finns Big Bite\\Guardians Gravy Plate.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/aee71e72ad420b00ab5838faaae0773524025ba8@256.webp?v=0",
+        "description": "You gain 5% Max Health and your Shield items gain 10 Shield."
+      },
+      {
+        "name": "Restorative Risotto",
+        "url": "https://bazaardb.gg/card/a6iosk7h8ii1s2jgb40eynp66/Restorative-Risotto",
+        "icon": "icons\\Finns Big Bite\\Restorative Risotto.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/4c06ba9d665cd1f78b983635b24dd98b9cb3d66a@256.webp?v=0",
+        "description": "You gain 5% Max Health and your Heal items gain 15 Heal."
+      },
+      {
+        "name": "Vitality Stew",
+        "url": "https://bazaardb.gg/card/dmdsvwh2n1zyqhkf54eygre91/Vitality-Stew",
+        "icon": "icons\\Finns Big Bite\\Vitality Stew.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/c4df20f8fb67032f5f24461efc1611fa1bdc81e5@256.webp?v=0",
+        "description": "You gain 5% Max Health and 5 Regen."
+      }
+    ]
+  },
+  {
+    "name": "Shrouded Figure",
+    "url": "https://bazaardb.gg/card/7o4so5fubdmow0onsmx74eg38/Shrouded-Figure",
+    "choices": [
+      {
+        "name": "Choose Knowledge",
+        "url": "https://bazaardb.gg/card/1uzunvszzbty3aw35r2rlwq7t/Choose-Knowledge",
+        "icon": "icons\\Shrouded Figure\\Choose Knowledge.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/afa39dddba33d1fa93a5a49f395fac9e55cfa2b4@256.webp?v=0",
+        "description": "Pick a Chest containing up to 3 XP"
+      },
+      {
+        "name": "Choose Wealth",
+        "url": "https://bazaardb.gg/card/d6zljxf0sp93gj8vfzggupu1i/Choose-Wealth",
+        "icon": "icons\\Shrouded Figure\\Choose Wealth.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/2d22ef1e78cb1df8c15f62779ee76cb9ff01d4a7@256.webp?v=0",
+        "description": "Pick a Chest containing up to 30 Gold"
+      },
+      {
+        "name": "Choose Power",
+        "url": "https://bazaardb.gg/card/8y65vaflw2ktjwg4ryubyxl5k/Choose-Power",
+        "icon": "icons\\Shrouded Figure\\Choose Power.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/cd5e5aac1f0fa2565f07e0bb907afed5545396e0@256.webp?v=0",
+        "description": "Pick a Chest containing a Legendary item"
+      },
+      {
+        "name": "Cult Member Special",
+        "url": "https://bazaardb.gg/card/ay97whpsipnr3b0sty425b6m6/Cult-Member-Special",
+        "icon": "icons\\Shrouded Figure\\Cult Member Special.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/cd5e5aac1f0fa2565f07e0bb907afed5545396e0@256.webp?v=0",
+        "description": "FREE for Cult Members! Pick a Chest containing a Legendary item"
+      }
+    ]
+  },
+  {
+    "name": "Aldric",
+    "url": "https://bazaardb.gg/card/75hd3eeqdkl1m7da1hxyct9qo/Aldric",
+    "choices": [
+      {
+        "name": "Exploit",
+        "url": "https://bazaardb.gg/card/2gxuytm0265b1zp2v3t618d33/Exploit",
+        "icon": "icons\\Aldric\\Exploit.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/dc425d9c9ecba3ebeaaa834d8b3e230c0301518d@256.webp?v=0",
+        "description": "Your leftmost Heal or Regen item gains +25% Crit Chance."
+      },
+      {
+        "name": "Purify",
+        "url": "https://bazaardb.gg/card/e1oj6qhctegbd5tcsvlhwt5d1/Purify",
+        "icon": "icons\\Aldric\\Purify.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/4c06ba9d665cd1f78b983635b24dd98b9cb3d66a@256.webp?v=0",
+        "description": "Your Heal items gain +30 Heal. Your Regen items gain +3 Regen."
+      },
+      {
+        "name": "Upgrade",
+        "url": "https://bazaardb.gg/card/3r7pite08dokky73thxpvqsdp/Upgrade",
+        "icon": "icons\\Aldric\\Upgrade.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/ca2a0af3dccea935511ace991afec7321f9c06f6@256.webp?v=0",
+        "description": "Upgrade your leftmost Heal or Regen item."
+      },
+      {
+        "name": "Enchant",
+        "url": "https://bazaardb.gg/card/eqw360xx8vh4ci5rt7aqbil35/Enchant",
+        "icon": "icons\\Aldric\\Enchant.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/a733427de1009345721c7aae14560031c7629764@256.webp?v=0",
+        "description": "Enchant your leftmost Heal or Regen item."
+      }
+    ]
+  },
+  {
+    "name": "Botul",
+    "url": "https://bazaardb.gg/card/4803920bls3w3iundc1mter46/Botul",
+    "choices": [
+      {
+        "name": "Exploit",
+        "url": "https://bazaardb.gg/card/5xazrnymmivi7vgqr50jluznj/Exploit",
+        "icon": "icons\\Botul\\Exploit.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/dc425d9c9ecba3ebeaaa834d8b3e230c0301518d@256.webp?v=0",
+        "description": "Your leftmost Poison item gains +25% Crit Chance."
+      },
+      {
+        "name": "New Coating",
+        "url": "https://bazaardb.gg/card/70600k89rualfpeus6pfjpner/New-Coating",
+        "icon": "icons\\Botul\\New Coating.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/9f4d37ab3b8cd356e415601aaef55cb151f68bd1@256.webp?v=0",
+        "description": "Your Poison items gain +3 Poison."
+      },
+      {
+        "name": "Upgrade",
+        "url": "https://bazaardb.gg/card/4uvtjulqs6livj0roagqzy5bp/Upgrade",
+        "icon": "icons\\Botul\\Upgrade.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/ca2a0af3dccea935511ace991afec7321f9c06f6@256.webp?v=0",
+        "description": "Upgrade your leftmost Poison item."
+      },
+      {
+        "name": "Enchant",
+        "url": "https://bazaardb.gg/card/uwiunv61iiszpj7d3bamyf5t/Enchant",
+        "icon": "icons\\Botul\\Enchant.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/a733427de1009345721c7aae14560031c7629764@256.webp?v=0",
+        "description": "Enchant your leftmost Poison item."
+      }
+    ]
+  },
+  {
+    "name": "Bounty Hunters",
+    "url": "https://bazaardb.gg/card/lwgi7jmt3gotur4jw1k42o35/Bounty-Hunters",
+    "choices": [
+      {
+        "name": "Rise to the Challenge",
+        "url": "https://bazaardb.gg/card/5ej2cfefbm23xdi1ojuv0tngx/Rise-to-the-Challenge",
+        "icon": "icons\\Bounty Hunters\\Rise to the Challenge.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/29cc03f81e0851bae0d2694dbca5d6403dabd86e@256.webp?v=0",
+        "description": "Stand your ground and fight for your freedom"
+      },
+      {
+        "name": "Escape to the Sea",
+        "url": "https://bazaardb.gg/card/a76wekdxhny7c5d3fgfdpflkc/Escape-to-the-Sea",
+        "icon": "icons\\Bounty Hunters\\Escape to the Sea.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/0c54ef171dc5cbeec22d1446ff723f0288e9fb91@256.webp?v=0",
+        "description": "(if you have Flagship or Submarine) Gain 5 XP."
+      }
+    ]
+  },
+  {
+    "name": "D'flek",
+    "url": "https://bazaardb.gg/card/bace56noi2hvqmlcxo13ctgtb/D'flek",
+    "choices": [
+      {
+        "name": "Exploit",
+        "url": "https://bazaardb.gg/card/5npzfptfudnvrndt6q11k44yr/Exploit",
+        "icon": "icons\\Dflek\\Exploit.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/dc425d9c9ecba3ebeaaa834d8b3e230c0301518d@256.webp?v=0",
+        "description": "Your leftmost Shield item gains +25% Crit Chance."
+      },
+      {
+        "name": "Reinforce",
+        "url": "https://bazaardb.gg/card/245yt9s8oct0ehn9mmcyuiwbx/Reinforce",
+        "icon": "icons\\Dflek\\Reinforce.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/aee71e72ad420b00ab5838faaae0773524025ba8@256.webp?v=0",
+        "description": "Your Shield items gain +30 Shield."
+      },
+      {
+        "name": "Upgrade",
+        "url": "https://bazaardb.gg/card/2yla4wvu870wvw4x2d5q2njhp/Upgrade",
+        "icon": "icons\\Dflek\\Upgrade.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/ca2a0af3dccea935511ace991afec7321f9c06f6@256.webp?v=0",
+        "description": "Upgrade your leftmost Shield item."
+      },
+      {
+        "name": "Enchant",
+        "url": "https://bazaardb.gg/card/csi74zb70v5ekr8qrriyyi0nl/Enchant",
+        "icon": "icons\\Dflek\\Enchant.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/a733427de1009345721c7aae14560031c7629764@256.webp?v=0",
+        "description": "Enchant your leftmost Shield item."
+      }
+    ]
+  },
+  {
+    "name": "Dooley's Crib",
+    "url": "https://bazaardb.gg/card/2q4nclz5kijbyjvseo7260c5w/Dooley's-Crib",
+    "choices": [
+      {
+        "name": "Find a Friend",
+        "url": "https://bazaardb.gg/card/affns15ri056mda0vg2w3b632/Find-a-Friend",
+        "icon": "icons\\Dooleys Crib\\Find a Friend.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/b88eb62b25f76bac94e5a6bd94366445cbb5ed26@256.webp?v=0",
+        "description": "Choose a free Friend"
+      },
+      {
+        "name": "Firmware Upgrade",
+        "url": "https://bazaardb.gg/card/bazl3zvqv7zesxkcolx9daq42/Firmware-Upgrade",
+        "icon": "icons\\Dooleys Crib\\Firmware Upgrade.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/5683923356fd0814b3721743d3d4f90a9f5ccb21@256.webp?v=0",
+        "description": "Upgrade Your Core and gain +10% Max Health."
+      },
+      {
+        "name": "Improve Friendship",
+        "url": "https://bazaardb.gg/card/eynx3lgt8wknaie86zounqqiu/Improve-Friendship",
+        "icon": "icons\\Dooleys Crib\\Improve Friendship.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/ca2a0af3dccea935511ace991afec7321f9c06f6@256.webp?v=0",
+        "description": "Upgrade your leftmost Friend."
+      }
+    ]
+  },
+  {
+    "name": "Family Reunion",
+    "url": "https://bazaardb.gg/card/cc6oyjol09fn86rz1d2bye0me/Family-Reunion",
+    "choices": [
+      {
+        "name": "Accept the Deal",
+        "url": "https://bazaardb.gg/card/es6mc7nwwslmeagipm6mzw4my/Accept-the-Deal",
+        "icon": "icons\\Family Reunion\\Accept the Deal.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/5e8680805323062779cc0c4ad3bbef79135d0c77@256.webp?v=0",
+        "description": "Get +2 Income and a Vehicle."
+      },
+      {
+        "name": "Aleppa Tantius",
+        "url": "https://bazaardb.gg/card/azfcpn2rs9gxthrr7cddxnyve/Aleppa-Tantius",
+        "icon": "icons\\Family Reunion\\Aleppa Tantius.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/encounter/a2d4c9037be058fd250302c9276a8c79678ff755@256.webp?v=0",
+        "description": "Level 11 • Family Reunion"
+      }
+    ]
+  },
+  {
+    "name": "Flambe",
+    "url": "https://bazaardb.gg/card/eggybdpdrbx4r5l3s3pomt8y3/Flambe",
+    "choices": [
+      {
+        "name": "Exploit",
+        "url": "https://bazaardb.gg/card/4ng2h64l1xessbqniba7a2w4q/Exploit",
+        "icon": "icons\\Flambe\\Exploit.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/dc425d9c9ecba3ebeaaa834d8b3e230c0301518d@256.webp?v=0",
+        "description": "Your leftmost Burn item gains +25% Crit Chance."
+      },
+      {
+        "name": "Temper",
+        "url": "https://bazaardb.gg/card/53e2lscvcgw3fb7ul8orio7ko/Temper",
+        "icon": "icons\\Flambe\\Temper.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/90eec9737206b8bdb023510ab68db7da9d81c9cc@256.webp?v=0",
+        "description": "Your Burn items gain +3 Burn."
+      },
+      {
+        "name": "Upgrade",
+        "url": "https://bazaardb.gg/card/2dww6rzfsktfsm590tw6mwzbp/Upgrade",
+        "icon": "icons\\Flambe\\Upgrade.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/ca2a0af3dccea935511ace991afec7321f9c06f6@256.webp?v=0",
+        "description": "Upgrade your leftmost Burn item."
+      },
+      {
+        "name": "Enchant",
+        "url": "https://bazaardb.gg/card/21kbj123hvg0r0h7ibx963n52/Enchant",
+        "icon": "icons\\Flambe\\Enchant.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/a733427de1009345721c7aae14560031c7629764@256.webp?v=0",
+        "description": "Enchant your leftmost Burn item."
+      }
+    ]
+  },
+  {
+    "name": "Form",
+    "url": "https://bazaardb.gg/card/9wanllk0h2d4qbalhokdzurio/Form",
+    "choices": [
+      {
+        "name": "Exploit",
+        "url": "https://bazaardb.gg/card/2yj1y3xaek1ef3354cvmuaw1a/Exploit",
+        "icon": "icons\\Form\\Exploit.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/dc425d9c9ecba3ebeaaa834d8b3e230c0301518d@256.webp?v=0",
+        "description": "Your leftmost Weapon gains +25% Crit Chance."
+      },
+      {
+        "name": "Sharpen Weapon",
+        "url": "https://bazaardb.gg/card/8z9vu6gxm6vo4og3vvg3h5tvg/Sharpen-Weapon",
+        "icon": "icons\\Form\\Sharpen Weapon.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/8c8fcba6b7e089124fa89f1c244a5675acdeed21@256.webp?v=0",
+        "description": "Your Weapons gain 10 Damage."
+      },
+      {
+        "name": "Upgrade an item",
+        "url": "https://bazaardb.gg/card/79mkqvpv9xostviifnvuytkip/Upgrade-an-item",
+        "icon": "icons\\Form\\Upgrade an item.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/ca2a0af3dccea935511ace991afec7321f9c06f6@256.webp?v=0",
+        "description": "Upgrade your leftmost Weapon."
+      },
+      {
+        "name": "Engrave",
+        "url": "https://bazaardb.gg/card/5gi3ai9rwo2yhysm2yt9loxlj/Engrave",
+        "icon": "icons\\Form\\Engrave.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/dc425d9c9ecba3ebeaaa834d8b3e230c0301518d@256.webp?v=0",
+        "description": "Enchant your leftmost Weapon."
+      }
+    ]
+  },
+  {
+    "name": "Haddy",
+    "url": "https://bazaardb.gg/card/bhtybzob8zfomwmp77abo108k/Haddy",
+    "choices": [
+      {
+        "name": "Bag of Gold",
+        "url": "https://bazaardb.gg/card/xkbpk09zlssso0toiavkw2vb/Bag-of-Gold",
+        "icon": "icons\\Haddy\\Bag of Gold.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/2d22ef1e78cb1df8c15f62779ee76cb9ff01d4a7@256.webp?v=0",
+        "description": "Gain 20 Gold."
+      },
+      {
+        "name": "Enchanted item",
+        "url": "https://bazaardb.gg/card/cbsz410oyxp4ta6ebsc60n91q/Enchanted-item",
+        "icon": "icons\\Haddy\\Enchanted item.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/cd5e5aac1f0fa2565f07e0bb907afed5545396e0@256.webp?v=0",
+        "description": "Gain an Enchanted item"
+      },
+      {
+        "name": "Gold Skill",
+        "url": "https://bazaardb.gg/card/ego99a9itv0cb4hzfx0imuagt/Gold-Skill",
+        "icon": "icons\\Haddy\\Gold Skill.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/c632ffee88843cbc72742debd5e51efe787b75f9@256.webp?v=0",
+        "description": "Gain a Gold-tier skill."
+      },
+      {
+        "name": "Diamond Skill",
+        "url": "https://bazaardb.gg/card/c2pg0eqj8bswiera4lsta2krb/Diamond-Skill",
+        "icon": "icons\\Haddy\\Diamond Skill.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/c632ffee88843cbc72742debd5e51efe787b75f9@256.webp?v=0",
+        "description": "Gain a Diamond-tier skill."
+      },
+      {
+        "name": "Mystery Bundle",
+        "url": "https://bazaardb.gg/card/e1aovehvuab248ulgwyu72vig/Mystery-Bundle",
+        "icon": "icons\\Haddy\\Mystery Bundle.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/cd5e5aac1f0fa2565f07e0bb907afed5545396e0@256.webp?v=0",
+        "description": "Get 3 Diamond-tier Loot items"
+      },
+      {
+        "name": "Magician's Top Hat",
+        "url": "https://bazaardb.gg/card/9kjgy4edzg50t2wwinexn0lb3/Magician's-Top-Hat",
+        "icon": "icons\\Haddy\\Magicians Top Hat.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/item/6f26c69abe99edaf81c374701da5b291dfece31b@256.webp?v=0",
+        "description": "APPAREL"
+      }
+    ]
+  },
+  {
+    "name": "Investment Pitch",
+    "url": "https://bazaardb.gg/card/7s6g9sohhk1xk8imofcf101sh/Investment-Pitch",
+    "choices": [
+      {
+        "name": "Mentor's Guidance",
+        "url": "https://bazaardb.gg/card/474ithd3chqgkw7p8xt2j60cq/Mentor's-Guidance",
+        "icon": "icons\\Investment Pitch\\Mentors Guidance.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/45f68127386ca874bbecb1ecd7161a9d4595a918@256.webp?v=0",
+        "description": "Gain 2 XP and +10% Max Health."
+      },
+      {
+        "name": "Hard Assets",
+        "url": "https://bazaardb.gg/card/9djhpujfvj8oxj7843nx5b3dn/Hard-Assets",
+        "icon": "icons\\Investment Pitch\\Hard Assets.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/f6bd0ca046eb309520998f0430d2a06d61f25f2c@256.webp?v=0",
+        "description": "Upgrade your leftmost Property."
+      },
+      {
+        "name": "Appreciated Value",
+        "url": "https://bazaardb.gg/card/am85h5ah63muefeuk619ly36n/Appreciated-Value",
+        "icon": "icons\\Investment Pitch\\Appreciated Value.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/2d22ef1e78cb1df8c15f62779ee76cb9ff01d4a7@256.webp?v=0",
+        "description": "Give your items +10 value, not including Stash."
+      },
+      {
+        "name": "Investment Package",
+        "url": "https://bazaardb.gg/card/c0hh6bn73k326xzjxnajeibjy/Investment-Package",
+        "icon": "icons\\Investment Pitch\\Investment Package.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/3b2e720aab09fceb2396c289b7e127054cba7f41@256.webp?v=0",
+        "description": "Double your Income"
+      }
+    ]
+  },
+  {
+    "name": "Mad Maddie",
+    "url": "https://bazaardb.gg/card/1w51g7pb67tny3i89dwwbwu97/Mad-Maddie",
+    "choices": [
+      {
+        "name": "Exploit",
+        "url": "https://bazaardb.gg/card/5w1gx3j9eemn3phdk5u9w174e/Exploit",
+        "icon": "icons\\Mad Maddie\\Exploit.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/9499f2042ebd596690b416c1adffc91134abd305@256.webp?v=0",
+        "description": "Your leftmost Ammo item gains +25% Crit Chance."
+      },
+      {
+        "name": "Extended Magazine",
+        "url": "https://bazaardb.gg/card/8q43ocgr0ol8cuamwh85656co/Extended-Magazine",
+        "icon": "icons\\Mad Maddie\\Extended Magazine.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/dc425d9c9ecba3ebeaaa834d8b3e230c0301518d@256.webp?v=0",
+        "description": "Your Ammo items gain +1 Max Ammo."
+      },
+      {
+        "name": "Upgrade",
+        "url": "https://bazaardb.gg/card/12afd1xszwqsq3di6820hhuv4/Upgrade",
+        "icon": "icons\\Mad Maddie\\Upgrade.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/ca2a0af3dccea935511ace991afec7321f9c06f6@256.webp?v=0",
+        "description": "Upgrade your leftmost Ammo item."
+      },
+      {
+        "name": "Enchant",
+        "url": "https://bazaardb.gg/card/ev3by5gvh55zh18a02bj3rvod/Enchant",
+        "icon": "icons\\Mad Maddie\\Enchant.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/a733427de1009345721c7aae14560031c7629764@256.webp?v=0",
+        "description": "Enchant your leftmost Ammo item."
+      }
+    ]
+  },
+  {
+    "name": "The Cult",
+    "url": "https://bazaardb.gg/card/bb97576ki7j6wxpciom89bbvi/The-Cult",
+    "choices": [
+      {
+        "name": "Join the Cult",
+        "url": "https://bazaardb.gg/card/90bajc19ant94dzpx905g6juo/Join-the-Cult",
+        "icon": "icons\\The Cult\\Join the Cult.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/f6bd0ca046eb309520998f0430d2a06d61f25f2c@256.webp?v=0",
+        "description": "Destroy all your non-Legendary items and get Gold equal to their value, then collect your membership items."
+      }
+    ]
+  },
+  {
+    "name": "Thieves Guild",
+    "url": "https://bazaardb.gg/card/dpjr78gur6eta3hk4t49jq4hp/Thieves-Guild",
+    "choices": [
+      {
+        "name": "Hostile Takeover",
+        "url": "https://bazaardb.gg/card/d12e6i28sasq00h14dpcdma85/Hostile-Takeover",
+        "icon": "icons\\Thieves Guild\\Hostile Takeover.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/29cc03f81e0851bae0d2694dbca5d6403dabd86e@256.webp?v=0",
+        "description": "Fight Mr. Moo"
+      },
+      {
+        "name": "Dodge Taxes",
+        "url": "https://bazaardb.gg/card/b1fzcm583uqo78onpssjnb7mm/Dodge-Taxes",
+        "icon": "icons\\Thieves Guild\\Dodge Taxes.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/f6bd0ca046eb309520998f0430d2a06d61f25f2c@256.webp?v=0",
+        "description": "Double your Income."
+      },
+      {
+        "name": "Raid the Vault",
+        "url": "https://bazaardb.gg/card/7bozj01t4447wvktyr5gyv21l/Raid-the-Vault",
+        "icon": "icons\\Thieves Guild\\Raid the Vault.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/2d22ef1e78cb1df8c15f62779ee76cb9ff01d4a7@256.webp?v=0",
+        "description": "Grab everything from the vault"
+      }
+    ]
+  }
+]
