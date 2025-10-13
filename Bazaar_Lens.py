@@ -10,6 +10,9 @@ from urllib.parse import urlparse
 import datetime
 import shutil
 
+# 版本信息
+from version import VERSION
+
 # 检测是否在打包环境中运行
 def is_packaged_environment():
     """检测当前是否在打包后的环境中运行"""
@@ -45,15 +48,65 @@ import win32event
 import winerror
 import win32process
 
-# 设置日志
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler('bazaar_helper.log', encoding='utf-8'),
-        logging.StreamHandler()
-    ]
+# 设置日志 - 使用旋转日志文件，自动管理大小和备份
+from logging.handlers import RotatingFileHandler
+import tempfile
+
+def get_log_file_path():
+    """获取日志文件路径，优先使用用户可写目录"""
+    try:
+        # 检测是否在打包环境中运行
+        if getattr(sys, 'frozen', False) and hasattr(sys, '_MEIPASS'):
+            # 打包环境：使用临时目录或用户文档目录
+            try:
+                # 尝试使用用户文档目录
+                user_docs = os.path.join(os.path.expanduser('~'), 'Documents')
+                if os.path.exists(user_docs) and os.access(user_docs, os.W_OK):
+                    log_dir = os.path.join(user_docs, 'Bazaar_Lens')
+                    os.makedirs(log_dir, exist_ok=True)
+                    return os.path.join(log_dir, 'bazaar_helper.log')
+            except:
+                pass
+            
+            # 如果用户目录不可用，使用临时目录
+            temp_dir = tempfile.gettempdir()
+            log_dir = os.path.join(temp_dir, 'Bazaar_Lens')
+            os.makedirs(log_dir, exist_ok=True)
+            return os.path.join(log_dir, 'bazaar_helper.log')
+        else:
+            # 开发环境：使用当前目录
+            return 'bazaar_helper.log'
+    except Exception as e:
+        # 最后的备用方案：使用临时目录
+        temp_dir = tempfile.gettempdir()
+        return os.path.join(temp_dir, 'bazaar_helper.log')
+
+# 获取日志文件路径
+log_file_path = get_log_file_path()
+
+# 创建日志格式
+log_formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+
+# 创建旋转文件处理器
+# maxBytes: 最大10MB，超过后自动创建新文件
+# backupCount: 保留最近3个备份文件
+file_handler = RotatingFileHandler(
+    log_file_path,
+    maxBytes=10*1024*1024,  # 10MB
+    backupCount=3,
+    encoding='utf-8'
 )
+file_handler.setFormatter(log_formatter)
+
+# 控制台处理器（只在开发环境显示）
+console_handler = logging.StreamHandler()
+console_handler.setFormatter(log_formatter)
+
+# 配置根日志记录器
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
+logger.addHandler(file_handler)
+logger.addHandler(console_handler)
 
 def hide_console():
     """隐藏控制台窗口"""
@@ -495,6 +548,8 @@ class BazaarHelper:
                             self._do_hide_info()
                         elif task_type == 'adjust':
                             self._do_adjust_window(task['x'], task['y'])
+                        elif task_type == 'move':
+                            self._do_move_window(task['x'], task['y'])
             except Exception as e:
                 logging.error(f"处理GUI更新队列异常: {e}")
             finally:
@@ -557,7 +612,7 @@ class BazaarHelper:
                             last_position = (x, y)
                             with self.gui_update_lock:
                                 self.gui_update_queue.append({
-                                    'type': 'adjust',
+                                    'type': 'move',  # 改为 move 类型，只移动位置不调整大小
                                     'x': x,
                                     'y': y
                                 })
@@ -735,7 +790,16 @@ class BazaarHelper:
     def load_monster_data(self):
         """加载怪物数据"""
         try:
-            with open('6.0/crawlers/monster_details_v3/monsters_v3.json', 'r', encoding='utf-8') as f:
+            # 获取数据文件路径（支持开发环境和安装环境）
+            if is_packaged_environment():
+                # 安装环境：数据文件在安装目录下
+                base_dir = os.path.dirname(sys.executable)
+            else:
+                # 开发环境：数据文件在当前目录下
+                base_dir = os.path.dirname(__file__)
+            
+            monster_file = os.path.join(base_dir, '6.0', 'crawlers', 'monster_details_v3', 'monsters_v3.json')
+            with open(monster_file, 'r', encoding='utf-8') as f:
                 data = json.load(f)
                 self.monster_data = {monster['name']: monster for monster in data}
             logging.info(f"成功加载怪物数据，共 {len(self.monster_data)} 个怪物")
@@ -746,7 +810,16 @@ class BazaarHelper:
     def load_event_data(self):
         """加载事件数据"""
         try:
-            with open('6.0/crawlers/event_details_final/events_final.json', 'r', encoding='utf-8') as f:
+            # 获取数据文件路径（支持开发环境和安装环境）
+            if is_packaged_environment():
+                # 安装环境：数据文件在安装目录下
+                base_dir = os.path.dirname(sys.executable)
+            else:
+                # 开发环境：数据文件在当前目录下
+                base_dir = os.path.dirname(__file__)
+            
+            event_file = os.path.join(base_dir, '6.0', 'crawlers', 'event_details_final', 'events_final.json')
+            with open(event_file, 'r', encoding='utf-8') as f:
                 self.events = json.load(f)
                 logging.info(f"已加载 {len(self.events)} 个事件")
             # 直接从 events_final.json 提取所有事件选项
@@ -1004,42 +1077,33 @@ class BazaarHelper:
             Image.fromarray(processed_img).save(buf, format='PNG')
             img_bytes = buf.getvalue()
             
-            # 根据环境选择OCR策略
-            if getattr(self, 'is_packaged', False):
-                # 打包环境使用直接调用
+            # 统一使用线程超时策略，避免打包环境的同步阻塞问题
+            # 初始化结果变量和事件
+            result = [None]  # 使用列表存储结果，便于线程间共享
+            ocr_done = threading.Event()
+            
+            # 定义OCR线程
+            def ocr_thread():
                 try:
-                    return direct_ocr(img_bytes)
+                    # 直接在线程中执行OCR，不使用进程池
+                    ocr_result = direct_ocr(img_bytes)
+                    result[0] = ocr_result
+                    ocr_done.set()
                 except Exception as e:
-                    logging.error(f"直接OCR调用失败: {e}")
-                    return None
+                    logging.error(f"OCR线程异常: {e}")
+                    ocr_done.set()
+            
+            # 启动OCR线程
+            thread = threading.Thread(target=ocr_thread, daemon=True)
+            thread.start()
+            
+            # 等待OCR完成或超时
+            if ocr_done.wait(timeout=3):
+                return result[0]
             else:
-                # 开发环境使用线程超时
-                # 初始化结果变量和事件
-                result = [None]  # 使用列表存储结果，便于线程间共享
-                ocr_done = threading.Event()
-                
-                # 定义OCR线程
-                def ocr_thread():
-                    try:
-                        # 直接在线程中执行OCR，不使用进程池
-                        ocr_result = direct_ocr(img_bytes)
-                        result[0] = ocr_result
-                        ocr_done.set()
-                    except Exception as e:
-                        logging.error(f"OCR线程异常: {e}")
-                        ocr_done.set()
-                
-                # 启动OCR线程
-                thread = threading.Thread(target=ocr_thread, daemon=True)
-                thread.start()
-                
-                # 等待OCR完成或超时
-                if ocr_done.wait(timeout=timeout):
-                    return result[0]
-                else:
-                    logging.warning("OCR识别超时，已跳过本次识别")
-                    # 超时但不终止线程，让它在后台继续运行
-                    return None
+                logging.warning("OCR识别超时，已跳过本次识别")
+                # 超时但不终止线程，让它在后台继续运行
+                return None
                 
         except Exception as e:
             logging.error(f"OCR处理异常: {e}")
@@ -1280,7 +1344,8 @@ class BazaarHelper:
             self.info_window = tk.Toplevel()
             self.info_window.title("The Bazaar Helper")
             self.info_window.attributes('-alpha', 0.95)  # 设置透明度
-            self.info_window.overrideredirect(True)  # 无边框窗口
+            # 注释掉 overrideredirect，让窗口有标准边框，便于录屏
+            # self.info_window.overrideredirect(True)  # 无边框窗口
             self.info_window.attributes('-topmost', True)  # 保持在顶层
             
             # 设置窗口背景色为深色
@@ -1387,7 +1452,13 @@ class BazaarHelper:
         
         # 如果是相对路径，直接返回
         if icon_url and not icon_url.startswith('http'):
-            workspace_dir = os.path.abspath(os.path.dirname(__file__))
+            # 获取工作目录（支持开发环境和安装环境）
+            if is_packaged_environment():
+                # 安装环境：数据文件在安装目录下
+                workspace_dir = os.path.dirname(sys.executable)
+            else:
+                # 开发环境：数据文件在当前目录下
+                workspace_dir = os.path.abspath(os.path.dirname(__file__))
             
             # 处理事件图标的特殊目录结构 (反斜杠格式)
             if '\\' in icon_url and 'icons\\' in icon_url:
@@ -1436,7 +1507,13 @@ class BazaarHelper:
             filename = re.sub(r'[^\w\-_.@]', '_', filename)
 
             # 尝试多个可能的图标路径
-            workspace_dir = os.path.abspath(os.path.dirname(__file__))
+            # 获取工作目录（支持开发环境和安装环境）
+            if is_packaged_environment():
+                # 安装环境：数据文件在安装目录下
+                workspace_dir = os.path.dirname(sys.executable)
+            else:
+                # 开发环境：数据文件在当前目录下
+                workspace_dir = os.path.abspath(os.path.dirname(__file__))
             icon_paths = [
                 os.path.join(workspace_dir, '6.0', 'crawlers', 'monster_details_v3', 'icons'),
                 os.path.join(workspace_dir, '6.0', 'crawlers', 'event_details_final', 'icons'),
@@ -1795,6 +1872,37 @@ class BazaarHelper:
             
         except Exception as e:
             logging.error(f"调整窗口大小失败: {e}")
+    
+    def _do_move_window(self, pos_x, pos_y):
+        """只移动窗口位置，不调整大小（在主线程中调用）"""
+        try:
+            if not self.info_window or not self.info_window.winfo_exists():
+                return
+            
+            # 获取当前窗口大小
+            current_geometry = self.info_window.geometry()
+            # 解析当前几何信息 (格式: "widthxheight+x+y")
+            parts = current_geometry.split('+')
+            if len(parts) >= 3:
+                size_part = parts[0]
+                current_width, current_height = map(int, size_part.split('x'))
+            else:
+                # 如果解析失败，使用默认大小
+                current_width, current_height = 600, 400
+            
+            # 调整窗口位置（确保不超出屏幕边界）
+            screen_width = self.info_window.winfo_screenwidth()
+            screen_height = self.info_window.winfo_screenheight()
+            if pos_x + current_width > screen_width:
+                pos_x = max(0, screen_width - current_width)
+            if pos_y + current_height > screen_height:
+                pos_y = max(0, screen_height - current_height)
+                
+            # 只更新位置，保持原有大小
+            self.info_window.geometry(f"{current_width}x{current_height}+{pos_x}+{pos_y}")
+            
+        except Exception as e:
+            logging.error(f"移动窗口位置失败: {e}")
     
     def update_info_display(self, text, pos_x, pos_y):
         """更新信息显示（已弃用，保留以兼容旧代码）"""
@@ -2399,6 +2507,7 @@ class SystemTray:
             menu = (
                 pystray.MenuItem("帮助 Help", self.show_help),
                 pystray.MenuItem("设置识别安装位置 Set OCR Path", self.set_ocr_path_simple),
+                pystray.MenuItem("清理日志文件 Clean Logs", self.clean_log_files),
                 pystray.MenuItem("退出 Quit", self.quit_app)
                 # 以下选项暂时隐藏
                 # pystray.MenuItem("Auto Update", self.toggle_auto_update, checked=lambda item: self.helper.config.get("auto_update", True)),
@@ -2471,6 +2580,81 @@ class SystemTray:
         messagebox.showerror("错误", "无法打开帮助文件。\n请确保Help.txt文件存在于程序目录中。")
         root.destroy()
 
+    def clean_log_files(self, icon, item):
+        """清理日志文件"""
+        try:
+            # 查找所有日志文件
+            log_files = []
+            
+            # 获取日志文件所在的目录
+            log_file_path = get_log_file_path()
+            log_dir = os.path.dirname(log_file_path)
+            
+            # 查找主日志文件和备份文件
+            if os.path.exists(log_dir):
+                for filename in os.listdir(log_dir):
+                    if filename.startswith('bazaar_helper.log'):
+                        filepath = os.path.join(log_dir, filename)
+                        if os.path.isfile(filepath):
+                            size = os.path.getsize(filepath)
+                            log_files.append((filename, filepath, size))
+            
+            if not log_files:
+                self.show_message("提示", "没有找到日志文件")
+                return
+            
+            # 计算总大小
+            total_size = sum(f[2] for f in log_files)
+            size_mb = total_size / (1024 * 1024)
+            
+            # 显示确认对话框
+            root = tk.Tk()
+            root.withdraw()
+            message = f"找到 {len(log_files)} 个日志文件，总大小: {size_mb:.2f} MB\n"
+            message += f"位置: {log_dir}\n\n"
+            message += "文件列表:\n"
+            for filename, _, size in log_files:
+                message += f"  - {filename} ({size/(1024*1024):.2f} MB)\n"
+            message += "\n是否要删除这些日志文件？\n\n注意：当前正在使用的日志文件将被清空而不是删除。"
+            
+            result = messagebox.askyesno("确认清理", message)
+            root.destroy()
+            
+            if result:
+                deleted_count = 0
+                cleared_count = 0
+                failed_count = 0
+                
+                for filename, filepath, _ in log_files:
+                    try:
+                        if filename == 'bazaar_helper.log':
+                            # 当前使用的日志文件，清空内容而不是删除
+                            with open(filepath, 'w', encoding='utf-8') as f:
+                                f.write('')
+                            cleared_count += 1
+                            logging.info("日志文件已清空")
+                        else:
+                            # 备份日志文件，直接删除
+                            os.remove(filepath)
+                            deleted_count += 1
+                    except Exception as e:
+                        logging.error(f"清理日志文件失败: {filename}, 错误: {e}")
+                        failed_count += 1
+                
+                message = f"清理完成！\n\n"
+                if cleared_count > 0:
+                    message += f"清空文件: {cleared_count} 个\n"
+                if deleted_count > 0:
+                    message += f"删除文件: {deleted_count} 个\n"
+                if failed_count > 0:
+                    message += f"失败: {failed_count} 个\n"
+                
+                self.show_message("清理完成", message)
+            
+        except Exception as e:
+            logging.error(f"清理日志文件时出错: {e}")
+            self.show_message("错误", "清理日志文件失败")
+    
     def quit_app(self, icon, item):
         """退出应用程序"""
         try:
@@ -2538,7 +2722,13 @@ class SystemTray:
         """调试图标加载"""
         try:
             # 检查图标目录
-            workspace_dir = os.path.abspath(os.path.dirname(__file__))
+            # 获取工作目录（支持开发环境和安装环境）
+            if is_packaged_environment():
+                # 安装环境：数据文件在安装目录下
+                workspace_dir = os.path.dirname(sys.executable)
+            else:
+                # 开发环境：数据文件在当前目录下
+                workspace_dir = os.path.abspath(os.path.dirname(__file__))
             icon_paths = [
                 os.path.join(workspace_dir, '6.0', 'crawlers', 'monster_details_v3', 'icons'),
                 os.path.join(workspace_dir, '6.0', 'crawlers', 'event_details_final', 'icons'),

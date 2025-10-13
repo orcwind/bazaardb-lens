@@ -1,12 +1,31 @@
 [Setup]
 AppName=Bazaar_Lens
-#define MyAppVersion GetFileVersion("dist\Bazaar_Lens.exe")
+#define MyAppVersion "1.0.1"
 AppVersion={#MyAppVersion}
 DefaultDirName={pf}\Bazaar_Lens
 DefaultGroupName=Bazaar_Lens
 OutputBaseFilename=Bazaar_Lens_Installer_v{#MyAppVersion}
 Compression=lzma
 SolidCompression=yes
+; 安装前检查并关闭运行中的程序
+RestartIfNeededByRun=no
+; 允许覆盖安装
+AllowNoIcons=yes
+; 强制关闭正在使用的文件，不询问用户
+CloseApplications=yes
+RestartApplications=no
+
+[Code]
+function InitializeSetup(): Boolean;
+var
+  ResultCode: Integer;
+begin
+  // 安装前强制关闭 Bazaar_Lens.exe
+  Exec('taskkill', '/F /IM Bazaar_Lens.exe /T', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+  Exec('timeout', '/t 1 /nobreak', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+  Exec('taskkill', '/F /IM Bazaar_Lens.exe /T', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+  Result := True;
+end;
 
 [Tasks]
 Name: "desktopicon"; Description: "创建桌面图标"; GroupDescription: "附加图标:"; Flags: unchecked
@@ -36,6 +55,9 @@ Name: "{group}\\Bazaar_Lens"; Filename: "{app}\\Bazaar_Lens.exe"
 Name: "{commondesktop}\\Bazaar_Lens"; Filename: "{app}\\Bazaar_Lens.exe"; Tasks: desktopicon
 
 [Run]
+; 安装前强制关闭运行中的程序（不询问，直接终止）
+Filename: "{cmd}"; Parameters: "/C taskkill /F /IM Bazaar_Lens.exe /T 2>nul & timeout /t 1 /nobreak >nul & taskkill /F /IM Bazaar_Lens.exe /T 2>nul"; StatusMsg: "正在强制关闭运行中的程序..."; Flags: runhidden waituntilterminated
+
 ; 安装Tesseract-OCR
 Filename: "{tmp}\tesseract-ocr-w64-setup-5.5.0.20241111.exe"; Parameters: "/SILENT /DIR=""C:\Program Files\Tesseract-OCR"""; StatusMsg: "正在安装Tesseract-OCR..."; Flags: waituntilterminated
 
