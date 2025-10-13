@@ -13,15 +13,23 @@ Name: "desktopicon"; Description: "创建桌面图标"; GroupDescription: "附�
 
 [Files]
 Source: "dist\\Bazaar_Lens.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "icons\\*"; DestDir: "{app}\\icons"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "data\\*"; DestDir: "{app}\\data"; Flags: ignoreversion recursesubdirs createallsubdirs
+; 不再需要单独的 icons 和 data 目录，所有数据都在 6.0 目录中
+; 怪物数据和图标
+Source: "6.0\\crawlers\\monster_details_v3\\monsters_v3.json"; DestDir: "{app}\\6.0\\crawlers\\monster_details_v3"; Flags: ignoreversion
+Source: "6.0\\crawlers\\monster_details_v3\\icons\\*.webp"; DestDir: "{app}\\6.0\\crawlers\\monster_details_v3\\icons"; Flags: ignoreversion
+; 事件数据和图标（包含子目录）
+Source: "6.0\\crawlers\\event_details_final\\events_final.json"; DestDir: "{app}\\6.0\\crawlers\\event_details_final"; Flags: ignoreversion
+Source: "6.0\\crawlers\\event_details_final\\icons\\*"; DestDir: "{app}\\6.0\\crawlers\\event_details_final\\icons"; Flags: ignoreversion recursesubdirs createallsubdirs
+; OCR依赖
 Source: "tesseract-ocr-w64-setup-5.5.0.20241111.exe"; DestDir: "{tmp}"; Flags: ignoreversion
-Source: "Bazaar_Lens.ico"; DestDir: "{app}"; Flags: ignoreversion
-Source: "Help.png"; DestDir: "{app}"; Flags: ignoreversion
-Source: "Help.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "eng.traineddata"; DestDir: "{tmp}"; Flags: ignoreversion
 Source: "osd.traineddata"; DestDir: "{tmp}"; Flags: ignoreversion
-Source: "How to Install.png"; DestDir: "{app}"; Flags: ignoreversion
+; 程序图标和帮助文档
+Source: "Bazaar_Lens.ico"; DestDir: "{app}"; Flags: ignoreversion
+Source: "Help.txt"; DestDir: "{app}"; Flags: ignoreversion
+Source: "Help.png"; DestDir: "{app}"; Flags: ignoreversion skipifsourcedoesntexist
+Source: "How to Install.png"; DestDir: "{app}"; Flags: ignoreversion skipifsourcedoesntexist
+Source: "How to Install.txt"; DestDir: "{app}"; Flags: ignoreversion skipifsourcedoesntexist
 
 [Icons]
 Name: "{group}\\Bazaar_Lens"; Filename: "{app}\\Bazaar_Lens.exe"
@@ -40,6 +48,10 @@ Filename: "{cmd}"; Parameters: "/C copy ""{tmp}\eng.traineddata"" ""C:\Program F
 ; 复制osd语言文件到正确位置
 Filename: "{cmd}"; Parameters: "/C copy ""{tmp}\osd.traineddata"" ""C:\Program Files\Tesseract-OCR\tessdata\osd.traineddata"" /Y"; StatusMsg: "正在安装OCR方向检测语言文件..."; Flags: runhidden
 
+; 安装完成后选项
+Filename: "{app}\Help.txt"; Description: "查看帮助文档 (View Help Document)"; Flags: postinstall shellexec skipifsilent unchecked
+Filename: "{app}\Bazaar_Lens.exe"; Description: "启动 Bazaar_Lens (Launch Bazaar_Lens)"; Flags: postinstall skipifsilent nowait
+
 [Messages]
 WelcomeLabel2=此过程会安装两个程序，首先是Bazaar_Lens, 主程序用于显示信息，可安装在任何位置。 接下来会安装tesseract-ocr程序，用于识别文字，建议安装在默认目录。如果非默认目录，需要您后续在选项中重新选择安装目录。%n%nThis process will install two programs. First, Bazaar_Lens, the main program for displaying information, which can be installed in any location. Next, the tesseract-ocr program will be installed, which is used for text recognition. It is recommended to install it in the default directory. If you choose a non-default directory, you will need to select the installation directory again in the options later.
 
@@ -48,12 +60,13 @@ Filename: "{cmd}"; Parameters: "/C taskkill /F /IM Bazaar_Lens.exe /T"; Flags: r
 
 [UninstallDelete]
 Type: files; Name: "{app}\\bazaar_lens.log"
+Type: files; Name: "{app}\\bazaar_lens_config.json"
 Type: files; Name: "{app}\\debug_binary.png"
 Type: files; Name: "{app}\\debug_capture.png"
+Type: files; Name: "{app}\\debug_capture_fixed.png"
 Type: files; Name: "{app}\\*.log"
 Type: files; Name: "{app}\\*.png"
-Type: filesandordirs; Name: "{app}\\icons"
-Type: filesandordirs; Name: "{app}\\data"
+Type: filesandordirs; Name: "{app}\\6.0"
 Type: dirifempty; Name: "{app}"
 
 [Code]

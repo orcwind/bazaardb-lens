@@ -470,7 +470,7 @@ class BazaarHelper:
         if self.config.get("auto_update", True):
             self.check_for_updates()
 
-        # 根据配置决定是否显示控制台
+        # 根据配置决定是否显示控制台（默认隐藏，但生成日志文件）
         if not self.config.get("show_console", False):
             hide_console()
         
@@ -2395,17 +2395,18 @@ class SystemTray:
                 # 创建一个简单的彩色图标
                 image = Image.new('RGB', (64, 64), color = (73, 109, 137))
             
-            # 添加自动更新菜单项
+            # 系统托盘菜单
             menu = (
-                pystray.MenuItem("Help", self.show_help),
-                pystray.MenuItem("Set tesseract-ocr.exe Path", self.set_ocr_path_simple),
-                pystray.MenuItem("Auto Update", self.toggle_auto_update, checked=lambda item: self.helper.config.get("auto_update", True)),
-                pystray.MenuItem("Check for Updates", self.check_for_updates),
-                pystray.MenuItem("Show Console", self.toggle_console, checked=lambda item: self.helper.config.get("show_console", False)),
-                pystray.MenuItem("Debug Window Detection", self.debug_window_detection),
-                pystray.MenuItem("Debug Icon Loading", self.debug_icon_loading),
-                pystray.MenuItem("Cleanup Legacy Icons", self.cleanup_legacy_icons),
-                pystray.MenuItem("Quit", self.quit_app)
+                pystray.MenuItem("帮助 Help", self.show_help),
+                pystray.MenuItem("设置识别安装位置 Set OCR Path", self.set_ocr_path_simple),
+                pystray.MenuItem("退出 Quit", self.quit_app)
+                # 以下选项暂时隐藏
+                # pystray.MenuItem("Auto Update", self.toggle_auto_update, checked=lambda item: self.helper.config.get("auto_update", True)),
+                # pystray.MenuItem("Check for Updates", self.check_for_updates),
+                # pystray.MenuItem("Show Console", self.toggle_console, checked=lambda item: self.helper.config.get("show_console", False)),
+                # pystray.MenuItem("Debug Window Detection", self.debug_window_detection),
+                # pystray.MenuItem("Debug Icon Loading", self.debug_icon_loading),
+                # pystray.MenuItem("Cleanup Legacy Icons", self.cleanup_legacy_icons),
             )
             self.icon = pystray.Icon("BazaarHelper", image, "Bazaar Helper", menu)
             
