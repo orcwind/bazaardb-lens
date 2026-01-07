@@ -19,6 +19,25 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, NoSuchElementException
 
+def is_chinese(text):
+    """检查文本是否包含中文字符"""
+    if not isinstance(text, str):
+        return False
+    return bool(re.search(r'[\u4e00-\u9fff]', text))
+
+def save_name_with_lang(data_dict, name, field_name='name'):
+    """根据语言保存名称到相应字段（name 或 name_zh）"""
+    if is_chinese(name):
+        data_dict[f'{field_name}_zh'] = name
+        # 如果已有英文名称，保留；否则也保存到 name 字段作为备用
+        if field_name not in data_dict:
+            data_dict[field_name] = name
+    else:
+        data_dict[field_name] = name
+        # 如果已有中文名称，保留；否则也保存到 name_zh 字段作为备用
+        if f'{field_name}_zh' not in data_dict:
+            data_dict[f'{field_name}_zh'] = name
+
 # 配置
 OUTPUT_DIR = Path('monster_details_v3')
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -151,7 +170,7 @@ def get_monster_detail_url(driver, monster_name):
 
 
 def extract_names_from_meta(html_content):
-    """从meta描述中提取技能和物品名称"""
+    """从meta描述中提取技能和物品名称（支持中英文）"""
     # 查找meta description
     meta_match = re.search(r'<meta[^>]*name="description"[^>]*content="([^"]+)"', html_content)
     if not meta_match:
@@ -160,19 +179,21 @@ def extract_names_from_meta(html_content):
     description = meta_match.group(1)
     print(f"    Meta描述: {description}")
     
-    # 提取技能名称
+    # 提取技能名称（支持中英文）
     skills = []
-    skills_match = re.search(r'Skills:\s*([^.]+)\.', description)
+    # 尝试匹配中文格式：技能：xxx。或英文格式：Skills: xxx.
+    skills_match = re.search(r'(?:技能|Skills):\s*([^.。]+)[。.]', description)
     if skills_match:
         skills_str = skills_match.group(1)
-        skills = [s.strip() for s in skills_str.split(',')]
+        skills = [s.strip() for s in re.split(r'[,，]', skills_str)]
     
-    # 提取物品名称
+    # 提取物品名称（支持中英文）
     items = []
-    items_match = re.search(r'Items:\s*([^.]+)\.', description)
+    # 尝试匹配中文格式：物品：xxx。或英文格式：Items: xxx.
+    items_match = re.search(r'(?:物品|Items):\s*([^.。]+)[。.]', description)
     if items_match:
         items_str = items_match.group(1)
-        items = [i.strip() for i in items_str.split(',')]
+        items = [i.strip() for i in re.split(r'[,，]', items_str)]
     
     return skills, items
 
@@ -419,11 +440,12 @@ def extract_monster_details(driver, monster_name, detail_url, existing_monster=N
     icons = extract_icons_from_html(html_content)
     
     monster_data = {
-        "name": monster_name,
         "url": detail_url,
         "skills": [],
         "items": []
     }
+    # 根据语言保存怪物名称
+    save_name_with_lang(monster_data, monster_name, 'name')
     
     # 处理技能
     print(f"\n  处理技能详情...")
@@ -453,13 +475,14 @@ def extract_monster_details(driver, monster_name, detail_url, existing_monster=N
             
             # 智能覆盖逻辑
             skill_data = {
-                "name": skill_name,
                 "url": skill_url,
                 "icon": skill_icon_path,
                 "icon_url": skill_icon_url,
-                "description": description,
                 "aspect_ratio": size_to_aspect_ratio(size)
             }
+            # 根据语言保存名称和描述
+            save_name_with_lang(skill_data, skill_name, 'name')
+            save_name_with_lang(skill_data, description, 'description')
             
             # 如果已有数据，进行智能合并
             if skill_name in existing_skills:
@@ -512,13 +535,14 @@ def extract_monster_details(driver, monster_name, detail_url, existing_monster=N
             
             # 智能覆盖逻辑
             item_data = {
-                "name": item_name,
                 "url": item_url,
                 "icon": item_icon_path,
                 "icon_url": item_icon_url,
-                "description": description,
                 "aspect_ratio": size_to_aspect_ratio(size)
             }
+            # 根据语言保存名称和描述
+            save_name_with_lang(item_data, item_name, 'name')
+            save_name_with_lang(item_data, description, 'description')
             
             # 如果已有数据，进行智能合并
             if item_name in existing_items:

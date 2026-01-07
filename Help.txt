@@ -1,5 +1,6 @@
 Bazaar Lens 1.0.1 使用说明
 
+   - 暂时只支持英文版本！！！
    - 显示信息版本：Hotfix: October 10, 2025 ;
    - 在游戏中按住 Ctrl 键可以查看鼠标指向位置的怪物或事件信息;
    - 请确保以管理员权限运行程序;
@@ -8,6 +9,8 @@ Bazaar Lens 1.0.1 使用说明
    - 更新将发布在https://www.bilibili.com/opus/1065739256294539282 。
 
 Bazaar Lens 1.0.1 User Guide
+
+   - Only available for English Language.
    - Display Game version : Hotfix: October 10, 2025;
    - Hold Ctrl key in the game to view monster or event information at the mouse pointer position;
    - Please ensure to run the program with administrator privileges;

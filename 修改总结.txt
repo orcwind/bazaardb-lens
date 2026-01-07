@@ -29,3 +29,5 @@
 - 解决了PowerShell命令执行错误
 - 优化了窗口显示逻辑，使界面更加流畅
 - 改进了OCR识别算法，提高了识别准确率 
+
+python Bazaar_Lens.py

@@ -1,0 +1,91 @@
+[
+  {
+    "name": "Beehive",
+    "name_zh": "蜂巢",
+    "description_zh": "敌人使用武器时，为己方工蜂充能2秒。\n购买此物品时，获得2只工蜂。\n购买地产时，工蜂伤害提高+{ability.2}。",
+    "icon": "Beehive.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/card/Beehive",
+    "enchantments": "黄金\n此物品的价值翻倍。\n\n沉重\n使用工蜂时，减速一件物品1秒。\n\n寒冰\n使用工蜂时，冻结一件物品0.5秒。\n\n疾速\n使用工蜂时，加速一件物品1秒。\n\n护盾\n工蜂造成伤害时，获得等量护盾值。\n\n回复\n工蜂造成伤害时，治疗等量生命值。\n\n毒性蔓延\n工蜂造成伤害时，同时造成剧毒，等量于伤害量的10%。\n\n炽焰\n工蜂造成伤害时，同时造成灼烧，等量于伤害量的10%。\n\n闪亮\n工蜂+1多重触发。\n\n致命\n工蜂+50%暴击率。\n\n辉耀\n相邻工蜂受到的冻结和减速效果时长减半。\n\n黑曜石\n工蜂伤害翻倍。"
+  },
+  {
+    "name": "Landscraper",
+    "name_zh": "景观楼",
+    "description_zh": "5.0\n秒\n获得200护盾\n护盾物品 + 护盾值，增幅等于此物品价值。\n出售10件物品时，此物品+8 » 16 » 24价值，并获得一颗松露。",
+    "icon": "Landscraper.webp",
+    "aspect_ratio": 1.5,
+    "url": "https://bazaardb.gg/card/Landscraper",
+    "enchantments": "黄金\n此物品的价值翻倍。\n\n沉重\n减速3件物品1秒\n\n寒冰\n冻结2件物品1秒\n\n疾速\n加速3件物品1秒\n\n护盾\n此物品的护盾值翻倍。\n\n回复\n获得治疗，等量于此物品护盾值\n\n毒性蔓延\n造成剧毒，等量于此物品护盾值的5%\n\n炽焰\n造成灼烧，等量于此物品护盾值的5%\n\n闪亮\n此物品+1多重触发。\n\n辉耀\n此物品免疫冻结、减速和摧毁。\n\n致命\n此物品+50%暴击率。\n\n黑曜石 +Weapon\n造成伤害，等量于此物品护盾"
+  },
+  {
+    "name": "Vineyard",
+    "name_zh": "葡萄园",
+    "description_zh": "5.0\n秒\n治疗200生命值\n治疗物品 + 治疗量，增幅等于此物品价值。\n生命再生量提高，增幅等于此物品价值。\n出售10件物品时，此物品+8 » 16 » 24价值，并获得一颗松露。",
+    "icon": "Vineyard.webp",
+    "aspect_ratio": 1.5,
+    "url": "https://bazaardb.gg/card/Vineyard",
+    "enchantments": "沉重\n减速3件物品1秒\n\n寒冰\n冻结2件物品1秒\n\n疾速\n加速3件物品1秒\n\n护盾\n获得护盾，等量于此物品治疗量\n\n回复\n此物品的治疗量翻倍。\n\n毒性蔓延\n造成剧毒，等量于此物品治疗量的5%\n\n炽焰\n造成灼烧，等量于此物品治疗量的5%\n\n闪亮\n此物品+1多重触发。\n\n致命\n此物品+50%暴击率。\n\n辉耀\n此物品免疫冻结、减速和摧毁。\n\n黑曜石 +Weapon\n造成伤害，等量于此物品治疗量"
+  },
+  {
+    "name": "Parts Picker",
+    "name_zh": "零件选择机器人",
+    "description_zh": "8.0\n秒\n摧毁最左侧的物品。\n此物品摧毁另一件物品时，其他物品的冷却时间缩短{aura.9}秒（限本场战斗）。",
+    "icon": "Parts_Picker.webp",
+    "aspect_ratio": 0.5,
+    "url": "https://bazaardb.gg/card/Parts-Picker",
+    "enchantments": "黄金\n此物品的价值翻倍。\n\n沉重\n减速1件物品3秒\n\n寒冰\n冻结一件物品1秒\n\n疾速\n加速1件物品3秒\n\n护盾\n获得80护盾\n\n回复\n治疗80生命值\n\n毒性蔓延\n造成8剧毒\n\n炽焰\n造成8灼烧\n\n闪亮\n此物品+1多重触发。\n\n致命\n己方物品+25%暴击率。\n\n辉耀\n此物品免疫冻结和减速。\n\n黑曜石 +Weapon\n造成80伤害"
+  },
+  {
+    "name": "Spider Fern",
+    "name_zh": "蕨叶蜘蛛",
+    "description_zh": "4.0\n秒\n造成2剧毒\n使用此物品赢得战斗时，此物品+1 » 2 » 3多重触发。\n如果物品已拥有的多重触发不少于4 » 6 » 8，则失去所有的多重触发。",
+    "icon": "Spider_Fern.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/card/Spider-Fern",
+    "enchantments": "黄金\n此物品的价值翻倍。\n\n沉重\n减速一件物品1秒\n\n寒冰\n冻结一件物品0.5秒\n\n疾速\n加速一件物品1秒\n\n护盾\n获得护盾，等量于此物品剧毒的5倍\n\n回复\n获得治疗，等量于此物品剧毒的5倍\n\n毒性蔓延\n此物品的剧毒翻倍。\n\n炽焰\n造成灼烧，等量于此物品的剧毒\n\n闪亮\n此物品+1多重触发。\n\n致命\n此物品+50%暴击率。\n\n辉耀\n此物品免疫冻结、减速和摧毁。\n\n黑曜石 +Weapon\n造成伤害，等量于此物品剧毒的5倍"
+  },
+  {
+    "name": "Cloud Tanker",
+    "name_zh": "云端油轮",
+    "description_zh": "3.0\n秒\n相邻武器伤害提高+20 » 40 » 60（限本场战斗）。\n相邻灼烧物品的灼烧提高+3 » 6 » 9（限本场战斗）。\n飞行载具或无人机在战斗期间伤害或灼烧有所提高时，使之加速1秒。",
+    "icon": "Cloud_Tanker.webp",
+    "aspect_ratio": 1.5,
+    "url": "https://bazaardb.gg/card/Cloud-Tanker",
+    "enchantments": "黄金\n此物品的价值翻倍。\n\n沉重\n减速3件物品1秒\n\n寒冰\n冻结2件物品1秒\n\n疾速\n此物品的加速持续时间翻倍。\n\n护盾\n获得120护盾\n\n回复\n治疗120生命值\n\n毒性蔓延\n造成12剧毒\n\n炽焰\n此物品的灼烧加成翻倍。\n\n闪亮\n此物品+1多重触发。\n\n致命\n相邻物品暴击率提高25%（限本场战斗）。\n\n辉耀\n此物品免疫冻结、减速和摧毁。\n\n黑曜石\n此物品的伤害加成翻倍。"
+  },
+  {
+    "name": "Prep Station",
+    "name_zh": "制备工作台",
+    "description_zh": "7.0\n秒\n己方食物的护盾提高+10 » 15 » 20、灼烧提高+2 » 3 » 4、生命再生量提高+2 » 3 » 4（限本场战斗）。\n使用相邻工具时，为此物品充能2秒。",
+    "icon": "Prep_Station.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/card/Prep-Station",
+    "enchantments": "黄金\n此物品的价值翻倍。\n\n沉重\n减速一件物品1秒\n\n寒冰\n冻结一件物品0.5秒\n\n疾速\n加速一件物品1秒\n\n护盾\n获得25护盾\n\n回复\n治疗25生命值\n\n毒性蔓延\n造成2剧毒\n\n炽焰\n造成2灼烧\n\n闪亮\n此物品+1多重触发。\n\n致命\n食物的暴击率+40%。\n\n辉耀\n此物品免疫冻结、减速和摧毁。\n\n黑曜石 +Weapon\n造成25伤害"
+  },
+  {
+    "name": "Atmospheric Sampler",
+    "name_zh": "大气采样仪",
+    "description_zh": "使用附魔或飞行物品时，为另{ability.0.targets}件附魔或飞行物品充能1秒。\n每场战斗开始时，另一件物品开始飞行。",
+    "icon": "Atmospheric_Sampler.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/card/Atmospheric-Sampler",
+    "enchantments": "黄金\n此物品的价值翻倍。\n\n沉重\n使用附魔或飞行物品时，减速1件物品1秒。\n\n寒冰\n使用附魔或飞行物品时，冻结一件物品0.5秒。\n\n疾速\n使用附魔或飞行物品时，加速1件物品1秒。\n\n护盾\n使用附魔或飞行物品时，获得40护盾。\n\n回复\n使用附魔或飞行物品时，获得40治疗。\n\n毒性蔓延\n使用附魔或飞行物品时，造成4剧毒。\n\n炽焰\n使用附魔或飞行物品时，造成4灼烧。\n\n闪亮\n此物品的充能量翻倍。\n\n致命\n附魔与飞行物品+40%暴击率。\n\n辉耀\n相邻物品受到的冻结和减速效果时长减半。\n\n黑曜石 +Weapon\n使用附魔或飞行物品时，造成40伤害。"
+  },
+  {
+    "name": "Tanky Anky",
+    "name_zh": "坦奇甲龙",
+    "description_zh": "7.0\n秒\n造成200伤害\n恐龙或神器造成伤害时，获得等量的护盾。",
+    "icon": "Tanky_Anky.webp",
+    "aspect_ratio": 1.5,
+    "url": "https://bazaardb.gg/card/Tanky-Anky",
+    "enchantments": "黄金\n此物品的价值翻倍。\n\n沉重\n减速3件物品2秒\n\n寒冰\n冻结2件物品1秒\n\n疾速\n加速3件物品2秒\n\n护盾\n此物品的护盾值翻倍。\n\n回复\n获得治疗，等量于此物品伤害\n\n毒性蔓延\n造成剧毒，等量于此物品伤害的5%\n\n炽焰\n造成灼烧，等量于此物品伤害的5%\n\n闪亮\n此物品+1多重触发。\n\n致命\n此物品+50%暴击率。\n\n辉耀\n此物品免疫冻结、减速和摧毁。\n\n黑曜石\n此物品的伤害翻倍。"
+  },
+  {
+    "name": "Temple Expedition Ticket",
+    "name_zh": "神庙探险券",
+    "description_zh": "第9天可使用此物品，开启神庙探险。",
+    "icon": "Temple_Expedition_Ticket.webp",
+    "aspect_ratio": 0.5,
+    "url": "https://bazaardb.gg/card/Temple-Expedition-Ticket"
+  }
+]

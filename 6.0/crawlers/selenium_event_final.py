@@ -16,6 +16,25 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 
+def is_chinese(text):
+    """检查文本是否包含中文字符"""
+    if not isinstance(text, str):
+        return False
+    return bool(re.search(r'[\u4e00-\u9fff]', text))
+
+def save_name_with_lang(data_dict, name, field_name='name'):
+    """根据语言保存名称到相应字段（name 或 name_zh）"""
+    if is_chinese(name):
+        data_dict[f'{field_name}_zh'] = name
+        # 如果已有英文名称，保留；否则也保存到 name 字段作为备用
+        if field_name not in data_dict:
+            data_dict[field_name] = name
+    else:
+        data_dict[field_name] = name
+        # 如果已有中文名称，保留；否则也保存到 name_zh 字段作为备用
+        if f'{field_name}_zh' not in data_dict:
+            data_dict[f'{field_name}_zh'] = name
+
 # 配置
 OUTPUT_DIR = Path('event_details_final')
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
@@ -320,10 +339,11 @@ def extract_event_details(driver, event_name, detail_url, existing_event=None):
     descriptions = extract_descriptions_from_page(driver, choice_names)
     
     event_data = {
-        "name": event_name,
         "url": detail_url,
         "choices": []
     }
+    # 根据语言保存事件名称（事件名称通常是中文）
+    save_name_with_lang(event_data, event_name, 'name')
     
     # 获取已有选择数据（用于智能覆盖）
     existing_choices = {}
@@ -351,13 +371,16 @@ def extract_event_details(driver, event_name, detail_url, existing_event=None):
             })
         
         # 智能覆盖逻辑
+        # 选项名称和描述通常是英文，直接保存到 name 和 description 字段
+        # name_zh 和 description_zh 留空，后续手动翻译
         choice_data = {
-            "name": choice_name,
+            "name": choice_name,  # 英文名称
             "url": choice['url'],
             "icon": icon_path,
             "icon_url": choice['icon_url'],
-            "description": description,
+            "description": description,  # 英文描述
             "aspect_ratio": aspect_ratio
+            # name_zh 和 description_zh 留空，后续手动翻译
         }
         
         # 如果已有数据，进行智能合并

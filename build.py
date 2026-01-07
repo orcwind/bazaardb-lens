@@ -113,7 +113,7 @@ for arg in args:
 print()
 
 try:
-    PyInstaller.__main__.run(args)
+PyInstaller.__main__.run(args) 
     print("\n" + "="*60)
     print("打包完成！")
     print("="*60)

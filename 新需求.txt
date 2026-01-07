@@ -1,0 +1,11 @@
+https://bazaardb.gg/search?q=Landscraper&c=items  
+
+步骤1：抓取HTML文件
+
+cd 6.0\crawlers
+python simple_crawler_items_skills.py
+
+步骤2：提取名称清单
+python fetch_items_skills_names.py
+
+python fetch_items_skills_names.py
