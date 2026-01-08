@@ -51,15 +51,16 @@ def get_icon_filename(*names):
     filename = '_'.join(sanitized) + '.webp'
     return filename
 
-def download_icon(icon_url, *names):
-    """下载图标到统一目录
+def download_icon(icon_url, *names, category=None):
+    """下载图标到分类目录
     
     Args:
         icon_url: 图标URL
         *names: 名称列表（用于生成文件名）
+        category: 图标类别 ('item', 'skill', 'monster', 'event')，用于创建对应文件夹
     
     Returns:
-        图标文件名（不含路径），如果失败返回空字符串
+        图标相对路径（如 'item/filename.webp' 或 'skill/filename.webp'），如果失败返回空字符串
     """
     if not icon_url:
         return ""
@@ -67,11 +68,23 @@ def download_icon(icon_url, *names):
     try:
         # 生成文件名
         filename = get_icon_filename(*names)
-        filepath = ICONS_DIR / filename
+        
+        # 确定保存目录（根据category创建子文件夹）
+        if category:
+            # 规范化类别名称（item/skill/monster/event）
+            category = category.lower()
+            save_dir = ICONS_DIR / category
+            save_dir.mkdir(parents=True, exist_ok=True)
+            filepath = save_dir / filename
+            relative_path = f"{category}/{filename}"
+        else:
+            # 如果没有指定类别，保存到根目录（向后兼容）
+            filepath = ICONS_DIR / filename
+            relative_path = filename
         
         # 如果文件已存在，跳过下载
         if filepath.exists():
-            return filename
+            return relative_path
         
         # 下载图标
         headers = {
@@ -82,7 +95,7 @@ def download_icon(icon_url, *names):
         if response.status_code == 200:
             with open(filepath, 'wb') as f:
                 f.write(response.content)
-            return filename
+            return relative_path
         else:
             return ""
             
@@ -94,12 +107,14 @@ def get_icon_path(icon_filename):
     """获取图标的完整路径（用于显示）
     
     Args:
-        icon_filename: 图标文件名
+        icon_filename: 图标文件名或相对路径（如 'item/filename.webp' 或 'filename.webp'）
     
     Returns:
         完整路径字符串
     """
     if not icon_filename:
         return ""
+    # icon_filename 可能是相对路径（如 'item/filename.webp'）或文件名（如 'filename.webp'）
+    # 直接拼接即可，Path 会自动处理路径分隔符
     return str(ICONS_DIR / icon_filename)
 

@@ -1,0 +1,42 @@
+{
+  "Burning-Shield": [
+    {
+      "type": "missing_field",
+      "field": "description_zh",
+      "message": "缺少中文描述",
+      "skill_name": "Burning-Shield"
+    }
+  ],
+  "Heat Shield": [
+    {
+      "type": "missing_field",
+      "field": "description_zh",
+      "message": "缺少中文描述",
+      "skill_name": "Heat Shield"
+    }
+  ],
+  "Heat-Shield": [
+    {
+      "type": "missing_field",
+      "field": "description_zh",
+      "message": "缺少中文描述",
+      "skill_name": "Heat-Shield"
+    }
+  ],
+  "Improvised-Heal": [
+    {
+      "type": "missing_field",
+      "field": "description_zh",
+      "message": "缺少中文描述",
+      "skill_name": "Improvised-Heal"
+    }
+  ],
+  "Sick-Burn": [
+    {
+      "type": "icon_download",
+      "message": "图标下载失败 (URL: https://s.bazaardb.gg/v0/z10.0/skill/bfcabfebfdd583d8fcab1028588329b8033559ac@256.webp?v=2)",
+      "icon_url": "https://s.bazaardb.gg/v0/z10.0/skill/bfcabfebfdd583d8fcab1028588329b8033559ac@256.webp?v=2",
+      "skill_name": "Sick-Burn"
+    }
+  ]
+}

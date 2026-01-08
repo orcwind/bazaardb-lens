@@ -1,11 +1,79 @@
-https://bazaardb.gg/search?q=Landscraper&c=items  
+# 爬虫工作流程说明
 
-步骤1：抓取HTML文件
+## 一、物品（Items）和技能（Skills）
 
+### 步骤1：抓取HTML文件
 cd 6.0\crawlers
 python simple_crawler_items_skills.py
+# 生成文件: data/html/items.html, data/html/skills.html
 
-步骤2：提取名称清单
+### 步骤2：提取名称清单
 python fetch_items_skills_names.py
+# 生成文件: data/Json/items_only_list.json, data/Json/skills_only_list.json
 
-python fetch_items_skills_names.py
+### 步骤3：抓取详细信息
+python crawl_items_details.py
+# 生成文件: data/Json/items.json (包含name, name_zh, description_zh, icon等)
+# 图标保存到: data/icon/item/
+
+python crawl_skills_details.py
+# 生成文件: data/Json/skills.json (包含name, name_zh, description_zh, icon等)
+# 图标保存到: data/icon/skill/
+
+---
+
+## 二、怪物（Monsters）
+
+### 步骤1：抓取英文HTML文件
+cd 6.0\crawlers
+python fetch_monsters_html_english.py
+# 生成文件: data/html/monsters_list_page_en.html
+
+### 步骤2：提取所有card URL（按顺序，保留重复）
+python extract_all_cards_from_english_html.py
+# 生成文件: data/Json/temp_monster.json (包含所有card/随机码/名称，按顺序)
+
+### 步骤3：提取怪物中英文名称对应关系
+python extract_monsters_chinese_names_from_html.py
+# 从 data/html/monsters_list_page.html 提取中英文对应关系
+# 生成文件: data/Json/monsters.json (包含name, name_zh, url)
+
+### 步骤4：生成怪物详情（包含技能和物品）
+python generate_monsters_detail_from_temp.py
+# 从 temp_monster.json 解析，识别重复的怪物名称，收集技能和物品
+# 生成文件: data/Json/monsters_detail.json (包含name, name_zh, skills, items)
+
+---
+
+## 三、事件（Events）
+
+### 步骤1：抓取HTML文件（与物品技能一起）
+# 已在步骤1中完成: data/html/events.html
+
+### 步骤2：提取名称清单
+# 需要单独提取事件名称
+
+### 步骤3：抓取详细信息
+python crawl_events_details.py
+# 生成文件: data/Json/events.json
+
+---
+
+## 文件说明
+
+### 输入文件
+- data/html/*.html - 抓取的HTML文件
+- data/Json/*_only_list.json - 名称清单
+
+### 输出文件
+- data/Json/items.json - 物品详细信息（name, name_zh, description_zh, icon等）
+- data/Json/skills.json - 技能详细信息（name, name_zh, description_zh, icon等）
+- data/Json/monsters.json - 怪物中英文名称（name, name_zh, url）
+- data/Json/monsters_detail.json - 怪物详情（name, name_zh, skills[], items[]）
+- data/Json/events.json - 事件详细信息
+
+### 图标文件
+- data/icon/item/ - 物品图标
+- data/icon/skill/ - 技能图标
+- data/icon/monster/ - 怪物图标
+- data/icon/event/ - 事件图标

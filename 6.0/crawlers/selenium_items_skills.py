@@ -16,6 +16,7 @@ import time
 import re
 import requests
 from pathlib import Path
+from html import unescape
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -764,6 +765,295 @@ def extract_all_items_from_search_page(driver, category='items', include_enchant
         traceback.print_exc()
         return []
 
+def extract_all_monsters_or_events_from_search_page(driver, category='monsters'):
+    """从搜索页面直接提取所有怪物或事件的完整JSON数据
+    
+    Args:
+        driver: Selenium WebDriver
+        category: 'monsters' 或 'events'
+    
+    Returns:
+        卡片JSON数据列表（原始JSON对象，未解析）
+    """
+    try:
+        card_type = "CombatEncounter" if category == 'monsters' else "EventEncounter"
+        url = f"https://bazaardb.gg/search?c={category}"
+        print(f"访问搜索页面: {url}")
+        driver.get(url)
+        time.sleep(5)  # 等待页面加载
+        
+        # 滚动加载所有内容
+        print("滚动页面加载所有内容...")
+        no_change_count = 0
+        max_no_change = 3
+        scroll_count = 0
+        max_scrolls = 100
+        
+        while scroll_count < max_scrolls:
+            # 先尝试点击"Load more"按钮（如果有）
+            try:
+                load_more_buttons = driver.find_elements(By.XPATH, "//button[contains(text(), 'Load more') or contains(text(), '加载更多')]")
+                for btn in load_more_buttons:
+                    if btn.is_displayed():
+                        driver.execute_script("arguments[0].click();", btn)
+                        time.sleep(2)
+                        break
+            except:
+                pass
+            
+            # 滚动到底部
+            last_height = driver.execute_script("return document.body.scrollHeight")
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            time.sleep(2)
+            
+            # 检查是否有新内容加载
+            new_height = driver.execute_script("return document.body.scrollHeight")
+            if new_height == last_height:
+                no_change_count += 1
+                if no_change_count >= max_no_change:
+                    print(f"  连续 {max_no_change} 次无新内容，停止滚动")
+                    break
+            else:
+                no_change_count = 0
+            
+            scroll_count += 1
+            if scroll_count % 10 == 0:
+                print(f"  已滚动 {scroll_count} 次...")
+        
+        # 等待最后的内容加载
+        print("  等待内容加载完成...")
+        time.sleep(5)
+        
+        # 从页面HTML中提取所有卡片数据
+        html = driver.page_source
+        print(f"  HTML长度: {len(html)} 字符")
+        
+        # 方法1: 尝试从 initialData.pageCards 提取（如果存在）
+        all_cards_data = []
+        search_pos = 0
+        
+        while True:
+            init_pos = html.find('initialData', search_pos)
+            if init_pos == -1:
+                break
+            
+            search_area_start = init_pos
+            search_area_end = min(len(html), init_pos + 200000)
+            search_area = html[search_area_start:search_area_end]
+            
+            pagecards_key = 'pageCards'
+            key_pos_in_area = search_area.find(pagecards_key)
+            
+            if key_pos_in_area != -1:
+                key_pos = search_area_start + key_pos_in_area
+                bracket_start = html.find('[', key_pos)
+                
+                if bracket_start != -1:
+                    depth = 0
+                    in_string = False
+                    escape = False
+                    bracket_end = -1
+                    
+                    for i in range(bracket_start, len(html)):
+                        ch = html[i]
+                        if escape:
+                            escape = False
+                            continue
+                        if ch == '\\':
+                            escape = True
+                            continue
+                        if ch == '"':
+                            in_string = not in_string
+                            continue
+                        if not in_string:
+                            if ch == '[':
+                                depth += 1
+                            elif ch == ']':
+                                depth -= 1
+                                if depth == 0:
+                                    bracket_end = i
+                                    break
+                    
+                    if bracket_end != -1:
+                        json_str = html[bracket_start:bracket_end + 1]
+                        try:
+                            cards_data = json.loads(json_str)
+                        except:
+                            try:
+                                import ast
+                                decoded_str = ast.literal_eval(f'"{json_str}"')
+                                cards_data = json.loads(decoded_str)
+                            except:
+                                cards_data = None
+                        
+                        if cards_data and isinstance(cards_data, list):
+                            for card in cards_data:
+                                if isinstance(card, dict) and card.get('Type') == card_type:
+                                    card_id = card.get('Id', '')
+                                    if card_id:
+                                        existing_ids = [c.get('Id', '') for c in all_cards_data]
+                                        if card_id not in existing_ids:
+                                            all_cards_data.append(card)
+                                    else:
+                                        card_name = card.get('_originalTitleText', '') or card.get('Title', {}).get('Text', '')
+                                        existing_names = [c.get('_originalTitleText', '') or c.get('Title', {}).get('Text', '') for c in all_cards_data]
+                                        if card_name and card_name not in existing_names:
+                                            all_cards_data.append(card)
+            
+            search_pos = init_pos + 1
+        
+        # 方法2: 如果initialData.pageCards中没有找到，直接从HTML中搜索
+        if not all_cards_data:
+            print(f"  initialData.pageCards中未找到{card_type}，尝试直接从HTML提取...")
+            
+            # 先尝试转义版本（HTML中数据通常是转义的）
+            escaped_pattern = rf'\\"Type\\":\\"{re.escape(card_type)}\\"[^}}]*?\\"_originalTitleText\\":\s*\\"([^"]+)\\"'
+            matches = re.findall(escaped_pattern, html, re.DOTALL)
+            
+            print(f"  找到 {len(matches)} 个转义的匹配")
+            processed_names = set()
+            
+            for match in matches:
+                clean_name = unescape(match).strip().rstrip('\\')
+                if clean_name in processed_names:
+                    continue
+                
+                # 找到这个转义的 _originalTitleText 的位置
+                escaped_title_pattern = rf'\\"Type\\":\\"{re.escape(card_type)}\\"[^}}]*?\\"_originalTitleText\\":\s*\\"{re.escape(match)}\\"'
+                title_match = re.search(escaped_title_pattern, html, re.DOTALL)
+                
+                if title_match:
+                    match_start = title_match.start()
+                    # 向前查找对象的开始 {（可能是转义的 \{）
+                    # 先尝试找到最近的未转义的 {
+                    obj_start = -1
+                    for i in range(match_start, max(0, match_start - 20000), -1):
+                        if html[i] == '{' and (i == 0 or html[i-1] != '\\'):
+                            obj_start = i
+                            break
+                    
+                    if obj_start != -1:
+                        # 向后查找对象的结束 }（需要处理转义）
+                        depth = 0
+                        in_string = False
+                        escape = False
+                        obj_end = -1
+                        
+                        for i in range(obj_start, min(len(html), obj_start + 100000)):
+                            ch = html[i]
+                            if escape:
+                                escape = False
+                                continue
+                            if ch == '\\':
+                                escape = True
+                                continue
+                            if ch == '"':
+                                in_string = not in_string
+                                continue
+                            if not in_string:
+                                if ch == '{':
+                                    depth += 1
+                                elif ch == '}':
+                                    depth -= 1
+                                    if depth == 0:
+                                        obj_end = i
+                                        break
+                        
+                        if obj_end != -1:
+                            json_str = html[obj_start:obj_end + 1]
+                            try:
+                                # 尝试直接解析
+                                card_data = json.loads(json_str)
+                            except:
+                                try:
+                                    # 如果失败，尝试解码转义字符
+                                    import ast
+                                    decoded_str = ast.literal_eval(f'"{json_str}"')
+                                    card_data = json.loads(decoded_str)
+                                except:
+                                    card_data = None
+                            
+                            if card_data and isinstance(card_data, dict) and card_data.get('Type') == card_type:
+                                original_title = card_data.get('_originalTitleText', '')
+                                if original_title and original_title not in processed_names:
+                                    all_cards_data.append(card_data)
+                                    processed_names.add(original_title)
+            
+            # 如果转义版本没找到，尝试未转义版本
+            if not all_cards_data:
+                print(f"  转义版本未找到，尝试未转义版本...")
+                pattern = rf'"Type"\s*:\s*"{re.escape(card_type)}"[^}}]{{0,5000}}?"_originalTitleText"\s*:\s*"([^"]+)"'
+                matches = re.findall(pattern, html, re.DOTALL)
+                
+                print(f"  找到 {len(matches)} 个未转义的匹配")
+                processed_names = set()
+                
+                for match in matches:
+                    clean_name = unescape(match).strip()
+                    if clean_name in processed_names:
+                        continue
+                    
+                    # 找到这个 _originalTitleText 的位置
+                    title_pattern = rf'"Type"\s*:\s*"{re.escape(card_type)}"[^}}]{{0,5000}}?"_originalTitleText"\s*:\s*"{re.escape(match)}"'
+                    title_match = re.search(title_pattern, html, re.DOTALL)
+                    
+                    if title_match:
+                        match_start = title_match.start()
+                        # 向前查找对象的开始 {
+                        obj_start = html.rfind('{', max(0, match_start - 10000), match_start)
+                        if obj_start != -1:
+                            # 向后查找对象的结束 }
+                            depth = 0
+                            in_string = False
+                            escape = False
+                            obj_end = -1
+                            
+                            for i in range(obj_start, min(len(html), obj_start + 50000)):
+                                ch = html[i]
+                                if escape:
+                                    escape = False
+                                    continue
+                                if ch == '\\':
+                                    escape = True
+                                    continue
+                                if ch == '"':
+                                    in_string = not in_string
+                                    continue
+                                if not in_string:
+                                    if ch == '{':
+                                        depth += 1
+                                    elif ch == '}':
+                                        depth -= 1
+                                        if depth == 0:
+                                            obj_end = i
+                                            break
+                            
+                            if obj_end != -1:
+                                json_str = html[obj_start:obj_end + 1]
+                                try:
+                                    card_data = json.loads(json_str)
+                                    if card_data.get('Type') == card_type:
+                                        original_title = card_data.get('_originalTitleText', '')
+                                        if original_title and original_title not in processed_names:
+                                            all_cards_data.append(card_data)
+                                            processed_names.add(original_title)
+                                except:
+                                    pass
+        
+        print(f"  从HTML中提取到 {len(all_cards_data)} 个{category}的完整数据")
+        
+        if not all_cards_data:
+            print(f"  ✗ 未能从页面提取{category}数据")
+            return []
+        
+        return all_cards_data
+        
+    except Exception as e:
+        print(f"✗ 从搜索页面提取失败: {e}")
+        import traceback
+        traceback.print_exc()
+        return []
+
 def extract_card_names_from_detail_page(driver, html_content, original_card_name):
     """从详情页HTML中提取中英文名称"""
     names = {'name': '', 'name_zh': ''}
@@ -854,10 +1144,11 @@ def extract_card_names_from_detail_page(driver, html_content, original_card_name
 
 def extract_card_data_from_search_page(driver, card_name, category='items'):
     """
-    从搜索页面提取物品/技能的完整JSON数据
+    从搜索页面提取物品/技能/怪物/事件的完整JSON数据
     
     URL格式: https://bazaardb.gg/search?q={英文名}&c={category}
-    从页面HTML中提取 initialData.pageCards[0] 的JSON数据
+    对于items/skills: 从页面HTML中提取 initialData.pageCards[0] 的JSON数据
+    对于monsters/events: 使用正则表达式从HTML中提取完整的JSON对象
     
     Returns:
         dict: 包含所有卡片数据的字典，如果失败返回None
@@ -870,6 +1161,11 @@ def extract_card_data_from_search_page(driver, card_name, category='items'):
         
         html = driver.page_source
         
+        # 对于怪物和事件，使用不同的提取方法
+        if category in ['monsters', 'events']:
+            return extract_monster_or_event_data_from_html(html, card_name, category)
+        
+        # 对于物品和技能，使用原有的 initialData.pageCards 方法
         # 查找 initialData.pageCards 的JSON数据
         # 方法：先找到 "initialData"，然后找到其中的 "pageCards"
         initial_data_key = 'initialData'

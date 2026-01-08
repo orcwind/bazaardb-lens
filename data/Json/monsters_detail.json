@@ -1,0 +1,4505 @@
+[
+  {
+    "name_zh": "食蕉兽",
+    "name": "Banannibal",
+    "skills": [
+      {
+        "name": "Healthy Jolt",
+        "name_zh": "活力冲击"
+      }
+    ],
+    "items": [
+      {
+        "name": "Med Kit",
+        "name_zh": "医疗包"
+      },
+      {
+        "name": "Bluenanas",
+        "name_zh": "蓝蕉"
+      },
+      {
+        "name": "Duct Tape",
+        "name_zh": "布胶带"
+      }
+    ]
+  },
+  {
+    "name_zh": "獠牙英格狼",
+    "name": "Fanged Inglet",
+    "skills": [
+      {
+        "name": "Deadly Eye",
+        "name_zh": "致命眼光"
+      }
+    ],
+    "items": [
+      {
+        "name": "Pelt",
+        "name_zh": "兽皮"
+      },
+      {
+        "name": "Fang",
+        "name_zh": "獠牙"
+      },
+      {
+        "name": "Fang",
+        "name_zh": "獠牙"
+      },
+      {
+        "name": "Pelt",
+        "name_zh": "兽皮"
+      }
+    ]
+  },
+  {
+    "name_zh": "凯沃斯雄蜂",
+    "name": "Kyver Drone",
+    "skills": [
+      {
+        "name": "Trained",
+        "name_zh": "受训"
+      }
+    ],
+    "items": [
+      {
+        "name": "Insect Wing",
+        "name_zh": "虫翅"
+      },
+      {
+        "name": "Stinger",
+        "name_zh": "毒刺"
+      },
+      {
+        "name": "Langxian",
+        "name_zh": "狼筅"
+      },
+      {
+        "name": "Eagle Talisman",
+        "name_zh": "鹰之护符"
+      }
+    ]
+  },
+  {
+    "name_zh": "火灵",
+    "name": "Pyro",
+    "skills": [
+      {
+        "name": "Fiery",
+        "name_zh": "炽焰"
+      }
+    ],
+    "items": [
+      {
+        "name": "Cinders",
+        "name_zh": "余烬"
+      },
+      {
+        "name": "Lighter",
+        "name_zh": "打火机"
+      },
+      {
+        "name": "Cinders",
+        "name_zh": "余烬"
+      }
+    ]
+  },
+  {
+    "name_zh": "怨念和服",
+    "name": "Haunted Kimono",
+    "skills": [
+      {
+        "name": "Haunting Flight",
+        "name_zh": "鬼魅飘飞"
+      }
+    ],
+    "items": [
+      {
+        "name": "Scrap",
+        "name_zh": "废料"
+      },
+      {
+        "name": "Silk Scarf",
+        "name_zh": "丝绸围巾"
+      },
+      {
+        "name": "Scrap",
+        "name_zh": "废料"
+      }
+    ]
+  },
+  {
+    "name_zh": "毒蛇",
+    "name": "Viper",
+    "skills": [
+      {
+        "name": "Lash Out",
+        "name_zh": "狂怒一击"
+      }
+    ],
+    "items": [
+      {
+        "name": "Gland",
+        "name_zh": "腺体"
+      },
+      {
+        "name": "Fang",
+        "name_zh": "獠牙"
+      },
+      {
+        "name": "Fang",
+        "name_zh": "獠牙"
+      },
+      {
+        "name": "Extract",
+        "name_zh": "提取物"
+      }
+    ]
+  },
+  {
+    "name_zh": "椰子蟹",
+    "name": "Coconut Crab",
+    "skills": [
+      {
+        "name": "Hard Shell",
+        "name_zh": "硬壳"
+      }
+    ],
+    "items": [
+      {
+        "name": "Coconut",
+        "name_zh": "椰子"
+      },
+      {
+        "name": "Crusher Claw",
+        "name_zh": "碾骨爪"
+      },
+      {
+        "name": "Sea Shell",
+        "name_zh": "海螺壳"
+      }
+    ]
+  },
+  {
+    "name_zh": "暴走破碎机",
+    "name": "Rogue Scrapper",
+    "skills": [
+      {
+        "name": "Rust",
+        "name_zh": "铁锈"
+      }
+    ],
+    "items": [
+      {
+        "name": "Scrap",
+        "name_zh": "废料"
+      },
+      {
+        "name": "Gearnola Bar",
+        "name_zh": "机能棒"
+      },
+      {
+        "name": "Junkyard Club",
+        "name_zh": "废品场大棒"
+      },
+      {
+        "name": "Junkyard Repairbot",
+        "name_zh": "废品场维修机器人"
+      },
+      {
+        "name": "Barbed Wire",
+        "name_zh": "尖刺铁丝网"
+      },
+      {
+        "name": "Med Kit",
+        "name_zh": "医疗包"
+      }
+    ]
+  },
+  {
+    "name_zh": "蛮猪战士",
+    "name": "Boarrior",
+    "skills": [
+      {
+        "name": "Frontal Shielding",
+        "name_zh": "前向护盾"
+      }
+    ],
+    "items": [
+      {
+        "name": "Scrap",
+        "name_zh": "废料"
+      },
+      {
+        "name": "Tusked Helm",
+        "name_zh": "獠牙头盔"
+      },
+      {
+        "name": "Old Sword",
+        "name_zh": "古董剑"
+      },
+      {
+        "name": "Hatchet",
+        "name_zh": "手斧"
+      },
+      {
+        "name": "Lumboars",
+        "name_zh": "木桨"
+      },
+      {
+        "name": "Temple Expedition Ticket",
+        "name_zh": "神庙探险券"
+      },
+      {
+        "name": "Sharpening Stone",
+        "name_zh": "磨刀石"
+      }
+    ]
+  },
+  {
+    "name_zh": "贪婪窃贼",
+    "name": "Covetous Thief",
+    "skills": [
+      {
+        "name": "Pickpocket",
+        "name_zh": "扒手"
+      },
+      {
+        "name": "Keen Eye",
+        "name_zh": "敏锐眼光"
+      }
+    ],
+    "items": [
+      {
+        "name": "Safe",
+        "name_zh": "保险箱"
+      },
+      {
+        "name": "Shadowed Cloak",
+        "name_zh": "暗影斗篷"
+      },
+      {
+        "name": "Concealed Dagger",
+        "name_zh": "藏刃匕首"
+      },
+      {
+        "name": "Covetous Raven",
+        "name_zh": "贪婪渡鸦"
+      },
+      {
+        "name": "Sharpening Stone",
+        "name_zh": "磨刀石"
+      }
+    ]
+  },
+  {
+    "name_zh": "怪奇以太匠",
+    "name": "Eccentric Etherwright",
+    "skills": [
+      {
+        "name": "Rigged",
+        "name_zh": "暗做手脚"
+      }
+    ],
+    "items": [
+      {
+        "name": "Temple Expedition Ticket",
+        "name_zh": "神庙探险券"
+      },
+      {
+        "name": "Scrap",
+        "name_zh": "废料"
+      },
+      {
+        "name": "Force Field",
+        "name_zh": "力场"
+      },
+      {
+        "name": "Goggles",
+        "name_zh": "护目镜"
+      },
+      {
+        "name": "Barbed Wire",
+        "name_zh": "尖刺铁丝网"
+      }
+    ]
+  },
+  {
+    "name_zh": "腹语者",
+    "name": "Ventriloquist",
+    "skills": [
+      {
+        "name": "Free Ride",
+        "name_zh": "免费乘车"
+      }
+    ],
+    "items": [
+      {
+        "name": "Eagle Talisman",
+        "name_zh": "鹰之护符"
+      },
+      {
+        "name": "Honing Steel",
+        "name_zh": "淬锋钢"
+      },
+      {
+        "name": "Friendly Doll",
+        "name_zh": "友好玩偶"
+      },
+      {
+        "name": "Switchblade",
+        "name_zh": "弹簧刀"
+      },
+      {
+        "name": "Butterfly Swords",
+        "name_zh": "蝶剑"
+      },
+      {
+        "name": "Old Sword",
+        "name_zh": "古董剑"
+      },
+      {
+        "name": "Sharpening Stone",
+        "name_zh": "磨刀石"
+      },
+      {
+        "name": "Broken Shackles",
+        "name_zh": "打破镣铐"
+      }
+    ]
+  },
+  {
+    "name_zh": "初学学徒",
+    "name": "Dabbling Apprentice",
+    "skills": [
+      {
+        "name": "Panic",
+        "name_zh": "恐慌"
+      }
+    ],
+    "items": [
+      {
+        "name": "Temple Expedition Ticket",
+        "name_zh": "神庙探险券"
+      },
+      {
+        "name": "Bottled Lightning",
+        "name_zh": "瓶装闪电"
+      },
+      {
+        "name": "Tazidian Dagger",
+        "name_zh": "塔兹迪亚匕首"
+      },
+      {
+        "name": "Fire Potion",
+        "name_zh": "火焰药水"
+      },
+      {
+        "name": "Catalyst",
+        "name_zh": "催化剂"
+      }
+    ]
+  },
+  {
+    "name_zh": "焰风勇士",
+    "name": "Tempest Bravo",
+    "skills": [
+      {
+        "name": "Flamedancer",
+        "name_zh": "烈焰舞者"
+      }
+    ],
+    "items": [
+      {
+        "name": "Cinders",
+        "name_zh": "余烬"
+      },
+      {
+        "name": "Bar of Gold",
+        "name_zh": "金条"
+      },
+      {
+        "name": "Cutlass",
+        "name_zh": "弯刀"
+      },
+      {
+        "name": "Cutlass",
+        "name_zh": "弯刀"
+      },
+      {
+        "name": "Bar of Gold",
+        "name_zh": "金条"
+      },
+      {
+        "name": "Sharpening Stone",
+        "name_zh": "磨刀石"
+      }
+    ]
+  },
+  {
+    "name_zh": "霜猴勇士",
+    "name": "Frost Street Challenger",
+    "skills": [
+      {
+        "name": "Snowstorm",
+        "name_zh": "雪暴"
+      }
+    ],
+    "items": [
+      {
+        "name": "Icicle",
+        "name_zh": "冰锥"
+      },
+      {
+        "name": "Weights",
+        "name_zh": "壶铃"
+      },
+      {
+        "name": "Handaxe",
+        "name_zh": "手斧"
+      },
+      {
+        "name": "Frozen Bludgeon",
+        "name_zh": "冻结殴打"
+      },
+      {
+        "name": "Snow Globe",
+        "name_zh": "雪花玻璃球"
+      }
+    ]
+  },
+  {
+    "name_zh": "产品演示员",
+    "name": "Product Demonstrator",
+    "skills": [
+      {
+        "name": "Product Showcase",
+        "name_zh": "产品展示台"
+      }
+    ],
+    "items": [
+      {
+        "name": "Cinders",
+        "name_zh": "余烬"
+      },
+      {
+        "name": "Eject Button",
+        "name_zh": "紧急弹射按钮"
+      },
+      {
+        "name": "Ice Bomb",
+        "name_zh": "寒冰炸弹"
+      },
+      {
+        "name": "Ornithopter",
+        "name_zh": "扑翼机"
+      },
+      {
+        "name": "Fire Bomb",
+        "name_zh": "燃烧炸弹"
+      },
+      {
+        "name": "Paper Airplane",
+        "name_zh": "纸飞机"
+      },
+      {
+        "name": "Gunpowder",
+        "name_zh": "火药"
+      }
+    ]
+  },
+  {
+    "name_zh": "街头玩家",
+    "name": "Street Gamer",
+    "skills": [
+      {
+        "name": "Small Refresh",
+        "name_zh": "精神微振"
+      }
+    ],
+    "items": [
+      {
+        "name": "Red Piggles R",
+        "name_zh": "红色小圆猪 R"
+      },
+      {
+        "name": "Premium Red Piggles",
+        "name_zh": "高级红色小圆猪"
+      },
+      {
+        "name": "Piggles",
+        "name_zh": "小圆猪"
+      },
+      {
+        "name": "Piggles Protectors",
+        "name_zh": "小圆猪守卫"
+      },
+      {
+        "name": "Yellow Piggles L",
+        "name_zh": "黄色小圆猪 L"
+      },
+      {
+        "name": "Temple Expedition Ticket",
+        "name_zh": "神庙探险券"
+      }
+    ]
+  },
+  {
+    "name_zh": "巨蚊",
+    "name": "Giant Mosquito",
+    "skills": [
+      {
+        "name": "Trained",
+        "name_zh": "受训"
+      },
+      {
+        "name": "Rush",
+        "name_zh": "疾速"
+      },
+      {
+        "name": "Keen Eye",
+        "name_zh": "敏锐眼光"
+      }
+    ],
+    "items": [
+      {
+        "name": "Insect Wing",
+        "name_zh": "虫翅"
+      },
+      {
+        "name": "Stinger",
+        "name_zh": "毒刺"
+      },
+      {
+        "name": "Venom",
+        "name_zh": "毒液"
+      },
+      {
+        "name": "Proboscis",
+        "name_zh": "口器"
+      },
+      {
+        "name": "Amber",
+        "name_zh": "琥珀"
+      },
+      {
+        "name": "Mothmeal",
+        "name_zh": "飞蛾粉末"
+      },
+      {
+        "name": "Flying Potion",
+        "name_zh": "飞行药水"
+      },
+      {
+        "name": "Insect Wing",
+        "name_zh": "虫翅"
+      }
+    ]
+  },
+  {
+    "name_zh": "飞车暴徒",
+    "name": "Hoverbike Hooligan",
+    "skills": [
+      {
+        "name": "Gunner",
+        "name_zh": "炮手"
+      },
+      {
+        "name": "The Right Tool",
+        "name_zh": "趁手工具"
+      }
+    ],
+    "items": [
+      {
+        "name": "Gunpowder",
+        "name_zh": "火药"
+      },
+      {
+        "name": "Laser Pistol",
+        "name_zh": "激光手枪"
+      },
+      {
+        "name": "SMG",
+        "name_zh": "冲锋枪"
+      },
+      {
+        "name": "Bolas",
+        "name_zh": "流星索"
+      },
+      {
+        "name": "Weakpoint Detector",
+        "name_zh": "弱点探测器"
+      },
+      {
+        "name": "Grappling Hook",
+        "name_zh": "抓钩"
+      },
+      {
+        "name": "Eagle Talisman",
+        "name_zh": "鹰之护符"
+      },
+      {
+        "name": "Venomous Dose",
+        "name_zh": "毒液注射"
+      },
+      {
+        "name": "Butter",
+        "name_zh": "黄油"
+      },
+      {
+        "name": "Bread Knife",
+        "name_zh": "面包刀"
+      },
+      {
+        "name": "Bread",
+        "name_zh": "面包"
+      },
+      {
+        "name": "Rolling Pin",
+        "name_zh": "擀面杖"
+      }
+    ]
+  },
+  {
+    "name_zh": "锅炉斗士",
+    "name": "Boilerroom Brawler",
+    "skills": [
+      {
+        "name": "Flashy Mechanic",
+        "name_zh": "炫技机械师"
+      },
+      {
+        "name": "Time to Tinker",
+        "name_zh": "修理时间"
+      }
+    ],
+    "items": [
+      {
+        "name": "Sharpening Stone",
+        "name_zh": "磨刀石"
+      },
+      {
+        "name": "Orbital Polisher",
+        "name_zh": "抛光机"
+      },
+      {
+        "name": "Goggles",
+        "name_zh": "护目镜"
+      },
+      {
+        "name": "Toolbox",
+        "name_zh": "工具箱"
+      },
+      {
+        "name": "Multitool",
+        "name_zh": "瑞士军刀"
+      },
+      {
+        "name": "Energy Potion",
+        "name_zh": "能量药水"
+      },
+      {
+        "name": "Eagle Talisman",
+        "name_zh": "鹰之护符"
+      }
+    ]
+  },
+  {
+    "name_zh": "荒原旋舞者",
+    "name": "Outlands Dervish",
+    "skills": [
+      {
+        "name": "Keen Eye",
+        "name_zh": "敏锐眼光"
+      }
+    ],
+    "items": [
+      {
+        "name": "Bar of Gold",
+        "name_zh": "金条"
+      },
+      {
+        "name": "Shoe Blade",
+        "name_zh": "靴里剑"
+      },
+      {
+        "name": "Clockwork Blades",
+        "name_zh": "发条匕首"
+      },
+      {
+        "name": "Clockwork Blades",
+        "name_zh": "发条匕首"
+      },
+      {
+        "name": "Shoe Blade",
+        "name_zh": "靴里剑"
+      },
+      {
+        "name": "Bar of Gold",
+        "name_zh": "金条"
+      }
+    ]
+  },
+  {
+    "name_zh": "血礁奇兵",
+    "name": "Bloodreef Raider",
+    "skills": [
+      {
+        "name": "Ammo Stash",
+        "name_zh": "弹药储存箱"
+      }
+    ],
+    "items": [
+      {
+        "name": "Bar of Gold",
+        "name_zh": "金条"
+      },
+      {
+        "name": "Powder Horn",
+        "name_zh": "火药角"
+      },
+      {
+        "name": "Revolver",
+        "name_zh": "左轮手枪"
+      },
+      {
+        "name": "Cannonball",
+        "name_zh": "炮弹"
+      },
+      {
+        "name": "Invulnerability Potion",
+        "name_zh": "无敌药水"
+      }
+    ]
+  },
+  {
+    "name_zh": "退休人员",
+    "name": "Retiree",
+    "skills": [
+      {
+        "name": "Extreme Comfort",
+        "name_zh": "极度舒适"
+      }
+    ],
+    "items": [
+      {
+        "name": "Piggy Bank",
+        "name_zh": "猪猪存钱罐"
+      },
+      {
+        "name": "Succulents",
+        "name_zh": "多肉植物"
+      },
+      {
+        "name": "Golf Clubs",
+        "name_zh": "高尔夫球杆"
+      },
+      {
+        "name": "Bushel",
+        "name_zh": "果篮"
+      },
+      {
+        "name": "Bandages",
+        "name_zh": "绷带"
+      },
+      {
+        "name": "Med Kit",
+        "name_zh": "医疗包"
+      }
+    ]
+  },
+  {
+    "name_zh": "阿海克萨",
+    "name": "Ahexa",
+    "skills": [],
+    "items": [
+      {
+        "name": "Crypto",
+        "name_zh": "加密货币"
+      },
+      {
+        "name": "Rapid Injection System",
+        "name_zh": "快速注射系统"
+      },
+      {
+        "name": "Solar Farm",
+        "name_zh": "太阳能农场"
+      },
+      {
+        "name": "Virus",
+        "name_zh": "病毒"
+      },
+      {
+        "name": "Crypto",
+        "name_zh": "加密货币"
+      }
+    ]
+  },
+  {
+    "name_zh": "乡巴佬蜥蜴",
+    "name": "Hellbilly",
+    "skills": [
+      {
+        "name": "Left-Handed",
+        "name_zh": "左撇子"
+      }
+    ],
+    "items": [
+      {
+        "name": "Temple Expedition Ticket",
+        "name_zh": "神庙探险券"
+      },
+      {
+        "name": "Med Kit",
+        "name_zh": "医疗包"
+      },
+      {
+        "name": "Haladie",
+        "name_zh": "双头刀"
+      },
+      {
+        "name": "Ganjo",
+        "name_zh": "甘卓琴"
+      },
+      {
+        "name": "Textiles",
+        "name_zh": "纺织品"
+      },
+      {
+        "name": "Scrap",
+        "name_zh": "废料"
+      }
+    ]
+  },
+  {
+    "name_zh": "马力亚纳斯王子",
+    "name": "Prince Marianas",
+    "skills": [
+      {
+        "name": "Slowed Targets",
+        "name_zh": "减速目标"
+      }
+    ],
+    "items": [
+      {
+        "name": "Temple Expedition Ticket",
+        "name_zh": "神庙探险券"
+      },
+      {
+        "name": "Coconut",
+        "name_zh": "椰子"
+      },
+      {
+        "name": "Chum",
+        "name_zh": "鱼饵"
+      },
+      {
+        "name": "Piranha",
+        "name_zh": "食人鱼"
+      },
+      {
+        "name": "IllusoRay",
+        "name_zh": "迷幻蝠鲼"
+      },
+      {
+        "name": "Narwhal",
+        "name_zh": "独角鲸"
+      },
+      {
+        "name": "Electric Eels",
+        "name_zh": "电鳗"
+      },
+      {
+        "name": "Citrus",
+        "name_zh": "柑橘"
+      }
+    ]
+  },
+  {
+    "name_zh": "舞火大师",
+    "name": "Flame Juggler",
+    "skills": [
+      {
+        "name": "Burst of Flame",
+        "name_zh": "烈焰爆发"
+      }
+    ],
+    "items": [
+      {
+        "name": "Lighter",
+        "name_zh": "打火机"
+      },
+      {
+        "name": "Magma Core",
+        "name_zh": "岩浆核心"
+      },
+      {
+        "name": "Magma Core",
+        "name_zh": "岩浆核心"
+      },
+      {
+        "name": "Magma Core",
+        "name_zh": "岩浆核心"
+      },
+      {
+        "name": "Magma Core",
+        "name_zh": "岩浆核心"
+      },
+      {
+        "name": "Cinders",
+        "name_zh": "余烬"
+      }
+    ]
+  },
+  {
+    "name_zh": "发条爷爷",
+    "name": "Grandfather Klok",
+    "skills": [
+      {
+        "name": "Precision Tools",
+        "name_zh": "精密工具"
+      },
+      {
+        "name": "Time to Tinker",
+        "name_zh": "修理时间"
+      }
+    ],
+    "items": [
+      {
+        "name": "Multitool",
+        "name_zh": "瑞士军刀"
+      },
+      {
+        "name": "Hands of Time",
+        "name_zh": "时光指针"
+      },
+      {
+        "name": "Rivet Gun",
+        "name_zh": "铆钉枪"
+      },
+      {
+        "name": "Atomic Clock",
+        "name_zh": "原子钟"
+      },
+      {
+        "name": "Precision Calipers",
+        "name_zh": "精密卡尺"
+      }
+    ]
+  },
+  {
+    "name_zh": "精致决斗士",
+    "name": "Preening Duelist",
+    "skills": [
+      {
+        "name": "All Talk",
+        "name_zh": "光说不练"
+      }
+    ],
+    "items": [
+      {
+        "name": "Gunpowder",
+        "name_zh": "火药"
+      },
+      {
+        "name": "Powder Horn",
+        "name_zh": "火药角"
+      },
+      {
+        "name": "Revolver",
+        "name_zh": "左轮手枪"
+      },
+      {
+        "name": "Cannonball",
+        "name_zh": "炮弹"
+      },
+      {
+        "name": "Pistol Sword",
+        "name_zh": "刺刀手枪"
+      },
+      {
+        "name": "Throwing Knives",
+        "name_zh": "投掷飞刀"
+      },
+      {
+        "name": "Gunpowder",
+        "name_zh": "火药"
+      }
+    ]
+  },
+  {
+    "name_zh": "剑齿虎",
+    "name": "Sabretooth",
+    "skills": [
+      {
+        "name": "Diamond Fangs",
+        "name_zh": "钻石獠牙"
+      }
+    ],
+    "items": [
+      {
+        "name": "Pelt",
+        "name_zh": "兽皮"
+      },
+      {
+        "name": "Pelt",
+        "name_zh": "兽皮"
+      },
+      {
+        "name": "Pelt",
+        "name_zh": "兽皮"
+      },
+      {
+        "name": "Pelt",
+        "name_zh": "兽皮"
+      },
+      {
+        "name": "Fang",
+        "name_zh": "獠牙"
+      },
+      {
+        "name": "Fang",
+        "name_zh": "獠牙"
+      },
+      {
+        "name": "Pelt",
+        "name_zh": "兽皮"
+      },
+      {
+        "name": "Pelt",
+        "name_zh": "兽皮"
+      },
+      {
+        "name": "Pelt",
+        "name_zh": "兽皮"
+      },
+      {
+        "name": "Pelt",
+        "name_zh": "兽皮"
+      }
+    ]
+  },
+  {
+    "name_zh": "哈库维火箭兵",
+    "name": "Harkuvian Rocket Trooper",
+    "skills": [
+      {
+        "name": "Flashy Reload",
+        "name_zh": "炫技装弹"
+      },
+      {
+        "name": "Keen Eye",
+        "name_zh": "敏锐眼光"
+      },
+      {
+        "name": "Gunner",
+        "name_zh": "炮手"
+      }
+    ],
+    "items": [
+      {
+        "name": "Eagle Talisman",
+        "name_zh": "鹰之护符"
+      },
+      {
+        "name": "Shadowed Cloak",
+        "name_zh": "暗影斗篷"
+      },
+      {
+        "name": "Harkuvian Launcher",
+        "name_zh": "哈库维发射器"
+      },
+      {
+        "name": "Rocket Boots",
+        "name_zh": "火箭靴"
+      },
+      {
+        "name": "Goggles",
+        "name_zh": "护目镜"
+      },
+      {
+        "name": "Gunpowder",
+        "name_zh": "火药"
+      }
+    ]
+  },
+  {
+    "name_zh": "地狱使者",
+    "name": "Infernal Envoy",
+    "skills": [
+      {
+        "name": "Vengeance",
+        "name_zh": "复仇"
+      }
+    ],
+    "items": [
+      {
+        "name": "Fire Claw",
+        "name_zh": "火爪"
+      },
+      {
+        "name": "Cinders",
+        "name_zh": "余烬"
+      },
+      {
+        "name": "Sunlight Spear",
+        "name_zh": "日光矛"
+      },
+      {
+        "name": "Cinders",
+        "name_zh": "余烬"
+      },
+      {
+        "name": "Fire Claw",
+        "name_zh": "火爪"
+      }
+    ]
+  },
+  {
+    "name_zh": "凯沃斯指挥官",
+    "name": "Kyver Commander",
+    "skills": [
+      {
+        "name": "Counterstrike",
+        "name_zh": "反击"
+      }
+    ],
+    "items": [
+      {
+        "name": "Temple Expedition Ticket",
+        "name_zh": "神庙探险券"
+      },
+      {
+        "name": "Insect Wing",
+        "name_zh": "虫翅"
+      },
+      {
+        "name": "Junkyard Lance",
+        "name_zh": "废品场长枪"
+      },
+      {
+        "name": "Busy Bee",
+        "name_zh": "工蜂"
+      },
+      {
+        "name": "Busy Bee",
+        "name_zh": "工蜂"
+      },
+      {
+        "name": "Busy Bee",
+        "name_zh": "工蜂"
+      },
+      {
+        "name": "Insect Wing",
+        "name_zh": "虫翅"
+      }
+    ]
+  },
+  {
+    "name_zh": "戈尔贡贵妇",
+    "name": "Gorgon Noble",
+    "skills": [
+      {
+        "name": "Petrifying Gaze",
+        "name_zh": "石化凝视"
+      },
+      {
+        "name": "Paralytic Poison",
+        "name_zh": "麻痹剧毒"
+      },
+      {
+        "name": "Initial Dose",
+        "name_zh": "最初一剂"
+      }
+    ],
+    "items": [
+      {
+        "name": "Temple Expedition Ticket",
+        "name_zh": "神庙探险券"
+      },
+      {
+        "name": "Black Rose",
+        "name_zh": "黑玫瑰"
+      },
+      {
+        "name": "Clockwork Blades",
+        "name_zh": "发条匕首"
+      },
+      {
+        "name": "Nightshade",
+        "name_zh": "颠茄"
+      },
+      {
+        "name": "Trained Spider",
+        "name_zh": "驯化蜘蛛"
+      },
+      {
+        "name": "Basilisk Fang",
+        "name_zh": "蛇怪之牙"
+      }
+    ]
+  },
+  {
+    "name_zh": "改装小队",
+    "name": "Mod Squad",
+    "skills": [
+      {
+        "name": "Beautiful Friendship",
+        "name_zh": "美好友谊"
+      }
+    ],
+    "items": [
+      {
+        "name": "Crypto",
+        "name_zh": "加密货币"
+      },
+      {
+        "name": "First Aiden",
+        "name_zh": "急救艾登"
+      },
+      {
+        "name": "Chris Army Knife",
+        "name_zh": "克里斯军刀"
+      },
+      {
+        "name": "Bill Dozer",
+        "name_zh": "推土比尔"
+      },
+      {
+        "name": "Bomb Squad",
+        "name_zh": "炸弹小队"
+      },
+      {
+        "name": "Char Cole",
+        "name_zh": "炭火科尔"
+      },
+      {
+        "name": "Crypto",
+        "name_zh": "加密货币"
+      }
+    ]
+  },
+  {
+    "name_zh": "垃圾镇镇长",
+    "name": "Trashtown Mayor",
+    "skills": [
+      {
+        "name": "Augmented Defenses",
+        "name_zh": "增强防御"
+      },
+      {
+        "name": "Augmented Weaponry",
+        "name_zh": "增强军火"
+      }
+    ],
+    "items": [
+      {
+        "name": "Temple Expedition Ticket",
+        "name_zh": "神庙探险券"
+      },
+      {
+        "name": "Sharpening Stone",
+        "name_zh": "磨刀石"
+      },
+      {
+        "name": "Brass Knuckles",
+        "name_zh": "黄铜拳套"
+      },
+      {
+        "name": "Dog",
+        "name_zh": "狗"
+      },
+      {
+        "name": "Temporary Shelter",
+        "name_zh": "临时避难所"
+      },
+      {
+        "name": "Pepper Spray",
+        "name_zh": "辣椒喷雾"
+      }
+    ]
+  },
+  {
+    "name_zh": "辣火狂徒",
+    "name": "Scovyle",
+    "skills": [
+      {
+        "name": "Fiery",
+        "name_zh": "炽焰"
+      }
+    ],
+    "items": [
+      {
+        "name": "Cinders",
+        "name_zh": "余烬"
+      },
+      {
+        "name": "Curry",
+        "name_zh": "咖喱"
+      },
+      {
+        "name": "Skillet",
+        "name_zh": "煎锅"
+      },
+      {
+        "name": "Black Pepper",
+        "name_zh": "黑胡椒"
+      },
+      {
+        "name": "Hot Sauce",
+        "name_zh": "辣酱"
+      },
+      {
+        "name": "Pickled Peppers",
+        "name_zh": "腌辣椒"
+      }
+    ]
+  },
+  {
+    "name_zh": "英格恐狼",
+    "name": "Dire Inglet",
+    "skills": [
+      {
+        "name": "Aggressive",
+        "name_zh": "好战"
+      }
+    ],
+    "items": [
+      {
+        "name": "Pelt",
+        "name_zh": "兽皮"
+      },
+      {
+        "name": "Broken Shackles",
+        "name_zh": "打破镣铐"
+      },
+      {
+        "name": "Claws",
+        "name_zh": "利爪"
+      },
+      {
+        "name": "Fang",
+        "name_zh": "獠牙"
+      },
+      {
+        "name": "Fang",
+        "name_zh": "獠牙"
+      },
+      {
+        "name": "Claws",
+        "name_zh": "利爪"
+      },
+      {
+        "name": "Eagle Talisman",
+        "name_zh": "鹰之护符"
+      },
+      {
+        "name": "Pelt",
+        "name_zh": "兽皮"
+      }
+    ]
+  },
+  {
+    "name_zh": "动物饲养员",
+    "name": "Zookeeper",
+    "skills": [
+      {
+        "name": "Toxic Friendship",
+        "name_zh": "恶毒友谊"
+      }
+    ],
+    "items": [
+      {
+        "name": "Pelt",
+        "name_zh": "兽皮"
+      },
+      {
+        "name": "Dragon Whelp",
+        "name_zh": "巨龙崽崽"
+      },
+      {
+        "name": "Crook",
+        "name_zh": "铁钩"
+      },
+      {
+        "name": "Leeches",
+        "name_zh": "水蛭"
+      },
+      {
+        "name": "Salamander Pup",
+        "name_zh": "火蜥幼兽"
+      },
+      {
+        "name": "Trained Spider",
+        "name_zh": "驯化蜘蛛"
+      },
+      {
+        "name": "Pelt",
+        "name_zh": "兽皮"
+      }
+    ]
+  },
+  {
+    "name_zh": "基石泣妖",
+    "name": "Foundation Weeper",
+    "skills": [
+      {
+        "name": "Exposing Toxins",
+        "name_zh": "弱点毒素"
+      }
+    ],
+    "items": [
+      {
+        "name": "Extract",
+        "name_zh": "提取物"
+      },
+      {
+        "name": "Bandages",
+        "name_zh": "绷带"
+      },
+      {
+        "name": "Ouroboros Statue",
+        "name_zh": "衔尾蛇雕像"
+      },
+      {
+        "name": "Death Caps",
+        "name_zh": "毒伞菇"
+      },
+      {
+        "name": "Thurible",
+        "name_zh": "香炉"
+      },
+      {
+        "name": "Ectoplasm",
+        "name_zh": "灵质"
+      },
+      {
+        "name": "Bandages",
+        "name_zh": "绷带"
+      },
+      {
+        "name": "Temple Expedition Ticket",
+        "name_zh": "神庙探险券"
+      }
+    ]
+  },
+  {
+    "name_zh": "三明治艺术家",
+    "name": "Sandwich Artist",
+    "skills": [
+      {
+        "name": "Regenerative",
+        "name_zh": "元气恢复"
+      }
+    ],
+    "items": [
+      {
+        "name": "Bread",
+        "name_zh": "面包"
+      },
+      {
+        "name": "Bread Knife",
+        "name_zh": "面包刀"
+      },
+      {
+        "name": "Butter",
+        "name_zh": "黄油"
+      },
+      {
+        "name": "Giant Sub",
+        "name_zh": "巨型三明治"
+      },
+      {
+        "name": "Spice Rack",
+        "name_zh": "调料架"
+      },
+      {
+        "name": "Baked Potato",
+        "name_zh": "烤土豆"
+      }
+    ]
+  },
+  {
+    "name_zh": "垃圾魔像",
+    "name": "Trash Golem",
+    "skills": [
+      {
+        "name": "Jury Rigger",
+        "name_zh": "临修工匠"
+      }
+    ],
+    "items": [
+      {
+        "name": "Junkyard Catapult",
+        "name_zh": "废品场弹射机"
+      },
+      {
+        "name": "Plasma Grenade",
+        "name_zh": "等离子手雷"
+      },
+      {
+        "name": "Grenade",
+        "name_zh": "手雷"
+      },
+      {
+        "name": "Noxious Potion",
+        "name_zh": "剧毒药水"
+      },
+      {
+        "name": "Rainbow Potion",
+        "name_zh": "彩虹药水"
+      },
+      {
+        "name": "Grapeshot",
+        "name_zh": "葡萄弹"
+      },
+      {
+        "name": "Powder Keg",
+        "name_zh": "火药桶"
+      }
+    ]
+  },
+  {
+    "name_zh": "恶蚊",
+    "name": "Dire Mosquito",
+    "skills": [
+      {
+        "name": "Paralyzing Rush",
+        "name_zh": "麻痹突袭"
+      },
+      {
+        "name": "Trained",
+        "name_zh": "受训"
+      }
+    ],
+    "items": [
+      {
+        "name": "Insect Wing",
+        "name_zh": "虫翅"
+      },
+      {
+        "name": "Ectoplasm",
+        "name_zh": "灵质"
+      },
+      {
+        "name": "Proboscis",
+        "name_zh": "口器"
+      },
+      {
+        "name": "Amber",
+        "name_zh": "琥珀"
+      },
+      {
+        "name": "Stinger",
+        "name_zh": "毒刺"
+      },
+      {
+        "name": "Neural Toxin",
+        "name_zh": "神经毒素"
+      },
+      {
+        "name": "Stinger",
+        "name_zh": "毒刺"
+      },
+      {
+        "name": "Venom",
+        "name_zh": "毒液"
+      },
+      {
+        "name": "Incense",
+        "name_zh": "熏香"
+      },
+      {
+        "name": "Insect Wing",
+        "name_zh": "虫翅"
+      }
+    ]
+  },
+  {
+    "name_zh": "放贷鲨",
+    "name": "Loan Shark",
+    "skills": [
+      {
+        "name": "Power Broker",
+        "name_zh": "权力掮客"
+      },
+      {
+        "name": "Crashing Waves",
+        "name_zh": "浪涛激荡"
+      }
+    ],
+    "items": [
+      {
+        "name": "Sharkray",
+        "name_zh": "鳐鲨"
+      },
+      {
+        "name": "Sharkclaws",
+        "name_zh": "鲨齿爪"
+      },
+      {
+        "name": "Sharkclaws",
+        "name_zh": "鲨齿爪"
+      },
+      {
+        "name": "ATM",
+        "name_zh": "自动取款机"
+      },
+      {
+        "name": "Cash Cannon",
+        "name_zh": "财源炮"
+      }
+    ]
+  },
+  {
+    "name_zh": "领班",
+    "name": "Foreman",
+    "skills": [
+      {
+        "name": "Flashy Mechanic",
+        "name_zh": "炫技机械师"
+      }
+    ],
+    "items": [
+      {
+        "name": "Scrap",
+        "name_zh": "废料"
+      },
+      {
+        "name": "Chris Army Knife",
+        "name_zh": "克里斯军刀"
+      },
+      {
+        "name": "Power Sander",
+        "name_zh": "电动砂光机"
+      },
+      {
+        "name": "Crane",
+        "name_zh": "起重机"
+      },
+      {
+        "name": "Forklift",
+        "name_zh": "叉车"
+      }
+    ]
+  },
+  {
+    "name_zh": "地狱大魔神",
+    "name": "Infernal",
+    "skills": [
+      {
+        "name": "Burning Rage",
+        "name_zh": "灼烧狂怒"
+      },
+      {
+        "name": "Tracer Fire",
+        "name_zh": "追踪火焰"
+      },
+      {
+        "name": "Strength",
+        "name_zh": "力量"
+      }
+    ],
+    "items": [
+      {
+        "name": "Cinders",
+        "name_zh": "余烬"
+      },
+      {
+        "name": "Fire Claw",
+        "name_zh": "火爪"
+      },
+      {
+        "name": "Magma Core",
+        "name_zh": "岩浆核心"
+      },
+      {
+        "name": "Infernal Greatsword",
+        "name_zh": "地狱巨剑"
+      },
+      {
+        "name": "Magma Core",
+        "name_zh": "岩浆核心"
+      },
+      {
+        "name": "Ruby",
+        "name_zh": "红宝石"
+      },
+      {
+        "name": "Cinders",
+        "name_zh": "余烬"
+      }
+    ]
+  },
+  {
+    "name_zh": "巫妖",
+    "name": "Lich",
+    "skills": [
+      {
+        "name": "Petrifying Gaze",
+        "name_zh": "石化凝视"
+      },
+      {
+        "name": "Chilling Touch",
+        "name_zh": "寒霜之触"
+      }
+    ],
+    "items": [
+      {
+        "name": "Cauldron",
+        "name_zh": "坩埚"
+      },
+      {
+        "name": "Ectoplasm",
+        "name_zh": "灵质"
+      },
+      {
+        "name": "Icicle",
+        "name_zh": "冰锥"
+      },
+      {
+        "name": "Necronomicon",
+        "name_zh": "死灵书"
+      },
+      {
+        "name": "Icicle",
+        "name_zh": "冰锥"
+      },
+      {
+        "name": "Wand",
+        "name_zh": "魔杖"
+      },
+      {
+        "name": "Emerald",
+        "name_zh": "翡翠"
+      },
+      {
+        "name": "Soul Ring",
+        "name_zh": "魂戒"
+      }
+    ]
+  },
+  {
+    "name_zh": "皂沫中士",
+    "name": "Sergeant Suds",
+    "skills": [
+      {
+        "name": "Clean Storefront",
+        "name_zh": "整洁门面"
+      }
+    ],
+    "items": [
+      {
+        "name": "Dishwasher",
+        "name_zh": "洗碗机"
+      },
+      {
+        "name": "Hogwash",
+        "name_zh": "猪潲汤"
+      },
+      {
+        "name": "Rivet Gun",
+        "name_zh": "铆钉枪"
+      },
+      {
+        "name": "Hammer",
+        "name_zh": "锤子"
+      }
+    ]
+  },
+  {
+    "name_zh": "毒蛇暴君",
+    "name": "Viper Tyrant",
+    "skills": [
+      {
+        "name": "Poison Tyrant",
+        "name_zh": "剧毒暴君"
+      }
+    ],
+    "items": [
+      {
+        "name": "Gland",
+        "name_zh": "腺体"
+      },
+      {
+        "name": "Extract",
+        "name_zh": "提取物"
+      },
+      {
+        "name": "Venom",
+        "name_zh": "毒液"
+      },
+      {
+        "name": "Fang",
+        "name_zh": "獠牙"
+      },
+      {
+        "name": "Basilisk Fang",
+        "name_zh": "蛇怪之牙"
+      },
+      {
+        "name": "Venom",
+        "name_zh": "毒液"
+      },
+      {
+        "name": "Copper Ed",
+        "name_zh": "铜蛇艾德"
+      },
+      {
+        "name": "Noxious Potion",
+        "name_zh": "剧毒药水"
+      },
+      {
+        "name": "Extract",
+        "name_zh": "提取物"
+      },
+      {
+        "name": "Gland",
+        "name_zh": "腺体"
+      }
+    ]
+  },
+  {
+    "name_zh": "幽灵辣椒",
+    "name": "Ghost Pepper",
+    "skills": [
+      {
+        "name": "Heat Lover",
+        "name_zh": "热辣爱好者"
+      },
+      {
+        "name": "Fiery",
+        "name_zh": "炽焰"
+      }
+    ],
+    "items": [
+      {
+        "name": "Cinders",
+        "name_zh": "余烬"
+      },
+      {
+        "name": "Nitro",
+        "name_zh": "氮气"
+      },
+      {
+        "name": "Micro Dave",
+        "name_zh": "微波戴夫"
+      },
+      {
+        "name": "Bomb Squad",
+        "name_zh": "炸弹小队"
+      },
+      {
+        "name": "Char Cole",
+        "name_zh": "炭火科尔"
+      },
+      {
+        "name": "Curry",
+        "name_zh": "咖喱"
+      },
+      {
+        "name": "Hot Sauce",
+        "name_zh": "辣酱"
+      },
+      {
+        "name": "Black Pepper",
+        "name_zh": "黑胡椒"
+      },
+      {
+        "name": "Lighter",
+        "name_zh": "打火机"
+      }
+    ]
+  },
+  {
+    "name_zh": "快乐杰克南瓜",
+    "name": "Joyful Jack",
+    "skills": [
+      {
+        "name": "Equivalent Exchange",
+        "name_zh": "等价交换"
+      },
+      {
+        "name": "Critical Aid",
+        "name_zh": "暴击支援"
+      }
+    ],
+    "items": [
+      {
+        "name": "Extract",
+        "name_zh": "提取物"
+      },
+      {
+        "name": "Black Rose",
+        "name_zh": "黑玫瑰"
+      },
+      {
+        "name": "Poppy Field",
+        "name_zh": "罂粟花田"
+      },
+      {
+        "name": "Floor Spike",
+        "name_zh": "地刺陷阱"
+      },
+      {
+        "name": "Bushel",
+        "name_zh": "果篮"
+      },
+      {
+        "name": "Succulents",
+        "name_zh": "多肉植物"
+      },
+      {
+        "name": "Extract",
+        "name_zh": "提取物"
+      }
+    ]
+  },
+  {
+    "name_zh": "载宝海龟",
+    "name": "Treasure Turtle",
+    "skills": [
+      {
+        "name": "Hunker Down",
+        "name_zh": "暂避风头"
+      },
+      {
+        "name": "Toughness",
+        "name_zh": "坚固"
+      }
+    ],
+    "items": [
+      {
+        "name": "Bag of Jewels",
+        "name_zh": "珠宝袋"
+      },
+      {
+        "name": "Seaweed",
+        "name_zh": "水草"
+      },
+      {
+        "name": "Sea Shell",
+        "name_zh": "海螺壳"
+      },
+      {
+        "name": "Turtle Shell",
+        "name_zh": "龟壳"
+      },
+      {
+        "name": "Catfish",
+        "name_zh": "毒须鲶"
+      },
+      {
+        "name": "Pearl",
+        "name_zh": "珍珠"
+      },
+      {
+        "name": "Clamera",
+        "name_zh": "拍立蚌"
+      },
+      {
+        "name": "Temple Expedition Ticket",
+        "name_zh": "神庙探险券"
+      },
+      {
+        "name": "Bag of Jewels",
+        "name_zh": "珠宝袋"
+      }
+    ]
+  },
+  {
+    "name_zh": "附属部队士兵",
+    "name": "Annex Trooper",
+    "skills": [
+      {
+        "name": "Tracer Fire",
+        "name_zh": "追踪火焰"
+      }
+    ],
+    "items": [
+      {
+        "name": "Welding Helmet",
+        "name_zh": "焊接头盔"
+      },
+      {
+        "name": "Plasma Grenade",
+        "name_zh": "等离子手雷"
+      },
+      {
+        "name": "Nitro",
+        "name_zh": "氮气"
+      },
+      {
+        "name": "Welding Torch",
+        "name_zh": "焊炬"
+      },
+      {
+        "name": "Plasma Rifle",
+        "name_zh": "等离子步枪"
+      },
+      {
+        "name": "Incendiary Rounds",
+        "name_zh": "燃烧子弹"
+      },
+      {
+        "name": "Induction Aegis",
+        "name_zh": "感流盾"
+      }
+    ]
+  },
+  {
+    "name_zh": "寒霜查尔斯",
+    "name": "Chilly Charles",
+    "skills": [
+      {
+        "name": "Reaching the Summit",
+        "name_zh": "登峰之路"
+      }
+    ],
+    "items": [
+      {
+        "name": "Icicle",
+        "name_zh": "冰锥"
+      },
+      {
+        "name": "Ice Cubes",
+        "name_zh": "冰块"
+      },
+      {
+        "name": "Ice Cream Truck",
+        "name_zh": "冰淇淋车"
+      },
+      {
+        "name": "Hammock",
+        "name_zh": "吊床"
+      },
+      {
+        "name": "Igloo",
+        "name_zh": "冰屋"
+      }
+    ]
+  },
+  {
+    "name_zh": "暴徒",
+    "name": "Thug",
+    "skills": [
+      {
+        "name": "Bonk",
+        "name_zh": "迎头痛击"
+      },
+      {
+        "name": "Long Strides",
+        "name_zh": "大步流星"
+      },
+      {
+        "name": "Brawler",
+        "name_zh": "斗士"
+      },
+      {
+        "name": "Strength",
+        "name_zh": "力量"
+      }
+    ],
+    "items": [
+      {
+        "name": "Bar of Gold",
+        "name_zh": "金条"
+      },
+      {
+        "name": "Double Whammy",
+        "name_zh": "双重打击"
+      },
+      {
+        "name": "Improvised Bludgeon",
+        "name_zh": "临时大棒"
+      },
+      {
+        "name": "Pawn Shop",
+        "name_zh": "当铺"
+      },
+      {
+        "name": "Brass Knuckles",
+        "name_zh": "黄铜拳套"
+      }
+    ]
+  },
+  {
+    "name_zh": "辉耀海盗",
+    "name": "Radiant Corsair",
+    "skills": [
+      {
+        "name": "Fiery Rebirth",
+        "name_zh": "炽焰重生"
+      },
+      {
+        "name": "Right-Handed",
+        "name_zh": "右撇子"
+      },
+      {
+        "name": "Final Flame",
+        "name_zh": "终焰"
+      }
+    ],
+    "items": [
+      {
+        "name": "Grappling Hook",
+        "name_zh": "抓钩"
+      },
+      {
+        "name": "Anchor",
+        "name_zh": "锚"
+      },
+      {
+        "name": "Dock Lines",
+        "name_zh": "码头缆索"
+      },
+      {
+        "name": "Katana",
+        "name_zh": "武士刀"
+      },
+      {
+        "name": "Lighthouse",
+        "name_zh": "灯塔"
+      }
+    ]
+  },
+  {
+    "name_zh": "云顶军官",
+    "name": "Cloudtop Officer",
+    "skills": [
+      {
+        "name": "Bombing Run",
+        "name_zh": "轰炸行动"
+      }
+    ],
+    "items": [
+      {
+        "name": "Air-Pressure Rifle",
+        "name_zh": "气压步枪"
+      },
+      {
+        "name": "Altimeter",
+        "name_zh": "海拔计"
+      },
+      {
+        "name": "Battle Balloon",
+        "name_zh": "作战气球"
+      },
+      {
+        "name": "Tethers",
+        "name_zh": "系绳"
+      },
+      {
+        "name": "Flycycle",
+        "name_zh": "飞行单车"
+      }
+    ]
+  },
+  {
+    "name_zh": "宇宙鹏鸟",
+    "name": "Cosmic Roc",
+    "skills": [
+      {
+        "name": "Keen Eye",
+        "name_zh": "敏锐眼光"
+      },
+      {
+        "name": "Cosmic Wind",
+        "name_zh": "宇宙风"
+      }
+    ],
+    "items": [
+      {
+        "name": "Feather",
+        "name_zh": "羽毛"
+      },
+      {
+        "name": "Cosmic Amulet",
+        "name_zh": "宇宙护符"
+      },
+      {
+        "name": "Cosmic Plumage",
+        "name_zh": "宇宙炫羽"
+      },
+      {
+        "name": "Claws",
+        "name_zh": "利爪"
+      },
+      {
+        "name": "Claws",
+        "name_zh": "利爪"
+      },
+      {
+        "name": "Cosmic Plumage",
+        "name_zh": "宇宙炫羽"
+      },
+      {
+        "name": "Cosmic Amulet",
+        "name_zh": "宇宙护符"
+      },
+      {
+        "name": "Feather",
+        "name_zh": "羽毛"
+      }
+    ]
+  },
+  {
+    "name_zh": "快乐杰克南瓜",
+    "name": "Joyful Jack",
+    "skills": [
+      {
+        "name": "Equivalent Exchange",
+        "name_zh": "等价交换"
+      },
+      {
+        "name": "Critical Aid",
+        "name_zh": "暴击支援"
+      }
+    ],
+    "items": [
+      {
+        "name": "Extract",
+        "name_zh": "提取物"
+      },
+      {
+        "name": "Black Rose",
+        "name_zh": "黑玫瑰"
+      },
+      {
+        "name": "Poppy Field",
+        "name_zh": "罂粟花田"
+      },
+      {
+        "name": "Floor Spike",
+        "name_zh": "地刺陷阱"
+      },
+      {
+        "name": "Bushel",
+        "name_zh": "果篮"
+      },
+      {
+        "name": "Succulents",
+        "name_zh": "多肉植物"
+      },
+      {
+        "name": "Extract",
+        "name_zh": "提取物"
+      }
+    ]
+  },
+  {
+    "name_zh": "史都",
+    "name": "Stew",
+    "skills": [
+      {
+        "name": "Anything to Win",
+        "name_zh": "不择手段"
+      }
+    ],
+    "items": [
+      {
+        "name": "Curry",
+        "name_zh": "咖喱"
+      },
+      {
+        "name": "Black Pepper",
+        "name_zh": "黑胡椒"
+      },
+      {
+        "name": "Oven Mitts",
+        "name_zh": "烤箱手套"
+      },
+      {
+        "name": "Cauldron",
+        "name_zh": "坩埚"
+      },
+      {
+        "name": "Pickled Peppers",
+        "name_zh": "腌辣椒"
+      },
+      {
+        "name": "Hot Sauce",
+        "name_zh": "辣酱"
+      },
+      {
+        "name": "Scorchpepper",
+        "name_zh": "火焰辣椒"
+      }
+    ]
+  },
+  {
+    "name_zh": "防卫机甲",
+    "name": "Bouncertron",
+    "skills": [
+      {
+        "name": "Sharpened Steel",
+        "name_zh": "钢铁磨砺"
+      }
+    ],
+    "items": [
+      {
+        "name": "Cybersecurity",
+        "name_zh": "网络保安"
+      },
+      {
+        "name": "Pulse Rifle",
+        "name_zh": "脉冲步枪"
+      },
+      {
+        "name": "Katana",
+        "name_zh": "武士刀"
+      },
+      {
+        "name": "Laser Pistol",
+        "name_zh": "激光手枪"
+      },
+      {
+        "name": "Sunderer",
+        "name_zh": "裂盾刀"
+      },
+      {
+        "name": "Gatling Gun",
+        "name_zh": "加特林机枪"
+      }
+    ]
+  },
+  {
+    "name_zh": "驾驶督导",
+    "name": "Car Conductor",
+    "skills": [
+      {
+        "name": "Expert Pilot",
+        "name_zh": "专家飞行员"
+      },
+      {
+        "name": "Command Ship",
+        "name_zh": "领头船"
+      }
+    ],
+    "items": [
+      {
+        "name": "Goggles",
+        "name_zh": "护目镜"
+      },
+      {
+        "name": "Sirens",
+        "name_zh": "警报喇叭"
+      },
+      {
+        "name": "Race Carl",
+        "name_zh": "竞速卡尔"
+      },
+      {
+        "name": "Hydrogen Tank",
+        "name_zh": "氢气罐"
+      }
+    ]
+  },
+  {
+    "name_zh": "地狱飞艇",
+    "name": "Infernal Frigate",
+    "skills": [
+      {
+        "name": "Firestarter",
+        "name_zh": "引火者"
+      }
+    ],
+    "items": [
+      {
+        "name": "Trebuchet",
+        "name_zh": "抛石机"
+      },
+      {
+        "name": "Rocket Launcher",
+        "name_zh": "火箭发射器"
+      },
+      {
+        "name": "Pop Snappers",
+        "name_zh": "燃烧响炮"
+      },
+      {
+        "name": "Incendiary Rounds",
+        "name_zh": "燃烧子弹"
+      },
+      {
+        "name": "Pop Snappers",
+        "name_zh": "燃烧响炮"
+      },
+      {
+        "name": "Thrusters",
+        "name_zh": "推进器"
+      },
+      {
+        "name": "Thrusters",
+        "name_zh": "推进器"
+      }
+    ]
+  },
+  {
+    "name_zh": "焚毁机器人",
+    "name": "Burninator Bot",
+    "skills": [
+      {
+        "name": "Slow Burn",
+        "name_zh": "慢性灼烧"
+      }
+    ],
+    "items": [
+      {
+        "name": "Induction Aegis",
+        "name_zh": "感流盾"
+      },
+      {
+        "name": "Weakpoint Detector",
+        "name_zh": "弱点探测器"
+      },
+      {
+        "name": "Pylon",
+        "name_zh": "桥塔"
+      },
+      {
+        "name": "Thermal Lance",
+        "name_zh": "热能长枪"
+      },
+      {
+        "name": "Flamethrower",
+        "name_zh": "火焰喷射枪"
+      }
+    ]
+  },
+  {
+    "name_zh": "漩涡博士",
+    "name": "Dr. Vortex",
+    "skills": [
+      {
+        "name": "Neophiliac",
+        "name_zh": "新奇狂人"
+      }
+    ],
+    "items": [
+      {
+        "name": "Lightning Rod",
+        "name_zh": "避雷针"
+      },
+      {
+        "name": "Lightbulb",
+        "name_zh": "灯泡"
+      },
+      {
+        "name": "Tesla Coil",
+        "name_zh": "特斯拉线圈"
+      },
+      {
+        "name": "Weather Machine",
+        "name_zh": "气象机"
+      }
+    ]
+  },
+  {
+    "name_zh": "绿洲守护神",
+    "name": "Oasis Guardian",
+    "skills": [
+      {
+        "name": "Waters of Infinity",
+        "name_zh": "无尽水源"
+      }
+    ],
+    "items": [
+      {
+        "name": "Ouroboros Statue",
+        "name_zh": "衔尾蛇雕像"
+      },
+      {
+        "name": "Venomander",
+        "name_zh": "毒蜥"
+      },
+      {
+        "name": "Sleeping Potion",
+        "name_zh": "昏睡药水"
+      },
+      {
+        "name": "Incense",
+        "name_zh": "熏香"
+      },
+      {
+        "name": "Nightshade",
+        "name_zh": "颠茄"
+      }
+    ]
+  },
+  {
+    "name_zh": "流浪暗礁",
+    "name": "Wandering Shoal",
+    "skills": [
+      {
+        "name": "Thick Hide",
+        "name_zh": "厚皮"
+      },
+      {
+        "name": "Improved Toxins",
+        "name_zh": "毒素增效"
+      }
+    ],
+    "items": [
+      {
+        "name": "Electric Eels",
+        "name_zh": "电鳗"
+      },
+      {
+        "name": "Catfish",
+        "name_zh": "毒须鲶"
+      },
+      {
+        "name": "Jellyfish",
+        "name_zh": "水母"
+      },
+      {
+        "name": "Piranha",
+        "name_zh": "食人鱼"
+      },
+      {
+        "name": "Amber",
+        "name_zh": "琥珀"
+      },
+      {
+        "name": "Seaweed",
+        "name_zh": "水草"
+      },
+      {
+        "name": "Pufferfish",
+        "name_zh": "河豚"
+      }
+    ]
+  },
+  {
+    "name_zh": "巨龙",
+    "name": "Dragon",
+    "skills": [
+      {
+        "name": "Draconic Rage",
+        "name_zh": "龙性狂焰"
+      },
+      {
+        "name": "Regenerative",
+        "name_zh": "元气恢复"
+      }
+    ],
+    "items": [
+      {
+        "name": "Dragon Wing",
+        "name_zh": "巨龙翼"
+      },
+      {
+        "name": "Fire Claw",
+        "name_zh": "火爪"
+      },
+      {
+        "name": "Dragon Heart",
+        "name_zh": "巨龙心"
+      },
+      {
+        "name": "Fire Claw",
+        "name_zh": "火爪"
+      },
+      {
+        "name": "Dragon Wing",
+        "name_zh": "巨龙翼"
+      }
+    ]
+  },
+  {
+    "name_zh": "血礁船长",
+    "name": "Bloodreef Captain",
+    "skills": [
+      {
+        "name": "Full Arsenal",
+        "name_zh": "全副武装"
+      },
+      {
+        "name": "Heavy Firepower",
+        "name_zh": "重火力"
+      }
+    ],
+    "items": [
+      {
+        "name": "Pesky Pete",
+        "name_zh": "鹦鹉皮特"
+      },
+      {
+        "name": "Pop Snappers",
+        "name_zh": "燃烧响炮"
+      },
+      {
+        "name": "Flagship",
+        "name_zh": "旗舰"
+      }
+    ]
+  },
+  {
+    "name_zh": "云顶海军上将",
+    "name": "Cloudtop Admiral",
+    "skills": [
+      {
+        "name": "Aerial Assault",
+        "name_zh": "空中突袭"
+      },
+      {
+        "name": "Strength",
+        "name_zh": "力量"
+      }
+    ],
+    "items": [
+      {
+        "name": "Daggerwing",
+        "name_zh": "匕翼"
+      },
+      {
+        "name": "Battle Balloon",
+        "name_zh": "作战气球"
+      },
+      {
+        "name": "Marshalling Lights",
+        "name_zh": "引导灯"
+      },
+      {
+        "name": "Flare Gun",
+        "name_zh": "信号枪"
+      }
+    ]
+  },
+  {
+    "name_zh": "精英决斗者",
+    "name": "Elite Duelist",
+    "skills": [
+      {
+        "name": "Big Ego",
+        "name_zh": "虚荣"
+      },
+      {
+        "name": "Strength",
+        "name_zh": "力量"
+      }
+    ],
+    "items": [
+      {
+        "name": "Revolver",
+        "name_zh": "左轮手枪"
+      },
+      {
+        "name": "Powder Horn",
+        "name_zh": "火药角"
+      },
+      {
+        "name": "Revolver",
+        "name_zh": "左轮手枪"
+      },
+      {
+        "name": "Shoe Blade",
+        "name_zh": "靴里剑"
+      },
+      {
+        "name": "Butterfly Swords",
+        "name_zh": "蝶剑"
+      },
+      {
+        "name": "Butterfly Swords",
+        "name_zh": "蝶剑"
+      },
+      {
+        "name": "Spices",
+        "name_zh": "香料"
+      },
+      {
+        "name": "Holsters",
+        "name_zh": "枪套"
+      },
+      {
+        "name": "Cutlass",
+        "name_zh": "弯刀"
+      }
+    ]
+  },
+  {
+    "name_zh": "绿洲守护神",
+    "name": "Oasis Guardian",
+    "skills": [
+      {
+        "name": "Waters of Infinity",
+        "name_zh": "无尽水源"
+      }
+    ],
+    "items": [
+      {
+        "name": "Ouroboros Statue",
+        "name_zh": "衔尾蛇雕像"
+      },
+      {
+        "name": "Venomander",
+        "name_zh": "毒蜥"
+      },
+      {
+        "name": "Sleeping Potion",
+        "name_zh": "昏睡药水"
+      },
+      {
+        "name": "Incense",
+        "name_zh": "熏香"
+      },
+      {
+        "name": "Nightshade",
+        "name_zh": "颠茄"
+      }
+    ]
+  },
+  {
+    "name_zh": "流浪岛屿",
+    "name": "Roaming Isle",
+    "skills": [
+      {
+        "name": "Shored Up",
+        "name_zh": "防线强化"
+      },
+      {
+        "name": "Follow-Up Care",
+        "name_zh": "跟进疗护"
+      },
+      {
+        "name": "First Responder",
+        "name_zh": "急救包"
+      }
+    ],
+    "items": [
+      {
+        "name": "Tropical Island",
+        "name_zh": "热带岛屿"
+      },
+      {
+        "name": "Sea Shell",
+        "name_zh": "海螺壳"
+      },
+      {
+        "name": "Pet Rock",
+        "name_zh": "宠物石"
+      },
+      {
+        "name": "Catfish",
+        "name_zh": "毒须鲶"
+      },
+      {
+        "name": "Jellyfish",
+        "name_zh": "水母"
+      },
+      {
+        "name": "Seaweed",
+        "name_zh": "水草"
+      },
+      {
+        "name": "Seaweed",
+        "name_zh": "水草"
+      },
+      {
+        "name": "Clamera",
+        "name_zh": "拍立蚌"
+      }
+    ]
+  },
+  {
+    "name_zh": "恐惧之形",
+    "name": "Terrorform",
+    "skills": [
+      {
+        "name": "Flashy Reload",
+        "name_zh": "炫技装弹"
+      },
+      {
+        "name": "Passive Power",
+        "name_zh": "被动能量"
+      }
+    ],
+    "items": [
+      {
+        "name": "Torpedo",
+        "name_zh": "鱼雷"
+      },
+      {
+        "name": "Piranha",
+        "name_zh": "食人鱼"
+      },
+      {
+        "name": "Shot Glasses",
+        "name_zh": "烈酒杯"
+      },
+      {
+        "name": "Elemental Depth Charge",
+        "name_zh": "元素深渊冲刺"
+      },
+      {
+        "name": "Bottled Lightning",
+        "name_zh": "瓶装闪电"
+      },
+      {
+        "name": "Mantis Shrimp",
+        "name_zh": "皮皮虾"
+      },
+      {
+        "name": "Biomerge Arm",
+        "name_zh": "生体融合臂"
+      }
+    ]
+  },
+  {
+    "name_zh": "菲罗斯汗",
+    "name": "Ferros Khan",
+    "skills": [
+      {
+        "name": "One Shot, One Kill",
+        "name_zh": "一发入魂"
+      },
+      {
+        "name": "Left-Handed",
+        "name_zh": "左撇子"
+      },
+      {
+        "name": "Right-Handed",
+        "name_zh": "右撇子"
+      }
+    ],
+    "items": [
+      {
+        "name": "Shadowed Cloak",
+        "name_zh": "暗影斗篷"
+      },
+      {
+        "name": "Sniper Rifle",
+        "name_zh": "狙击步枪"
+      },
+      {
+        "name": "Silencer",
+        "name_zh": "消音器"
+      },
+      {
+        "name": "Barrel",
+        "name_zh": "木桶"
+      },
+      {
+        "name": "Dock Lines",
+        "name_zh": "码头缆索"
+      },
+      {
+        "name": "Energy Potion",
+        "name_zh": "能量药水"
+      }
+    ]
+  },
+  {
+    "name_zh": "武器平台",
+    "name": "Weapons Platform",
+    "skills": [
+      {
+        "name": "Distributed Systems",
+        "name_zh": "分配系统"
+      },
+      {
+        "name": "Keen Eye",
+        "name_zh": "敏锐眼光"
+      }
+    ],
+    "items": [
+      {
+        "name": "Kinetic Cannon",
+        "name_zh": "动能加农炮"
+      },
+      {
+        "name": "Battery",
+        "name_zh": "电池"
+      },
+      {
+        "name": "Coolant",
+        "name_zh": "冷却剂"
+      },
+      {
+        "name": "First Aiden",
+        "name_zh": "急救艾登"
+      },
+      {
+        "name": "Laser Pistol",
+        "name_zh": "激光手枪"
+      },
+      {
+        "name": "Power Sander",
+        "name_zh": "电动砂光机"
+      },
+      {
+        "name": "SMG",
+        "name_zh": "冲锋枪"
+      }
+    ]
+  },
+  {
+    "name_zh": "耶丹",
+    "name": "Yerdan",
+    "skills": [
+      {
+        "name": "Relax Bro",
+        "name_zh": "兄弟别激动"
+      },
+      {
+        "name": "Right-Handed",
+        "name_zh": "右撇子"
+      }
+    ],
+    "items": [
+      {
+        "name": "Tournament Arena",
+        "name_zh": "竞技场"
+      },
+      {
+        "name": "Piggles Board",
+        "name_zh": "小圆猪板"
+      },
+      {
+        "name": "Red Piggles R",
+        "name_zh": "红色小圆猪 R"
+      },
+      {
+        "name": "Yo-Yo",
+        "name_zh": "悠悠球"
+      },
+      {
+        "name": "Red Piggles A",
+        "name_zh": "红色小圆猪 A"
+      },
+      {
+        "name": "Premium Red Piggles",
+        "name_zh": "高级红色小圆猪"
+      },
+      {
+        "name": "Red Piggles L",
+        "name_zh": "红色小圆猪 L"
+      }
+    ]
+  },
+  {
+    "name_zh": "基石亡灵",
+    "name": "Foundation Revenant",
+    "skills": [
+      {
+        "name": "Exposing Toxins",
+        "name_zh": "弱点毒素"
+      },
+      {
+        "name": "Purifying Flame",
+        "name_zh": "净化烈焰"
+      }
+    ],
+    "items": [
+      {
+        "name": "Soul Ring",
+        "name_zh": "魂戒"
+      },
+      {
+        "name": "Emerald",
+        "name_zh": "翡翠"
+      },
+      {
+        "name": "Ouroboros Statue",
+        "name_zh": "衔尾蛇雕像"
+      },
+      {
+        "name": "Shadowed Cloak",
+        "name_zh": "暗影斗篷"
+      },
+      {
+        "name": "Basilisk Fang",
+        "name_zh": "蛇怪之牙"
+      },
+      {
+        "name": "Ectoplasm",
+        "name_zh": "灵质"
+      },
+      {
+        "name": "Thurible",
+        "name_zh": "香炉"
+      },
+      {
+        "name": "Bandages",
+        "name_zh": "绷带"
+      }
+    ]
+  },
+  {
+    "name_zh": "虚空骑士",
+    "name": "Void Knight",
+    "skills": [
+      {
+        "name": "Hypnotic Drain",
+        "name_zh": "催眠吸取"
+      },
+      {
+        "name": "Desperate Cleanse",
+        "name_zh": "绝望净化"
+      }
+    ],
+    "items": [
+      {
+        "name": "Sapphire",
+        "name_zh": "蓝宝石"
+      },
+      {
+        "name": "Shadowed Cloak",
+        "name_zh": "暗影斗篷"
+      },
+      {
+        "name": "Scythe",
+        "name_zh": "镰刀"
+      },
+      {
+        "name": "Mortal Coil",
+        "name_zh": "凡躯之缚"
+      },
+      {
+        "name": "Runic Great Axe",
+        "name_zh": "符文巨斧"
+      }
+    ]
+  },
+  {
+    "name_zh": "哈洛大哥",
+    "name": "Boss Harrow",
+    "skills": [
+      {
+        "name": "Assault Focus",
+        "name_zh": "突击专注"
+      },
+      {
+        "name": "Strength",
+        "name_zh": "力量"
+      },
+      {
+        "name": "Keen Eye",
+        "name_zh": "敏锐眼光"
+      }
+    ],
+    "items": [
+      {
+        "name": "Weakpoint Detector",
+        "name_zh": "弱点探测器"
+      },
+      {
+        "name": "Runic Double Bow",
+        "name_zh": "符文双射弓"
+      },
+      {
+        "name": "Bayonet",
+        "name_zh": "刺刀"
+      },
+      {
+        "name": "Grappling Hook",
+        "name_zh": "抓钩"
+      },
+      {
+        "name": "Jitte",
+        "name_zh": "十手"
+      },
+      {
+        "name": "Katana",
+        "name_zh": "武士刀"
+      },
+      {
+        "name": "Bayonet",
+        "name_zh": "刺刀"
+      }
+    ]
+  },
+  {
+    "name_zh": "庞大实验体",
+    "name": "Hulking Experiment",
+    "skills": [
+      {
+        "name": "Parting Shot",
+        "name_zh": "诀别一击"
+      },
+      {
+        "name": "Adaptive Ordinance",
+        "name_zh": "自适应军备"
+      }
+    ],
+    "items": [
+      {
+        "name": "Athanor",
+        "name_zh": "炼金炉"
+      },
+      {
+        "name": "Bottled Lightning",
+        "name_zh": "瓶装闪电"
+      },
+      {
+        "name": "Energy Potion",
+        "name_zh": "能量药水"
+      },
+      {
+        "name": "Fire Potion",
+        "name_zh": "火焰药水"
+      },
+      {
+        "name": "Rainbow Potion",
+        "name_zh": "彩虹药水"
+      },
+      {
+        "name": "Noxious Potion",
+        "name_zh": "剧毒药水"
+      },
+      {
+        "name": "Noxious Potion",
+        "name_zh": "剧毒药水"
+      },
+      {
+        "name": "Rainbow Potion",
+        "name_zh": "彩虹药水"
+      }
+    ]
+  },
+  {
+    "name_zh": "炼金大师",
+    "name": "Master Alchemist",
+    "skills": [
+      {
+        "name": "Retool",
+        "name_zh": "上膛工具"
+      }
+    ],
+    "items": [
+      {
+        "name": "Mortar & Pestle",
+        "name_zh": "研钵与研杵"
+      },
+      {
+        "name": "Refractor",
+        "name_zh": "折射棱镜"
+      },
+      {
+        "name": "Rainbow Potion",
+        "name_zh": "彩虹药水"
+      },
+      {
+        "name": "Cauldron",
+        "name_zh": "坩埚"
+      },
+      {
+        "name": "Rainbow Potion",
+        "name_zh": "彩虹药水"
+      },
+      {
+        "name": "Weather Glass",
+        "name_zh": "风暴瓶"
+      }
+    ]
+  },
+  {
+    "name_zh": "地狱空艇",
+    "name": "Infernal Dreadnought",
+    "skills": [
+      {
+        "name": "Pyromania",
+        "name_zh": "嗜火症"
+      }
+    ],
+    "items": [
+      {
+        "name": "Skyliner",
+        "name_zh": "天际舰"
+      },
+      {
+        "name": "Jetpack",
+        "name_zh": "喷气背包"
+      },
+      {
+        "name": "Solar Drone",
+        "name_zh": "太阳能无人机"
+      },
+      {
+        "name": "Balloon Engine",
+        "name_zh": "气球引擎"
+      },
+      {
+        "name": "Launch Tower",
+        "name_zh": "发射塔"
+      }
+    ]
+  },
+  {
+    "name_zh": "废土领主",
+    "name": "Lord of the Wastes",
+    "skills": [
+      {
+        "name": "Foreboding Winds",
+        "name_zh": "凶风"
+      }
+    ],
+    "items": [
+      {
+        "name": "Letter Opener",
+        "name_zh": "拆信刀"
+      },
+      {
+        "name": "Basilisk Fang",
+        "name_zh": "蛇怪之牙"
+      },
+      {
+        "name": "Sextant",
+        "name_zh": "六分仪"
+      },
+      {
+        "name": "Magic Carpet",
+        "name_zh": "魔法飞毯"
+      },
+      {
+        "name": "Letter Opener",
+        "name_zh": "拆信刀"
+      },
+      {
+        "name": "Clockwork Blades",
+        "name_zh": "发条匕首"
+      },
+      {
+        "name": "Energy Potion",
+        "name_zh": "能量药水"
+      }
+    ]
+  },
+  {
+    "name_zh": "测试对象阿尔法",
+    "name": "Test Subject Alpha",
+    "skills": [
+      {
+        "name": "Toxic Fuel",
+        "name_zh": "毒性燃料"
+      },
+      {
+        "name": "Vital Reserve",
+        "name_zh": "生命储备"
+      }
+    ],
+    "items": [
+      {
+        "name": "Venomous Dose",
+        "name_zh": "毒液注射"
+      },
+      {
+        "name": "Fungal Spores",
+        "name_zh": "真菌孢子"
+      },
+      {
+        "name": "Rapid Injection System",
+        "name_zh": "快速注射系统"
+      },
+      {
+        "name": "Barbed Claws",
+        "name_zh": "倒刺利爪"
+      },
+      {
+        "name": "Test Subject Alpha",
+        "name_zh": "测试对象阿尔法"
+      },
+      {
+        "name": "Infused Bracers",
+        "name_zh": "注能护腕"
+      }
+    ]
+  },
+  {
+    "name_zh": "巨龟托图加",
+    "name": "Tortuga",
+    "skills": [
+      {
+        "name": "Friendzone",
+        "name_zh": "伙伴卡"
+      },
+      {
+        "name": "Warm Hugs",
+        "name_zh": "温暖拥抱"
+      }
+    ],
+    "items": [
+      {
+        "name": "Tortuga",
+        "name_zh": "巨龟托图加"
+      },
+      {
+        "name": "Pesky Pete",
+        "name_zh": "鹦鹉皮特"
+      },
+      {
+        "name": "Zoarcid",
+        "name_zh": "鲇光怪鱼"
+      },
+      {
+        "name": "Catfish",
+        "name_zh": "毒须鲶"
+      },
+      {
+        "name": "Pufferfish",
+        "name_zh": "河豚"
+      },
+      {
+        "name": "Jellyfish",
+        "name_zh": "水母"
+      },
+      {
+        "name": "Old Saltclaw",
+        "name_zh": "盐钳海盗"
+      }
+    ]
+  },
+  {
+    "name_zh": "垃圾泰坦",
+    "name": "Trash Titan",
+    "skills": [
+      {
+        "name": "Juggler",
+        "name_zh": "杂耍"
+      }
+    ],
+    "items": [
+      {
+        "name": "Venom",
+        "name_zh": "毒液"
+      },
+      {
+        "name": "Emerald",
+        "name_zh": "翡翠"
+      },
+      {
+        "name": "Catalyst",
+        "name_zh": "催化剂"
+      },
+      {
+        "name": "Junkyard Lance",
+        "name_zh": "废品场长枪"
+      },
+      {
+        "name": "Hemlock",
+        "name_zh": "毒芹"
+      },
+      {
+        "name": "Ectoplasm",
+        "name_zh": "灵质"
+      },
+      {
+        "name": "Ectoplasm",
+        "name_zh": "灵质"
+      },
+      {
+        "name": "Venomander",
+        "name_zh": "毒蜥"
+      }
+    ]
+  },
+  {
+    "name_zh": "觉醒元初体",
+    "name": "Awakened Primordial",
+    "skills": [
+      {
+        "name": "Wake-Up Call",
+        "name_zh": "起床呼唤"
+      },
+      {
+        "name": "Heated Shells",
+        "name_zh": "高温弹壳"
+      }
+    ],
+    "items": [
+      {
+        "name": "Elemental Depth Charge",
+        "name_zh": "元素深渊冲刺"
+      },
+      {
+        "name": "Pufferfish",
+        "name_zh": "河豚"
+      },
+      {
+        "name": "Dive Weights",
+        "name_zh": "潜水配重"
+      },
+      {
+        "name": "Incendiary Rounds",
+        "name_zh": "燃烧子弹"
+      },
+      {
+        "name": "Pearl",
+        "name_zh": "珍珠"
+      },
+      {
+        "name": "Slumbering Primordial",
+        "name_zh": "沉眠元初体"
+      }
+    ]
+  },
+  {
+    "name_zh": "杜利机甲",
+    "name": "Dooltron",
+    "skills": [
+      {
+        "name": "Nanobot Construction",
+        "name_zh": "纳米机器人建造"
+      },
+      {
+        "name": "Electrified Hull",
+        "name_zh": "带电外壳"
+      }
+    ],
+    "items": [
+      {
+        "name": "BLU-B33TL3",
+        "name_zh": "机械蓝甲虫"
+      },
+      {
+        "name": "GRN-W4SP",
+        "name_zh": "机械绿马蜂"
+      },
+      {
+        "name": "BLK-SP1D3R",
+        "name_zh": "机械黑蜘蛛"
+      },
+      {
+        "name": "RED-F1R3FLY",
+        "name_zh": "机械红焰萤"
+      },
+      {
+        "name": "YLW-M4NT1S",
+        "name_zh": "机械黄螳螂"
+      },
+      {
+        "name": "Z-Sword",
+        "name_zh": "Z-剑"
+      },
+      {
+        "name": "Dooltron",
+        "name_zh": "杜利机甲"
+      }
+    ]
+  },
+  {
+    "name_zh": "机甲暴龙",
+    "name": "Rex Spex",
+    "skills": [
+      {
+        "name": "Healthy Friendship",
+        "name_zh": "健康友谊"
+      },
+      {
+        "name": "Static Acceleration",
+        "name_zh": "静态加速"
+      }
+    ],
+    "items": [
+      {
+        "name": "Dinosawer",
+        "name_zh": "恐龙锯车"
+      },
+      {
+        "name": "Rex Spex",
+        "name_zh": "机甲暴龙"
+      },
+      {
+        "name": "YLW-M4NT1S",
+        "name_zh": "机械黄螳螂"
+      },
+      {
+        "name": "Dino Disguise",
+        "name_zh": "恐龙伪装"
+      },
+      {
+        "name": "Zoarcid",
+        "name_zh": "鲇光怪鱼"
+      },
+      {
+        "name": "Race Carl",
+        "name_zh": "竞速卡尔"
+      }
+    ]
+  },
+  {
+    "name_zh": "沃卡斯打手",
+    "name": "Volkas Enforcer",
+    "skills": [
+      {
+        "name": "Cryomastery",
+        "name_zh": "霜寒专精"
+      },
+      {
+        "name": "Reaching the Summit",
+        "name_zh": "登峰之路"
+      }
+    ],
+    "items": [
+      {
+        "name": "Cryosphere",
+        "name_zh": "冰能球"
+      },
+      {
+        "name": "Cryosleeve",
+        "name_zh": "寒冰特服"
+      },
+      {
+        "name": "Stopwatch",
+        "name_zh": "秒表"
+      },
+      {
+        "name": "Icebreaker",
+        "name_zh": "破冰尖镐"
+      },
+      {
+        "name": "Ice Pick",
+        "name_zh": "小冰镐"
+      },
+      {
+        "name": "Frost Potion",
+        "name_zh": "霜冻药水"
+      },
+      {
+        "name": "Icicle",
+        "name_zh": "冰锥"
+      }
+    ]
+  },
+  {
+    "name_zh": "霜猴霸王",
+    "name": "Frost Street Champion",
+    "skills": [
+      {
+        "name": "Blizzard",
+        "name_zh": "暴雪"
+      },
+      {
+        "name": "Invigorating Cold",
+        "name_zh": "提神寒气"
+      }
+    ],
+    "items": [
+      {
+        "name": "Iceberg",
+        "name_zh": "冰山"
+      },
+      {
+        "name": "Nitrogen Hammer",
+        "name_zh": "液氮锤"
+      },
+      {
+        "name": "Sapphire",
+        "name_zh": "蓝宝石"
+      },
+      {
+        "name": "Frozen Bludgeon",
+        "name_zh": "冻结殴打"
+      },
+      {
+        "name": "Frost Potion",
+        "name_zh": "霜冻药水"
+      },
+      {
+        "name": "Snowflake",
+        "name_zh": "雪花"
+      }
+    ]
+  },
+  {
+    "name_zh": "吉布斯",
+    "name": "Gibbus",
+    "skills": [
+      {
+        "name": "Wax and Wane",
+        "name_zh": "月有圆缺"
+      }
+    ],
+    "items": [
+      {
+        "name": "Moon Orb",
+        "name_zh": "月光宝珠"
+      },
+      {
+        "name": "Shot Glasses",
+        "name_zh": "烈酒杯"
+      },
+      {
+        "name": "Earrings",
+        "name_zh": "耳环"
+      },
+      {
+        "name": "Weather Machine",
+        "name_zh": "气象机"
+      },
+      {
+        "name": "Solar Drone",
+        "name_zh": "太阳能无人机"
+      },
+      {
+        "name": "Steam Hose",
+        "name_zh": "蒸汽喷管"
+      },
+      {
+        "name": "Thrusters",
+        "name_zh": "推进器"
+      }
+    ]
+  },
+  {
+    "name_zh": "地产大亨",
+    "name": "Property Baron",
+    "skills": [
+      {
+        "name": "Master Salesman",
+        "name_zh": "行商大师"
+      },
+      {
+        "name": "Trader",
+        "name_zh": "商人"
+      }
+    ],
+    "items": [
+      {
+        "name": "Skyscraper",
+        "name_zh": "摩天大楼"
+      },
+      {
+        "name": "Subscraper",
+        "name_zh": "地下商街"
+      },
+      {
+        "name": "Billboard",
+        "name_zh": "广告牌"
+      },
+      {
+        "name": "Keychain",
+        "name_zh": "钥匙串"
+      }
+    ]
+  },
+  {
+    "name_zh": "虚空巨像",
+    "name": "Void Colossus",
+    "skills": [
+      {
+        "name": "Void Energy",
+        "name_zh": "虚空能量"
+      },
+      {
+        "name": "Void Rage",
+        "name_zh": "虚空之怒"
+      }
+    ],
+    "items": [
+      {
+        "name": "Ruby",
+        "name_zh": "红宝石"
+      },
+      {
+        "name": "Void Ray",
+        "name_zh": "虚空射线"
+      },
+      {
+        "name": "Eye of the Colossus",
+        "name_zh": "巨像之眼"
+      },
+      {
+        "name": "Void Ray",
+        "name_zh": "虚空射线"
+      },
+      {
+        "name": "Void Shield",
+        "name_zh": "虚空护盾"
+      }
+    ]
+  },
+  {
+    "name_zh": "觉醒街区",
+    "name": "Awakened District",
+    "skills": [
+      {
+        "name": "Prosperity",
+        "name_zh": "繁荣昌盛"
+      },
+      {
+        "name": "Toughness",
+        "name_zh": "坚固"
+      },
+      {
+        "name": "Trickle Down Economics",
+        "name_zh": "涓滴经济学"
+      }
+    ],
+    "items": [
+      {
+        "name": "Landscraper",
+        "name_zh": "景观楼"
+      },
+      {
+        "name": "Soul of the District",
+        "name_zh": "街区之魂"
+      },
+      {
+        "name": "Spacescraper",
+        "name_zh": "摩空大楼"
+      },
+      {
+        "name": "Balcony",
+        "name_zh": "露台"
+      }
+    ]
+  },
+  {
+    "name_zh": "八臂达维",
+    "name": "Eight Arm Davvy",
+    "skills": [
+      {
+        "name": "Hyper Focus",
+        "name_zh": "聚能专注"
+      },
+      {
+        "name": "Arms Race",
+        "name_zh": "军备竞赛"
+      },
+      {
+        "name": "Strength",
+        "name_zh": "力量"
+      }
+    ],
+    "items": [
+      {
+        "name": "Tiny Cutlass",
+        "name_zh": "迷你弯刀"
+      },
+      {
+        "name": "Tiny Cutlass",
+        "name_zh": "迷你弯刀"
+      },
+      {
+        "name": "Tiny Cutlass",
+        "name_zh": "迷你弯刀"
+      },
+      {
+        "name": "Tiny Cutlass",
+        "name_zh": "迷你弯刀"
+      },
+      {
+        "name": "Octopus",
+        "name_zh": "章鱼"
+      },
+      {
+        "name": "Tiny Cutlass",
+        "name_zh": "迷你弯刀"
+      },
+      {
+        "name": "Tiny Cutlass",
+        "name_zh": "迷你弯刀"
+      },
+      {
+        "name": "Tiny Cutlass",
+        "name_zh": "迷你弯刀"
+      },
+      {
+        "name": "Tiny Cutlass",
+        "name_zh": "迷你弯刀"
+      }
+    ]
+  },
+  {
+    "name_zh": "阿肯大人",
+    "name": "Lord Arken",
+    "skills": [
+      {
+        "name": "Unwavering",
+        "name_zh": "坚定不移"
+      },
+      {
+        "name": "Strength",
+        "name_zh": "力量"
+      },
+      {
+        "name": "Flurry of Blows",
+        "name_zh": "连环打击"
+      }
+    ],
+    "items": [
+      {
+        "name": "Vitality Potion",
+        "name_zh": "活力药水"
+      },
+      {
+        "name": "Gatling Gun",
+        "name_zh": "加特林机枪"
+      },
+      {
+        "name": "The Eclipse",
+        "name_zh": "蚀光舰"
+      },
+      {
+        "name": "Thrusters",
+        "name_zh": "推进器"
+      },
+      {
+        "name": "Gatling Gun",
+        "name_zh": "加特林机枪"
+      }
+    ]
+  },
+  {
+    "name_zh": "魔古洛斯",
+    "name": "Morguloth",
+    "skills": [
+      {
+        "name": "Strength",
+        "name_zh": "力量"
+      },
+      {
+        "name": "Jack of All Trades",
+        "name_zh": "全能手"
+      }
+    ],
+    "items": [
+      {
+        "name": "Cleaver",
+        "name_zh": "华丽菜刀"
+      },
+      {
+        "name": "Box Cutter",
+        "name_zh": "裁纸刀"
+      },
+      {
+        "name": "Handaxe",
+        "name_zh": "手斧"
+      },
+      {
+        "name": "Haladie",
+        "name_zh": "双头刀"
+      },
+      {
+        "name": "Chris Army Knife",
+        "name_zh": "克里斯军刀"
+      },
+      {
+        "name": "Ritual Dagger",
+        "name_zh": "仪式匕首"
+      },
+      {
+        "name": "Sword of Swords",
+        "name_zh": "万剑之王"
+      },
+      {
+        "name": "Lockbox",
+        "name_zh": "锁匣"
+      }
+    ]
+  },
+  {
+    "name_zh": "虚空魔像",
+    "name": "Void Golem",
+    "skills": [
+      {
+        "name": "Into the Void",
+        "name_zh": "遁入虚空"
+      },
+      {
+        "name": "Void Render",
+        "name_zh": "空蚀裂解器"
+      }
+    ],
+    "items": [
+      {
+        "name": "Singularity",
+        "name_zh": "奇点"
+      },
+      {
+        "name": "Void Ray",
+        "name_zh": "虚空射线"
+      },
+      {
+        "name": "Void Ray",
+        "name_zh": "虚空射线"
+      },
+      {
+        "name": "Caltrops",
+        "name_zh": "铁蒺藜"
+      },
+      {
+        "name": "Caltrops",
+        "name_zh": "铁蒺藜"
+      },
+      {
+        "name": "Spices",
+        "name_zh": "香料"
+      }
+    ]
+  },
+  {
+    "name_zh": "吹箭枪陷阱",
+    "name": "Blowguns Trap",
+    "skills": [],
+    "items": [
+      {
+        "name": "Blowgun",
+        "name_zh": "吹箭枪"
+      },
+      {
+        "name": "Blowgun",
+        "name_zh": "吹箭枪"
+      },
+      {
+        "name": "Blowgun",
+        "name_zh": "吹箭枪"
+      },
+      {
+        "name": "Blowgun",
+        "name_zh": "吹箭枪"
+      },
+      {
+        "name": "Lockbox",
+        "name_zh": "锁匣"
+      },
+      {
+        "name": "Blowgun",
+        "name_zh": "吹箭枪"
+      },
+      {
+        "name": "Blowgun",
+        "name_zh": "吹箭枪"
+      },
+      {
+        "name": "Blowgun",
+        "name_zh": "吹箭枪"
+      },
+      {
+        "name": "Blowgun",
+        "name_zh": "吹箭枪"
+      }
+    ]
+  },
+  {
+    "name_zh": "吹箭枪陷阱",
+    "name": "Blowguns Trap",
+    "skills": [],
+    "items": [
+      {
+        "name": "Blowgun",
+        "name_zh": "吹箭枪"
+      },
+      {
+        "name": "Blowgun",
+        "name_zh": "吹箭枪"
+      },
+      {
+        "name": "Blowgun",
+        "name_zh": "吹箭枪"
+      },
+      {
+        "name": "Blowgun",
+        "name_zh": "吹箭枪"
+      },
+      {
+        "name": "Lockbox",
+        "name_zh": "锁匣"
+      },
+      {
+        "name": "Blowgun",
+        "name_zh": "吹箭枪"
+      },
+      {
+        "name": "Blowgun",
+        "name_zh": "吹箭枪"
+      },
+      {
+        "name": "Blowgun",
+        "name_zh": "吹箭枪"
+      },
+      {
+        "name": "Blowgun",
+        "name_zh": "吹箭枪"
+      }
+    ]
+  },
+  {
+    "name_zh": "吹箭枪陷阱",
+    "name": "Blowguns Trap",
+    "skills": [],
+    "items": [
+      {
+        "name": "Blowgun",
+        "name_zh": "吹箭枪"
+      },
+      {
+        "name": "Blowgun",
+        "name_zh": "吹箭枪"
+      },
+      {
+        "name": "Blowgun",
+        "name_zh": "吹箭枪"
+      },
+      {
+        "name": "Blowgun",
+        "name_zh": "吹箭枪"
+      },
+      {
+        "name": "Lockbox",
+        "name_zh": "锁匣"
+      },
+      {
+        "name": "Blowgun",
+        "name_zh": "吹箭枪"
+      },
+      {
+        "name": "Blowgun",
+        "name_zh": "吹箭枪"
+      },
+      {
+        "name": "Blowgun",
+        "name_zh": "吹箭枪"
+      },
+      {
+        "name": "Blowgun",
+        "name_zh": "吹箭枪"
+      }
+    ]
+  },
+  {
+    "name_zh": "神话典守",
+    "name": "Mythkeeper",
+    "skills": [
+      {
+        "name": "Siphoned Shield",
+        "name_zh": "虹吸护盾"
+      }
+    ],
+    "items": [
+      {
+        "name": "Wand",
+        "name_zh": "魔杖"
+      },
+      {
+        "name": "Robe",
+        "name_zh": "长袍"
+      },
+      {
+        "name": "Zoot Flute",
+        "name_zh": "祖特笛"
+      },
+      {
+        "name": "Forgotten God",
+        "name_zh": "失落神祇"
+      },
+      {
+        "name": "Incense",
+        "name_zh": "熏香"
+      },
+      {
+        "name": "Ectoplasm",
+        "name_zh": "灵质"
+      },
+      {
+        "name": "Fungal Spores",
+        "name_zh": "真菌孢子"
+      },
+      {
+        "name": "Venomous Dose",
+        "name_zh": "毒液注射"
+      }
+    ]
+  },
+  {
+    "name_zh": "铁蒺藜陷阱",
+    "name": "Caltrops Trap",
+    "skills": [],
+    "items": [
+      {
+        "name": "Caltrops",
+        "name_zh": "铁蒺藜"
+      },
+      {
+        "name": "Caltrops",
+        "name_zh": "铁蒺藜"
+      },
+      {
+        "name": "Lockbox",
+        "name_zh": "锁匣"
+      },
+      {
+        "name": "Caltrops",
+        "name_zh": "铁蒺藜"
+      },
+      {
+        "name": "Caltrops",
+        "name_zh": "铁蒺藜"
+      }
+    ]
+  },
+  {
+    "name_zh": "铁蒺藜陷阱",
+    "name": "Caltrops Trap",
+    "skills": [],
+    "items": [
+      {
+        "name": "Caltrops",
+        "name_zh": "铁蒺藜"
+      },
+      {
+        "name": "Caltrops",
+        "name_zh": "铁蒺藜"
+      },
+      {
+        "name": "Lockbox",
+        "name_zh": "锁匣"
+      },
+      {
+        "name": "Caltrops",
+        "name_zh": "铁蒺藜"
+      },
+      {
+        "name": "Caltrops",
+        "name_zh": "铁蒺藜"
+      }
+    ]
+  },
+  {
+    "name_zh": "铁蒺藜陷阱",
+    "name": "Caltrops Trap",
+    "skills": [],
+    "items": [
+      {
+        "name": "Caltrops",
+        "name_zh": "铁蒺藜"
+      },
+      {
+        "name": "Caltrops",
+        "name_zh": "铁蒺藜"
+      },
+      {
+        "name": "Lockbox",
+        "name_zh": "锁匣"
+      },
+      {
+        "name": "Caltrops",
+        "name_zh": "铁蒺藜"
+      },
+      {
+        "name": "Caltrops",
+        "name_zh": "铁蒺藜"
+      }
+    ]
+  },
+  {
+    "name_zh": "碧心守护神",
+    "name": "Greenheart Guardian",
+    "skills": [],
+    "items": [
+      {
+        "name": "Fang",
+        "name_zh": "獠牙"
+      },
+      {
+        "name": "Venom",
+        "name_zh": "毒液"
+      },
+      {
+        "name": "Fang",
+        "name_zh": "獠牙"
+      },
+      {
+        "name": "Venom",
+        "name_zh": "毒液"
+      },
+      {
+        "name": "Poppy Field",
+        "name_zh": "罂粟花田"
+      },
+      {
+        "name": "Emerald",
+        "name_zh": "翡翠"
+      },
+      {
+        "name": "Guardian Shell",
+        "name_zh": "守护神之壳"
+      }
+    ]
+  },
+  {
+    "name_zh": "拟形怪",
+    "name": "Mimic",
+    "skills": [
+      {
+        "name": "Ravenous",
+        "name_zh": "饕餮"
+      },
+      {
+        "name": "Strength",
+        "name_zh": "力量"
+      }
+    ],
+    "items": [
+      {
+        "name": "Fang",
+        "name_zh": "獠牙"
+      },
+      {
+        "name": "Fang",
+        "name_zh": "獠牙"
+      },
+      {
+        "name": "Fang",
+        "name_zh": "獠牙"
+      },
+      {
+        "name": "Fang",
+        "name_zh": "獠牙"
+      },
+      {
+        "name": "Fang",
+        "name_zh": "獠牙"
+      },
+      {
+        "name": "Fang",
+        "name_zh": "獠牙"
+      },
+      {
+        "name": "Fang",
+        "name_zh": "獠牙"
+      },
+      {
+        "name": "Fang",
+        "name_zh": "獠牙"
+      },
+      {
+        "name": "Fang",
+        "name_zh": "獠牙"
+      },
+      {
+        "name": "Fang",
+        "name_zh": "獠牙"
+      }
+    ]
+  },
+  {
+    "name_zh": "滚石陷阱",
+    "name": "Boulder Trap",
+    "skills": [],
+    "items": [
+      {
+        "name": "The Boulder",
+        "name_zh": "滚石"
+      },
+      {
+        "name": "Tripwire",
+        "name_zh": "绊线"
+      },
+      {
+        "name": "Lockbox",
+        "name_zh": "锁匣"
+      },
+      {
+        "name": "The Boulder",
+        "name_zh": "滚石"
+      }
+    ]
+  },
+  {
+    "name_zh": "滚石陷阱",
+    "name": "Boulder Trap",
+    "skills": [],
+    "items": [
+      {
+        "name": "The Boulder",
+        "name_zh": "滚石"
+      },
+      {
+        "name": "Tripwire",
+        "name_zh": "绊线"
+      },
+      {
+        "name": "Lockbox",
+        "name_zh": "锁匣"
+      },
+      {
+        "name": "The Boulder",
+        "name_zh": "滚石"
+      }
+    ]
+  },
+  {
+    "name_zh": "滚石陷阱",
+    "name": "Boulder Trap",
+    "skills": [],
+    "items": [
+      {
+        "name": "The Boulder",
+        "name_zh": "滚石"
+      },
+      {
+        "name": "Tripwire",
+        "name_zh": "绊线"
+      },
+      {
+        "name": "Lockbox",
+        "name_zh": "锁匣"
+      },
+      {
+        "name": "The Boulder",
+        "name_zh": "滚石"
+      }
+    ]
+  },
+  {
+    "name_zh": "柯玛兹",
+    "name": "Qomatz",
+    "skills": [
+      {
+        "name": "Ancient Vengeance",
+        "name_zh": "远古复仇"
+      }
+    ],
+    "items": [
+      {
+        "name": "Cosmic Plumage",
+        "name_zh": "宇宙炫羽"
+      },
+      {
+        "name": "Claws",
+        "name_zh": "利爪"
+      },
+      {
+        "name": "Viper Cane",
+        "name_zh": "蛇首手杖"
+      },
+      {
+        "name": "Basilisk Fang",
+        "name_zh": "蛇怪之牙"
+      },
+      {
+        "name": "Ethergy Conduit",
+        "name_zh": "以太能量导体"
+      }
+    ]
+  },
+  {
+    "name_zh": "阿莱帕·坦提乌斯",
+    "name": "Aleppa Tantius",
+    "skills": [
+      {
+        "name": "Scramble Fighters",
+        "name_zh": "紧急起飞"
+      }
+    ],
+    "items": [
+      {
+        "name": "Security Drone",
+        "name_zh": "安保无人机"
+      },
+      {
+        "name": "Tantius Carrier",
+        "name_zh": "坦提乌斯运输舰"
+      },
+      {
+        "name": "Rocket Drone",
+        "name_zh": "火箭无人机"
+      },
+      {
+        "name": "Caracara",
+        "name_zh": "卡拉飞艇"
+      },
+      {
+        "name": "Jetpack",
+        "name_zh": "喷气背包"
+      },
+      {
+        "name": "Lightning Butterfly",
+        "name_zh": "闪电蝴蝶"
+      }
+    ]
+  },
+  {
+    "name_zh": "赏金猎人",
+    "name": "Bounty Hunter",
+    "skills": [
+      {
+        "name": "Ambush",
+        "name_zh": "伏击"
+      }
+    ],
+    "items": [
+      {
+        "name": "Revolver",
+        "name_zh": "左轮手枪"
+      },
+      {
+        "name": "Thrown Net",
+        "name_zh": "投掷捕兽网"
+      },
+      {
+        "name": "Revolver",
+        "name_zh": "左轮手枪"
+      },
+      {
+        "name": "Cutlass",
+        "name_zh": "弯刀"
+      },
+      {
+        "name": "Wanted Poster",
+        "name_zh": "通缉海报"
+      },
+      {
+        "name": "Flashbang",
+        "name_zh": "闪光弹"
+      },
+      {
+        "name": "Broken Shackles",
+        "name_zh": "打破镣铐"
+      }
+    ]
+  },
+  {
+    "name_zh": "黑牛先生",
+    "name": "Mr. Moo",
+    "skills": [
+      {
+        "name": "Dual Wield",
+        "name_zh": "双持"
+      }      
+    ],
+    "items": [
+      {
+        "name": "Incendiary Rounds",
+        "name_zh": "燃烧弹"
+      },
+      {
+        "name": "Incendiary Rounds",
+        "name_zh": "燃烧弹"
+      },  {
+        "name": "Incendiary Rounds",
+        "name_zh": "燃烧弹"
+      },
+      {
+        "name": "Tommoo Gun",
+        "name_zh": "汤姆枪"
+      },
+      {
+        "name": "Incendiary Rounds",
+        "name_zh": "燃烧弹"
+      },
+      {
+        "name": "Incendiary Rounds",
+        "name_zh": "燃烧弹"
+      },
+      {
+        "name": "Tommoo Gun",
+        "name_zh": "汤姆枪"
+      },
+      {
+        "name": "Incendiary Rounds",
+        "name_zh": "燃烧弹"
+      },
+      {
+        "name": "Incendiary Rounds",
+        "name_zh": "燃烧弹"
+      },  {
+        "name": "Incendiary Rounds",
+        "name_zh": "燃烧弹"
+      }
+    ]
+  }
+]

@@ -75,3 +75,4 @@ def download_item_search_html(card_name='Landscraper'):
 if __name__ == "__main__":
     download_item_search_html('Landscraper')
 
+

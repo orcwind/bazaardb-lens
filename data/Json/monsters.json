@@ -1,0 +1,542 @@
+[
+  {
+    "name": "Ahexa",
+    "name_zh": "阿海克萨",
+    "url": "https://bazaardb.gg/search?q=Ahexa&c=monsters"
+  },
+  {
+    "name": "Aleppa Tantius",
+    "name_zh": "阿莱帕·坦提乌斯",
+    "url": "https://bazaardb.gg/search?q=Aleppa+Tantius&c=monsters"
+  },
+  {
+    "name": "Annex Trooper",
+    "name_zh": "附属部队士兵",
+    "url": "https://bazaardb.gg/search?q=Annex+Trooper&c=monsters"
+  },
+  {
+    "name": "Awakened District",
+    "name_zh": "觉醒街区",
+    "url": "https://bazaardb.gg/search?q=Awakened+District&c=monsters"
+  },
+  {
+    "name": "Awakened Primordial",
+    "name_zh": "觉醒元初体",
+    "url": "https://bazaardb.gg/search?q=Awakened+Primordial&c=monsters"
+  },
+  {
+    "name": "Banannibal",
+    "name_zh": "食蕉兽",
+    "url": "https://bazaardb.gg/search?q=Banannibal&c=monsters"
+  },
+  {
+    "name": "Bloodreef Captain",
+    "name_zh": "血礁船长",
+    "url": "https://bazaardb.gg/search?q=Bloodreef+Captain&c=monsters"
+  },
+  {
+    "name": "Bloodreef Raider",
+    "name_zh": "血礁奇兵",
+    "url": "https://bazaardb.gg/search?q=Bloodreef+Raider&c=monsters"
+  },
+  {
+    "name": "Blowguns Trap",
+    "name_zh": "吹箭枪陷阱",
+    "url": "https://bazaardb.gg/search?q=Blowguns+Trap&c=monsters"
+  },
+  {
+    "name": "Boarrior",
+    "name_zh": "蛮猪战士",
+    "url": "https://bazaardb.gg/search?q=Boarrior&c=monsters"
+  },
+  {
+    "name": "Boilerroom Brawler",
+    "name_zh": "锅炉斗士",
+    "url": "https://bazaardb.gg/search?q=Boilerroom+Brawler&c=monsters"
+  },
+  {
+    "name": "Boss Harrow",
+    "name_zh": "哈洛大哥",
+    "url": "https://bazaardb.gg/search?q=Boss+Harrow&c=monsters"
+  },
+  {
+    "name": "Boulder Trap",
+    "name_zh": "滚石陷阱",
+    "url": "https://bazaardb.gg/search?q=Boulder+Trap&c=monsters"
+  },
+  {
+    "name": "Bouncertron",
+    "name_zh": "防卫机甲",
+    "url": "https://bazaardb.gg/search?q=Bouncertron&c=monsters"
+  },
+  {
+    "name": "Bounty Hunter",
+    "name_zh": "赏金猎人",
+    "url": "https://bazaardb.gg/search?q=Bounty+Hunter&c=monsters"
+  },
+  {
+    "name": "Burninator Bot",
+    "name_zh": "焚毁机器人",
+    "url": "https://bazaardb.gg/search?q=Burninator+Bot&c=monsters"
+  },
+  {
+    "name": "Caltrops Trap",
+    "name_zh": "铁蒺藜陷阱",
+    "url": "https://bazaardb.gg/search?q=Caltrops+Trap&c=monsters"
+  },
+  {
+    "name": "Car Conductor",
+    "name_zh": "驾驶督导",
+    "url": "https://bazaardb.gg/search?q=Car+Conductor&c=monsters"
+  },
+  {
+    "name": "Chilly Charles",
+    "name_zh": "寒霜查尔斯",
+    "url": "https://bazaardb.gg/search?q=Chilly+Charles&c=monsters"
+  },
+  {
+    "name": "Cloudtop Admiral",
+    "name_zh": "云顶海军上将",
+    "url": "https://bazaardb.gg/search?q=Cloudtop+Admiral&c=monsters"
+  },
+  {
+    "name": "Cloudtop Officer",
+    "name_zh": "云顶军官",
+    "url": "https://bazaardb.gg/search?q=Cloudtop+Officer&c=monsters"
+  },
+  {
+    "name": "Coconut Crab",
+    "name_zh": "椰子蟹",
+    "url": "https://bazaardb.gg/search?q=Coconut+Crab&c=monsters"
+  },
+  {
+    "name": "Cosmic Roc",
+    "name_zh": "宇宙鹏鸟",
+    "url": "https://bazaardb.gg/search?q=Cosmic+Roc&c=monsters"
+  },
+  {
+    "name": "Covetous Thief",
+    "name_zh": "贪婪窃贼",
+    "url": "https://bazaardb.gg/search?q=Covetous+Thief&c=monsters"
+  },
+  {
+    "name": "Dabbling Apprentice",
+    "name_zh": "初学学徒",
+    "url": "https://bazaardb.gg/search?q=Dabbling+Apprentice&c=monsters"
+  },
+  {
+    "name": "Dire Inglet",
+    "name_zh": "英格恐狼",
+    "url": "https://bazaardb.gg/search?q=Dire+Inglet&c=monsters"
+  },
+  {
+    "name": "Dire Mosquito",
+    "name_zh": "恶蚊",
+    "url": "https://bazaardb.gg/search?q=Dire+Mosquito&c=monsters"
+  },
+  {
+    "name": "Dooltron",
+    "name_zh": "杜利机甲",
+    "url": "https://bazaardb.gg/search?q=Dooltron&c=monsters"
+  },
+  {
+    "name": "Dr. Vortex",
+    "name_zh": "漩涡博士",
+    "url": "https://bazaardb.gg/search?q=Dr.+Vortex&c=monsters"
+  },
+  {
+    "name": "Dragon",
+    "name_zh": "巨龙",
+    "url": "https://bazaardb.gg/search?q=Dragon&c=monsters"
+  },
+  {
+    "name": "Eccentric Etherwright",
+    "name_zh": "怪奇以太匠",
+    "url": "https://bazaardb.gg/search?q=Eccentric+Etherwright&c=monsters"
+  },
+  {
+    "name": "Eight Arm Davvy",
+    "name_zh": "八臂达维",
+    "url": "https://bazaardb.gg/search?q=Eight+Arm+Davvy&c=monsters"
+  },
+  {
+    "name": "Elite Duelist",
+    "name_zh": "精英决斗者",
+    "url": "https://bazaardb.gg/search?q=Elite+Duelist&c=monsters"
+  },
+  {
+    "name": "Fanged Inglet",
+    "name_zh": "獠牙英格狼",
+    "url": "https://bazaardb.gg/search?q=Fanged+Inglet&c=monsters"
+  },
+  {
+    "name": "Ferros Khan",
+    "name_zh": "菲罗斯汗",
+    "url": "https://bazaardb.gg/search?q=Ferros+Khan&c=monsters"
+  },
+  {
+    "name": "Flame Juggler",
+    "name_zh": "舞火大师",
+    "url": "https://bazaardb.gg/search?q=Flame+Juggler&c=monsters"
+  },
+  {
+    "name": "Foreman",
+    "name_zh": "领班",
+    "url": "https://bazaardb.gg/search?q=Foreman&c=monsters"
+  },
+  {
+    "name": "Foundation Revenant",
+    "name_zh": "基石亡灵",
+    "url": "https://bazaardb.gg/search?q=Foundation+Revenant&c=monsters"
+  },
+  {
+    "name": "Foundation Weeper",
+    "name_zh": "基石泣妖",
+    "url": "https://bazaardb.gg/search?q=Foundation+Weeper&c=monsters"
+  },
+  {
+    "name": "Frost Street Challenger",
+    "name_zh": "霜猴勇士",
+    "url": "https://bazaardb.gg/search?q=Frost+Street+Challenger&c=monsters"
+  },
+  {
+    "name": "Frost Street Champion",
+    "name_zh": "霜猴霸王",
+    "url": "https://bazaardb.gg/search?q=Frost+Street+Champion&c=monsters"
+  },
+  {
+    "name": "Ghost Pepper",
+    "name_zh": "幽灵辣椒",
+    "url": "https://bazaardb.gg/search?q=Ghost+Pepper&c=monsters"
+  },
+  {
+    "name": "Giant Mosquito",
+    "name_zh": "巨蚊",
+    "url": "https://bazaardb.gg/search?q=Giant+Mosquito&c=monsters"
+  },
+  {
+    "name": "Gibbus",
+    "name_zh": "吉布斯",
+    "url": "https://bazaardb.gg/search?q=Gibbus&c=monsters"
+  },
+  {
+    "name": "Gorgon Noble",
+    "name_zh": "戈尔贡贵妇",
+    "url": "https://bazaardb.gg/search?q=Gorgon+Noble&c=monsters"
+  },
+  {
+    "name": "Grandfather Klok",
+    "name_zh": "发条爷爷",
+    "url": "https://bazaardb.gg/search?q=Grandfather+Klok&c=monsters"
+  },
+  {
+    "name": "Greenheart Guardian",
+    "name_zh": "碧心守护神",
+    "url": "https://bazaardb.gg/search?q=Greenheart+Guardian&c=monsters"
+  },
+  {
+    "name": "Harkuvian Rocket Trooper",
+    "name_zh": "哈库维火箭兵",
+    "url": "https://bazaardb.gg/search?q=Harkuvian+Rocket+Trooper&c=monsters"
+  },
+  {
+    "name": "Haunted Kimono",
+    "name_zh": "怨念和服",
+    "url": "https://bazaardb.gg/search?q=Haunted+Kimono&c=monsters"
+  },
+  {
+    "name": "Hellbilly",
+    "name_zh": "乡巴佬蜥蜴",
+    "url": "https://bazaardb.gg/search?q=Hellbilly&c=monsters"
+  },
+  {
+    "name": "Hoverbike Hooligan",
+    "name_zh": "飞车暴徒",
+    "url": "https://bazaardb.gg/search?q=Hoverbike+Hooligan&c=monsters"
+  },
+  {
+    "name": "Hulking Experiment",
+    "name_zh": "庞大实验体",
+    "url": "https://bazaardb.gg/search?q=Hulking+Experiment&c=monsters"
+  },
+  {
+    "name": "Infernal",
+    "name_zh": "地狱大魔神",
+    "url": "https://bazaardb.gg/search?q=Infernal&c=monsters"
+  },
+  {
+    "name": "Infernal Dreadnought",
+    "name_zh": "地狱空艇",
+    "url": "https://bazaardb.gg/search?q=Infernal+Dreadnought&c=monsters"
+  },
+  {
+    "name": "Infernal Envoy",
+    "name_zh": "地狱使者",
+    "url": "https://bazaardb.gg/search?q=Infernal+Envoy&c=monsters"
+  },
+  {
+    "name": "Infernal Frigate",
+    "name_zh": "地狱飞艇",
+    "url": "https://bazaardb.gg/search?q=Infernal+Frigate&c=monsters"
+  },
+  {
+    "name": "Joyful Jack",
+    "name_zh": "快乐杰克南瓜",
+    "url": "https://bazaardb.gg/search?q=Joyful+Jack&c=monsters"
+  },
+  {
+    "name": "Kyver Commander",
+    "name_zh": "凯沃斯指挥官",
+    "url": "https://bazaardb.gg/search?q=Kyver+Commander&c=monsters"
+  },
+  {
+    "name": "Kyver Drone",
+    "name_zh": "凯沃斯雄蜂",
+    "url": "https://bazaardb.gg/search?q=Kyver+Drone&c=monsters"
+  },
+  {
+    "name": "Lich",
+    "name_zh": "巫妖",
+    "url": "https://bazaardb.gg/search?q=Lich&c=monsters"
+  },
+  {
+    "name": "Loan Shark",
+    "name_zh": "放贷鲨",
+    "url": "https://bazaardb.gg/search?q=Loan+Shark&c=monsters"
+  },
+  {
+    "name": "Lord Arken",
+    "name_zh": "阿肯大人",
+    "url": "https://bazaardb.gg/search?q=Lord+Arken&c=monsters"
+  },
+  {
+    "name": "Lord of the Wastes",
+    "name_zh": "废土领主",
+    "url": "https://bazaardb.gg/search?q=Lord+of+the+Wastes&c=monsters"
+  },
+  {
+    "name": "Master Alchemist",
+    "name_zh": "炼金大师",
+    "url": "https://bazaardb.gg/search?q=Master+Alchemist&c=monsters"
+  },
+  {
+    "name": "Mimic",
+    "name_zh": "拟形怪",
+    "url": "https://bazaardb.gg/search?q=Mimic&c=monsters"
+  },
+  {
+    "name": "Mod Squad",
+    "name_zh": "改装小队",
+    "url": "https://bazaardb.gg/search?q=Mod+Squad&c=monsters"
+  },
+  {
+    "name": "Morguloth",
+    "name_zh": "魔古洛斯",
+    "url": "https://bazaardb.gg/search?q=Morguloth&c=monsters"
+  },
+  {
+    "name": "Mr. Moo",
+    "name_zh": "黑牛先生",
+    "url": "https://bazaardb.gg/search?q=Mr.+Moo&c=monsters"
+  },
+  {
+    "name": "Mythkeeper",
+    "name_zh": "神话典守",
+    "url": "https://bazaardb.gg/search?q=Mythkeeper&c=monsters"
+  },
+  {
+    "name": "Oasis Guardian",
+    "name_zh": "绿洲守护神",
+    "url": "https://bazaardb.gg/search?q=Oasis+Guardian&c=monsters"
+  },
+  {
+    "name": "Outlands Dervish",
+    "name_zh": "荒原旋舞者",
+    "url": "https://bazaardb.gg/search?q=Outlands+Dervish&c=monsters"
+  },
+  {
+    "name": "Preening Duelist",
+    "name_zh": "精致决斗士",
+    "url": "https://bazaardb.gg/search?q=Preening+Duelist&c=monsters"
+  },
+  {
+    "name": "Prince Marianas",
+    "name_zh": "马力亚纳斯王子",
+    "url": "https://bazaardb.gg/search?q=Prince+Marianas&c=monsters"
+  },
+  {
+    "name": "Product Demonstrator",
+    "name_zh": "产品演示员",
+    "url": "https://bazaardb.gg/search?q=Product+Demonstrator&c=monsters"
+  },
+  {
+    "name": "Property Baron",
+    "name_zh": "地产大亨",
+    "url": "https://bazaardb.gg/search?q=Property+Baron&c=monsters"
+  },
+  {
+    "name": "Pyro",
+    "name_zh": "火灵",
+    "url": "https://bazaardb.gg/search?q=Pyro&c=monsters"
+  },
+  {
+    "name": "Qomatz",
+    "name_zh": "柯玛兹",
+    "url": "https://bazaardb.gg/search?q=Qomatz&c=monsters"
+  },
+  {
+    "name": "Radiant Corsair",
+    "name_zh": "辉耀海盗",
+    "url": "https://bazaardb.gg/search?q=Radiant+Corsair&c=monsters"
+  },
+  {
+    "name": "Retiree",
+    "name_zh": "退休人员",
+    "url": "https://bazaardb.gg/search?q=Retiree&c=monsters"
+  },
+  {
+    "name": "Rex Spex",
+    "name_zh": "机甲暴龙",
+    "url": "https://bazaardb.gg/search?q=Rex+Spex&c=monsters"
+  },
+  {
+    "name": "Roaming Isle",
+    "name_zh": "流浪岛屿",
+    "url": "https://bazaardb.gg/search?q=Roaming+Isle&c=monsters"
+  },
+  {
+    "name": "Rogue Scrapper",
+    "name_zh": "暴走破碎机",
+    "url": "https://bazaardb.gg/search?q=Rogue+Scrapper&c=monsters"
+  },
+  {
+    "name": "Sabretooth",
+    "name_zh": "剑齿虎",
+    "url": "https://bazaardb.gg/search?q=Sabretooth&c=monsters"
+  },
+  {
+    "name": "Sandwich Artist",
+    "name_zh": "三明治艺术家",
+    "url": "https://bazaardb.gg/search?q=Sandwich+Artist&c=monsters"
+  },
+  {
+    "name": "Scovyle",
+    "name_zh": "辣火狂徒",
+    "url": "https://bazaardb.gg/search?q=Scovyle&c=monsters"
+  },
+  {
+    "name": "Sergeant Suds",
+    "name_zh": "皂沫中士",
+    "url": "https://bazaardb.gg/search?q=Sergeant+Suds&c=monsters"
+  },
+  {
+    "name": "Stew",
+    "name_zh": "史都",
+    "url": "https://bazaardb.gg/search?q=Stew&c=monsters"
+  },
+  {
+    "name": "Street Gamer",
+    "name_zh": "街头玩家",
+    "url": "https://bazaardb.gg/search?q=Street+Gamer&c=monsters"
+  },
+  {
+    "name": "Tempest Bravo",
+    "name_zh": "焰风勇士",
+    "url": "https://bazaardb.gg/search?q=Tempest+Bravo&c=monsters"
+  },
+  {
+    "name": "Terrorform",
+    "name_zh": "恐惧之形",
+    "url": "https://bazaardb.gg/search?q=Terrorform&c=monsters"
+  },
+  {
+    "name": "Test Subject Alpha",
+    "name_zh": "测试对象阿尔法",
+    "url": "https://bazaardb.gg/search?q=Test+Subject+Alpha&c=monsters"
+  },
+  {
+    "name": "Thug",
+    "name_zh": "暴徒",
+    "url": "https://bazaardb.gg/search?q=Thug&c=monsters"
+  },
+  {
+    "name": "Tortuga",
+    "name_zh": "巨龟托图加",
+    "url": "https://bazaardb.gg/search?q=Tortuga&c=monsters"
+  },
+  {
+    "name": "Trash Golem",
+    "name_zh": "垃圾魔像",
+    "url": "https://bazaardb.gg/search?q=Trash+Golem&c=monsters"
+  },
+  {
+    "name": "Trash Titan",
+    "name_zh": "垃圾泰坦",
+    "url": "https://bazaardb.gg/search?q=Trash+Titan&c=monsters"
+  },
+  {
+    "name": "Trashtown Mayor",
+    "name_zh": "垃圾镇镇长",
+    "url": "https://bazaardb.gg/search?q=Trashtown+Mayor&c=monsters"
+  },
+  {
+    "name": "Treasure Turtle",
+    "name_zh": "载宝海龟",
+    "url": "https://bazaardb.gg/search?q=Treasure+Turtle&c=monsters"
+  },
+  {
+    "name": "Ventriloquist",
+    "name_zh": "腹语者",
+    "url": "https://bazaardb.gg/search?q=Ventriloquist&c=monsters"
+  },
+  {
+    "name": "Viper",
+    "name_zh": "毒蛇",
+    "url": "https://bazaardb.gg/search?q=Viper&c=monsters"
+  },
+  {
+    "name": "Viper Tyrant",
+    "name_zh": "毒蛇暴君",
+    "url": "https://bazaardb.gg/search?q=Viper+Tyrant&c=monsters"
+  },
+  {
+    "name": "Void Colossus",
+    "name_zh": "虚空巨像",
+    "url": "https://bazaardb.gg/search?q=Void+Colossus&c=monsters"
+  },
+  {
+    "name": "Void Golem",
+    "name_zh": "虚空魔像",
+    "url": "https://bazaardb.gg/search?q=Void+Golem&c=monsters"
+  },
+  {
+    "name": "Void Knight",
+    "name_zh": "虚空骑士",
+    "url": "https://bazaardb.gg/search?q=Void+Knight&c=monsters"
+  },
+  {
+    "name": "Volkas Enforcer",
+    "name_zh": "沃卡斯打手",
+    "url": "https://bazaardb.gg/search?q=Volkas+Enforcer&c=monsters"
+  },
+  {
+    "name": "Wandering Shoal",
+    "name_zh": "流浪暗礁",
+    "url": "https://bazaardb.gg/search?q=Wandering+Shoal&c=monsters"
+  },
+  {
+    "name": "Weapons Platform",
+    "name_zh": "武器平台",
+    "url": "https://bazaardb.gg/search?q=Weapons+Platform&c=monsters"
+  },
+  {
+    "name": "Yerdan",
+    "name_zh": "耶丹",
+    "url": "https://bazaardb.gg/search?q=Yerdan&c=monsters"
+  },
+  {
+    "name": "Zookeeper",
+    "name_zh": "动物饲养员",
+    "url": "https://bazaardb.gg/search?q=Zookeeper&c=monsters"
+  }
+]
