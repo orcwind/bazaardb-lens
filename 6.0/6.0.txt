@@ -30,52 +30,7 @@ python fetch_event_name.py
 这部分需要手动修正。
 
 
-步骤4: 获取物品和技能详细信息（完整版）⭐
--------------------
-步骤4.1: 抓取物品和技能HTML文件
-cd "d:\PythonProject\BazaarInfo\bazaardb-desktop\6.0\crawlers"
-python simple_crawler_items_skills.py
-
-输出文件:
-  - debug_items.html
-  - debug_skills.html
-
-步骤4.2: 提取物品和技能名称
-cd "d:\PythonProject\BazaarInfo\bazaardb-desktop\6.0\crawlers"
-python fetch_items_skills_names.py
-
-输出文件:
-  - unique_items.json
-  - unique_skills.json
-
-步骤4.3: 获取物品和技能详细信息
-cd "d:\PythonProject\BazaarInfo\bazaardb-desktop\6.0\crawlers"
-python selenium_items_skills.py
-
-功能：
-  - 从 unique_items.json 和 unique_skills.json 读取名称列表
-  - 对每个物品/技能访问搜索页面（https://bazaardb.gg/search?q={名称}&c=items）
-  - 从页面HTML的 pageCards JSON 中提取完整信息（名称、描述、图标、尺寸、附魔等）
-  - 下载所有图标并保存到 data/icon
-  - 自动检测语言并保存到相应字段（name_zh/name, description_zh/description）
-  - 自动计算并添加长宽比（根据卡片尺寸）
-  - 增量保存（每处理完一个立即保存）
-  - 自动跳过已处理的项
-  - 生成错误日志
-
-输出目录: 
-  - data/Json/
-    - items.json (完整的物品数据)
-    - skills.json (完整的技能数据)
-  - data/icon/ (所有图标)
-
-注意：
-  - 物品和技能数据支持中英文（自动检测）
-  - 从搜索页面的 pageCards JSON 中提取，包含完整信息（包括附魔）
-  - 图标统一保存到 data/icon 目录
-
-
-步骤5: 获取怪物详细信息（V3完整版）
+步骤4: 获取怪物详细信息（V3完整版）
 -------------------
 cd "d:\PythonProject\BazaarInfo\bazaardb-desktop\6.0\crawlers"
 python selenium_monster_v3.py
@@ -105,7 +60,7 @@ python selenium_monster_v3.py
   - 完整度: 100%
 
 
-步骤6: 重试失败的项
+步骤5: 重试失败的项
 -------------------
 cd "d:\PythonProject\BazaarInfo\bazaardb-desktop\6.0\crawlers"
 python retry_failed_items.py
@@ -117,7 +72,7 @@ python retry_failed_items.py
   - 自动更新JSON文件
 
 
-步骤7: 检查数据完整性
+步骤6: 检查数据完整性
 -------------------
 cd "d:\PythonProject\BazaarInfo\bazaardb-desktop\6.0\crawlers"
 python check_data_completeness.py
@@ -129,10 +84,10 @@ python check_data_completeness.py
   - 计算数据完整度
 
 
-步骤8: 手动更新缺失信息
+步骤7: 手动更新缺失信息
 
 
-步骤9: 获取事件详细信息（完整版）
+步骤8: 获取事件详细信息（完整版）
 -------------------
 cd "d:\PythonProject\BazaarInfo\bazaardb-desktop\6.0\crawlers"
 python selenium_event_final.py
@@ -150,7 +105,7 @@ python selenium_event_final.py
   - icons/ (所有选择图标，按事件分目录)
   - logs/ (错误日志)
 
-步骤10: 手动修正失败项
+步骤9: 手动修正失败项
 -------------------
 根据错误日志手动处理：
   1. 下载超时的图标
@@ -161,13 +116,6 @@ python selenium_event_final.py
 ==========================================
 完整操作流程（快速参考）
 ==========================================
-
-物品和技能数据提取：
-------------------
-1. 运行 selenium_items_skills.py   → 获取完整物品和技能数据
-   - items_details/items.json + icons/
-   - skills_details/skills.json + icons/
-2. 手动修正缺失的图标和描述       → 根据错误日志处理
 
 怪物数据提取：
 --------------
@@ -186,8 +134,6 @@ python selenium_event_final.py
 
 最终输出：
 ----------
-- 物品数据: 6.0/crawlers/items_details/items.json + icons/
-- 技能数据: 6.0/crawlers/skills_details/skills.json + icons/
 - 怪物数据: 6.0/crawlers/monster_details_v3/monsters_v3.json + icons/
 - 事件数据: 6.0/crawlers/event_details_final/events_final.json + icons/
 
@@ -264,7 +210,6 @@ python compare_names.py
 cd "d:\PythonProject\BazaarInfo\bazaardb-desktop\6.0\crawlers"
 
 # 方式A: 直接运行（推荐）
-python selenium_items_skills.py   # 更新物品和技能数据（自动跳过已有）⭐
 python selenium_monster_v3.py
 python selenium_event_final.py
 
@@ -303,16 +248,15 @@ python check_data_completeness.py
 安全更新流程总结：
 ------------------
 1. backup_current_data.py         → 备份所有数据（必须！）
-2. selenium_items_skills.py        → 更新物品和技能数据（自动跳过已有）⭐
-3. simple_crawler.py              → 获取最新网页
-4. fetch_monster_name.py          → 提取怪物名称
-5. fetch_event_name.py            → 提取事件名称
-6. [手动修正 unique_events.json]  → 修正事件名称（如需要）
-7. compare_names.py               → 对比找出新增项
-8. selenium_monster_v3.py         → 爬取新增怪物（自动跳过已有）
-9. selenium_event_final.py        → 爬取新增事件（自动跳过已有）
-10. check_data_completeness.py     → 检查数据完整性
-11. [手动处理失败项]              → 根据错误日志处理
+2. simple_crawler.py              → 获取最新网页
+3. fetch_monster_name.py          → 提取怪物名称
+4. fetch_event_name.py            → 提取事件名称
+5. [手动修正 unique_events.json]  → 修正事件名称（如需要）
+6. compare_names.py               → 对比找出新增项
+7. selenium_monster_v3.py         → 爬取新增怪物（自动跳过已有）
+8. selenium_event_final.py        → 爬取新增事件（自动跳过已有）
+9. check_data_completeness.py     → 检查数据完整性
+10. [手动处理失败项]              → 根据错误日志处理
 
 优势：
 ------

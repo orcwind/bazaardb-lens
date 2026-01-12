@@ -1,0 +1,3026 @@
+[
+  {
+    "name": "Above the Clouds",
+    "name_zh": "云朵之上",
+    "description_zh": "每拥有一件飞行物品，己方物品+{aura.0.mod}%暴击率。",
+    "icon": "skill/Above_the_Clouds.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Above-the-Clouds&c=skills"
+  },
+  {
+    "name": "Acclimation",
+    "name_zh": "环境适应",
+    "description_zh": "每拥有一件飞行物品，己方武器就+{aura.0.mod}伤害。",
+    "icon": "skill/Acclimation.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Acclimation&c=skills"
+  },
+  {
+    "name": "Adaptive Ordinance",
+    "name_zh": "自适应军备",
+    "description_zh": "物品弹药耗尽时，生命再生量提高10 » 20 » 30（限本场战斗）。",
+    "icon": "skill/Adaptive_Ordinance.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Adaptive-Ordinance&c=skills"
+  },
+  {
+    "name": "Advanced Synthetics",
+    "name_zh": "高分子复合材料",
+    "description_zh": "等级提升时，升级一件低级别物品。",
+    "icon": "skill/Advanced_Synthetics.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Advanced-Synthetics&c=skills"
+  },
+  {
+    "name": "Advanced Synthetics",
+    "name_zh": "高分子复合材料",
+    "description_zh": "等级提升时，升级一件低级别物品。",
+    "icon": "skill/Advanced_Synthetics.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Advanced-Synthetics&c=skills"
+  },
+  {
+    "name": "Aerial Assault",
+    "name_zh": "空中突袭",
+    "description_zh": "有物品开始飞行时，为一件武器充能1秒。",
+    "icon": "skill/Aerial_Assault.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Aerial-Assault&c=skills"
+  },
+  {
+    "name": "Aggressive",
+    "name_zh": "好战",
+    "description_zh": "使用武器时，该武器暴击率提高+6 » 9 » 12%（限本场战斗）。",
+    "icon": "skill/Aggressive.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Aggressive&c=skills"
+  },
+  {
+    "name": "Alacrity",
+    "name_zh": "灵动",
+    "description_zh": "每场战斗前{aura.9}次暴击时，为一件物品充能1秒。",
+    "icon": "skill/Alacrity.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Alacrity&c=skills"
+  },
+  {
+    "name": "Alchemical Precision",
+    "name_zh": "化学精准",
+    "description_zh": "药水的冷却时间缩短1秒。",
+    "icon": "skill/Alchemical_Precision.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Alchemical-Precision&c=skills"
+  },
+  {
+    "name": "All Talk",
+    "name_zh": "光说不练",
+    "description_zh": "己方生命值高于一半时，己方武器+30 » 60 » 90伤害。",
+    "icon": "skill/All_Talk.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=All-Talk&c=skills"
+  },
+  {
+    "name": "Ambush",
+    "name_zh": "伏击",
+    "description_zh": "每场战斗开始时，造成伤害，等量于一位敌人最大生命值的10 » 20 » 30%。",
+    "icon": "skill/Ambush.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Ambush&c=skills"
+  },
+  {
+    "name": "Ammo Stash",
+    "name_zh": "弹药储存箱",
+    "description_zh": "最左侧的弹药物品+2 » 3 » 4最大弹药量。",
+    "icon": "skill/Ammo_Stash.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Ammo-Stash&c=skills"
+  },
+  {
+    "name": "Ancient Flamekeeper",
+    "name_zh": "远古护火者",
+    "description_zh": "每场战斗前4 » 8 » 12次使用神器时，造成5灼烧。",
+    "icon": "skill/Ancient_Flamekeeper.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Ancient+Flamekeeper&c=skills"
+  },
+  {
+    "name": "Ancient Technology",
+    "name_zh": "远古科技",
+    "description_zh": "神器视为科技物品。",
+    "icon": "skill/Ancient_Technology.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Ancient+Technology&c=skills"
+  },
+  {
+    "name": "Ancient Toxins",
+    "name_zh": "远古毒素",
+    "description_zh": "每场战斗前4 » 8 » 12次使用神器时，造成5剧毒。",
+    "icon": "skill/Ancient_Toxins.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Ancient+Toxins&c=skills"
+  },
+  {
+    "name": "Ancient Flamekeeper",
+    "name_zh": "远古护火者",
+    "description_zh": "每场战斗前4 » 8 » 12次使用神器时，造成5灼烧。",
+    "icon": "skill/Ancient_Flamekeeper.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Ancient-Flamekeeper&c=skills"
+  },
+  {
+    "name": "Ancient Technology",
+    "name_zh": "远古科技",
+    "description_zh": "神器视为科技物品。",
+    "icon": "skill/Ancient_Technology.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Ancient-Technology&c=skills"
+  },
+  {
+    "name": "Ancient Toxins",
+    "name_zh": "远古毒素",
+    "description_zh": "每场战斗前4 » 8 » 12次使用神器时，造成5剧毒。",
+    "icon": "skill/Ancient_Toxins.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Ancient-Toxins&c=skills"
+  },
+  {
+    "name": "Ancient Vengeance",
+    "name_zh": "远古复仇",
+    "description_zh": "敌人使用武器时，为一件神器充能1秒。",
+    "icon": "skill/Ancient_Vengeance.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Ancient-Vengeance&c=skills"
+  },
+  {
+    "name": "Anything to Win",
+    "name_zh": "不择手段",
+    "description_zh": "每场战斗首次使用非灼烧或非剧毒物品时，为灼烧和剧毒物品充能{ability.0}秒。",
+    "icon": "skill/Anything_to_Win.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Anything-to-Win&c=skills"
+  },
+  {
+    "name": "Arbitrage",
+    "name_zh": "套利",
+    "description_zh": "重掷所需金币减少1 » 2 » 3。",
+    "icon": "skill/Arbitrage.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Arbitrage&c=skills"
+  },
+  {
+    "name": "Archeologist",
+    "name_zh": "考古学家",
+    "description_zh": "神器和工具的冷却时间缩短{aura.0}%。",
+    "icon": "skill/Archeologist.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Archeologist&c=skills"
+  },
+  {
+    "name": "Arms Dealer",
+    "name_zh": "军火商",
+    "description_zh": "购买武器时，最大生命值提高30 » 40 » 50。",
+    "icon": "skill/Arms_Dealer.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Arms-Dealer&c=skills"
+  },
+  {
+    "name": "Arms Race",
+    "name_zh": "军备竞赛",
+    "description_zh": "每拥有一件武器，己方物品+4 » 6 » 8%暴击率。",
+    "icon": "skill/Arms_Race.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Arms-Race&c=skills"
+  },
+  {
+    "name": "Artillery Spotter",
+    "name_zh": "炮击观察员",
+    "description_zh": "如果持有的物品不超过5件，己方物品+20 » 30 » 40%暴击率。",
+    "icon": "skill/Artillery_Spotter.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Artillery-Spotter&c=skills"
+  },
+  {
+    "name": "Assault Focus",
+    "name_zh": "突击专注",
+    "description_zh": "任意非武器物品被使用时，使其减速1 » 2 » 3秒。",
+    "icon": "skill/Assault_Focus.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Assault-Focus&c=skills"
+  },
+  {
+    "name": "Augmented Defenses",
+    "name_zh": "增强防御",
+    "description_zh": "护盾物品+1护盾。出售小型物品时，这一护盾加成再提高+{ability.0}。",
+    "icon": "skill/Augmented_Defenses.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Augmented-Defenses&c=skills"
+  },
+  {
+    "name": "Augmented Weaponry",
+    "name_zh": "增强军火",
+    "description_zh": "武器+1伤害。出售小型物品时，这一伤害加成再提高+{ability.0}。",
+    "icon": "skill/Augmented_Weaponry.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Augmented-Weaponry&c=skills"
+  },
+  {
+    "name": "Backroom Dealings",
+    "name_zh": "幕后交易",
+    "description_zh": "拜访商人时，最大生命值提高25 » 50 » 75。",
+    "icon": "skill/Backroom_Dealings.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Backroom-Dealings&c=skills"
+  },
+  {
+    "name": "Backup Defenses",
+    "name_zh": "Backup Defenses",
+    "description_zh": "每场战斗己方生命值首次降至一半时，获得护盾，等量于最大生命值的{aura.9}%。",
+    "icon": "skill/Backup_Defenses.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Backup-Defenses&c=skills"
+  },
+  {
+    "name": "Balanced Friendship",
+    "name_zh": "平衡友谊",
+    "description_zh": "使用伙伴时，己方武器伤害提高+2 » 4 » 6、护盾物品提供的护盾值提高+2 » 4 » 6（限本场战斗）。",
+    "icon": "skill/Balanced_Friendship.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Balanced-Friendship&c=skills"
+  },
+  {
+    "name": "Barnacle Crusted",
+    "name_zh": "藤壶覆盖",
+    "description_zh": "水系物品的冷却时间缩短{aura.0}%。",
+    "icon": "skill/Barnacle_Crusted.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Barnacle-Crusted&c=skills"
+  },
+  {
+    "name": "Beautiful Friendship",
+    "name_zh": "美好友谊",
+    "description_zh": "使用伙伴时，己方武器伤害提高3 » 6 » 9（限本场战斗）。",
+    "icon": "skill/Beautiful_Friendship.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Beautiful-Friendship&c=skills"
+  },
+  {
+    "name": "Berserker",
+    "name_zh": "狂战士",
+    "description_zh": "敌方生命值高于你时，己方武器的冷却时间缩短5 » 10 » 15%。",
+    "icon": "skill/Berserker.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Berserker&c=skills"
+  },
+  {
+    "name": "Big Ego",
+    "name_zh": "虚荣",
+    "description_zh": "武器拥有吸血效果。",
+    "icon": "skill/Big_Ego.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Big-Ego&c=skills"
+  },
+  {
+    "name": "Big Guns",
+    "name_zh": "重枪",
+    "description_zh": "大型武器伤害翻倍。",
+    "icon": "skill/Big_Guns.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Big-Guns&c=skills"
+  },
+  {
+    "name": "Big Numbers",
+    "name_zh": "高伤打击",
+    "description_zh": "大型物品+{aura.0}%暴击率",
+    "icon": "skill/Big_Numbers.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Big-Numbers&c=skills"
+  },
+  {
+    "name": "Biohazard",
+    "name_zh": "生物危害",
+    "description_zh": "每场战斗己方生命值首次降至一半时，使敌人所中剧毒翻倍。",
+    "icon": "skill/Biohazard.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Biohazard&c=skills"
+  },
+  {
+    "name": "Blizzard",
+    "name_zh": "暴雪",
+    "description_zh": "每场战斗首次使用物品时，冻结所有非武器物品{ability.0}秒。",
+    "icon": "skill/Blizzard.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Blizzard&c=skills"
+  },
+  {
+    "name": "Bloodhound",
+    "name_zh": "寻血猎犬",
+    "description_zh": "每场战斗敌方生命值首次降至一半时，为你的物品充能2 » 3 » 4秒。",
+    "icon": "skill/Bloodhound.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Bloodhound&c=skills"
+  },
+  {
+    "name": "Bloodthirst",
+    "name_zh": "嗜血",
+    "description_zh": "吸血武器+30 » 40 » 50伤害。",
+    "icon": "skill/Bloodthirst.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Bloodthirst&c=skills"
+  },
+  {
+    "name": "Boar Market",
+    "name_zh": "野猪交易所",
+    "description_zh": "最左侧与最右侧武器都 + 伤害，增幅等于各自价值的{aura.9}倍。",
+    "icon": "skill/Boar_Market.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Boar-Market&c=skills"
+  },
+  {
+    "name": "Bold Under Pressure",
+    "name_zh": "逆境无惧",
+    "description_zh": "每场战斗己方生命值首次降至一半时，加速2 » 4 » 6件物品2秒。",
+    "icon": "skill/Bold_Under_Pressure.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Bold-Under-Pressure&c=skills"
+  },
+  {
+    "name": "Bombing Run",
+    "name_zh": "轰炸行动",
+    "description_zh": "有物品开始飞行时，己方武器伤害提高+5 » 10 » 15（限本场战斗）。",
+    "icon": "skill/Bombing_Run.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Bombing-Run&c=skills"
+  },
+  {
+    "name": "Bombs Away!",
+    "name_zh": "炸飞！",
+    "description_zh": "每场战斗前4 » 8 » 12次使用无人机或载具时，造成5灼烧。",
+    "icon": "skill/Bombs_Away!.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Bombs-Away!&c=skills"
+  },
+  {
+    "name": "Bonk",
+    "name_zh": "迎头痛击",
+    "description_zh": "敌方物品的冷却时间延长1秒。",
+    "icon": "skill/Bonk.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Bonk&c=skills"
+  },
+  {
+    "name": "Brawler",
+    "name_zh": "斗士",
+    "description_zh": "每拥有一件武器，就+75 » 175 » 275最大生命值。",
+    "icon": "skill/Brawler.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Brawler&c=skills"
+  },
+  {
+    "name": "Brewmaster",
+    "name_zh": "酿造大师",
+    "description_zh": "每场战斗开始时，一件药水+1多重触发（限本场战斗）。",
+    "icon": "skill/Brewmaster.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Brewmaster&c=skills"
+  },
+  {
+    "name": "Buddy System",
+    "name_zh": "伙伴系统",
+    "description_zh": "如果只拥有一个伙伴，就使其冷却时间以及你核心的冷却时间各缩短5 » 10 » 15%",
+    "icon": "skill/Buddy_System.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Buddy-System&c=skills"
+  },
+  {
+    "name": "Buffed and Polished",
+    "name_zh": "抛光加持",
+    "description_zh": "无人机与工具的冷却时间缩短{aura.0}%。",
+    "icon": "skill/Buffed_and_Polished.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Buffed-and-Polished&c=skills"
+  },
+  {
+    "name": "Building Crescendo",
+    "name_zh": "递进高潮",
+    "description_zh": "使用物品时，己方物品暴击率提高{ability.0}%（限本场战斗）。",
+    "icon": "skill/Building_Crescendo.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Building-Crescendo&c=skills"
+  },
+  {
+    "name": "Bullet Time",
+    "name_zh": "时间凝滞",
+    "description_zh": "每场战斗前{aura.9}次使用弹药物品时，减速一件物品1秒。",
+    "icon": "skill/Bullet_Time.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Bullet-Time&c=skills"
+  },
+  {
+    "name": "Burn Containment",
+    "name_zh": "灼烧遏制",
+    "description_zh": "每场战斗前{aura.9}次触发灼烧时，为一件护盾物品充能1秒。",
+    "icon": "skill/Burn_Containment.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Burn-Containment&c=skills"
+  },
+  {
+    "name": "Burning Rage",
+    "name_zh": "灼烧狂怒",
+    "description_zh": "触发灼烧时，己方武器伤害提高+10 » 15 » 20（限本场战斗）。",
+    "icon": "skill/Burning_Rage.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Burning-Rage&c=skills"
+  },
+  {
+    "name": "Burning Shield",
+    "name_zh": "Burning Shield",
+    "description_zh": "",
+    "icon": "skill/Burning_Shield.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Burning-Shield&c=skills"
+  },
+  {
+    "name": "Burst of Flame",
+    "name_zh": "烈焰爆发",
+    "description_zh": "每场战斗敌方生命值首次降至一半时，造成15 » 20 » 25灼烧。",
+    "icon": "skill/Burst_of_Flame.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Burst-of-Flame&c=skills"
+  },
+  {
+    "name": "CPU Throttling",
+    "name_zh": "CPU 降频",
+    "description_zh": "每场战斗前{aura.9}次使用核心时，减速一件物品2秒。",
+    "icon": "skill/CPU_Throttling.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=CPU-Throttling&c=skills"
+  },
+  {
+    "name": "Calming Heals",
+    "name_zh": "抚慰疗愈",
+    "description_zh": "每场战斗前{aura.9}次触发减速时，为一件治疗或生命再生物品充能1秒。",
+    "icon": "skill/Calming_Heals.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Calming-Heals&c=skills"
+  },
+  {
+    "name": "Captain's Charge",
+    "name_zh": "船长的号令",
+    "description_zh": "每场战斗首次使用大型物品时，加速2 » 3 » 4件物品3秒。",
+    "icon": "skill/Captain_s_Charge.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Captain's-Charge&c=skills"
+  },
+  {
+    "name": "Cash Deposits",
+    "name_zh": "现金存储",
+    "description_zh": "武器 + 伤害，增幅等于持有金币数量。",
+    "icon": "skill/Cash_Deposits.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Cash-Deposits&c=skills"
+  },
+  {
+    "name": "Chemical Fire",
+    "name_zh": "化学燃焰",
+    "description_zh": "灼烧物品+2 » 4 » 6灼烧。\n剧毒物品+2 » 4 » 6剧毒。",
+    "icon": "skill/Chemical_Fire.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Chemical-Fire&c=skills"
+  },
+  {
+    "name": "Cherished Keepsake",
+    "name_zh": "珍藏宝物",
+    "description_zh": "最左侧物品视为神器",
+    "icon": "skill/Cherished_Keepsake.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Cherished-Keepsake&c=skills"
+  },
+  {
+    "name": "Chilling Touch",
+    "name_zh": "寒霜之触",
+    "description_zh": "每场战斗首次触发冻结时，减速所有敌人物品1 » 2 » 3秒。",
+    "icon": "skill/Chilling_Touch.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Chilling-Touch&c=skills"
+  },
+  {
+    "name": "Chocoholic",
+    "name_zh": "巧克力迷",
+    "description_zh": "出售中型或大型物品时，获得{ability.0}块巧克力棒。",
+    "icon": "skill/Chocoholic.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Chocoholic&c=skills"
+  },
+  {
+    "name": "Circle of Life",
+    "name_zh": "生命循环",
+    "description_zh": "最左侧武器获得吸血。",
+    "icon": "skill/Circle_of_Life.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Circle-of-Life&c=skills"
+  },
+  {
+    "name": "Clean Storefront",
+    "name_zh": "整洁门面",
+    "description_zh": "最左侧物品在战斗中+20 » 40 » 60价值。",
+    "icon": "skill/Clean_Storefront.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Clean-Storefront&c=skills"
+  },
+  {
+    "name": "Combat Medic",
+    "name_zh": "战地医护",
+    "description_zh": "获得治疗或生命再生量时，令一件物品的暴击率提高3 » 6 » 9%（限本场战斗）。",
+    "icon": "skill/Combat_Medic.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Combat-Medic&c=skills"
+  },
+  {
+    "name": "Command Ship",
+    "name_zh": "领头船",
+    "description_zh": "如果拥有载具，非载具物品的冷却时间就缩短{aura.0}%。",
+    "icon": "skill/Command_Ship.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Command-Ship&c=skills"
+  },
+  {
+    "name": "Commercial Zoning",
+    "name_zh": "商业区划",
+    "description_zh": "使用地产时，造成伤害，等量于金币数量的{aura.9}倍。",
+    "icon": "skill/Commercial_Zoning.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Commercial-Zoning&c=skills"
+  },
+  {
+    "name": "Conflagration",
+    "name_zh": "烈焰燃烧",
+    "description_zh": "使用带有灼烧的物品时，令其灼烧提高1 » 2 » 3（限本场战斗）。",
+    "icon": "skill/Conflagration.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Conflagration&c=skills"
+  },
+  {
+    "name": "Coolant Leak",
+    "name_zh": "冷却剂泄露",
+    "description_zh": "每场战斗前3 » 6 » 9次使用最右侧物品时，为一件冻结物品充能1秒。",
+    "icon": "skill/Coolant_Leak.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Coolant-Leak&c=skills"
+  },
+  {
+    "name": "Cosmic Wind",
+    "name_zh": "宇宙风",
+    "description_zh": "触发加速时，一件武器伤害提高+10 » 15 » 20（限本场战斗）。",
+    "icon": "skill/Cosmic_Wind.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Cosmic-Wind&c=skills"
+  },
+  {
+    "name": "Counterstrike",
+    "name_zh": "反击",
+    "description_zh": "敌人首次使用武器时，为己方物品充能{ability.0}秒。",
+    "icon": "skill/Counterstrike.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Counterstrike&c=skills"
+  },
+  {
+    "name": "Crashing Waves",
+    "name_zh": "浪涛激荡",
+    "description_zh": "每场战斗前{aura.9}次使用水系物品时，加速一件武器1秒。",
+    "icon": "skill/Crashing_Waves.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Crashing-Waves&c=skills"
+  },
+  {
+    "name": "Creeping Chill",
+    "name_zh": "暗袭寒流",
+    "description_zh": "每场战斗首次触发减速时，冻结一件物品2 » 3 » 4秒。",
+    "icon": "skill/Creeping_Chill.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Creeping-Chill&c=skills"
+  },
+  {
+    "name": "Creeping Toxins",
+    "name_zh": "蜗行毒素",
+    "description_zh": "每场战斗前{aura.9}次触发减速时，为一件剧毒物品充能1秒。",
+    "icon": "skill/Creeping_Toxins.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Creeping-Toxins&c=skills"
+  },
+  {
+    "name": "Crimson Dash",
+    "name_zh": "绯红冲锋",
+    "description_zh": "吸血武器的冷却时间缩短1秒。",
+    "icon": "skill/Crimson_Dash.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Crimson-Dash&c=skills"
+  },
+  {
+    "name": "Critical Aid",
+    "name_zh": "暴击支援",
+    "description_zh": "治疗物品+10 » 15 » 20%暴击率。",
+    "icon": "skill/Critical_Aid.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Critical-Aid&c=skills"
+  },
+  {
+    "name": "Critical Investments",
+    "name_zh": "关键投资",
+    "description_zh": "地产和玩具+10 » 15 » 20%暴击率。",
+    "icon": "skill/Critical_Investments.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Critical-Investments&c=skills"
+  },
+  {
+    "name": "Critical Protector",
+    "name_zh": "暴击防护者",
+    "description_zh": "护盾物品+10 » 15 » 20%暴击率。",
+    "icon": "skill/Critical_Protector.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Critical-Protector&c=skills"
+  },
+  {
+    "name": "Cryomastery",
+    "name_zh": "霜寒专精",
+    "description_zh": "每场战斗前2 » 4 » 6次触发护盾时，冻结一件物品1秒。",
+    "icon": "skill/Cryomastery.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Cryomastery&c=skills"
+  },
+  {
+    "name": "Cult Member",
+    "name_zh": "教团成员",
+    "description_zh": "你已加入教团",
+    "icon": "skill/Cult_Member.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Cult-Member&c=skills"
+  },
+  {
+    "name": "Deadly Eye",
+    "name_zh": "致命眼光",
+    "description_zh": "相邻武器+10 » 15 » 20%暴击率。",
+    "icon": "skill/Deadly_Eye.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Deadly-Eye&c=skills"
+  },
+  {
+    "name": "Deadly Waters",
+    "name_zh": "致命水域",
+    "description_zh": "水系武器造成+30 » 40 » 50伤害。",
+    "icon": "skill/Deadly_Waters.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Deadly-Waters&c=skills"
+  },
+  {
+    "name": "Debilitating Secrets",
+    "name_zh": "蛛缠之秘",
+    "description_zh": "每场战斗前{aura.9}次使用神器时，减速一件物品1秒。",
+    "icon": "skill/Debilitating_Secrets.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Debilitating-Secrets&c=skills"
+  },
+  {
+    "name": "Defense Grid",
+    "name_zh": "防御网格",
+    "description_zh": "每场战斗首次使用物品时，获得护盾，等量于最大生命值的15 » 20 » 25%。",
+    "icon": "skill/Defense_Grid.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Defense-Grid&c=skills"
+  },
+  {
+    "name": "Denizens of the Deep",
+    "name_zh": "深海住民",
+    "description_zh": "每场战斗前{aura.9}次使用水系伙伴时，造成5剧毒和5灼烧。",
+    "icon": "skill/Denizens_of_the_Deep.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Denizens-of-the-Deep&c=skills"
+  },
+  {
+    "name": "Depth Charge",
+    "name_zh": "深渊冲刺",
+    "description_zh": "如果只拥有一件武器，就使之+{aura.0}最大弹药量。\n……如果武器拥有水系类型，还能+{aura.1}伤害。",
+    "icon": "skill/Depth_Charge.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Depth-Charge&c=skills"
+  },
+  {
+    "name": "Desperate Cleanse",
+    "name_zh": "绝望净化",
+    "description_zh": "每场战斗己方生命值首次降至一半时，移除己方物品的减速和冻结效果，并净化一半的灼烧与剧毒效果。",
+    "icon": "skill/Desperate_Cleanse.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Desperate-Cleanse&c=skills"
+  },
+  {
+    "name": "Desperate Strike",
+    "name_zh": "绝望打击",
+    "description_zh": "敌方生命值低于你时，己方物品的暴击率 +20 » 40 » 60%。",
+    "icon": "skill/Desperate_Strike.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Desperate-Strike&c=skills"
+  },
+  {
+    "name": "Diamond Fangs",
+    "name_zh": "钻石獠牙",
+    "description_zh": "小型钻石级物品的冷却时间缩短30 » 40 » 50%。",
+    "icon": "skill/Diamond_Fangs.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Diamond-Fangs&c=skills"
+  },
+  {
+    "name": "Diamond Heart",
+    "name_zh": "钻石心脏",
+    "description_zh": "每拥有一件钻石级物品，就+{aura.9}最大生命值。",
+    "icon": "skill/Diamond_Heart.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Diamond-Heart&c=skills"
+  },
+  {
+    "name": "Dirty Dishes",
+    "name_zh": "脏盘子",
+    "description_zh": "每场战斗前{aura.9}次使用食物时，减速一件物品1秒。",
+    "icon": "skill/Dirty_Dishes.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Dirty-Dishes&c=skills"
+  },
+  {
+    "name": "Distributed Systems",
+    "name_zh": "分配系统",
+    "description_zh": "使用大型物品时，加速所有小型物品1秒。",
+    "icon": "skill/Distributed_Systems.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Distributed-Systems&c=skills"
+  },
+  {
+    "name": "Double Down",
+    "name_zh": "双倍押注",
+    "description_zh": "每场战斗己方生命值首次降至一半时，最左侧武器的伤害翻倍（限本场战斗）。",
+    "icon": "skill/Double_Down.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Double-Down&c=skills"
+  },
+  {
+    "name": "Draconic Rage",
+    "name_zh": "龙性狂焰",
+    "description_zh": "使用中型物品时，一件灼烧物品的灼烧提高+3 » 6 » 9（限本场战斗）。",
+    "icon": "skill/Draconic_Rage.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Draconic-Rage&c=skills"
+  },
+  {
+    "name": "Dual Wield",
+    "name_zh": "双持",
+    "description_zh": "如果正好有2件武器，那么己方物品+50%暴击率。",
+    "icon": "skill/Dual_Wield.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Dual-Wield&c=skills"
+  },
+  {
+    "name": "Dumpster Diving",
+    "name_zh": "垃圾桶寻宝",
+    "description_zh": "每天开始时，获得一瓶药水。",
+    "icon": "skill/Dumpster_Diving.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Dumpster-Diving&c=skills"
+  },
+  {
+    "name": "Eject, Eject!",
+    "name_zh": "立刻弹射！",
+    "description_zh": "如果拥有载具，那么每场战斗即将首次落败时，治疗至生命值半满，并摧毁一辆载具，使其在本场战斗中不再可用。",
+    "icon": "skill/Eject,_Eject!.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Eject,-Eject!&c=skills"
+  },
+  {
+    "name": "Electrified Hull",
+    "name_zh": "带电外壳",
+    "description_zh": "每场战斗前{aura.9}次触发护盾时，为一件物品充能1秒。",
+    "icon": "skill/Electrified_Hull.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Electrified-Hull&c=skills"
+  },
+  {
+    "name": "Emergency Burn",
+    "name_zh": "应急灼烧",
+    "description_zh": "每场战斗己方生命值首次降至一半时，造成20 » 30 » 40灼烧。",
+    "icon": "skill/Emergency_Burn.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Emergency-Burn&c=skills"
+  },
+  {
+    "name": "Emergency Draught",
+    "name_zh": "应急治疗",
+    "description_zh": "每场战斗己方生命值首次降至一半时，生命再生量提高{aura.9}倍（限本场战斗）。",
+    "icon": "skill/Emergency_Draught.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Emergency-Draught&c=skills"
+  },
+  {
+    "name": "Emergency Shield",
+    "name_zh": "应急护盾",
+    "description_zh": "每场战斗己方生命值首次降至一半时，自动使用护盾最高的物品。",
+    "icon": "skill/Emergency_Shield.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Emergency-Shield&c=skills"
+  },
+  {
+    "name": "Endurance",
+    "name_zh": "坚韧不拔",
+    "description_zh": "使用武器时，治疗物品的治疗量提高+5 » 10 » 15（限本场战斗）。",
+    "icon": "skill/Endurance.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Endurance&c=skills"
+  },
+  {
+    "name": "Equivalent Exchange",
+    "name_zh": "等价交换",
+    "description_zh": "触发治疗或提高生命再生时，为一件剧毒物品充能1秒。",
+    "icon": "skill/Equivalent_Exchange.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Equivalent-Exchange&c=skills"
+  },
+  {
+    "name": "Essence Overflow",
+    "name_zh": "精华溢出",
+    "description_zh": "武器 + 伤害，增幅等于生命再生量。",
+    "icon": "skill/Essence_Overflow.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Essence-Overflow&c=skills"
+  },
+  {
+    "name": "Everlasting Life",
+    "name_zh": "永生",
+    "description_zh": "每场战斗前4 » 8 » 12次使用治疗或生命再生物品时，最大生命值提高50（限本场战斗）。",
+    "icon": "skill/Everlasting_Life.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Everlasting+Life&c=skills"
+  },
+  {
+    "name": "Everlasting Life",
+    "name_zh": "永生",
+    "description_zh": "每场战斗前4 » 8 » 12次使用治疗或生命再生物品时，最大生命值提高50（限本场战斗）。",
+    "icon": "skill/Everlasting_Life.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Everlasting-Life&c=skills"
+  },
+  {
+    "name": "Expert Pilot",
+    "name_zh": "专家飞行员",
+    "description_zh": "载具和无人机+30 » 45 » 60伤害和护盾。",
+    "icon": "skill/Expert_Pilot.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Expert-Pilot&c=skills"
+  },
+  {
+    "name": "Explosive Potions",
+    "name_zh": "爆燃药水",
+    "description_zh": "每场战斗前{aura.9}次使用药水时，为一件武器或灼烧物品充能1秒。",
+    "icon": "skill/Explosive_Potions.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Explosive-Potions&c=skills"
+  },
+  {
+    "name": "Exposing Toxins",
+    "name_zh": "弱点毒素",
+    "description_zh": "触发剧毒时，己方物品暴击率提高+1 » 2 » 3%（限本场战斗）。",
+    "icon": "skill/Exposing_Toxins.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Exposing-Toxins&c=skills"
+  },
+  {
+    "name": "Extreme Comfort",
+    "name_zh": "极度舒适",
+    "description_zh": "获得治疗或提高生命再生时，己方护盾物品的护盾提高3 » 6 » 9（限本场战斗）。",
+    "icon": "skill/Extreme_Comfort.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Extreme-Comfort&c=skills"
+  },
+  {
+    "name": "Farm to Table",
+    "name_zh": "农田直供",
+    "description_zh": "每拥有一件工具，就+75 » 175 » 275最大生命值。",
+    "icon": "skill/Farm_to_Table.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Farm-to-Table&c=skills"
+  },
+  {
+    "name": "Fast Food",
+    "name_zh": "快餐",
+    "description_zh": "食物的冷却时间缩短{aura.0}%。",
+    "icon": "skill/Fast_Food.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Fast-Food&c=skills"
+  },
+  {
+    "name": "Favorite Toy",
+    "name_zh": "最爱玩具",
+    "description_zh": "最左侧玩具+20 » 30 » 40伤害、护盾和治疗。",
+    "icon": "skill/Favorite_Toy.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Favorite+Toy&c=skills"
+  },
+  {
+    "name": "Favorite Toy",
+    "name_zh": "最爱玩具",
+    "description_zh": "最左侧玩具+20 » 30 » 40伤害、护盾和治疗。",
+    "icon": "skill/Favorite_Toy.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Favorite-Toy&c=skills"
+  },
+  {
+    "name": "Fiery",
+    "name_zh": "炽焰",
+    "description_zh": "灼烧物品+2 » 3 » 4灼烧。",
+    "icon": "skill/Fiery.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Fiery&c=skills"
+  },
+  {
+    "name": "Fiery Rebirth",
+    "name_zh": "炽焰重生",
+    "description_zh": "每场战斗即将首次落败时，治疗至生命值全满。",
+    "icon": "skill/Fiery_Rebirth.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Fiery-Rebirth&c=skills"
+  },
+  {
+    "name": "Final Dose",
+    "name_zh": "最后一剂",
+    "description_zh": "最右侧的剧毒物品+4 » 6 » 8剧毒。",
+    "icon": "skill/Final_Dose.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Final-Dose&c=skills"
+  },
+  {
+    "name": "Final Flame",
+    "name_zh": "终焰",
+    "description_zh": "最右侧的灼烧物品+4 » 6 » 8灼烧。",
+    "icon": "skill/Final_Flame.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Final-Flame&c=skills"
+  },
+  {
+    "name": "Finesse Shield",
+    "name_zh": "敏捷护盾",
+    "description_zh": "敌方生命值高于你时，己方护盾物品的冷却时间缩短5 » 10 » 15%。",
+    "icon": "skill/Finesse_Shield.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Finesse-Shield&c=skills"
+  },
+  {
+    "name": "Firepower",
+    "name_zh": "火力强化",
+    "description_zh": "使用核心时，相邻武器伤害提高10 » 20 » 30（限本场战斗）。",
+    "icon": "skill/Firepower.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Firepower&c=skills"
+  },
+  {
+    "name": "Firestarter",
+    "name_zh": "引火者",
+    "description_zh": "每场战斗开始时，造成15 » 25 » 35灼烧。",
+    "icon": "skill/Firestarter.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Firestarter&c=skills"
+  },
+  {
+    "name": "First Flames",
+    "name_zh": "初焰",
+    "description_zh": "每场战斗首次使用大型物品时，造成20 » 40 » 60灼烧。",
+    "icon": "skill/First_Flames.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=First-Flames&c=skills"
+  },
+  {
+    "name": "First Responder",
+    "name_zh": "急救包",
+    "description_zh": "最左侧的治疗物品+35 » 50 » 65治疗量。",
+    "icon": "skill/First_Responder.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=First-Responder&c=skills"
+  },
+  {
+    "name": "First Strike",
+    "name_zh": "先发制人",
+    "description_zh": "己方物品+{aura.0}%暴击率。\n使用一件物品时，所有己方物品的暴击率降低10%（限本场战斗）。",
+    "icon": "skill/First_Strike.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=First-Strike&c=skills"
+  },
+  {
+    "name": "Flamedancer",
+    "name_zh": "烈焰舞者",
+    "description_zh": "灼烧物品+15 » 20 » 25%暴击率。",
+    "icon": "skill/Flamedancer.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Flamedancer&c=skills"
+  },
+  {
+    "name": "Flanking Criticals",
+    "name_zh": "侧翼暴击",
+    "description_zh": "每场战斗首次使用大型物品时，相邻物品暴击率提高20 » 40 » 60%（限本场战斗）。",
+    "icon": "skill/Flanking_Criticals.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Flanking-Criticals&c=skills"
+  },
+  {
+    "name": "Flash Freeze",
+    "name_zh": "闪速冻结",
+    "description_zh": "霜冻物品的冷却时间缩短1秒。",
+    "icon": "skill/Flash_Freeze.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Flash-Freeze&c=skills"
+  },
+  {
+    "name": "Flashy Mechanic",
+    "name_zh": "炫技机械师",
+    "description_zh": "使用工具时，与之相邻的物品暴击率提高3 » 6 » 9%。",
+    "icon": "skill/Flashy_Mechanic.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Flashy-Mechanic&c=skills"
+  },
+  {
+    "name": "Flashy Pilot",
+    "name_zh": "炫技飞行员",
+    "description_zh": "使用载具时，你的物品暴击率提高3 » 6 » 9%。",
+    "icon": "skill/Flashy_Pilot.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Flashy-Pilot&c=skills"
+  },
+  {
+    "name": "Flashy Reload",
+    "name_zh": "炫技装弹",
+    "description_zh": "每场战斗前{aura.9}次暴击时，为另一件物品装填弹药。",
+    "icon": "skill/Flashy_Reload.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Flashy-Reload&c=skills"
+  },
+  {
+    "name": "Flurry of Blows",
+    "name_zh": "连环打击",
+    "description_zh": "每场战斗前{aura.9}次使用武器时，为一件物品充能1秒。",
+    "icon": "skill/Flurry_of_Blows.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Flurry-of-Blows&c=skills"
+  },
+  {
+    "name": "Focused Rage",
+    "name_zh": "凝聚之怒",
+    "description_zh": "每场战斗己方生命值首次降至一半时，己方物品暴击率提高+50%（限本场战斗）。",
+    "icon": "skill/Focused_Rage.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Focused-Rage&c=skills"
+  },
+  {
+    "name": "Follow-Up Care",
+    "name_zh": "跟进疗护",
+    "description_zh": "最右侧的治疗物品+35 » 50 » 65治疗量。",
+    "icon": "skill/Follow-Up_Care.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Follow-Up-Care&c=skills"
+  },
+  {
+    "name": "Food Coma",
+    "name_zh": "饭困",
+    "description_zh": "使用食物时，令其减速1秒，并令生命再生量提高{ability.1}（限本场战斗）。",
+    "icon": "skill/Food_Coma.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Food-Coma&c=skills"
+  },
+  {
+    "name": "Foreboding Winds",
+    "name_zh": "凶风",
+    "description_zh": "武器造成的暴击伤害翻倍。",
+    "icon": "skill/Foreboding_Winds.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Foreboding-Winds&c=skills"
+  },
+  {
+    "name": "Free Ride",
+    "name_zh": "免费乘车",
+    "description_zh": "最右侧的物品可视为载具。\n载具的冷却时间缩短5 » 10 » 15%。",
+    "icon": "skill/Free_Ride.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Free-Ride&c=skills"
+  },
+  {
+    "name": "Friend of the Sea",
+    "name_zh": "深海伙伴",
+    "description_zh": "水系物品变为伙伴。",
+    "icon": "skill/Friend_of_the_Sea.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Friend-of-the-Sea&c=skills"
+  },
+  {
+    "name": "Friendzone",
+    "name_zh": "伙伴卡",
+    "description_zh": "伙伴的冷却时间缩短{aura.0}%。",
+    "icon": "skill/Friendzone.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Friendzone&c=skills"
+  },
+  {
+    "name": "Frontal Shielding",
+    "name_zh": "前向护盾",
+    "description_zh": "最左侧的护盾物品+30 » 40 » 50护盾。",
+    "icon": "skill/Frontal_Shielding.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Frontal-Shielding&c=skills"
+  },
+  {
+    "name": "Frontline Logistics",
+    "name_zh": "前线勤务",
+    "description_zh": "使用弹药物品时，己方武器伤害提高+2 » 4 » 6（限本场战斗）。",
+    "icon": "skill/Frontline_Logistics.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Frontline-Logistics&c=skills"
+  },
+  {
+    "name": "Frostfire",
+    "name_zh": "寒霜烈焰",
+    "description_zh": "每场战斗首次触发灼烧时，冻结一件物品2 » 3 » 4秒。",
+    "icon": "skill/Frostfire.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Frostfire&c=skills"
+  },
+  {
+    "name": "Frozen Secrets",
+    "name_zh": "冻结秘密",
+    "description_zh": "每场战斗前{aura.9}次使用神器时，冻结一件物品0.5秒。",
+    "icon": "skill/Frozen_Secrets.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Frozen-Secrets&c=skills"
+  },
+  {
+    "name": "Frozen Shot",
+    "name_zh": "冻结射击",
+    "description_zh": "当敌方拥有一件冻结物品时，己方武器的冷却时间缩短5 » 10 » 15%。",
+    "icon": "skill/Frozen_Shot.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Frozen-Shot&c=skills"
+  },
+  {
+    "name": "Frozen Synapse",
+    "name_zh": "冻结突触",
+    "description_zh": "每场战斗前{aura.9}次触发冻结时，加速核心2秒。",
+    "icon": "skill/Frozen_Synapse.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Frozen-Synapse&c=skills"
+  },
+  {
+    "name": "Full Arsenal",
+    "name_zh": "全副武装",
+    "description_zh": "如果拥有载具，己方物品的冷却时间缩短{aura.0}%；如果拥有武器，缩短{aura.0}%；如果拥有工具，缩短{aura.0}%。",
+    "icon": "skill/Full_Arsenal.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Full-Arsenal&c=skills"
+  },
+  {
+    "name": "Glass Cannon",
+    "name_zh": "玻璃大炮",
+    "description_zh": "所有武器的伤害翻倍。",
+    "icon": "skill/Glass_Cannon.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Glass-Cannon&c=skills"
+  },
+  {
+    "name": "Gold Garnish",
+    "name_zh": "黄金点缀",
+    "description_zh": "食物 + 暴击率，增幅等于金币数量的一半。",
+    "icon": "skill/Gold_Garnish.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Gold-Garnish&c=skills"
+  },
+  {
+    "name": "Grease Fire",
+    "name_zh": "油火焰",
+    "description_zh": "每场战斗前4 » 8 » 12次使用工具时，造成5灼烧。",
+    "icon": "skill/Grease_Fire.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Grease-Fire&c=skills"
+  },
+  {
+    "name": "Green Light",
+    "name_zh": "绿灯",
+    "description_zh": "每场战斗首次使用物品时，加速无人机和载具{ability.0}秒。",
+    "icon": "skill/Green_Light.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Green-Light&c=skills"
+  },
+  {
+    "name": "Guardian's Fury",
+    "name_zh": "守护神之怒",
+    "description_zh": "拥有护盾时，己方武器的冷却时间缩短5 » 10 » 15%。",
+    "icon": "skill/Guardian_s_Fury.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Guardian's-Fury&c=skills"
+  },
+  {
+    "name": "Gunner",
+    "name_zh": "炮手",
+    "description_zh": "己方物品+1 » 2 » 3最大弹药量。",
+    "icon": "skill/Gunner.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Gunner&c=skills"
+  },
+  {
+    "name": "Hard Shell",
+    "name_zh": "硬壳",
+    "description_zh": "每场战斗己方生命值首次降至一半时，获得护盾，等量于最大生命值的30 » 40 » 50%。",
+    "icon": "skill/Hard_Shell.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Hard-Shell&c=skills"
+  },
+  {
+    "name": "Hardened Shield",
+    "name_zh": "强化护盾",
+    "description_zh": "敌人使用武器时，护盾物品的护盾值提高{ability.0}（限本场战斗）。",
+    "icon": "skill/Hardened_Shield.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Hardened-Shield&c=skills"
+  },
+  {
+    "name": "Hardly Workin'",
+    "name_zh": "假装努力",
+    "description_zh": "每场战斗前4 » 8 » 12次触发减速时，为一件生命再生物品充能1秒。",
+    "icon": "skill/Hardly_Workin.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Hardly-Workin'&c=skills"
+  },
+  {
+    "name": "Haunting Flight",
+    "name_zh": "鬼魅飘飞",
+    "description_zh": "每场战斗首次使用物品时，1 » 2 » 3件小型物品开始飞行。",
+    "icon": "skill/Haunting_Flight.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Haunting-Flight&c=skills"
+  },
+  {
+    "name": "Heal Power",
+    "name_zh": "治愈之力",
+    "description_zh": "治疗物品+20 » 30 » 40治疗量。",
+    "icon": "skill/Heal_Power.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Heal-Power&c=skills"
+  },
+  {
+    "name": "Healthy Friendship",
+    "name_zh": "健康友谊",
+    "description_zh": "使用伙伴时，生命再生量提高{ability.0}（限本场战斗）。",
+    "icon": "skill/Healthy_Friendship.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Healthy-Friendship&c=skills"
+  },
+  {
+    "name": "Healthy Heart",
+    "name_zh": "健康心脏",
+    "description_zh": "每场战斗己方生命值首次降至一半时，获得治疗，等量于最大生命值的30%，并净化一半的灼烧与剧毒效果。",
+    "icon": "skill/Healthy_Heart.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Healthy-Heart&c=skills"
+  },
+  {
+    "name": "Healthy Hoarder",
+    "name_zh": "养生囤积狂",
+    "description_zh": "每拥有一件非武器物品，就+75 » 175 » 275最大生命值。",
+    "icon": "skill/Healthy_Hoarder.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Healthy-Hoarder&c=skills"
+  },
+  {
+    "name": "Healthy Jolt",
+    "name_zh": "活力冲击",
+    "description_zh": "每场战斗首次过量治疗时，加速己方物品1 » 2 » 3秒。",
+    "icon": "skill/Healthy_Jolt.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Healthy-Jolt&c=skills"
+  },
+  {
+    "name": "Healthy Lifestyle",
+    "name_zh": "养生秘法",
+    "description_zh": "每拥有一件非武器物品，就+3 » 6 » 9生命再生量。",
+    "icon": "skill/Healthy_Lifestyle.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Healthy-Lifestyle&c=skills"
+  },
+  {
+    "name": "Healthy Tip",
+    "name_zh": "生命力打赏",
+    "description_zh": "获得金币时，最大生命值永久提升，提升量等于所获金币数量的1 » 2 » 3倍。",
+    "icon": "skill/Healthy_Tip.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Healthy-Tip&c=skills"
+  },
+  {
+    "name": "Heat Shield",
+    "name_zh": "Heat Shield",
+    "description_zh": "",
+    "icon": "skill/Heat_Shield.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Heat+Shield&c=skills"
+  },
+  {
+    "name": "Heat Lover",
+    "name_zh": "热辣爱好者",
+    "description_zh": "触发灼烧时，生命再生量提高{ability.0}（限本场战斗）。",
+    "icon": "skill/Heat_Lover.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Heat-Lover&c=skills"
+  },
+  {
+    "name": "Heat Shield",
+    "name_zh": "Heat Shield",
+    "description_zh": "",
+    "icon": "skill/Heat_Shield.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Heat-Shield&c=skills"
+  },
+  {
+    "name": "Heated Shells",
+    "name_zh": "高温弹壳",
+    "description_zh": "每场战斗前4 » 8 » 12次使用弹药物品时，造成5灼烧。",
+    "icon": "skill/Heated_Shells.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Heated-Shells&c=skills"
+  },
+  {
+    "name": "Heavy Firepower",
+    "name_zh": "重火力",
+    "description_zh": "如果持有的物品不超过5件，己方武器+25 » 50 » 75伤害。",
+    "icon": "skill/Heavy_Firepower.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Heavy-Firepower&c=skills"
+  },
+  {
+    "name": "Heavy Machinery",
+    "name_zh": "重型机械",
+    "description_zh": "每场战斗前{aura.9}次使用核心时，加速一件物品2秒。",
+    "icon": "skill/Heavy_Machinery.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Heavy-Machinery&c=skills"
+  },
+  {
+    "name": "Heavy Mettle",
+    "name_zh": "钢毅",
+    "description_zh": "护盾物品 + 护盾值，增幅等于当前等级的2 » 3 » 4倍。",
+    "icon": "skill/Heavy_Mettle.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Heavy-Mettle&c=skills"
+  },
+  {
+    "name": "Herbal Supplements",
+    "name_zh": "草药补剂",
+    "description_zh": "己方生命再生物品的生命再生+2 » 3 » 4。",
+    "icon": "skill/Herbal_Supplements.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Herbal-Supplements&c=skills"
+  },
+  {
+    "name": "High-Yield Investments",
+    "name_zh": "高回报投资",
+    "description_zh": "价值超过10的物品暴击率+10 » 15 » 20%。",
+    "icon": "skill/High-Yield_Investments.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=High-Yield-Investments&c=skills"
+  },
+  {
+    "name": "Honed Arsenal",
+    "name_zh": "精锐军械库",
+    "description_zh": "每拥有一件武器，己方物品+2 » 4 » 6%暴击率。",
+    "icon": "skill/Honed_Arsenal.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Honed-Arsenal&c=skills"
+  },
+  {
+    "name": "Honed Strike",
+    "name_zh": "锐化打击",
+    "description_zh": "使用物品时，该物品暴击率提高+{ability.0}%（限本场战斗）。",
+    "icon": "skill/Honed_Strike.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Honed-Strike&c=skills"
+  },
+  {
+    "name": "Hot Air",
+    "name_zh": "热空气",
+    "description_zh": "每场战斗首次触发灼烧时，{ability.0.targets}件己方物品开始飞行。",
+    "icon": "skill/Hot_Air.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Hot-Air&c=skills"
+  },
+  {
+    "name": "Hot Meal",
+    "name_zh": "热乎饭菜",
+    "description_zh": "每场战斗前4 » 8 » 12次使用高温物品时，造成5灼烧。",
+    "icon": "skill/Hot_Meal.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Hot-Meal&c=skills"
+  },
+  {
+    "name": "Hot Spot",
+    "name_zh": "热点",
+    "description_zh": "每场战斗前4 » 8 » 12次使用最左侧物品时，造成5灼烧。",
+    "icon": "skill/Hot_Spot.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Hot-Spot&c=skills"
+  },
+  {
+    "name": "Housewarming Gifts",
+    "name_zh": "乔迁礼物",
+    "description_zh": "出售地产时，获得{ability.0}根巧克力棒和{ability.0}枚零钱。",
+    "icon": "skill/Housewarming_Gifts.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Housewarming-Gifts&c=skills"
+  },
+  {
+    "name": "Hunker Down",
+    "name_zh": "暂避风头",
+    "description_zh": "沙尘暴开始时，你在余下的战斗中受到的伤害减少25 » 50 » 75%。",
+    "icon": "skill/Hunker_Down.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Hunker-Down&c=skills"
+  },
+  {
+    "name": "Hyper Focus",
+    "name_zh": "聚能专注",
+    "description_zh": "如果只拥有一件中型物品，就使其冷却时间缩短25%。",
+    "icon": "skill/Hyper_Focus.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Hyper-Focus&c=skills"
+  },
+  {
+    "name": "Hypnotic Drain",
+    "name_zh": "催眠吸取",
+    "description_zh": "使用带有吸血的武器时，冻结一件更小的物品2秒。",
+    "icon": "skill/Hypnotic_Drain.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Hypnotic-Drain&c=skills"
+  },
+  {
+    "name": "Ice Bullets",
+    "name_zh": "寒冰子弹",
+    "description_zh": "每场战斗前{aura.9}次造成冻结时，为另一件物品装填弹药。",
+    "icon": "skill/Ice_Bullets.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Ice-Bullets&c=skills"
+  },
+  {
+    "name": "Immolating Spark",
+    "name_zh": "灼焰火花",
+    "description_zh": "最左侧的灼烧物品+4 » 6 » 8灼烧。",
+    "icon": "skill/Immolating_Spark.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Immolating-Spark&c=skills"
+  },
+  {
+    "name": "Improved Toxins",
+    "name_zh": "毒素增效",
+    "description_zh": "剧毒物品+2 » 3 » 4剧毒。",
+    "icon": "skill/Improved_Toxins.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Improved-Toxins&c=skills"
+  },
+  {
+    "name": "Improvised Burn",
+    "name_zh": "临时灼烧",
+    "description_zh": "造成暴击时，灼烧物品的灼烧提高1 » 2 » 3（限本场战斗）。",
+    "icon": "skill/Improvised_Burn.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Improvised-Burn&c=skills"
+  },
+  {
+    "name": "Improvised Heal",
+    "name_zh": "Improvised Heal",
+    "description_zh": "",
+    "icon": "skill/Improvised_Heal.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Improvised-Heal&c=skills"
+  },
+  {
+    "name": "Improvised Poison",
+    "name_zh": "临时毒物",
+    "description_zh": "造成暴击时，剧毒物品的剧毒提高1 » 2 » 3（限本场战斗）。",
+    "icon": "skill/Improvised_Poison.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Improvised-Poison&c=skills"
+  },
+  {
+    "name": "Improvised Protection",
+    "name_zh": "临时防护",
+    "description_zh": "造成暴击时，护盾物品的护盾提高5 » 10 » 15（限本场战斗）。",
+    "icon": "skill/Improvised_Protection.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Improvised-Protection&c=skills"
+  },
+  {
+    "name": "Improvised Weaponry",
+    "name_zh": "临时军火",
+    "description_zh": "造成暴击时，己方武器伤害提高5 » 10 » 15（限本场战斗）。",
+    "icon": "skill/Improvised_Weaponry.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Improvised-Weaponry&c=skills"
+  },
+  {
+    "name": "Industrialist",
+    "name_zh": "实业家",
+    "description_zh": "地产的冷却时间缩短{aura.0}%。",
+    "icon": "skill/Industrialist.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Industrialist&c=skills"
+  },
+  {
+    "name": "Inexorable",
+    "name_zh": "势不可挡",
+    "description_zh": "己方物品++2%暴击率。开始战斗时，这一暴击率加成再提高+2 » 4 » 6%。",
+    "icon": "skill/Inexorable.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Inexorable&c=skills"
+  },
+  {
+    "name": "Initial Chill",
+    "name_zh": "寒霜初降",
+    "description_zh": "每场战斗首次使用大型物品时，冻结一件物品3 » 4 » 5秒。",
+    "icon": "skill/Initial_Chill.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Initial-Chill&c=skills"
+  },
+  {
+    "name": "Initial Dose",
+    "name_zh": "最初一剂",
+    "description_zh": "最左侧的剧毒物品+4 » 6 » 8剧毒。",
+    "icon": "skill/Initial_Dose.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Initial-Dose&c=skills"
+  },
+  {
+    "name": "Insect Bite",
+    "name_zh": "虫咬",
+    "description_zh": "每场战斗开始时，对自己造成2剧毒。",
+    "icon": "skill/Insect_Bite.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Insect-Bite&c=skills"
+  },
+  {
+    "name": "Inspired by Jules: Cooler",
+    "name_zh": "朱尔斯点拨：冷藏箱",
+    "description_zh": "一个己方栏位变为冷藏箱（此栏位中的物品获得霜冻效果）",
+    "icon": "skill/Inspired_by_Jules__Cooler.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Inspired-by-Jules:-Cooler&c=skills"
+  },
+  {
+    "name": "Inspired by Jules: Stove",
+    "name_zh": "朱尔斯点拨：炉灶",
+    "description_zh": "一个己方栏位变为炉灶（此栏位中的物品获得高温效果）",
+    "icon": "skill/Inspired_by_Jules__Stove.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Inspired-by-Jules:-Stove&c=skills"
+  },
+  {
+    "name": "Into the Void",
+    "name_zh": "遁入虚空",
+    "description_zh": "首次使用物品时，摧毁双方玩家布阵区上的各一件物品（限本场战斗）。",
+    "icon": "skill/Into_the_Void.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Into-the-Void&c=skills"
+  },
+  {
+    "name": "Intrusion Countermeasures",
+    "name_zh": "入侵防御",
+    "description_zh": "每场战斗己方生命值首次降至一半时，自动使用伙伴。",
+    "icon": "skill/Intrusion_Countermeasures.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Intrusion-Countermeasures&c=skills"
+  },
+  {
+    "name": "Invigorating Blade",
+    "name_zh": "振能刃",
+    "description_zh": "每场战斗前{aura.9}次使用武器时，为一件治疗物品充能1秒。",
+    "icon": "skill/Invigorating_Blade.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Invigorating-Blade&c=skills"
+  },
+  {
+    "name": "Invigorating Cold",
+    "name_zh": "提神寒气",
+    "description_zh": "每场战斗首次触发冻结时，加速1 » 2 » 3件物品2秒。",
+    "icon": "skill/Invigorating_Cold.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Invigorating-Cold&c=skills"
+  },
+  {
+    "name": "Iron Sharpens Iron",
+    "name_zh": "锋铁共鸣",
+    "description_zh": "最左侧武器+3伤害。购买武器时，这一伤害加成再提高+3 » 4 » 5。",
+    "icon": "skill/Iron_Sharpens_Iron.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Iron-Sharpens-Iron&c=skills"
+  },
+  {
+    "name": "Jack of All Trades",
+    "name_zh": "全能手",
+    "description_zh": "每场战斗前{aura.9}次使用物品时，为另一位英雄的一件物品充能1秒。",
+    "icon": "skill/Jack_of_All_Trades.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Jack-of-All-Trades&c=skills"
+  },
+  {
+    "name": "Juggler",
+    "name_zh": "杂耍",
+    "description_zh": "使用小型物品时，为一件大型物品充能1秒。",
+    "icon": "skill/Juggler.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Juggler&c=skills"
+  },
+  {
+    "name": "Jury Rigger",
+    "name_zh": "临修工匠",
+    "description_zh": "使用弹药物品时，为其左侧的物品装填1 » 2 » 3弹药。",
+    "icon": "skill/Jury_Rigger.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Jury-Rigger&c=skills"
+  },
+  {
+    "name": "Keen Eye",
+    "name_zh": "敏锐眼光",
+    "description_zh": "己方物品+8 » 12 » 16%暴击率。",
+    "icon": "skill/Keen_Eye.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Keen-Eye&c=skills"
+  },
+  {
+    "name": "Knife Tricks",
+    "name_zh": "刀技",
+    "description_zh": "使用武器时，使其冷却时间缩短4%（限本场战斗）。",
+    "icon": "skill/Knife_Tricks.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Knife-Tricks&c=skills"
+  },
+  {
+    "name": "Large Appetites",
+    "name_zh": "胃口大开",
+    "description_zh": "如果持有的物品不超过5件，最大生命值+500 » 1000 » 2000。",
+    "icon": "skill/Large_Appetites.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Large-Appetites&c=skills"
+  },
+  {
+    "name": "Lash Out",
+    "name_zh": "狂怒一击",
+    "description_zh": "每场战斗开始时，造成6 » 9 » 12剧毒。",
+    "icon": "skill/Lash_Out.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Lash-Out&c=skills"
+  },
+  {
+    "name": "Left Eye",
+    "name_zh": "左眼",
+    "description_zh": "最左侧物品的暴击率+16 » 24 » 32%。",
+    "icon": "skill/Left_Eye.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Left-Eye&c=skills"
+  },
+  {
+    "name": "Left-Handed",
+    "name_zh": "左撇子",
+    "description_zh": "最左侧武器造成+30 » 40 » 50伤害。",
+    "icon": "skill/Left-Handed.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Left-Handed&c=skills"
+  },
+  {
+    "name": "Lefty Loosey",
+    "name_zh": "左侧连动",
+    "description_zh": "每场战斗前{aura.9}次使用最左侧物品时，加速一件物品1秒。",
+    "icon": "skill/Lefty_Loosey.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Lefty-Loosey&c=skills"
+  },
+  {
+    "name": "Lethargy",
+    "name_zh": "倦怠",
+    "description_zh": "所有物品的冷却时间延长1 » 2 » 3秒。",
+    "icon": "skill/Lethargy.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Lethargy&c=skills"
+  },
+  {
+    "name": "Letting off Steam",
+    "name_zh": "蒸汽宣泄",
+    "description_zh": "每场战斗前{aura.9}次触发灼烧时，加速核心2秒。",
+    "icon": "skill/Letting_off_Steam.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Letting-off-Steam&c=skills"
+  },
+  {
+    "name": "Like Clockwork",
+    "name_zh": "有条不紊",
+    "description_zh": "最左侧物品视为科技。",
+    "icon": "skill/Like_Clockwork.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Like-Clockwork&c=skills"
+  },
+  {
+    "name": "Line Cook",
+    "name_zh": "炉头厨师",
+    "description_zh": "每场战斗首次使用工具时，为2 » 3 » 4件食物充能1秒。",
+    "icon": "skill/Line_Cook.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Line-Cook&c=skills"
+  },
+  {
+    "name": "Liquid Cooled",
+    "name_zh": "水冷",
+    "description_zh": "每场战斗前{aura.9}次使用核心时，冻结一件尺寸相等或更小的物品1秒。",
+    "icon": "skill/Liquid_Cooled.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Liquid-Cooled&c=skills"
+  },
+  {
+    "name": "Living Flame",
+    "name_zh": "生焰",
+    "description_zh": "每场战斗己方生命值首次降至一半时，灼烧物品冷却时间减半（限本场战斗）。",
+    "icon": "skill/Living_Flame.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Living-Flame&c=skills"
+  },
+  {
+    "name": "Loaded Fury",
+    "name_zh": "狂怒上膛",
+    "description_zh": "物品每拥有一发弹药，己方武器就+1 » 2 » 3伤害。",
+    "icon": "skill/Loaded_Fury.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Loaded-Fury&c=skills"
+  },
+  {
+    "name": "Long Strides",
+    "name_zh": "大步流星",
+    "description_zh": "如果持有的物品不超过5件，己方物品的冷却时间就缩短{aura.0}%。",
+    "icon": "skill/Long_Strides.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Long-Strides&c=skills"
+  },
+  {
+    "name": "Long-term Investments",
+    "name_zh": "长期投资",
+    "description_zh": "价值超过10的物品，冷却时间缩短{aura.0}%。",
+    "icon": "skill/Long-term_Investments.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Long-term-Investments&c=skills"
+  },
+  {
+    "name": "Machine Learning",
+    "name_zh": "机器学习",
+    "description_zh": "购买或升级此物品时，同时升级你的核心。",
+    "icon": "skill/Machine_Learning.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Machine-Learning&c=skills"
+  },
+  {
+    "name": "Makeshift Plate",
+    "name_zh": "简易餐盘",
+    "description_zh": "使用非护盾物品时，护盾物品的护盾提高+2 » 4 » 6（限本场战斗）。",
+    "icon": "skill/Makeshift_Plate.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Makeshift-Plate&c=skills"
+  },
+  {
+    "name": "Master Diver",
+    "name_zh": "潜水大师",
+    "description_zh": "最左侧物品视为水系。",
+    "icon": "skill/Master_Diver.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Master-Diver&c=skills"
+  },
+  {
+    "name": "Master Mechanic",
+    "name_zh": "机械大师",
+    "description_zh": "等级提升时，升级一件低级别物品。",
+    "icon": "skill/Master_Mechanic.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Master-Mechanic&c=skills"
+  },
+  {
+    "name": "Master Salesman",
+    "name_zh": "行商大师",
+    "description_zh": "己方物品在战斗中价值翻倍。",
+    "icon": "skill/Master_Salesman.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Master-Salesman&c=skills"
+  },
+  {
+    "name": "Master Sniper",
+    "name_zh": "狙击大师",
+    "description_zh": "最左侧的弹药武器伤害翻倍，最大弹药量+1。",
+    "icon": "skill/Master_Sniper.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Master-Sniper&c=skills"
+  },
+  {
+    "name": "Mixed Message",
+    "name_zh": "混乱讯息",
+    "description_zh": "每场战斗前{aura.9}次使用非武器物品时，为一件武器充能1秒。",
+    "icon": "skill/Mixed_Message.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Mixed-Message&c=skills"
+  },
+  {
+    "name": "Morning Rush",
+    "name_zh": "早起冲劲",
+    "description_zh": "每场战斗前{aura.9}次使用食物时，加速一件物品1秒。",
+    "icon": "skill/Morning_Rush.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Morning-Rush&c=skills"
+  },
+  {
+    "name": "Moth to a Flame",
+    "name_zh": "扑火飞蛾",
+    "description_zh": "生命再生量提高，增幅等于一位敌人灼烧的一半。",
+    "icon": "skill/Moth_to_a_Flame.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Moth-to-a-Flame&c=skills"
+  },
+  {
+    "name": "Nanobot Construction",
+    "name_zh": "纳米机器人建造",
+    "description_zh": "每拥有一件小型物品，大型物品的冷却时间就缩短{aura.9}%。",
+    "icon": "skill/Nanobot_Construction.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Nanobot-Construction&c=skills"
+  },
+  {
+    "name": "Neophiliac",
+    "name_zh": "新奇狂人",
+    "description_zh": "每场战斗首次触发冻结、灼烧、减速、剧毒或加速时，为一件物品充能{ability.0}秒。",
+    "icon": "skill/Neophiliac.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Neophiliac&c=skills"
+  },
+  {
+    "name": "Net Launcher",
+    "name_zh": "捕网发射器",
+    "description_zh": "每场战斗首次使用大型物品时，减速2 » 3 » 4件物品3秒。",
+    "icon": "skill/Net_Launcher.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Net-Launcher&c=skills"
+  },
+  {
+    "name": "Noisy Cricket",
+    "name_zh": "吵闹蟋蟀",
+    "description_zh": "如果拥有不少于7件物品，就令武器造成+20 » 30 » 40伤害。",
+    "icon": "skill/Noisy_Cricket.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Noisy-Cricket&c=skills"
+  },
+  {
+    "name": "Oceanic Rush",
+    "name_zh": "海洋冲锋",
+    "description_zh": "每场战斗首次使用物品时，加速1 » 2 » 3件水系物品2秒。",
+    "icon": "skill/Oceanic_Rush.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Oceanic-Rush&c=skills"
+  },
+  {
+    "name": "One Shot, One Kill",
+    "name_zh": "一发入魂",
+    "description_zh": "如果只拥有一件武器，就使之造成三倍伤害，但冷却时间延长50%。",
+    "icon": "skill/One_Shot,_One_Kill.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=One-Shot,-One-Kill&c=skills"
+  },
+  {
+    "name": "Open for Business",
+    "name_zh": "开张营业",
+    "description_zh": "每拥有一处地产（包括储存箱），就+2 » 3 » 4收入。",
+    "icon": "skill/Open_for_Business.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Open-for-Business&c=skills"
+  },
+  {
+    "name": "Outmaneuver",
+    "name_zh": "战术超越",
+    "description_zh": "每场战斗前{aura.9}次触发减速时，加速一辆载具2秒。",
+    "icon": "skill/Outmaneuver.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Outmaneuver&c=skills"
+  },
+  {
+    "name": "Overclocked",
+    "name_zh": "超频",
+    "description_zh": "核心的冷却时间缩短{aura.0}%。",
+    "icon": "skill/Overclocked.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Overclocked&c=skills"
+  },
+  {
+    "name": "Pacifist",
+    "name_zh": "和平主义者",
+    "description_zh": "如果没有武器，那么物品的冷却时间缩短{aura.0}%。",
+    "icon": "skill/Pacifist.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Pacifist&c=skills"
+  },
+  {
+    "name": "Pack Infiltrator",
+    "name_zh": "打入恐龙群",
+    "description_zh": "最左侧物品视为恐龙，恐龙暴击率+5 » 10 » 15%。",
+    "icon": "skill/Pack_Infiltrator.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Pack-Infiltrator&c=skills"
+  },
+  {
+    "name": "Panic",
+    "name_zh": "恐慌",
+    "description_zh": "每场战斗己方生命值首次降至50%时，装填2 » 3 » 4件物品，并为2 » 3 » 4件弹药物品充能1秒。",
+    "icon": "skill/Panic.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Panic&c=skills"
+  },
+  {
+    "name": "Paralytic Poison",
+    "name_zh": "麻痹剧毒",
+    "description_zh": "每场战斗首次触发剧毒时，冻结一件物品2 » 3 » 4秒。",
+    "icon": "skill/Paralytic_Poison.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Paralytic-Poison&c=skills"
+  },
+  {
+    "name": "Paralyzing Rush",
+    "name_zh": "麻痹突袭",
+    "description_zh": "触发减速时，加速一件武器{ability.0}秒。",
+    "icon": "skill/Paralyzing_Rush.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Paralyzing-Rush&c=skills"
+  },
+  {
+    "name": "Parting Shot",
+    "name_zh": "诀别一击",
+    "description_zh": "使用有弹药的武器时，此物品暴击率提高+{ability.0}%（限本场战斗）。",
+    "icon": "skill/Parting_Shot.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Parting-Shot&c=skills"
+  },
+  {
+    "name": "Party Like it's 011111001111",
+    "name_zh": "011111001111末日狂欢",
+    "description_zh": "最左侧物品视为伙伴",
+    "icon": "skill/Party_Like_it_s_011111001111.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Party-Like-it's-011111001111&c=skills"
+  },
+  {
+    "name": "Passive Power",
+    "name_zh": "被动能量",
+    "description_zh": "无冷却时间的物品+{aura.9}%伤害、灼烧、剧毒、护盾、治疗量与生命再生量。",
+    "icon": "skill/Passive_Power.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Passive-Power&c=skills"
+  },
+  {
+    "name": "Peaceful Eye",
+    "name_zh": "宁静之眼",
+    "description_zh": "非武器物品+10 » 15 » 20%暴击率。",
+    "icon": "skill/Peaceful_Eye.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Peaceful-Eye&c=skills"
+  },
+  {
+    "name": "Petrifying Gaze",
+    "name_zh": "石化凝视",
+    "description_zh": "每场战斗己方生命值首次降至一半时，冻结所有敌人物品1 » 2 » 3秒。",
+    "icon": "skill/Petrifying_Gaze.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Petrifying-Gaze&c=skills"
+  },
+  {
+    "name": "Pickpocket",
+    "name_zh": "扒手",
+    "description_zh": "每场战斗开始时，获得2 » 3 » 4金币。",
+    "icon": "skill/Pickpocket.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Pickpocket&c=skills"
+  },
+  {
+    "name": "Playing with Fire",
+    "name_zh": "火爆游戏",
+    "description_zh": "每场战斗开始时，为最右侧未附魔的玩具赋予炽焰附魔（限本场战斗）。",
+    "icon": "skill/Playing_with_Fire.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Playing+with+Fire&c=skills"
+  },
+  {
+    "name": "Playing with Fire",
+    "name_zh": "火爆游戏",
+    "description_zh": "每场战斗开始时，为最右侧未附魔的玩具赋予炽焰附魔（限本场战斗）。",
+    "icon": "skill/Playing_with_Fire.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Playing-with-Fire&c=skills"
+  },
+  {
+    "name": "Playtime",
+    "name_zh": "游戏时间",
+    "description_zh": "每场战斗前{aura.9}次使用玩具时，生命再生量提高5（限本场战斗）。",
+    "icon": "skill/Playtime.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Playtime&c=skills"
+  },
+  {
+    "name": "Poison Tyrant",
+    "name_zh": "剧毒暴君",
+    "description_zh": "触发剧毒时，生命再生量提高{ability.0}（限本场战斗）。",
+    "icon": "skill/Poison_Tyrant.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Poison-Tyrant&c=skills"
+  },
+  {
+    "name": "Poisonous Opener",
+    "name_zh": "剧毒喷溅",
+    "description_zh": "每场战斗首次使用大型物品时，造成20 » 40 » 60剧毒。",
+    "icon": "skill/Poisonous_Opener.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Poisonous-Opener&c=skills"
+  },
+  {
+    "name": "Pop-Up Shop",
+    "name_zh": "钟表小熊",
+    "description_zh": "玩具和服饰的冷却时间缩短{aura.0}%。",
+    "icon": "skill/Pop-Up_Shop.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Pop-Up-Shop&c=skills"
+  },
+  {
+    "name": "Potent Potables",
+    "name_zh": "强效药液",
+    "description_zh": "每拥有一瓶药水，剧毒物品+1 » 2 » 3剧毒。\n每拥有一瓶药水，灼烧物品就+1 » 2 » 3灼烧。",
+    "icon": "skill/Potent_Potables.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Potent-Potables&c=skills"
+  },
+  {
+    "name": "Power Broker",
+    "name_zh": "权力掮客",
+    "description_zh": "武器 + 伤害，增幅等于收入的1 » 2 » 3倍。",
+    "icon": "skill/Power_Broker.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Power-Broker&c=skills"
+  },
+  {
+    "name": "Precision Tools",
+    "name_zh": "精密工具",
+    "description_zh": "你的一件工具加速时，己方工具伤害提高+5 » 10 » 15（限本场战斗）。",
+    "icon": "skill/Precision_Tools.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Precision-Tools&c=skills"
+  },
+  {
+    "name": "Primal Rage",
+    "name_zh": "原始狂怒",
+    "description_zh": "最左侧武器视为神器，恐龙和神器武器造成+15 » 20 » 25伤害。",
+    "icon": "skill/Primal_Rage.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Primal-Rage&c=skills"
+  },
+  {
+    "name": "Prime Real Estate",
+    "name_zh": "优质房产",
+    "description_zh": "使用地产时，相邻物品暴击率提高5 » 10 » 15%（限本场战斗）。",
+    "icon": "skill/Prime_Real_Estate.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Prime-Real-Estate&c=skills"
+  },
+  {
+    "name": "Product Showcase",
+    "name_zh": "产品展示台",
+    "description_zh": "你的一件物品弹药耗尽时，为其相邻的物品充能{ability.0}秒。",
+    "icon": "skill/Product_Showcase.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Product-Showcase&c=skills"
+  },
+  {
+    "name": "Property Mogul",
+    "name_zh": "地产巨擘",
+    "description_zh": "购买地产时，最大生命值提高50 » 100 » 150。",
+    "icon": "skill/Property_Mogul.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Property-Mogul&c=skills"
+  },
+  {
+    "name": "Prosperity",
+    "name_zh": "繁荣昌盛",
+    "description_zh": "护盾物品 + 护盾值，增幅等于己方物品的价值。",
+    "icon": "skill/Prosperity.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Prosperity&c=skills"
+  },
+  {
+    "name": "Protein Powder",
+    "name_zh": "蛋白粉",
+    "description_zh": "购买食物时，最大生命值提高30 » 40 » 50。",
+    "icon": "skill/Protein_Powder.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Protein-Powder&c=skills"
+  },
+  {
+    "name": "Pure Imagination",
+    "name_zh": "纯粹想象",
+    "description_zh": "最右侧的物品视为玩具。",
+    "icon": "skill/Pure_Imagination.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Pure-Imagination&c=skills"
+  },
+  {
+    "name": "Purifying Flame",
+    "name_zh": "净化烈焰",
+    "description_zh": "提高生命再生时，一件灼烧物品的灼烧提高+1 » 2 » 3（限本场战斗）。",
+    "icon": "skill/Purifying_Flame.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Purifying-Flame&c=skills"
+  },
+  {
+    "name": "Pyromania",
+    "name_zh": "嗜火症",
+    "description_zh": "使用大型物品时，造成10 » 20 » 30灼烧。",
+    "icon": "skill/Pyromania.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Pyromania&c=skills"
+  },
+  {
+    "name": "Quality over Quantity",
+    "name_zh": "宁缺毋滥",
+    "description_zh": "如果只拥有一件武器，就使之获得吸血和{aura.0}%暴击率。",
+    "icon": "skill/Quality_over_Quantity.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Quality-over-Quantity&c=skills"
+  },
+  {
+    "name": "Quick Bite",
+    "name_zh": "急速撕咬",
+    "description_zh": "每场战斗首次使用物品时，为高温和霜冻物品充能{ability.0}秒。",
+    "icon": "skill/Quick_Bite.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Quick-Bite&c=skills"
+  },
+  {
+    "name": "Quick Defenses",
+    "name_zh": "急速防御",
+    "description_zh": "护盾物品的冷却时间缩短{aura.0}%。",
+    "icon": "skill/Quick_Defenses.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Quick-Defenses&c=skills"
+  },
+  {
+    "name": "Quick Freeze",
+    "name_zh": "急速冻结",
+    "description_zh": "每场战斗首次触发加速时，冻结一件物品2 » 3 » 4秒。",
+    "icon": "skill/Quick_Freeze.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Quick-Freeze&c=skills"
+  },
+  {
+    "name": "Quick Ignition",
+    "name_zh": "急速引燃",
+    "description_zh": "每场战斗首次使用物品时，加速1 » 2 » 3件灼烧物品2秒。",
+    "icon": "skill/Quick_Ignition.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Quick-Ignition&c=skills"
+  },
+  {
+    "name": "Quick Study",
+    "name_zh": "快速学习",
+    "description_zh": "每场战斗首次使用物品时，加速1 » 2 » 3件神器2秒。",
+    "icon": "skill/Quick_Study.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Quick-Study&c=skills"
+  },
+  {
+    "name": "Rapid Relief",
+    "name_zh": "急速缓解",
+    "description_zh": "敌方生命值高于你时，己方治疗与生命再生物品的冷却时间缩短5 » 10 » 15%。",
+    "icon": "skill/Rapid_Relief.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Rapid-Relief&c=skills"
+  },
+  {
+    "name": "Ravenous",
+    "name_zh": "饕餮",
+    "description_zh": "每场战斗己方生命值首次降至一半时，摧毁一件物品（限本场战斗）。",
+    "icon": "skill/Ravenous.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Ravenous&c=skills"
+  },
+  {
+    "name": "Re-Tooled",
+    "name_zh": "工具重铸",
+    "description_zh": "最左侧的工具+1多重触发。",
+    "icon": "skill/Re-Tooled.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Re-Tooled&c=skills"
+  },
+  {
+    "name": "Reaching the Summit",
+    "name_zh": "登峰之路",
+    "description_zh": "触发冻结时，己方物品暴击率提高+{ability.0}%（限本场战斗）。",
+    "icon": "skill/Reaching_the_Summit.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Reaching-the-Summit&c=skills"
+  },
+  {
+    "name": "Rear Shielding",
+    "name_zh": "后方防御",
+    "description_zh": "最右侧的护盾物品+30 » 40 » 50护盾。",
+    "icon": "skill/Rear_Shielding.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Rear-Shielding&c=skills"
+  },
+  {
+    "name": "Reel 'Em In",
+    "name_zh": "收线",
+    "description_zh": "每场战斗敌方生命值首次降至一半时，己方物品的冷却时间减半（限本场战斗）。",
+    "icon": "skill/Reel__Em_In.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Reel-'Em-In&c=skills"
+  },
+  {
+    "name": "Refreshing Treat",
+    "name_zh": "爽口点心",
+    "description_zh": "每场战斗前{aura.9}次使用霜冻物品时，生命再生量提高10（限本场战斗）。",
+    "icon": "skill/Refreshing_Treat.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Refreshing-Treat&c=skills"
+  },
+  {
+    "name": "Regenerative",
+    "name_zh": "元气恢复",
+    "description_zh": "++10 » 20 » 30生命再生量。",
+    "icon": "skill/Regenerative.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Regenerative&c=skills"
+  },
+  {
+    "name": "Regular Maintenance",
+    "name_zh": "定期维护",
+    "description_zh": "每拥有一件飞行物品，就令护盾物品+{aura.0.mod}护盾值。",
+    "icon": "skill/Regular_Maintenance.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Regular-Maintenance&c=skills"
+  },
+  {
+    "name": "Reinforced Steel",
+    "name_zh": "强化钢",
+    "description_zh": "使用地产时，己方武器伤害提高+5 » 10 » 15、护盾物品的护盾值提高+5 » 10 » 15（限本场战斗）。",
+    "icon": "skill/Reinforced_Steel.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Reinforced-Steel&c=skills"
+  },
+  {
+    "name": "Relax Bro",
+    "name_zh": "兄弟别激动",
+    "description_zh": "使用小型物品时，生命再生量提高{ability.0}（限本场战斗）。",
+    "icon": "skill/Relax_Bro.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Relax-Bro&c=skills"
+  },
+  {
+    "name": "Renovation",
+    "name_zh": "翻新工程",
+    "description_zh": "等级提升时，升级一处地产。",
+    "icon": "skill/Renovation.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Renovation&c=skills"
+  },
+  {
+    "name": "Reserve Collection",
+    "name_zh": "备用收藏",
+    "description_zh": "每场战斗己方生命值首次降至一半时，使用神器。",
+    "icon": "skill/Reserve_Collection.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Reserve-Collection&c=skills"
+  },
+  {
+    "name": "Reserve Shield",
+    "name_zh": "备用护盾",
+    "description_zh": "每场战斗首次使用大型物品时，获得护盾，等量于最大生命值的10 » 20 » 30%。",
+    "icon": "skill/Reserve_Shield.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Reserve-Shield&c=skills"
+  },
+  {
+    "name": "Retaliatory Toxins",
+    "name_zh": "反击毒素",
+    "description_zh": "每场战斗中敌人前{aura.9}次使用物品时，造成5剧毒。",
+    "icon": "skill/Retaliatory_Toxins.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Retaliatory-Toxins&c=skills"
+  },
+  {
+    "name": "Retool",
+    "name_zh": "上膛工具",
+    "description_zh": "使用工具时，装填一件相邻物品。",
+    "icon": "skill/Retool.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Retool&c=skills"
+  },
+  {
+    "name": "Rigged",
+    "name_zh": "暗做手脚",
+    "description_zh": "每场战斗首次使用物品时，加速己方物品1 » 2 » 3秒。",
+    "icon": "skill/Rigged.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Rigged&c=skills"
+  },
+  {
+    "name": "Right Eye",
+    "name_zh": "右眼",
+    "description_zh": "最右侧的物品+16 » 24 » 32%暴击率。",
+    "icon": "skill/Right_Eye.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Right-Eye&c=skills"
+  },
+  {
+    "name": "Right-Handed",
+    "name_zh": "右撇子",
+    "description_zh": "最右侧的武器+30 » 40 » 50伤害。",
+    "icon": "skill/Right-Handed.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Right-Handed&c=skills"
+  },
+  {
+    "name": "Righty Tighty",
+    "name_zh": "右手紧握",
+    "description_zh": "每场战斗前3 » 6 » 9次使用最右侧物品时，为一件减速物品充能1秒。",
+    "icon": "skill/Righty_Tighty.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Righty-Tighty&c=skills"
+  },
+  {
+    "name": "Rolling Boil",
+    "name_zh": "滚沸",
+    "description_zh": "高温物品的冷却时间缩短{aura.0}%。",
+    "icon": "skill/Rolling_Boil.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Rolling-Boil&c=skills"
+  },
+  {
+    "name": "Rush",
+    "name_zh": "疾速",
+    "description_zh": "每场战斗首次使用物品时，加速一件武器4 » 5 » 6秒。",
+    "icon": "skill/Rush.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Rush&c=skills"
+  },
+  {
+    "name": "Rust",
+    "name_zh": "铁锈",
+    "description_zh": "每场战斗首次使用物品时，减速一件物品4 » 5 » 6秒。",
+    "icon": "skill/Rust.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Rust&c=skills"
+  },
+  {
+    "name": "Sabotage",
+    "name_zh": "破坏行动",
+    "description_zh": "每场战斗前{aura.9}次使用工具时，减速一件物品1秒。",
+    "icon": "skill/Sabotage.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Sabotage&c=skills"
+  },
+  {
+    "name": "Scramble Fighters",
+    "name_zh": "紧急起飞",
+    "description_zh": "每场战斗首次使用物品时，1 » 2 » 3件物品开始飞行。\n飞行武器+20 » 30 » 40伤害。",
+    "icon": "skill/Scramble_Fighters.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Scramble-Fighters&c=skills"
+  },
+  {
+    "name": "Searing Flames",
+    "name_zh": "灼热烈焰",
+    "description_zh": "一件己方灼烧物品加速时，此物品的灼烧提高1 » 2 » 3（限本场战斗）。",
+    "icon": "skill/Searing_Flames.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Searing-Flames&c=skills"
+  },
+  {
+    "name": "Second Wind",
+    "name_zh": "重整气息",
+    "description_zh": "每场战斗首次使用大型物品时，获得治疗，等量于最大生命值的20 » 40 » 60%。",
+    "icon": "skill/Second_Wind.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Second-Wind&c=skills"
+  },
+  {
+    "name": "Secret Ingredient",
+    "name_zh": "秘密食材",
+    "description_zh": "如果只有1件食物，则使用该食物时，武器在本场战斗中的伤害+{ability.0}。",
+    "icon": "skill/Secret_Ingredient.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Secret-Ingredient&c=skills"
+  },
+  {
+    "name": "Secrets of Life",
+    "name_zh": "生命奥妙",
+    "description_zh": "每场战斗前4 » 8 » 12次使用神器时，生命再生量提高5（限本场战斗）。",
+    "icon": "skill/Secrets_of_Life.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Secrets-of-Life&c=skills"
+  },
+  {
+    "name": "Sharp Corners",
+    "name_zh": "锐利棱角",
+    "description_zh": "触发护盾时，己方武器伤害提高3 » 6 » 9（限本场战斗）。",
+    "icon": "skill/Sharp_Corners.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Sharp-Corners&c=skills"
+  },
+  {
+    "name": "Sharpened Steel",
+    "name_zh": "钢铁磨砺",
+    "description_zh": "使用武器时，相邻物品暴击率提高6 » 9 » 12%（限本场战斗）。",
+    "icon": "skill/Sharpened_Steel.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Sharpened-Steel&c=skills"
+  },
+  {
+    "name": "Shatter",
+    "name_zh": "冰碎",
+    "description_zh": "触发冻结时，己方武器伤害提高+{ability.0}（限本场战斗）。",
+    "icon": "skill/Shatter.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Shatter&c=skills"
+  },
+  {
+    "name": "Shield Bash",
+    "name_zh": "盾击",
+    "description_zh": "每场战斗中敌人前{aura.9}次使用非武器物品时，为一件武器充能1秒。",
+    "icon": "skill/Shield_Bash.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Shield-Bash&c=skills"
+  },
+  {
+    "name": "Shored Up",
+    "name_zh": "防线强化",
+    "description_zh": "触发治疗或提高生命再生时，为一件护盾物品充能1秒。",
+    "icon": "skill/Shored_Up.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Shored-Up&c=skills"
+  },
+  {
+    "name": "Sick Burn",
+    "name_zh": "毒性灼烧",
+    "description_zh": "每场战斗前{aura.9}次触发剧毒时，为一件灼烧物品充能1秒。",
+    "icon": "",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Sick-Burn&c=skills"
+  },
+  {
+    "name": "Siphoned Shield",
+    "name_zh": "虹吸护盾",
+    "description_zh": "护盾物品 + 护盾值，增幅等于敌人所受剧毒的{aura.9}%。",
+    "icon": "skill/Siphoned_Shield.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Siphoned-Shield&c=skills"
+  },
+  {
+    "name": "Slow Burn",
+    "name_zh": "慢性灼烧",
+    "description_zh": "每场战斗前{aura.9}次触发减速时，为一件灼烧物品充能1秒。",
+    "icon": "skill/Slow_Burn.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Slow-Burn&c=skills"
+  },
+  {
+    "name": "Slow and Steady",
+    "name_zh": "稳中求胜",
+    "description_zh": "触发减速时，己方武器伤害提高2 » 4 » 6（限本场战斗）。",
+    "icon": "skill/Slow_and_Steady.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Slow-and-Steady&c=skills"
+  },
+  {
+    "name": "Slowed Targets",
+    "name_zh": "减速目标",
+    "description_zh": "触发减速时，己方物品暴击率提高+1 » 2 » 3%（限本场战斗）。",
+    "icon": "skill/Slowed_Targets.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Slowed-Targets&c=skills"
+  },
+  {
+    "name": "Small Refresh",
+    "name_zh": "精神微振",
+    "description_zh": "每场战斗前6 » 9 » 12次使用小型物品时，获得50治疗。",
+    "icon": "skill/Small_Refresh.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Small-Refresh&c=skills"
+  },
+  {
+    "name": "Snowstorm",
+    "name_zh": "雪暴",
+    "description_zh": "触发冻结时，一件武器伤害提高+20 » 30 » 40（限本场战斗）。",
+    "icon": "skill/Snowstorm.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Snowstorm&c=skills"
+  },
+  {
+    "name": "Some Like It Hot",
+    "name_zh": "热情如火",
+    "description_zh": "高温物品免疫冻结。",
+    "icon": "skill/Some_Like_It_Hot.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Some-Like-It-Hot&c=skills"
+  },
+  {
+    "name": "Special Exhibit",
+    "name_zh": "特殊展品",
+    "description_zh": "最右侧物品视为神器，神器暴击率+5 » 10 » 15%。",
+    "icon": "skill/Special_Exhibit.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Special-Exhibit&c=skills"
+  },
+  {
+    "name": "Start-Up Sequence",
+    "name_zh": "起步流程",
+    "description_zh": "每场战斗开始时，一辆载具开始飞行。",
+    "icon": "skill/Start-Up_Sequence.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Start-Up-Sequence&c=skills"
+  },
+  {
+    "name": "Static Acceleration",
+    "name_zh": "静态加速",
+    "description_zh": "触发加速时，己方物品暴击率提高+1 » 2 » 3%（限本场战斗）。",
+    "icon": "skill/Static_Acceleration.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Static-Acceleration&c=skills"
+  },
+  {
+    "name": "Staying Power",
+    "name_zh": "持久之力",
+    "description_zh": "使用武器或工具时，治疗物品的治疗量提高+4 » 8 » 12（限本场战斗）。",
+    "icon": "skill/Staying_Power.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Staying-Power&c=skills"
+  },
+  {
+    "name": "Steelstorm",
+    "name_zh": "钢铁风暴",
+    "description_zh": "每拥有一件武器，己方武器就+4 » 6 » 8伤害。",
+    "icon": "skill/Steelstorm.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Steelstorm&c=skills"
+  },
+  {
+    "name": "Stocked",
+    "name_zh": "库存充足",
+    "description_zh": "药水+1 » 2 » 3弹药。",
+    "icon": "skill/Stocked.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Stocked&c=skills"
+  },
+  {
+    "name": "Stop That!",
+    "name_zh": "让我缓缓！",
+    "description_zh": "每场战斗己方生命值首次降至一半时，减速2 » 4 » 6件物品2秒。",
+    "icon": "skill/Stop_That!.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Stop-That!&c=skills"
+  },
+  {
+    "name": "Streamline Weapon",
+    "name_zh": "精简武器",
+    "description_zh": "任一武器获得加速效果时，令其伤害提高+5 » 10 » 15。",
+    "icon": "skill/Streamline_Weapon.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Streamline-Weapon&c=skills"
+  },
+  {
+    "name": "Street Food",
+    "name_zh": "街头美食",
+    "description_zh": "每场战斗首次使用物品时，加速1 » 2 » 3件食物2秒。",
+    "icon": "skill/Street_Food.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Street-Food&c=skills"
+  },
+  {
+    "name": "Strength",
+    "name_zh": "力量",
+    "description_zh": "武器造成+15 » 20 » 25伤害。",
+    "icon": "skill/Strength.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Strength&c=skills"
+  },
+  {
+    "name": "Strong Arm",
+    "name_zh": "强健手臂",
+    "description_zh": "武器 + 伤害，增幅等于收入的2 » 3 » 4倍。",
+    "icon": "skill/Strong_Arm.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Strong-Arm&c=skills"
+  },
+  {
+    "name": "Stunning Strike",
+    "name_zh": "震慑打击",
+    "description_zh": "每场战斗首次造成暴击时，冻结一件物品3 » 4 » 5秒。",
+    "icon": "skill/Stunning_Strike.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Stunning-Strike&c=skills"
+  },
+  {
+    "name": "Submerged",
+    "name_zh": "潜水",
+    "description_zh": "每拥有一件水系物品，己方武器就+3 » 6 » 9伤害。\n每拥有一件水系物品，就令护盾物品+3 » 6 » 9护盾值。",
+    "icon": "skill/Submerged.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Submerged&c=skills"
+  },
+  {
+    "name": "Supply Cache",
+    "name_zh": "补给箱",
+    "description_zh": "每天开始时，获得一件战利品。",
+    "icon": "skill/Supply_Cache.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Supply-Cache&c=skills"
+  },
+  {
+    "name": "Tall Buildings",
+    "name_zh": "高楼大厦",
+    "description_zh": "每场战斗前{aura.9}次使用地产时，加速与之相邻的物品1秒。",
+    "icon": "skill/Tall_Buildings.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Tall-Buildings&c=skills"
+  },
+  {
+    "name": "Target Acquisition",
+    "name_zh": "目标锁定",
+    "description_zh": "飞行物品+10 » 15 » 20%暴击率。",
+    "icon": "skill/Target_Acquisition.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Target-Acquisition&c=skills"
+  },
+  {
+    "name": "Tempering",
+    "name_zh": "回火再铸",
+    "description_zh": "使用武器时，该武器伤害提高+3 » 6 » 9（限本场战斗）。",
+    "icon": "skill/Tempering.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Tempering&c=skills"
+  },
+  {
+    "name": "Temporal Strike",
+    "name_zh": "时空打击",
+    "description_zh": "每场战斗前{aura.9}次触发减速时，为一件武器充能1秒。",
+    "icon": "skill/Temporal_Strike.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Temporal-Strike&c=skills"
+  },
+  {
+    "name": "The Best Defense",
+    "name_zh": "以攻为守",
+    "description_zh": "使用武器时，其相邻武器伤害提高+3 » 6 » 9（限本场战斗）。",
+    "icon": "skill/The_Best_Defense.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=The-Best-Defense&c=skills"
+  },
+  {
+    "name": "The One Potion",
+    "name_zh": "唯一药水",
+    "description_zh": "如果只拥有一瓶药水，就使其最大弹药量+1，且冷却时间减半。",
+    "icon": "skill/The_One_Potion.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=The-One-Potion&c=skills"
+  },
+  {
+    "name": "The Right Tool",
+    "name_zh": "趁手工具",
+    "description_zh": "每拥有一件工具，己方非工具物品就+5 » 10 » 15%暴击率。",
+    "icon": "skill/The_Right_Tool.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=The-Right-Tool&c=skills"
+  },
+  {
+    "name": "Thick Hide",
+    "name_zh": "厚皮",
+    "description_zh": "触发减速时，为一件物品充能1秒。",
+    "icon": "skill/Thick_Hide.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Thick-Hide&c=skills"
+  },
+  {
+    "name": "Thirsty",
+    "name_zh": "口渴难耐",
+    "description_zh": "每场战斗前4 » 8 » 12次使用药水时，生命再生量提高10（限本场战斗）。",
+    "icon": "skill/Thirsty.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Thirsty&c=skills"
+  },
+  {
+    "name": "Thrill of the Flight",
+    "name_zh": "凌空的刺激",
+    "description_zh": "飞行物品的冷却时间缩短{aura.0}%。",
+    "icon": "skill/Thrill_of_the_Flight.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Thrill-of-the-Flight&c=skills"
+  },
+  {
+    "name": "Time Traveler",
+    "name_zh": "时间旅行者",
+    "description_zh": "恐龙和神器的冷却时间缩短{aura.0}%。",
+    "icon": "skill/Time_Traveler.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Time-Traveler&c=skills"
+  },
+  {
+    "name": "Time to Tinker",
+    "name_zh": "修理时间",
+    "description_zh": "每场战斗前6 » 9 » 12次触发加速时，获得50护盾。",
+    "icon": "skill/Time_to_Tinker.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Time-to-Tinker&c=skills"
+  },
+  {
+    "name": "Tiny Dancer",
+    "name_zh": "小小舞者",
+    "description_zh": "如果拥有不少于7件物品，己方物品的冷却时间就缩短{aura.0}%。",
+    "icon": "skill/Tiny_Dancer.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Tiny-Dancer&c=skills"
+  },
+  {
+    "name": "Titanium Casing",
+    "name_zh": "钛制外壳",
+    "description_zh": "使用核心时，护盾物品的护盾提高{ability.0}（限本场战斗）。",
+    "icon": "skill/Titanium_Casing.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Titanium-Casing&c=skills"
+  },
+  {
+    "name": "Tools of the Trade",
+    "name_zh": "专业行头",
+    "description_zh": "每场战斗前{aura.9}次使用工具时，加速一件工具1秒。",
+    "icon": "skill/Tools_of_the_Trade.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Tools-of-the-Trade&c=skills"
+  },
+  {
+    "name": "Toughness",
+    "name_zh": "坚固",
+    "description_zh": "护盾物品+15 » 20 » 25护盾。",
+    "icon": "skill/Toughness.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Toughness&c=skills"
+  },
+  {
+    "name": "Toxic Flame",
+    "name_zh": "毒焰",
+    "description_zh": "触发灼烧时，剧毒物品获得+1 » 2 » 3剧毒（限本场战斗）。\n触发剧毒时，己方灼烧物品的灼烧提高+1 » 2 » 3（限本场战斗）。",
+    "icon": "skill/Toxic_Flame.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Toxic-Flame&c=skills"
+  },
+  {
+    "name": "Toxic Friendship",
+    "name_zh": "恶毒友谊",
+    "description_zh": "使用伙伴时，造成{ability.0}剧毒。",
+    "icon": "skill/Toxic_Friendship.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Toxic-Friendship&c=skills"
+  },
+  {
+    "name": "Toxic Fuel",
+    "name_zh": "毒性燃料",
+    "description_zh": "承受剧毒时，己方物品的冷却时间缩短{aura.0}%。\n敌方承受剧毒时，其物品冷却时间延长{aura.1}%。",
+    "icon": "skill/Toxic_Fuel.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Toxic-Fuel&c=skills"
+  },
+  {
+    "name": "Toxic Shield",
+    "name_zh": "毒性护盾",
+    "description_zh": "每场战斗己方生命值首次降至一半时，获得护盾，等量于敌人所受剧毒的2 » 3 » 4倍。",
+    "icon": "skill/Toxic_Shield.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Toxic-Shield&c=skills"
+  },
+  {
+    "name": "Toxic Weapons",
+    "name_zh": "毒性武器",
+    "description_zh": "每拥有一件武器，剧毒物品+2 » 3 » 4剧毒。",
+    "icon": "skill/Toxic_Weapons.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Toxic-Weapons&c=skills"
+  },
+  {
+    "name": "Toxicity",
+    "name_zh": "毒势",
+    "description_zh": "触发剧毒时，己方武器伤害提高3 » 6 » 9（限本场战斗）。",
+    "icon": "skill/Toxicity.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Toxicity&c=skills"
+  },
+  {
+    "name": "Toxin Injector",
+    "name_zh": "毒素注射器",
+    "description_zh": "每场战斗首次使用物品时，加速1 » 2 » 3件剧毒物品2秒。",
+    "icon": "skill/Toxin_Injector.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Toxin-Injector&c=skills"
+  },
+  {
+    "name": "Tracer Fire",
+    "name_zh": "追踪火焰",
+    "description_zh": "触发灼烧时，己方物品暴击率提高+1 » 2 » 3%（限本场战斗）。",
+    "icon": "skill/Tracer_Fire.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Tracer-Fire&c=skills"
+  },
+  {
+    "name": "Trader",
+    "name_zh": "商人",
+    "description_zh": "己方物品+{aura.0}价值。",
+    "icon": "skill/Trader.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Trader&c=skills"
+  },
+  {
+    "name": "Trained",
+    "name_zh": "受训",
+    "description_zh": "触发减速时，一件武器的伤害提高+10 » 15 » 20（限本场战斗）。",
+    "icon": "skill/Trained.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Trained&c=skills"
+  },
+  {
+    "name": "Trickle Down Economics",
+    "name_zh": "涓滴经济学",
+    "description_zh": "使用大型物品时，加速己方其他物品{ability.0}秒。",
+    "icon": "skill/Trickle_Down_Economics.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Trickle-Down-Economics&c=skills"
+  },
+  {
+    "name": "Truffleholic",
+    "name_zh": "松露迷",
+    "description_zh": "出售地产时，获得{ability.0}颗松露。",
+    "icon": "skill/Truffleholic.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Truffleholic&c=skills"
+  },
+  {
+    "name": "Unwavering",
+    "name_zh": "坚定不移",
+    "description_zh": "使用物品时，获得{ability.0}护盾。",
+    "icon": "skill/Unwavering.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Unwavering&c=skills"
+  },
+  {
+    "name": "Valley Fever",
+    "name_zh": "谷地热症",
+    "description_zh": "每场战斗开始时，对自身造成2灼烧。",
+    "icon": "skill/Valley_Fever.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Valley-Fever&c=skills"
+  },
+  {
+    "name": "Vengeance",
+    "name_zh": "复仇",
+    "description_zh": "最左侧与最右侧物品的冷却时间都缩短5 » 10 » 15%。",
+    "icon": "skill/Vengeance.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Vengeance&c=skills"
+  },
+  {
+    "name": "Venomous Blade",
+    "name_zh": "毒刃",
+    "description_zh": "每场战斗前{aura.9}次使用武器时，为一件剧毒物品充能1秒。",
+    "icon": "skill/Venomous_Blade.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Venomous-Blade&c=skills"
+  },
+  {
+    "name": "Venomous Vitality",
+    "name_zh": "剧毒之血",
+    "description_zh": "生命再生量提高，增幅等于一位敌人剧毒的一半。",
+    "icon": "skill/Venomous_Vitality.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Venomous-Vitality&c=skills"
+  },
+  {
+    "name": "Vital Renewal",
+    "name_zh": "生命复苏",
+    "description_zh": "使用物品触发减速、冻结、剧毒或灼烧时，一件物品的生命再生量提高{ability.0}（限本场战斗）。",
+    "icon": "skill/Vital_Renewal.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Vital-Renewal&c=skills"
+  },
+  {
+    "name": "Vital Reserve",
+    "name_zh": "生命储备",
+    "description_zh": "最右侧的生命再生物品+4 » 6 » 8生命再生。",
+    "icon": "skill/Vital_Reserve.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Vital-Reserve&c=skills"
+  },
+  {
+    "name": "Void Energy",
+    "name_zh": "虚空能量",
+    "description_zh": "触发灼烧时，为一件护盾物品充能1秒。",
+    "icon": "skill/Void_Energy.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Void-Energy&c=skills"
+  },
+  {
+    "name": "Void Rage",
+    "name_zh": "虚空之怒",
+    "description_zh": "触发灼烧时，加速一件物品1秒。",
+    "icon": "skill/Void_Rage.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Void-Rage&c=skills"
+  },
+  {
+    "name": "Void Render",
+    "name_zh": "空蚀裂解器",
+    "description_zh": "摧毁物品时，己方物品伤害提高+{ability.0}、灼烧提高+{ability.1}（限本场战斗）。",
+    "icon": "skill/Void_Render.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Void-Render&c=skills"
+  },
+  {
+    "name": "Wake-Up Call",
+    "name_zh": "起床呼唤",
+    "description_zh": "使用小型物品时，加速一件灼烧、剧毒或冻结物品1秒。",
+    "icon": "skill/Wake-Up_Call.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Wake-Up-Call&c=skills"
+  },
+  {
+    "name": "Walk-in Clinic",
+    "name_zh": "便民诊所",
+    "description_zh": "最左侧的生命再生物品+4 » 6 » 8生命再生量。",
+    "icon": "skill/Walk-in_Clinic.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Walk-in-Clinic&c=skills"
+  },
+  {
+    "name": "War Chef",
+    "name_zh": "战地厨师",
+    "description_zh": "每拥有一件食物物品，己方武器就+10 » 20 » 30伤害。",
+    "icon": "skill/War_Chef.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=War-Chef&c=skills"
+  },
+  {
+    "name": "Warm Hugs",
+    "name_zh": "温暖拥抱",
+    "description_zh": "每场战斗前4 » 8 » 12次使用伙伴时，造成5灼烧。",
+    "icon": "skill/Warm_Hugs.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Warm-Hugs&c=skills"
+  },
+  {
+    "name": "Waters of Infinity",
+    "name_zh": "无尽水源",
+    "description_zh": "每拥有一件非武器物品，就+10 » 20 » 40生命再生量。",
+    "icon": "skill/Waters_of_Infinity.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Waters-of-Infinity&c=skills"
+  },
+  {
+    "name": "Wax and Wane",
+    "name_zh": "月有圆缺",
+    "description_zh": "每场战斗首次使用大型物品时，减速所有物品1秒。\n每场战斗己方生命值首次降至一半时，加速所有物品1秒。",
+    "icon": "skill/Wax_and_Wane.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Wax-and-Wane&c=skills"
+  },
+  {
+    "name": "Well-Oiled Machine",
+    "name_zh": "上油机械",
+    "description_zh": "使用核心时，使一件物品的冷却时间缩短5%（限本场战斗）。",
+    "icon": "skill/Well-Oiled_Machine.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Well-Oiled-Machine&c=skills"
+  },
+  {
+    "name": "Workin' Hard",
+    "name_zh": "勤奋工作",
+    "description_zh": "每场战斗前4 » 8 » 12次触发加速时，为一件工具充能1秒。",
+    "icon": "skill/Workin__Hard.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Workin'+Hard&c=skills"
+  },
+  {
+    "name": "Workin' Hard",
+    "name_zh": "勤奋工作",
+    "description_zh": "每场战斗前4 » 8 » 12次触发加速时，为一件工具充能1秒。",
+    "icon": "skill/Workin__Hard.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Workin'-Hard&c=skills"
+  },
+  {
+    "name": "Defensive Stance",
+    "name_zh": "防御姿态",
+    "description_zh": "使用武器时，护盾物品的护盾提高3 » 6 » 9（限本场战斗）。",
+    "icon": "skill/Defensive_Stance.webp",
+    "aspect_ratio": 1.0,
+    "url": "https://bazaardb.gg/search?q=Defensive-Stance&c=skills"
+  }
+]

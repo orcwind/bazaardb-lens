@@ -1,0 +1,43 @@
+{
+  "unity_files": [
+    {
+      "path": "C:\\Users\\vivi\\AppData\\Roaming\\Tempo Launcher - Beta\\game\\buildx64\\TheBazaar_Data\\StreamingAssets\\aa\\StandaloneWindows64\\board_common__591851dd4e477814891b4440a2834174.bundle",
+      "relative_path": "StreamingAssets\\aa\\StandaloneWindows64\\board_common__591851dd4e477814891b4440a2834174.bundle",
+      "size": 3230421,
+      "name": "board_common__591851dd4e477814891b4440a2834174.bundle",
+      "ext": ".bundle"
+    },
+    {
+      "path": "C:\\Users\\vivi\\AppData\\Roaming\\Tempo Launcher - Beta\\game\\buildx64\\TheBazaar_Data\\StreamingAssets\\aa\\StandaloneWindows64\\board_thegrand__ba392908159347adf93b7242d6db9dfa.bundle",
+      "relative_path": "StreamingAssets\\aa\\StandaloneWindows64\\board_thegrand__ba392908159347adf93b7242d6db9dfa.bundle",
+      "size": 27335083,
+      "name": "board_thegrand__ba392908159347adf93b7242d6db9dfa.bundle",
+      "ext": ".bundle"
+    },
+    {
+      "path": "C:\\Users\\vivi\\AppData\\Roaming\\Tempo Launcher - Beta\\game\\buildx64\\TheBazaar_Data\\StreamingAssets\\aa\\StandaloneWindows64\\projectiles__22ed2daa2a4684a04cc98e640823fac7.bundle",
+      "relative_path": "StreamingAssets\\aa\\StandaloneWindows64\\projectiles__22ed2daa2a4684a04cc98e640823fac7.bundle",
+      "size": 58553521,
+      "name": "projectiles__22ed2daa2a4684a04cc98e640823fac7.bundle",
+      "ext": ".bundle"
+    }
+  ],
+  "localization_files": [
+    {
+      "type": "file",
+      "path": "C:\\Users\\vivi\\AppData\\Roaming\\Tempo Launcher - Beta\\game\\buildx64\\TheBazaar_Data\\StreamingAssets\\StaticData\\embeddedLocales.json",
+      "relative_path": "StreamingAssets\\StaticData\\embeddedLocales.json",
+      "size": 1050,
+      "name": "embeddedLocales.json"
+    },
+    {
+      "type": "file",
+      "path": "C:\\Users\\vivi\\AppData\\Roaming\\Tempo Launcher - Beta\\game\\buildx64\\TheBazaar_Data\\StreamingAssets\\StaticData\\ui_localization.json",
+      "relative_path": "StreamingAssets\\StaticData\\ui_localization.json",
+      "size": 80347,
+      "name": "ui_localization.json"
+    }
+  ],
+  "addressable_files": [],
+  "chinese_content": []
+}

@@ -1,0 +1,23 @@
+{
+  "Ahexa": [
+    {
+      "type": "data_extraction",
+      "message": "未找到卡片数据",
+      "monster_name": "Ahexa"
+    }
+  ],
+  "Aleppa Tantius": [
+    {
+      "type": "data_extraction",
+      "message": "未找到卡片数据",
+      "monster_name": "Aleppa Tantius"
+    }
+  ],
+  "Annex Trooper": [
+    {
+      "type": "data_extraction",
+      "message": "未找到卡片数据",
+      "monster_name": "Annex Trooper"
+    }
+  ]
+}

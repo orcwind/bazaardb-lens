@@ -1,169 +1,5 @@
 [
   {
-    "name": "A Strange Mushroom",
-    "url": "https://bazaardb.gg/card/boa7agty4t9e2tbcgyc210tqh/A-Strange-Mushroom",
-    "choices": [
-      {
-        "name": "Trade It for Something",
-        "url": "https://bazaardb.gg/card/6zsxdwjvusw7j4vse7486pm6c/Trade-It-for-Something",
-        "icon": "icons\\A Strange Mushroom\\Trade It for Something.webp",
-        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/f6bd0ca046eb309520998f0430d2a06d61f25f2c@256.webp?v=0",
-        "description": "Gain a Neutral item",
-        "aspect_ratio": 1.0
-      },
-      {
-        "name": "Sell It",
-        "url": "https://bazaardb.gg/card/9wjoaijkmyu06xvu4uauo8pma/Sell-It",
-        "icon": "icons\\A Strange Mushroom\\Sell It.webp",
-        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/2d22ef1e78cb1df8c15f62779ee76cb9ff01d4a7@256.webp?v=0",
-        "description": "Gain 4 Gold.",
-        "aspect_ratio": 1.0
-      },
-      {
-        "name": "Add It to Your Bushel",
-        "url": "https://bazaardb.gg/card/c6sjiabqoyrbp0wxcgbogzwzl/Add-It-to-Your-Bushel",
-        "icon": "icons\\A Strange Mushroom\\Add It to Your Bushel.webp",
-        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/56bc09bc21d5f4699392c39964be441982a269cb@256.webp?v=0",
-        "description": "(if you have a Bushel) Your Bushel gains +20 Heal.",
-        "aspect_ratio": 1.0
-      },
-      {
-        "name": "Brew a Potion",
-        "url": "https://bazaardb.gg/card/cdsgdv9zkvnn329j92chy1k04/Brew-a-Potion",
-        "icon": "icons\\A Strange Mushroom\\Brew a Potion.webp",
-        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/d55cb24da01341d8f7c26e3974b3a455e65d120f@256.webp?v=0",
-        "description": "(if you are Mak) Get a Small Silver-tier Potion.",
-        "aspect_ratio": 1.0
-      },
-      {
-        "name": "Share It With a Friend",
-        "url": "https://bazaardb.gg/card/ecc9ky8090kbulcv8jg41uynt/Share-It-With-a-Friend",
-        "icon": "icons\\A Strange Mushroom\\Share It With a Friend.webp",
-        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/d55cb24da01341d8f7c26e3974b3a455e65d120f@256.webp?v=0",
-        "description": "(if you are Dooley) Get a Small Silver-tier Friend.",
-        "aspect_ratio": 1.0
-      }
-    ]
-  },
-  {
-    "name": "Advanced Training",
-    "url": "https://bazaardb.gg/card/6apbfubj3h6pnbyfoakqzmfwz/Advanced-Training",
-    "choices": [
-      {
-        "name": "Ray Training",
-        "url": "https://bazaardb.gg/card/7qgm541d0xaqzhvs96efpfd63/Ray-Training",
-        "icon": "icons\\Advanced Training\\Ray Training.webp",
-        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/af77ca78620f8da5f242750a0610d529ac7f00cc@256.webp?v=0",
-        "description": "Your leftmost item gains the Ray type.",
-        "aspect_ratio": 1.0
-      },
-      {
-        "name": "Drone Training",
-        "url": "https://bazaardb.gg/card/8fk0rpxw36pr12r6e0nhnq078/Drone-Training",
-        "icon": "icons\\Advanced Training\\Drone Training.webp",
-        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/c25a80abe228780d18e7a326f768796c4b41e967@256.webp?v=0",
-        "description": "Your leftmost item gains the Drone type.",
-        "aspect_ratio": 1.0
-      },
-      {
-        "name": "Toy Training",
-        "url": "https://bazaardb.gg/card/4ed3nbyv0ph1gldaetvy4v62z/Toy-Training",
-        "icon": "icons\\Advanced Training\\Toy Training.webp",
-        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/26fa93d9a94968f17e4fe9b7ef01bf5a98465d27@256.webp?v=0",
-        "description": "Your leftmost item gains the Toy type.",
-        "aspect_ratio": 1.0
-      },
-      {
-        "name": "Weapon Training",
-        "url": "https://bazaardb.gg/card/9j1qu53f27b91vk52wj32frlb/Weapon-Training",
-        "icon": "icons\\Advanced Training\\Weapon Training.webp",
-        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/5e8680805323062779cc0c4ad3bbef79135d0c77@256.webp?v=0",
-        "description": "Your leftmost item gains the Weapon type.",
-        "aspect_ratio": 1.0
-      },
-      {
-        "name": "Tech Training",
-        "url": "https://bazaardb.gg/card/bdjhxu4gw9m0cfmgz72axcmg7/Tech-Training",
-        "icon": "icons\\Advanced Training\\Tech Training.webp",
-        "icon_url": "https://s.bazaardb.gg/v0/z7.0/encounter/c803a2329084f041992fe01b4424aa1d904b3ce9@256.webp?v=0",
-        "description": "Your leftmost item gains the Tech type.",
-        "aspect_ratio": 1.0
-      },
-      {
-        "name": "Aquatic Training",
-        "url": "https://bazaardb.gg/card/5jbk50vah0caaj7tq2l2lzqwq/Aquatic-Training",
-        "icon": "icons\\Advanced Training\\Aquatic Training.webp",
-        "icon_url": "https://s.bazaardb.gg/v0/z7.0/encounter/0177fb3076c2f4da41465630c069cfdf76e4a2ce@256.webp?v=0",
-        "description": "Your leftmost item gains the Aquatic type.",
-        "aspect_ratio": 1.0
-      },
-      {
-        "name": "Friend Training",
-        "url": "https://bazaardb.gg/card/b0uobwcuvlsxumv6ncgsn14yr/Friend-Training",
-        "icon": "icons\\Advanced Training\\Friend Training.webp",
-        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/b1bbc532c8f311bc80ade40f4b8559f97e57a19b@256.webp?v=0",
-        "description": "Your leftmost item gains the Friend type.",
-        "aspect_ratio": 1.0
-      },
-      {
-        "name": "Relic Training",
-        "url": "https://bazaardb.gg/card/eryg8ctmamx2k717c8dlpktya/Relic-Training",
-        "icon": "icons\\Advanced Training\\Relic Training.webp",
-        "icon_url": "https://s.bazaardb.gg/v0/z7.0/encounter/39557d3f8c11e4bab7d142709b0f854399b914bb@256.webp?v=0",
-        "description": "Your leftmost item gains the Relic type.",
-        "aspect_ratio": 1.0
-      },
-      {
-        "name": "Vehicle Training",
-        "url": "https://bazaardb.gg/card/21ntl9g9r5w2v4wz4w4uiy7w9/Vehicle-Training",
-        "icon": "icons\\Advanced Training\\Vehicle Training.webp",
-        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/de07b8ec0890d2412a94451130128bec9194ce29@256.webp?v=0",
-        "description": "Your leftmost item gains the Vehicle type.",
-        "aspect_ratio": 1.0
-      },
-      {
-        "name": "Food Training",
-        "url": "https://bazaardb.gg/card/b9zldcendo1n5izvy7a8je5dv/Food-Training",
-        "icon": "icons\\Advanced Training\\Food Training.webp",
-        "icon_url": "https://s.bazaardb.gg/v0/z7.0/encounter/d4f7a798e32aa99b2896e0d11d92bc5b9ef95cf5@256.webp?v=0",
-        "description": "Your leftmost item gains the Food type.",
-        "aspect_ratio": 1.0
-      },
-      {
-        "name": "Apparel Training",
-        "url": "https://bazaardb.gg/card/5tac56ev37c0vvo6whwwk0vrq/Apparel-Training",
-        "icon": "icons\\Advanced Training\\Apparel Training.webp",
-        "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/b8a46f0fbd48bb95bb8009622bcbc03412ca30f2@256.webp?v=0",
-        "description": "Your leftmost item gains the Apparel type.",
-        "aspect_ratio": 1.0
-      },
-      {
-        "name": "Property Training",
-        "url": "https://bazaardb.gg/card/99hbv8rjnrpacyvienme2bzge/Property-Training",
-        "icon": "icons\\Advanced Training\\Property Training.webp",
-        "icon_url": "https://s.bazaardb.gg/v0/z7.0/encounter/d75a71a1ad316acf954a56d3bb099f98e3046b8a@256.webp?v=0",
-        "description": "Your leftmost item gains the Property type.",
-        "aspect_ratio": 1.0
-      },
-      {
-        "name": "Dinosaur Training",
-        "url": "https://bazaardb.gg/card/d972cr36jgq9sti8y6wea7gwm/Dinosaur-Training",
-        "icon": "icons\\Advanced Training\\Dinosaur Training.webp",
-        "icon_url": "https://s.bazaardb.gg/v0/z7.0/encounter/6cf21b6953bce08b7e8cdee685e2d83cb4c062b5@256.webp?v=0",
-        "description": "Your leftmost item gains the Dinosaur type.",
-        "aspect_ratio": 1.0
-      },
-      {
-        "name": "Tool Training",
-        "url": "https://bazaardb.gg/card/5na5zkvqbf15vimgf4nuzwrr7/Tool-Training",
-        "icon": "icons\\Advanced Training\\Tool Training.webp",
-        "icon_url": "https://s.bazaardb.gg/v0/z7.0/encounter/4bc71581b6ab134905b825ee14f70dde4f2864dd@256.webp?v=0",
-        "description": "Your leftmost item gains the Tool type.",
-        "aspect_ratio": 1.0
-      }
-    ]
-  },
-  {
     "name": "Aldric",
     "url": "https://bazaardb.gg/card/75hd3eeqdkl1m7da1hxyct9qo/Aldric",
     "choices": [
@@ -1131,6 +967,170 @@
         "icon": "icons\\Wink\\Pay Winks Toll.webp",
         "icon_url": "https://s.bazaardb.gg/v0/z7.0/reward/c632ffee88843cbc72742debd5e51efe787b75f9@256.webp?v=0",
         "description": "Transform and Upgrade all your non-Legendary items into items from any Hero",
+        "aspect_ratio": 1.0
+      }
+    ]
+  },
+  {
+    "name": "A Strange Mushroom",
+    "url": "https://bazaardb.gg/card/boa7agty4t9e2tbcgyc210tqh/%E5%A5%87%E5%BC%82%E8%98%91%E8%8F%87",
+    "choices": [
+      {
+        "name": "Trade It for Something",
+        "url": "https://bazaardb.gg/card/6zsxdwjvusw7j4vse7486pm6c/Trade-It-for-Something",
+        "icon": "icons\\A Strange Mushroom\\Trade It for Something.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z10.0/reward/f6bd0ca046eb309520998f0430d2a06d61f25f2c@256.webp?v=2",
+        "description": "Gain a Neutral item",
+        "aspect_ratio": 1.0
+      },
+      {
+        "name": "Sell It",
+        "url": "https://bazaardb.gg/card/9wjoaijkmyu06xvu4uauo8pma/Sell-It",
+        "icon": "icons\\A Strange Mushroom\\Sell It.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z10.0/reward/2d22ef1e78cb1df8c15f62779ee76cb9ff01d4a7@256.webp?v=2",
+        "description": "Gain 4 Gold.",
+        "aspect_ratio": 1.0
+      },
+      {
+        "name": "Add It to Your Bushel",
+        "url": "https://bazaardb.gg/card/c6sjiabqoyrbp0wxcgbogzwzl/Add-It-to-Your-Bushel",
+        "icon": "icons\\A Strange Mushroom\\Add It to Your Bushel.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z10.0/reward/56bc09bc21d5f4699392c39964be441982a269cb@256.webp?v=2",
+        "description": "(if you have a Bushel) Your Bushel gains +20 Heal.",
+        "aspect_ratio": 1.0
+      },
+      {
+        "name": "Brew a Potion",
+        "url": "https://bazaardb.gg/card/cdsgdv9zkvnn329j92chy1k04/Brew-a-Potion",
+        "icon": "icons\\A Strange Mushroom\\Brew a Potion.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z10.0/reward/d55cb24da01341d8f7c26e3974b3a455e65d120f@256.webp?v=2",
+        "description": "(if you are Mak) Get a Small Silver-tier Potion.",
+        "aspect_ratio": 1.0
+      },
+      {
+        "name": "Share It With a Friend",
+        "url": "https://bazaardb.gg/card/ecc9ky8090kbulcv8jg41uynt/Share-It-With-a-Friend",
+        "icon": "icons\\A Strange Mushroom\\Share It With a Friend.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z10.0/reward/d55cb24da01341d8f7c26e3974b3a455e65d120f@256.webp?v=2",
+        "description": "(if you are Dooley) Get a Small Silver-tier Friend.",
+        "aspect_ratio": 1.0
+      },
+      {
+        "name": "Add It to Your Basket",
+        "url": "https://bazaardb.gg/card/74aeo5sgsp7ciwz22j0rrohwh/Add-It-to-Your-Basket",
+        "icon": "icons\\A Strange Mushroom\\Add It to Your Basket.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z10.0/item/f1934a6dd57ba2aee28dae823220f0f9eba0c83a@256.webp?v=2",
+        "description": "",
+        "aspect_ratio": 1.0
+      }
+    ]
+  },
+  {
+    "name": "Advanced Training",
+    "url": "https://bazaardb.gg/card/6apbfubj3h6pnbyfoakqzmfwz/%E8%BF%9B%E9%98%B6%E7%89%B9%E8%AE%AD",
+    "choices": [
+      {
+        "name": "Ray Training",
+        "url": "https://bazaardb.gg/card/7qgm541d0xaqzhvs96efpfd63/Ray-Training",
+        "icon": "icons\\Advanced Training\\Ray Training.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z10.0/reward/af77ca78620f8da5f242750a0610d529ac7f00cc@256.webp?v=2",
+        "description": "Your leftmost item gains the Ray type.",
+        "aspect_ratio": 1.0
+      },
+      {
+        "name": "Drone Training",
+        "url": "https://bazaardb.gg/card/8fk0rpxw36pr12r6e0nhnq078/Drone-Training",
+        "icon": "icons\\Advanced Training\\Drone Training.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z10.0/reward/c25a80abe228780d18e7a326f768796c4b41e967@256.webp?v=2",
+        "description": "Your leftmost item gains the Drone type.",
+        "aspect_ratio": 1.0
+      },
+      {
+        "name": "Toy Training",
+        "url": "https://bazaardb.gg/card/4ed3nbyv0ph1gldaetvy4v62z/Toy-Training",
+        "icon": "icons\\Advanced Training\\Toy Training.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z10.0/reward/26fa93d9a94968f17e4fe9b7ef01bf5a98465d27@256.webp?v=2",
+        "description": "Your leftmost item gains the Toy type.",
+        "aspect_ratio": 1.0
+      },
+      {
+        "name": "Tech Training",
+        "url": "https://bazaardb.gg/card/bdjhxu4gw9m0cfmgz72axcmg7/Tech-Training",
+        "icon": "icons\\Advanced Training\\Tech Training.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z10.0/encounter/c803a2329084f041992fe01b4424aa1d904b3ce9@256.webp?v=2",
+        "description": "Your leftmost item gains the Tech type.",
+        "aspect_ratio": 1.0
+      },
+      {
+        "name": "Aquatic Training",
+        "url": "https://bazaardb.gg/card/5jbk50vah0caaj7tq2l2lzqwq/Aquatic-Training",
+        "icon": "icons\\Advanced Training\\Aquatic Training.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z10.0/encounter/0177fb3076c2f4da41465630c069cfdf76e4a2ce@256.webp?v=2",
+        "description": "Your leftmost item gains the Aquatic type.",
+        "aspect_ratio": 1.0
+      },
+      {
+        "name": "Friend Training",
+        "url": "https://bazaardb.gg/card/b0uobwcuvlsxumv6ncgsn14yr/Friend-Training",
+        "icon": "icons\\Advanced Training\\Friend Training.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z10.0/reward/b1bbc532c8f311bc80ade40f4b8559f97e57a19b@256.webp?v=2",
+        "description": "Your leftmost item gains the Friend type.",
+        "aspect_ratio": 1.0
+      },
+      {
+        "name": "Relic Training",
+        "url": "https://bazaardb.gg/card/eryg8ctmamx2k717c8dlpktya/Relic-Training",
+        "icon": "icons\\Advanced Training\\Relic Training.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z10.0/encounter/39557d3f8c11e4bab7d142709b0f854399b914bb@256.webp?v=2",
+        "description": "Your leftmost item gains the Relic type.",
+        "aspect_ratio": 1.0
+      },
+      {
+        "name": "Vehicle Training",
+        "url": "https://bazaardb.gg/card/21ntl9g9r5w2v4wz4w4uiy7w9/Vehicle-Training",
+        "icon": "icons\\Advanced Training\\Vehicle Training.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z10.0/reward/de07b8ec0890d2412a94451130128bec9194ce29@256.webp?v=2",
+        "description": "Your leftmost item gains the Vehicle type.",
+        "aspect_ratio": 1.0
+      },
+      {
+        "name": "Food Training",
+        "url": "https://bazaardb.gg/card/b9zldcendo1n5izvy7a8je5dv/Food-Training",
+        "icon": "icons\\Advanced Training\\Food Training.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z10.0/encounter/d4f7a798e32aa99b2896e0d11d92bc5b9ef95cf5@256.webp?v=2",
+        "description": "Your leftmost item gains the Food type.",
+        "aspect_ratio": 1.0
+      },
+      {
+        "name": "Apparel Training",
+        "url": "https://bazaardb.gg/card/5tac56ev37c0vvo6whwwk0vrq/Apparel-Training",
+        "icon": "icons\\Advanced Training\\Apparel Training.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z10.0/reward/b8a46f0fbd48bb95bb8009622bcbc03412ca30f2@256.webp?v=2",
+        "description": "Your leftmost item gains the Apparel type.",
+        "aspect_ratio": 1.0
+      },
+      {
+        "name": "Property Training",
+        "url": "https://bazaardb.gg/card/99hbv8rjnrpacyvienme2bzge/Property-Training",
+        "icon": "icons\\Advanced Training\\Property Training.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z10.0/encounter/d75a71a1ad316acf954a56d3bb099f98e3046b8a@256.webp?v=2",
+        "description": "Your leftmost item gains the Property type.",
+        "aspect_ratio": 1.0
+      },
+      {
+        "name": "Dinosaur Training",
+        "url": "https://bazaardb.gg/card/d972cr36jgq9sti8y6wea7gwm/Dinosaur-Training",
+        "icon": "icons\\Advanced Training\\Dinosaur Training.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z10.0/encounter/6cf21b6953bce08b7e8cdee685e2d83cb4c062b5@256.webp?v=2",
+        "description": "Your leftmost item gains the Dinosaur type.",
+        "aspect_ratio": 1.0
+      },
+      {
+        "name": "Tool Training",
+        "url": "https://bazaardb.gg/card/5na5zkvqbf15vimgf4nuzwrr7/Tool-Training",
+        "icon": "icons\\Advanced Training\\Tool Training.webp",
+        "icon_url": "https://s.bazaardb.gg/v0/z10.0/encounter/4bc71581b6ab134905b825ee14f70dde4f2864dd@256.webp?v=2",
+        "description": "Your leftmost item gains the Tool type.",
         "aspect_ratio": 1.0
       }
     ]

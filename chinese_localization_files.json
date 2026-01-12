@@ -1,0 +1,36 @@
+{
+  "files_with_chinese": [
+    {
+      "file": {
+        "path": "C:\\Users\\vivi\\AppData\\Roaming\\Tempo Launcher - Beta\\game\\buildx64\\TheBazaar_Data\\StreamingAssets\\StaticData\\embeddedLocales.json",
+        "relative_path": "StreamingAssets\\StaticData\\embeddedLocales.json",
+        "size": 1050,
+        "name": "embeddedLocales.json"
+      },
+      "chinese_count": 2,
+      "strings": [
+        {
+          "path": "[4].Locales.ja_jp",
+          "text": "日本語"
+        },
+        {
+          "path": "[8].Locales.zh_cn",
+          "text": "中国人"
+        }
+      ]
+    }
+  ],
+  "chinese_strings_by_file": {
+    "StreamingAssets\\StaticData\\embeddedLocales.json": [
+      {
+        "path": "[4].Locales.ja_jp",
+        "text": "日本語"
+      },
+      {
+        "path": "[8].Locales.zh_cn",
+        "text": "中国人"
+      }
+    ]
+  },
+  "total_chinese_strings": 2
+}
