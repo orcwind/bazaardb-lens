@@ -1,0 +1,79 @@
+{
+  "timestamp": "2026-01-12T15:41:07.524927",
+  "monster": {
+    "icon": {
+      "top_left": {
+        "x": 1144,
+        "y": 401
+      },
+      "top_right": {
+        "x": 1403,
+        "y": 399
+      },
+      "bottom_left": {
+        "x": 1146,
+        "y": 639
+      },
+      "bottom_right": {
+        "x": 1411,
+        "y": 641
+      }
+    },
+    "name": {
+      "top_left": {
+        "x": 1457,
+        "y": 365
+      },
+      "top_right": {
+        "x": 1825,
+        "y": 378
+      },
+      "bottom_left": {
+        "x": 1467,
+        "y": 474
+      },
+      "bottom_right": {
+        "x": 1894,
+        "y": 478
+      }
+    }
+  },
+  "item": {
+    "icon": {
+      "top_left": {
+        "x": 0,
+        "y": 0
+      },
+      "top_right": {
+        "x": 0,
+        "y": 0
+      },
+      "bottom_left": {
+        "x": 0,
+        "y": 0
+      },
+      "bottom_right": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    "name": {
+      "top_left": {
+        "x": 0,
+        "y": 0
+      },
+      "top_right": {
+        "x": 0,
+        "y": 0
+      },
+      "bottom_left": {
+        "x": 0,
+        "y": 0
+      },
+      "bottom_right": {
+        "x": 0,
+        "y": 0
+      }
+    }
+  }
+}
