@@ -136,11 +136,11 @@ class MainController:
         VK_CONTROL = 0x11  # Ctrl键的虚拟键码
         VK_MENU = 0x12  # Alt键的虚拟键码（VK_MENU是Alt键）
         VK_SHIFT = 0x10  # Shift键的虚拟键码
-        last_action_time = 0  # 上次执行动作的时间
+        self.last_action_time = 0  # 上次执行动作的时间
         debounce_delay = 0.2  # 防抖动延迟(秒) - 从0.5秒减少到0.2秒，提高响应速度
         last_ocr_task_time = 0  # 上次OCR任务开始的时间
         last_position = (0, 0)  # 上次鼠标位置
-        position_update_interval = 0.1  # 位置更新间隔
+        position_update_interval = 0.05  # 位置更新间隔从0.1秒减少到0.05秒，提高跟随流畅度
         last_position_update = 0
         
         # 创建OCR线程池（单线程，避免并发问题）
@@ -170,21 +170,21 @@ class MainController:
                 is_ctrl_pressed = (ctrl_state & 0x8000) != 0
                 is_shift_pressed = (shift_state & 0x8000) != 0
 
-                # 只有鼠标在游戏窗口内时，才处理Ctrl键
-                # 游戏外完全忽略Ctrl键状态，保持正常的Ctrl功能
-                if is_cursor_in_game:
-                    # Ctrl键状态发生变化（怪物/事件）
-                    if is_ctrl_pressed != self.ctrl_pressed:
-                        self.ctrl_pressed = is_ctrl_pressed
-                        if is_ctrl_pressed:
-                            time_since_last = current_time - last_action_time
+                # 处理Ctrl键状态变化（无论鼠标是否在游戏窗口内）
+                # 这样当切换出游戏时，Ctrl键释放也能隐藏窗口
+                if is_ctrl_pressed != self.ctrl_pressed:
+                    self.ctrl_pressed = is_ctrl_pressed
+                    if is_ctrl_pressed:
+                        # 只有鼠标在游戏窗口内时才处理Ctrl键按下
+                        if is_cursor_in_game:
+                            time_since_last = current_time - self.last_action_time
                             logging.info(
                                 f"Ctrl键按下（游戏内），距离上次动作: {time_since_last:.2f}秒，"
                                 f"防抖动延迟: {debounce_delay}秒")
                             # 添加防抖动: 检查距离上次动作的时间是否足够
                             # 同时检查上次OCR任务是否完成（避免任务堆积）
                             time_since_last_ocr = current_time - last_ocr_task_time
-                            if current_time - last_action_time >= debounce_delay and time_since_last_ocr >= 0.1:
+                            if current_time - self.last_action_time >= debounce_delay and time_since_last_ocr >= 0.1:
                                 # 检查光标是否在图标区域内（用于决定是否显示信息）
                                 in_area, _ = self.window_detector.is_cursor_in_icon_area(
                                     cursor_x, cursor_y, 'monster',
@@ -229,16 +229,22 @@ class MainController:
                                             'data_matcher': self.data_loader.matcher,
                                             'data_loader': self.data_loader
                                         })
-                                    last_action_time = current_time
+                                    self.last_action_time = current_time
                                 else:
                                     logging.warning("OCR识别返回空文本")
+                                    # 即使OCR失败，也更新last_action_time以防止频繁触发
+                                    self.last_action_time = current_time
                             else:
                                 logging.info(
                                     f"防抖动阻止：距离上次动作仅 {time_since_last:.2f}秒，"
                                     f"需要等待 {debounce_delay - time_since_last:.2f}秒")
                         else:
-                            # Ctrl键释放
-                            logging.info("Ctrl键释放（游戏内）")
+                            # 鼠标不在游戏窗口内时按下Ctrl键，不处理
+                            logging.debug("Ctrl键按下（游戏外），忽略")
+                    else:
+                            # Ctrl键释放（无论鼠标是否在游戏窗口内）
+                            location = "游戏内" if is_cursor_in_game else "游戏外"
+                            logging.info(f"Ctrl键释放（{location}）")
                             # Ctrl键释放，添加隐藏任务到队列
                             with self.gui_manager.gui_update_lock:
                                 self.gui_manager.gui_update_queue.append({'type': 'hide'})
@@ -247,14 +253,14 @@ class MainController:
                     if is_shift_pressed != self.shift_pressed:
                         self.shift_pressed = is_shift_pressed
                         if is_shift_pressed:
-                            time_since_last = current_time - last_action_time
+                            time_since_last = current_time - self.last_action_time
                             logging.info(
                                 f"Shift键按下（游戏内），距离上次动作: {time_since_last:.2f}秒，"
                                 f"防抖动延迟: {debounce_delay}秒")
                             # 添加防抖动: 检查距离上次动作的时间是否足够
                             # 同时检查上次OCR任务是否完成（避免任务堆积）
                             time_since_last_ocr = current_time - last_ocr_task_time
-                            if current_time - last_action_time >= debounce_delay and time_since_last_ocr >= 0.1:
+                            if current_time - self.last_action_time >= debounce_delay and time_since_last_ocr >= 0.1:
                                 # 检查光标是否在图标区域内（用于决定是否显示信息）
                                 in_area, _ = self.window_detector.is_cursor_in_icon_area(
                                     cursor_x, cursor_y, 'item',
@@ -298,9 +304,11 @@ class MainController:
                                             'data_matcher': self.data_loader.matcher,
                                             'data_loader': self.data_loader
                                         })
-                                    last_action_time = current_time
+                                    self.last_action_time = current_time
                                 else:
                                     logging.warning("Shift OCR识别返回空文本")
+                                    # 即使OCR失败，也更新last_action_time以防止频繁触发
+                                    self.last_action_time = current_time
                             else:
                                 logging.info(
                                     f"Shift键防抖动阻止：距离上次动作仅 {time_since_last:.2f}秒，"
@@ -311,15 +319,6 @@ class MainController:
                             # Shift键释放，添加隐藏任务到队列
                             with self.gui_manager.gui_update_lock:
                                 self.gui_manager.gui_update_queue.append({'type': 'hide'})
-                else:
-                    # 鼠标不在游戏窗口内时，重置按键状态
-                    # 这样当鼠标移入游戏窗口时，需要重新按键才能触发
-                    if self.ctrl_pressed or self.shift_pressed:
-                        # 如果之前在游戏内按下了键，现在鼠标移出游戏，隐藏窗口
-                        with self.gui_manager.gui_update_lock:
-                            self.gui_manager.gui_update_queue.append({'type': 'hide'})
-                    self.ctrl_pressed = False
-                    self.shift_pressed = False
 
                 # 更新窗口位置（如果窗口显示中且Ctrl键或Shift键仍然按下）
                 if self.ctrl_pressed or self.shift_pressed:

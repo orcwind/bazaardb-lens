@@ -17,10 +17,12 @@ project_root = os.path.dirname(current_dir)
 def detect_name_region(infobox_img, debug=True):
     """
     在信息框图像中检测物品名称区域
+    
     名称区域特征：
-    - 在信息框顶部
-    - 下方有一条水平分隔线
-    - 背景略深
+    - 在信息框顶部，包含物品类型标签（如"大型"、"武器"）和物品名称
+    - 名称是白色/金色大字
+    - 下方有一条金色水平分隔线
+    - 分隔线下方是物品描述区域
     
     返回：(x, y, w, h) 名称区域的位置，如果未检测到返回 None
     """
@@ -38,116 +40,108 @@ def detect_name_region(infobox_img, debug=True):
         img_gray = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2GRAY)
     
     height, width = img_gray.shape[:2]
+    img_hsv = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2HSV)
     
-    # 方法1：检测水平分隔线
-    # 分隔线通常是一条明亮的横线
+    # ========== 方法1：检测金色分隔线 ==========
+    # 金色分隔线是最可靠的分界标志
+    # 金色 HSV: H=15-35, S=100-255, V=150-255
+    lower_gold = np.array([15, 100, 150])
+    upper_gold = np.array([35, 255, 255])
+    gold_mask = cv2.inRange(img_hsv, lower_gold, upper_gold)
     
-    # 使用Sobel边缘检测，只检测水平方向的边缘
-    sobel_x = cv2.Sobel(img_gray, cv2.CV_64F, 0, 1, ksize=3)
-    sobel_abs = np.abs(sobel_x).astype(np.uint8)
-    
-    # 二值化
-    _, edge_binary = cv2.threshold(sobel_abs, 30, 255, cv2.THRESH_BINARY)
-    
-    # 检测水平线：逐行统计白色像素数量
-    # 分隔线应该是一条横跨大部分宽度的线
-    min_line_width = width * 0.5  # 至少占宽度的50%
-    
-    potential_lines = []
-    for y in range(height):
-        white_count = np.sum(edge_binary[y, :] > 0)
-        if white_count > min_line_width:
-            potential_lines.append((y, white_count))
-    
-    if debug and potential_lines:
-        print(f"  找到 {len(potential_lines)} 条潜在水平线")
-    
-    # 找到第一条明显的分隔线（从上往下）
-    # 名称区域通常在信息框的上部 1/4 到 1/3 位置
+    # 逐行统计金色像素，找到金色分隔线
     separator_y = None
-    search_start = int(height * 0.08)  # 从8%位置开始搜索（跳过顶部边框）
-    search_end = int(height * 0.4)    # 到40%位置结束
+    search_start = int(height * 0.10)  # 从10%位置开始搜索
+    search_end = int(height * 0.50)    # 到50%位置结束
     
-    for y, count in potential_lines:
-        if search_start < y < search_end:
+    gold_line_threshold = width * 0.3  # 金色像素至少占宽度的30%
+    
+    for y in range(search_start, search_end):
+        gold_count = np.sum(gold_mask[y, :] > 0)
+        if gold_count > gold_line_threshold:
+            # 找到金色分隔线
             separator_y = y
             if debug:
-                print(f"  找到分隔线位置: y={separator_y} (白色像素数: {count})")
+                print(f"  找到金色分隔线: y={separator_y} (金色像素数: {gold_count})")
             break
     
+    # ========== 方法2：检测水平边缘线（备用） ==========
     if separator_y is None:
-        # 方法2：如果没找到明显的分隔线，使用颜色变化检测
-        # 名称区域背景较深，内容区域背景较浅
+        # 使用Sobel边缘检测水平方向的边缘
+        sobel_y = cv2.Sobel(img_gray, cv2.CV_64F, 0, 1, ksize=3)
+        sobel_abs = np.abs(sobel_y).astype(np.uint8)
+        _, edge_binary = cv2.threshold(sobel_abs, 30, 255, cv2.THRESH_BINARY)
+        
+        min_line_width = width * 0.4
+        
+        for y in range(search_start, search_end):
+            white_count = np.sum(edge_binary[y, :] > 0)
+            if white_count > min_line_width:
+                separator_y = y
+                if debug:
+                    print(f"  找到边缘分隔线: y={separator_y} (边缘像素数: {white_count})")
+                break
+    
+    # ========== 方法3：检测亮度变化（备用） ==========
+    if separator_y is None:
         if debug:
-            print("  未找到明显分隔线，使用颜色变化方法")
+            print("  未找到明显分隔线，使用亮度变化方法")
         
         # 计算每行的平均亮度
-        row_brightness = []
-        for y in range(height):
-            avg = np.mean(img_gray[y, :])
-            row_brightness.append(avg)
+        row_brightness = [np.mean(img_gray[y, :]) for y in range(height)]
         
-        # 找到亮度变化最大的位置（从上往下）
+        # 找到亮度变化最大的位置
         max_change = 0
-        for y in range(search_start, search_end):
-            if y + 5 < height:
-                change = abs(row_brightness[y+5] - row_brightness[y])
-                if change > max_change:
-                    max_change = change
-                    separator_y = y
+        for y in range(search_start, search_end - 5):
+            change = abs(row_brightness[y + 5] - row_brightness[y])
+            if change > max_change:
+                max_change = change
+                separator_y = y
         
         if debug and separator_y:
             print(f"  通过亮度变化找到分隔位置: y={separator_y}")
     
+    # ========== 方法4：使用固定比例（最后备用） ==========
     if separator_y is None:
-        # 方法3：使用固定比例
-        separator_y = int(height * 0.18)
+        separator_y = int(height * 0.20)
         if debug:
-            print(f"  使用默认比例: y={separator_y} (18%)")
+            print(f"  使用默认比例: y={separator_y} (20%)")
     
-    # 名称区域：从顶部到分隔线位置
-    # 稍微扩展一点以确保包含完整名称
+    # ========== 确定名称区域的起始位置 ==========
+    # 检查顶部是否有标签区域（蓝色/绿色的类型标签）
     name_y = 0
-    name_h = separator_y + 5  # 向下多取5像素
+    
+    # 检测顶部的深褐色背景开始位置
+    lower_brown = np.array([8, 80, 30])
+    upper_brown = np.array([25, 200, 100])
+    
+    for y in range(min(60, height // 4)):
+        row_hsv = img_hsv[y:y+1, :]
+        brown_mask = cv2.inRange(row_hsv, lower_brown, upper_brown)
+        brown_ratio = np.sum(brown_mask > 0) / brown_mask.size if brown_mask.size > 0 else 0
+        
+        if brown_ratio > 0.3:
+            # 找到深褐色背景开始的位置
+            name_y = max(0, y - 5)  # 稍微往上扩展一点
+            if debug and name_y > 0:
+                print(f"  名称区域起始位置: y={name_y}")
+            break
+    
+    # ========== 计算名称区域高度 ==========
+    if separator_y <= name_y:
+        # 分隔线在起始位置之前，使用默认高度
+        if debug:
+            print(f"  分隔线位置异常 (separator_y={separator_y}, name_y={name_y})，使用默认高度")
+        name_h = min(100, height - name_y)
+    else:
+        # 名称区域从起始位置到分隔线，稍微扩展
+        name_h = separator_y - name_y + 10
+    
+    # 确保高度合理
+    name_h = max(60, min(name_h, height - name_y, 200))
+    
     name_x = 0
     name_w = width
-    
-    # 排除顶部可能的标签区域（如"小型 武器 服饰"）
-    # 方法：检测顶部是否有与信息框不同的背景色
-    
-    # 检查顶部区域的颜色
-    top_region = img_bgr[:min(30, height//4), :]
-    
-    # 转换到HSV检测是否是信息框背景色
-    top_hsv = cv2.cvtColor(top_region, cv2.COLOR_BGR2HSV)
-    
-    # 信息框背景的HSV范围
-    lower_bg = np.array([5, 20, 15])
-    upper_bg = np.array([35, 180, 100])
-    
-    # 检测顶部区域中属于信息框背景的像素比例
-    mask = cv2.inRange(top_hsv, lower_bg, upper_bg)
-    bg_ratio = np.sum(mask > 0) / mask.size
-    
-    if bg_ratio < 0.3:
-        # 顶部不是信息框背景，可能是标签区域
-        # 找到信息框真正开始的位置
-        if debug:
-            print(f"  顶部区域背景比例低 ({bg_ratio:.1%})，检测真正的信息框起始位置")
-        
-        for y in range(min(80, height//3)):
-            row_hsv = cv2.cvtColor(img_bgr[y:y+1, :], cv2.COLOR_BGR2HSV)
-            row_mask = cv2.inRange(row_hsv, lower_bg, upper_bg)
-            row_bg_ratio = np.sum(row_mask > 0) / row_mask.size
-            
-            if row_bg_ratio > 0.5:
-                name_y = y
-                if debug:
-                    print(f"  信息框起始位置: y={name_y}")
-                break
-    
-    # 调整名称区域高度
-    name_h = separator_y - name_y + 5
     
     if debug:
         print(f"  名称区域: ({name_x}, {name_y}, {name_w}, {name_h})")
@@ -158,9 +152,18 @@ def detect_name_region(infobox_img, debug=True):
 def detect_infobox(img_array, debug=True):
     """
     检测图像中的物品信息框区域
+    
+    目标：检测包含物品名称（如"冰冻钝器"、"废品场长枪"）的深棕色信息框
+    
+    信息框特征：
+    - 非常深的棕色背景（几乎是黑色带棕色调）
+    - 有金色装饰边框
+    - 顶部有蓝色/绿色的类型标签（如"大型"、"武器"）
+    - 物品名称是白色大字
+    
     返回：(x, y, w, h) 信息框的位置和大小，如果未检测到返回 None
     """
-    # 转换为BGR格式（OpenCV格式）
+    # 转换为BGR格式
     if len(img_array.shape) == 2:
         img_bgr = cv2.cvtColor(img_array, cv2.COLOR_GRAY2BGR)
     elif img_array.shape[2] == 4:
@@ -169,84 +172,104 @@ def detect_infobox(img_array, debug=True):
         img_bgr = cv2.cvtColor(img_array, cv2.COLOR_RGB2BGR)
     
     height, width = img_bgr.shape[:2]
-    
-    # 转换到HSV色彩空间
     img_hsv = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2HSV)
+    img_gray = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2GRAY)
     
-    # 信息框的深褐色背景特征：
-    # - 色调(H): 大约 10-30 (棕色范围)
-    # - 饱和度(S): 较低到中等 30-150
-    # - 亮度(V): 较低 20-80 (深色)
+    # ========== 检测信息框的深棕色背景 ==========
+    # 信息框背景是非常深的棕色，HSV特征：
+    # H: 10-25 (棕色/橙色调)
+    # S: 50-180 (中等饱和度)
+    # V: 20-60 (非常低的亮度，这是关键！)
     
-    # 定义深褐色的HSV范围
-    lower_brown = np.array([5, 20, 15])
-    upper_brown = np.array([35, 180, 100])
+    lower_brown = np.array([8, 40, 15])
+    upper_brown = np.array([30, 200, 70])
+    brown_mask = cv2.inRange(img_hsv, lower_brown, upper_brown)
     
-    # 创建掩码
-    mask = cv2.inRange(img_hsv, lower_brown, upper_brown)
+    # 形态学操作：闭运算填充文字空隙
+    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (25, 25))
+    brown_mask = cv2.morphologyEx(brown_mask, cv2.MORPH_CLOSE, kernel)
     
-    # 形态学操作：闭运算填充小孔洞
-    kernel = cv2.getStructuringElement(cv2.MORPH_RECT, (15, 15))
-    mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, kernel)
-    
-    # 形态学操作：开运算去除小噪点
-    kernel_small = cv2.getStructuringElement(cv2.MORPH_RECT, (5, 5))
-    mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, kernel_small)
+    # 开运算去除小噪点
+    kernel_small = cv2.getStructuringElement(cv2.MORPH_RECT, (10, 10))
+    brown_mask = cv2.morphologyEx(brown_mask, cv2.MORPH_OPEN, kernel_small)
     
     # 查找轮廓
-    contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-    
-    if not contours:
-        print("  未找到任何轮廓")
-        return None, mask
-    
-    # 过滤轮廓：
-    # 1. 面积要足够大（至少占图像的5%）
-    # 2. 宽高比要合理（信息框是横向矩形，宽度 > 高度）
-    min_area = width * height * 0.03  # 最小面积阈值
+    contours, _ = cv2.findContours(brown_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     
     valid_boxes = []
+    
     for cnt in contours:
         area = cv2.contourArea(cnt)
-        if area < min_area:
+        # 信息框面积通常在 30000-300000 之间
+        if area < 20000:
             continue
         
-        # 获取边界矩形
         x, y, w, h = cv2.boundingRect(cnt)
         
-        # 宽高比检查：信息框通常是宽 > 高
-        aspect_ratio = w / h if h > 0 else 0
+        # 限制最大尺寸：信息框不会占满整个屏幕
+        # 宽度不超过图片的80%，高度不超过图片的60%
+        if w > width * 0.8 or h > height * 0.6:
+            continue
         
-        # 信息框的宽高比大约在 1.2 - 3.0 之间
-        if 0.8 < aspect_ratio < 4.0:
-            # 计算矩形度（轮廓面积 / 边界矩形面积）
-            rect_area = w * h
-            rectangularity = area / rect_area if rect_area > 0 else 0
-            
-            # 信息框应该比较规则，矩形度 > 0.5
-            if rectangularity > 0.4:
-                valid_boxes.append({
-                    'box': (x, y, w, h),
-                    'area': area,
-                    'aspect_ratio': aspect_ratio,
-                    'rectangularity': rectangularity
-                })
+        # 宽高比：信息框是横向矩形，宽高比约 1.3-3.5
+        aspect_ratio = w / h if h > 0 else 0
+        if not (1.2 < aspect_ratio < 4.0):
+            continue
+        
+        # 矩形度
+        rect_area = w * h
+        rectangularity = area / rect_area if rect_area > 0 else 0
+        if rectangularity < 0.4:
+            continue
+        
+        # 检查区域内是否有白色文字
+        roi_gray = img_gray[y:y+h, x:x+w]
+        white_mask = roi_gray > 200
+        white_ratio = np.sum(white_mask) / white_mask.size
+        
+        # 必须有白色文字（物品名称）
+        if white_ratio < 0.01:
+            continue
+        
+        valid_boxes.append({
+            'box': (x, y, w, h),
+            'area': area,
+            'aspect_ratio': aspect_ratio,
+            'rectangularity': rectangularity,
+            'white_ratio': white_ratio
+        })
     
     if not valid_boxes:
-        print("  未找到符合条件的信息框")
-        return None, mask
+        if debug:
+            print("  未找到符合条件的信息框")
+        return None, brown_mask
     
-    # 按面积排序，选择最大的
-    valid_boxes.sort(key=lambda x: x['area'], reverse=True)
+    # 评分：优先选择大小适中、矩形度高、白字多的
+    for box in valid_boxes:
+        # 大小评分：信息框通常在 400-800 像素宽，200-500 像素高
+        bx, by, bw, bh = box['box']
+        size_score = 1.0
+        if bw > 1000 or bh > 600:  # 太大
+            size_score = 0.3
+        elif bw < 300 or bh < 150:  # 太小
+            size_score = 0.5
+        
+        box['score'] = (
+            box['rectangularity'] * 0.35 +
+            min(box['white_ratio'] * 10, 0.3) +
+            size_score * 0.35
+        )
+    
+    valid_boxes.sort(key=lambda x: x['score'], reverse=True)
     
     if debug:
         print(f"  找到 {len(valid_boxes)} 个候选框:")
-        for i, box_info in enumerate(valid_boxes[:3]):
-            x, y, w, h = box_info['box']
-            print(f"    {i+1}. 位置:({x},{y}) 大小:{w}x{h} 面积:{box_info['area']:.0f} 宽高比:{box_info['aspect_ratio']:.2f} 矩形度:{box_info['rectangularity']:.2f}")
+        for i, box in enumerate(valid_boxes[:5]):
+            bx, by, bw, bh = box['box']
+            print(f"    {i+1}. ({bx},{by}) {bw}x{bh} 矩形度:{box['rectangularity']:.2f} "
+                  f"白字:{box['white_ratio']:.3f} 评分:{box['score']:.2f}")
     
-    best_box = valid_boxes[0]['box']
-    return best_box, mask
+    return valid_boxes[0]['box'], brown_mask
 
 
 def test_single_image(image_path, output_dir):

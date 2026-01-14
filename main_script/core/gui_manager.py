@@ -22,12 +22,48 @@ class GUIManager:
         self.content_frame = None
         self.scrollable_frame = None
         self.icon_frames = []  # 保存所有IconFrame的引用
+        self.skills_frame = None
+        self.items_frame = None
+        self.event_options_frame = None
+
+    def _is_window_valid(self):
+        """检查窗口和框架是否有效"""
+        try:
+            if not self.info_window:
+                return False
+            if not self.info_window.winfo_exists():
+                return False
+            # 检查关键子框架是否存在
+            # 这些框架在create_info_window中创建，如果它们不存在，说明窗口结构不完整
+            if not self.content_frame or not self.content_frame.winfo_exists():
+                return False
+            if not self.scrollable_frame or not self.scrollable_frame.winfo_exists():
+                return False
+            # 检查主框架是否存在（它们可能在显示内容时才创建）
+            # 如果框架不存在，返回True，因为主窗口和content_frame存在
+            # 具体的子框架会在需要时重新创建
+            return True
+        except tk.TclError:
+            return False
 
     def create_info_window(self):
         """创建信息显示窗口"""
         try:
-            if self.info_window:
-                return
+            # 如果窗口已存在且有效，直接返回
+            if self.info_window and self.skills_frame:
+                try:
+                    if self.info_window.winfo_exists() and self.skills_frame.winfo_exists():
+                        return
+                except tk.TclError:
+                    pass  # 窗口无效，继续创建
+            
+            # 清理旧引用
+            self.info_window = None
+            self.skills_frame = None
+            self.items_frame = None
+            self.event_options_frame = None
+            self.content_frame = None
+            self.scrollable_frame = None
 
             # 创建主窗口
             self.info_window = tk.Tk()
@@ -174,10 +210,20 @@ class GUIManager:
         完全按照旧脚本Bazaar_Lens.py的逻辑实现
         """
         try:
-            # 确保窗口已创建
-            if not self.info_window or not self.info_window.winfo_exists():
-                logging.warning("信息窗口不存在，重新创建...")
+            # 确保窗口已创建且有效
+            if not self._is_window_valid():
+                logging.warning("信息窗口无效，重新创建...")
+                # 先销毁旧窗口（如果存在）
+                if self.info_window:
+                    try:
+                        self.info_window.destroy()
+                    except:
+                        pass
+                    self.info_window = None
                 self.create_info_window()
+                if not self._is_window_valid():
+                    logging.error("无法创建有效的信息窗口")
+                    return
             
             logging.info(f"开始更新信息显示，OCR文本: {text}")
             
@@ -256,7 +302,8 @@ class GUIManager:
         try:
             if not self.info_window:
                 self.create_info_window()
-            if not self.info_window:
+            if not self._is_window_valid():
+                logging.warning("窗口无效，无法显示附魔信息")
                 return
 
             self.current_text = text
@@ -285,7 +332,8 @@ class GUIManager:
             logging.info(f"找到 {len(enchantments)} 个附魔")
             
             # 清除现有内容
-            self._clear_frames()
+            if not self._clear_frames():
+                return
             
             # 创建附魔显示容器
             enchantments_container = tk.Frame(self.content_frame, bg='#1C1810')
@@ -425,13 +473,15 @@ class GUIManager:
             else:
                 window_height = max_window_height
 
-            # 调整窗口位置（确保不超出屏幕边界）
+            # 调整窗口位置（取消右和下边界限制，允许窗口超出屏幕）
+            # 只确保窗口左上角在屏幕内
             screen_width = self.info_window.winfo_screenwidth()
             screen_height = self.info_window.winfo_screenheight()
-            if pos_x + window_width > screen_width:
-                pos_x = max(0, screen_width - window_width)
-            if pos_y + window_height > screen_height:
-                pos_y = max(0, screen_height - window_height)
+            if pos_x < 0:
+                pos_x = 0
+            if pos_y < 0:
+                pos_y = 0
+            # 允许窗口超出屏幕右边界和下边界
 
             self.info_window.geometry(
                 f"{window_width}x{window_height}+{pos_x}+{pos_y}")
@@ -446,7 +496,16 @@ class GUIManager:
     def _do_move_window(self, pos_x, pos_y):
         """只移动窗口位置，不调整大小（在主线程中调用）"""
         try:
-            if not self.info_window or not self.info_window.winfo_exists():
+            # 对于移动操作，只需要检查主窗口是否存在
+            if not self.info_window:
+                logging.debug("[窗口移动] info_window为None")
+                return
+            try:
+                if not self.info_window.winfo_exists():
+                    logging.debug("[窗口移动] info_window不存在")
+                    return
+            except tk.TclError as e:
+                logging.debug(f"[窗口移动] TclError检查窗口存在: {e}")
                 return
 
             # 获取当前窗口大小
@@ -468,7 +527,7 @@ class GUIManager:
             new_x = pos_x + offset_x
             new_y = pos_y + offset_y
 
-            # 确保不超出屏幕边界
+            # 确保不超出屏幕边界（取消右和下边界限制）
             screen_width = self.info_window.winfo_screenwidth()
             screen_height = self.info_window.winfo_screenheight()
             size_parts = size_part.split('x')
@@ -479,40 +538,110 @@ class GUIManager:
                 window_width = 600
                 window_height = 400
 
-            if new_x + window_width > screen_width:
-                new_x = max(0, screen_width - window_width)
-            if new_y + window_height > screen_height:
-                new_y = max(0, screen_height - window_height)
+            # 只确保窗口左上角在屏幕内
+            if new_x < 0:
+                new_x = 0
+            if new_y < 0:
+                new_y = 0
+            # 允许窗口超出屏幕右边界和下边界
 
             # 只在位置变化时更新
             if new_x != current_x or new_y != current_y:
-                self.info_window.geometry(f"{size_part}+{new_x}+{new_y}")
+                try:
+                    self.info_window.geometry(f"{size_part}+{new_x}+{new_y}")
+                    logging.debug(f"[窗口移动] 移动到位置: {new_x}, {new_y}")
+                except tk.TclError as e:
+                    logging.warning(f"[窗口移动] 设置几何位置失败: {e}")
+                except Exception as e:
+                    logging.error(f"[窗口移动] 未知错误: {e}")
 
         except Exception as e:
             logging.error(f"移动窗口位置失败: {e}")
 
+    def _ensure_subframes_exist(self):
+        """确保子框架存在，如果不存在则重新创建"""
+        try:
+            if not self._is_window_valid():
+                return False
+            
+            bg_color = '#1C1810'
+            
+            # 检查并重新创建skills_frame
+            if not self.skills_frame or not self.skills_frame.winfo_exists():
+                self.skills_frame = tk.Frame(self.content_frame, bg=bg_color)
+                logging.debug("重新创建skills_frame")
+            
+            # 检查并重新创建items_frame
+            if not self.items_frame or not self.items_frame.winfo_exists():
+                self.items_frame = tk.Frame(self.content_frame, bg=bg_color)
+                logging.debug("重新创建items_frame")
+            
+            # 检查并重新创建event_options_frame
+            if not self.event_options_frame or not self.event_options_frame.winfo_exists():
+                self.event_options_frame = tk.Frame(self.content_frame, bg=bg_color)
+                logging.debug("重新创建event_options_frame")
+            
+            return True
+        except Exception as e:
+            logging.error(f"确保子框架存在失败: {e}")
+            return False
+    
     def _clear_frames(self):
         """清空所有内容框架（与旧脚本保持一致）"""
         try:
-            if not self.content_frame:
-                return
+            if not self._is_window_valid():
+                logging.debug("窗口无效，跳过清空框架")
+                return False
+            
+            # 检查并确保子框架存在，如果不存在则重新创建
+            self._ensure_subframes_exist()
+            
             # 只清空子元素，不destroy主Frame本身
-            for widget in self.skills_frame.winfo_children():
-                widget.destroy()
-            for widget in self.items_frame.winfo_children():
-                widget.destroy()
-            for widget in self.event_options_frame.winfo_children():
-                widget.destroy()
+            if self.skills_frame and self.skills_frame.winfo_exists():
+                for widget in self.skills_frame.winfo_children():
+                    try:
+                        widget.destroy()
+                    except tk.TclError:
+                        pass  # 忽略已销毁的组件
+            
+            if self.items_frame and self.items_frame.winfo_exists():
+                for widget in self.items_frame.winfo_children():
+                    try:
+                        widget.destroy()
+                    except tk.TclError:
+                        pass  # 忽略已销毁的组件
+            
+            if self.event_options_frame and self.event_options_frame.winfo_exists():
+                for widget in self.event_options_frame.winfo_children():
+                    try:
+                        widget.destroy()
+                    except tk.TclError:
+                        pass  # 忽略已销毁的组件
+            
             # 控制框架的显示/隐藏
-            self.skills_frame.pack_forget()
-            self.items_frame.pack_forget()
-            self.event_options_frame.pack_forget()
+            if self.skills_frame and self.skills_frame.winfo_exists():
+                self.skills_frame.pack_forget()
+            if self.items_frame and self.items_frame.winfo_exists():
+                self.items_frame.pack_forget()
+            if self.event_options_frame and self.event_options_frame.winfo_exists():
+                self.event_options_frame.pack_forget()
+            
             # 清理content_frame下的所有spacer（Frame），只destroy不是主Frame的spacer
-            for widget in self.content_frame.winfo_children():
-                if isinstance(widget, tk.Frame) and widget not in [self.event_options_frame, self.skills_frame, self.items_frame]:
-                    widget.destroy()
+            if self.content_frame and self.content_frame.winfo_exists():
+                for widget in self.content_frame.winfo_children():
+                    try:
+                        if isinstance(widget, tk.Frame) and widget not in [self.event_options_frame, self.skills_frame, self.items_frame]:
+                            widget.destroy()
+                    except tk.TclError:
+                        pass  # 忽略已销毁的组件
+            
+            return True
+        except tk.TclError as e:
+            logging.warning(f"清空框架时窗口已失效: {e}")
+            return False
         except Exception as e:
             logging.error(f"清空框架失败: {e}")
+            return False
 
     def get_monster_icon_path(self, icon_filename, icon_type='skill'):
         """获取怪物相关的图标路径（技能/物品/怪物）- 与旧脚本保持一致"""
@@ -651,140 +780,159 @@ class GUIManager:
             if not monster_name:
                 logging.warning("怪物名称为空，无法显示信息")
                 return False
+            
+            # 检查窗口有效性
+            if not self._is_window_valid():
+                logging.warning("窗口无效，无法显示怪物信息")
+                return False
                 
             logging.info(f"开始格式化怪物信息: {monster_name}")
             monster_data = data_loader.get_monster_data(monster_name)
             if not monster_data:
                 logging.warning(f"未找到怪物数据: {monster_name}")
-                self.skills_frame.pack(fill='x', pady=0, padx=0)
-                not_found_frame = IconFrame(self.skills_frame)
-                not_found_frame.pack(fill='x', pady=0)
-                not_found_frame.update_content(
-                    monster_name,
-                    "未找到该怪物的数据，请稍后再试。",
-                    None
-                )
+                # 确保子框架存在
+                if not self._ensure_subframes_exist():
+                    logging.warning("无法确保子框架存在，无法显示未找到消息")
+                    return False
+                if self.skills_frame and self.skills_frame.winfo_exists():
+                    self.skills_frame.pack(fill='x', pady=0, padx=0)
+                    not_found_frame = IconFrame(self.skills_frame)
+                    not_found_frame.pack(fill='x', pady=0)
+                    not_found_frame.update_content(
+                        monster_name,
+                        "未找到该怪物的数据，请稍后再试。",
+                        None
+                    )
                 return True
                 
             logging.info(f"找到怪物数据: {monster_name}, 技能数: {len(monster_data.get('skills', []))}, 物品数: {len(monster_data.get('items', []))}")
-            self._clear_frames()
+            if not self._clear_frames():
+                return False
+            
+            # 确保子框架存在
+            if not self._ensure_subframes_exist():
+                logging.warning("无法确保子框架存在，无法显示怪物信息")
+                return False
             
             has_skills = False
             # 显示技能
             if monster_data.get('skills'):
                 has_skills = True
-                self.skills_frame.pack(fill='x', pady=0, padx=0)
-                for skill in monster_data['skills']:
-                    skill_frame = IconFrame(self.skills_frame)
-                    skill_frame.pack(fill='x', pady=0)
-                    
-                    # 获取技能名称和描述（优先使用中文）
-                    skill_name_en = skill.get('name', '')
-                    skill_name_zh = skill.get('name_zh', skill_name_en)
-                    skill_description = ''
-                    
-                    # 从skills_data中获取描述信息
-                    if skill_name_en in data_loader.skills_data:
-                        skill_info = data_loader.skills_data[skill_name_en]
-                        skill_description = skill_info.get('description_zh', '')
-                        skill_icon = skill_info.get('icon', '')
-                        skill_aspect_ratio = float(skill_info.get('aspect_ratio', 1.0))
-                    else:
-                        skill_description = skill.get('description', '')
-                        skill_icon = skill.get('icon', '')
-                        skill_aspect_ratio = float(skill.get('aspect_ratio', 1.0))
-                    
-                    # 获取技能图标（优先使用新目录结构）
-                    icon_path = None
-                    if skill_icon:
-                        # 新格式：skill/Above_the_Clouds.webp 或直接文件名
-                        icon_path = self.get_monster_icon_path(skill_icon, 'skill')
-                    elif skill.get('icon'):
-                        icon_path = self.get_monster_icon_path(skill['icon'], 'skill')
-                    elif skill.get('icon_url'):
-                        icon_path = self.get_local_icon_path(skill['icon_url'])
-                    
-                    skill_frame.update_content(
-                        skill_name_zh,
-                        skill_description,
-                        icon_path,
-                        skill_aspect_ratio
-                    )
+                if self.skills_frame and self.skills_frame.winfo_exists():
+                    self.skills_frame.pack(fill='x', pady=0, padx=0)
+                    for skill in monster_data['skills']:
+                        skill_frame = IconFrame(self.skills_frame)
+                        skill_frame.pack(fill='x', pady=0)
+                        
+                        # 获取技能名称和描述（优先使用中文）
+                        skill_name_en = skill.get('name', '')
+                        skill_name_zh = skill.get('name_zh', skill_name_en)
+                        skill_description = ''
+                        
+                        # 从skills_data中获取描述信息
+                        if skill_name_en in data_loader.skills_data:
+                            skill_info = data_loader.skills_data[skill_name_en]
+                            skill_description = skill_info.get('description_zh', '')
+                            skill_icon = skill_info.get('icon', '')
+                            skill_aspect_ratio = float(skill_info.get('aspect_ratio', 1.0))
+                        else:
+                            skill_description = skill.get('description', '')
+                            skill_icon = skill.get('icon', '')
+                            skill_aspect_ratio = float(skill.get('aspect_ratio', 1.0))
+                        
+                        # 获取技能图标（优先使用新目录结构）
+                        icon_path = None
+                        if skill_icon:
+                            # 新格式：skill/Above_the_Clouds.webp 或直接文件名
+                            icon_path = self.get_monster_icon_path(skill_icon, 'skill')
+                        elif skill.get('icon'):
+                            icon_path = self.get_monster_icon_path(skill['icon'], 'skill')
+                        elif skill.get('icon_url'):
+                            icon_path = self.get_local_icon_path(skill['icon_url'])
+                        
+                        skill_frame.update_content(
+                            skill_name_zh,
+                            skill_description,
+                            icon_path,
+                            skill_aspect_ratio
+                        )
                     
             # 显示物品
             if monster_data.get('items'):
-                if has_skills:
+                if has_skills and self.content_frame and self.content_frame.winfo_exists():
                     # 添加分隔条
                     separator = tk.Frame(self.content_frame, height=2, bg='#3A7BBA')
                     separator.pack(fill='x', pady=5, padx=10)
                 
-                self.items_frame.pack(fill='x', pady=0, padx=0)
-                # 统计相同物品的数量
-                items_count = {}
-                items_info = {}
-                for item in monster_data['items']:
-                    name = item.get('name', '')
-                    if name:
-                        items_count[name] = items_count.get(name, 0) + 1
-                        if name not in items_info:
-                            items_info[name] = item
+                if self.items_frame and self.items_frame.winfo_exists():
+                    self.items_frame.pack(fill='x', pady=0, padx=0)
+                    # 统计相同物品的数量
+                    items_count = {}
+                    items_info = {}
+                    for item in monster_data['items']:
+                        name = item.get('name', '')
+                        if name:
+                            items_count[name] = items_count.get(name, 0) + 1
+                            if name not in items_info:
+                                items_info[name] = item
+                                
+                    # 显示物品信息
+                    item_keys = list(items_info.keys())
+                    for idx, item_name in enumerate(item_keys):
+                        item = items_info[item_name]
+                        item_frame = IconFrame(self.items_frame)
+                        
+                        # 设置物品框架的边距
+                        item_frame.pack(fill='x', pady=0)
                             
-                # 显示物品信息
-                item_keys = list(items_info.keys())
-                for idx, item_name in enumerate(item_keys):
-                    item = items_info[item_name]
-                    item_frame = IconFrame(self.items_frame)
-                    
-                    # 设置物品框架的边距
-                    item_frame.pack(fill='x', pady=0)
+                        # 获取物品名称和描述（优先使用中文）
+                        item_name_zh = item.get('name_zh', item_name)
+                        item_description = ''
                         
-                    # 获取物品名称和描述（优先使用中文）
-                    item_name_zh = item.get('name_zh', item_name)
-                    item_description = ''
-                    
-                    # 从items_data中获取描述信息
-                    if item_name in data_loader.items_data:
-                        item_info = data_loader.items_data[item_name]
-                        item_description = item_info.get('description_zh', '')
-                        item_icon = item_info.get('icon', '')
-                        item_aspect_ratio = float(item_info.get('aspect_ratio', 1.0))
-                    else:
-                        item_description = item.get('description', '')
-                        item_icon = item.get('icon', '')
-                        item_aspect_ratio = float(item.get('aspect_ratio', 1.0))
+                        # 从items_data中获取描述信息
+                        if item_name in data_loader.items_data:
+                            item_info = data_loader.items_data[item_name]
+                            item_description = item_info.get('description_zh', '')
+                            item_icon = item_info.get('icon', '')
+                            item_aspect_ratio = float(item_info.get('aspect_ratio', 1.0))
+                        else:
+                            item_description = item.get('description', '')
+                            item_icon = item.get('icon', '')
+                            item_aspect_ratio = float(item.get('aspect_ratio', 1.0))
+                            
+                        # 处理物品名称（如果有多个相同物品，显示数量）
+                        display_name = item_name_zh
+                        if items_count[item_name] > 1:
+                            display_name = f"{item_name_zh} x{items_count[item_name]}"
+                            
+                        # 获取物品图标（优先使用新目录结构）
+                        icon_path = None
+                        if item_icon:
+                            # 新格式：直接文件名，如 28_Hour_Fitness.webp
+                            icon_path = self.get_monster_icon_path(item_icon, 'item')
+                        elif item.get('icon'):
+                            icon_path = self.get_monster_icon_path(item['icon'], 'item')
+                        elif item.get('icon_url'):
+                            icon_path = self.get_local_icon_path(item['icon_url'])
                         
-                    # 处理物品名称（如果有多个相同物品，显示数量）
-                    display_name = item_name_zh
-                    if items_count[item_name] > 1:
-                        display_name = f"{item_name_zh} x{items_count[item_name]}"
-                        
-                    # 获取物品图标（优先使用新目录结构）
-                    icon_path = None
-                    if item_icon:
-                        # 新格式：直接文件名，如 28_Hour_Fitness.webp
-                        icon_path = self.get_monster_icon_path(item_icon, 'item')
-                    elif item.get('icon'):
-                        icon_path = self.get_monster_icon_path(item['icon'], 'item')
-                    elif item.get('icon_url'):
-                        icon_path = self.get_local_icon_path(item['icon_url'])
-                    
-                    item_frame.update_content(
-                        display_name,
-                        item_description,
-                        icon_path,
-                        item_aspect_ratio
-                    )
+                        item_frame.update_content(
+                            display_name,
+                            item_description,
+                            icon_path,
+                            item_aspect_ratio
+                        )
                     
             # 如果既没有技能也没有物品，显示提示信息
             if not monster_data.get('skills') and not monster_data.get('items'):
-                self.skills_frame.pack(fill='x', pady=0, padx=0)
-                not_found_frame = IconFrame(self.skills_frame)
-                not_found_frame.pack(fill='x', pady=0)
-                not_found_frame.update_content(
-                    monster_name,
-                    "该怪物没有技能和物品数据。",
-                    None
-                )
+                if self.skills_frame and self.skills_frame.winfo_exists():
+                    self.skills_frame.pack(fill='x', pady=0, padx=0)
+                    not_found_frame = IconFrame(self.skills_frame)
+                    not_found_frame.pack(fill='x', pady=0)
+                    not_found_frame.update_content(
+                        monster_name,
+                        "该怪物没有技能和物品数据。",
+                        None
+                    )
                 
             return True
             
@@ -796,6 +944,11 @@ class GUIManager:
     def _format_event_info(self, event_name, data_loader):
         """格式化事件信息显示（与旧脚本保持一致）"""
         try:
+            # 检查窗口有效性
+            if not self._is_window_valid():
+                logging.warning("窗口无效，无法显示事件信息")
+                return False
+            
             logging.info(f"尝试格式化事件信息: {event_name}")
             event_data = data_loader.get_event_data(event_name)
             if not event_data:
@@ -811,10 +964,17 @@ class GUIManager:
             logging.info(f"找到 {len(event_data)} 个事件选项")
             
             # 清除现有内容
-            self._clear_frames()
+            if not self._clear_frames():
+                return False
+            
+            # 确保子框架存在
+            if not self._ensure_subframes_exist():
+                logging.warning("无法确保子框架存在，无法显示事件信息")
+                return False
             
             # 显示事件选项框架
-            self.event_options_frame.pack(fill='x', pady=0)
+            if self.event_options_frame and self.event_options_frame.winfo_exists():
+                self.event_options_frame.pack(fill='x', pady=0)
             
             # 获取事件的英文名称（用于查找图标文件夹）
             event_name_en = data_loader.event_name_map.get(event_name, '')
@@ -827,41 +987,43 @@ class GUIManager:
             
             logging.debug(f"事件: {event_name}, 英文名: {event_name_en}, 清理后: {event_name_en_clean}")
             
-            for option in event_data:
-                # 优先使用中文名称和描述
-                option_name = option.get('name_zh', option.get('name', ''))
-                option_description = option.get('description_zh', option.get('description', ''))
-                option_name_en = option.get('name', '')  # 英文名称用于查找图标
-                
-                icon_path = None
-                # 尝试多种方式查找图标
-                if option.get('icon'):
-                    icon_path = self.get_local_icon_path(option['icon'], event_name_en_clean, option_name_en)
-                elif option.get('icon_url'):
-                    icon_path = self.get_local_icon_path(option['icon_url'], event_name_en_clean, option_name_en)
-                
-                if not icon_path:
-                    logging.warning(f"未找到图标: 事件={event_name_en_clean}, 选项={option_name_en}, URL={option.get('icon_url', '')}")
-                
-                aspect_ratio = float(option.get('aspect_ratio', 1.0))
-                option_frame = IconFrame(self.event_options_frame)
-                option_frame.pack(fill='x', pady=0)
-                option_frame.update_content(
-                    option_name,
-                    option_description,
-                    icon_path,
-                    aspect_ratio
-                )
+            if self.event_options_frame and self.event_options_frame.winfo_exists():
+                for option in event_data:
+                    # 优先使用中文名称和描述
+                    option_name = option.get('name_zh', option.get('name', ''))
+                    option_description = option.get('description_zh', option.get('description', ''))
+                    option_name_en = option.get('name', '')  # 英文名称用于查找图标
+                    
+                    icon_path = None
+                    # 尝试多种方式查找图标
+                    if option.get('icon'):
+                        icon_path = self.get_local_icon_path(option['icon'], event_name_en_clean, option_name_en)
+                    elif option.get('icon_url'):
+                        icon_path = self.get_local_icon_path(option['icon_url'], event_name_en_clean, option_name_en)
+                    
+                    if not icon_path:
+                        logging.warning(f"未找到图标: 事件={event_name_en_clean}, 选项={option_name_en}, URL={option.get('icon_url', '')}")
+                    
+                    aspect_ratio = float(option.get('aspect_ratio', 1.0))
+                    option_frame = IconFrame(self.event_options_frame)
+                    option_frame.pack(fill='x', pady=0)
+                    option_frame.update_content(
+                        option_name,
+                        option_description,
+                        icon_path,
+                        aspect_ratio
+                    )
             
             if not event_data:
-                self.event_options_frame.pack(fill='x', pady=0)
-                not_found_frame = IconFrame(self.event_options_frame)
-                not_found_frame.pack(fill='x', pady=0)
-                not_found_frame.update_content(
-                    event_name,
-                    "未找到该事件的数据，请稍后再试。",
-                    None
-                )
+                if self.event_options_frame and self.event_options_frame.winfo_exists():
+                    self.event_options_frame.pack(fill='x', pady=0)
+                    not_found_frame = IconFrame(self.event_options_frame)
+                    not_found_frame.pack(fill='x', pady=0)
+                    not_found_frame.update_content(
+                        event_name,
+                        "未找到该事件的数据，请稍后再试。",
+                        None
+                    )
             
             return True
         except Exception as e:

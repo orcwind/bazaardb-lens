@@ -29,6 +29,6 @@ python add_event_english_names.py - 为 events_from_html.json 补充事件的英
 
 
 python Bazaar_Lens.py
-
+python main_script\Bazaar_Lens.py
 
 说了不要编写脚本执行，这些脚本都是垃圾，跟你一样都是垃圾听得懂吗？ 操你妈的。 就是你他妈的给老子手动检查，手动修复，循环直到检查没有语法错误。中间不要确认，不要确认，操你妈的听得懂吗？

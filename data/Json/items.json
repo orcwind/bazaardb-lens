@@ -971,7 +971,7 @@
   },
   {
     "name": "Broken Shackles",
-    "name_zh": "打破镣铐",
+    "name_zh": "断裂镣铐",
     "description_zh": "8.0\n秒\n武器伤害提高4 » 8 » 12（限本场战斗）\n使用武器时，为此物品充能2秒。",
     "icon": "Broken_Shackles.webp",
     "aspect_ratio": 0.5,

@@ -17,11 +17,19 @@ class WindowDetector:
         self.game_rect = None
         self._cache_time = 0  # 缓存时间戳
         self._cache_duration = 1.0  # 缓存有效期（秒）
+        self._invalid_cache_time = 0  # 无效状态缓存时间戳
+        self._invalid_cache_duration = 2.0  # 无效状态缓存（秒）- 窗口最小化时不频繁重试
+        self._last_log_time = 0  # 上次日志时间
+        self._log_interval = 10.0  # 日志间隔（秒）
 
     def get_game_window(self):
         """获取游戏窗口句柄和位置"""
         import time
         current_time = time.time()
+        
+        # 如果最近检测结果是无效的，直接返回None（避免频繁重试）
+        if (current_time - self._invalid_cache_time) < self._invalid_cache_duration:
+            return None, None
         
         # 如果有缓存且未过期，检查窗口是否仍然有效
         if self.game_hwnd and (current_time - self._cache_time) < self._cache_duration:
@@ -45,11 +53,11 @@ class WindowDetector:
             if hwnd:
                 # 检查窗口是否最小化
                 if win32gui.IsIconic(hwnd):
-                    logging.info("游戏窗口已最小化，跳过")
+                    self._set_invalid_cache(current_time, "游戏窗口已最小化，跳过")
                     return None, None
                 # 检查窗口是否可见
                 if not win32gui.IsWindowVisible(hwnd):
-                    logging.info("游戏窗口不可见，跳过")
+                    self._set_invalid_cache(current_time, "游戏窗口不可见，跳过")
                     return None, None
                 rect = win32gui.GetWindowRect(hwnd)
                 logging.debug(f"通过进程名找到游戏窗口，坐标: {rect}")
@@ -122,11 +130,11 @@ class WindowDetector:
                 windows = []
                 win32gui.EnumWindows(enum_windows_callback, windows)
 
-                # 记录所有找到的窗口用于调试
+                # 记录所有找到的窗口用于调试（debug级别）
                 if windows:
-                    logging.info(f"找到的所有游戏窗口候选:")
+                    logging.debug(f"找到的所有游戏窗口候选:")
                     for h, t, r, w, h_val in windows:
-                        logging.info(f"  - {t}: {w}x{h_val} at {r}")
+                        logging.debug(f"  - {t}: {w}x{h_val} at {r}")
 
                 # 过滤出尺寸合理的窗口（游戏窗口应该比较大）
                 valid_windows = [
@@ -139,7 +147,7 @@ class WindowDetector:
                     valid_windows.sort(key=lambda x: x[3] * x[4], reverse=True)
                     hwnd = valid_windows[0][0]
                     found_window_name = valid_windows[0][1]
-                    logging.info(
+                    logging.debug(
                         f"通过枚举找到游戏窗口: {found_window_name}, "
                         f"尺寸: {valid_windows[0][3]}x{valid_windows[0][4]}")
                 elif windows:
@@ -147,7 +155,7 @@ class WindowDetector:
                     windows.sort(key=lambda x: x[3] * x[4], reverse=True)
                     hwnd = windows[0][0]
                     found_window_name = windows[0][1]
-                    logging.warning(
+                    logging.debug(
                         f"使用最大窗口作为备选: {found_window_name}, "
                         f"尺寸: {windows[0][3]}x{windows[0][4]}")
 
@@ -169,23 +177,22 @@ class WindowDetector:
                     else:
                         win32gui.SetForegroundWindow(hwnd)
                 except Exception as e:
-                    # 如果设置前台窗口失败，记录错误但继续
-                    logging.warning(f"设置游戏窗口为前台失败: {e}")
+                    # 如果设置前台窗口失败，不输出日志（这是预期行为）
                     pass
 
                 rect = win32gui.GetWindowRect(hwnd)
                 # 检查窗口状态
                 is_minimized = win32gui.IsIconic(hwnd)
                 is_visible = win32gui.IsWindowVisible(hwnd)
-                logging.info(f"找到游戏窗口: {found_window_name}, 坐标: {rect}")
-                logging.info(f"窗口状态 - 最小化: {is_minimized}, 可见: {is_visible}")
+                logging.debug(f"找到游戏窗口: {found_window_name}, 坐标: {rect}")
+                logging.debug(f"窗口状态 - 最小化: {is_minimized}, 可见: {is_visible}")
                 
                 # 如果窗口最小化或不可见，返回None
                 if is_minimized:
-                    logging.info("游戏窗口已最小化，跳过")
+                    self._set_invalid_cache(current_time, "游戏窗口已最小化，跳过")
                     return None, None
                 if not is_visible:
-                    logging.info("游戏窗口不可见，跳过")
+                    self._set_invalid_cache(current_time, "游戏窗口不可见，跳过")
                     return None, None
 
                 # 如果窗口太小，尝试获取客户端区域
@@ -194,7 +201,7 @@ class WindowDetector:
                         client_rect = win32gui.GetClientRect(hwnd)
                         client_width = client_rect[2]
                         client_height = client_rect[3]
-                        logging.info(
+                        logging.debug(
                             f"客户端区域尺寸: {client_width}x{client_height}")
 
                         if client_width > 800 and client_height > 600:
@@ -205,20 +212,29 @@ class WindowDetector:
                                 point[1],
                                 point[0] + client_width,
                                 point[1] + client_height)
-                            logging.info(f"使用客户端坐标: {rect}")
+                            logging.debug(f"使用客户端坐标: {rect}")
                     except Exception as e:
-                        logging.warning(f"获取客户端坐标失败: {e}")
+                        logging.debug(f"获取客户端坐标失败: {e}")
 
                 self.game_hwnd = hwnd
                 self.game_rect = rect
                 self._cache_time = current_time  # 更新缓存时间
                 return hwnd, rect
 
-            logging.warning("未找到游戏窗口")
+            self._set_invalid_cache(current_time, "未找到游戏窗口")
             return None, None
         except Exception as e:
             logging.error(f"获取游戏窗口失败: {e}")
+            self._invalid_cache_time = current_time
             return None, None
+    
+    def _set_invalid_cache(self, current_time, message):
+        """设置无效状态缓存，并控制日志频率"""
+        self._invalid_cache_time = current_time
+        # 每隔一段时间才输出一次日志，避免刷屏
+        if (current_time - self._last_log_time) >= self._log_interval:
+            self._last_log_time = current_time
+            logging.info(message)
 
     def _find_window_by_process(self):
         """通过进程名查找游戏窗口"""
