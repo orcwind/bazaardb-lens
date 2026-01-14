@@ -3614,7 +3614,7 @@
   },
   {
     "name": "Improvised Bludgeon",
-    "name_zh": "临时大棒",
+    "name_zh": "临时钝器",
     "description_zh": "8.0\n秒\n造成40 » 80 » 160伤害\n减速2件物品4 » 5 » 6秒\n出售此物品时，最左侧的减速物品+1减速持续时间。",
     "icon": "Improvised_Bludgeon.webp",
     "aspect_ratio": 1.0,

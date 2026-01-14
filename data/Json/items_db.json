@@ -32424,7 +32424,7 @@
   },
   "d022cc12-8fe2-442c-af6e-165eb97ed055": {
     "name": "Improvised Bludgeon",
-    "name_zh": "临时大棒",
+    "name_zh": "临时钝器",
     "enchantments": [
       {
         "id": "golden",
@@ -32499,7 +32499,7 @@
         "description": "此物品的伤害翻倍。"
       }
     ],
-    "image": "images/临时大棒.jpg"
+    "image": "images/临时钝器.jpg"
   },
   "f2bb81c1-926e-447b-89aa-8c981604570c": {
     "name": "BLK-SP1D3R",
