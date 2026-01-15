@@ -22,28 +22,57 @@ try:
 except ImportError:
     VERSION = "1.0.0"
 
-# 导入模块化组件
-from logger import setup_logging, hide_console
+# 导入模块化组件（延迟导入 heavy 部分，确保管理员检查先执行）
 from system.admin import is_admin, run_as_admin
-from core.main_controller import MainController
+# 后续：在确认管理员权限后再导入 setup_logging、MainController 等以避免在非管理员模式初始化资源
 
 
 def main():
     """主程序入口"""
-    # 设置日志
-    setup_logging()
-    logging.info(f"Bazaar Lens v{VERSION} 启动")
-
-    # 检查管理员权限
+    # 先检查管理员权限（功能需要管理员权限才能正常工作）
     if not is_admin():
-        logging.info("未检测到管理员权限，尝试以管理员身份重新运行...")
+        logging.warning("未检测到管理员权限，程序需要管理员权限才能正常工作")
+        logging.info("尝试以管理员身份重新运行...")
         if run_as_admin():
+            # 如果成功启动管理员进程，当前进程退出
+            logging.info("已启动管理员进程，当前进程退出")
             sys.exit(0)
         else:
-            logging.warning("无法获取管理员权限，程序可能无法正常工作")
-            print("请手动以管理员身份运行程序")
-            input("按Enter键退出...")
-            sys.exit(1)
+            # 如果用户拒绝了UAC提示或启动失败，立即退出，不创建任何资源
+            logging.error("无法获取管理员权限，程序将立即退出")
+            # 使用GUI消息框提示（如果可能），但使用非阻塞方式
+            try:
+                import tkinter.messagebox as messagebox
+                # 使用 after 方法确保消息框显示后程序退出
+                root = tk.Tk()
+                root.withdraw()  # 隐藏主窗口
+                messagebox.showerror("权限不足", "程序需要管理员权限才能正常工作。\n请手动以管理员身份运行程序。")
+                root.destroy()
+            except Exception as e:
+                # 如果无法显示GUI，至少打印到控制台
+                logging.error(f"显示错误消息失败: {e}")
+                print("错误：程序需要管理员权限才能正常工作。")
+                print("请右键点击程序，选择'以管理员身份运行'。")
+            # 立即退出，不创建任何资源（包括托盘图标）
+            # 使用 os._exit 强制退出，不执行任何清理操作
+            import os
+            os._exit(1)
+
+    # 到这里说明是管理员，接着初始化日志和其他模块
+    # 设置日志
+    from logger import setup_logging, get_log_file_path, hide_console
+    from core.main_controller import MainController
+    setup_logging()
+    log_path = get_log_file_path()
+    logging.info(f"Bazaar Lens v{VERSION} 启动")
+    logging.info(f"日志文件位置: {log_path}")
+    
+    # 在开发环境或配置允许时显示日志路径
+    from config import ConfigManager
+    temp_config = ConfigManager()
+    if temp_config.get("show_console", False) or not getattr(sys, 'frozen', False):
+        print(f"日志文件位置: {log_path}")
+        print("如果遇到问题，请查看日志文件获取详细信息")
 
     # 创建互斥锁，防止多实例运行
     mutex = None

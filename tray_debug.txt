@@ -1,0 +1,142 @@
+[2026-01-15 15:10:39.996101] [SystemTray] ========== 开始初始化系统托盘 ==========
+[2026-01-15 15:10:39.996307] [SystemTray] controller和icon属性已设置
+[2026-01-15 15:10:39.996439] [SystemTray] 准备调用create_tray_icon()...
+[2026-01-15 15:10:39.996562] [SystemTray] create_tray_icon() 开始执行
+[2026-01-15 15:10:39.996640] [SystemTray] 准备创建菜单...
+[2026-01-15 15:10:39.996753] [SystemTray] 菜单创建成功
+[2026-01-15 15:10:39.996812] [SystemTray] 尝试加载图标: D:\PythonProject\BazaarInfo\bazaardb-desktop\Bazaar_Lens.ico
+[2026-01-15 15:10:39.996869] [SystemTray] 图标文件是否存在: True
+[2026-01-15 15:10:40.022294] [SystemTray] 成功加载系统托盘图标: D:\PythonProject\BazaarInfo\bazaardb-desktop\Bazaar_Lens.ico, 尺寸: (256, 256)
+[2026-01-15 15:10:40.022560] [SystemTray] 开始创建pystray.Icon对象...
+[2026-01-15 15:10:40.022622] [SystemTray] icon_image类型: <class 'PIL.IcoImagePlugin.IcoImageFile'>, menu类型: <class 'tuple'>
+[2026-01-15 15:10:40.022765] [SystemTray] pystray.Icon对象创建成功: <pystray._win32.Icon object at 0x00000296706D9E80>
+[2026-01-15 15:10:40.022834] [SystemTray] create_tray_icon()调用完成，icon对象: <pystray._win32.Icon object at 0x00000296706D9E80>
+[2026-01-15 15:10:40.022883] [SystemTray] 系统托盘图标创建成功，icon对象存在
+[2026-01-15 15:10:40.022924] [SystemTray] ========== 初始化系统托盘完成，icon对象: <pystray._win32.Icon object at 0x00000296706D9E80> ==========
+
+================================================================================
+[2026-01-15 15:28:30.779882] [SystemTray] ========== 开始初始化系统托盘 ==========
+[2026-01-15 15:28:30.779891] [SystemTray] controller_instance类型: <class '__main__.FakeController'>
+[2026-01-15 15:28:30.779896] [SystemTray] controller_instance值: <__main__.FakeController object at 0x00000259F92F7380>
+[2026-01-15 15:28:30.780202] [SystemTray] 步骤1: 设置controller和icon属性
+[2026-01-15 15:28:30.780286] [SystemTray] 步骤1完成: self.controller=<__main__.FakeController object at 0x00000259F92F7380>, self.icon=None, self.icon类型=<class 'NoneType'>
+[2026-01-15 15:28:30.780479] [SystemTray] 步骤2: 准备调用create_tray_icon()...
+[2026-01-15 15:28:30.780566] [SystemTray] 调用前检查: self.icon=None, self.icon is None=True, bool(self.icon)=False
+[2026-01-15 15:28:30.780763] [SystemTray] 开始执行健壮版 create_tray_icon
+[2026-01-15 15:28:30.780846] [SystemTray] 菜单创建成功
+[2026-01-15 15:28:30.780906] [SystemTray] 策略A: 预检图标路径: D:\PythonProject\BazaarInfo\bazaardb-desktop\Bazaar_Lens.ico
+[2026-01-15 15:28:30.780966] [SystemTray] 策略A: 路径是否存在: True
+[2026-01-15 15:28:30.808719] [SystemTray] 策略A成功：已加载 .ico 文件，尺寸: (256, 256)
+[2026-01-15 15:28:30.808860] [SystemTray] 正在实例化 pystray.Icon...
+[2026-01-15 15:28:30.808917] [SystemTray] icon_image类型: <class 'PIL.IcoImagePlugin.IcoImageFile'>, 尺寸: (256, 256)
+[2026-01-15 15:28:30.808958] [SystemTray] menu类型: <class 'pystray._base.Menu'>
+[2026-01-15 15:28:30.809142] [SystemTray] Icon 对象创建成功，hash: 161593548306
+[2026-01-15 15:28:30.809216] [SystemTray] Icon 对象类型: <class 'pystray._win32.Icon'>
+[2026-01-15 15:28:30.809398] [SystemTray] Icon 对象 dir: ['HAS_DEFAULT_ACTION', 'HAS_MENU', 'HAS_MENU_RADIO', 'HAS_NOTIFICATION', 'SETUP_THREAD_TIMEOUT', 'icon', 'menu', 'name', 'notify', 'remove_notification']
+[2026-01-15 15:28:30.809485] [SystemTray] 成功锁定 icon 对象: <pystray._win32.Icon object at 0x00000259FB9DE120>
+[2026-01-15 15:28:30.809570] [SystemTray] self.icon类型: <class 'pystray._win32.Icon'>
+[2026-01-15 15:28:30.809652] [SystemTray] self.icon is None: False
+[2026-01-15 15:28:30.809704] [SystemTray] self.icon == new_icon: True
+[2026-01-15 15:28:30.809743] [SystemTray] self.icon is new_icon: True
+[2026-01-15 15:28:30.810098] [SystemTray] 步骤3: create_tray_icon()调用完成
+[2026-01-15 15:28:30.810191] [SystemTray] 调用后检查: self.icon=<pystray._win32.Icon object at 0x00000259FB9DE120>
+[2026-01-15 15:28:30.810295] [SystemTray] 调用后检查: self.icon类型=<class 'pystray._win32.Icon'>
+[2026-01-15 15:28:30.810346] [SystemTray] 调用后检查: self.icon is None=False
+[2026-01-15 15:28:30.810421] [SystemTray] 调用后检查: bool(self.icon)=True
+[2026-01-15 15:28:30.810491] [SystemTray] 调用后检查: hasattr(self, 'icon')=True
+[2026-01-15 15:28:30.810536] [SystemTray] 调用后检查: getattr(self, 'icon', 'NO_ATTR')=<pystray._win32.Icon object at 0x00000259FB9DE120>
+[2026-01-15 15:28:30.810643] [SystemTray] 步骤4: 系统托盘图标创建成功，icon对象存在
+[2026-01-15 15:28:30.810909] [SystemTray] ========== 初始化系统托盘完成 ==========
+[2026-01-15 15:28:30.810975] [SystemTray] finally块: self.icon=<pystray._win32.Icon object at 0x00000259FB9DE120>
+[2026-01-15 15:28:30.811024] [SystemTray] finally块: self.icon类型=<class 'pystray._win32.Icon'>
+[2026-01-15 15:28:30.811079] [SystemTray] finally块: self.icon is None=False
+[2026-01-15 15:28:30.811121] [SystemTray] finally块: bool(self.icon)=True
+[2026-01-15 15:28:30.811165] [SystemTray] finally块: hasattr(self, 'icon')=True
+[2026-01-15 15:28:30.811231] [SystemTray] finally块: getattr(self, 'icon', 'NO_ATTR')=<pystray._win32.Icon object at 0x00000259FB9DE120>
+[2026-01-15 15:28:30.811306] [SystemTray] finally块: dir(self)包含icon: True
+[2026-01-15 15:28:30.811625] [SystemTray] 开始执行健壮版 create_tray_icon
+[2026-01-15 15:28:30.811713] [SystemTray] 菜单创建成功
+[2026-01-15 15:28:30.811777] [SystemTray] 策略A: 预检图标路径: D:\PythonProject\BazaarInfo\bazaardb-desktop\Bazaar_Lens.ico
+[2026-01-15 15:28:30.811861] [SystemTray] 策略A: 路径是否存在: True
+[2026-01-15 15:28:30.813004] [SystemTray] 策略A成功：已加载 .ico 文件，尺寸: (256, 256)
+[2026-01-15 15:28:30.813089] [SystemTray] 正在实例化 pystray.Icon...
+[2026-01-15 15:28:30.813142] [SystemTray] icon_image类型: <class 'PIL.IcoImagePlugin.IcoImageFile'>, 尺寸: (256, 256)
+[2026-01-15 15:28:30.813231] [SystemTray] menu类型: <class 'pystray._base.Menu'>
+[2026-01-15 15:28:30.813504] [SystemTray] Icon 对象创建成功，hash: 161593582013
+[2026-01-15 15:28:30.813661] [SystemTray] Icon 对象类型: <class 'pystray._win32.Icon'>
+[2026-01-15 15:28:30.813842] [SystemTray] Icon 对象 dir: ['HAS_DEFAULT_ACTION', 'HAS_MENU', 'HAS_MENU_RADIO', 'HAS_NOTIFICATION', 'SETUP_THREAD_TIMEOUT', 'icon', 'menu', 'name', 'notify', 'remove_notification']
+[2026-01-15 15:28:30.813970] [SystemTray] 成功锁定 icon 对象: <pystray._win32.Icon object at 0x00000259FBA61BD0>
+[2026-01-15 15:28:30.814127] [SystemTray] self.icon类型: <class 'pystray._win32.Icon'>
+[2026-01-15 15:28:30.814224] [SystemTray] self.icon is None: False
+[2026-01-15 15:28:30.814290] [SystemTray] self.icon == new_icon: True
+[2026-01-15 15:28:30.814442] [SystemTray] self.icon is new_icon: True
+
+============================================================
+[2026-01-15 15:53:04.523660] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x0000011A30891A90>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-15 15:54:08.425516] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x00000290F0105BE0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-15 16:00:42.007103] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000002B0A3001BE0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-15 16:02:38.745784] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x0000016E5C5F1D30>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-15 16:04:18.572431] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x00000201F4B09D30>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-15 16:09:18.874114] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000001D0F4851D30>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-15 17:12:23.610332] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000001A5F2D7DD30>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-15 22:20:06.104481] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x00000269D6A61FD0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-15 22:39:11.570402] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x0000026B63865FD0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-15 22:45:09.793762] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000001F938D89FD0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False

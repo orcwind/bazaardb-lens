@@ -14,6 +14,11 @@ if _parent_dir not in sys.path:
 
 from logger import is_packaged_environment
 from .matcher import TextMatcher
+# 可选的安全数据包（如果存在 data_json.enc / data_key.bin）
+try:
+    from core.secure_data import secure_bundle
+except Exception:
+    secure_bundle = None
 
 
 class DataLoader:
@@ -126,18 +131,38 @@ class DataLoader:
     def load_monster_data(self):
         try:
             base_dir = self.get_base_dir()
-            monster_file = os.path.join(base_dir, 'data', 'Json', 'monsters_detail.json')
-            if not os.path.exists(monster_file):
-                monster_file = os.path.join(base_dir, 'data', 'Json - 副本', 'monsters_detail.json')
+            # 优先尝试从加密包读取（如果启用并可用）
+            data = None
+            if secure_bundle:
+                try:
+                    data = secure_bundle.get_json('monsters_detail.json')
+                    if data is not None:
+                        logging.info("[DataLoader] 从加密包加载 monsters_detail.json")
+                except Exception as e:
+                    logging.warning(f"[DataLoader] 从加密包加载 monsters_detail.json 出错: {e}")
+
+            if data is None:
+                monster_file = os.path.join(base_dir, 'data', 'Json', 'monsters_detail.json')
                 if not os.path.exists(monster_file):
-                    monster_file = os.path.join(base_dir, '6.0', 'crawlers', 'monster_details_v3', 'monsters_v3.json')
-            with open(monster_file, 'r', encoding='utf-8') as f:
-                data = json.load(f)
+                    monster_file = os.path.join(base_dir, 'data', 'Json - 副本', 'monsters_detail.json')
+                    if not os.path.exists(monster_file):
+                        monster_file = os.path.join(base_dir, '6.0', 'crawlers', 'monster_details_v3', 'monsters_v3.json')
+                with open(monster_file, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+
+            # 处理加载到的 data（无论来自加密包还是磁盘）
+            if data is not None:
                 if isinstance(data, list):
-                    self.monster_data = {monster['name_zh']: monster for monster in data}
+                    self.monster_data = {monster.get('name_zh', monster.get('name')): monster for monster in data if monster}
                 else:
-                    self.monster_data = {monster['name']: monster for monster in data}
+                    # 如果是 dict（可能以 name 为键），尝试直接使用
+                    try:
+                        self.monster_data = {k: v for k, v in data.items()}
+                    except Exception:
+                        self.monster_data = {}
+
                 logging.info(f"成功加载怪物数据，共 {len(self.monster_data)} 个怪物")
+                # 继续加载物品与技能数据（依赖于 monster_data）
                 self.load_items_data()
                 self.load_skills_data()
         except Exception as e:
@@ -147,21 +172,49 @@ class DataLoader:
     def load_items_data(self):
         try:
             base_dir = self.get_base_dir()
-            items_file = os.path.join(base_dir, 'data', 'Json', 'items.json')
-            if not os.path.exists(items_file):
-                items_file = os.path.join(base_dir, 'data', 'Json - 副本', 'items.json')
-            if os.path.exists(items_file):
-                with open(items_file, 'r', encoding='utf-8') as f:
-                    items = json.load(f)
-                    self.items_data = {item['name']: item for item in items}
-                    logging.info(f"成功加载物品数据，共 {len(self.items_data)} 个物品")
+            # 尝试从加密包读取 items.json / items_db.json
+            items = None
+            if secure_bundle:
+                try:
+                    items = secure_bundle.get_json('items.json')
+                    if items is not None:
+                        logging.info("[DataLoader] 从加密包加载 items.json")
+                except Exception as e:
+                    logging.warning(f"[DataLoader] 从加密包加载 items.json 出错: {e}")
+
+            if items is None:
+                items_file = os.path.join(base_dir, 'data', 'Json', 'items.json')
+                if not os.path.exists(items_file):
+                    items_file = os.path.join(base_dir, 'data', 'Json - 副本', 'items.json')
+                if os.path.exists(items_file):
+                    with open(items_file, 'r', encoding='utf-8') as f:
+                        items = json.load(f)
+
+            if items:
+                self.items_data = {item['name']: item for item in items}
+                logging.info(f"成功加载物品数据，共 {len(self.items_data)} 个物品")
+
+            # items_db.json (uuid 映射)
+            uuid_items = None
+            if secure_bundle:
+                try:
+                    uuid_items = secure_bundle.get_json('items_db.json')
+                    if uuid_items is not None:
+                        logging.info("[DataLoader] 从加密包加载 items_db.json")
+                except Exception as e:
+                    logging.warning(f"[DataLoader] 从加密包加载 items_db.json 出错: {e}")
+
+            if uuid_items is None:
                 items_db_file = os.path.join(base_dir, 'data', 'Json', 'items_db.json')
                 if os.path.exists(items_db_file):
                     with open(items_db_file, 'r', encoding='utf-8') as f:
-                        self.uuid_to_item_data = json.load(f)
-                        logging.info(f"成功加载UUID映射数据，共 {len(self.uuid_to_item_data)} 个物品UUID")
-                else:
-                    self.uuid_to_item_data = {}
+                        uuid_items = json.load(f)
+
+            if uuid_items:
+                self.uuid_to_item_data = uuid_items
+                logging.info(f"成功加载UUID映射数据，共 {len(self.uuid_to_item_data)} 个物品UUID")
+            else:
+                self.uuid_to_item_data = {}
         except Exception as e:
             logging.error(f"加载物品数据失败: {e}")
             self.items_data = {}
@@ -170,14 +223,27 @@ class DataLoader:
     def load_skills_data(self):
         try:
             base_dir = self.get_base_dir()
-            skills_file = os.path.join(base_dir, 'data', 'Json', 'skills.json')
-            if not os.path.exists(skills_file):
-                skills_file = os.path.join(base_dir, 'data', 'Json - 副本', 'skills.json')
-            if os.path.exists(skills_file):
-                with open(skills_file, 'r', encoding='utf-8') as f:
-                    skills = json.load(f)
-                    self.skills_data = {skill['name']: skill for skill in skills}
-                    logging.info(f"成功加载技能数据，共 {len(self.skills_data)} 个技能")
+            # 尝试从加密包读取 skills.json
+            skills = None
+            if secure_bundle:
+                try:
+                    skills = secure_bundle.get_json('skills.json')
+                    if skills is not None:
+                        logging.info("[DataLoader] 从加密包加载 skills.json")
+                except Exception as e:
+                    logging.warning(f"[DataLoader] 从加密包加载 skills.json 出错: {e}")
+
+            if skills is None:
+                skills_file = os.path.join(base_dir, 'data', 'Json', 'skills.json')
+                if not os.path.exists(skills_file):
+                    skills_file = os.path.join(base_dir, 'data', 'Json - 副本', 'skills.json')
+                if os.path.exists(skills_file):
+                    with open(skills_file, 'r', encoding='utf-8') as f:
+                        skills = json.load(f)
+
+            if skills:
+                self.skills_data = {skill['name']: skill for skill in skills}
+                logging.info(f"成功加载技能数据，共 {len(self.skills_data)} 个技能")
         except Exception as e:
             logging.error(f"加载技能数据失败: {e}")
             self.skills_data = {}
@@ -185,24 +251,37 @@ class DataLoader:
     def load_event_data(self):
         try:
             base_dir = self.get_base_dir()
-            event_file = os.path.join(base_dir, 'data', 'Json', 'events_from_html.json')
-            if not os.path.exists(event_file):
-                event_file = os.path.join(base_dir, '6.0', 'crawlers', 'event_details_final', 'events_final.json')
-            with open(event_file, 'r', encoding='utf-8') as f:
-                self.events = json.load(f)
-                logging.info(f"已加载 {len(self.events)} 个事件")
-                self.event_data = {}
-                self.event_name_map = {}
-                for event in self.events:
-                    if 'name' in event and 'choices' in event:
-                        chinese_name = event['name']
-                        english_name = event.get('name_en', '')
-                        self.event_data[chinese_name] = event['choices']
-                        if english_name:
-                            self.event_name_map[chinese_name] = english_name
-                            self.event_data[english_name] = event['choices']
-                    else:
-                        logging.warning(f"事件 {event.get('name', '')} 缺少 choices 字段")
+            # 尝试从加密包读取 events_from_html.json
+            events = None
+            if secure_bundle:
+                try:
+                    events = secure_bundle.get_json('events_from_html.json')
+                    if events is not None:
+                        logging.info("[DataLoader] 从加密包加载 events_from_html.json")
+                except Exception as e:
+                    logging.warning(f"[DataLoader] 从加密包加载 events_from_html.json 出错: {e}")
+
+            if events is None:
+                event_file = os.path.join(base_dir, 'data', 'Json', 'events_from_html.json')
+                if not os.path.exists(event_file):
+                    event_file = os.path.join(base_dir, '6.0', 'crawlers', 'event_details_final', 'events_final.json')
+                with open(event_file, 'r', encoding='utf-8') as f:
+                    events = json.load(f)
+
+            self.events = events
+            logging.info(f"已加载 {len(self.events)} 个事件")
+            self.event_data = {}
+            self.event_name_map = {}
+            for event in self.events:
+                if 'name' in event and 'choices' in event:
+                    chinese_name = event['name']
+                    english_name = event.get('name_en', '')
+                    self.event_data[chinese_name] = event['choices']
+                    if english_name:
+                        self.event_name_map[chinese_name] = english_name
+                        self.event_data[english_name] = event['choices']
+                else:
+                    logging.warning(f"事件 {event.get('name', '')} 缺少 choices 字段")
         except Exception as e:
             logging.error(f"加载事件数据时出错: {e}")
             logging.error(traceback.format_exc())

@@ -134,9 +134,14 @@ class TextMatcher:
         lines_english = []
         lines_chinese = []
         
+        logging.debug(f"[匹配调试] 原始OCR文本: {text}")
+        logging.debug(f"[匹配调试] 原始行: {raw_lines}")
+        
         for line in raw_lines:
             clean_en = clean_text(line)
             clean_zh = clean_text_chinese(line)
+            
+            logging.debug(f"[匹配调试] 行清理: 原始='{line}', 英文清理='{clean_en}', 中文清理='{clean_zh}'")
             
             # 排除包含"奖励"的完整行
             if '奖励' in clean_zh:
@@ -181,22 +186,36 @@ class TextMatcher:
                     # 快速匹配1：完全匹配（纯中文字符）
                     if line_clean_only == event_clean_zh_only and len(line_clean_only) >= 2:
                         logging.info(f"找到完全匹配的事件(中文): {event_name_zh}")
-                        result = ('event', event_name_zh)
-                        if len(self.match_cache) >= self.match_cache_max_size:
-                            oldest_key = next(iter(self.match_cache))
-                            del self.match_cache[oldest_key]
-                        self.match_cache[text_key] = result
-                        return result
+                        all_matches.append({
+                            'type': 'event',
+                            'name': event_name_zh,
+                            'line': line,
+                            'ratio': 1.0,
+                            'common_words': [],
+                            'char_match_ratio': 1.0,
+                            'name_length': len(event_clean_zh_only)
+                        })
+                        if 1.0 > best_ratio:
+                            best_ratio = 1.0
+                            best_type = 'event'
+                            best_name = event_name_zh
                     
                     # 快速匹配2：部分匹配：检查事件名称是否包含在OCR文本中
                     if event_clean_zh_only in line_clean_only and len(event_clean_zh_only) >= 2:
                         logging.info(f"找到部分匹配的事件(事件名在OCR文本中): {event_name_zh}, OCR行: {line}")
-                        result = ('event', event_name_zh)
-                        if len(self.match_cache) >= self.match_cache_max_size:
-                            oldest_key = next(iter(self.match_cache))
-                            del self.match_cache[oldest_key]
-                        self.match_cache[text_key] = result
-                        return result
+                        all_matches.append({
+                            'type': 'event',
+                            'name': event_name_zh,
+                            'line': line,
+                            'ratio': 1.0,  # 完整包含，相似度为1.0
+                            'common_words': [],
+                            'char_match_ratio': 1.0,
+                            'name_length': len(event_clean_zh_only)
+                        })
+                        if 1.0 > best_ratio:
+                            best_ratio = 1.0
+                            best_type = 'event'
+                            best_name = event_name_zh
                     
                     # 快速匹配2.5：反向部分匹配
                     if len(line_clean_only) >= 2 and line_clean_only in event_clean_zh_only:
@@ -287,12 +306,19 @@ class TextMatcher:
                 for line in lines_english:
                     if line == event_clean_en:
                         logging.info(f"找到完全匹配的事件(英文): {event_name_en}")
-                        result = ('event', event_name_zh)
-                        if len(self.match_cache) >= self.match_cache_max_size:
-                            oldest_key = next(iter(self.match_cache))
-                            del self.match_cache[oldest_key]
-                        self.match_cache[text_key] = result
-                        return result
+                        all_matches.append({
+                            'type': 'event',
+                            'name': event_name_zh,
+                            'line': line,
+                            'ratio': 1.0,
+                            'common_words': [],
+                            'char_match_ratio': 1.0,
+                            'name_length': len(event_clean_zh_only)
+                        })
+                        if 1.0 > best_ratio:
+                            best_ratio = 1.0
+                            best_type = 'event'
+                            best_name = event_name_zh
                     
                     event_words = set(event_clean_en.split())
                     line_words = set(line.split())
@@ -331,6 +357,11 @@ class TextMatcher:
             for line in lines_chinese:
                 line_clean_zh_only = clean_text_chinese_only(line)
                 
+                # 特别调试"舞火大师"的匹配
+                if monster_name == "舞火大师":
+                    logging.debug(f"[舞火大师调试] 怪物清理后: '{monster_clean_zh_only}', OCR行清理后: '{line_clean_zh_only}'")
+                    logging.debug(f"[舞火大师调试] 怪物字符集: {monster_chars}, OCR字符集: {set(line_clean_zh_only)}")
+                
                 # 完全匹配（纯中文字符）
                 if line_clean_zh_only == monster_clean_zh_only and len(line_clean_zh_only) >= 2:
                     logging.info(f"找到完全匹配的怪物(中文): {monster_name}")
@@ -367,16 +398,23 @@ class TextMatcher:
                             best_type = 'monster'
                             best_name = monster_name
                 
-                # 完整匹配：怪物名称在OCR文本中（优先检查，立即返回）
+                # 完整匹配：怪物名称在OCR文本中（不再立即返回，改为收集候选）
                 if monster_clean_zh_only in line_clean_zh_only and len(monster_clean_zh_only) >= 2:
                     ratio = 1.0  # 完整包含，相似度为1.0
                     logging.info(f"找到完整匹配的怪物(中文): {monster_name}, OCR文本包含完整名称")
-                    result = ('monster', monster_name)
-                    if len(self.match_cache) >= self.match_cache_max_size:
-                        oldest_key = next(iter(self.match_cache))
-                        del self.match_cache[oldest_key]
-                    self.match_cache[text_key] = result
-                    return result
+                    all_matches.append({
+                        'type': 'monster',
+                        'name': monster_name,
+                        'line': line,
+                        'ratio': ratio,
+                        'common_words': [],
+                        'char_match_ratio': 1.0,
+                        'name_length': len(monster_clean_zh_only)
+                    })
+                    if ratio > best_ratio:
+                        best_ratio = ratio
+                        best_type = 'monster'
+                        best_name = monster_name
                 
                 # 部分匹配：OCR文本在怪物名称中
                 elif line_clean_zh_only in monster_clean_zh_only and len(line_clean_zh_only) >= 2:
@@ -417,9 +455,20 @@ class TextMatcher:
                         required_char_ratio = 0.4
                         min_matched_chars = max(2, int(monster_name_len * 0.4))
                     
+                    # 特别调试"舞火大师"的字符匹配
+                    if monster_name == "舞火大师":
+                        logging.debug(f"[舞火大师调试] 字符匹配: 怪物字符集={monster_chars}, OCR字符集={line_chars}")
+                        logging.debug(f"[舞火大师调试] 匹配字符={matched_chars}, 字符匹配度={char_match_ratio:.2f}")
+                        logging.debug(f"[舞火大师调试] 要求: 字符匹配度≥{required_char_ratio}, 最少匹配字符≥{min_matched_chars}")
+                    
                     if char_match_ratio >= required_char_ratio and len(matched_chars) >= min_matched_chars:
                         ratio = difflib.SequenceMatcher(None, line_clean_zh_only, monster_clean_zh_only).ratio()
                         similarity_threshold = 0.30 if monster_name_len >= 5 else 0.35
+                        
+                        # 特别调试"舞火大师"的相似度
+                        if monster_name == "舞火大师":
+                            logging.debug(f"[舞火大师调试] 相似度计算: '{line_clean_zh_only}' vs '{monster_clean_zh_only}' = {ratio:.2f}")
+                            logging.debug(f"[舞火大师调试] 相似度阈值: {similarity_threshold}")
                         
                         if ratio > similarity_threshold:
                             # 不立即返回，而是添加到候选列表中，最后选择最好的匹配
@@ -456,14 +505,27 @@ class TextMatcher:
                         immediate_threshold = 0.40
                         candidate_threshold = 0.30
                     
+                    # 特别调试"舞火大师"的模糊匹配
+                    if monster_name == "舞火大师":
+                        logging.debug(f"[舞火大师调试] 模糊匹配: 相似度={ratio:.2f}, 立即阈值={immediate_threshold}, 候选阈值={candidate_threshold}")
+                        logging.debug(f"[舞火大师调试] 是否立即匹配: {ratio > immediate_threshold}")
+                        logging.debug(f"[舞火大师调试] 是否候选匹配: {ratio > candidate_threshold}")
+                    
                     if ratio > immediate_threshold:
                         logging.info(f"找到相似匹配的怪物(中文): {monster_name}, 相似度: {ratio:.2f}, 名称长度: {monster_name_len}")
-                        result = ('monster', monster_name)
-                        if len(self.match_cache) >= self.match_cache_max_size:
-                            oldest_key = next(iter(self.match_cache))
-                            del self.match_cache[oldest_key]
-                        self.match_cache[text_key] = result
-                        return result
+                        all_matches.append({
+                            'type': 'monster',
+                            'name': monster_name,
+                            'line': line,
+                            'ratio': ratio,
+                            'common_words': [],
+                            'char_match_ratio': ratio,  # 使用相似度作为字符匹配度
+                            'name_length': monster_name_len
+                        })
+                        if ratio > best_ratio:
+                            best_ratio = ratio
+                            best_type = 'monster'
+                            best_name = monster_name
                     elif ratio > candidate_threshold:
                         all_matches.append({
                             'type': 'monster',
@@ -483,12 +545,19 @@ class TextMatcher:
                 for line in lines_english:
                     if line == monster_clean_en:
                         logging.info(f"找到完全匹配的怪物(英文): {monster_name_en}")
-                        result = ('monster', monster_name)
-                        if len(self.match_cache) >= self.match_cache_max_size:
-                            oldest_key = next(iter(self.match_cache))
-                            del self.match_cache[oldest_key]
-                        self.match_cache[text_key] = result
-                        return result
+                        all_matches.append({
+                            'type': 'monster',
+                            'name': monster_name,
+                            'line': line,
+                            'ratio': 1.0,
+                            'common_words': [],
+                            'char_match_ratio': 1.0,
+                            'name_length': len(monster_clean_zh_only)
+                        })
+                        if 1.0 > best_ratio:
+                            best_ratio = 1.0
+                            best_type = 'monster'
+                            best_name = monster_name
                     
                     monster_words = set(monster_clean_en.split())
                     line_words = set(line.split())

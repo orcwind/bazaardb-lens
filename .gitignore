@@ -137,3 +137,5 @@ config.ini
 /6.0/crawlers/event_details_final/icons
 /data/icon
 /data/html
+/.venv311
+/Output

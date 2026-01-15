@@ -17,16 +17,27 @@ def is_admin():
 
 
 def run_as_admin():
-    """以管理员权限重新运行程序"""
+    """以管理员权限重新运行程序
+    
+    Returns:
+        bool: 如果成功启动管理员进程返回True，否则返回False
+    """
     if not is_admin():
         try:
             logging.info("尝试以管理员权限重新运行程序...")
-            ctypes.windll.shell32.ShellExecuteW(
-                None, "runas", sys.executable, f'"{__file__}"', None, 1
+            # ShellExecuteW 返回一个 HINSTANCE 值
+            # 如果返回值 > 32，表示成功；如果 <= 32，表示失败
+            result = ctypes.windll.shell32.ShellExecuteW(
+                None, "runas", sys.executable, f'"{sys.argv[0]}"', None, 1
             )
+            # 检查返回值，如果成功（> 32），返回 True
+            if result > 32:
+                logging.info("已成功请求管理员权限，新进程将启动")
+                return True
+            else:
+                logging.warning(f"请求管理员权限失败，返回值: {result}")
+                return False
         except Exception as e:
             logging.error(f"获取管理员权限失败: {e}")
-            print("请手动以管理员身份运行程序")
-            # 等待3秒后自动退出，避免假死
-            time.sleep(3)
-            sys.exit()
+            return False
+    return True  # 如果已经是管理员，返回 True

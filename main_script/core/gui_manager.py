@@ -2,6 +2,7 @@
 GUI窗口管理模块
 """
 import os
+import sys
 import re
 import tkinter as tk
 import threading
@@ -9,15 +10,17 @@ import logging
 import traceback
 from urllib.parse import urlparse
 from ui import IconFrame, ScrollableFrame
+from logger import is_packaged_environment
 
 
 class GUIManager:
     """GUI窗口管理器"""
 
-    def __init__(self):
+    def __init__(self, ocr_processor=None):
         self.info_window = None
         self.gui_update_queue = []
         self.gui_update_lock = threading.Lock()
+        self.ocr_processor = ocr_processor  # 保存OCR处理器引用，用于匹配失败时的微调
         self.current_text = None
         self.content_frame = None
         self.scrollable_frame = None
@@ -252,10 +255,78 @@ class GUIManager:
                 
             if not display_success:
                 logging.warning(f"显示失败: match_type={match_type}, match_name={match_name}")
-                if match_type:
-                    self.show_info_message(f"未找到该{match_type}的数据，请稍后再试。", None)
-                else:
-                    self.show_info_message("未能识别到怪物或事件名称。", None)
+                
+                # 如果匹配失败且有OCR处理器，尝试图像微调并重新OCR
+                if self.ocr_processor and text:
+                    logging.info("[图像微调] 匹配失败，尝试对原始图像进行微调并重新OCR...")
+                    region_type = 'monster' if match_type != 'item' else 'item'
+                    if match_type is None:
+                        region_type = 'monster'  # 默认怪物类型
+                    
+                    micro_text, micro_match_result = self.ocr_processor.retry_ocr_with_micro_adjustments(
+                        region_type=region_type, 
+                        matcher=data_matcher
+                    )
+                    
+                    # 如果微调后找到了匹配结果，直接使用
+                    if micro_match_result and micro_match_result[0] and micro_match_result[1]:
+                        micro_match_type, micro_match_name = micro_match_result
+                        logging.info(f"[图像微调] 微调后匹配成功: type={micro_match_type}, name={micro_match_name}")
+                        
+                        # 微调后匹配成功，重新显示
+                        if micro_match_type == 'event':
+                            logging.info(f"[图像微调] 尝试显示事件: {micro_match_name}")
+                            if data_loader:
+                                display_success = self._format_event_info(micro_match_name, data_loader)
+                        elif micro_match_type == 'monster':
+                            if data_loader:
+                                display_success = self._format_monster_info(micro_match_name, data_loader)
+                        
+                        if display_success:
+                            logging.info(f"[图像微调] 微调后匹配成功，显示: {micro_match_name}")
+                            # 设置窗口位置
+                            self.info_window.geometry(f"+{x}+{y}")
+                            self.info_window.update_idletasks()
+                            # 调整窗口大小
+                            self._do_adjust_window(x, y)
+                            # 显示窗口并置顶
+                            self.info_window.deiconify()
+                            self.info_window.lift()
+                            self.info_window.attributes('-topmost', True)
+                            return
+                    elif micro_text and micro_text.strip():
+                        # 如果微调后没有立即匹配成功，但找到了文本，再尝试一次匹配
+                        if data_matcher:
+                            micro_match_type, micro_match_name = data_matcher.find_best_match(micro_text)
+                            logging.info(f"[图像微调] 微调后二次匹配结果: type={micro_match_type}, name={micro_match_name}")
+                            
+                            if micro_match_type and micro_match_name:
+                                # 微调后匹配成功，重新显示
+                                if micro_match_type == 'event':
+                                    logging.info(f"[图像微调] 尝试显示事件: {micro_match_name}")
+                                    if data_loader:
+                                        display_success = self._format_event_info(micro_match_name, data_loader)
+                                elif micro_match_type == 'monster':
+                                    if data_loader:
+                                        display_success = self._format_monster_info(micro_match_name, data_loader)
+                                
+                                if display_success:
+                                    logging.info(f"[图像微调] 微调后匹配成功，显示: {micro_match_name}")
+                                    # 设置窗口位置
+                                    self.info_window.geometry(f"+{x}+{y}")
+                                    self.info_window.update_idletasks()
+                                    # 调整窗口大小
+                                    self._do_adjust_window(x, y)
+                                    # 显示窗口并置顶
+                                    self.info_window.deiconify()
+                                    self.info_window.lift()
+                                    self.info_window.attributes('-topmost', True)
+                                    return
+                    
+                    logging.info("[图像微调] 微调后仍未匹配成功")
+                
+                # 统一显示：不管识别的是怪物、事件还是物品，未匹配时都显示统一的提示信息
+                self.show_info_message("识别失败，请重新按识别按钮。", None, font_size=18)
                 return
             
             logging.info(f"准备显示窗口，位置: {x}, {y}")
@@ -316,7 +387,8 @@ class GUIManager:
             
             if not item_data:
                 logging.warning(f"未找到物品: {text[:50] if text else None}")
-                self.show_info_message("未能识别到物品名称。", None)
+                # 统一显示：识别失败时显示统一的提示信息
+                self.show_info_message("识别失败，请重新按识别按钮。", None, font_size=18)
                 return
             
             item_name = item_data.get('name_zh', item_data.get('name', ''))
@@ -644,43 +716,61 @@ class GUIManager:
             return False
 
     def get_monster_icon_path(self, icon_filename, icon_type='skill'):
-        """获取怪物相关的图标路径（技能/物品/怪物）- 与旧脚本保持一致"""
+        """获取怪物相关的图标路径（技能/物品/怪物）- 与旧脚本保持一致，支持打包环境"""
         # icon_type: 'skill', 'item', 'monster'
         try:
-            # 获取项目根目录
-            current_file = os.path.abspath(__file__)  # core/gui_manager.py
-            core_dir = os.path.dirname(current_file)  # core目录
-            main_script_dir = os.path.dirname(core_dir)  # main_script目录
-            project_root = os.path.dirname(main_script_dir)  # 项目根目录
+            # 获取项目根目录（兼容打包环境）
+            if is_packaged_environment():
+                # 打包环境：使用 exe 所在目录
+                project_root = os.path.dirname(sys.executable)
+                logging.debug(f"[get_monster_icon_path] 打包环境，使用exe目录: {project_root}")
+            else:
+                # 开发环境：通过 __file__ 回溯
+                current_file = os.path.abspath(__file__)  # core/gui_manager.py
+                core_dir = os.path.dirname(current_file)  # core目录
+                main_script_dir = os.path.dirname(core_dir)  # main_script目录
+                project_root = os.path.dirname(main_script_dir)  # 项目根目录
+                logging.debug(f"[get_monster_icon_path] 开发环境，使用项目根目录: {project_root}")
             
             # 新目录结构：data/icon/skill/, data/icon/item/, data/icon/monster/
             icon_dir = os.path.join(project_root, 'data', 'icon', icon_type)
             
             # 处理icon文件名（可能包含skill/前缀）
+            original_filename = icon_filename
             if icon_filename.startswith('skill/'):
                 icon_filename = icon_filename.replace('skill/', '')
+                logging.debug(f"[get_monster_icon_path] 移除skill/前缀: {original_filename} -> {icon_filename}")
             
             icon_path = os.path.join(icon_dir, icon_filename)
+            logging.info(f"[get_monster_icon_path] 查找{icon_type}图标: {icon_path} (原始: {original_filename})")
+            
             if os.path.exists(icon_path):
-                logging.debug(f"找到{icon_type}图标: {icon_path}")
+                logging.info(f"[get_monster_icon_path] ✅ 找到{icon_type}图标: {icon_path}")
                 return icon_path
             
             # 如果找不到，返回None（不尝试下载，因为应该已经存在）
-            logging.debug(f"未找到{icon_type}图标: {icon_path}")
+            logging.warning(f"[get_monster_icon_path] ❌ 未找到{icon_type}图标: {icon_path}")
             return None
         except Exception as e:
-            logging.error(f"获取怪物图标路径失败: {e}")
+            logging.error(f"[get_monster_icon_path] 获取怪物图标路径失败: {e}")
+            import traceback
+            logging.error(traceback.format_exc())
             return None
 
     def get_local_icon_path(self, icon_url, event_name_en='', option_name_en='', icons_dir='icons'):
-        """从多个可能的图标路径查找图标，找不到则自动下载（与旧脚本保持一致）"""
+        """从多个可能的图标路径查找图标，找不到则自动下载（与旧脚本保持一致，支持打包环境）"""
         # 如果是相对路径，直接返回
         if icon_url and not icon_url.startswith('http'):
-            # 获取项目根目录
-            current_file = os.path.abspath(__file__)  # core/gui_manager.py
-            core_dir = os.path.dirname(current_file)  # core目录
-            main_script_dir = os.path.dirname(core_dir)  # main_script目录
-            project_root = os.path.dirname(main_script_dir)  # 项目根目录
+            # 获取项目根目录（兼容打包环境）
+            if is_packaged_environment():
+                # 打包环境：使用 exe 所在目录
+                project_root = os.path.dirname(sys.executable)
+            else:
+                # 开发环境：通过 __file__ 回溯
+                current_file = os.path.abspath(__file__)  # core/gui_manager.py
+                core_dir = os.path.dirname(current_file)  # core目录
+                main_script_dir = os.path.dirname(core_dir)  # main_script目录
+                project_root = os.path.dirname(main_script_dir)  # 项目根目录
             
             # 如果是事件图标，尝试在事件文件夹中查找
             if event_name_en:
@@ -790,20 +880,9 @@ class GUIManager:
             monster_data = data_loader.get_monster_data(monster_name)
             if not monster_data:
                 logging.warning(f"未找到怪物数据: {monster_name}")
-                # 确保子框架存在
-                if not self._ensure_subframes_exist():
-                    logging.warning("无法确保子框架存在，无法显示未找到消息")
-                    return False
-                if self.skills_frame and self.skills_frame.winfo_exists():
-                    self.skills_frame.pack(fill='x', pady=0, padx=0)
-                    not_found_frame = IconFrame(self.skills_frame)
-                    not_found_frame.pack(fill='x', pady=0)
-                    not_found_frame.update_content(
-                        monster_name,
-                        "未找到该怪物的数据，请稍后再试。",
-                        None
-                    )
-                return True
+                # 统一显示：识别失败时显示统一的提示信息
+                self.show_info_message("识别失败，请重新按识别按钮。", None, font_size=18)
+                return False
                 
             logging.info(f"找到怪物数据: {monster_name}, 技能数: {len(monster_data.get('skills', []))}, 物品数: {len(monster_data.get('items', []))}")
             if not self._clear_frames():
@@ -829,26 +908,37 @@ class GUIManager:
                         skill_name_zh = skill.get('name_zh', skill_name_en)
                         skill_description = ''
                         
-                        # 从skills_data中获取描述信息
+                        # 从skills_data中获取描述信息和图标（精确匹配，不使用猜测）
+                        skill_description = ''
+                        skill_icon = ''
+                        skill_aspect_ratio = 1.0
+                        
                         if skill_name_en in data_loader.skills_data:
                             skill_info = data_loader.skills_data[skill_name_en]
                             skill_description = skill_info.get('description_zh', '')
                             skill_icon = skill_info.get('icon', '')
                             skill_aspect_ratio = float(skill_info.get('aspect_ratio', 1.0))
+                            logging.info(f"[怪物技能图标] 从skills_data找到: {skill_name_en}, icon: {skill_icon}")
                         else:
+                            logging.warning(f"[怪物技能图标] 未在skills_data中找到技能: {skill_name_en}")
+                            # 如果skills_data中没有，尝试从monster_data的skill对象中获取（向后兼容）
                             skill_description = skill.get('description', '')
                             skill_icon = skill.get('icon', '')
-                            skill_aspect_ratio = float(skill.get('aspect_ratio', 1.0))
+                            skill_aspect_ratio = float(skill.get('aspect_ratio', 1.0)) if skill.get('aspect_ratio') else 1.0
+                            if skill_icon:
+                                logging.info(f"[怪物技能图标] 从monster_data的skill对象获取: {skill_name_en}, icon: {skill_icon}")
                         
                         # 获取技能图标（优先使用新目录结构）
                         icon_path = None
                         if skill_icon:
                             # 新格式：skill/Above_the_Clouds.webp 或直接文件名
                             icon_path = self.get_monster_icon_path(skill_icon, 'skill')
-                        elif skill.get('icon'):
-                            icon_path = self.get_monster_icon_path(skill['icon'], 'skill')
+                            logging.info(f"[怪物技能图标] 最终图标路径: {icon_path} (原始icon: {skill_icon})")
                         elif skill.get('icon_url'):
                             icon_path = self.get_local_icon_path(skill['icon_url'])
+                            logging.info(f"[怪物技能图标] 使用icon_url: {icon_path}")
+                        else:
+                            logging.warning(f"[怪物技能图标] 技能 {skill_name_en} 没有图标信息")
                         
                         skill_frame.update_content(
                             skill_name_zh,
@@ -889,16 +979,25 @@ class GUIManager:
                         item_name_zh = item.get('name_zh', item_name)
                         item_description = ''
                         
-                        # 从items_data中获取描述信息
+                        # 从items_data中获取描述信息和图标（精确匹配，不使用猜测）
+                        item_description = ''
+                        item_icon = ''
+                        item_aspect_ratio = 1.0
+                        
                         if item_name in data_loader.items_data:
                             item_info = data_loader.items_data[item_name]
                             item_description = item_info.get('description_zh', '')
                             item_icon = item_info.get('icon', '')
                             item_aspect_ratio = float(item_info.get('aspect_ratio', 1.0))
+                            logging.info(f"[怪物物品图标] 从items_data找到: {item_name}, icon: {item_icon}")
                         else:
+                            logging.warning(f"[怪物物品图标] 未在items_data中找到物品: {item_name}")
+                            # 如果items_data中没有，尝试从monster_data的item对象中获取（向后兼容）
                             item_description = item.get('description', '')
                             item_icon = item.get('icon', '')
-                            item_aspect_ratio = float(item.get('aspect_ratio', 1.0))
+                            item_aspect_ratio = float(item.get('aspect_ratio', 1.0)) if item.get('aspect_ratio') else 1.0
+                            if item_icon:
+                                logging.info(f"[怪物物品图标] 从monster_data的item对象获取: {item_name}, icon: {item_icon}")
                             
                         # 处理物品名称（如果有多个相同物品，显示数量）
                         display_name = item_name_zh
@@ -910,10 +1009,12 @@ class GUIManager:
                         if item_icon:
                             # 新格式：直接文件名，如 28_Hour_Fitness.webp
                             icon_path = self.get_monster_icon_path(item_icon, 'item')
-                        elif item.get('icon'):
-                            icon_path = self.get_monster_icon_path(item['icon'], 'item')
+                            logging.info(f"[怪物物品图标] 最终图标路径: {icon_path} (原始icon: {item_icon})")
                         elif item.get('icon_url'):
                             icon_path = self.get_local_icon_path(item['icon_url'])
+                            logging.info(f"[怪物物品图标] 使用icon_url: {icon_path}")
+                        else:
+                            logging.warning(f"[怪物物品图标] 物品 {item_name} 没有图标信息")
                         
                         item_frame.update_content(
                             display_name,
@@ -953,12 +1054,14 @@ class GUIManager:
             event_data = data_loader.get_event_data(event_name)
             if not event_data:
                 logging.error(f"找不到事件选项数据: {event_name}")
-                self._show_unmatched_text(event_name)
+                # 统一显示：识别失败时显示统一的提示信息
+                self.show_info_message("识别失败，请重新按识别按钮。", None, font_size=18)
                 return False
             
             if not isinstance(event_data, list) or not event_data:
                 logging.error(f"事件选项数据为空: {event_name}")
-                self._show_unmatched_text(event_name)
+                # 统一显示：识别失败时显示统一的提示信息
+                self.show_info_message("识别失败，请重新按识别按钮。", None, font_size=18)
                 return False
             
             logging.info(f"找到 {len(event_data)} 个事件选项")
@@ -1014,27 +1117,23 @@ class GUIManager:
                         aspect_ratio
                     )
             
-            if not event_data:
-                if self.event_options_frame and self.event_options_frame.winfo_exists():
-                    self.event_options_frame.pack(fill='x', pady=0)
-                    not_found_frame = IconFrame(self.event_options_frame)
-                    not_found_frame.pack(fill='x', pady=0)
-                    not_found_frame.update_content(
-                        event_name,
-                        "未找到该事件的数据，请稍后再试。",
-                        None
-                    )
-            
+            # 注意：这里不应该再检查event_data，因为前面已经检查过了
+            # 如果执行到这里，说明event_data不为空，已经成功显示了事件选项
             return True
         except Exception as e:
             logging.error(f"格式化事件信息失败: {e}")
             logging.error(traceback.format_exc())
             return False
 
-    def show_info_message(self, message, icon_url):
+    def show_info_message(self, message, icon_url, font_size=12):
         """
         显示信息消息
         完全按照旧脚本Bazaar_Lens.py的逻辑实现
+        
+        Args:
+            message: 要显示的消息
+            icon_url: 图标URL（可选）
+            font_size: 字体大小，默认12，可以自定义
         """
         try:
             # 清除现有内容
@@ -1049,7 +1148,7 @@ class GUIManager:
             message_label = tk.Label(
                 message_frame,
                 text=message,
-                font=('Microsoft YaHei', 12),
+                font=('Microsoft YaHei', font_size),
                 bg='#1C1810',
                 fg='#E8D4B9',
                 wraplength=500,

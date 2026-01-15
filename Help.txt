@@ -1,19 +1,28 @@
-Bazaar Lens 1.0.1 使用说明
+Bazaar Lens 1.0.2 使用说明
 
-   - 暂时只支持英文版本！！！
-   - 显示信息版本：Hotfix: October 10, 2025 ;
-   - 在游戏中按住 Ctrl 键可以查看鼠标指向位置的怪物或事件信息;
-   - 请确保以管理员权限运行程序;
-   - 如果tesseract-ocr.exe不是安装在默认位置，请在选项Set tesseract-ocr.exe Path中重新选择安装位置。   
-   - 如有bug或其他问题，请联系bazaarlens@gmail.com，谢谢！
-   - 更新将发布在https://www.bilibili.com/opus/1065739256294539282 。
+   - 功能： 大巴扎游戏中按住 Ctrl 键可以查看鼠标指向位置的怪物或事件信息;
+   - 如果未显示或未识别，请多尝试几次。
 
-Bazaar Lens 1.0.1 User Guide
+   - 暂时只支持中文版本！！！  
+ 
+ 📞 支持与反馈
+   如有Bug或其他问题，请联系：bazaarlens@gmail.com
+   或前往B站主页留言：https://space.bilibili.com/35110142
+   欢迎提交反馈，帮助我们改进！
+   
+   🔍 同时推荐一下个人做的流放之路工具网站：poe2lens
+   ✨ 提供实时物价、倒货计算、宝石利润、Boss收益等一站式数据工具
+   ⚡️ 免费使用，帮助你在POE1/POE2每个赛季高效赚取通货。
+   👉 地址：https://poe2lens.com 
 
-   - Only available for English Language.
-   - Display Game version : Hotfix: October 10, 2025;
-   - Hold Ctrl key in the game to view monster or event information at the mouse pointer position;
-   - Please ensure to run the program with administrator privileges;
-   - If tesseract-ocr.exe is not installed in the default location, please re-select the installation location in the Set tesseract-ocr.exe Path option.   
-   - If you encounter any bugs or other issues, please contact bazaarlens@gmail.com. Thank you!
-   - For latest version by https://www.bilibili.com/opus/1065739256294539282 . 
+
+更新历史：
+v1.0.2 [2026-1-15]
+-增加支持中文，显示中文
+-取消支持英文，不显示英文
+
+v1.0.1 [2025-10-13]
+-更新所有怪物，事件信息
+
+v1.0.0 [2025-5-11]
+-发布
