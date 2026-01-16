@@ -63,13 +63,21 @@ def setup_logging():
     )
     file_handler.setFormatter(log_formatter)
 
-    # 控制台处理器（只在开发环境显示）
+    # 控制台处理器（只在开发环境显示） - 使用精简格式和较高日志级别，避免控制台泛滥
     console_handler = logging.StreamHandler()
-    console_handler.setFormatter(log_formatter)
+    console_formatter = logging.Formatter('%(levelname)s: %(message)s')
+    console_handler.setFormatter(console_formatter)
+    console_handler.setLevel(logging.WARNING)  # 控制台只显示 WARNING 及以上
 
     # 配置根日志记录器
     logger = logging.getLogger()
+    # 清理已有处理器，避免重复输出（有时其他库或先前配置已附加 Handler）
+    if logger.handlers:
+        for h in list(logger.handlers):
+            logger.removeHandler(h)
     logger.setLevel(logging.INFO)
+    # 文件处理器记录 INFO+
+    file_handler.setLevel(logging.INFO)
     logger.addHandler(file_handler)
     logger.addHandler(console_handler)
 

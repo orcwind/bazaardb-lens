@@ -5577,17 +5577,17 @@
     "description_zh": "每场战斗开始时，核心开始飞行。\n使用飞行物品时，加速一件物品1 » 2 » 3秒。",
     "icon": "Propeller_Hat.webp",
     "aspect_ratio": 1.0,
-    "url": "https://bazaardb.gg/search?q=Propeller&c=items",
+    "url": "https://bazaardb.gg/search?q=Propeller-Hat&c=items",
     "enchantments": "黄金\n此物品的价值翻倍。\n\n沉重\n使用飞行物品时，减速一件物品1秒。\n\n寒冰\n使用飞行物品时，冻结一件物品0.5秒。\n\n疾速\n此物品的加速持续时间翻倍。\n\n护盾\n使用飞行物品时，获得20护盾。\n\n回复\n使用飞行物品时，获得20治疗。\n\n毒性蔓延\n使用飞行物品时，造成2剧毒。\n\n炽焰\n使用飞行物品时，造成2灼烧。\n\n闪亮\n相邻核心和飞行物品+{ability.e1}多重触发。\n\n致命\n飞行物品+40%暴击率。\n\n辉耀\n相邻物品受到的冻结和减速效果时长减半。\n\n黑曜石 +Weapon\n使用飞行物品时，造成20伤害。"
   },
   {
-    "name": "Propeller Hat",
-    "name_zh": "螺旋帽",
-    "description_zh": "每场战斗开始时，核心开始飞行。\n使用飞行物品时，加速一件物品1 » 2 » 3秒。",
-    "icon": "Propeller_Hat.webp",
+    "name": "Propeller",
+    "name_zh": "螺旋桨",
+    "description_zh": "一件物品开始飞行\n飞行物品的冷却时间缩短10% » 15% » 20% 。",
+    "icon": "Propeller.webp",
     "aspect_ratio": 1.0,
-    "url": "https://bazaardb.gg/search?q=Propeller-Hat&c=items",
-    "enchantments": "黄金\n此物品的价值翻倍。\n\n沉重\n使用飞行物品时，减速一件物品1秒。\n\n寒冰\n使用飞行物品时，冻结一件物品0.5秒。\n\n疾速\n此物品的加速持续时间翻倍。\n\n护盾\n使用飞行物品时，获得20护盾。\n\n回复\n使用飞行物品时，获得20治疗。\n\n毒性蔓延\n使用飞行物品时，造成2剧毒。\n\n炽焰\n使用飞行物品时，造成2灼烧。\n\n闪亮\n相邻核心和飞行物品+{ability.e1}多重触发。\n\n致命\n飞行物品+40%暴击率。\n\n辉耀\n相邻物品受到的冻结和减速效果时长减半。\n\n黑曜石 +Weapon\n使用飞行物品时，造成20伤害。"
+    "url": "https://bazaardb.gg/search?q=Propeller&c=items",
+    "enchantments": "黄金\n此物品的价值翻倍。\n\n沉重\n减速2件物品1秒。\n\n寒冰\n冻结一件物品1秒。\n\n疾速\n加速2件物品1秒。\n\n护盾\n获得70护盾。\n\n回复\n治疗70生命值。\n\n毒性蔓延\n造成7剧毒。\n\n炽焰\n造成7灼烧。\n\n闪亮\n此物品+1多重触发。\n\n致命\n飞行物品+40%暴击率。\n\n辉耀\n此物品免疫冻结、减速和摧毁。\n\n黑曜石\n此物品的伤害翻倍。"
   },
   {
     "name": "Pufferfish",
@@ -8050,5 +8050,15 @@
     "aspect_ratio": 1.0,
     "url": "https://bazaardb.gg/search?q=Zoot-Flute&c=items",
     "enchantments": "黄金\n此物品的价值翻倍。\n\n沉重\n此物品的减速持续时间翻倍。\n\n寒冰\n造成暴击时，冻结一件物品0.5秒。\n\n疾速\n造成暴击时，加速一件物品1秒。\n\n护盾\n造成暴击时，获得25护盾。\n\n回复\n造成暴击时，获得25治疗。\n\n毒性蔓延\n造成暴击时，造成2剧毒。\n\n炽焰\n造成暴击时，造成2灼烧。\n\n闪亮\n此物品+1多重触发。\n\n致命\n相邻物品+40%暴击率。\n\n辉耀\n此物品免疫冻结、减速和摧毁。\n\n黑曜石 +Weapon\n造成暴击时，造成25伤害。"
+  } ,
+  {  
+    "name": "Cog",
+    "name_zh": "齿轮",
+    "description_zh": "4.0\n秒\n 加速一件相邻物品1 » 2 » 3 » 4秒",
+    "icon": "Cog.webp",
+    "aspect_ratio": 0.5,
+    "url": "https://bazaardb.gg/search?q=Cog&c=items",
+    "enchantments": "黄金\n此物品的价值翻倍。\n\n沉重\n减速一件物品1秒。\n\n寒冰\n冻结一件物品0.5秒 \n\n疾速\n此物品的加速持续时间翻倍。\n\n护盾\n获得30护盾。\n\n回复\n 治疗30生命。\n\n毒性蔓延\n 造成3剧毒。\n\n炽焰\n 造成3灼烧。\n\n闪亮\n此物品+1多重触发。\n\n致命\n一件相邻物品暴击率提高20%（限本场战斗）\n\n辉耀\n此物品免疫冻结、减速和摧毁。\n\n黑曜石 +Weapon\n造成30伤害"
   }
+
 ]

@@ -131,7 +131,7 @@ class DataLoader:
     def load_monster_data(self):
         try:
             base_dir = self.get_base_dir()
-            # 优先尝试从加密包读取（如果启用并可用）
+            # 只能从加密包读取
             data = None
             if secure_bundle:
                 try:
@@ -139,16 +139,26 @@ class DataLoader:
                     if data is not None:
                         logging.info("[DataLoader] 从加密包加载 monsters_detail.json")
                 except Exception as e:
-                    logging.warning(f"[DataLoader] 从加密包加载 monsters_detail.json 出错: {e}")
-
-            if data is None:
-                monster_file = os.path.join(base_dir, 'data', 'Json', 'monsters_detail.json')
-                if not os.path.exists(monster_file):
-                    monster_file = os.path.join(base_dir, 'data', 'Json - 副本', 'monsters_detail.json')
+                    logging.error(f"[DataLoader] 从加密包加载 monsters_detail.json 出错: {e}")
+            
+            # 打包环境：只能从加密包读取，不允许从磁盘读取
+            if is_packaged_environment():
+                if data is None:
+                    logging.error("[DataLoader] 打包环境：加密包不可用，无法加载 monsters_detail.json")
+                    data = None
+            else:
+                # 开发环境：如果加密包不可用，允许从磁盘读取（开发便利）
+                if data is None:
+                    monster_file = os.path.join(base_dir, 'data', 'Json', 'monsters_detail.json')
                     if not os.path.exists(monster_file):
-                        monster_file = os.path.join(base_dir, '6.0', 'crawlers', 'monster_details_v3', 'monsters_v3.json')
-                with open(monster_file, 'r', encoding='utf-8') as f:
-                    data = json.load(f)
+                        monster_file = os.path.join(base_dir, 'data', 'Json - 副本', 'monsters_detail.json')
+                    if os.path.exists(monster_file):
+                        with open(monster_file, 'r', encoding='utf-8') as f:
+                            data = json.load(f)
+                        logging.info(f"[DataLoader] 开发环境：从磁盘加载 monsters_detail.json: {monster_file}")
+                    else:
+                        logging.warning(f"[DataLoader] 开发环境：未找到 monsters_detail.json")
+                        data = None
 
             # 处理加载到的 data（无论来自加密包还是磁盘）
             if data is not None:
@@ -172,7 +182,7 @@ class DataLoader:
     def load_items_data(self):
         try:
             base_dir = self.get_base_dir()
-            # 尝试从加密包读取 items.json / items_db.json
+            # 只能从加密包读取 items.json
             items = None
             if secure_bundle:
                 try:
@@ -180,15 +190,22 @@ class DataLoader:
                     if items is not None:
                         logging.info("[DataLoader] 从加密包加载 items.json")
                 except Exception as e:
-                    logging.warning(f"[DataLoader] 从加密包加载 items.json 出错: {e}")
+                    logging.error(f"[DataLoader] 从加密包加载 items.json 出错: {e}")
 
-            if items is None:
-                items_file = os.path.join(base_dir, 'data', 'Json', 'items.json')
-                if not os.path.exists(items_file):
-                    items_file = os.path.join(base_dir, 'data', 'Json - 副本', 'items.json')
-                if os.path.exists(items_file):
-                    with open(items_file, 'r', encoding='utf-8') as f:
-                        items = json.load(f)
+            # 打包环境：只能从加密包读取，不允许从磁盘读取
+            if is_packaged_environment():
+                if items is None:
+                    logging.error("[DataLoader] 打包环境：加密包不可用，无法加载 items.json")
+            else:
+                # 开发环境：如果加密包不可用，允许从磁盘读取（开发便利）
+                if items is None:
+                    items_file = os.path.join(base_dir, 'data', 'Json', 'items.json')
+                    if not os.path.exists(items_file):
+                        items_file = os.path.join(base_dir, 'data', 'Json - 副本', 'items.json')
+                    if os.path.exists(items_file):
+                        with open(items_file, 'r', encoding='utf-8') as f:
+                            items = json.load(f)
+                        logging.info(f"[DataLoader] 开发环境：从磁盘加载 items.json: {items_file}")
 
             if items:
                 self.items_data = {item['name']: item for item in items}
@@ -202,13 +219,20 @@ class DataLoader:
                     if uuid_items is not None:
                         logging.info("[DataLoader] 从加密包加载 items_db.json")
                 except Exception as e:
-                    logging.warning(f"[DataLoader] 从加密包加载 items_db.json 出错: {e}")
+                    logging.error(f"[DataLoader] 从加密包加载 items_db.json 出错: {e}")
 
-            if uuid_items is None:
-                items_db_file = os.path.join(base_dir, 'data', 'Json', 'items_db.json')
-                if os.path.exists(items_db_file):
-                    with open(items_db_file, 'r', encoding='utf-8') as f:
-                        uuid_items = json.load(f)
+            # 打包环境：只能从加密包读取，不允许从磁盘读取
+            if is_packaged_environment():
+                if uuid_items is None:
+                    logging.error("[DataLoader] 打包环境：加密包不可用，无法加载 items_db.json")
+            else:
+                # 开发环境：如果加密包不可用，允许从磁盘读取（开发便利）
+                if uuid_items is None:
+                    items_db_file = os.path.join(base_dir, 'data', 'Json', 'items_db.json')
+                    if os.path.exists(items_db_file):
+                        with open(items_db_file, 'r', encoding='utf-8') as f:
+                            uuid_items = json.load(f)
+                        logging.info(f"[DataLoader] 开发环境：从磁盘加载 items_db.json: {items_db_file}")
 
             if uuid_items:
                 self.uuid_to_item_data = uuid_items
@@ -223,7 +247,7 @@ class DataLoader:
     def load_skills_data(self):
         try:
             base_dir = self.get_base_dir()
-            # 尝试从加密包读取 skills.json
+            # 只能从加密包读取 skills.json
             skills = None
             if secure_bundle:
                 try:
@@ -231,15 +255,22 @@ class DataLoader:
                     if skills is not None:
                         logging.info("[DataLoader] 从加密包加载 skills.json")
                 except Exception as e:
-                    logging.warning(f"[DataLoader] 从加密包加载 skills.json 出错: {e}")
+                    logging.error(f"[DataLoader] 从加密包加载 skills.json 出错: {e}")
 
-            if skills is None:
-                skills_file = os.path.join(base_dir, 'data', 'Json', 'skills.json')
-                if not os.path.exists(skills_file):
-                    skills_file = os.path.join(base_dir, 'data', 'Json - 副本', 'skills.json')
-                if os.path.exists(skills_file):
-                    with open(skills_file, 'r', encoding='utf-8') as f:
-                        skills = json.load(f)
+            # 打包环境：只能从加密包读取，不允许从磁盘读取
+            if is_packaged_environment():
+                if skills is None:
+                    logging.error("[DataLoader] 打包环境：加密包不可用，无法加载 skills.json")
+            else:
+                # 开发环境：如果加密包不可用，允许从磁盘读取（开发便利）
+                if skills is None:
+                    skills_file = os.path.join(base_dir, 'data', 'Json', 'skills.json')
+                    if not os.path.exists(skills_file):
+                        skills_file = os.path.join(base_dir, 'data', 'Json - 副本', 'skills.json')
+                    if os.path.exists(skills_file):
+                        with open(skills_file, 'r', encoding='utf-8') as f:
+                            skills = json.load(f)
+                        logging.info(f"[DataLoader] 开发环境：从磁盘加载 skills.json: {skills_file}")
 
             if skills:
                 self.skills_data = {skill['name']: skill for skill in skills}
@@ -247,11 +278,10 @@ class DataLoader:
         except Exception as e:
             logging.error(f"加载技能数据失败: {e}")
             self.skills_data = {}
-
     def load_event_data(self):
         try:
             base_dir = self.get_base_dir()
-            # 尝试从加密包读取 events_from_html.json
+            # 只能从加密包读取 events_from_html.json
             events = None
             if secure_bundle:
                 try:
@@ -259,16 +289,29 @@ class DataLoader:
                     if events is not None:
                         logging.info("[DataLoader] 从加密包加载 events_from_html.json")
                 except Exception as e:
-                    logging.warning(f"[DataLoader] 从加密包加载 events_from_html.json 出错: {e}")
+                    logging.error(f"[DataLoader] 从加密包加载 events_from_html.json 出错: {e}")
+
+            # 打包环境：只能从加密包读取，不允许从磁盘读取
+            if is_packaged_environment():
+                if events is None:
+                    logging.error("[DataLoader] 打包环境：加密包不可用，无法加载 events_from_html.json")
+            else:
+                # 开发环境：如果加密包不可用，允许从磁盘读取（开发便利）
+                if events is None:
+                    event_file = os.path.join(base_dir, 'data', 'Json', 'events_from_html.json')
+                    if os.path.exists(event_file):
+                        with open(event_file, 'r', encoding='utf-8') as f:
+                            events = json.load(f)
+                        logging.info(f"[DataLoader] 开发环境：从磁盘加载 events_from_html.json: {event_file}")
+                    else:
+                        logging.warning(f"[DataLoader] 开发环境：未找到 events_from_html.json")
+                        events = None
 
             if events is None:
-                event_file = os.path.join(base_dir, 'data', 'Json', 'events_from_html.json')
-                if not os.path.exists(event_file):
-                    event_file = os.path.join(base_dir, '6.0', 'crawlers', 'event_details_final', 'events_final.json')
-                with open(event_file, 'r', encoding='utf-8') as f:
-                    events = json.load(f)
-
-            self.events = events
+                self.events = []
+                logging.warning("[DataLoader] events 为 None，设置为空列表")
+            else:
+                self.events = events
             logging.info(f"已加载 {len(self.events)} 个事件")
             self.event_data = {}
             self.event_name_map = {}

@@ -268,13 +268,10 @@ class ScrollableFrame(tk.Frame):
         self.canvas = tk.Canvas(self, bg=bg_color, highlightthickness=0)
         self.canvas.grid(row=0, column=0, sticky="nsew")
 
-        # 创建滚动条
-        self.scrollbar = ttk.Scrollbar(
-            self, orient="vertical", command=self.canvas.yview)
-        self.scrollbar.grid(row=0, column=1, sticky="ns")
-
-        # 配置Canvas
-        self.canvas.configure(yscrollcommand=self.scrollbar.set)
+        # 不创建滚动条（滚动条/滚轮功能已移除）
+        self.scrollbar = None
+        # 不配置 canvas 的 yscrollcommand，防止任何滚动条关联
+        self.canvas.configure(yscrollcommand=lambda *a: None)
 
         # 创建内部框架
         self.inner_frame = tk.Frame(self.canvas, bg=bg_color)
@@ -284,10 +281,17 @@ class ScrollableFrame(tk.Frame):
         # 绑定事件
         self.canvas.bind("<Configure>", self._on_canvas_configure)
         self.inner_frame.bind("<Configure>", self._on_frame_configure)
-        self.bind_all("<MouseWheel>", self._on_mousewheel)
 
-        # 初始隐藏滚动条
-        self.scrollbar.grid_remove()
+        # 当鼠标进入/离开 canvas 区域时，绑定/解绑滚轮事件（避免全局绑定导致焦点问题）
+        self.canvas.bind("<Enter>", lambda e: self._bind_mousewheel())
+        self.canvas.bind("<Leave>", lambda e: self._unbind_mousewheel())
+
+        # 初始隐藏滚动条（如果存在）
+        if self.scrollbar is not None:
+            try:
+                self.scrollbar.grid_remove()
+            except Exception:
+                pass
 
     def _on_canvas_configure(self, event):
         """当Canvas大小改变时，调整内部窗口宽度"""
@@ -297,38 +301,68 @@ class ScrollableFrame(tk.Frame):
         """当内部框架大小改变时，更新滚动区域"""
         # 更新Canvas的滚动区域
         self.canvas.configure(scrollregion=self.canvas.bbox("all"))
+        # Ensure any existing scrollbar (if present) is hidden/destroyed
+        try:
+            if getattr(self, 'scrollbar', None):
+                try:
+                    self.scrollbar.grid_remove()
+                except Exception:
+                    pass
+        except Exception:
+            pass
 
-        # 检查是否需要显示滚动条
-        inner_height = self.inner_frame.winfo_reqheight()
-        canvas_height = self.canvas.winfo_height()
+    def _bind_mousewheel(self):
+        """在鼠标进入时绑定滚轮事件（兼容 Windows/Linux/Mac）"""
+        # 全局滚轮绑定已移除：此函数保留为空以兼容旧调用
+        logging.debug("[ScrollableFrame] _bind_mousewheel skipped (wheel disabled)")
 
-        if inner_height > canvas_height:
-            # 内容高度超过Canvas高度，显示滚动条
-            self.scrollbar.grid()
-        else:
-            # 内容高度不超过Canvas高度，隐藏滚动条
-            self.scrollbar.grid_remove()
+    def _unbind_mousewheel(self):
+        """在鼠标离开时解绑全局滚轮事件"""
+        # 全局滚轮绑定已移除：此函数保留为空以兼容旧调用
+        logging.debug("[ScrollableFrame] _unbind_mousewheel skipped (wheel disabled)")
+
+    def enable_global_scroll(self):
+        """显式启用全局滚轮绑定（用于在信息窗口显示时，即使鼠标不在窗口上也能滚动）"""
+        # 全局滚轮功能已移除，保留方法以兼容调用
+        logging.debug("[ScrollableFrame] enable_global_scroll called but wheel functionality is disabled")
+
+    def disable_global_scroll(self):
+        """显式禁用全局滚轮绑定"""
+        # 全局滚轮功能已移除；取消任何残留轮询任务
+        try:
+            if hasattr(self, '_wheel_polling') and getattr(self, '_wheel_polling', False):
+                self._wheel_polling = False
+                try:
+                    if getattr(self, '_wheel_poll_task', None):
+                        self.canvas.after_cancel(self._wheel_poll_task)
+                        self._wheel_poll_task = None
+                except Exception:
+                    pass
+        except Exception:
+            pass
+
+    def _on_hook_scroll(self, units):
+        """被系统钩子线程调用；在主线程中调度实际滚动"""
+        try:
+            # units already computed as integer (positive = scroll down)
+            if self.canvas:
+                self.canvas.after(0, lambda: self.canvas.yview_scroll(units, "units"))
+        except Exception:
+            logging.exception("_on_hook_scroll failed")
 
     def _on_mousewheel(self, event):
-        """处理鼠标滚轮事件"""
-        # 只有当滚动条显示时才处理滚轮事件
-        if self.scrollbar.winfo_ismapped():
-            self.canvas.yview_scroll(int(-1 * (event.delta / 120)), "units")
+        """滚轮事件处理已移除（不再响应滚轮）"""
+        logging.debug("[ScrollableFrame] _on_mousewheel ignored (wheel disabled)")
 
     def update_scrollregion(self):
         """手动更新滚动区域"""
         self.canvas.configure(scrollregion=self.canvas.bbox("all"))
-
-        # 检查是否需要显示滚动条
-        inner_height = self.inner_frame.winfo_reqheight()
-        canvas_height = self.canvas.winfo_height()
-
-        if inner_height > canvas_height:
-            # 内容高度超过Canvas高度，显示滚动条
-            self.scrollbar.grid()
-        else:
-            # 内容高度不超过Canvas高度，隐藏滚动条
-            self.scrollbar.grid_remove()
+        # 滚轮/滚动条相关功能已移除：始终隐藏滚动条（如果存在）
+        if self.scrollbar is not None:
+            try:
+                self.scrollbar.grid_remove()
+            except Exception:
+                pass
 
     def get_inner_frame(self):
         """获取内部框架"""

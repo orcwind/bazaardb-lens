@@ -18,15 +18,19 @@ PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 def collect_json_bytes(src_dir):
     mem = io.BytesIO()
+    collected_files = []
     with zipfile.ZipFile(mem, 'w', zipfile.ZIP_DEFLATED) as zf:
         for root, _, files in os.walk(src_dir):
             for fn in files:
                 if not fn.lower().endswith('.json'):
                     continue
                 full = os.path.join(root, fn)
-                arcname = os.path.relpath(full, src_dir)
+                # 使用文件名作为 zip 内的路径（不包含目录结构），便于查找
+                arcname = fn
                 zf.write(full, arcname)
+                collected_files.append(fn)
     mem.seek(0)
+    logging.info(f"已收集以下 JSON 文件: {', '.join(sorted(collected_files))}")
     return mem.read()
 
 def main():
@@ -39,6 +43,23 @@ def main():
     logging.info(f"收集 JSON 文件: {src}")
     plain = collect_json_bytes(src)
     logging.info(f"收集完成，字节数: {len(plain)}")
+    
+    # 验证关键文件是否被包含
+    import zipfile
+    import io
+    mem = io.BytesIO(plain)
+    with zipfile.ZipFile(mem, 'r') as zf:
+        required_files = ['events_from_html.json', 'monsters_detail.json', 'items.json', 'skills.json']
+        for req_file in required_files:
+            found = False
+            for info in zf.infolist():
+                if os.path.basename(info.filename) == req_file:
+                    found = True
+                    break
+            if found:
+                logging.info(f"✓ 验证通过: {req_file} 已包含在加密包中")
+            else:
+                logging.warning(f"⚠ 警告: {req_file} 未包含在加密包中！")
 
     # 生成 AES-GCM key
     key = AESGCM.generate_key(bit_length=256)

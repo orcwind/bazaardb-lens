@@ -21,12 +21,14 @@ from typing import Optional
 
 try:
     from cryptography.hazmat.primitives.ciphers.aead import AESGCM
-except Exception:
+except Exception as e:
     AESGCM = None
+    logging.warning(f"[SecureData] 导入 cryptography 失败: {e}")
 try:
     import win32crypt
-except Exception:
+except Exception as e:
     win32crypt = None
+    logging.debug(f"[SecureData] win32crypt 导入失败: {e}")
 
 
 def _get_base_path():

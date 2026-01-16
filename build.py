@@ -2,6 +2,24 @@ import PyInstaller.__main__
 import os
 import sys
 import subprocess
+import importlib
+
+# 确认构建环境中已安装 cryptography（防止打包出不含加密库的 exe）
+try:
+    cryptography_spec = importlib.util.find_spec('cryptography')
+    if cryptography_spec is None:
+        print("错误：构建环境缺少 'cryptography' 模块。请先运行: pip install cryptography")
+        sys.exit(1)
+    else:
+        try:
+            import cryptography
+            print(f"检测到 cryptography: {cryptography.__version__}")
+        except Exception:
+            print("检测到 cryptography 包存在，但无法导入。请检查安装环境。")
+            sys.exit(1)
+except Exception:
+    # 在极少数环境 find_spec 可能出错，继续让后续流程检测
+    pass
 
 print("="*60)
 print("开始打包 Bazaar_Lens...")
@@ -94,12 +112,17 @@ print("\n准备生成加密数据包 data_json.enc ...")
 encrypt_script = os.path.join(os.getcwd(), 'tools', 'encrypt_data.py')
 if os.path.exists(encrypt_script):
     try:
-        res = subprocess.run([sys.executable, encrypt_script], check=True)
-        print("✓ data_json.enc 生成完成")
-    except subprocess.CalledProcessError as e:
-        print(f"✗ 生成 data_json.enc 失败: {e}")
-        print("打包终止")
-        sys.exit(1)
+        res = subprocess.run([sys.executable, encrypt_script], check=False, capture_output=True, text=True)
+        if res.returncode == 0:
+            print("✓ data_json.enc 生成完成")
+        else:
+            print(f"⚠ 生成 data_json.enc 失败: {res.stderr.strip() if res.stderr else '未知错误'}")
+            print("⚠ 跳过加密打包步骤，将使用未加密的 JSON 文件（如果已存在 data_json.enc 则使用它）")
+            if 'cryptography' in res.stderr.lower() or 'ModuleNotFoundError' in res.stderr:
+                print("   提示: 如需加密功能，请安装 cryptography 模块: pip install cryptography")
+    except Exception as e:
+        print(f"⚠ 运行 encrypt_data 脚本时出错: {e}")
+        print("⚠ 跳过加密打包步骤，将使用未加密的 JSON 文件（如果已存在 data_json.enc 则使用它）")
 else:
     print("⚠ 未找到 encrypt_data 脚本，跳过加密打包步骤（确保你已手动准备 data_json.enc）")
 
@@ -124,6 +147,11 @@ args = [
     '--hidden-import=pystray',
     '--hidden-import=pystray._win32',  # Windows 平台必需的 pystray 后端
     '--hidden-import=pystray.backends._win32',  # Windows 后端实现
+    '--hidden-import=cryptography',
+    '--hidden-import=cryptography.hazmat',
+    '--hidden-import=cryptography.hazmat.primitives',
+    '--hidden-import=cryptography.hazmat.bindings.openssl',
+    '--hidden-import=cryptography.hazmat.bindings._constant_time',
     '--hidden-import=psutil',
     # 排除不必要的库（减小体积）
     '--exclude-module=matplotlib',

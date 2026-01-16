@@ -82,11 +82,6 @@ class MainController:
         
         try:
             self.data_loader.load_event_data()
-            # 检查matcher是否初始化成功
-            if hasattr(self.data_loader, 'matcher') and self.data_loader.matcher:
-                logging.info(f"[MainController] 文本匹配器已初始化: {type(self.data_loader.matcher).__name__}")
-            else:
-                logging.warning(f"[MainController] 文本匹配器未初始化或为None: matcher={getattr(self.data_loader, 'matcher', 'NOT_FOUND')}")
         except Exception as e:
             logging.error(f"[MainController] 加载事件数据失败: {e}")
             logging.error(traceback.format_exc())
@@ -266,7 +261,7 @@ class MainController:
                         if not is_game_active:
                             logging.debug("Ctrl键按下，但游戏窗口不是活动窗口，忽略")
                             continue
-                        
+
                         # 只有游戏窗口存在且未最小化时才处理Ctrl键按下
                         if is_game_available:
                             time_since_last = current_time - self.last_action_time
@@ -294,7 +289,7 @@ class MainController:
                                 except concurrent.futures.TimeoutError:
                                     logging.warning("OCR识别超时，但截图已保存")
                                     text = None
-                                
+
                                 # 如果OCR识别成功，添加到GUI更新队列
                                 if text:
                                     import pyautogui
@@ -329,77 +324,77 @@ class MainController:
                         with self.gui_manager.gui_update_lock:
                             self.gui_manager.gui_update_queue.append({'type': 'hide'})
 
-                    # Shift键状态发生变化（物品附魔显示）
-                    if is_shift_pressed != self.shift_pressed:
-                        self.shift_pressed = is_shift_pressed
-                        if is_shift_pressed:
-                            # 实时检查：当前活动窗口是否是游戏窗口（在按键按下时检查）
-                            is_game_active = self._is_game_window_active()
-                            if not is_game_active:
-                                logging.debug("Shift键按下，但游戏窗口不是活动窗口，忽略")
-                                continue
-                            
-                            # 只有游戏窗口存在且未最小化时才处理Shift键按下
-                            if is_game_available:
-                                time_since_last = current_time - self.last_action_time
-                                logging.info(
-                                    f"Shift键按下，距离上次动作: {time_since_last:.2f}秒，"
-                                    f"防抖动延迟: {debounce_delay}秒")
-                                # 添加防抖动: 检查距离上次动作的时间是否足够
-                                # 同时检查上次OCR任务是否完成（避免任务堆积）
-                                time_since_last_ocr = current_time - last_ocr_task_time
-                                if current_time - self.last_action_time >= debounce_delay and time_since_last_ocr >= 0.1:
-                                    logging.info("Shift键防抖动检查通过，开始物品OCR识别并保存截图")
-                                    last_ocr_task_time = current_time  # 记录OCR任务开始时间
-                                    # Shift键被按下，获取物品信息并显示附魔
-                                    # 使用线程池异步执行OCR，避免阻塞按键检测
-                                    future = ocr_executor.submit(
-                                        self.ocr_processor.get_text_at_cursor,
-                                        region_type='item',
-                                        window_detector=self.window_detector,
-                                        position_config=self.position_config,
-                                        skip_checks=True
-                                    )
-                                    # 设置超时，避免长时间阻塞
-                                    try:
-                                        text = future.result(timeout=1.5)  # 1.5秒超时
-                                    except concurrent.futures.TimeoutError:
-                                        logging.warning("OCR识别超时，但截图已保存")
-                                        text = None
-                                    
-                                    # 如果OCR识别成功，添加到GUI更新队列
-                                    if text:
-                                        import pyautogui
-                                        x, y = pyautogui.position()
-                                        last_position = (x, y)
-                                        # 添加到GUI更新队列而不是直接操作
-                                        with self.gui_manager.gui_update_lock:
-                                            self.gui_manager.gui_update_queue.append({
-                                                'type': 'show_enchantments',
-                                                'text': text,
-                                                'x': x,
-                                                'y': y,
-                                                'data_matcher': self.data_loader.matcher,
-                                                'data_loader': self.data_loader
-                                            })
-                                        self.last_action_time = current_time
-                                    else:
-                                        logging.warning("Shift OCR识别返回空文本")
-                                        # 即使OCR失败，也更新last_action_time以防止频繁触发
-                                        self.last_action_time = current_time
+                # Shift键状态发生变化（物品附魔显示）
+                if is_shift_pressed != self.shift_pressed:
+                    self.shift_pressed = is_shift_pressed
+                    if is_shift_pressed:
+                        # 实时检查：当前活动窗口是否是游戏窗口（在按键按下时检查）
+                        is_game_active = self._is_game_window_active()
+                        if not is_game_active:
+                            logging.debug("Shift键按下，但游戏窗口不是活动窗口，忽略")
+                            continue
+
+                        # 只有游戏窗口存在且未最小化时才处理Shift键按下
+                        if is_game_available:
+                            time_since_last = current_time - self.last_action_time
+                            logging.info(
+                                f"Shift键按下，距离上次动作: {time_since_last:.2f}秒，"
+                                f"防抖动延迟: {debounce_delay}秒")
+                            # 添加防抖动: 检查距离上次动作的时间是否足够
+                            # 同时检查上次OCR任务是否完成（避免任务堆积）
+                            time_since_last_ocr = current_time - last_ocr_task_time
+                            if current_time - self.last_action_time >= debounce_delay and time_since_last_ocr >= 0.1:
+                                logging.info("Shift键防抖动检查通过，开始物品OCR识别并保存截图")
+                                last_ocr_task_time = current_time  # 记录OCR任务开始时间
+                                # Shift键被按下，获取物品信息并显示附魔
+                                # 使用线程池异步执行OCR，避免阻塞按键检测
+                                future = ocr_executor.submit(
+                                    self.ocr_processor.get_text_at_cursor,
+                                    region_type='item',
+                                    window_detector=self.window_detector,
+                                    position_config=self.position_config,
+                                    skip_checks=True
+                                )
+                                # 设置超时，避免长时间阻塞
+                                try:
+                                    text = future.result(timeout=1.5)  # 1.5秒超时
+                                except concurrent.futures.TimeoutError:
+                                    logging.warning("OCR识别超时，但截图已保存")
+                                    text = None
+
+                                # 如果OCR识别成功，添加到GUI更新队列
+                                if text:
+                                    import pyautogui
+                                    x, y = pyautogui.position()
+                                    last_position = (x, y)
+                                    # 添加到GUI更新队列而不是直接操作
+                                    with self.gui_manager.gui_update_lock:
+                                        self.gui_manager.gui_update_queue.append({
+                                            'type': 'show_enchantments',
+                                            'text': text,
+                                            'x': x,
+                                            'y': y,
+                                            'data_matcher': self.data_loader.matcher,
+                                            'data_loader': self.data_loader
+                                        })
+                                    self.last_action_time = current_time
                                 else:
-                                    logging.info(
-                                        f"Shift键防抖动阻止：距离上次动作仅 {time_since_last:.2f}秒，"
-                                        f"需要等待 {debounce_delay - time_since_last:.2f}秒")
+                                    logging.warning("Shift OCR识别返回空文本")
+                                    # 即使OCR失败，也更新last_action_time以防止频繁触发
+                                    self.last_action_time = current_time
                             else:
-                                # 游戏窗口不存在或已最小化时按下Shift键，不处理
-                                logging.debug("Shift键按下（游戏窗口不存在或已最小化），忽略")
+                                logging.info(
+                                    f"Shift键防抖动阻止：距离上次动作仅 {time_since_last:.2f}秒，"
+                                    f"需要等待 {debounce_delay - time_since_last:.2f}秒")
                         else:
-                            # Shift键释放
-                            logging.info("Shift键释放")
-                            # Shift键释放，添加隐藏任务到队列
-                            with self.gui_manager.gui_update_lock:
-                                self.gui_manager.gui_update_queue.append({'type': 'hide'})
+                            # 游戏窗口不存在或已最小化时按下Shift键，不处理
+                            logging.debug("Shift键按下（游戏窗口不存在或已最小化），忽略")
+                    else:
+                        # Shift键释放
+                        logging.info("Shift键释放")
+                        # Shift键释放，添加隐藏任务到队列
+                        with self.gui_manager.gui_update_lock:
+                            self.gui_manager.gui_update_queue.append({'type': 'hide'})
 
                 # 更新窗口位置（如果窗口显示中且Ctrl键或Shift键仍然按下）
                 if self.ctrl_pressed or self.shift_pressed:

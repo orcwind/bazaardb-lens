@@ -170,7 +170,7 @@ class TextMatcher:
         best_ratio = 0.0
         all_matches = []
         
-        # 优化：先匹配事件，再匹配怪物（事件名称通常更长更具体，优先级更高）
+        # 匹配事件和怪物为同一优先级：先收集所有候选再统一比较（只有 ratio == 1.0 时立即返回）
         logging.debug(f"[匹配调试] 开始匹配事件，共有 {len(self.events)} 个事件，{len(lines_chinese)} 行中文文本")
         for event in self.events:
             event_name_zh = event.get('name', '')
@@ -186,48 +186,44 @@ class TextMatcher:
                     # 快速匹配1：完全匹配（纯中文字符）
                     if line_clean_only == event_clean_zh_only and len(line_clean_only) >= 2:
                         logging.info(f"找到完全匹配的事件(中文): {event_name_zh}")
-                        all_matches.append({
-                            'type': 'event',
-                            'name': event_name_zh,
-                            'line': line,
-                            'ratio': 1.0,
-                            'common_words': [],
-                            'char_match_ratio': 1.0,
-                            'name_length': len(event_clean_zh_only)
-                        })
-                        if 1.0 > best_ratio:
-                            best_ratio = 1.0
-                            best_type = 'event'
-                            best_name = event_name_zh
+                        # 完全匹配立即返回（用户要求只有1.0时直接选择）
+                        result = ('event', event_name_zh)
+                        if len(self.match_cache) >= self.match_cache_max_size:
+                            oldest_key = next(iter(self.match_cache))
+                            del self.match_cache[oldest_key]
+                        self.match_cache[text_key] = result
+                        return result
                     
                     # 快速匹配2：部分匹配：检查事件名称是否包含在OCR文本中
                     if event_clean_zh_only in line_clean_only and len(event_clean_zh_only) >= 2:
                         logging.info(f"找到部分匹配的事件(事件名在OCR文本中): {event_name_zh}, OCR行: {line}")
-                        all_matches.append({
-                            'type': 'event',
-                            'name': event_name_zh,
-                            'line': line,
-                            'ratio': 1.0,  # 完整包含，相似度为1.0
-                            'common_words': [],
-                            'char_match_ratio': 1.0,
-                            'name_length': len(event_clean_zh_only)
-                        })
-                        if 1.0 > best_ratio:
-                            best_ratio = 1.0
-                            best_type = 'event'
-                            best_name = event_name_zh
+                        # 视为完全包含，按规则直接返回
+                        result = ('event', event_name_zh)
+                        if len(self.match_cache) >= self.match_cache_max_size:
+                            oldest_key = next(iter(self.match_cache))
+                            del self.match_cache[oldest_key]
+                        self.match_cache[text_key] = result
+                        return result
                     
                     # 快速匹配2.5：反向部分匹配
                     if len(line_clean_only) >= 2 and line_clean_only in event_clean_zh_only:
                         ratio = len(line_clean_only) / len(event_clean_zh_only) if event_clean_zh_only else 0
                         if ratio > 0.5:
                             logging.info(f"找到部分匹配的事件(OCR文本在事件名中): {event_name_zh}, OCR行: {line}, 匹配度: {ratio:.2f}")
-                            result = ('event', event_name_zh)
-                            if len(self.match_cache) >= self.match_cache_max_size:
-                                oldest_key = next(iter(self.match_cache))
-                                del self.match_cache[oldest_key]
-                            self.match_cache[text_key] = result
-                            return result
+                            # 仅作为候选，继续后续比较
+                            all_matches.append({
+                                'type': 'event',
+                                'name': event_name_zh,
+                                'line': line,
+                                'ratio': ratio,
+                                'common_words': [],
+                                'char_match_ratio': ratio,
+                                'name_length': len(event_clean_zh_only)
+                            })
+                            if ratio > best_ratio:
+                                best_ratio = ratio
+                                best_type = 'event'
+                                best_name = event_name_zh
                     
                     # 改进的匹配：检查关键字符匹配
                     if len(event_clean_zh_only) >= 2 and len(line_clean_only) >= 2:
@@ -239,54 +235,88 @@ class TextMatcher:
                             if match_ratio >= 0.6:
                                 ratio = difflib.SequenceMatcher(None, line_clean_only, event_clean_zh_only).ratio()
                                 if ratio > 0.3:
-                                    logging.info(f"找到关键字符匹配的事件: {event_name_zh}, OCR行: {line}, 字符匹配度: {match_ratio:.2f}, 相似度: {ratio:.2f}")
-                                    result = ('event', event_name_zh)
-                                    if len(self.match_cache) >= self.match_cache_max_size:
-                                        oldest_key = next(iter(self.match_cache))
-                                        del self.match_cache[oldest_key]
-                                    self.match_cache[text_key] = result
-                                    return result
+                                    logging.info(f"找到关键字符匹配的事件(候选): {event_name_zh}, OCR行: {line}, 字符匹配度: {match_ratio:.2f}, 相似度: {ratio:.2f}")
+                                    all_matches.append({
+                                        'type': 'event',
+                                        'name': event_name_zh,
+                                        'line': line,
+                                        'ratio': ratio,
+                                        'common_words': [],
+                                        'char_match_ratio': match_ratio,
+                                        'name_length': len(event_clean_zh_only)
+                                    })
+                                    if ratio > best_ratio:
+                                        best_ratio = ratio
+                                        best_type = 'event'
+                                        best_name = event_name_zh
                         elif len(event_clean_zh_only) == 4:
                             if match_ratio >= 0.75:
                                 ratio = difflib.SequenceMatcher(None, line_clean_only, event_clean_zh_only).ratio()
                                 if ratio > 0.3:
-                                    logging.info(f"找到关键字符匹配的事件: {event_name_zh}, OCR行: {line}, 字符匹配度: {match_ratio:.2f}, 相似度: {ratio:.2f}")
-                                    result = ('event', event_name_zh)
-                                    if len(self.match_cache) >= self.match_cache_max_size:
-                                        oldest_key = next(iter(self.match_cache))
-                                        del self.match_cache[oldest_key]
-                                    self.match_cache[text_key] = result
-                                    return result
+                                    logging.info(f"找到关键字符匹配的事件(候选): {event_name_zh}, OCR行: {line}, 字符匹配度: {match_ratio:.2f}, 相似度: {ratio:.2f}")
+                                    all_matches.append({
+                                        'type': 'event',
+                                        'name': event_name_zh,
+                                        'line': line,
+                                        'ratio': ratio,
+                                        'common_words': [],
+                                        'char_match_ratio': match_ratio,
+                                        'name_length': len(event_clean_zh_only)
+                                    })
+                                    if ratio > best_ratio:
+                                        best_ratio = ratio
+                                        best_type = 'event'
+                                        best_name = event_name_zh
                             elif match_ratio >= 0.5:
                                 ratio = difflib.SequenceMatcher(None, line_clean_only, event_clean_zh_only).ratio()
                                 if ratio > 0.4:
-                                    logging.info(f"找到关键字符匹配的事件: {event_name_zh}, OCR行: {line}, 字符匹配度: {match_ratio:.2f}, 相似度: {ratio:.2f}")
-                                    result = ('event', event_name_zh)
-                                    if len(self.match_cache) >= self.match_cache_max_size:
-                                        oldest_key = next(iter(self.match_cache))
-                                        del self.match_cache[oldest_key]
-                                    self.match_cache[text_key] = result
-                                    return result
+                                    logging.info(f"找到关键字符匹配的事件(候选): {event_name_zh}, OCR行: {line}, 字符匹配度: {match_ratio:.2f}, 相似度: {ratio:.2f}")
+                                    all_matches.append({
+                                        'type': 'event',
+                                        'name': event_name_zh,
+                                        'line': line,
+                                        'ratio': ratio,
+                                        'common_words': [],
+                                        'char_match_ratio': match_ratio,
+                                        'name_length': len(event_clean_zh_only)
+                                    })
+                                    if ratio > best_ratio:
+                                        best_ratio = ratio
+                                        best_type = 'event'
+                                        best_name = event_name_zh
                         elif match_ratio > 0.5:
-                            logging.info(f"找到关键字符匹配的事件: {event_name_zh}, OCR行: {line}, 字符匹配度: {match_ratio:.2f}")
-                            result = ('event', event_name_zh)
-                            if len(self.match_cache) >= self.match_cache_max_size:
-                                oldest_key = next(iter(self.match_cache))
-                                del self.match_cache[oldest_key]
-                            self.match_cache[text_key] = result
-                            return result
+                            logging.info(f"找到关键字符匹配的事件(候选): {event_name_zh}, OCR行: {line}, 字符匹配度: {match_ratio:.2f}")
+                            all_matches.append({
+                                'type': 'event',
+                                'name': event_name_zh,
+                                'line': line,
+                                'ratio': match_ratio,
+                                'common_words': [],
+                                'char_match_ratio': match_ratio,
+                                'name_length': len(event_clean_zh_only)
+                            })
+                            if match_ratio > best_ratio:
+                                best_ratio = match_ratio
+                                best_type = 'event'
+                                best_name = event_name_zh
                     
                     # 慢速匹配：相似度匹配
                     if len(line_clean_only) >= 2:
                         ratio = difflib.SequenceMatcher(None, line_clean_only, event_clean_zh_only).ratio()
                         if ratio > 0.5:
                             logging.info(f"找到相似匹配的事件: {event_name_zh}, OCR行: {line}, 相似度: {ratio:.2f}")
-                            result = ('event', event_name_zh)
-                            if len(self.match_cache) >= self.match_cache_max_size:
-                                oldest_key = next(iter(self.match_cache))
-                                del self.match_cache[oldest_key]
-                            self.match_cache[text_key] = result
-                            return result
+                            # 相似度较高，作为候选但不立即返回
+                            all_matches.append({
+                                'type': 'event',
+                                'name': event_name_zh,
+                                'line': line,
+                                'ratio': ratio,
+                                'common_words': []
+                            })
+                            if ratio > best_ratio:
+                                best_ratio = ratio
+                                best_type = 'event'
+                                best_name = event_name_zh
                         elif ratio > 0.3:
                             all_matches.append({
                                 'type': 'event',

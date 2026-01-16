@@ -8,6 +8,10 @@ import threading
 import traceback
 import logging
 
+# 先初始化日志（尽早设置，保证控制台只显示 WARNING 及以上）
+from logger import setup_logging, get_log_file_path, hide_console
+setup_logging()
+
 # Windows相关导入
 import win32api
 import win32event
@@ -58,11 +62,8 @@ def main():
             import os
             os._exit(1)
 
-    # 到这里说明是管理员，接着初始化日志和其他模块
-    # 设置日志
-    from logger import setup_logging, get_log_file_path, hide_console
+    # 到这里说明是管理员，接着初始化其他模块
     from core.main_controller import MainController
-    setup_logging()
     log_path = get_log_file_path()
     logging.info(f"Bazaar Lens v{VERSION} 启动")
     logging.info(f"日志文件位置: {log_path}")

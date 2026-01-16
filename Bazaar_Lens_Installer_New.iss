@@ -214,7 +214,7 @@ begin
     Result := 1;
 end;
 
-// 检测并卸载旧版本（只卸载小于等于当前版本的版本）
+// 检测并卸载已安装版本（无论新旧版本，一律先卸载再安装）
 function UninstallOldVersion(): Boolean;
 var
   UninstallKey: String;
@@ -224,11 +224,6 @@ var
   ResultCode: Integer;
   PosIndex: Integer;
   VersionCompare: Integer;
-  SearchDirs: array[0..3] of String;
-  DirToCheck: String;
-  FindRec: TFindRec;
-  FoundUninstaller: Boolean;
-  i: Integer;
 begin
   Result := False;
   CurrentVersion := '{#MyAppVersion}'; // 当前安装的版本
@@ -237,29 +232,15 @@ begin
   // HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Bazaar Lens
   UninstallKey := 'SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Bazaar Lens';
   
-  // 尝试从注册表读取已安装的版本号
+  // 尝试从注册表读取已安装的版本号（仅用于日志记录）
   if RegQueryStringValue(HKLM, UninstallKey, 'DisplayVersion', InstalledVersion) then
   begin
     Log('检测到已安装版本: ' + InstalledVersion + ', 当前安装版本: ' + CurrentVersion);
-    
-    // 比较版本号
-    VersionCompare := CompareVersions(InstalledVersion, CurrentVersion);
-    
-    if VersionCompare > 0 then
-    begin
-      // 已安装的版本大于当前版本，提示用户
-      if MsgBox('检测到已安装的版本 ' + InstalledVersion + ' 高于当前安装版本 ' + CurrentVersion + '。' + #13#10 + 
-                '是否继续安装旧版本？', mbConfirmation, MB_YESNO) = IDNO then
-      begin
-        Result := False;
-        Exit;
-      end;
-    end
-    else if VersionCompare <= 0 then
-    begin
-      // 已安装的版本小于等于当前版本，需要卸载
-      Log('已安装版本 ' + InstalledVersion + ' 小于等于当前版本 ' + CurrentVersion + '，将卸载旧版本');
-    end;
+    Log('无论新旧版本，一律先卸载再安装');
+  end
+  else
+  begin
+    Log('检测到已安装版本，但无法读取版本号，将尝试卸载');
   end;
   
   // 尝试从注册表读取卸载命令
@@ -288,13 +269,7 @@ begin
     // 检查卸载程序是否存在
     if FileExists(UninstallString) then
     begin
-      // 再次检查版本（如果之前没有读取到版本号，这里默认卸载）
-      if InstalledVersion = '' then
-      begin
-        Log('检测到已安装版本，但无法读取版本号，将尝试卸载');
-      end;
-      
-      Log('开始卸载旧版本: ' + UninstallString);
+      Log('开始卸载已安装版本: ' + UninstallString);
       
       // 先关闭运行中的程序
       Exec('taskkill', '/F /IM Bazaar_Lens.exe /T', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
@@ -308,12 +283,12 @@ begin
       begin
         // 等待卸载完成
         Sleep(2000);
-        Log('旧版本卸载完成');
+        Log('已安装版本卸载完成');
         Result := True;
       end
       else
       begin
-        Log('卸载旧版本失败，错误代码: ' + IntToStr(ResultCode));
+        Log('卸载已安装版本失败，错误代码: ' + IntToStr(ResultCode));
       end;
     end
     else
@@ -323,10 +298,8 @@ begin
   end
   else
   begin
-  // 如果注册表中没有找到，跳过目录搜索（避免在不同 Windows 环境中出现兼容性问题）
-  begin
+    // 如果注册表中没有找到，跳过目录搜索（避免在不同 Windows 环境中出现兼容性问题）
     Log('未在注册表中找到卸载信息；跳过目录遍历，继续安装。');
-  end;
   end;
 end;
 
@@ -465,6 +438,8 @@ Type: files; Name: "{app}\data_json.enc"
 Type: files; Name: "{app}\data_key.bin"
 Type: files; Name: "{app}\data_key_prot.bin"
 Type: files; Name: "{app}\*.png"
+Type: files; Name: "{app}\protect_key.ps1"
+Type: files; Name: "{app}\run_elevated.vbs"
 Type: dirifempty; Name: "{app}"
 
 [Messages]

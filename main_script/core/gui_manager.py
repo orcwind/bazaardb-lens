@@ -11,6 +11,9 @@ import traceback
 from urllib.parse import urlparse
 from ui import IconFrame, ScrollableFrame
 from logger import is_packaged_environment
+import ctypes
+from ctypes import wintypes
+import queue
 
 
 class GUIManager:
@@ -28,6 +31,68 @@ class GUIManager:
         self.skills_frame = None
         self.items_frame = None
         self.event_options_frame = None
+
+    def _normalize_name(self, name):
+        """标准化名称，将空格、减号、下划线统一处理，用于匹配"""
+        if not name:
+            return ''
+        normalized = name.lower().replace('-', ' ').replace('_', ' ')
+        normalized = ' '.join(normalized.split())
+        return normalized
+    
+    def _find_item_by_name(self, name, items_data):
+        """在items_data中查找物品，支持标准化匹配（空格、减号、下划线视为同一字符）"""
+        if not name or not items_data:
+            return None
+        
+        # 1. 直接匹配
+        if name in items_data:
+            return items_data[name]
+        
+        # 2. 标准化后匹配
+        normalized = self._normalize_name(name)
+        if normalized:
+            for item_name, item_data in items_data.items():
+                if self._normalize_name(item_name) == normalized:
+                    return item_data
+        
+        # 3. 格式变体匹配
+        name_with_space = name.replace('-', ' ')
+        if name_with_space in items_data:
+            return items_data[name_with_space]
+        
+        name_with_hyphen = name.replace(' ', '-')
+        if name_with_hyphen in items_data:
+            return items_data[name_with_hyphen]
+        
+        return None
+    
+    def _find_skill_by_name(self, name, skills_data):
+        """在skills_data中查找技能，支持标准化匹配（空格、减号、下划线视为同一字符）"""
+        if not name or not skills_data:
+            return None
+        
+        # 1. 直接匹配
+        if name in skills_data:
+            return skills_data[name]
+        
+        # 2. 标准化后匹配
+        normalized = self._normalize_name(name)
+        if normalized:
+            for skill_name, skill_data in skills_data.items():
+                if self._normalize_name(skill_name) == normalized:
+                    return skill_data
+        
+        # 3. 格式变体匹配
+        name_with_space = name.replace('-', ' ')
+        if name_with_space in skills_data:
+            return skills_data[name_with_space]
+        
+        name_with_hyphen = name.replace(' ', '-')
+        if name_with_hyphen in skills_data:
+            return skills_data[name_with_hyphen]
+        
+        return None
 
     def _is_window_valid(self):
         """检查窗口和框架是否有效"""
@@ -83,6 +148,22 @@ class GUIManager:
             self.scrollable_frame = ScrollableFrame(
                 self.info_window, bg=bg_color)
             self.scrollable_frame.pack(fill='both', expand=True, padx=5, pady=5)
+            # 确保不使用滚动条：彻底移除 scrollbar widget（防止残留显示）
+            try:
+                if hasattr(self.scrollable_frame, 'scrollbar') and self.scrollable_frame.scrollbar:
+                    try:
+                        self.scrollable_frame.scrollbar.destroy()
+                    except Exception:
+                        pass
+                    self.scrollable_frame.scrollbar = None
+                # 禁用 canvas 的 yscrollcommand，防止任何绑定导致滚动条显示
+                try:
+                    if hasattr(self.scrollable_frame, 'canvas') and self.scrollable_frame.canvas:
+                        self.scrollable_frame.canvas.configure(yscrollcommand=lambda *a: None)
+                except Exception:
+                    pass
+            except Exception:
+                logging.exception("[GUIManager] Failed to remove scrollbar on info window creation")
 
             # 获取内部框架用于添加内容
             self.content_frame = self.scrollable_frame.get_inner_frame()
@@ -125,6 +206,7 @@ class GUIManager:
             if content:
                 # content应该是一个列表，每个元素是一个字典，包含name, description, icon_path等
                 if isinstance(content, list):
+                    # 先按单列渲染以测量高度；若超出最大高度则改为双列渲染
                     for item in content:
                         icon_frame = IconFrame(self.content_frame, bg='#1C1810')
                         icon_frame.pack(fill='x', padx=5, pady=5)
@@ -135,6 +217,58 @@ class GUIManager:
                             aspect_ratio=item.get('aspect_ratio', 1.0)
                         )
                         self.icon_frames.append(icon_frame)
+
+                    # 测量内容高度并决定是否切换为两列显示
+                    try:
+                        self.scrollable_frame.update_scrollregion()
+                        # 计算可接受的最大窗口高度（与 _do_adjust_window 保持一致）
+                        try:
+                            from .window_detector import WindowDetector
+                            window_detector = WindowDetector()
+                            _, game_rect = window_detector.get_game_window()
+                            if game_rect:
+                                game_height = game_rect[3] - game_rect[1]
+                                max_window_height = int(game_height * 0.8)
+                            else:
+                                max_window_height = 600
+                        except Exception:
+                            max_window_height = 600
+
+                        content_height = self.content_frame.winfo_reqheight() + 20
+                        # 当内容高度超过限制且内容项较多时，切换为双列显示
+                        # 当内容高度达到或超过游戏窗口80%上限时切换为两列显示（不再依赖项数量）
+                        if content_height >= max_window_height:
+                            logging.info("内容过长，切换为两列显示")
+                            # 清空现有单列项
+                            for frame in self.icon_frames:
+                                try:
+                                    frame.destroy()
+                                except Exception:
+                                    pass
+                            self.icon_frames.clear()
+                            # 创建两列容器
+                            left_col = tk.Frame(self.content_frame, bg=bg_color)
+                            right_col = tk.Frame(self.content_frame, bg=bg_color)
+                            left_col.pack(side='left', fill='both', expand=True, padx=(0,5))
+                            right_col.pack(side='left', fill='both', expand=True, padx=(5,0))
+                            # 均匀分配内容到两列（轮询分配）
+                            left_turn = True
+                            for item in content:
+                                parent_col = left_col if left_turn else right_col
+                                icon_frame = IconFrame(parent_col, bg=bg_color)
+                                icon_frame.pack(fill='x', padx=5, pady=5)
+                                icon_frame.update_content(
+                                    name=item.get('name', ''),
+                                    description=item.get('description', ''),
+                                    icon_path=item.get('icon_path'),
+                                    aspect_ratio=item.get('aspect_ratio', 1.0)
+                                )
+                                self.icon_frames.append(icon_frame)
+                                left_turn = not left_turn
+                            # 更新滚动区域以适配两列内容
+                            self.scrollable_frame.update_scrollregion()
+                    except Exception:
+                        logging.exception("切换两列显示时测量或渲染失败")
                 elif isinstance(content, dict):
                     # 单个项目
                     icon_frame = IconFrame(self.content_frame, bg='#1C1810')
@@ -149,7 +283,40 @@ class GUIManager:
 
             # 更新滚动区域
             if self.scrollable_frame:
-                self.scrollable_frame.update_scrollregion()
+                try:
+                    self.scrollable_frame.update_scrollregion()
+                except Exception:
+                    logging.exception("[GUIManager] scrollable_frame.update_scrollregion() failed")
+                # 彻底移除或隐藏任何 scrollbar，防止显示残留
+                try:
+                    if hasattr(self.scrollable_frame, 'scrollbar') and self.scrollable_frame.scrollbar:
+                        try:
+                            self.scrollable_frame.scrollbar.destroy()
+                        except Exception:
+                            pass
+                        self.scrollable_frame.scrollbar = None
+                    if hasattr(self.scrollable_frame, 'canvas') and self.scrollable_frame.canvas:
+                        try:
+                            self.scrollable_frame.canvas.configure(yscrollcommand=lambda *a: None)
+                        except Exception:
+                            pass
+                except Exception:
+                    logging.exception("[GUIManager] Failed to ensure scrollbar removed after update")
+                # 如果 info_window 存在，重新计算并调整窗口位置以避免超出底部
+                try:
+                    if self.info_window and self.info_window.winfo_exists():
+                        try:
+                            x = self.info_window.winfo_x()
+                            y = self.info_window.winfo_y()
+                            self._do_adjust_window(x, y)
+                        except Exception:
+                            # 不能获取位置则调用默认调整（0,0）
+                            try:
+                                self._do_adjust_window(0, 0)
+                            except Exception:
+                                pass
+                except Exception:
+                    logging.exception("[GUIManager] Failed to adjust window after update")
 
         except Exception as e:
             logging.error(f"更新信息窗口内容失败: {e}")
@@ -343,9 +510,17 @@ class GUIManager:
             # 显示窗口并置顶（如果匹配成功就显示，不依赖ctrl_pressed状态）
             if display_success:
                 logging.info(f"显示窗口: {match_type} - {match_name}")
+                # 确保窗口可见
                 self.info_window.deiconify()
                 self.info_window.lift()
                 self.info_window.attributes('-topmost', True)
+                # 尝试短暂抓取前台焦点（回退方案），然后启用全局滚轮绑定
+                try:
+                    self._grab_focus_temporarily(500)
+                except Exception:
+                    logging.exception("[GUIManager] Failed to grab focus temporarily")
+                # 全局滚轮功能已移除；不启动任何系统级监听
+                logging.debug("[GUIManager] global scroll functionality disabled; skipping hook/start")
             else:
                 logging.warning(f"匹配成功但显示失败，不显示窗口")
             
@@ -361,9 +536,135 @@ class GUIManager:
         try:
             if self.info_window:
                 self.info_window.withdraw()
+                # 隐藏时禁用全局滚轮绑定，恢复默认行为
+                # 全局滚轮功能已移除；无需禁用
+                logging.debug("[GUIManager] global scroll disable skipped (wheel disabled)")
+                # 如果之前抓取了焦点，尽快恢复原前台窗口
+                try:
+                    self._restore_foreground_immediately()
+                except Exception:
+                    logging.exception("[GUIManager] Failed to restore foreground on hide")
                 self.current_text = None
         except Exception as e:
             logging.error(f"隐藏信息窗口失败: {e}")
+
+    # -------------------- 前台焦点抓取回退实现 --------------------
+    def _grab_focus_temporarily(self, duration_ms=500):
+        """短暂将信息窗口设为前台以接收滚轮，然后在 duration_ms 后恢复以前的前台窗口"""
+        if not self.info_window or not self.info_window.winfo_exists():
+            return
+        try:
+            user32 = ctypes.windll.user32
+            # 记录当前前台窗口
+            try:
+                prev_hwnd = user32.GetForegroundWindow()
+            except Exception:
+                prev_hwnd = None
+            self._prev_foreground = prev_hwnd
+            # 获取 info_window 的 HWND via tkinter
+            try:
+                info_hwnd = int(self.info_window.winfo_id())
+            except Exception:
+                info_hwnd = None
+            if info_hwnd:
+                # Try AttachThreadInput trick to allow SetForegroundWindow in some contexts
+                kernel32 = ctypes.windll.kernel32
+                tid_current = kernel32.GetCurrentThreadId()
+                tid_fore = 0
+                try:
+                    pid = ctypes.c_ulong()
+                    tid_fore = user32.GetWindowThreadProcessId(prev_hwnd, ctypes.byref(pid)) if prev_hwnd else 0
+                except Exception:
+                    tid_fore = 0
+                attached = False
+                try:
+                    if prev_hwnd and tid_fore and tid_fore != tid_current:
+                        kernel32.AttachThreadInput(tid_fore, tid_current, True)
+                        attached = True
+                except Exception:
+                    attached = False
+                set_fg_ret = None
+                try:
+                    # Try multiple calls to increase chance of success
+                    for _ in range(2):
+                        set_fg_ret = user32.SetForegroundWindow(info_hwnd)
+                except Exception as e:
+                    logging.debug(f"[GUIManager] SetForegroundWindow exception: {e}")
+                # Try additional activation APIs
+                try:
+                    user32.BringWindowToTop(info_hwnd)
+                except Exception:
+                    pass
+                try:
+                    user32.SetActiveWindow(info_hwnd)
+                except Exception:
+                    pass
+                # Force focus to tkinter window (both tkinter and WinAPI)
+                try:
+                    self.info_window.update()
+                    self.info_window.focus_force()
+                except Exception:
+                    pass
+                try:
+                    user32.SetFocus(info_hwnd)
+                except Exception:
+                    pass
+                # Verify foreground
+                try:
+                    current_fg = user32.GetForegroundWindow()
+                except Exception:
+                    current_fg = None
+                logging.info(f"[GUIManager] focus grab: prev_hwnd={prev_hwnd}, info_hwnd={info_hwnd}, SetForegroundWindow_ret={set_fg_ret}, current_foreground={current_fg}, attached={attached}")
+                # detach if attached
+                try:
+                    if attached:
+                        kernel32.AttachThreadInput(tid_fore, tid_current, False)
+                except Exception:
+                    pass
+
+                self._focus_grabbed = True
+                # 安排恢复任务
+                try:
+                    if hasattr(self, '_focus_restore_task') and self._focus_restore_task:
+                        self.info_window.after_cancel(self._focus_restore_task)
+                    self._focus_restore_task = self.info_window.after(duration_ms, self._restore_foreground)
+                except Exception:
+                    self._focus_restore_task = None
+        except Exception:
+            logging.exception("[GUIManager] _grab_focus_temporarily failed")
+
+    def _restore_foreground(self):
+        """恢复之前记录的前台窗口（在主线程中调用）"""
+        try:
+            user32 = ctypes.windll.user32
+            prev = getattr(self, '_prev_foreground', None)
+            if prev:
+                try:
+                    user32.SetForegroundWindow(prev)
+                except Exception as e:
+                    logging.debug(f"[GUIManager] Restore SetForegroundWindow failed: {e}")
+            self._focus_grabbed = False
+            self._prev_foreground = None
+            self._focus_restore_task = None
+        except Exception:
+            logging.exception("[GUIManager] _restore_foreground failed")
+
+    def _restore_foreground_immediately(self):
+        """立即恢复前台并取消延时任务"""
+        try:
+            if hasattr(self, '_focus_restore_task') and self._focus_restore_task and self.info_window:
+                try:
+                    self.info_window.after_cancel(self._focus_restore_task)
+                except Exception:
+                    pass
+                self._focus_restore_task = None
+            # 调用恢复函数（在主线程）
+            try:
+                self._restore_foreground()
+            except Exception:
+                pass
+        except Exception:
+            logging.exception("[GUIManager] _restore_foreground_immediately failed")
 
     def _do_show_enchantments(self, text, x, y, data_matcher=None, data_loader=None):
         """
@@ -494,7 +795,7 @@ class GUIManager:
             # 调整窗口位置和大小
             self._do_adjust_window(x, y)
             
-            # 显示窗口
+            # 显示窗口（滚轮功能已移除）
             self.info_window.deiconify()
             self.info_window.lift()
             self.info_window.attributes('-topmost', True)
@@ -553,8 +854,10 @@ class GUIManager:
                 pos_x = 0
             if pos_y < 0:
                 pos_y = 0
-            # 允许窗口超出屏幕右边界和下边界
-
+            # 确保窗口底部不超过屏幕底部：如果超出则向上移动窗口
+            if pos_y + window_height > screen_height:
+                pos_y = max(0, screen_height - window_height)
+            # 允许窗口超出屏幕右边界但不超出下边界
             self.info_window.geometry(
                 f"{window_width}x{window_height}+{pos_x}+{pos_y}")
 
@@ -913,8 +1216,8 @@ class GUIManager:
                         skill_icon = ''
                         skill_aspect_ratio = 1.0
                         
-                        if skill_name_en in data_loader.skills_data:
-                            skill_info = data_loader.skills_data[skill_name_en]
+                        skill_info = self._find_skill_by_name(skill_name_en, data_loader.skills_data)
+                        if skill_info:
                             skill_description = skill_info.get('description_zh', '')
                             skill_icon = skill_info.get('icon', '')
                             skill_aspect_ratio = float(skill_info.get('aspect_ratio', 1.0))
@@ -984,8 +1287,8 @@ class GUIManager:
                         item_icon = ''
                         item_aspect_ratio = 1.0
                         
-                        if item_name in data_loader.items_data:
-                            item_info = data_loader.items_data[item_name]
+                        item_info = self._find_item_by_name(item_name, data_loader.items_data)
+                        if item_info:
                             item_description = item_info.get('description_zh', '')
                             item_icon = item_info.get('icon', '')
                             item_aspect_ratio = float(item_info.get('aspect_ratio', 1.0))
@@ -1162,6 +1465,11 @@ class GUIManager:
             # 显示窗口
             if self.info_window:
                 self.info_window.deiconify()
+                try:
+                    if self.scrollable_frame:
+                        self.scrollable_frame.enable_global_scroll()
+                except Exception:
+                    pass
                 self.info_window.lift()
                 self.info_window.attributes('-topmost', True)
         except Exception as e:

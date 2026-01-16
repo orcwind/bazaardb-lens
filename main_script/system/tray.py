@@ -137,7 +137,7 @@ class SystemTray:
                 pass
             safe_flush()
             self.icon = None
-
+        
     def create_tray_icon(self):
         """创建系统托盘图标"""
         import sys
@@ -197,7 +197,7 @@ class SystemTray:
             # 画一个醒目的圆圈，确保你一眼能看到它（使用用户要求的颜色）
             draw.ellipse((4, 4, 60, 60), fill='#0078D7', outline='white', width=4)
             logging.info("[SystemTray] 内存兜底图标生成完成")
-
+            
         # 4. 创建 pystray.Icon 实例（必须创建，即使图标文件加载失败也要有兜底图标）
         try:
             # 确保 icon_image 一定存在（如果前面都失败了，这里应该已经有兜底图标了）
@@ -276,7 +276,7 @@ class SystemTray:
             print(f"[SystemTray] ❌ 创建图标失败: {e}")
             safe_flush()
             self.icon = None
-
+        
     def run(self):
         """启动托盘线程 - 这个方法会在独立线程中运行"""
         try:
@@ -296,7 +296,6 @@ class SystemTray:
                 logging.info("[SystemTray.run] ✅ icon 对象存在，开始运行托盘主循环...")
                 print("[SystemTray.run] ✅ icon 对象存在，开始运行托盘主循环...")
                 safe_flush()
-                
                 # 关键：icon.run() 是阻塞调用，会一直运行直到 icon.stop() 被调用
                 # 这必须在独立线程中运行，否则会阻塞主线程
                 try:
@@ -312,7 +311,6 @@ class SystemTray:
                 logging.error("[SystemTray.run] ❌ 无法运行：icon 对象为空")
                 print("[SystemTray.run] ❌ 无法运行：icon 对象为空")
                 safe_flush()
-                
                 logging.error("[SystemTray.run] 尝试重新创建图标...")
                 # 尝试重新创建图标
                 try:
@@ -321,7 +319,14 @@ class SystemTray:
                         logging.info("[SystemTray.run] ✅ 重新创建图标成功，开始运行...")
                         print("[SystemTray.run] ✅ 重新创建图标成功，开始运行...")
                         safe_flush()
-                        self.icon.run()
+                        try:
+                            self.icon.run()
+                        except Exception as e:
+                            logging.error(f"[SystemTray.run] ❌ icon.run() 执行时发生错误: {e}")
+                            import traceback
+                            logging.error(traceback.format_exc())
+                            print(f"[SystemTray.run] ❌ icon.run() 执行时发生错误: {e}")
+                            safe_flush()
                     else:
                         logging.error("[SystemTray.run] ❌ 重新创建图标仍然失败")
                         print("[SystemTray.run] ❌ 重新创建图标仍然失败")
@@ -339,12 +344,12 @@ class SystemTray:
             print(f"[SystemTray.run] ❌ 运行托盘时发生严重错误: {e}")
             import sys
             safe_flush()
-
+    
     def stop(self):
         """停止托盘"""
         if self.icon:
             self.icon.stop()
-
+    
     def _show_help(self, icon, item):
         """显示说明窗口 - 必须在主线程中调用"""
         try:
