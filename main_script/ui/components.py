@@ -64,14 +64,14 @@ class IconFrame(tk.Frame):
         )
         self.quantity_label.pack(side='left', padx=(5, 0))
 
-        # 创建描述标签
+        # 创建描述标签（wraplength将在update_content中动态设置）
         self.desc_label = tk.Label(
             self.text_frame,
             font=('Segoe UI', 13),
             fg='#BFA98F',  # 稍暗的浅色文字用于描述
             bg=parent_bg,
             anchor='w',
-            wraplength=400,
+            wraplength=200,  # 初始值，会在update_content中更新
             justify='left'
         )
         self.desc_label.pack(fill='both', expand=True, anchor='w')
@@ -177,11 +177,32 @@ class IconFrame(tk.Frame):
             # 描述左对齐（格式化描述）
             if description:
                 formatted_description = self.format_description(description)
+                
+                # 动态计算wraplength：根据父容器宽度（两列模式下每列宽度）
+                # 注意：这里使用默认值，实际wraplength会在窗口调整后通过_update_all_iconframes_wraplength更新
+                try:
+                    # 等待布局更新
+                    self.update_idletasks()
+                    # 获取当前框架的实际宽度
+                    frame_width = self.winfo_width()
+                    if frame_width > 0:
+                        # 文本区域宽度 = 框架宽度 - 图标宽度(144) - 边距(20)
+                        text_width = max(150, frame_width - 144 - 20)
+                        # wraplength应该略小于实际宽度，确保换行
+                        wraplength = max(150, text_width - 10)
+                    else:
+                        # 如果无法获取宽度，使用默认值（根据分辨率估算）
+                        # 两列模式下，每列约300-400像素，文本区域约150-250像素
+                        wraplength = 200
+                except Exception:
+                    wraplength = 200
+                
                 self.desc_label.config(
                     text=formatted_description,
                     anchor='w',
                     justify='left',
-                    bg=bg_color)
+                    bg=bg_color,
+                    wraplength=wraplength)
                 self.desc_label.pack(fill='both', expand=True)
             else:
                 self.desc_label.pack_forget()
@@ -289,7 +310,8 @@ class ScrollableFrame(tk.Frame):
         # 初始隐藏滚动条（如果存在）
         if self.scrollbar is not None:
             try:
-                self.scrollbar.grid_remove()
+                if self.scrollbar:
+                    self.scrollbar.grid_remove()
             except Exception:
                 pass
 

@@ -25,12 +25,13 @@ python fetch_event_name.py - 从HTML文件中提取事件名称列表
 ### 事件数据补充
 python add_event_english_names.py - 为 events_from_html.json 补充事件的英文名称（name_en字段）
 
+monster相关
+- `fetch_html.py`：抓取目标网站的原始 HTML（支持分页与重试），将页面保存到 `data/source_html/`。
+- `extract_monsters.py`：从已抓取的 HTML 中解析出结构化怪物信息，输出中间文件 `data/intermediate/extracted_monsters_raw.jsonl`（每行一条 JSON）。
+- `enrich_with_json.py`：加载 `data/json/items.json` 和 `data/json/skills.json`，为 `extracted_monsters_raw.jsonl` 中的 `drops`、`skills` 等引用补充中文名称和描述，输出 `data/intermediate/monsters_enriched.json`。
 
 
 
-python Bazaar_Lens.py
 python main_script\Bazaar_Lens.py
 
-
-cd /d D:\PythonProject\BazaarInfo\bazaardb-desktop
-python -u main_script\Bazaar_Lens.py
+python build.py 打包exe

@@ -27,7 +27,12 @@ class ConfigManager:
             "tesseract_path": portable_tesseract,
             "last_update_check": "",
             "auto_update": True,
-            "show_console": False
+            "show_console": False,
+            # 信息窗口显示百分比（用户看到的百分比，例如100表示用户基线）
+            "info_window_scale": 100,
+            # 基线因子：内部实际缩放 = 显示百分比 * scale_baseline_factor
+            # 用于兼容历史视觉基线（例如历史的150%现在显示为100% -> baseline_factor=1.5）
+            "scale_baseline_factor": 1.5
         }
         self.config = self.load_config()
 

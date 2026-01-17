@@ -31,6 +31,8 @@ class GUIManager:
         self.skills_frame = None
         self.items_frame = None
         self.event_options_frame = None
+        self.controller = None
+        self._is_two_column = False  # 标记是否为两列显示模式
 
     def _normalize_name(self, name):
         """标准化名称，将空格、减号、下划线统一处理，用于匹配"""
@@ -194,21 +196,43 @@ class GUIManager:
             return
 
         try:
-            # 清空现有内容
+            bg_color = '#1C1810'
+            
+            # 清空现有内容（包括两列容器）
             for frame in self.icon_frames:
                 try:
                     frame.destroy()
                 except Exception:
                     pass
             self.icon_frames.clear()
+            
+            # 清空content_frame下的所有子组件（包括两列容器）
+            if self.content_frame:
+                for widget in self.content_frame.winfo_children():
+                    try:
+                        widget.destroy()
+                    except Exception:
+                        pass
 
             # 添加新内容
             if content:
                 # content应该是一个列表，每个元素是一个字典，包含name, description, icon_path等
                 if isinstance(content, list):
-                    # 先按单列渲染以测量高度；若超出最大高度则改为双列渲染
+                    # 强制使用两列显示所有内容
+                    self._is_two_column = True
+                    logging.info(f"update_info_window: 内容数量={len(content)}，强制使用两列显示")
+                    
+                    # 创建两列容器
+                    left_col = tk.Frame(self.content_frame, bg=bg_color)
+                    right_col = tk.Frame(self.content_frame, bg=bg_color)
+                    left_col.pack(side='left', fill='both', expand=True, padx=(0,5))
+                    right_col.pack(side='left', fill='both', expand=True, padx=(5,0))
+                    
+                    # 均匀分配内容到两列（轮询分配）
+                    left_turn = True
                     for item in content:
-                        icon_frame = IconFrame(self.content_frame, bg='#1C1810')
+                        parent_col = left_col if left_turn else right_col
+                        icon_frame = IconFrame(parent_col, bg=bg_color)
                         icon_frame.pack(fill='x', padx=5, pady=5)
                         icon_frame.update_content(
                             name=item.get('name', ''),
@@ -217,58 +241,15 @@ class GUIManager:
                             aspect_ratio=item.get('aspect_ratio', 1.0)
                         )
                         self.icon_frames.append(icon_frame)
-
-                    # 测量内容高度并决定是否切换为两列显示
-                    try:
+                        left_turn = not left_turn
+                    
+                    # 更新滚动区域以适配两列内容
+                    # 多次更新以确保获取准确的高度
+                    self.content_frame.update_idletasks()
+                    self.info_window.update_idletasks()
+                    self.content_frame.update_idletasks()
+                    if self.scrollable_frame:
                         self.scrollable_frame.update_scrollregion()
-                        # 计算可接受的最大窗口高度（与 _do_adjust_window 保持一致）
-                        try:
-                            from .window_detector import WindowDetector
-                            window_detector = WindowDetector()
-                            _, game_rect = window_detector.get_game_window()
-                            if game_rect:
-                                game_height = game_rect[3] - game_rect[1]
-                                max_window_height = int(game_height * 0.8)
-                            else:
-                                max_window_height = 600
-                        except Exception:
-                            max_window_height = 600
-
-                        content_height = self.content_frame.winfo_reqheight() + 20
-                        # 当内容高度超过限制且内容项较多时，切换为双列显示
-                        # 当内容高度达到或超过游戏窗口80%上限时切换为两列显示（不再依赖项数量）
-                        if content_height >= max_window_height:
-                            logging.info("内容过长，切换为两列显示")
-                            # 清空现有单列项
-                            for frame in self.icon_frames:
-                                try:
-                                    frame.destroy()
-                                except Exception:
-                                    pass
-                            self.icon_frames.clear()
-                            # 创建两列容器
-                            left_col = tk.Frame(self.content_frame, bg=bg_color)
-                            right_col = tk.Frame(self.content_frame, bg=bg_color)
-                            left_col.pack(side='left', fill='both', expand=True, padx=(0,5))
-                            right_col.pack(side='left', fill='both', expand=True, padx=(5,0))
-                            # 均匀分配内容到两列（轮询分配）
-                            left_turn = True
-                            for item in content:
-                                parent_col = left_col if left_turn else right_col
-                                icon_frame = IconFrame(parent_col, bg=bg_color)
-                                icon_frame.pack(fill='x', padx=5, pady=5)
-                                icon_frame.update_content(
-                                    name=item.get('name', ''),
-                                    description=item.get('description', ''),
-                                    icon_path=item.get('icon_path'),
-                                    aspect_ratio=item.get('aspect_ratio', 1.0)
-                                )
-                                self.icon_frames.append(icon_frame)
-                                left_turn = not left_turn
-                            # 更新滚动区域以适配两列内容
-                            self.scrollable_frame.update_scrollregion()
-                    except Exception:
-                        logging.exception("切换两列显示时测量或渲染失败")
                 elif isinstance(content, dict):
                     # 单个项目
                     icon_frame = IconFrame(self.content_frame, bg='#1C1810')
@@ -361,6 +342,12 @@ class GUIManager:
                             self._do_hide_info()
                         elif task_type == 'adjust':
                             self._do_adjust_window(task['x'], task['y'])
+                        elif task_type == 'open_custom_dialog':
+                            try:
+                                # 在主线程中安全地打开自定义分辨率对话框
+                                self.show_custom_resolution_dialog()
+                            except Exception:
+                                logging.exception("[GUI更新] show_custom_resolution_dialog 失败")
                         elif task_type == 'move':
                             self._do_move_window(task['x'], task['y'])
             except Exception as e:
@@ -830,43 +817,238 @@ class GUIManager:
             except Exception:
                 max_window_height = 600
 
-            # 固定窗口宽度
-            window_width = 600
-
-            # 更新内容框架以获取实际高度
+            # 更新内容框架以获取实际高度和宽度
+            # 需要多次更新以确保获取准确的高度（特别是在缩放情况下）
             if self.content_frame:
+                # 先更新一次，让布局稳定
                 self.content_frame.update_idletasks()
-                content_height = self.content_frame.winfo_reqheight() + 20
+                self.info_window.update_idletasks()
+                # 再次更新，确保获取到最终的高度
+                self.content_frame.update_idletasks()
+                
+                # 获取内容实际需要的高度（包括所有子组件）
+                content_height = self.content_frame.winfo_reqheight()
+                content_width = self.content_frame.winfo_reqwidth()
+                
+                # 如果使用scrollable_frame，也需要考虑它的高度
+                if self.scrollable_frame:
+                    scrollable_height = self.scrollable_frame.winfo_reqheight()
+                    # 取较大的值，确保能显示所有内容
+                    content_height = max(content_height, scrollable_height)
+                
+                # 添加一些边距（上下各10像素）
+                content_height = content_height + 20
+                content_width = content_width + 20
+                
+                logging.debug(f"内容高度计算: content_frame={self.content_frame.winfo_reqheight()}, scrollable={self.scrollable_frame.winfo_reqheight() if self.scrollable_frame else 0}, 最终={content_height}")
             else:
                 content_height = 200
+                content_width = 600
 
-            # 根据内容高度确定窗口高度
-            if content_height <= max_window_height:
-                window_height = content_height
-            else:
-                window_height = max_window_height
-
-            # 调整窗口位置（取消右和下边界限制，允许窗口超出屏幕）
-            # 只确保窗口左上角在屏幕内
+            # 获取屏幕尺寸，用于限制窗口大小（防止超出屏幕）
             screen_width = self.info_window.winfo_screenwidth()
             screen_height = self.info_window.winfo_screenheight()
+            
+            # 先获取缩放因子，因为后面会用到
+            scale_factor = getattr(self, '_scale_factor', 1.0)
+            is_two_column = getattr(self, '_is_two_column', False)
+            
+            # 根据内容高度确定窗口高度（完全自适应，不受80%限制）
+            # 优先使用内容高度，确保所有内容都能显示
+            # 但在200%分辨率下，如果高度过大，适当限制以减少留白
+            if float(scale_factor) > 2.0:
+                # 200%分辨率：如果内容高度超过屏幕高度的90%，限制在90%
+                max_height_200 = int(screen_height * 0.9)
+                if content_height > max_height_200:
+                    window_height = max_height_200
+                    logging.debug(f"200%分辨率：内容高度({content_height})超过屏幕90%({max_height_200})，限制窗口高度为{window_height}")
+                else:
+                    window_height = content_height
+            else:
+                # 100%分辨率：完全使用内容高度
+                window_height = content_height
+            
+            # 如果窗口高度超过屏幕高度，记录警告但不限制（通过位置调整来确保可见）
+            if window_height > screen_height:
+                logging.warning(f"内容高度({content_height})超过屏幕高度({screen_height})，窗口高度={window_height}，将通过位置调整确保可见")
+
+            # 确定窗口宽度
+            if is_two_column:
+                # 两列模式：使用固定基础宽度，根据分辨率缩放
+                try:
+                    # 基础宽度：单列约500像素（图标144 + 文本350 + 边距），两列约1000像素
+                    base_width = 1000
+                    
+                    # 根据分辨率应用不同的宽度策略
+                    if float(scale_factor) <= 2.0:
+                        # 100%分辨率：基础宽度的80%（保持不变，用户反馈OK）
+                        window_width = int(base_width * float(scale_factor) * 0.8)
+                    else:
+                        # 200%分辨率：基础宽度的70%（从50%增加到70%，解决太窄问题）
+                        window_width = int(base_width * float(scale_factor) * 0.7)
+                    
+                    # 确保最小宽度（两列至少需要800像素）
+                    min_width = int(800 * float(scale_factor))
+                    window_width = max(min_width, window_width)
+                    
+                    # 限制最大宽度：100%不超过屏幕45%，200%不超过屏幕70%
+                    if float(scale_factor) <= 2.0:
+                        max_width = int(screen_width * 0.45)
+                    else:
+                        max_width = int(screen_width * 0.70)
+                    window_width = min(window_width, max_width)
+                    
+                    logging.info(f"两列模式：scale_factor={scale_factor}, 最终宽度={window_width}, 屏幕宽度={screen_width}")
+                except Exception as e:
+                    logging.error(f"计算两列模式窗口宽度失败: {e}")
+                    import traceback
+                    logging.error(traceback.format_exc())
+                    # 回退方案：根据分辨率使用固定值
+                    if float(scale_factor) <= 2.0:
+                        window_width = int(1000 * float(scale_factor) * 0.8)
+                    else:
+                        window_width = int(1000 * float(scale_factor) * 0.7)
+            else:
+                # 单列模式：固定宽度（可被缩放）
+                base_window_width = 600
+                try:
+                    window_width = int(base_window_width * float(scale_factor))
+                    # 确保最小宽度
+                    window_width = max(300, window_width)
+                except Exception:
+                    window_width = 600
+
+            # 调整窗口位置，确保窗口能够显示所有内容
+            # screen_width 和 screen_height 已经在前面定义了，这里不需要重新定义
+            
+            # 确保窗口左上角在屏幕内
             if pos_x < 0:
                 pos_x = 0
             if pos_y < 0:
                 pos_y = 0
-            # 确保窗口底部不超过屏幕底部：如果超出则向上移动窗口
-            if pos_y + window_height > screen_height:
-                pos_y = max(0, screen_height - window_height)
-            # 允许窗口超出屏幕右边界但不超出下边界
-            self.info_window.geometry(
-                f"{window_width}x{window_height}+{pos_x}+{pos_y}")
+            
+            # 如果窗口高度超过屏幕高度，确保窗口顶部在屏幕内，底部可以超出
+            # 这样至少能看到窗口的顶部内容
+            if window_height > screen_height:
+                # 窗口高度超过屏幕，确保窗口顶部在屏幕内（至少显示顶部）
+                if pos_y + window_height > screen_height:
+                    # 如果窗口底部会超出屏幕，将窗口顶部放在屏幕顶部
+                    pos_y = 0
+                    logging.debug(f"窗口高度({window_height})超过屏幕高度({screen_height})，将窗口顶部放在屏幕顶部")
+            else:
+                # 窗口高度不超过屏幕，确保窗口底部不超过屏幕底部
+                if pos_y + window_height > screen_height:
+                    pos_y = max(0, screen_height - window_height)
+            
+            # 设置窗口大小和位置
+            # 使用update_idletasks确保窗口已经创建
+            self.info_window.update_idletasks()
+            
+            # 设置窗口几何尺寸
+            try:
+                self.info_window.geometry(
+                    f"{window_width}x{window_height}+{pos_x}+{pos_y}")
+                # 强制更新
+                self.info_window.update_idletasks()
+                self.info_window.update()
+            except Exception as e:
+                logging.error(f"设置窗口几何尺寸失败: {e}")
+                # 如果失败，尝试只设置大小
+                try:
+                    self.info_window.geometry(f"{window_width}x{window_height}")
+                    self.info_window.update_idletasks()
+                except Exception:
+                    pass
 
-            # 更新滚动区域
+            # 验证窗口高度是否正确设置（延迟验证，给窗口时间更新）
+            try:
+                self.info_window.after(10, lambda: self._verify_window_height(window_height))
+            except Exception:
+                pass
+
+            # 更新滚动区域（安全调用）
             if self.scrollable_frame:
-                self.scrollable_frame.update_scrollregion()
+                try:
+                    self.scrollable_frame.update_scrollregion()
+                except Exception as e:
+                    logging.debug(f"update_scrollregion 失败（可忽略）: {e}")
+            
+            # 更新所有IconFrame的wraplength（确保文本能够正确换行）
+            if is_two_column:
+                try:
+                    # 延迟更新，等待布局稳定
+                    self.info_window.after(50, lambda: self._update_all_iconframes_wraplength(window_width))
+                except Exception as e:
+                    logging.debug(f"安排更新IconFrame wraplength失败（可忽略）: {e}")
 
         except Exception as e:
             logging.error(f"调整窗口大小失败: {e}")
+            import traceback
+            logging.error(traceback.format_exc())
+    
+    def _update_all_iconframes_wraplength(self, window_width):
+        """更新所有IconFrame的wraplength，确保文本能够正确换行"""
+        try:
+            if not self.info_window or not self.info_window.winfo_exists():
+                return
+            
+            # 计算每列的宽度（两列模式下）
+            # 窗口宽度 - 左右边距(20) - 列间距(10) = 可用宽度
+            # 每列宽度 = 可用宽度 / 2
+            available_width = window_width - 20 - 10
+            column_width = available_width // 2
+            
+            # 文本区域宽度 = 列宽度 - 图标宽度(144) - 列内边距(10)
+            text_width = max(150, column_width - 144 - 10)
+            wraplength = max(150, text_width - 10)
+            
+            # 遍历所有IconFrame并更新wraplength
+            def update_frame_wraplength(widget):
+                if isinstance(widget, IconFrame):
+                    try:
+                        # 更新desc_label的wraplength
+                        if hasattr(widget, 'desc_label') and widget.desc_label:
+                            widget.desc_label.config(wraplength=wraplength)
+                    except Exception:
+                        pass
+                # 递归处理子组件
+                for child in widget.winfo_children():
+                    update_frame_wraplength(child)
+            
+            # 从content_frame开始遍历
+            if self.content_frame and self.content_frame.winfo_exists():
+                update_frame_wraplength(self.content_frame)
+            
+            logging.debug(f"更新所有IconFrame wraplength: 窗口宽度={window_width}, 列宽度={column_width}, wraplength={wraplength}")
+        except Exception as e:
+            logging.debug(f"更新IconFrame wraplength失败（可忽略）: {e}")
+
+    def _verify_window_height(self, expected_height):
+        """验证窗口高度是否正确设置（延迟调用）"""
+        try:
+            if not self.info_window or not self.info_window.winfo_exists():
+                return
+            actual_height = self.info_window.winfo_height()
+            if abs(actual_height - expected_height) > 10:  # 允许10像素误差
+                logging.warning(f"窗口高度验证: 期望={expected_height}, 实际={actual_height}")
+                # 如果差异很大，尝试重新设置
+                if abs(actual_height - expected_height) > 50:
+                    try:
+                        current_geom = self.info_window.geometry()
+                        parts = current_geom.split('+')
+                        if len(parts) >= 3:
+                            size_part = parts[0]
+                            x = parts[1]
+                            y = parts[2]
+                            size_parts = size_part.split('x')
+                            if len(size_parts) == 2:
+                                width = size_parts[0]
+                                self.info_window.geometry(f"{width}x{expected_height}+{x}+{y}")
+                                self.info_window.update_idletasks()
+                    except Exception:
+                        pass
+        except Exception:
+            pass  # 忽略验证错误
 
     def _do_move_window(self, pos_x, pos_y):
         """只移动窗口位置，不调整大小（在主线程中调用）"""
@@ -1196,15 +1378,32 @@ class GUIManager:
                 logging.warning("无法确保子框架存在，无法显示怪物信息")
                 return False
             
+            bg_color = '#1C1810'
             has_skills = False
-            # 显示技能
+            # 显示技能（强制两列显示）
             if monster_data.get('skills'):
                 has_skills = True
                 if self.skills_frame and self.skills_frame.winfo_exists():
                     self.skills_frame.pack(fill='x', pady=0, padx=0)
+                    # 清空skills_frame
+                    for widget in self.skills_frame.winfo_children():
+                        try:
+                            widget.destroy()
+                        except Exception:
+                            pass
+                    
+                    # 创建两列容器
+                    skills_left_col = tk.Frame(self.skills_frame, bg=bg_color)
+                    skills_right_col = tk.Frame(self.skills_frame, bg=bg_color)
+                    skills_left_col.pack(side='left', fill='both', expand=True, padx=(0,5))
+                    skills_right_col.pack(side='left', fill='both', expand=True, padx=(5,0))
+                    
+                    # 均匀分配技能到两列（轮询分配）
+                    skills_left_turn = True
                     for skill in monster_data['skills']:
-                        skill_frame = IconFrame(self.skills_frame)
-                        skill_frame.pack(fill='x', pady=0)
+                        parent_col = skills_left_col if skills_left_turn else skills_right_col
+                        skill_frame = IconFrame(parent_col, bg=bg_color)
+                        skill_frame.pack(fill='x', padx=5, pady=5)
                         
                         # 获取技能名称和描述（优先使用中文）
                         skill_name_en = skill.get('name', '')
@@ -1249,8 +1448,9 @@ class GUIManager:
                             icon_path,
                             skill_aspect_ratio
                         )
+                        skills_left_turn = not skills_left_turn
                     
-            # 显示物品
+            # 显示物品（强制两列显示）
             if monster_data.get('items'):
                 if has_skills and self.content_frame and self.content_frame.winfo_exists():
                     # 添加分隔条
@@ -1259,6 +1459,19 @@ class GUIManager:
                 
                 if self.items_frame and self.items_frame.winfo_exists():
                     self.items_frame.pack(fill='x', pady=0, padx=0)
+                    # 清空items_frame
+                    for widget in self.items_frame.winfo_children():
+                        try:
+                            widget.destroy()
+                        except Exception:
+                            pass
+                    
+                    # 创建两列容器
+                    items_left_col = tk.Frame(self.items_frame, bg=bg_color)
+                    items_right_col = tk.Frame(self.items_frame, bg=bg_color)
+                    items_left_col.pack(side='left', fill='both', expand=True, padx=(0,5))
+                    items_right_col.pack(side='left', fill='both', expand=True, padx=(5,0))
+                    
                     # 统计相同物品的数量
                     items_count = {}
                     items_info = {}
@@ -1269,14 +1482,16 @@ class GUIManager:
                             if name not in items_info:
                                 items_info[name] = item
                                 
-                    # 显示物品信息
+                    # 显示物品信息（均匀分配到两列）
                     item_keys = list(items_info.keys())
+                    items_left_turn = True
                     for idx, item_name in enumerate(item_keys):
                         item = items_info[item_name]
-                        item_frame = IconFrame(self.items_frame)
+                        parent_col = items_left_col if items_left_turn else items_right_col
+                        item_frame = IconFrame(parent_col, bg=bg_color)
                         
                         # 设置物品框架的边距
-                        item_frame.pack(fill='x', pady=0)
+                        item_frame.pack(fill='x', padx=5, pady=5)
                             
                         # 获取物品名称和描述（优先使用中文）
                         item_name_zh = item.get('name_zh', item_name)
@@ -1325,6 +1540,10 @@ class GUIManager:
                             icon_path,
                             item_aspect_ratio
                         )
+                        items_left_turn = not items_left_turn
+                    
+            # 标记为两列模式（因为技能和物品都使用了两列）
+            self._is_two_column = True
                     
             # 如果既没有技能也没有物品，显示提示信息
             if not monster_data.get('skills') and not monster_data.get('items'):
@@ -1393,15 +1612,37 @@ class GUIManager:
             
             logging.debug(f"事件: {event_name}, 英文名: {event_name_en}, 清理后: {event_name_en_clean}")
             
+            bg_color = '#1C1810'
+            
+            # 强制使用两列显示所有内容
             if self.event_options_frame and self.event_options_frame.winfo_exists():
+                # 先清空event_options_frame
+                for widget in self.event_options_frame.winfo_children():
+                    try:
+                        widget.destroy()
+                    except Exception:
+                        pass
+                
+                # 标记为两列模式
+                self._is_two_column = True
+                logging.info(f"事件选项数量={len(event_data)}，强制使用两列显示")
+                
+                # 创建两列容器（直接在event_options_frame内）
+                left_col = tk.Frame(self.event_options_frame, bg=bg_color)
+                right_col = tk.Frame(self.event_options_frame, bg=bg_color)
+                left_col.pack(side='left', fill='both', expand=True, padx=(0,5))
+                right_col.pack(side='left', fill='both', expand=True, padx=(5,0))
+                
+                # 均匀分配内容到两列（轮询分配）
+                left_turn = True
                 for option in event_data:
-                    # 优先使用中文名称和描述
+                    parent_col = left_col if left_turn else right_col
+                    
                     option_name = option.get('name_zh', option.get('name', ''))
                     option_description = option.get('description_zh', option.get('description', ''))
-                    option_name_en = option.get('name', '')  # 英文名称用于查找图标
+                    option_name_en = option.get('name', '')
                     
                     icon_path = None
-                    # 尝试多种方式查找图标
                     if option.get('icon'):
                         icon_path = self.get_local_icon_path(option['icon'], event_name_en_clean, option_name_en)
                     elif option.get('icon_url'):
@@ -1411,14 +1652,25 @@ class GUIManager:
                         logging.warning(f"未找到图标: 事件={event_name_en_clean}, 选项={option_name_en}, URL={option.get('icon_url', '')}")
                     
                     aspect_ratio = float(option.get('aspect_ratio', 1.0))
-                    option_frame = IconFrame(self.event_options_frame)
-                    option_frame.pack(fill='x', pady=0)
+                    option_frame = IconFrame(parent_col, bg=bg_color)
+                    option_frame.pack(fill='x', padx=5, pady=5)
                     option_frame.update_content(
                         option_name,
                         option_description,
                         icon_path,
                         aspect_ratio
                     )
+                    left_turn = not left_turn
+                
+                # 更新滚动区域
+                self.content_frame.update_idletasks()
+                self.info_window.update_idletasks()
+                self.content_frame.update_idletasks()
+                if self.scrollable_frame:
+                    try:
+                        self.scrollable_frame.update_scrollregion()
+                    except Exception:
+                        pass
             
             # 注意：这里不应该再检查event_data，因为前面已经检查过了
             # 如果执行到这里，说明event_data不为空，已经成功显示了事件选项
@@ -1484,3 +1736,158 @@ class GUIManager:
                 self.info_window = None
             except Exception as e:
                 logging.error(f"销毁信息窗口失败: {e}")
+
+    def apply_scale(self, scale_percent):
+        """
+        应用信息窗口缩放（百分比，例如100,125,150）。
+        仅调整窗口整体缩放因子和几何尺寸；更细粒度的字体/图片缩放由各组件在更新时处理。
+        """
+        try:
+            display_percent = float(scale_percent)
+        except Exception:
+            logging.error(f"[GUIManager] apply_scale: 无效的scale_percent: {scale_percent}")
+            return False
+
+        # 读取基线因子（默认1.5），用于兼容旧版视觉基线
+        try:
+            baseline = 1.0
+            if hasattr(self, 'controller') and self.controller and hasattr(self.controller, 'config'):
+                baseline = float(self.controller.config.get('scale_baseline_factor', 1.5))
+        except Exception:
+            baseline = 1.5
+
+        # 计算实际（内部）百分比并转为缩放因子
+        internal_percent = display_percent * baseline
+        scale = internal_percent / 100.0
+
+        # 保存缩放因子（内部用于窗口几何计算）
+        self._scale_factor = scale
+
+        # 如果窗口已存在，尝试调整tk缩放与窗口几何
+        try:
+            if self.info_window and self.info_window.winfo_exists():
+                try:
+                    # 设置tk内部缩放（影响字体度量等）
+                    self.info_window.tk.call('tk', 'scaling', scale)
+                except Exception:
+                    # 某些环境下tk scaling可能无效，忽略
+                    pass
+
+                try:
+                    # 根据当前几何调整窗口大小（保持位置）
+                    geom = self.info_window.geometry()
+                    parts = geom.split('+')
+                    size_part = parts[0] if parts else "600x300"
+                    size_parts = size_part.split('x')
+                    try:
+                        current_w = int(size_parts[0])
+                        current_h = int(size_parts[1]) if len(size_parts) > 1 else 300
+                    except Exception:
+                        current_w, current_h = 600, 300
+
+                    new_w = max(200, int(current_w * scale))
+                    new_h = max(100, int(current_h * scale))
+                    x = int(parts[1]) if len(parts) > 1 else 0
+                    y = int(parts[2]) if len(parts) > 2 else 0
+                    self.info_window.geometry(f"{new_w}x{new_h}+{x}+{y}")
+                    self.info_window.update_idletasks()
+                except Exception:
+                    pass
+
+        except Exception as e:
+            logging.error(f"[GUIManager] apply_scale 失败: {e}")
+            logging.error(traceback.format_exc())
+            return False
+
+        logging.info(f"[GUIManager] 应用缩放: {scale_percent}%")
+        return True
+
+    def show_custom_resolution_dialog(self):
+        """在 GUI 主线程中创建并显示自定义分辨率对话框"""
+        try:
+            parent = self.info_window if self.info_window and self.info_window.winfo_exists() else None
+            root = parent if parent else tk.Tk()
+            if not parent:
+                root.withdraw()
+
+            dlg = tk.Toplevel(root)
+            dlg.title("自定义分辨率")
+            dlg.geometry("320x140")
+            dlg.resizable(False, False)
+            dlg.configure(bg="#1C1810")
+            try:
+                if parent:
+                    dlg.transient(parent)
+                dlg.attributes('-topmost', True)
+                dlg.focus_force()
+                dlg.grab_set()
+            except Exception:
+                pass
+
+            tk.Label(dlg, text="缩放百分比（例如150、200）:", bg="#1C1810", fg="#E8D4B9").pack(anchor='w', padx=12, pady=(12,4))
+            entry_var = tk.StringVar()
+            try:
+                # 显示并编辑的是“显示值”（用户看到的百分比）
+                current = int(self.controller.config.get('info_window_scale', 100)) if hasattr(self, 'controller') and self.controller else 100
+                entry_var.set(str(current))
+            except Exception:
+                entry_var.set("100")
+
+            entry = tk.Entry(dlg, textvariable=entry_var, font=("Microsoft YaHei", 12))
+            entry.pack(fill='x', padx=12)
+
+            btn_frame = tk.Frame(dlg, bg="#1C1810")
+            btn_frame.pack(pady=12)
+
+            def on_apply():
+                try:
+                    val = int(entry_var.get())
+                    if val < 50 or val > 400:
+                        messagebox.showerror("错误", "请输入 50 到 400 之间的整数")
+                        return
+                    # 保存显示值并应用（apply_scale 会读取 baseline 并计算内部百分比）
+                    try:
+                        if hasattr(self, 'controller') and self.controller and hasattr(self.controller, 'config'):
+                            self.controller.config.set('info_window_scale', int(val))
+                    except Exception:
+                        logging.exception("[GUIManager] 保存 info_window_scale 失败")
+                    # 应用缩放（传入显示值）
+                    try:
+                        self.apply_scale(val)
+                    except Exception:
+                        logging.exception("[GUIManager] 应用缩放失败")
+                    dlg.destroy()
+                except ValueError:
+                    messagebox.showerror("错误", "请输入有效的整数")
+                except Exception:
+                    logging.exception("[GUIManager] show_custom_resolution_dialog apply 失败")
+
+            apply_btn = tk.Button(btn_frame, text="应用", command=on_apply, font=("Microsoft YaHei", 12), bg="#3A3122", fg="#F5F5F5")
+            apply_btn.pack(side='left', padx=(0,8))
+            reset_btn = tk.Button(btn_frame, text="重置为默认", command=lambda: (entry_var.set("150"), self.apply_scale(150), dlg.destroy()), font=("Microsoft YaHei", 12), bg="#5A3A2A", fg="#F5F5F5")
+            reset_btn.pack(side='left', padx=(0,8))
+            cancel_btn = tk.Button(btn_frame, text="取消", command=dlg.destroy, font=("Microsoft YaHei", 12), bg="#3A3122", fg="#F5F5F5")
+            cancel_btn.pack(side='left')
+
+            dlg.update_idletasks()
+            w = dlg.winfo_width()
+            h = dlg.winfo_height()
+            sw = dlg.winfo_screenwidth()
+            sh = dlg.winfo_screenheight()
+            x = (sw // 2) - (w // 2)
+            y = (sh // 2) - (h // 2)
+            dlg.geometry(f"{w}x{h}+{x}+{y}")
+
+            if parent is None:
+                def _on_close():
+                    try:
+                        dlg.destroy()
+                    finally:
+                        try:
+                            root.destroy()
+                        except Exception:
+                            pass
+                dlg.protocol("WM_DELETE_WINDOW", _on_close)
+
+        except Exception:
+            logging.exception("[GUIManager] show_custom_resolution_dialog 遇到异常")

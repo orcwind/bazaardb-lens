@@ -118,8 +118,12 @@ if os.path.exists(encrypt_script):
         else:
             print(f"⚠ 生成 data_json.enc 失败: {res.stderr.strip() if res.stderr else '未知错误'}")
             print("⚠ 跳过加密打包步骤，将使用未加密的 JSON 文件（如果已存在 data_json.enc 则使用它）")
-            if 'cryptography' in res.stderr.lower() or 'ModuleNotFoundError' in res.stderr:
-                print("   提示: 如需加密功能，请安装 cryptography 模块: pip install cryptography")
+            try:
+                stderr_lower = res.stderr.lower() if res.stderr else ''
+                if 'cryptography' in stderr_lower or 'modulenotfounderror' in stderr_lower:
+                    print("   提示: 如需加密功能，请安装 cryptography 模块: pip install cryptography")
+            except Exception:
+                pass
     except Exception as e:
         print(f"⚠ 运行 encrypt_data 脚本时出错: {e}")
         print("⚠ 跳过加密打包步骤，将使用未加密的 JSON 文件（如果已存在 data_json.enc 则使用它）")
@@ -148,6 +152,8 @@ args = [
     '--hidden-import=pystray._win32',  # Windows 平台必需的 pystray 后端
     '--hidden-import=pystray.backends._win32',  # Windows 后端实现
     '--hidden-import=cryptography',
+    '--hidden-import=ui',
+    '--hidden-import=ui.components',
     '--hidden-import=cryptography.hazmat',
     '--hidden-import=cryptography.hazmat.primitives',
     '--hidden-import=cryptography.hazmat.bindings.openssl',

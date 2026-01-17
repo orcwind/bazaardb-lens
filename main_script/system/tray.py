@@ -146,17 +146,50 @@ class SystemTray:
         logging.info("[SystemTray] ========== 开始创建托盘图标 ==========")
         logging.info("[SystemTray] 正在构建图标对象...")
         
-        # 1. 准备菜单
+        # 如果已有 icon，先停止它以避免出现重复托盘图标
         try:
+            if getattr(self, 'icon', None):
+                try:
+                    logging.info("[SystemTray] 发现已有 icon，尝试先停止旧 icon")
+                    try:
+                        self.icon.stop()
+                    except Exception:
+                        pass
+                    self.icon = None
+                    safe_flush()
+                except Exception:
+                    logging.exception("[SystemTray] 停止旧 icon 失败")
+        except Exception:
+            pass
+        
+        # 1. 准备菜单（包含“调整分辨率”子菜单）
+        try:
+            # 分辨率预设：75%、100%、125%、150%、200%（取消自定义）
+            resolution_menu = pystray.Menu(
+                pystray.MenuItem("75%", lambda icon, item: self._set_resolution_preset(icon, item, 75),
+                                 checked=lambda item: (self.controller and getattr(self.controller, 'config', None) and int(self.controller.config.get('info_window_scale', 100)) == 75)),
+                pystray.MenuItem("100%", lambda icon, item: self._set_resolution_preset(icon, item, 100),
+                                 checked=lambda item: (self.controller and getattr(self.controller, 'config', None) and int(self.controller.config.get('info_window_scale', 100)) == 100)),
+                pystray.MenuItem("125%", lambda icon, item: self._set_resolution_preset(icon, item, 125),
+                                 checked=lambda item: (self.controller and getattr(self.controller, 'config', None) and int(self.controller.config.get('info_window_scale', 100)) == 125)),
+                pystray.MenuItem("150%", lambda icon, item: self._set_resolution_preset(icon, item, 150),
+                                 checked=lambda item: (self.controller and getattr(self.controller, 'config', None) and int(self.controller.config.get('info_window_scale', 100)) == 150)),
+                pystray.MenuItem("200%", lambda icon, item: self._set_resolution_preset(icon, item, 200),
+                                 checked=lambda item: (self.controller and getattr(self.controller, 'config', None) and int(self.controller.config.get('info_window_scale', 100)) == 200))
+            )
+
             menu = pystray.Menu(
                 pystray.MenuItem("说明", self._show_help),
                 pystray.MenuItem("日志", self._open_log),
                 pystray.MenuItem("联系我", self._open_contact),
                 pystray.MenuItem("赞助", self._open_sponsor),
                 pystray.Menu.SEPARATOR,
+                pystray.MenuItem("调整分辨率", resolution_menu),
+                pystray.MenuItem("恢复默认", lambda icon, item: self._set_resolution_preset(icon, item, 100)),
+                pystray.Menu.SEPARATOR,
                 pystray.MenuItem("退出", self._quit_application)
             )
-            logging.info("[SystemTray] 菜单创建成功")
+            logging.info("[SystemTray] 菜单创建成功（包含调整分辨率）")
         except Exception as e:
             logging.error(f"[SystemTray] 创建菜单失败: {e}")
             # 即使菜单失败，也尝试给个基础菜单
@@ -371,20 +404,16 @@ class SystemTray:
             else:
                 help_text = f"说明文件不存在: {help_path}"
             
-            # 关键修复：使用主线程的 tkinter 窗口来创建新窗口
-            # 通过 controller 访问 gui_manager 的主窗口
+            # 关键修复：使用独立的 help 窗口创建，避免受 info_window 无边框限制影响
             if self.controller and hasattr(self.controller, 'gui_manager'):
                 main_window = self.controller.gui_manager.info_window
-                if main_window:
-                    # 在主线程中调度窗口创建
-                    main_window.after(0, lambda: self._create_help_window(main_window, help_text))
+                if main_window and hasattr(main_window, 'after'):
+                    # 在主线程中安排创建独立的 help 窗口（direct 方法）
+                    main_window.after(0, lambda: self._create_help_window_direct(help_text))
                 else:
-                    # 如果主窗口不存在，尝试直接创建（不推荐，但作为后备）
-                    logging.warning("主窗口不存在，尝试在后台线程创建（可能导致错误）")
                     self._create_help_window_direct(help_text)
             else:
-                # 后备方案：直接创建（可能失败）
-                logging.warning("无法访问主窗口，尝试直接创建（可能导致错误）")
+                logging.warning("无法访问主窗口，尝试直接创建（可能失败）")
                 self._create_help_window_direct(help_text)
             
         except Exception as e:
@@ -594,6 +623,54 @@ class SystemTray:
             logging.error(f"直接创建说明窗口失败: {e}")
             import traceback
             logging.error(traceback.format_exc())
+    
+    def _set_resolution_preset(self, icon, item, percent):
+        """设置缩放预设并应用（在托盘回调中调用）"""
+        try:
+            logging.info(f"[SystemTray] 设置分辨率预设: {percent}%")
+            # 持久化到配置
+            # 保存为用户可见的显示值（display percent）
+            if self.controller and hasattr(self.controller, 'config'):
+                try:
+                    self.controller.config.set('info_window_scale', int(percent))
+                except Exception:
+                    logging.exception("[SystemTray] 保存分辨率到配置失败")
+
+            # 在主线程中应用缩放
+            if self.controller and hasattr(self.controller, 'gui_manager') and self.controller.gui_manager:
+                try:
+                    parent = self.controller.gui_manager.info_window
+                    if parent:
+                        parent.after(0, lambda: self.controller.gui_manager.apply_scale(percent))
+                    else:
+                        try:
+                            self.controller.gui_manager.apply_scale(percent)
+                        except Exception:
+                            pass
+                except Exception:
+                    logging.exception("[SystemTray] 在主线程中应用缩放失败")
+
+        except Exception as e:
+            logging.error(f"[SystemTray] _set_resolution_preset 异常: {e}")
+            logging.error(traceback.format_exc())
+
+    def _enqueue_open_custom_dialog(self):
+        """将打开自定义对话框的任务添加到 GUI 管理器的更新队列（保证在主线程执行）"""
+        # 自定义选项已移除；此函数不再弹出对话，仅记录调用以便兼容旧代码路径
+        logging.info("[SystemTray] _enqueue_open_custom_dialog 调用被忽略（自定义已移除）")
+        return
+    
+    def _open_custom_resolution_dialog(self, icon, item):
+        """在主线程中打开自定义缩放输入对话框"""
+        # 自定义输入已移除 — no-op
+        logging.info("[SystemTray] _open_custom_resolution_dialog 调用被忽略（自定义已移除）")
+        return
+
+    def _create_custom_resolution_dialog(self, parent_window):
+        """创建自定义分辨率对话框（在主线程中执行）"""
+        # 自定义对话已移除；此函数保留为兼容但不执行任何 UI 操作
+        logging.info("[SystemTray] _create_custom_resolution_dialog 调用被忽略（自定义已移除）")
+        return
     
     def _open_contact(self, icon, item):
         """打开联系我链接"""

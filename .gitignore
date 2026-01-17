@@ -139,7 +139,7 @@ config.ini
 /data/html
 /.venv311
 /Output
-/build
+build
 /build
 /build
 /build

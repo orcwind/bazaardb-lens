@@ -42,6 +42,11 @@ class MainController:
         self.ocr_processor = OCRProcessor()
         # GUI管理器需要OCR处理器引用，用于匹配失败时的微调
         self.gui_manager = GUIManager(ocr_processor=self.ocr_processor)
+        # 让 GUIManager 能访问 controller（用于读取配置等）
+        try:
+            self.gui_manager.controller = self
+        except Exception:
+            pass
 
         # 系统功能
         self.update_checker = UpdateChecker(self.config)
@@ -102,6 +107,14 @@ class MainController:
         # 创建GUI窗口
         try:
             self.gui_manager.create_info_window()
+            # 应用保存的缩放设置（若存在）
+            try:
+                saved_scale = int(self.config.get('info_window_scale', 100))
+                if saved_scale and hasattr(self.gui_manager, 'apply_scale'):
+                    self.gui_manager.apply_scale(saved_scale)
+                    logging.info(f"[MainController] 已应用保存的 info_window_scale: {saved_scale}%")
+            except Exception:
+                logging.exception("[MainController] 应用保存的 info_window_scale 失败")
         except Exception as e:
             logging.error(f"[MainController] 创建GUI窗口失败: {e}")
             logging.error(traceback.format_exc())
