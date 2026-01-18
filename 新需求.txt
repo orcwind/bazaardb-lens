@@ -1,17 +1,45 @@
 # https://bazaardb.gg/search?q=Landscraper&c=items  
 
 
-步骤1：抓取HTML文件
+=== 物品数据抓取流程（2025年更新）===
 
+步骤1：获取物品列表并下载HTML
 cd 6.0\crawlers
-python simple_crawler_items_skills.py
+python fetch_items_html.py --download
+# 说明：从网站获取所有物品列表，并下载物品搜索页面的HTML
+# 输出：data/Json/items_list_from_web.json（物品列表）
+#       data/html/items_list_page.html（物品搜索页面HTML）
 
-步骤2：提取名称清单
-python fetch_items_skills_names.py
+步骤2：从HTML提取物品信息
+python extract_items_from_html.py
+# 说明：从items_list_page.html提取物品信息，并从详情页获取描述和附魔信息
+# 输出：data/Json/items.json（完整的物品数据）
+# 参数：
+#   --batch-size 200 --batch-index 0  # 批次处理（每批200个，从第0批开始）
+#   --test 10  # 测试模式（只处理10个物品）
 
-python crawl_items_details.py 抓取所有物品信息及icon
- 
-python extract_monster_icons_from_html.py 从html下载所有monster icon
+步骤3：检查物品描述错误
+python check_items_descriptions.py
+# 说明：检查所有物品描述是否有明显错误（Types、Ammo、附魔信息等）
+# 注意：只能检查明显错误，无法验证描述的正确性
+
+步骤4：修复有问题的物品
+python fix_problematic_items.py
+# 说明：修复缺失描述、包含Types标签、包含附魔错误信息的物品
+
+步骤5：修复明显错误的描述
+python fix_incorrect_descriptions.py
+# 说明：修复包含版本号、类型信息等明显错误的描述
+
+步骤6：最终验证（可选）
+python check_items_descriptions.py
+# 说明：再次检查确保所有明显错误已修复
+
+=== 旧脚本（已废弃）===
+# python simple_crawler_items_skills.py  # 旧脚本
+# python fetch_items_skills_names.py    # 旧脚本
+# python crawl_items_details.py        # 旧脚本
+# python extract_monster_icons_from_html.py  # 从html下载所有monster icon
 
 
 ## Event（事件）相关脚本
@@ -26,9 +54,9 @@ python fetch_event_name.py - 从HTML文件中提取事件名称列表
 python add_event_english_names.py - 为 events_from_html.json 补充事件的英文名称（name_en字段）
 
 monster相关
-- `fetch_html.py`：抓取目标网站的原始 HTML（支持分页与重试），将页面保存到 `data/source_html/`。
+- `fetch_html.py`：抓取目标网站的原始 HTML（支持分页与重试），将页面保存到 data\html\monster
 - `extract_monsters.py`：从已抓取的 HTML 中解析出结构化怪物信息，输出中间文件 `data/intermediate/extracted_monsters_raw.jsonl`（每行一条 JSON）。
-- `enrich_with_json.py`：加载 `data/json/items.json` 和 `data/json/skills.json`，为 `extracted_monsters_raw.jsonl` 中的 `drops`、`skills` 等引用补充中文名称和描述，输出 `data/intermediate/monsters_enriched.json`。
+- `enrich_with_json.py`：加载 `data/json/items.json` 和 `data/json/skills.json`，为 `extracted_monsters_raw.jsonl` 中的 `drops`、`skills` 等引用补充中文名称和描述，
 
 
 

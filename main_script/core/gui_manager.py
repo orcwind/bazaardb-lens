@@ -31,6 +31,7 @@ class GUIManager:
         self.skills_frame = None
         self.items_frame = None
         self.event_options_frame = None
+        self.monster_title_frame = None  # 怪物标题框架（显示名称和HP）
         self.controller = None
         self._is_two_column = False  # 标记是否为两列显示模式
 
@@ -132,6 +133,7 @@ class GUIManager:
             self.skills_frame = None
             self.items_frame = None
             self.event_options_frame = None
+            self.monster_title_frame = None
             self.content_frame = None
             self.scrollable_frame = None
 
@@ -705,7 +707,7 @@ class GUIManager:
                 text=f"{item_name} - 附魔",
                 font=('Microsoft YaHei', 14, 'bold'),
                 bg='#1C1810',
-                fg='#E8D4B9',
+                fg='#00FF00',  # 测试：绿色文字
                 anchor='w'
             )
             title_label.pack(fill='x', pady=(0, 10))
@@ -772,7 +774,7 @@ class GUIManager:
                     text=enchant_desc,
                     font=('Microsoft YaHei', 9),
                     bg=bg_color,
-                    fg='#E8E8E8',
+                    fg='#00FF00',  # 测试：绿色文字
                     anchor='w',
                     wraplength=200,
                     justify='left'
@@ -826,21 +828,105 @@ class GUIManager:
                 # 再次更新，确保获取到最终的高度
                 self.content_frame.update_idletasks()
                 
-                # 获取内容实际需要的高度（包括所有子组件）
-                content_height = self.content_frame.winfo_reqheight()
-                content_width = self.content_frame.winfo_reqwidth()
+                # 强制等待，确保所有内容都已渲染
+                import time
+                time.sleep(0.1)  # 等待100ms，确保所有内容都已渲染
+                self.content_frame.update_idletasks()
+                self.info_window.update_idletasks()
+                self.info_window.update()
                 
-                # 如果使用scrollable_frame，也需要考虑它的高度
+                # 如果使用scrollable_frame，需要获取内部框架的实际高度
                 if self.scrollable_frame:
-                    scrollable_height = self.scrollable_frame.winfo_reqheight()
-                    # 取较大的值，确保能显示所有内容
-                    content_height = max(content_height, scrollable_height)
+                    # 等待内部框架更新
+                    self.scrollable_frame.inner_frame.update_idletasks()
+                    # 获取内部框架的实际高度（包括所有子组件）
+                    # 注意：只使用inner_frame的实际内容高度，不使用canvas的当前高度（避免累加）
+                    inner_frame_height = self.scrollable_frame.inner_frame.winfo_reqheight()
+                    
+                    # 更新滚动区域，确保Canvas知道所有内容
+                    try:
+                        self.scrollable_frame.update_scrollregion()
+                    except Exception:
+                        pass
+                    
+                    # 再次更新，确保高度计算准确
+                    self.scrollable_frame.inner_frame.update_idletasks()
+                    # 多次更新，确保所有子组件都已渲染
+                    for _ in range(5):  # 增加到5次，确保完全渲染
+                        self.scrollable_frame.inner_frame.update_idletasks()
+                        self.info_window.update_idletasks()
+                    
+                    # 延迟一小段时间，确保所有内容都已渲染
+                    self.info_window.update()
+                    import time
+                    time.sleep(0.2)  # 等待200ms，确保所有内容都已渲染
+                    self.scrollable_frame.inner_frame.update_idletasks()
+                    self.info_window.update_idletasks()
+                    
+                    inner_frame_height = self.scrollable_frame.inner_frame.winfo_reqheight()
+                    
+                    # 使用bbox获取实际内容边界（更准确）
+                    try:
+                        bbox = self.scrollable_frame.canvas.bbox("all")
+                        if bbox:
+                            bbox_height = bbox[3] - bbox[1]  # bottom - top
+                            # 使用较大的值，确保包含所有内容
+                            inner_frame_height = max(inner_frame_height, bbox_height)
+                            logging.info(f"[高度计算调试] bbox高度={bbox_height}, inner_frame高度={self.scrollable_frame.inner_frame.winfo_reqheight()}, 使用高度={inner_frame_height}")
+                            logging.info(f"[高度计算调试] bbox详细信息: {bbox}")
+                        else:
+                            logging.warning(f"[高度计算调试] bbox为None")
+                    except Exception as e:
+                        logging.error(f"[高度计算调试] 获取bbox失败: {e}")
+                        import traceback
+                        logging.error(traceback.format_exc())
+                    
+                    # 确保最小高度（避免内容少时显示不全）
+                    # 根据实际内容计算，但确保有足够的高度
+                    # 使用bbox获取更准确的高度
+                    try:
+                        bbox = self.scrollable_frame.canvas.bbox("all")
+                        if bbox:
+                            bbox_height = bbox[3] - bbox[1]  # bottom - top
+                            # 使用bbox高度，它更准确
+                            inner_frame_height = max(inner_frame_height, bbox_height)
+                            logging.info(f"[高度计算] bbox高度={bbox_height}, 使用高度={inner_frame_height}")
+                    except Exception as e:
+                        logging.debug(f"[高度计算] 获取bbox失败: {e}")
+                    
+                    # 设置最小内容高度，但不要太小
+                    min_content_height = 600  # 增加最小高度到600
+                    if inner_frame_height < min_content_height:
+                        logging.info(f"[高度计算] 内容高度({inner_frame_height})小于最小值({min_content_height})，使用最小值")
+                        inner_frame_height = min_content_height
+                    
+                    # 只使用inner_frame的实际内容高度，不参考canvas的当前高度
+                    content_height = inner_frame_height
+                    content_width = self.content_frame.winfo_width()
+                    
+                    logging.info(f"[高度计算] scrollable_frame模式: inner_frame高度={inner_frame_height}, 使用高度={content_height}")
+                else:
+                    # 非滚动模式：直接获取content_frame的高度
+                    content_height = self.content_frame.winfo_reqheight()
+                    content_width = self.content_frame.winfo_width()
+                    logging.info(f"[高度计算] 普通模式: content_frame高度={content_height}")
                 
-                # 添加一些边距（上下各10像素）
-                content_height = content_height + 20
+                # 添加一些边距（上下各20像素，标题区域额外20像素）
+                # 在200%分辨率下，需要更多的边距
+                scale_factor = getattr(self, '_scale_factor', 1.0)
+                padding_before = content_height
+                if float(scale_factor) > 2.0:
+                    # 200%分辨率：增加更多边距
+                    padding = 100
+                    content_height = content_height + padding
+                    logging.info(f"[高度计算调试] 200%分辨率：添加边距{padding}像素，{padding_before} -> {content_height}")
+                else:
+                    padding = 60
+                    content_height = content_height + 60
+                    logging.info(f"[高度计算调试] 100%分辨率：添加边距{padding}像素，{padding_before} -> {content_height}")
                 content_width = content_width + 20
                 
-                logging.debug(f"内容高度计算: content_frame={self.content_frame.winfo_reqheight()}, scrollable={self.scrollable_frame.winfo_reqheight() if self.scrollable_frame else 0}, 最终={content_height}")
+                logging.info(f"[高度计算调试] 最终内容高度={content_height} (scale_factor={scale_factor}, 屏幕高度={self.info_window.winfo_screenheight()})")
             else:
                 content_height = 200
                 content_width = 600
@@ -855,18 +941,30 @@ class GUIManager:
             
             # 根据内容高度确定窗口高度（完全自适应，不受80%限制）
             # 优先使用内容高度，确保所有内容都能显示
-            # 但在200%分辨率下，如果高度过大，适当限制以减少留白
+            # 在200%分辨率下，如果高度过大，限制在95%（从90%增加到95%，确保更多内容可见）
+            # 确保最小窗口高度，避免内容少时显示不全
+            min_window_height = 700  # 增加最小窗口高度到700
+            
             if float(scale_factor) > 2.0:
-                # 200%分辨率：如果内容高度超过屏幕高度的90%，限制在90%
-                max_height_200 = int(screen_height * 0.9)
+                # 200%分辨率：完全使用内容高度，不限制（确保所有内容都能显示）
+                # 如果内容高度超过屏幕，使用屏幕高度，但尽量显示更多内容
+                max_height_200 = int(screen_height * 0.98)  # 增加到98%，几乎使用整个屏幕
+                logging.info(f"[高度计算调试] 200%分辨率：内容高度={content_height}, 屏幕高度={screen_height}, 最大高度限制={max_height_200}, 最小窗口高度={min_window_height}")
                 if content_height > max_height_200:
                     window_height = max_height_200
-                    logging.debug(f"200%分辨率：内容高度({content_height})超过屏幕90%({max_height_200})，限制窗口高度为{window_height}")
+                    logging.info(f"[高度计算调试] 200%分辨率：内容高度({content_height})超过屏幕98%({max_height_200})，限制窗口高度为{window_height}")
                 else:
-                    window_height = content_height
+                    window_height = max(content_height, min_window_height)  # 确保不小于最小值
+                    logging.info(f"[高度计算调试] 200%分辨率：使用完整内容高度={window_height} (最小值={min_window_height})")
             else:
-                # 100%分辨率：完全使用内容高度
-                window_height = content_height
+                # 100%分辨率：完全使用内容高度，但不超过屏幕高度的95%
+                max_height_100 = int(screen_height * 0.95)
+                if content_height > max_height_100:
+                    window_height = max_height_100
+                    logging.info(f"[高度计算] 100%分辨率：内容高度({content_height})超过屏幕95%({max_height_100})，限制窗口高度为{window_height}")
+                else:
+                    window_height = max(content_height, min_window_height)  # 确保不小于最小值
+                    logging.info(f"[高度计算] 100%分辨率：使用完整内容高度={window_height} (最小值={min_window_height})")
             
             # 如果窗口高度超过屏幕高度，记录警告但不限制（通过位置调整来确保可见）
             if window_height > screen_height:
@@ -967,11 +1065,21 @@ class GUIManager:
                 pass
 
             # 更新滚动区域（安全调用）
+            # 延迟更新，确保所有内容都已渲染完成
             if self.scrollable_frame:
-                try:
-                    self.scrollable_frame.update_scrollregion()
-                except Exception as e:
-                    logging.debug(f"update_scrollregion 失败（可忽略）: {e}")
+                def delayed_update():
+                    try:
+                        # 再次更新内部框架，确保高度计算准确
+                        self.scrollable_frame.inner_frame.update_idletasks()
+                        self.scrollable_frame.update_scrollregion()
+                        # 记录实际高度，但不用于窗口高度计算（避免累加）
+                        actual_inner_height = self.scrollable_frame.inner_frame.winfo_reqheight()
+                        logging.debug(f"[滚动区域] 已更新，inner_frame实际高度={actual_inner_height}")
+                    except Exception as e:
+                        logging.debug(f"update_scrollregion 失败（可忽略）: {e}")
+                
+                # 延迟50ms更新，确保所有内容都已渲染
+                self.info_window.after(50, delayed_update)
             
             # 更新所有IconFrame的wraplength（确保文本能够正确换行）
             if is_two_column:
@@ -1008,9 +1116,15 @@ class GUIManager:
                     try:
                         # 更新desc_label的wraplength
                         if hasattr(widget, 'desc_label') and widget.desc_label:
+                            # 调试：记录当前颜色设置
+                            current_fg = widget.desc_label.cget('fg')
                             widget.desc_label.config(wraplength=wraplength)
-                    except Exception:
-                        pass
+                            new_fg = widget.desc_label.cget('fg')
+                            if current_fg != new_fg:
+                                logging.warning(f"[调试] _update_all_iconframes_wraplength 改变了desc_label颜色: {current_fg} -> {new_fg}")
+                            logging.debug(f"[调试] _update_all_iconframes_wraplength 更新wraplength: {wraplength}, 当前fg={current_fg}")
+                    except Exception as e:
+                        logging.debug(f"[调试] _update_all_iconframes_wraplength 更新失败: {e}")
                 # 递归处理子组件
                 for child in widget.winfo_children():
                     update_frame_wraplength(child)
@@ -1379,6 +1493,39 @@ class GUIManager:
                 return False
             
             bg_color = '#1C1810'
+            
+            # 显示怪物名称和HP（在顶部）
+            monster_name_zh = monster_data.get('name_zh', monster_name)
+            monster_health = monster_data.get('health', 0)
+            
+            # 创建或清空标题框架
+            if self.monster_title_frame and self.monster_title_frame.winfo_exists():
+                for widget in self.monster_title_frame.winfo_children():
+                    try:
+                        widget.destroy()
+                    except Exception:
+                        pass
+            else:
+                # 创建标题框架（放在content_frame顶部）
+                if self.content_frame:
+                    self.monster_title_frame = tk.Frame(self.content_frame, bg=bg_color)
+                    # 将标题框架放在最前面（先pack）
+                    self.monster_title_frame.pack(fill='x', pady=(0, 10), padx=10)
+            
+            # 在标题框架中显示怪物名称和HP
+            if self.monster_title_frame and self.monster_title_frame.winfo_exists():
+                title_label = tk.Label(
+                    self.monster_title_frame,
+                    text=f"{monster_name_zh}  HP: {monster_health:,}",
+                    font=('Microsoft YaHei', 16, 'bold'),
+                    bg=bg_color,
+                    fg='#00FF00',  # 测试：绿色文字
+                    anchor='w',
+                    justify='left'
+                )
+                title_label.pack(fill='x', anchor='w')
+                logging.info(f"[怪物标题] 显示: {monster_name_zh}, HP: {monster_health:,}")
+            
             has_skills = False
             # 显示技能（强制两列显示）
             if monster_data.get('skills'):
@@ -1408,6 +1555,20 @@ class GUIManager:
                         # 获取技能名称和描述（优先使用中文）
                         skill_name_en = skill.get('name', '')
                         skill_name_zh = skill.get('name_zh', skill_name_en)
+                        # 添加品质标记（如果有）
+                        skill_quality = skill.get('quality', '')
+                        logging.info(f"[品质检查] 技能 {skill_name_en}: quality字段值 = {repr(skill_quality)}, skill对象keys = {list(skill.keys())}")
+                        if skill_quality:
+                            quality_map = {
+                                '青铜': '铜',
+                                '白银': '银',
+                                '黄金': '金',
+                                '钻石': '钻',
+                                '传说': '传'
+                            }
+                            quality_mark = quality_map.get(skill_quality, skill_quality)
+                            skill_name_zh = f"{skill_name_zh}：{quality_mark}"
+                            logging.info(f"[品质标记] 技能 {skill_name_en} 添加品质标记: {skill_name_zh}")
                         skill_description = ''
                         
                         # 从skills_data中获取描述信息和图标（精确匹配，不使用猜测）
@@ -1442,12 +1603,15 @@ class GUIManager:
                         else:
                             logging.warning(f"[怪物技能图标] 技能 {skill_name_en} 没有图标信息")
                         
+                        # 调试：记录调用update_content
+                        logging.info(f"[GUIManager调试] 准备调用skill_frame.update_content: name='{skill_name_zh}', desc长度={len(skill_description) if skill_description else 0}")
                         skill_frame.update_content(
                             skill_name_zh,
                             skill_description,
                             icon_path,
                             skill_aspect_ratio
                         )
+                        logging.info(f"[GUIManager调试] skill_frame.update_content调用完成")
                         skills_left_turn = not skills_left_turn
                     
             # 显示物品（强制两列显示）
@@ -1495,6 +1659,20 @@ class GUIManager:
                             
                         # 获取物品名称和描述（优先使用中文）
                         item_name_zh = item.get('name_zh', item_name)
+                        # 添加品质标记（如果有）
+                        item_quality = item.get('quality', '')
+                        logging.info(f"[品质检查] 物品 {item_name}: quality字段值 = {repr(item_quality)}, item对象keys = {list(item.keys())}")
+                        if item_quality:
+                            quality_map = {
+                                '青铜': '铜',
+                                '白银': '银',
+                                '黄金': '金',
+                                '钻石': '钻',
+                                '传说': '传'
+                            }
+                            quality_mark = quality_map.get(item_quality, item_quality)
+                            item_name_zh = f"{item_name_zh}：{quality_mark}"
+                            logging.info(f"[品质标记] 物品 {item_name} 添加品质标记: {item_name_zh}")
                         item_description = ''
                         
                         # 从items_data中获取描述信息和图标（精确匹配，不使用猜测）
@@ -1534,12 +1712,15 @@ class GUIManager:
                         else:
                             logging.warning(f"[怪物物品图标] 物品 {item_name} 没有图标信息")
                         
+                        # 调试：记录调用update_content
+                        logging.info(f"[GUIManager调试] 准备调用item_frame.update_content: name='{display_name}', desc长度={len(item_description) if item_description else 0}")
                         item_frame.update_content(
                             display_name,
                             item_description,
                             icon_path,
                             item_aspect_ratio
                         )
+                        logging.info(f"[GUIManager调试] item_frame.update_content调用完成")
                         items_left_turn = not items_left_turn
                     
             # 标记为两列模式（因为技能和物品都使用了两列）
@@ -1705,7 +1886,7 @@ class GUIManager:
                 text=message,
                 font=('Microsoft YaHei', font_size),
                 bg='#1C1810',
-                fg='#E8D4B9',
+                fg='#00FF00',  # 测试：绿色文字
                 wraplength=500,
                 justify='left'
             )

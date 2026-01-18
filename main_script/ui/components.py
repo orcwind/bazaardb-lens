@@ -42,22 +42,39 @@ class IconFrame(tk.Frame):
         self.name_container = tk.Frame(self.text_frame, bg=parent_bg)
         self.name_container.pack(fill='x', anchor='w', pady=0)
 
-        # 创建名称标签
+        # 创建名称标签（测试：所有字体改为绿色）
         self.name_label = tk.Label(
             self.name_container,
             font=('Segoe UI', 14, 'bold'),
-            fg='#E8D4B9',  # 浅色文字
+            fg='#00FF00',  # 测试：绿色文字
             bg=parent_bg,
             anchor='w',
             justify='left'
         )
         self.name_label.pack(side='left', anchor='w')
 
+        # 创建品质标签容器（用于包裹品质标签，支持边框）
+        self.quality_container = tk.Frame(self.name_container, bg=parent_bg, relief='flat', bd=0)
+        self.quality_container.pack_forget()
+        
+        # 创建品质标签（用于显示品质标记，带颜色背景）
+        self.quality_label = tk.Label(
+            self.quality_container,
+            font=('Segoe UI', 10, 'bold'),
+            fg='#00FF00',  # 测试：绿色文字
+            bg=parent_bg,  # 默认背景色，会根据品质动态更新
+            anchor='w',
+            justify='left',
+            padx=4,  # 左右内边距
+            pady=1   # 上下内边距
+        )
+        self.quality_label.pack()
+
         # 创建数量标签
         self.quantity_label = tk.Label(
             self.name_container,
             font=('Segoe UI', 16, 'bold'),  # 更大的字体
-            fg='#FFD700',  # 金色文字
+            fg='#00FF00',  # 测试：绿色文字
             bg=parent_bg,
             anchor='w',
             justify='left'
@@ -68,7 +85,7 @@ class IconFrame(tk.Frame):
         self.desc_label = tk.Label(
             self.text_frame,
             font=('Segoe UI', 13),
-            fg='#BFA98F',  # 稍暗的浅色文字用于描述
+            fg='#00FF00',  # 测试：绿色文字
             bg=parent_bg,
             anchor='w',
             wraplength=200,  # 初始值，会在update_content中更新
@@ -150,27 +167,182 @@ class IconFrame(tk.Frame):
             description,
             icon_path=None,
             aspect_ratio=1.0):
+        # 调试：在函数最开始就记录，确保被调用
+        logging.info(f"[IconFrame调试] ========== update_content函数被调用 ==========")
+        logging.info(f"[IconFrame调试] 参数: name='{name}', description长度={len(description) if description else 0}, icon_path={icon_path}")
         try:
+            # 强制测试：立即改变名称标签颜色，验证函数是否被调用
+            logging.info(f"[IconFrame] update_content被调用: name='{name}' (长度={len(name) if name else 0})")
+            # 先强制设置一个明显的颜色，确保函数被执行
+            try:
+                self.name_label.config(fg='#00FF00')  # 先设置为绿色，确保函数被执行
+                self.name_label['fg'] = '#00FF00'
+                logging.info(f"[IconFrame] 名称标签颜色已强制设置为绿色（测试）")
+            except Exception as e:
+                logging.error(f"[IconFrame] 设置名称标签颜色失败: {e}")
+            
             # 获取当前背景色
             bg_color = self.cget('bg')
 
             # 处理名称和数量
             if name:
-                # 分离名称和数量
-                quantity_match = re.search(r'^(.*?)\s*x(\d+)\s*$', name)
-                if quantity_match:
-                    base_name = quantity_match.group(1)
-                    quantity = quantity_match.group(2)
-                    self.name_label.config(
-                        text=base_name, anchor='w', justify='left', bg=bg_color)
+                # 先分离品质标记（格式可能是：名称：品质标记 或 名称：品质标记 x2）
+                # 匹配模式：名称：品质标记（可选的 x数量）
+                # 注意：使用中文冒号（：）匹配
+                logging.info(f"[IconFrame] 开始解析名称: '{name}' (长度: {len(name)})")
+                quality_match = re.search(r'^(.*?)：([铜银金钻传])(?:\s+x(\d+))?$', name)
+                if quality_match:
+                    logging.info(f"[IconFrame] 正则匹配成功: groups = {quality_match.groups()}")
+                else:
+                    logging.info(f"[IconFrame] 正则匹配失败，尝试检查冒号类型...")
+                    # 检查是否包含中文冒号
+                    if '：' in name:
+                        logging.info(f"[IconFrame] 名称包含中文冒号（：）")
+                    elif ':' in name:
+                        logging.info(f"[IconFrame] 名称包含英文冒号（:），这可能导致匹配失败")
+                    # 检查是否包含品质字符
+                    for q in ['铜', '银', '金', '钻', '传']:
+                        if q in name:
+                            logging.info(f"[IconFrame] 名称包含品质字符: '{q}'")
+                if quality_match:
+                    base_name = quality_match.group(1)
+                    quality_mark = quality_match.group(2)
+                    quantity = quality_match.group(3)  # 可能为None
+                    has_quality = True
+                    # 设置品质标签的颜色（使用非常明显的测试样式，验证是否为独立元素）
+                    # 测试：使用超大字体、明显边框、大内边距、测试文本
+                    quality_colors = {
+                        '铜': {'bg': '#FF0000', 'fg': '#FFFF00'},  # 红色背景，黄色文字（非常明显）
+                        '银': {'bg': '#00FF00', 'fg': '#0000FF'},  # 绿色背景，蓝色文字（非常明显）
+                        '金': {'bg': '#0000FF', 'fg': '#FF00FF'},  # 蓝色背景，紫色文字（非常明显）
+                        '钻': {'bg': '#FFFF00', 'fg': '#FF0000'},  # 黄色背景，红色文字（非常明显）
+                        '传': {'bg': '#FF00FF', 'fg': '#00FFFF'}   # 紫色背景，青色文字（非常明显）
+                    }
+                    quality_color = quality_colors.get(quality_mark, {'bg': '#FF0000', 'fg': '#FFFFFF'})
+                    # 更新品质标签（使用超大字体和明显样式进行测试）
+                    quality_config = {
+                        'text': f'[{quality_mark}]',  # 添加方括号，更容易识别
+                        'bg': quality_color['bg'],
+                        'fg': quality_color['fg'],
+                        'font': ('Segoe UI', 20, 'bold'),  # 超大字体（从10改为20）
+                        'anchor': 'center',
+                        'justify': 'center',
+                        'relief': 'raised',  # 添加明显的3D边框
+                        'bd': 3,  # 粗边框
+                        'padx': 15,  # 超大内边距（从6改为15）
+                        'pady': 8   # 超大内边距（从2改为8）
+                    }
+                    # 配置品质标签
+                    self.quality_label.config(**quality_config)
+                    # 强制更新标签背景色（确保颜色应用）
+                    self.quality_label['bg'] = quality_color['bg']
+                    self.quality_label['fg'] = quality_color['fg']
+                    self.quality_label['font'] = ('Segoe UI', 20, 'bold')
+                    self.quality_label['relief'] = 'raised'
+                    self.quality_label['bd'] = 3
+                    self.quality_label['padx'] = 15
+                    self.quality_label['pady'] = 8
+                    
+                    # 如果是黄金，给容器添加边框
+                    if quality_mark == '金':
+                        self.quality_container.config(
+                            relief='solid',
+                            bd=1,
+                            bg='#FFD700'  # 金色边框（通过容器背景色和bd实现）
+                        )
+                        # 调整标签内边距以适应边框
+                        self.quality_label.config(padx=3, pady=0)
+                    else:
+                        self.quality_container.config(
+                            relief='raised',  # 容器也添加明显边框
+                            bd=3,  # 粗边框
+                            bg=quality_color['bg']  # 容器背景色也设置为品质颜色
+                        )
+                        # 内边距已在上面设置，这里不需要重复
+                    
+                    # 确保标签背景色与容器一致（再次确认）
+                    self.quality_label['bg'] = quality_color['bg']
+                    self.quality_label['fg'] = quality_color['fg']
+                    self.quality_container['bg'] = quality_color['bg']
+                    # 注意：品质标签暂时不pack，等数量标签pack后再pack，以确保顺序为：名称 -> 数量 -> 品质
+                    logging.info(f"[IconFrame] 解析出品质标签: {quality_mark}, 颜色: {quality_color['bg']}")
+                    # 显示基础名称（数量在后面单独显示）
+                    name_to_display = base_name
+                else:
+                    # 没有品质标记，隐藏品质标签
+                    self.quality_container.pack_forget()
+                    has_quality = False
+                    logging.debug(f"[IconFrame] 未找到品质标记，隐藏品质标签: '{name}'")
+                    # 尝试从名称中分离数量（格式：名称 x2）
+                    quantity_match = re.search(r'^(.*?)\s+x(\d+)\s*$', name)
+                    if quantity_match:
+                        name_to_display = quantity_match.group(1)
+                        quantity = quantity_match.group(2)
+                    else:
+                        name_to_display = name
+                        quantity = None
+                
+                # 显示名称和数量（测试：强制所有文字为绿色）
+                # 强制设置为绿色，不区分是否有品质标记
+                name_color = '#00FF00'  # 强制绿色
+                logging.info(f"[IconFrame] 名称标签颜色强制设置为绿色")
+                
+                # 强制设置所有标签为绿色，多次设置确保生效
+                self.name_label.config(
+                    text=name_to_display, 
+                    anchor='w', 
+                    justify='left', 
+                    bg=bg_color,
+                    fg='#00FF00'  # 测试：强制绿色文字
+                )
+                # 强制设置颜色为绿色（多次设置）
+                self.name_label['fg'] = '#00FF00'
+                try:
+                    self.name_label.configure(fg='#00FF00')
+                except Exception:
+                    pass
+                # 同时强制设置品质标签和数量标签为绿色
+                if quality_match:
+                    self.quality_label['fg'] = '#00FF00'
+                    try:
+                        self.quality_label.configure(fg='#00FF00')
+                    except Exception:
+                        pass
+                if quantity:
+                    self.quantity_label['fg'] = '#00FF00'
+                    try:
+                        self.quantity_label.configure(fg='#00FF00')
+                    except Exception:
+                        pass
+                logging.info(f"[IconFrame] 所有标签颜色已强制设置为绿色: name='{name_to_display}'")
+                logging.info(f"[IconFrame] 名称标签已更新: text='{name_to_display}', fg='{name_color}'")
+                if quantity:
                     self.quantity_label.config(
-                        text=f"×{quantity}", bg=bg_color)  # 使用中文乘号
+                        text=f"×{quantity}", 
+                        bg=bg_color,
+                        fg='#00FF00'  # 测试：强制绿色文字
+                    )
+                    self.quantity_label['fg'] = '#00FF00'  # 强制设置
                     self.quantity_label.pack(side='left', padx=(5, 0))
                 else:
-                    self.name_label.config(
-                        text=name, anchor='w', justify='left', bg=bg_color)
                     self.quantity_label.pack_forget()
+                
+                # 如果有品质标记，现在pack品质标签（在数量后面）
+                if quality_match:
+                    self.quality_container.pack(side='left', padx=(5, 0))
+                    quality_text = self.quality_label.cget('text')
+                    quality_bg = self.quality_label.cget('bg')
+                    quality_fg = self.quality_label.cget('fg')
+                    container_relief = self.quality_container.cget('relief')
+                    container_bd = self.quality_container.cget('bd')
+                    container_bg = self.quality_container.cget('bg')
+                    logging.info(f"[IconFrame] 品质标签已pack: text='{quality_text}', bg='{quality_bg}', fg='{quality_fg}'")
+                    logging.info(f"[IconFrame] 品质容器状态: relief='{container_relief}', bd='{container_bd}', bg='{container_bg}'")
+                else:
+                    logging.info(f"[IconFrame] 无品质标记，品质标签未pack")
+                
                 self.name_container.pack(fill='x', anchor='w', pady=0)
+                logging.info(f"[IconFrame] name_container已pack")
             else:
                 self.name_container.pack_forget()
 
@@ -197,13 +369,33 @@ class IconFrame(tk.Frame):
                 except Exception:
                     wraplength = 200
                 
+                # 调试：记录设置前的颜色
+                desc_fg_before_set = self.desc_label.cget('fg')
+                logging.info(f"[IconFrame调试] 设置描述标签前颜色: {desc_fg_before_set}")
+                
+                # 强制设置为绿色，多次设置确保生效
                 self.desc_label.config(
                     text=formatted_description,
                     anchor='w',
                     justify='left',
                     bg=bg_color,
-                    wraplength=wraplength)
+                    wraplength=wraplength,
+                    fg='#00FF00')  # 测试：强制绿色文字
+                self.desc_label['fg'] = '#00FF00'  # 强制设置
+                # 再次强制设置，确保生效
+                try:
+                    self.desc_label.configure(fg='#00FF00')
+                except Exception:
+                    pass
+                
+                # 调试：记录设置后的颜色
+                desc_fg_after_set = self.desc_label.cget('fg')
+                logging.info(f"[IconFrame调试] 设置描述标签后颜色: {desc_fg_after_set} (期望: #00FF00)")
+                if desc_fg_after_set != '#00FF00':
+                    logging.error(f"[IconFrame调试] 警告：描述标签颜色设置失败！期望#00FF00，实际{desc_fg_after_set}")
+                
                 self.desc_label.pack(fill='both', expand=True)
+                logging.info(f"[IconFrame调试] ========== update_content完成 ==========")
             else:
                 self.desc_label.pack_forget()
 
@@ -289,10 +481,16 @@ class ScrollableFrame(tk.Frame):
         self.canvas = tk.Canvas(self, bg=bg_color, highlightthickness=0)
         self.canvas.grid(row=0, column=0, sticky="nsew")
 
-        # 不创建滚动条（滚动条/滚轮功能已移除）
-        self.scrollbar = None
-        # 不配置 canvas 的 yscrollcommand，防止任何滚动条关联
-        self.canvas.configure(yscrollcommand=lambda *a: None)
+        # 创建垂直滚动条（按需显示）
+        try:
+            self.scrollbar = ttk.Scrollbar(self, orient='vertical', command=self.canvas.yview)
+            # 先将滚动条放到右侧网格（可能会在不需要时隐藏）
+            self.scrollbar.grid(row=0, column=1, sticky='ns')
+            # 关联 canvas 的 yscrollcommand，使 scrollbar 可以控制 canvas
+            self.canvas.configure(yscrollcommand=self.scrollbar.set)
+        except Exception:
+            # 兼容性回退：确保属性存在
+            self.scrollbar = None
 
         # 创建内部框架
         self.inner_frame = tk.Frame(self.canvas, bg=bg_color)
@@ -310,8 +508,7 @@ class ScrollableFrame(tk.Frame):
         # 初始隐藏滚动条（如果存在）
         if self.scrollbar is not None:
             try:
-                if self.scrollbar:
-                    self.scrollbar.grid_remove()
+                self.scrollbar.grid_remove()
             except Exception:
                 pass
 
@@ -322,14 +519,25 @@ class ScrollableFrame(tk.Frame):
     def _on_frame_configure(self, event):
         """当内部框架大小改变时，更新滚动区域"""
         # 更新Canvas的滚动区域
-        self.canvas.configure(scrollregion=self.canvas.bbox("all"))
-        # Ensure any existing scrollbar (if present) is hidden/destroyed
         try:
-            if getattr(self, 'scrollbar', None):
-                try:
-                    self.scrollbar.grid_remove()
-                except Exception:
-                    pass
+            self.canvas.configure(scrollregion=self.canvas.bbox("all"))
+        except Exception:
+            pass
+        # 根据内容高度决定是否显示滚动条（如果存在）
+        try:
+            if self.scrollbar is not None:
+                inner_height = self.inner_frame.winfo_reqheight()
+                canvas_height = self.canvas.winfo_height()
+                if inner_height > canvas_height:
+                    try:
+                        self.scrollbar.grid()
+                    except Exception:
+                        pass
+                else:
+                    try:
+                        self.scrollbar.grid_remove()
+                    except Exception:
+                        pass
         except Exception:
             pass
 
@@ -378,13 +586,27 @@ class ScrollableFrame(tk.Frame):
 
     def update_scrollregion(self):
         """手动更新滚动区域"""
-        self.canvas.configure(scrollregion=self.canvas.bbox("all"))
-        # 滚轮/滚动条相关功能已移除：始终隐藏滚动条（如果存在）
-        if self.scrollbar is not None:
-            try:
-                self.scrollbar.grid_remove()
-            except Exception:
-                pass
+        try:
+            self.canvas.configure(scrollregion=self.canvas.bbox("all"))
+        except Exception:
+            pass
+        # 按需显示或隐藏滚动条
+        try:
+            if self.scrollbar is not None:
+                inner_height = self.inner_frame.winfo_reqheight()
+                canvas_height = self.canvas.winfo_height()
+                if inner_height > canvas_height:
+                    try:
+                        self.scrollbar.grid()
+                    except Exception:
+                        pass
+                else:
+                    try:
+                        self.scrollbar.grid_remove()
+                    except Exception:
+                        pass
+        except Exception:
+            logging.debug("[ScrollableFrame] update_scrollregion: 获取高度信息失败")
 
     def get_inner_frame(self):
         """获取内部框架"""

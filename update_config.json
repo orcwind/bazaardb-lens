@@ -3,5 +3,23 @@
     "check_interval_hours": 24,
     "auto_backup": true,
     "backup_dir": "backups",
-    "temp_dir": "temp"
+    "temp_dir": "temp",
+    "download_sources": {
+        "github": {
+            "enabled": true,
+            "asset_pattern": "Bazaar_Lens_Installer.*\\.exe"
+        },
+        "baidu_netdisk": {
+            "enabled": false,
+            "link": "",
+            "extract_code": ""
+        },
+        "quark_netdisk": {
+            "enabled": false,
+            "link": "",
+            "extract_code": ""
+        }
+    },
+    "auto_download": false,
+    "auto_install": false
 } 

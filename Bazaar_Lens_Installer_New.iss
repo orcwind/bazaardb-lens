@@ -224,6 +224,9 @@ var
   ResultCode: Integer;
   PosIndex: Integer;
   VersionCompare: Integer;
+  MaxWaitTime: Integer;
+  WaitTime: Integer;
+  ProcessStillRunning: Boolean;
 begin
   Result := False;
   CurrentVersion := '{#MyAppVersion}'; // 当前安装的版本
@@ -279,16 +282,59 @@ begin
       // 运行卸载程序（静默模式）
       // /SILENT 表示静默卸载，不显示界面
       // /VERYSILENT 表示完全静默，不显示任何界面
-      if Exec(UninstallString, '/VERYSILENT /NORESTART', '', SW_HIDE, ewWaitUntilTerminated, ResultCode) then
+      // /SUPPRESSMSGBOXES 抑制所有消息框
+      if Exec(UninstallString, '/VERYSILENT /NORESTART /SUPPRESSMSGBOXES', '', SW_HIDE, ewWaitUntilTerminated, ResultCode) then
       begin
-        // 等待卸载完成
+        Log('卸载程序已启动，等待卸载完成...');
+        
+        // 等待卸载程序完成（最多等待30秒）
+        // 检查卸载程序进程是否还在运行
+        MaxWaitTime := 30000; // 30秒
+        WaitTime := 0;
+        ProcessStillRunning := True;
+        
+        while WaitTime < MaxWaitTime do
+        begin
+          Sleep(500); // 每500ms检查一次
+          WaitTime := WaitTime + 500;
+          
+          // 检查卸载程序进程是否还在运行
+          // 通过检查卸载程序文件是否可访问来判断
+          // 如果卸载程序进程还在运行，文件可能被锁定
+          try
+            // 尝试打开卸载程序文件，如果失败说明可能还在运行或被删除
+            // 简单的方法：检查文件是否还存在，如果不存在说明卸载完成
+            if not FileExists(UninstallString) then
+            begin
+              ProcessStillRunning := False;
+              break;
+            end;
+          except
+            // 如果访问文件时出错，可能进程还在运行
+            ProcessStillRunning := True;
+          end;
+        end;
+        
+        // 额外等待2秒，确保所有文件都释放
         Sleep(2000);
+        
+        if ProcessStillRunning then
+        begin
+          Log('警告：卸载程序可能仍在运行，继续安装...');
+        end
+        else
+        begin
+          Log('卸载程序已完成，文件已释放');
+        end;
+        
         Log('已安装版本卸载完成');
         Result := True;
       end
       else
       begin
         Log('卸载已安装版本失败，错误代码: ' + IntToStr(ResultCode));
+        // 即使卸载失败，也继续安装（覆盖安装）
+        Result := True;
       end;
     end
     else
@@ -306,14 +352,31 @@ end;
 function InitializeSetup(): Boolean;
 var
   ResultCode: Integer;
+  UninstallSuccess: Boolean;
 begin
-  // 先尝试卸载旧版本
-  UninstallOldVersion();
+  // 先确保关闭运行中的程序（在卸载前）
+  Exec('taskkill', '/F /IM Bazaar_Lens.exe /T', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+  Exec('timeout', '/t 2 /nobreak', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+  Exec('taskkill', '/F /IM Bazaar_Lens.exe /T', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
   
-  // 再次确保关闭运行中的程序
+  // 再等待一下，确保程序完全退出
+  Sleep(1000);
+  
+  // 尝试卸载旧版本
+  UninstallSuccess := UninstallOldVersion();
+  
+  if UninstallSuccess then
+  begin
+    Log('旧版本卸载成功，准备安装新版本...');
+  end
+  else
+  begin
+    Log('未找到旧版本或卸载失败，将进行覆盖安装...');
+  end
+  
+  // 最后再次确保程序已关闭（卸载后）
   Exec('taskkill', '/F /IM Bazaar_Lens.exe /T', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
-  Exec('timeout', '/t 1 /nobreak', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
-  Exec('taskkill', '/F /IM Bazaar_Lens.exe /T', '', SW_HIDE, ewWaitUntilTerminated, ResultCode);
+  Sleep(1000);
   
   Result := True;
 end;

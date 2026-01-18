@@ -1,8 +1,8 @@
 {
     "tesseract_path": "D:\\PythonProject\\BazaarInfo\\bazaardb-desktop\\Tesseract-OCR\\tesseract.exe",
-    "last_update_check": "2026-01-12 14:03:10",
+    "last_update_check": "2026-01-18T12:05:49.024718",
     "auto_update": true,
     "show_console": true,
-    "info_window_scale": 100,
+    "info_window_scale": 200,
     "scale_baseline_factor": 1.5
 }

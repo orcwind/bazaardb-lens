@@ -132,8 +132,22 @@ class DataLoader:
         try:
             base_dir = self.get_base_dir()
             data = None
-            # 优先从加密包读取
-            if secure_bundle:
+            
+            # 开发环境：优先从磁盘读取最新数据
+            if not is_packaged_environment():
+                monster_file = os.path.join(base_dir, 'data', 'Json', 'monsters_detail.json')
+                if not os.path.exists(monster_file):
+                    monster_file = os.path.join(base_dir, 'data', 'Json - 副本', 'monsters_detail.json')
+                if os.path.exists(monster_file):
+                    try:
+                        with open(monster_file, 'r', encoding='utf-8') as f:
+                            data = json.load(f)
+                        logging.info(f"[DataLoader] 开发环境：从磁盘加载 monsters_detail.json: {monster_file}")
+                    except Exception as e:
+                        logging.error(f"[DataLoader] 从磁盘加载 monsters_detail.json 出错: {e}")
+            
+            # 如果磁盘没有数据（开发环境）或打包环境，则从加密包读取
+            if data is None and secure_bundle:
                 try:
                     data = secure_bundle.get_json('monsters_detail.json')
                     if data is not None:
@@ -146,7 +160,7 @@ class DataLoader:
                 if data is None:
                     logging.error("[DataLoader] 打包环境：加密包不可用，无法加载 monsters_detail.json")
             else:
-                # 开发环境：若加密包不可用则从磁盘回退读取
+                # 开发环境：如果加密包和磁盘都没有数据，记录警告
                 if data is None:
                     monster_file = os.path.join(base_dir, 'data', 'Json', 'monsters_detail.json')
                     if not os.path.exists(monster_file):

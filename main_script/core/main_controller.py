@@ -49,7 +49,8 @@ class MainController:
             pass
 
         # 系统功能
-        self.update_checker = UpdateChecker(self.config)
+        # 创建更新检查器，传入更新回调函数
+        self.update_checker = UpdateChecker(self.config, update_callback=self._on_update_available)
         self.system_tray = None  # 系统托盘，在initialize中初始化
 
         # 状态管理
@@ -440,6 +441,75 @@ class MainController:
                 logging.info("OCR线程池已关闭")
             except Exception as e:
                 logging.error(f"关闭OCR线程池失败: {e}")
+
+    def _on_update_available(self, version, release_url, download_links, release_body=""):
+        """检测到更新时的回调函数"""
+        try:
+            logging.info(f"[MainController] 更新回调：发现新版本 {version}")
+            
+            # 在主线程中显示通知
+            if self.gui_manager and self.gui_manager.info_window:
+                def show_notification():
+                    try:
+                        import tkinter.messagebox as messagebox
+                        
+                        # 构建通知消息
+                        message = f"发现新版本：v{version}\n\n"
+                        message += f"当前版本：{self.update_checker.current_version}\n\n"
+                        
+                        # 添加下载链接信息
+                        if download_links.get("github"):
+                            message += "✅ GitHub 下载可用（自动下载）\n"
+                        if download_links.get("baidu_netdisk"):
+                            baidu_link = download_links["baidu_netdisk"]
+                            message += f"📦 百度网盘：{baidu_link.get('url', '')}\n"
+                            if baidu_link.get("extract_code"):
+                                message += f"   提取码：{baidu_link['extract_code']}\n"
+                        if download_links.get("quark_netdisk"):
+                            quark_link = download_links["quark_netdisk"]
+                            message += f"📦 夸克网盘：{quark_link.get('url', '')}\n"
+                            if quark_link.get("extract_code"):
+                                message += f"   提取码：{quark_link['extract_code']}\n"
+                        
+                        message += f"\n发布地址：{release_url}"
+                        
+                        # 显示通知对话框
+                        result = messagebox.askyesno(
+                            "发现新版本",
+                            message,
+                            icon='info'
+                        )
+                        
+                        # 如果用户选择"是"，打开浏览器查看更新
+                        if result:
+                            import webbrowser
+                            try:
+                                webbrowser.open(release_url)
+                            except Exception as e:
+                                logging.error(f"打开浏览器失败: {e}")
+                                
+                    except Exception as e:
+                        logging.error(f"显示更新通知失败: {e}")
+                        import traceback
+                        logging.error(traceback.format_exc())
+                
+                # 在主线程中显示通知
+                self.gui_manager.info_window.after(0, show_notification)
+            
+            # 如果系统托盘可用，也发送托盘通知
+            if self.system_tray and self.system_tray.icon:
+                try:
+                    # pystray 支持 notify 方法
+                    notification_title = f"发现新版本 v{version}"
+                    notification_message = f"当前版本：{self.update_checker.current_version} → 新版本：{version}"
+                    self.system_tray.icon.notify(notification_message, notification_title)
+                except Exception as e:
+                    logging.debug(f"系统托盘通知失败（可能不支持）: {e}")
+                    
+        except Exception as e:
+            logging.error(f"更新通知回调失败: {e}")
+            import traceback
+            logging.error(traceback.format_exc())
 
     def run(self):
         """运行主程序"""

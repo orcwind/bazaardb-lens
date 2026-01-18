@@ -1,0 +1,4990 @@
+[
+  {
+    "name": "Banannibal",
+    "name_zh": "食蕉兽",
+    "health": 100,
+    "skills": [
+      {
+        "name": "Healthy Jolt",
+        "name_zh": "活力冲击",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Med Kit",
+        "name_zh": "医疗包",
+        "quality": "青铜"
+      },
+      {
+        "name": "Bluenanas",
+        "name_zh": "蓝蕉",
+        "quality": "青铜"
+      },
+      {
+        "name": "Duct Tape",
+        "name_zh": "布胶带",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Fanged Inglet",
+    "name_zh": "獠牙英格狼",
+    "health": 100,
+    "skills": [
+      {
+        "name": "Deadly Eye",
+        "name_zh": "致命眼光",
+        "quality": "青铜"
+      }
+    ],
+    "items": [
+      {
+        "name": "Pelt",
+        "name_zh": "兽皮",
+        "quality": "青铜"
+      },
+      {
+        "name": "Fang",
+        "name_zh": "獠牙",
+        "quality": "青铜"
+      }
+    ]
+  },
+  {
+    "name": "Kyver Drone",
+    "name_zh": "凯沃斯雄蜂",
+    "health": 100,
+    "skills": [
+      {
+        "name": "Trained",
+        "name_zh": "受训",
+        "quality": "青铜"
+      }
+    ],
+    "items": [
+      {
+        "name": "Insect Wing",
+        "name_zh": "虫翅",
+        "quality": "白银"
+      },
+      {
+        "name": "Stinger",
+        "name_zh": "毒刺",
+        "quality": "青铜"
+      },
+      {
+        "name": "Langxian",
+        "name_zh": "狼筅",
+        "quality": "青铜"
+      },
+      {
+        "name": "Honeycomb",
+        "name_zh": "蜂巢蜜",
+        "quality": "青铜"
+      }
+    ]
+  },
+  {
+    "name": "Pyro",
+    "name_zh": "火灵",
+    "health": 100,
+    "skills": [
+      {
+        "name": "Fiery",
+        "name_zh": "炽焰",
+        "quality": "青铜"
+      }
+    ],
+    "items": [
+      {
+        "name": "Cinders",
+        "name_zh": "余烬",
+        "quality": "白银"
+      },
+      {
+        "name": "Lighter",
+        "name_zh": "打火机",
+        "quality": "青铜"
+      }
+    ]
+  },
+  {
+    "name": "Haunted Kimono",
+    "name_zh": "怨念和服",
+    "health": 100,
+    "skills": [
+      {
+        "name": "Haunting Flight",
+        "name_zh": "鬼魅飘飞",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Scrap",
+        "name_zh": "废料",
+        "quality": "青铜"
+      },
+      {
+        "name": "Silk Scarf",
+        "name_zh": "丝绸围巾",
+        "quality": "青铜"
+      }
+    ]
+  },
+  {
+    "name": "Viper",
+    "name_zh": "毒蛇",
+    "health": 75,
+    "skills": [
+      {
+        "name": "Lash Out",
+        "name_zh": "狂怒一击",
+        "quality": "青铜"
+      }
+    ],
+    "items": [
+      {
+        "name": "Gland",
+        "name_zh": "腺体",
+        "quality": "青铜"
+      },
+      {
+        "name": "Fang",
+        "name_zh": "獠牙",
+        "quality": "青铜"
+      },
+      {
+        "name": "Extract",
+        "name_zh": "提取物",
+        "quality": "青铜"
+      }
+    ]
+  },
+  {
+    "name": "Coconut Crab",
+    "name_zh": "椰子蟹",
+    "health": 200,
+    "skills": [
+      {
+        "name": "Hard Shell",
+        "name_zh": "硬壳",
+        "quality": "青铜"
+      }
+    ],
+    "items": [
+      {
+        "name": "Coconut",
+        "name_zh": "椰子",
+        "quality": "黄金"
+      },
+      {
+        "name": "Crusher Claw",
+        "name_zh": "碾骨爪",
+        "quality": "白银"
+      },
+      {
+        "name": "Sea Shell",
+        "name_zh": "海螺壳",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Rogue Scrapper",
+    "name_zh": "暴走破碎机",
+    "health": 300,
+    "skills": [
+      {
+        "name": "Rust",
+        "name_zh": "铁锈",
+        "quality": "青铜"
+      }
+    ],
+    "items": [
+      {
+        "name": "Scrap",
+        "name_zh": "废料",
+        "quality": "黄金"
+      },
+      {
+        "name": "Gearnola Bar",
+        "name_zh": "机能棒",
+        "quality": "白银"
+      },
+      {
+        "name": "Junkyard Club",
+        "name_zh": "废品场大棒",
+        "quality": "白银"
+      },
+      {
+        "name": "Junkyard Repairbot",
+        "name_zh": "废品场维修机器人",
+        "quality": "白银"
+      },
+      {
+        "name": "Barbed Wire",
+        "name_zh": "尖刺铁丝网",
+        "quality": "青铜"
+      },
+      {
+        "name": "Med Kit",
+        "name_zh": "医疗包",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Boarrior",
+    "name_zh": "蛮猪战士",
+    "health": 350,
+    "skills": [
+      {
+        "name": "Frontal Shielding",
+        "name_zh": "前向护盾",
+        "quality": "青铜"
+      }
+    ],
+    "items": [
+      {
+        "name": "Scrap",
+        "name_zh": "废料",
+        "quality": "白银"
+      },
+      {
+        "name": "Tusked Helm",
+        "name_zh": "獠牙头盔",
+        "quality": "青铜"
+      },
+      {
+        "name": "Old Sword",
+        "name_zh": "古董剑",
+        "quality": "白银"
+      },
+      {
+        "name": "Hatchet",
+        "name_zh": "手斧",
+        "quality": "白银"
+      },
+      {
+        "name": "Lumboars",
+        "name_zh": "木桨",
+        "quality": "青铜"
+      },
+      {
+        "name": "Temple Expedition Ticket",
+        "name_zh": "神庙探险券",
+        "quality": "传说"
+      },
+      {
+        "name": "Sharpening Stone",
+        "name_zh": "磨刀石",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Covetous Thief",
+    "name_zh": "贪婪窃贼",
+    "health": 300,
+    "skills": [
+      {
+        "name": "Pickpocket",
+        "name_zh": "扒手",
+        "quality": "青铜"
+      },
+      {
+        "name": "Keen Eye",
+        "name_zh": "敏锐眼光",
+        "quality": "青铜"
+      }
+    ],
+    "items": [
+      {
+        "name": "Safe",
+        "name_zh": "保险箱",
+        "quality": "青铜"
+      },
+      {
+        "name": "Shadowed Cloak",
+        "name_zh": "暗影斗篷",
+        "quality": "青铜"
+      },
+      {
+        "name": "Concealed Dagger",
+        "name_zh": "藏刃匕首",
+        "quality": "白银"
+      },
+      {
+        "name": "Covetous Raven",
+        "name_zh": "贪婪渡鸦",
+        "quality": "青铜"
+      },
+      {
+        "name": "Sharpening Stone",
+        "name_zh": "磨刀石",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Eccentric Etherwright",
+    "name_zh": "怪奇以太匠",
+    "health": 600,
+    "skills": [
+      {
+        "name": "Rigged",
+        "name_zh": "暗做手脚",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Temple Expedition Ticket",
+        "name_zh": "神庙探险券",
+        "quality": "传说"
+      },
+      {
+        "name": "Scrap",
+        "name_zh": "废料",
+        "quality": "黄金"
+      },
+      {
+        "name": "Force Field",
+        "name_zh": "力场",
+        "quality": "白银"
+      },
+      {
+        "name": "Goggles",
+        "name_zh": "护目镜",
+        "quality": "青铜"
+      },
+      {
+        "name": "Barbed Wire",
+        "name_zh": "尖刺铁丝网",
+        "quality": "青铜"
+      }
+    ]
+  },
+  {
+    "name": "Ventriloquist",
+    "name_zh": "腹语者",
+    "health": 450,
+    "skills": [
+      {
+        "name": "Free Ride",
+        "name_zh": "免费乘车",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Eagle Talisman",
+        "name_zh": "鹰之护符",
+        "quality": "白银"
+      },
+      {
+        "name": "Honing Steel",
+        "name_zh": "淬锋钢",
+        "quality": "青铜"
+      },
+      {
+        "name": "Friendly Doll",
+        "name_zh": "友好玩偶",
+        "quality": "白银"
+      },
+      {
+        "name": "Switchblade",
+        "name_zh": "弹簧刀",
+        "quality": "青铜"
+      },
+      {
+        "name": "Butterfly Swords",
+        "name_zh": "蝶剑",
+        "quality": "白银"
+      },
+      {
+        "name": "Old Sword",
+        "name_zh": "古董剑",
+        "quality": "黄金"
+      },
+      {
+        "name": "Sharpening Stone",
+        "name_zh": "磨刀石",
+        "quality": "黄金"
+      },
+      {
+        "name": "Broken Shackles",
+        "name_zh": "断裂镣铐",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Dabbling Apprentice",
+    "name_zh": "初学学徒",
+    "health": 300,
+    "skills": [
+      {
+        "name": "Panic",
+        "name_zh": "恐慌",
+        "quality": "青铜"
+      }
+    ],
+    "items": [
+      {
+        "name": "Temple Expedition Ticket",
+        "name_zh": "神庙探险券",
+        "quality": "传说"
+      },
+      {
+        "name": "Bottled Lightning",
+        "name_zh": "瓶装闪电",
+        "quality": "白银"
+      },
+      {
+        "name": "Tazidian Dagger",
+        "name_zh": "塔兹迪亚匕首",
+        "quality": "青铜"
+      },
+      {
+        "name": "Fire Potion",
+        "name_zh": "火焰药水",
+        "quality": "白银"
+      },
+      {
+        "name": "Catalyst",
+        "name_zh": "催化剂",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Tempest Bravo",
+    "name_zh": "焰风勇士",
+    "health": 300,
+    "skills": [
+      {
+        "name": "Flamedancer",
+        "name_zh": "烈焰舞者",
+        "quality": "青铜"
+      }
+    ],
+    "items": [
+      {
+        "name": "Cinders",
+        "name_zh": "余烬",
+        "quality": "青铜"
+      },
+      {
+        "name": "Bar of Gold",
+        "name_zh": "金条",
+        "quality": "青铜"
+      },
+      {
+        "name": "Cutlass",
+        "name_zh": "弯刀",
+        "quality": "青铜"
+      },
+      {
+        "name": "Sharpening Stone",
+        "name_zh": "磨刀石",
+        "quality": "青铜"
+      }
+    ]
+  },
+  {
+    "name": "Frost Street Challenger",
+    "name_zh": "霜猴勇士",
+    "health": 550,
+    "skills": [
+      {
+        "name": "Snowstorm",
+        "name_zh": "雪暴",
+        "quality": "青铜"
+      }
+    ],
+    "items": [
+      {
+        "name": "Icicle",
+        "name_zh": "冰锥",
+        "quality": "青铜"
+      },
+      {
+        "name": "Weights",
+        "name_zh": "壶铃",
+        "quality": "青铜"
+      },
+      {
+        "name": "Handaxe",
+        "name_zh": "手斧",
+        "quality": "白银"
+      },
+      {
+        "name": "Frozen Bludgeon",
+        "name_zh": "冻结殴打",
+        "quality": "白银"
+      },
+      {
+        "name": "Snow Globe",
+        "name_zh": "雪花玻璃球",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Product Demonstrator",
+    "name_zh": "产品演示员",
+    "health": 600,
+    "skills": [
+      {
+        "name": "Product Showcase",
+        "name_zh": "产品展示台",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Cinders",
+        "name_zh": "余烬",
+        "quality": "白银"
+      },
+      {
+        "name": "Eject Button",
+        "name_zh": "紧急弹射按钮",
+        "quality": "白银"
+      },
+      {
+        "name": "Ice Bomb",
+        "name_zh": "寒冰炸弹",
+        "quality": "黄金"
+      },
+      {
+        "name": "Ornithopter",
+        "name_zh": "扑翼机",
+        "quality": "白银"
+      },
+      {
+        "name": "Fire Bomb",
+        "name_zh": "燃烧炸弹",
+        "quality": "白银"
+      },
+      {
+        "name": "Paper Airplane",
+        "name_zh": "纸飞机",
+        "quality": "白银"
+      },
+      {
+        "name": "Gunpowder",
+        "name_zh": "火药",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Street Gamer",
+    "name_zh": "街头玩家",
+    "health": 450,
+    "skills": [
+      {
+        "name": "Small Refresh",
+        "name_zh": "精神微振",
+        "quality": "青铜"
+      }
+    ],
+    "items": [
+      {
+        "name": "Red Piggles R",
+        "name_zh": "红色小圆猪 R",
+        "quality": "白银"
+      },
+      {
+        "name": "Premium Red Piggles",
+        "name_zh": "高级红色小圆猪",
+        "quality": "白银"
+      },
+      {
+        "name": "Piggles",
+        "name_zh": "小圆猪",
+        "quality": "白银"
+      },
+      {
+        "name": "Piggles Protectors",
+        "name_zh": "小圆猪守卫",
+        "quality": "白银"
+      },
+      {
+        "name": "Yellow Piggles L",
+        "name_zh": "黄色小圆猪 L",
+        "quality": "白银"
+      },
+      {
+        "name": "Temple Expedition Ticket",
+        "name_zh": "神庙探险券",
+        "quality": "传说"
+      }
+    ]
+  },
+  {
+    "name": "Giant Mosquito",
+    "name_zh": "巨蚊",
+    "health": 700,
+    "skills": [
+      {
+        "name": "Trained",
+        "name_zh": "受训",
+        "quality": "白银"
+      },
+      {
+        "name": "Rush",
+        "name_zh": "疾速",
+        "quality": "青铜"
+      },
+      {
+        "name": "Keen Eye",
+        "name_zh": "敏锐眼光",
+        "quality": "青铜"
+      }
+    ],
+    "items": [
+      {
+        "name": "Insect Wing",
+        "name_zh": "虫翅",
+        "quality": "白银"
+      },
+      {
+        "name": "Stinger",
+        "name_zh": "毒刺",
+        "quality": "白银"
+      },
+      {
+        "name": "Venom",
+        "name_zh": "毒液",
+        "quality": "白银"
+      },
+      {
+        "name": "Proboscis",
+        "name_zh": "口器",
+        "quality": "白银"
+      },
+      {
+        "name": "Amber",
+        "name_zh": "琥珀",
+        "quality": "白银"
+      },
+      {
+        "name": "Mothmeal",
+        "name_zh": "飞蛾粉末",
+        "quality": "白银"
+      },
+      {
+        "name": "Flying Potion",
+        "name_zh": "飞行药水",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Hoverbike Hooligan",
+    "name_zh": "飞车暴徒",
+    "health": 650,
+    "skills": [
+      {
+        "name": "Gunner",
+        "name_zh": "炮手",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Gunpowder",
+        "name_zh": "火药",
+        "quality": "白银"
+      },
+      {
+        "name": "Laser Pistol",
+        "name_zh": "激光手枪",
+        "quality": "白银"
+      },
+      {
+        "name": "SMG",
+        "name_zh": "冲锋枪",
+        "quality": "白银"
+      },
+      {
+        "name": "Bolas",
+        "name_zh": "流星索",
+        "quality": "青铜"
+      },
+      {
+        "name": "Weakpoint Detector",
+        "name_zh": "弱点探测器",
+        "quality": "白银"
+      },
+      {
+        "name": "Grappling Hook",
+        "name_zh": "抓钩",
+        "quality": "白银"
+      },
+      {
+        "name": "Eagle Talisman",
+        "name_zh": "鹰之护符",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Mutant Baker",
+    "name_zh": "变异烘焙师",
+    "health": 700,
+    "skills": [
+      {
+        "name": "The Right Tool",
+        "name_zh": "趁手工具",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Venomous Dose",
+        "name_zh": "毒液注射",
+        "quality": "白银"
+      },
+      {
+        "name": "Butter",
+        "name_zh": "黄油",
+        "quality": "白银"
+      },
+      {
+        "name": "Bread Knife",
+        "name_zh": "面包刀",
+        "quality": "白银"
+      },
+      {
+        "name": "Bread",
+        "name_zh": "面包",
+        "quality": "白银"
+      },
+      {
+        "name": "Knife Sharpener",
+        "name_zh": "",
+        "quality": null
+      },
+      {
+        "name": "Rolling Pin",
+        "name_zh": "擀面杖",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Boilerroom Brawler",
+    "name_zh": "锅炉斗士",
+    "health": 450,
+    "skills": [
+      {
+        "name": "Flashy Mechanic",
+        "name_zh": "炫技机械师",
+        "quality": "白银"
+      },
+      {
+        "name": "Time to Tinker",
+        "name_zh": "修理时间",
+        "quality": "青铜"
+      }
+    ],
+    "items": [
+      {
+        "name": "Sharpening Stone",
+        "name_zh": "磨刀石",
+        "quality": "白银"
+      },
+      {
+        "name": "Orbital Polisher",
+        "name_zh": "抛光机",
+        "quality": "白银"
+      },
+      {
+        "name": "Goggles",
+        "name_zh": "护目镜",
+        "quality": "白银"
+      },
+      {
+        "name": "Toolbox",
+        "name_zh": "工具箱",
+        "quality": "青铜"
+      },
+      {
+        "name": "Multitool",
+        "name_zh": "瑞士军刀",
+        "quality": "白银"
+      },
+      {
+        "name": "Energy Potion",
+        "name_zh": "能量药水",
+        "quality": "白银"
+      },
+      {
+        "name": "Eagle Talisman",
+        "name_zh": "鹰之护符",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Outlands Dervish",
+    "name_zh": "荒原旋舞者",
+    "health": 450,
+    "skills": [
+      {
+        "name": "Keen Eye",
+        "name_zh": "敏锐眼光",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Bar of Gold",
+        "name_zh": "金条",
+        "quality": "青铜"
+      },
+      {
+        "name": "Shoe Blade",
+        "name_zh": "靴里剑",
+        "quality": "白银"
+      },
+      {
+        "name": "Clockwork Blades",
+        "name_zh": "发条匕首",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Bloodreef Raider",
+    "name_zh": "血礁奇兵",
+    "health": 650,
+    "skills": [
+      {
+        "name": "Ammo Stash",
+        "name_zh": "弹药储存箱",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Bar of Gold",
+        "name_zh": "金条",
+        "quality": "青铜"
+      },
+      {
+        "name": "Crow&#x27;s Nest",
+        "name_zh": "",
+        "quality": null
+      },
+      {
+        "name": "Powder Horn",
+        "name_zh": "火药角",
+        "quality": "白银"
+      },
+      {
+        "name": "Revolver",
+        "name_zh": "左轮手枪",
+        "quality": "白银"
+      },
+      {
+        "name": "Cannonball",
+        "name_zh": "炮弹",
+        "quality": "白银"
+      },
+      {
+        "name": "Invulnerability Potion",
+        "name_zh": "无敌药水",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Retiree",
+    "name_zh": "退休人员",
+    "health": 650,
+    "skills": [
+      {
+        "name": "Extreme Comfort",
+        "name_zh": "极度舒适",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Piggy Bank",
+        "name_zh": "猪猪存钱罐",
+        "quality": "白银"
+      },
+      {
+        "name": "Succulents",
+        "name_zh": "多肉植物",
+        "quality": "白银"
+      },
+      {
+        "name": "Golf Clubs",
+        "name_zh": "高尔夫球杆",
+        "quality": "白银"
+      },
+      {
+        "name": "Bushel",
+        "name_zh": "果篮",
+        "quality": "青铜"
+      },
+      {
+        "name": "Bandages",
+        "name_zh": "绷带",
+        "quality": "白银"
+      },
+      {
+        "name": "Med Kit",
+        "name_zh": "医疗包",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Ahexa",
+    "name_zh": "阿海克萨",
+    "health": 900,
+    "skills": [],
+    "items": [
+      {
+        "name": "Crypto",
+        "name_zh": "加密货币",
+        "quality": "白银"
+      },
+      {
+        "name": "Rapid Injection System",
+        "name_zh": "快速注射系统",
+        "quality": "白银"
+      },
+      {
+        "name": "Solar Farm",
+        "name_zh": "太阳能农场",
+        "quality": "黄金"
+      },
+      {
+        "name": "Virus",
+        "name_zh": "病毒",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Hellbilly",
+    "name_zh": "乡巴佬蜥蜴",
+    "health": 900,
+    "skills": [
+      {
+        "name": "Left-Handed",
+        "name_zh": "左撇子",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Med Kit",
+        "name_zh": "医疗包",
+        "quality": "黄金"
+      },
+      {
+        "name": "Haladie",
+        "name_zh": "双头刀",
+        "quality": "白银"
+      },
+      {
+        "name": "Ganjo",
+        "name_zh": "甘卓琴",
+        "quality": "白银"
+      },
+      {
+        "name": "Textiles",
+        "name_zh": "纺织品",
+        "quality": "黄金"
+      },
+      {
+        "name": "Scrap",
+        "name_zh": "废料",
+        "quality": "钻石"
+      },
+      {
+        "name": "Temple Expedition Ticket",
+        "name_zh": "神庙探险券",
+        "quality": "传说"
+      }
+    ]
+  },
+  {
+    "name": "Prince Marianas",
+    "name_zh": "马力亚纳斯王子",
+    "health": 900,
+    "skills": [
+      {
+        "name": "Slowed Targets",
+        "name_zh": "减速目标",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Temple Expedition Ticket",
+        "name_zh": "神庙探险券",
+        "quality": "传说"
+      },
+      {
+        "name": "Coconut",
+        "name_zh": "椰子",
+        "quality": "钻石"
+      },
+      {
+        "name": "Chum",
+        "name_zh": "鱼饵",
+        "quality": "白银"
+      },
+      {
+        "name": "Piranha",
+        "name_zh": "食人鱼",
+        "quality": "白银"
+      },
+      {
+        "name": "IllusoRay",
+        "name_zh": "迷幻蝠鲼",
+        "quality": "青铜"
+      },
+      {
+        "name": "Narwhal",
+        "name_zh": "独角鲸",
+        "quality": "白银"
+      },
+      {
+        "name": "Electric Eels",
+        "name_zh": "电鳗",
+        "quality": "黄金"
+      },
+      {
+        "name": "Citrus",
+        "name_zh": "柑橘",
+        "quality": "钻石"
+      }
+    ]
+  },
+  {
+    "name": "Flame Juggler",
+    "name_zh": "舞火大师",
+    "health": 1200,
+    "skills": [
+      {
+        "name": "Burst of Flame",
+        "name_zh": "烈焰爆发",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Lighter",
+        "name_zh": "打火机",
+        "quality": "黄金"
+      },
+      {
+        "name": "Magma Core",
+        "name_zh": "岩浆核心",
+        "quality": "白银"
+      },
+      {
+        "name": "Cinders",
+        "name_zh": "余烬",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Grandfather Klok",
+    "name_zh": "发条爷爷",
+    "health": 800,
+    "skills": [
+      {
+        "name": "Precision Tools",
+        "name_zh": "精密工具",
+        "quality": "白银"
+      },
+      {
+        "name": "Time to Tinker",
+        "name_zh": "修理时间",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Multitool",
+        "name_zh": "瑞士军刀",
+        "quality": "白银"
+      },
+      {
+        "name": "Hands of Time",
+        "name_zh": "时光指针",
+        "quality": "白银"
+      },
+      {
+        "name": "Rivet Gun",
+        "name_zh": "铆钉枪",
+        "quality": "黄金"
+      },
+      {
+        "name": "Cog",
+        "name_zh": "齿轮",
+        "quality": "白银"
+      },
+      {
+        "name": "Atomic Clock",
+        "name_zh": "原子钟",
+        "quality": "黄金"
+      },
+      {
+        "name": "Precision Calipers",
+        "name_zh": "精密卡尺",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Preening Duelist",
+    "name_zh": "精致决斗士",
+    "health": 650,
+    "skills": [
+      {
+        "name": "All Talk",
+        "name_zh": "光说不练",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Gunpowder",
+        "name_zh": "火药",
+        "quality": "白银"
+      },
+      {
+        "name": "Powder Horn",
+        "name_zh": "火药角",
+        "quality": "白银"
+      },
+      {
+        "name": "Revolver",
+        "name_zh": "左轮手枪",
+        "quality": "白银"
+      },
+      {
+        "name": "Cannonball",
+        "name_zh": "炮弹",
+        "quality": "白银"
+      },
+      {
+        "name": "Pistol Sword",
+        "name_zh": "刺刀手枪",
+        "quality": "黄金"
+      },
+      {
+        "name": "Throwing Knives",
+        "name_zh": "投掷飞刀",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Sabretooth",
+    "name_zh": "剑齿虎",
+    "health": 650,
+    "skills": [
+      {
+        "name": "Diamond Fangs",
+        "name_zh": "钻石獠牙",
+        "quality": "青铜"
+      }
+    ],
+    "items": [
+      {
+        "name": "Pelt",
+        "name_zh": "兽皮",
+        "quality": "青铜"
+      },
+      {
+        "name": "Fang",
+        "name_zh": "獠牙",
+        "quality": "钻石"
+      }
+    ]
+  },
+  {
+    "name": "Harkuvian Rocket Trooper",
+    "name_zh": "哈库维火箭兵",
+    "health": 900,
+    "skills": [
+      {
+        "name": "Flashy Reload",
+        "name_zh": "炫技装弹",
+        "quality": "黄金"
+      },
+      {
+        "name": "Keen Eye",
+        "name_zh": "敏锐眼光",
+        "quality": "白银"
+      },
+      {
+        "name": "Gunner",
+        "name_zh": "炮手",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Eagle Talisman",
+        "name_zh": "鹰之护符",
+        "quality": "白银"
+      },
+      {
+        "name": "Shadowed Cloak",
+        "name_zh": "暗影斗篷",
+        "quality": "黄金"
+      },
+      {
+        "name": "Harkuvian Launcher",
+        "name_zh": "哈库维发射器",
+        "quality": "白银"
+      },
+      {
+        "name": "Rocket Boots",
+        "name_zh": "火箭靴",
+        "quality": "白银"
+      },
+      {
+        "name": "Goggles",
+        "name_zh": "护目镜",
+        "quality": "黄金"
+      },
+      {
+        "name": "Gunpowder",
+        "name_zh": "火药",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Infernal Envoy",
+    "name_zh": "地狱使者",
+    "health": 900,
+    "skills": [
+      {
+        "name": "Vengeance",
+        "name_zh": "复仇",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Fire Claw",
+        "name_zh": "火爪",
+        "quality": "黄金"
+      },
+      {
+        "name": "Cinders",
+        "name_zh": "余烬",
+        "quality": "白银"
+      },
+      {
+        "name": "Sunlight Spear",
+        "name_zh": "日光矛",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Kyver Commander",
+    "name_zh": "凯沃斯指挥官",
+    "health": 900,
+    "skills": [
+      {
+        "name": "Counterstrike",
+        "name_zh": "反击",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Insect Wing",
+        "name_zh": "虫翅",
+        "quality": "黄金"
+      },
+      {
+        "name": "Junkyard Lance",
+        "name_zh": "废品场长枪",
+        "quality": "白银"
+      },
+      {
+        "name": "Busy Bee",
+        "name_zh": "工蜂",
+        "quality": "钻石"
+      },
+      {
+        "name": "Honeycomb",
+        "name_zh": "蜂巢蜜",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Gorgon Noble",
+    "name_zh": "戈尔贡贵妇",
+    "health": 1200,
+    "skills": [
+      {
+        "name": "Petrifying Gaze",
+        "name_zh": "石化凝视",
+        "quality": "白银"
+      },
+      {
+        "name": "Paralytic Poison",
+        "name_zh": "麻痹剧毒",
+        "quality": "白银"
+      },
+      {
+        "name": "Initial Dose",
+        "name_zh": "最初一剂",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Temple Expedition Ticket",
+        "name_zh": "神庙探险券",
+        "quality": "传说"
+      },
+      {
+        "name": "Black Rose",
+        "name_zh": "黑玫瑰",
+        "quality": "黄金"
+      },
+      {
+        "name": "Clockwork Blades",
+        "name_zh": "发条匕首",
+        "quality": "黄金"
+      },
+      {
+        "name": "Nightshade",
+        "name_zh": "颠茄",
+        "quality": "黄金"
+      },
+      {
+        "name": "Trained Spider",
+        "name_zh": "驯化蜘蛛",
+        "quality": "黄金"
+      },
+      {
+        "name": "Basilisk Fang",
+        "name_zh": "蛇怪之牙",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Mod Squad",
+    "name_zh": "改装小队",
+    "health": 1200,
+    "skills": [
+      {
+        "name": "Beautiful Friendship",
+        "name_zh": "美好友谊",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Crypto",
+        "name_zh": "加密货币",
+        "quality": "黄金"
+      },
+      {
+        "name": "First Aiden",
+        "name_zh": "急救艾登",
+        "quality": "白银"
+      },
+      {
+        "name": "Chris Army Knife",
+        "name_zh": "克里斯军刀",
+        "quality": "白银"
+      },
+      {
+        "name": "Bill Dozer",
+        "name_zh": "推土比尔",
+        "quality": "黄金"
+      },
+      {
+        "name": "Bomb Squad",
+        "name_zh": "炸弹小队",
+        "quality": "白银"
+      },
+      {
+        "name": "Char Cole",
+        "name_zh": "炭火科尔",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Trashtown Mayor",
+    "name_zh": "垃圾镇镇长",
+    "health": 1200,
+    "skills": [
+      {
+        "name": "Augmented Defenses",
+        "name_zh": "增强防御",
+        "quality": "黄金"
+      },
+      {
+        "name": "Augmented Weaponry",
+        "name_zh": "增强军火",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Temple Expedition Ticket",
+        "name_zh": "神庙探险券",
+        "quality": "传说"
+      },
+      {
+        "name": "Sharpening Stone",
+        "name_zh": "磨刀石",
+        "quality": "白银"
+      },
+      {
+        "name": "Brass Knuckles",
+        "name_zh": "黄铜拳套",
+        "quality": "白银"
+      },
+      {
+        "name": "Dog",
+        "name_zh": "狗",
+        "quality": "黄金"
+      },
+      {
+        "name": "Temporary Shelter",
+        "name_zh": "临时避难所",
+        "quality": "黄金"
+      },
+      {
+        "name": "Pepper Spray",
+        "name_zh": "辣椒喷雾",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Scovyle",
+    "name_zh": "辣火狂徒",
+    "health": 1550,
+    "skills": [
+      {
+        "name": "Fiery",
+        "name_zh": "炽焰",
+        "quality": "青铜"
+      }
+    ],
+    "items": [
+      {
+        "name": "Cinders",
+        "name_zh": "余烬",
+        "quality": "白银"
+      },
+      {
+        "name": "Curry",
+        "name_zh": "咖喱",
+        "quality": "白银"
+      },
+      {
+        "name": "Skillet",
+        "name_zh": "煎锅",
+        "quality": "白银"
+      },
+      {
+        "name": "Black Pepper",
+        "name_zh": "黑胡椒",
+        "quality": "白银"
+      },
+      {
+        "name": "Hot Sauce",
+        "name_zh": "辣酱",
+        "quality": "黄金"
+      },
+      {
+        "name": "Pickled Peppers",
+        "name_zh": "腌辣椒",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Dire Inglet",
+    "name_zh": "英格恐狼",
+    "health": 900,
+    "skills": [
+      {
+        "name": "Aggressive",
+        "name_zh": "好战",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Pelt",
+        "name_zh": "兽皮",
+        "quality": "黄金"
+      },
+      {
+        "name": "Broken Shackles",
+        "name_zh": "断裂镣铐",
+        "quality": "白银"
+      },
+      {
+        "name": "Claws",
+        "name_zh": "利爪",
+        "quality": "白银"
+      },
+      {
+        "name": "Fang",
+        "name_zh": "獠牙",
+        "quality": "白银"
+      },
+      {
+        "name": "Eagle Talisman",
+        "name_zh": "鹰之护符",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Zookeeper",
+    "name_zh": "动物饲养员",
+    "health": 900,
+    "skills": [
+      {
+        "name": "Toxic Friendship",
+        "name_zh": "恶毒友谊",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Pelt",
+        "name_zh": "兽皮",
+        "quality": "黄金"
+      },
+      {
+        "name": "Dragon Whelp",
+        "name_zh": "巨龙崽崽",
+        "quality": "白银"
+      },
+      {
+        "name": "Crook",
+        "name_zh": "铁钩",
+        "quality": "白银"
+      },
+      {
+        "name": "Leeches",
+        "name_zh": "水蛭",
+        "quality": "白银"
+      },
+      {
+        "name": "Salamander Pup",
+        "name_zh": "火蜥幼兽",
+        "quality": "白银"
+      },
+      {
+        "name": "Trained Spider",
+        "name_zh": "驯化蜘蛛",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Foundation Weeper",
+    "name_zh": "基石泣妖",
+    "health": 1350,
+    "skills": [
+      {
+        "name": "Exposing Toxins",
+        "name_zh": "弱点毒素",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Extract",
+        "name_zh": "提取物",
+        "quality": "白银"
+      },
+      {
+        "name": "Bandages",
+        "name_zh": "绷带",
+        "quality": "白银"
+      },
+      {
+        "name": "Ouroboros Statue",
+        "name_zh": "衔尾蛇雕像",
+        "quality": "白银"
+      },
+      {
+        "name": "Death Caps",
+        "name_zh": "毒伞菇",
+        "quality": "白银"
+      },
+      {
+        "name": "Thurible",
+        "name_zh": "香炉",
+        "quality": "白银"
+      },
+      {
+        "name": "Ectoplasm",
+        "name_zh": "灵质",
+        "quality": "白银"
+      },
+      {
+        "name": "Temple Expedition Ticket",
+        "name_zh": "神庙探险券",
+        "quality": "传说"
+      }
+    ]
+  },
+  {
+    "name": "Sandwich Artist",
+    "name_zh": "三明治艺术家",
+    "health": 1350,
+    "skills": [
+      {
+        "name": "Regenerative",
+        "name_zh": "元气恢复",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Bread",
+        "name_zh": "面包",
+        "quality": "白银"
+      },
+      {
+        "name": "Salt",
+        "name_zh": "食盐",
+        "quality": "白银"
+      },
+      {
+        "name": "Butter",
+        "name_zh": "黄油",
+        "quality": "白银"
+      },
+      {
+        "name": "Giant Sub",
+        "name_zh": "巨型三明治",
+        "quality": "黄金"
+      },
+      {
+        "name": "Spice Rack",
+        "name_zh": "调料架",
+        "quality": "白银"
+      },
+      {
+        "name": "Baked Potato",
+        "name_zh": "烤土豆",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Trash Golem",
+    "name_zh": "垃圾魔像",
+    "health": 1400,
+    "skills": [
+      {
+        "name": "Jury Rigger",
+        "name_zh": "临修工匠",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Junkyard Catapult",
+        "name_zh": "废品场弹射机",
+        "quality": "黄金"
+      },
+      {
+        "name": "Plasma Grenade",
+        "name_zh": "等离子手雷",
+        "quality": "白银"
+      },
+      {
+        "name": "Grenade",
+        "name_zh": "手雷",
+        "quality": "青铜"
+      },
+      {
+        "name": "Noxious Potion",
+        "name_zh": "剧毒药水",
+        "quality": "青铜"
+      },
+      {
+        "name": "Rainbow Potion",
+        "name_zh": "彩虹药水",
+        "quality": "黄金"
+      },
+      {
+        "name": "Grapeshot",
+        "name_zh": "葡萄弹",
+        "quality": "白银"
+      },
+      {
+        "name": "Powder Keg",
+        "name_zh": "火药桶",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Dire Mosquito",
+    "name_zh": "恶蚊",
+    "health": 1500,
+    "skills": [
+      {
+        "name": "Paralyzing Rush",
+        "name_zh": "麻痹突袭",
+        "quality": "黄金"
+      },
+      {
+        "name": "Trained",
+        "name_zh": "受训",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Insect Wing",
+        "name_zh": "虫翅",
+        "quality": "白银"
+      },
+      {
+        "name": "Ectoplasm",
+        "name_zh": "灵质",
+        "quality": "白银"
+      },
+      {
+        "name": "Proboscis",
+        "name_zh": "口器",
+        "quality": "白银"
+      },
+      {
+        "name": "Amber",
+        "name_zh": "琥珀",
+        "quality": "白银"
+      },
+      {
+        "name": "Stinger",
+        "name_zh": "毒刺",
+        "quality": "黄金"
+      },
+      {
+        "name": "Neural Toxin",
+        "name_zh": "神经毒素",
+        "quality": "白银"
+      },
+      {
+        "name": "Venom",
+        "name_zh": "毒液",
+        "quality": "黄金"
+      },
+      {
+        "name": "Incense",
+        "name_zh": "熏香",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Loan Shark",
+    "name_zh": "放贷鲨",
+    "health": 1550,
+    "skills": [
+      {
+        "name": "Power Broker",
+        "name_zh": "权力掮客",
+        "quality": "白银"
+      },
+      {
+        "name": "Crashing Waves",
+        "name_zh": "浪涛激荡",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Sharkray",
+        "name_zh": "鳐鲨",
+        "quality": "黄金"
+      },
+      {
+        "name": "Sharkclaws",
+        "name_zh": "鲨齿爪",
+        "quality": "白银"
+      },
+      {
+        "name": "ATM",
+        "name_zh": "自动取款机",
+        "quality": "白银"
+      },
+      {
+        "name": "Cash Cannon",
+        "name_zh": "财源炮",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Foreman",
+    "name_zh": "领班",
+    "health": 1200,
+    "skills": [
+      {
+        "name": "Flashy Mechanic",
+        "name_zh": "炫技机械师",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Scrap",
+        "name_zh": "废料",
+        "quality": "黄金"
+      },
+      {
+        "name": "Chris Army Knife",
+        "name_zh": "克里斯军刀",
+        "quality": "白银"
+      },
+      {
+        "name": "Power Sander",
+        "name_zh": "电动砂光机",
+        "quality": "白银"
+      },
+      {
+        "name": "Crane",
+        "name_zh": "起重机",
+        "quality": "黄金"
+      },
+      {
+        "name": "Forklift",
+        "name_zh": "叉车",
+        "quality": "黄金"
+      },
+      {
+        "name": "Cog",
+        "name_zh": "齿轮",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Infernal",
+    "name_zh": "地狱大魔神",
+    "health": 1925,
+    "skills": [
+      {
+        "name": "Burning Rage",
+        "name_zh": "灼烧狂怒",
+        "quality": "白银"
+      },
+      {
+        "name": "Tracer Fire",
+        "name_zh": "追踪火焰",
+        "quality": "白银"
+      },
+      {
+        "name": "Strength",
+        "name_zh": "力量",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Cinders",
+        "name_zh": "余烬",
+        "quality": "钻石"
+      },
+      {
+        "name": "Fire Claw",
+        "name_zh": "火爪",
+        "quality": "黄金"
+      },
+      {
+        "name": "Magma Core",
+        "name_zh": "岩浆核心",
+        "quality": "白银"
+      },
+      {
+        "name": "Infernal Greatsword",
+        "name_zh": "地狱巨剑",
+        "quality": "传说"
+      },
+      {
+        "name": "Ruby",
+        "name_zh": "红宝石",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Lich",
+    "name_zh": "巫妖",
+    "health": 1900,
+    "skills": [
+      {
+        "name": "Petrifying Gaze",
+        "name_zh": "石化凝视",
+        "quality": "黄金"
+      },
+      {
+        "name": "Chilling Touch",
+        "name_zh": "寒霜之触",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Cauldron",
+        "name_zh": "坩埚",
+        "quality": "白银"
+      },
+      {
+        "name": "Ectoplasm",
+        "name_zh": "灵质",
+        "quality": "白银"
+      },
+      {
+        "name": "Icicle",
+        "name_zh": "冰锥",
+        "quality": "白银"
+      },
+      {
+        "name": "Necronomicon",
+        "name_zh": "死灵书",
+        "quality": "传说"
+      },
+      {
+        "name": "Wand",
+        "name_zh": "魔杖",
+        "quality": "黄金"
+      },
+      {
+        "name": "Emerald",
+        "name_zh": "翡翠",
+        "quality": "白银"
+      },
+      {
+        "name": "Soul Ring",
+        "name_zh": "魂戒",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Sergeant Suds",
+    "name_zh": "皂沫中士",
+    "health": 1200,
+    "skills": [
+      {
+        "name": "Clean Storefront",
+        "name_zh": "整洁门面",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Dishwasher",
+        "name_zh": "洗碗机",
+        "quality": "黄金"
+      },
+      {
+        "name": "Hogwash",
+        "name_zh": "猪潲汤",
+        "quality": "黄金"
+      },
+      {
+        "name": "Rivet Gun",
+        "name_zh": "铆钉枪",
+        "quality": "黄金"
+      },
+      {
+        "name": "Hammer",
+        "name_zh": "锤子",
+        "quality": "黄金"
+      },
+      {
+        "name": "Propeller",
+        "name_zh": "螺旋桨",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Viper Tyrant",
+    "name_zh": "毒蛇暴君",
+    "health": 1200,
+    "skills": [
+      {
+        "name": "Poison Tyrant",
+        "name_zh": "剧毒暴君",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Gland",
+        "name_zh": "腺体",
+        "quality": "白银"
+      },
+      {
+        "name": "Extract",
+        "name_zh": "提取物",
+        "quality": "白银"
+      },
+      {
+        "name": "Venom",
+        "name_zh": "毒液",
+        "quality": "白银"
+      },
+      {
+        "name": "Fang",
+        "name_zh": "獠牙",
+        "quality": "白银"
+      },
+      {
+        "name": "Basilisk Fang",
+        "name_zh": "蛇怪之牙",
+        "quality": "白银"
+      },
+      {
+        "name": "Copper Ed",
+        "name_zh": "铜蛇艾德",
+        "quality": "黄金"
+      },
+      {
+        "name": "Noxious Potion",
+        "name_zh": "剧毒药水",
+        "quality": "青铜"
+      }
+    ]
+  },
+  {
+    "name": "Ghost Pepper",
+    "name_zh": "幽灵辣椒",
+    "health": 1700,
+    "skills": [
+      {
+        "name": "Heat Lover",
+        "name_zh": "热辣爱好者",
+        "quality": "黄金"
+      },
+      {
+        "name": "Fiery",
+        "name_zh": "炽焰",
+        "quality": "青铜"
+      }
+    ],
+    "items": [
+      {
+        "name": "Cinders",
+        "name_zh": "余烬",
+        "quality": "黄金"
+      },
+      {
+        "name": "Nitro",
+        "name_zh": "氮气",
+        "quality": "黄金"
+      },
+      {
+        "name": "Micro Dave",
+        "name_zh": "微波戴夫",
+        "quality": "青铜"
+      },
+      {
+        "name": "Bomb Squad",
+        "name_zh": "炸弹小队",
+        "quality": "白银"
+      },
+      {
+        "name": "Char Cole",
+        "name_zh": "炭火科尔",
+        "quality": "白银"
+      },
+      {
+        "name": "Curry",
+        "name_zh": "咖喱",
+        "quality": "白银"
+      },
+      {
+        "name": "Hot Sauce",
+        "name_zh": "辣酱",
+        "quality": "黄金"
+      },
+      {
+        "name": "Black Pepper",
+        "name_zh": "黑胡椒",
+        "quality": "白银"
+      },
+      {
+        "name": "Lighter",
+        "name_zh": "打火机",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Joyful Jack",
+    "name_zh": "快乐杰克南瓜",
+    "health": 1550,
+    "skills": [
+      {
+        "name": "Equivalent Exchange",
+        "name_zh": "等价交换",
+        "quality": "钻石"
+      },
+      {
+        "name": "Critical Aid",
+        "name_zh": "暴击支援",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Extract",
+        "name_zh": "提取物",
+        "quality": "黄金"
+      },
+      {
+        "name": "Black Rose",
+        "name_zh": "黑玫瑰",
+        "quality": "黄金"
+      },
+      {
+        "name": "Poppy Field",
+        "name_zh": "罂粟花田",
+        "quality": "黄金"
+      },
+      {
+        "name": "Floor Spike",
+        "name_zh": "地刺陷阱",
+        "quality": "白银"
+      },
+      {
+        "name": "Bushel",
+        "name_zh": "果篮",
+        "quality": "白银"
+      },
+      {
+        "name": "Succulents",
+        "name_zh": "多肉植物",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Treasure Turtle",
+    "name_zh": "载宝海龟",
+    "health": 1700,
+    "skills": [
+      {
+        "name": "Hunker Down",
+        "name_zh": "暂避风头",
+        "quality": "白银"
+      },
+      {
+        "name": "Toughness",
+        "name_zh": "坚固",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Bag of Jewels",
+        "name_zh": "珠宝袋",
+        "quality": "黄金"
+      },
+      {
+        "name": "Seaweed",
+        "name_zh": "水草",
+        "quality": "白银"
+      },
+      {
+        "name": "Sea Shell",
+        "name_zh": "海螺壳",
+        "quality": "白银"
+      },
+      {
+        "name": "Turtle Shell",
+        "name_zh": "龟壳",
+        "quality": "白银"
+      },
+      {
+        "name": "Catfish",
+        "name_zh": "毒须鲶",
+        "quality": "黄金"
+      },
+      {
+        "name": "Pearl",
+        "name_zh": "珍珠",
+        "quality": "黄金"
+      },
+      {
+        "name": "Clamera",
+        "name_zh": "拍立蚌",
+        "quality": "白银"
+      },
+      {
+        "name": "Temple Expedition Ticket",
+        "name_zh": "神庙探险券",
+        "quality": "传说"
+      }
+    ]
+  },
+  {
+    "name": "Annex Trooper",
+    "name_zh": "附属部队士兵",
+    "health": 1925,
+    "skills": [
+      {
+        "name": "Tracer Fire",
+        "name_zh": "追踪火焰",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Welding Helmet",
+        "name_zh": "焊接头盔",
+        "quality": "白银"
+      },
+      {
+        "name": "Plasma Grenade",
+        "name_zh": "等离子手雷",
+        "quality": "白银"
+      },
+      {
+        "name": "Nitro",
+        "name_zh": "氮气",
+        "quality": "黄金"
+      },
+      {
+        "name": "Welding Torch",
+        "name_zh": "焊炬",
+        "quality": "白银"
+      },
+      {
+        "name": "Plasma Rifle",
+        "name_zh": "等离子步枪",
+        "quality": "黄金"
+      },
+      {
+        "name": "Incendiary Rounds",
+        "name_zh": "燃烧子弹",
+        "quality": "白银"
+      },
+      {
+        "name": "Induction Aegis",
+        "name_zh": "感流盾",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Chilly Charles",
+    "name_zh": "寒霜查尔斯",
+    "health": 1925,
+    "skills": [
+      {
+        "name": "Reaching the Summit",
+        "name_zh": "登峰之路",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Icicle",
+        "name_zh": "冰锥",
+        "quality": "黄金"
+      },
+      {
+        "name": "Ice Cubes",
+        "name_zh": "冰块",
+        "quality": "白银"
+      },
+      {
+        "name": "Ice Cream Truck",
+        "name_zh": "冰淇淋车",
+        "quality": "黄金"
+      },
+      {
+        "name": "Hammock",
+        "name_zh": "吊床",
+        "quality": "白银"
+      },
+      {
+        "name": "Igloo",
+        "name_zh": "冰屋",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Thug",
+    "name_zh": "暴徒",
+    "health": 5700,
+    "skills": [
+      {
+        "name": "Bonk",
+        "name_zh": "迎头痛击",
+        "quality": "钻石"
+      },
+      {
+        "name": "Long Strides",
+        "name_zh": "大步流星",
+        "quality": "钻石"
+      },
+      {
+        "name": "Brawler",
+        "name_zh": "斗士",
+        "quality": "钻石"
+      },
+      {
+        "name": "Strength",
+        "name_zh": "力量",
+        "quality": "钻石"
+      }
+    ],
+    "items": [
+      {
+        "name": "Bar of Gold",
+        "name_zh": "金条",
+        "quality": "钻石"
+      },
+      {
+        "name": "Double Whammy",
+        "name_zh": "双重打击",
+        "quality": "黄金"
+      },
+      {
+        "name": "Improvised Bludgeon",
+        "name_zh": "临时钝器",
+        "quality": "黄金"
+      },
+      {
+        "name": "Pawn Shop",
+        "name_zh": "当铺",
+        "quality": "黄金"
+      },
+      {
+        "name": "Brass Knuckles",
+        "name_zh": "黄铜拳套",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Radiant Corsair",
+    "name_zh": "辉耀海盗",
+    "health": 3200,
+    "skills": [
+      {
+        "name": "Fiery Rebirth",
+        "name_zh": "炽焰重生",
+        "quality": "传说"
+      },
+      {
+        "name": "Right-Handed",
+        "name_zh": "右撇子",
+        "quality": "黄金"
+      },
+      {
+        "name": "Final Flame",
+        "name_zh": "终焰",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Grappling Hook",
+        "name_zh": "抓钩",
+        "quality": "黄金"
+      },
+      {
+        "name": "Anchor",
+        "name_zh": "锚",
+        "quality": "黄金"
+      },
+      {
+        "name": "Dock Lines",
+        "name_zh": "码头缆索",
+        "quality": "黄金"
+      },
+      {
+        "name": "Katana",
+        "name_zh": "武士刀",
+        "quality": "黄金"
+      },
+      {
+        "name": "Lighthouse",
+        "name_zh": "灯塔",
+        "quality": "钻石"
+      }
+    ]
+  },
+  {
+    "name": "Cloudtop Officer",
+    "name_zh": "云顶军官",
+    "health": 1700,
+    "skills": [
+      {
+        "name": "Bombing Run",
+        "name_zh": "轰炸行动",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Air-Pressure Rifle",
+        "name_zh": "气压步枪",
+        "quality": "黄金"
+      },
+      {
+        "name": "Altimeter",
+        "name_zh": "海拔计",
+        "quality": "白银"
+      },
+      {
+        "name": "Battle Balloon",
+        "name_zh": "作战气球",
+        "quality": "白银"
+      },
+      {
+        "name": "Propeller",
+        "name_zh": "螺旋桨",
+        "quality": "白银"
+      },
+      {
+        "name": "Tethers",
+        "name_zh": "系绳",
+        "quality": "黄金"
+      },
+      {
+        "name": "Flycycle",
+        "name_zh": "飞行单车",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Cosmic Roc",
+    "name_zh": "宇宙鹏鸟",
+    "health": 1500,
+    "skills": [
+      {
+        "name": "Keen Eye",
+        "name_zh": "敏锐眼光",
+        "quality": "黄金"
+      },
+      {
+        "name": "Cosmic Wind",
+        "name_zh": "宇宙风",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Feather",
+        "name_zh": "羽毛",
+        "quality": "黄金"
+      },
+      {
+        "name": "Cosmic Amulet",
+        "name_zh": "宇宙护符",
+        "quality": "黄金"
+      },
+      {
+        "name": "Cosmic Plumage",
+        "name_zh": "宇宙炫羽",
+        "quality": "白银"
+      },
+      {
+        "name": "Claws",
+        "name_zh": "利爪",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Joyful Jack",
+    "name_zh": "快乐杰克南瓜",
+    "health": 1550,
+    "skills": [
+      {
+        "name": "Equivalent Exchange",
+        "name_zh": "等价交换",
+        "quality": "钻石"
+      },
+      {
+        "name": "Critical Aid",
+        "name_zh": "暴击支援",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Extract",
+        "name_zh": "提取物",
+        "quality": "黄金"
+      },
+      {
+        "name": "Black Rose",
+        "name_zh": "黑玫瑰",
+        "quality": "黄金"
+      },
+      {
+        "name": "Poppy Field",
+        "name_zh": "罂粟花田",
+        "quality": "黄金"
+      },
+      {
+        "name": "Floor Spike",
+        "name_zh": "地刺陷阱",
+        "quality": "白银"
+      },
+      {
+        "name": "Bushel",
+        "name_zh": "果篮",
+        "quality": "白银"
+      },
+      {
+        "name": "Succulents",
+        "name_zh": "多肉植物",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Stew",
+    "name_zh": "史都",
+    "health": 1700,
+    "skills": [
+      {
+        "name": "Anything to Win",
+        "name_zh": "不择手段",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Curry",
+        "name_zh": "咖喱",
+        "quality": "白银"
+      },
+      {
+        "name": "Black Pepper",
+        "name_zh": "黑胡椒",
+        "quality": "黄金"
+      },
+      {
+        "name": "Oven Mitts",
+        "name_zh": "烤箱手套",
+        "quality": "白银"
+      },
+      {
+        "name": "Cauldron",
+        "name_zh": "坩埚",
+        "quality": "白银"
+      },
+      {
+        "name": "Pickled Peppers",
+        "name_zh": "腌辣椒",
+        "quality": "黄金"
+      },
+      {
+        "name": "Hot Sauce",
+        "name_zh": "辣酱",
+        "quality": "黄金"
+      },
+      {
+        "name": "Scorchpepper",
+        "name_zh": "火焰辣椒",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Bouncertron",
+    "name_zh": "防卫机甲",
+    "health": 1925,
+    "skills": [
+      {
+        "name": "Sharpened Steel",
+        "name_zh": "钢铁磨砺",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Cybersecurity",
+        "name_zh": "网络保安",
+        "quality": "黄金"
+      },
+      {
+        "name": "Pulse Rifle",
+        "name_zh": "脉冲步枪",
+        "quality": "黄金"
+      },
+      {
+        "name": "Katana",
+        "name_zh": "武士刀",
+        "quality": "黄金"
+      },
+      {
+        "name": "Laser Pistol",
+        "name_zh": "激光手枪",
+        "quality": "黄金"
+      },
+      {
+        "name": "Sunderer",
+        "name_zh": "裂盾刀",
+        "quality": "黄金"
+      },
+      {
+        "name": "Gatling Gun",
+        "name_zh": "加特林机枪",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Car Conductor",
+    "name_zh": "驾驶督导",
+    "health": 1925,
+    "skills": [
+      {
+        "name": "Expert Pilot",
+        "name_zh": "专家飞行员",
+        "quality": "青铜"
+      },
+      {
+        "name": "Command Ship",
+        "name_zh": "领头船",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Goggles",
+        "name_zh": "护目镜",
+        "quality": "白银"
+      },
+      {
+        "name": "Sirens",
+        "name_zh": "警报喇叭",
+        "quality": "白银"
+      },
+      {
+        "name": "Race Carl",
+        "name_zh": "竞速卡尔",
+        "quality": "黄金"
+      },
+      {
+        "name": "Captain&#x27;s Wheel",
+        "name_zh": "",
+        "quality": null
+      },
+      {
+        "name": "Hydrogen Tank",
+        "name_zh": "氢气罐",
+        "quality": "白银"
+      },
+      {
+        "name": "Cog",
+        "name_zh": "齿轮",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Infernal Frigate",
+    "name_zh": "地狱飞艇",
+    "health": 1925,
+    "skills": [
+      {
+        "name": "Firestarter",
+        "name_zh": "引火者",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Trebuchet",
+        "name_zh": "抛石机",
+        "quality": "黄金"
+      },
+      {
+        "name": "Rocket Launcher",
+        "name_zh": "火箭发射器",
+        "quality": "白银"
+      },
+      {
+        "name": "Pop Snappers",
+        "name_zh": "燃烧响炮",
+        "quality": "白银"
+      },
+      {
+        "name": "Incendiary Rounds",
+        "name_zh": "燃烧子弹",
+        "quality": "黄金"
+      },
+      {
+        "name": "Thrusters",
+        "name_zh": "推进器",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Burninator Bot",
+    "name_zh": "焚毁机器人",
+    "health": 2325,
+    "skills": [
+      {
+        "name": "Slow Burn",
+        "name_zh": "慢性灼烧",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Induction Aegis",
+        "name_zh": "感流盾",
+        "quality": "黄金"
+      },
+      {
+        "name": "Weakpoint Detector",
+        "name_zh": "弱点探测器",
+        "quality": "黄金"
+      },
+      {
+        "name": "Pylon",
+        "name_zh": "桥塔",
+        "quality": "黄金"
+      },
+      {
+        "name": "Thermal Lance",
+        "name_zh": "热能长枪",
+        "quality": "黄金"
+      },
+      {
+        "name": "Flamethrower",
+        "name_zh": "火焰喷射枪",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Dr. Vortex",
+    "name_zh": "漩涡博士",
+    "health": 2325,
+    "skills": [
+      {
+        "name": "Neophiliac",
+        "name_zh": "新奇狂人",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Lightning Rod",
+        "name_zh": "避雷针",
+        "quality": "黄金"
+      },
+      {
+        "name": "Lightbulb",
+        "name_zh": "灯泡",
+        "quality": "黄金"
+      },
+      {
+        "name": "Tesla Coil",
+        "name_zh": "特斯拉线圈",
+        "quality": "黄金"
+      },
+      {
+        "name": "Cog",
+        "name_zh": "齿轮",
+        "quality": "黄金"
+      },
+      {
+        "name": "Weather Machine",
+        "name_zh": "气象机",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Oasis Guardian",
+    "name_zh": "绿洲守护神",
+    "health": 2325,
+    "skills": [
+      {
+        "name": "Waters of Infinity",
+        "name_zh": "无尽水源",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Ouroboros Statue",
+        "name_zh": "衔尾蛇雕像",
+        "quality": "黄金"
+      },
+      {
+        "name": "Venomander",
+        "name_zh": "毒蜥",
+        "quality": "黄金"
+      },
+      {
+        "name": "Sleeping Potion",
+        "name_zh": "昏睡药水",
+        "quality": "白银"
+      },
+      {
+        "name": "Incense",
+        "name_zh": "熏香",
+        "quality": "白银"
+      },
+      {
+        "name": "Magnus&#x27; Femur",
+        "name_zh": "",
+        "quality": null
+      },
+      {
+        "name": "Nightshade",
+        "name_zh": "颠茄",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Wandering Shoal",
+    "name_zh": "流浪暗礁",
+    "health": 2325,
+    "skills": [
+      {
+        "name": "Thick Hide",
+        "name_zh": "厚皮",
+        "quality": "钻石"
+      },
+      {
+        "name": "Improved Toxins",
+        "name_zh": "毒素增效",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Electric Eels",
+        "name_zh": "电鳗",
+        "quality": "黄金"
+      },
+      {
+        "name": "Catfish",
+        "name_zh": "毒须鲶",
+        "quality": "黄金"
+      },
+      {
+        "name": "Jellyfish",
+        "name_zh": "水母",
+        "quality": "黄金"
+      },
+      {
+        "name": "Piranha",
+        "name_zh": "食人鱼",
+        "quality": "白银"
+      },
+      {
+        "name": "Amber",
+        "name_zh": "琥珀",
+        "quality": "黄金"
+      },
+      {
+        "name": "Seaweed",
+        "name_zh": "水草",
+        "quality": "白银"
+      },
+      {
+        "name": "Pufferfish",
+        "name_zh": "河豚",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Dragon",
+    "name_zh": "巨龙",
+    "health": 3675,
+    "skills": [
+      {
+        "name": "Draconic Rage",
+        "name_zh": "龙性狂焰",
+        "quality": "钻石"
+      },
+      {
+        "name": "Regenerative",
+        "name_zh": "元气恢复",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Dragon Wing",
+        "name_zh": "巨龙翼",
+        "quality": "黄金"
+      },
+      {
+        "name": "Fire Claw",
+        "name_zh": "火爪",
+        "quality": "钻石"
+      },
+      {
+        "name": "Dragon Heart",
+        "name_zh": "巨龙心",
+        "quality": "传说"
+      }
+    ]
+  },
+  {
+    "name": "Bloodreef Captain",
+    "name_zh": "血礁船长",
+    "health": 1925,
+    "skills": [
+      {
+        "name": "Full Arsenal",
+        "name_zh": "全副武装",
+        "quality": "黄金"
+      },
+      {
+        "name": "Heavy Firepower",
+        "name_zh": "重火力",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Crow&#x27;s Nest",
+        "name_zh": "",
+        "quality": null
+      },
+      {
+        "name": "Pesky Pete",
+        "name_zh": "鹦鹉皮特",
+        "quality": "黄金"
+      },
+      {
+        "name": "Captain&#x27;s Wheel",
+        "name_zh": "",
+        "quality": null
+      },
+      {
+        "name": "Pop Snappers",
+        "name_zh": "燃烧响炮",
+        "quality": "白银"
+      },
+      {
+        "name": "Flagship",
+        "name_zh": "旗舰",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Cloudtop Admiral",
+    "name_zh": "云顶海军上将",
+    "health": 2100,
+    "skills": [
+      {
+        "name": "Aerial Assault",
+        "name_zh": "空中突袭",
+        "quality": "钻石"
+      },
+      {
+        "name": "Strength",
+        "name_zh": "力量",
+        "quality": "钻石"
+      }
+    ],
+    "items": [
+      {
+        "name": "Daggerwing",
+        "name_zh": "匕翼",
+        "quality": "黄金"
+      },
+      {
+        "name": "Captain&#x27;s Wheel",
+        "name_zh": "",
+        "quality": null
+      },
+      {
+        "name": "Battle Balloon",
+        "name_zh": "作战气球",
+        "quality": "白银"
+      },
+      {
+        "name": "Marshalling Lights",
+        "name_zh": "引导灯",
+        "quality": "黄金"
+      },
+      {
+        "name": "Admiral&#x27;s Badge",
+        "name_zh": "",
+        "quality": null
+      },
+      {
+        "name": "Flare Gun",
+        "name_zh": "信号枪",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Elite Duelist",
+    "name_zh": "精英决斗者",
+    "health": 1925,
+    "skills": [
+      {
+        "name": "Big Ego",
+        "name_zh": "虚荣",
+        "quality": "钻石"
+      },
+      {
+        "name": "Strength",
+        "name_zh": "力量",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Revolver",
+        "name_zh": "左轮手枪",
+        "quality": "黄金"
+      },
+      {
+        "name": "Powder Horn",
+        "name_zh": "火药角",
+        "quality": "白银"
+      },
+      {
+        "name": "Shoe Blade",
+        "name_zh": "靴里剑",
+        "quality": "白银"
+      },
+      {
+        "name": "Butterfly Swords",
+        "name_zh": "蝶剑",
+        "quality": "白银"
+      },
+      {
+        "name": "Spices",
+        "name_zh": "香料",
+        "quality": "钻石"
+      },
+      {
+        "name": "Holsters",
+        "name_zh": "枪套",
+        "quality": "黄金"
+      },
+      {
+        "name": "Cutlass",
+        "name_zh": "弯刀",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Oasis Guardian",
+    "name_zh": "绿洲守护神",
+    "health": 2325,
+    "skills": [
+      {
+        "name": "Waters of Infinity",
+        "name_zh": "无尽水源",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Ouroboros Statue",
+        "name_zh": "衔尾蛇雕像",
+        "quality": "黄金"
+      },
+      {
+        "name": "Venomander",
+        "name_zh": "毒蜥",
+        "quality": "黄金"
+      },
+      {
+        "name": "Sleeping Potion",
+        "name_zh": "昏睡药水",
+        "quality": "白银"
+      },
+      {
+        "name": "Incense",
+        "name_zh": "熏香",
+        "quality": "白银"
+      },
+      {
+        "name": "Magnus&#x27; Femur",
+        "name_zh": "",
+        "quality": null
+      },
+      {
+        "name": "Nightshade",
+        "name_zh": "颠茄",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Roaming Isle",
+    "name_zh": "流浪岛屿",
+    "health": 2325,
+    "skills": [
+      {
+        "name": "Shored Up",
+        "name_zh": "防线强化",
+        "quality": "钻石"
+      },
+      {
+        "name": "Follow-Up Care",
+        "name_zh": "跟进疗护",
+        "quality": "青铜"
+      },
+      {
+        "name": "First Responder",
+        "name_zh": "急救包",
+        "quality": "青铜"
+      }
+    ],
+    "items": [
+      {
+        "name": "Tropical Island",
+        "name_zh": "热带岛屿",
+        "quality": "黄金"
+      },
+      {
+        "name": "Sea Shell",
+        "name_zh": "海螺壳",
+        "quality": "黄金"
+      },
+      {
+        "name": "Pet Rock",
+        "name_zh": "宠物石",
+        "quality": "黄金"
+      },
+      {
+        "name": "Catfish",
+        "name_zh": "毒须鲶",
+        "quality": "黄金"
+      },
+      {
+        "name": "Jellyfish",
+        "name_zh": "水母",
+        "quality": "黄金"
+      },
+      {
+        "name": "Seaweed",
+        "name_zh": "水草",
+        "quality": "白银"
+      },
+      {
+        "name": "Clamera",
+        "name_zh": "拍立蚌",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Terrorform",
+    "name_zh": "恐惧之形",
+    "health": 2325,
+    "skills": [
+      {
+        "name": "Flashy Reload",
+        "name_zh": "炫技装弹",
+        "quality": "钻石"
+      },
+      {
+        "name": "Passive Power",
+        "name_zh": "被动能量",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Torpedo",
+        "name_zh": "鱼雷",
+        "quality": "黄金"
+      },
+      {
+        "name": "Piranha",
+        "name_zh": "食人鱼",
+        "quality": "钻石"
+      },
+      {
+        "name": "Shot Glasses",
+        "name_zh": "烈酒杯",
+        "quality": "白银"
+      },
+      {
+        "name": "Elemental Depth Charge",
+        "name_zh": "元素深渊冲刺",
+        "quality": "黄金"
+      },
+      {
+        "name": "Bottled Lightning",
+        "name_zh": "瓶装闪电",
+        "quality": "白银"
+      },
+      {
+        "name": "Mantis Shrimp",
+        "name_zh": "皮皮虾",
+        "quality": "白银"
+      },
+      {
+        "name": "Biomerge Arm",
+        "name_zh": "生体融合臂",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Ferros Khan",
+    "name_zh": "菲罗斯汗",
+    "health": 2750,
+    "skills": [
+      {
+        "name": "One Shot",
+        "name_zh": "",
+        "quality": null
+      },
+      {
+        "name": "One Kill",
+        "name_zh": "",
+        "quality": null
+      },
+      {
+        "name": "Left-Handed",
+        "name_zh": "左撇子",
+        "quality": "黄金"
+      },
+      {
+        "name": "Right-Handed",
+        "name_zh": "右撇子",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Shadowed Cloak",
+        "name_zh": "暗影斗篷",
+        "quality": "黄金"
+      },
+      {
+        "name": "Sniper Rifle",
+        "name_zh": "狙击步枪",
+        "quality": "黄金"
+      },
+      {
+        "name": "Silencer",
+        "name_zh": "消音器",
+        "quality": "黄金"
+      },
+      {
+        "name": "Barrel",
+        "name_zh": "木桶",
+        "quality": "白银"
+      },
+      {
+        "name": "Dock Lines",
+        "name_zh": "码头缆索",
+        "quality": "黄金"
+      },
+      {
+        "name": "Energy Potion",
+        "name_zh": "能量药水",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Weapons Platform",
+    "name_zh": "武器平台",
+    "health": 2750,
+    "skills": [
+      {
+        "name": "Distributed Systems",
+        "name_zh": "分配系统",
+        "quality": "钻石"
+      },
+      {
+        "name": "Keen Eye",
+        "name_zh": "敏锐眼光",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Cog",
+        "name_zh": "齿轮",
+        "quality": "黄金"
+      },
+      {
+        "name": "Kinetic Cannon",
+        "name_zh": "动能加农炮",
+        "quality": "黄金"
+      },
+      {
+        "name": "Battery",
+        "name_zh": "电池",
+        "quality": "黄金"
+      },
+      {
+        "name": "Coolant",
+        "name_zh": "冷却剂",
+        "quality": "黄金"
+      },
+      {
+        "name": "First Aiden",
+        "name_zh": "急救艾登",
+        "quality": "黄金"
+      },
+      {
+        "name": "Laser Pistol",
+        "name_zh": "激光手枪",
+        "quality": "黄金"
+      },
+      {
+        "name": "Power Sander",
+        "name_zh": "电动砂光机",
+        "quality": "黄金"
+      },
+      {
+        "name": "SMG",
+        "name_zh": "冲锋枪",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Yerdan",
+    "name_zh": "耶丹",
+    "health": 2750,
+    "skills": [
+      {
+        "name": "Relax Bro",
+        "name_zh": "兄弟别激动",
+        "quality": "黄金"
+      },
+      {
+        "name": "Right-Handed",
+        "name_zh": "右撇子",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Tournament Arena",
+        "name_zh": "竞技场",
+        "quality": "钻石"
+      },
+      {
+        "name": "Piggles Board",
+        "name_zh": "小圆猪板",
+        "quality": "黄金"
+      },
+      {
+        "name": "Red Piggles R",
+        "name_zh": "红色小圆猪 R",
+        "quality": "黄金"
+      },
+      {
+        "name": "Yo-Yo",
+        "name_zh": "悠悠球",
+        "quality": "黄金"
+      },
+      {
+        "name": "Red Piggles A",
+        "name_zh": "红色小圆猪 A",
+        "quality": "黄金"
+      },
+      {
+        "name": "Premium Red Piggles",
+        "name_zh": "高级红色小圆猪",
+        "quality": "黄金"
+      },
+      {
+        "name": "Red Piggles L",
+        "name_zh": "红色小圆猪 L",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Foundation Revenant",
+    "name_zh": "基石亡灵",
+    "health": 3200,
+    "skills": [
+      {
+        "name": "Exposing Toxins",
+        "name_zh": "弱点毒素",
+        "quality": "钻石"
+      },
+      {
+        "name": "Purifying Flame",
+        "name_zh": "净化烈焰",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Soul Ring",
+        "name_zh": "魂戒",
+        "quality": "黄金"
+      },
+      {
+        "name": "Emerald",
+        "name_zh": "翡翠",
+        "quality": "黄金"
+      },
+      {
+        "name": "Ouroboros Statue",
+        "name_zh": "衔尾蛇雕像",
+        "quality": "钻石"
+      },
+      {
+        "name": "Shadowed Cloak",
+        "name_zh": "暗影斗篷",
+        "quality": "黄金"
+      },
+      {
+        "name": "Basilisk Fang",
+        "name_zh": "蛇怪之牙",
+        "quality": "白银"
+      },
+      {
+        "name": "Ectoplasm",
+        "name_zh": "灵质",
+        "quality": "钻石"
+      },
+      {
+        "name": "Thurible",
+        "name_zh": "香炉",
+        "quality": "黄金"
+      },
+      {
+        "name": "Bandages",
+        "name_zh": "绷带",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Void Knight",
+    "name_zh": "虚空骑士",
+    "health": 3675,
+    "skills": [
+      {
+        "name": "Hypnotic Drain",
+        "name_zh": "催眠吸取",
+        "quality": "钻石"
+      },
+      {
+        "name": "Desperate Cleanse",
+        "name_zh": "绝望净化",
+        "quality": "钻石"
+      }
+    ],
+    "items": [
+      {
+        "name": "Sapphire",
+        "name_zh": "蓝宝石",
+        "quality": "黄金"
+      },
+      {
+        "name": "Shadowed Cloak",
+        "name_zh": "暗影斗篷",
+        "quality": "黄金"
+      },
+      {
+        "name": "Scythe",
+        "name_zh": "镰刀",
+        "quality": "传说"
+      },
+      {
+        "name": "Mortal Coil",
+        "name_zh": "凡躯之缚",
+        "quality": "黄金"
+      },
+      {
+        "name": "Runic Great Axe",
+        "name_zh": "符文巨斧",
+        "quality": "钻石"
+      }
+    ]
+  },
+  {
+    "name": "Boss Harrow",
+    "name_zh": "哈洛大哥",
+    "health": 2325,
+    "skills": [
+      {
+        "name": "Assault Focus",
+        "name_zh": "突击专注",
+        "quality": "黄金"
+      },
+      {
+        "name": "Strength",
+        "name_zh": "力量",
+        "quality": "黄金"
+      },
+      {
+        "name": "Keen Eye",
+        "name_zh": "敏锐眼光",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Weakpoint Detector",
+        "name_zh": "弱点探测器",
+        "quality": "黄金"
+      },
+      {
+        "name": "Runic Double Bow",
+        "name_zh": "符文双射弓",
+        "quality": "黄金"
+      },
+      {
+        "name": "Bayonet",
+        "name_zh": "刺刀",
+        "quality": "白银"
+      },
+      {
+        "name": "Grappling Hook",
+        "name_zh": "抓钩",
+        "quality": "白银"
+      },
+      {
+        "name": "Jitte",
+        "name_zh": "十手",
+        "quality": "黄金"
+      },
+      {
+        "name": "Katana",
+        "name_zh": "武士刀",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Hulking Experiment",
+    "name_zh": "庞大实验体",
+    "health": 2325,
+    "skills": [
+      {
+        "name": "Parting Shot",
+        "name_zh": "诀别一击",
+        "quality": "黄金"
+      },
+      {
+        "name": "Adaptive Ordinance",
+        "name_zh": "自适应军备",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Athanor",
+        "name_zh": "炼金炉",
+        "quality": "黄金"
+      },
+      {
+        "name": "Bottled Lightning",
+        "name_zh": "瓶装闪电",
+        "quality": "白银"
+      },
+      {
+        "name": "Energy Potion",
+        "name_zh": "能量药水",
+        "quality": "黄金"
+      },
+      {
+        "name": "Fire Potion",
+        "name_zh": "火焰药水",
+        "quality": "白银"
+      },
+      {
+        "name": "Rainbow Potion",
+        "name_zh": "彩虹药水",
+        "quality": "黄金"
+      },
+      {
+        "name": "Noxious Potion",
+        "name_zh": "剧毒药水",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Master Alchemist",
+    "name_zh": "炼金大师",
+    "health": 2325,
+    "skills": [
+      {
+        "name": "Retool",
+        "name_zh": "上膛工具",
+        "quality": "钻石"
+      }
+    ],
+    "items": [
+      {
+        "name": "Mortar &amp; Pestle",
+        "name_zh": "",
+        "quality": null
+      },
+      {
+        "name": "Refractor",
+        "name_zh": "折射棱镜",
+        "quality": "白银"
+      },
+      {
+        "name": "Rainbow Potion",
+        "name_zh": "彩虹药水",
+        "quality": "黄金"
+      },
+      {
+        "name": "Cauldron",
+        "name_zh": "坩埚",
+        "quality": "白银"
+      },
+      {
+        "name": "Weather Glass",
+        "name_zh": "风暴瓶",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Infernal Dreadnought",
+    "name_zh": "地狱空艇",
+    "health": 3050,
+    "skills": [
+      {
+        "name": "Pyromania",
+        "name_zh": "嗜火症",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Skyliner",
+        "name_zh": "天际舰",
+        "quality": "黄金"
+      },
+      {
+        "name": "Jetpack",
+        "name_zh": "喷气背包",
+        "quality": "黄金"
+      },
+      {
+        "name": "Solar Drone",
+        "name_zh": "太阳能无人机",
+        "quality": "黄金"
+      },
+      {
+        "name": "Balloon Engine",
+        "name_zh": "气球引擎",
+        "quality": "黄金"
+      },
+      {
+        "name": "Launch Tower",
+        "name_zh": "发射塔",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Lord of the Wastes",
+    "name_zh": "废土领主",
+    "health": 2750,
+    "skills": [
+      {
+        "name": "Foreboding Winds",
+        "name_zh": "凶风",
+        "quality": "钻石"
+      }
+    ],
+    "items": [
+      {
+        "name": "Letter Opener",
+        "name_zh": "拆信刀",
+        "quality": "黄金"
+      },
+      {
+        "name": "Basilisk Fang",
+        "name_zh": "蛇怪之牙",
+        "quality": "白银"
+      },
+      {
+        "name": "Sextant",
+        "name_zh": "六分仪",
+        "quality": "钻石"
+      },
+      {
+        "name": "Magic Carpet",
+        "name_zh": "魔法飞毯",
+        "quality": "黄金"
+      },
+      {
+        "name": "Clockwork Blades",
+        "name_zh": "发条匕首",
+        "quality": "钻石"
+      },
+      {
+        "name": "Energy Potion",
+        "name_zh": "能量药水",
+        "quality": "钻石"
+      }
+    ]
+  },
+  {
+    "name": "Test Subject Alpha",
+    "name_zh": "测试对象阿尔法",
+    "health": 3050,
+    "skills": [
+      {
+        "name": "Toxic Fuel",
+        "name_zh": "毒性燃料",
+        "quality": "黄金"
+      },
+      {
+        "name": "Vital Reserve",
+        "name_zh": "生命储备",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Venomous Dose",
+        "name_zh": "毒液注射",
+        "quality": "黄金"
+      },
+      {
+        "name": "Fungal Spores",
+        "name_zh": "真菌孢子",
+        "quality": "黄金"
+      },
+      {
+        "name": "Rapid Injection System",
+        "name_zh": "快速注射系统",
+        "quality": "黄金"
+      },
+      {
+        "name": "Barbed Claws",
+        "name_zh": "倒刺利爪",
+        "quality": "黄金"
+      },
+      {
+        "name": "Test Subject Alpha",
+        "name_zh": "测试对象阿尔法",
+        "quality": "黄金"
+      },
+      {
+        "name": "Infused Bracers",
+        "name_zh": "注能护腕",
+        "quality": "白银"
+      }
+    ]
+  },
+  {
+    "name": "Tortuga",
+    "name_zh": "巨龟托图加",
+    "health": 3050,
+    "skills": [
+      {
+        "name": "Friendzone",
+        "name_zh": "伙伴卡",
+        "quality": "黄金"
+      },
+      {
+        "name": "Warm Hugs",
+        "name_zh": "温暖拥抱",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Tortuga",
+        "name_zh": "巨龟托图加",
+        "quality": "黄金"
+      },
+      {
+        "name": "Pesky Pete",
+        "name_zh": "鹦鹉皮特",
+        "quality": "黄金"
+      },
+      {
+        "name": "Zoarcid",
+        "name_zh": "鲇光怪鱼",
+        "quality": "黄金"
+      },
+      {
+        "name": "Catfish",
+        "name_zh": "毒须鲶",
+        "quality": "黄金"
+      },
+      {
+        "name": "Pufferfish",
+        "name_zh": "河豚",
+        "quality": "黄金"
+      },
+      {
+        "name": "Jellyfish",
+        "name_zh": "水母",
+        "quality": "黄金"
+      },
+      {
+        "name": "Old Saltclaw",
+        "name_zh": "盐钳海盗",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Trash Titan",
+    "name_zh": "垃圾泰坦",
+    "health": 2750,
+    "skills": [
+      {
+        "name": "Juggler",
+        "name_zh": "杂耍",
+        "quality": "钻石"
+      }
+    ],
+    "items": [
+      {
+        "name": "Venom",
+        "name_zh": "毒液",
+        "quality": "白银"
+      },
+      {
+        "name": "Emerald",
+        "name_zh": "翡翠",
+        "quality": "白银"
+      },
+      {
+        "name": "Catalyst",
+        "name_zh": "催化剂",
+        "quality": "黄金"
+      },
+      {
+        "name": "Junkyard Lance",
+        "name_zh": "废品场长枪",
+        "quality": "钻石"
+      },
+      {
+        "name": "Hemlock",
+        "name_zh": "毒芹",
+        "quality": "青铜"
+      },
+      {
+        "name": "Ectoplasm",
+        "name_zh": "灵质",
+        "quality": "钻石"
+      },
+      {
+        "name": "Venomander",
+        "name_zh": "毒蜥",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Awakened Primordial",
+    "name_zh": "觉醒元初体",
+    "health": 3600,
+    "skills": [
+      {
+        "name": "Wake-Up Call",
+        "name_zh": "起床呼唤",
+        "quality": "钻石"
+      },
+      {
+        "name": "Heated Shells",
+        "name_zh": "高温弹壳",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Elemental Depth Charge",
+        "name_zh": "元素深渊冲刺",
+        "quality": "黄金"
+      },
+      {
+        "name": "Pufferfish",
+        "name_zh": "河豚",
+        "quality": "黄金"
+      },
+      {
+        "name": "Dive Weights",
+        "name_zh": "潜水配重",
+        "quality": "黄金"
+      },
+      {
+        "name": "Incendiary Rounds",
+        "name_zh": "燃烧子弹",
+        "quality": "黄金"
+      },
+      {
+        "name": "Pearl",
+        "name_zh": "珍珠",
+        "quality": "黄金"
+      },
+      {
+        "name": "Slumbering Primordial",
+        "name_zh": "沉眠元初体",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Dooltron",
+    "name_zh": "杜利机甲",
+    "health": 3600,
+    "skills": [
+      {
+        "name": "Nanobot Construction",
+        "name_zh": "纳米机器人建造",
+        "quality": "黄金"
+      },
+      {
+        "name": "Electrified Hull",
+        "name_zh": "带电外壳",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "BLU-B33TL3",
+        "name_zh": "机械蓝甲虫",
+        "quality": "黄金"
+      },
+      {
+        "name": "GRN-W4SP",
+        "name_zh": "机械绿马蜂",
+        "quality": "黄金"
+      },
+      {
+        "name": "BLK-SP1D3R",
+        "name_zh": "机械黑蜘蛛",
+        "quality": "黄金"
+      },
+      {
+        "name": "RED-F1R3FLY",
+        "name_zh": "机械红焰萤",
+        "quality": "黄金"
+      },
+      {
+        "name": "YLW-M4NT1S",
+        "name_zh": "机械黄螳螂",
+        "quality": "黄金"
+      },
+      {
+        "name": "Z-Sword",
+        "name_zh": "Z-剑",
+        "quality": "黄金"
+      },
+      {
+        "name": "Dooltron",
+        "name_zh": "杜利机甲",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Rex Spex",
+    "name_zh": "机甲暴龙",
+    "health": 3600,
+    "skills": [
+      {
+        "name": "Healthy Friendship",
+        "name_zh": "健康友谊",
+        "quality": "黄金"
+      },
+      {
+        "name": "Static Acceleration",
+        "name_zh": "静态加速",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Dinosawer",
+        "name_zh": "恐龙锯车",
+        "quality": "黄金"
+      },
+      {
+        "name": "Rex Spex",
+        "name_zh": "机甲暴龙",
+        "quality": "黄金"
+      },
+      {
+        "name": "YLW-M4NT1S",
+        "name_zh": "机械黄螳螂",
+        "quality": "黄金"
+      },
+      {
+        "name": "Dino Disguise",
+        "name_zh": "恐龙伪装",
+        "quality": "黄金"
+      },
+      {
+        "name": "Zoarcid",
+        "name_zh": "鲇光怪鱼",
+        "quality": "黄金"
+      },
+      {
+        "name": "Race Carl",
+        "name_zh": "竞速卡尔",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Volkas Enforcer",
+    "name_zh": "沃卡斯打手",
+    "health": 3200,
+    "skills": [
+      {
+        "name": "Cryomastery",
+        "name_zh": "霜寒专精",
+        "quality": "黄金"
+      },
+      {
+        "name": "Reaching the Summit",
+        "name_zh": "登峰之路",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Cryosphere",
+        "name_zh": "冰能球",
+        "quality": "黄金"
+      },
+      {
+        "name": "Cryosleeve",
+        "name_zh": "寒冰特服",
+        "quality": "白银"
+      },
+      {
+        "name": "Stopwatch",
+        "name_zh": "秒表",
+        "quality": "黄金"
+      },
+      {
+        "name": "Icebreaker",
+        "name_zh": "破冰尖镐",
+        "quality": "白银"
+      },
+      {
+        "name": "Ice Pick",
+        "name_zh": "小冰镐",
+        "quality": "黄金"
+      },
+      {
+        "name": "Frost Potion",
+        "name_zh": "霜冻药水",
+        "quality": "白银"
+      },
+      {
+        "name": "Icicle",
+        "name_zh": "冰锥",
+        "quality": "钻石"
+      }
+    ]
+  },
+  {
+    "name": "Frost Street Champion",
+    "name_zh": "霜猴霸王",
+    "health": 3675,
+    "skills": [
+      {
+        "name": "Blizzard",
+        "name_zh": "暴雪",
+        "quality": "黄金"
+      },
+      {
+        "name": "Invigorating Cold",
+        "name_zh": "提神寒气",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Iceberg",
+        "name_zh": "冰山",
+        "quality": "黄金"
+      },
+      {
+        "name": "Nitrogen Hammer",
+        "name_zh": "液氮锤",
+        "quality": "黄金"
+      },
+      {
+        "name": "Sapphire",
+        "name_zh": "蓝宝石",
+        "quality": "白银"
+      },
+      {
+        "name": "Frozen Bludgeon",
+        "name_zh": "冻结殴打",
+        "quality": "黄金"
+      },
+      {
+        "name": "Frost Potion",
+        "name_zh": "霜冻药水",
+        "quality": "黄金"
+      },
+      {
+        "name": "Snowflake",
+        "name_zh": "雪花",
+        "quality": "钻石"
+      }
+    ]
+  },
+  {
+    "name": "Gibbus",
+    "name_zh": "吉布斯",
+    "health": 4000,
+    "skills": [
+      {
+        "name": "Wax and Wane",
+        "name_zh": "月有圆缺",
+        "quality": "钻石"
+      }
+    ],
+    "items": [
+      {
+        "name": "Moon Orb",
+        "name_zh": "月光宝珠",
+        "quality": "钻石"
+      },
+      {
+        "name": "Shot Glasses",
+        "name_zh": "烈酒杯",
+        "quality": "黄金"
+      },
+      {
+        "name": "Earrings",
+        "name_zh": "耳环",
+        "quality": "黄金"
+      },
+      {
+        "name": "Weather Machine",
+        "name_zh": "气象机",
+        "quality": "黄金"
+      },
+      {
+        "name": "Solar Drone",
+        "name_zh": "太阳能无人机",
+        "quality": "黄金"
+      },
+      {
+        "name": "Steam Hose",
+        "name_zh": "蒸汽喷管",
+        "quality": "白银"
+      },
+      {
+        "name": "Thrusters",
+        "name_zh": "推进器",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Property Baron",
+    "name_zh": "地产大亨",
+    "health": 3000,
+    "skills": [
+      {
+        "name": "Master Salesman",
+        "name_zh": "行商大师",
+        "quality": "钻石"
+      },
+      {
+        "name": "Trader",
+        "name_zh": "商人",
+        "quality": "钻石"
+      }
+    ],
+    "items": [
+      {
+        "name": "Skyscraper",
+        "name_zh": "摩天大楼",
+        "quality": "黄金"
+      },
+      {
+        "name": "Subscraper",
+        "name_zh": "地下商街",
+        "quality": "黄金"
+      },
+      {
+        "name": "Billboard",
+        "name_zh": "广告牌",
+        "quality": "黄金"
+      },
+      {
+        "name": "Keychain",
+        "name_zh": "钥匙串",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Void Colossus",
+    "name_zh": "虚空巨像",
+    "health": 4000,
+    "skills": [
+      {
+        "name": "Void Energy",
+        "name_zh": "虚空能量",
+        "quality": "钻石"
+      },
+      {
+        "name": "Void Rage",
+        "name_zh": "虚空之怒",
+        "quality": "钻石"
+      }
+    ],
+    "items": [
+      {
+        "name": "Ruby",
+        "name_zh": "红宝石",
+        "quality": "黄金"
+      },
+      {
+        "name": "Void Ray",
+        "name_zh": "虚空射线",
+        "quality": "黄金"
+      },
+      {
+        "name": "Eye of the Colossus",
+        "name_zh": "巨像之眼",
+        "quality": "传说"
+      },
+      {
+        "name": "Void Shield",
+        "name_zh": "虚空护盾",
+        "quality": "钻石"
+      }
+    ]
+  },
+  {
+    "name": "Awakened District",
+    "name_zh": "觉醒街区",
+    "health": 4700,
+    "skills": [
+      {
+        "name": "Prosperity",
+        "name_zh": "繁荣昌盛",
+        "quality": "钻石"
+      },
+      {
+        "name": "Toughness",
+        "name_zh": "坚固",
+        "quality": "钻石"
+      },
+      {
+        "name": "Trickle Down Economics",
+        "name_zh": "涓滴经济学",
+        "quality": "钻石"
+      }
+    ],
+    "items": [
+      {
+        "name": "Landscraper",
+        "name_zh": "景观楼",
+        "quality": "黄金"
+      },
+      {
+        "name": "Soul of the District",
+        "name_zh": "街区之魂",
+        "quality": "传说"
+      },
+      {
+        "name": "Spacescraper",
+        "name_zh": "摩空大楼",
+        "quality": "黄金"
+      },
+      {
+        "name": "Balcony",
+        "name_zh": "露台",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Eight Arm Davvy",
+    "name_zh": "八臂达维",
+    "health": 8888,
+    "skills": [
+      {
+        "name": "Hyper Focus",
+        "name_zh": "聚能专注",
+        "quality": "钻石"
+      },
+      {
+        "name": "Arms Race",
+        "name_zh": "军备竞赛",
+        "quality": "钻石"
+      },
+      {
+        "name": "Strength",
+        "name_zh": "力量",
+        "quality": "钻石"
+      }
+    ],
+    "items": [
+      {
+        "name": "Tiny Cutlass",
+        "name_zh": "迷你弯刀",
+        "quality": "黄金"
+      },
+      {
+        "name": "Octopus",
+        "name_zh": "章鱼",
+        "quality": "传说"
+      }
+    ]
+  },
+  {
+    "name": "Lord Arken",
+    "name_zh": "阿肯大人",
+    "health": 4700,
+    "skills": [
+      {
+        "name": "Unwavering",
+        "name_zh": "坚定不移",
+        "quality": "钻石"
+      },
+      {
+        "name": "Strength",
+        "name_zh": "力量",
+        "quality": "钻石"
+      },
+      {
+        "name": "Flurry of Blows",
+        "name_zh": "连环打击",
+        "quality": "钻石"
+      }
+    ],
+    "items": [
+      {
+        "name": "Vitality Potion",
+        "name_zh": "活力药水",
+        "quality": "钻石"
+      },
+      {
+        "name": "Gatling Gun",
+        "name_zh": "加特林机枪",
+        "quality": "钻石"
+      },
+      {
+        "name": "The Eclipse",
+        "name_zh": "蚀光舰",
+        "quality": "传说"
+      },
+      {
+        "name": "Thrusters",
+        "name_zh": "推进器",
+        "quality": "钻石"
+      },
+      {
+        "name": "Arken&#x27;s Ring",
+        "name_zh": "",
+        "quality": null
+      }
+    ]
+  },
+  {
+    "name": "Morguloth",
+    "name_zh": "魔古洛斯",
+    "health": 4700,
+    "skills": [
+      {
+        "name": "Strength",
+        "name_zh": "力量",
+        "quality": "钻石"
+      },
+      {
+        "name": "Jack of All Trades",
+        "name_zh": "全能手",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Cleaver",
+        "name_zh": "华丽菜刀",
+        "quality": "黄金"
+      },
+      {
+        "name": "Box Cutter",
+        "name_zh": "裁纸刀",
+        "quality": "钻石"
+      },
+      {
+        "name": "Handaxe",
+        "name_zh": "手斧",
+        "quality": "钻石"
+      },
+      {
+        "name": "Haladie",
+        "name_zh": "双头刀",
+        "quality": "黄金"
+      },
+      {
+        "name": "Chris Army Knife",
+        "name_zh": "克里斯军刀",
+        "quality": "黄金"
+      },
+      {
+        "name": "Ritual Dagger",
+        "name_zh": "仪式匕首",
+        "quality": "黄金"
+      },
+      {
+        "name": "Sword of Swords",
+        "name_zh": "万剑之王",
+        "quality": "传说"
+      },
+      {
+        "name": "Lockbox",
+        "name_zh": "锁匣",
+        "quality": "钻石"
+      }
+    ]
+  },
+  {
+    "name": "Void Golem",
+    "name_zh": "虚空魔像",
+    "health": 4700,
+    "skills": [
+      {
+        "name": "Into the Void",
+        "name_zh": "遁入虚空",
+        "quality": "钻石"
+      },
+      {
+        "name": "Void Render",
+        "name_zh": "空蚀裂解器",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Singularity",
+        "name_zh": "奇点",
+        "quality": "传说"
+      },
+      {
+        "name": "Void Ray",
+        "name_zh": "虚空射线",
+        "quality": "黄金"
+      },
+      {
+        "name": "Caltrops",
+        "name_zh": "铁蒺藜",
+        "quality": "钻石"
+      },
+      {
+        "name": "Spices",
+        "name_zh": "香料",
+        "quality": "钻石"
+      }
+    ]
+  },
+  {
+    "name": "Blowguns Trap",
+    "name_zh": "吹箭枪陷阱",
+    "health": 1925,
+    "skills": [],
+    "items": [
+      {
+        "name": "Blowgun",
+        "name_zh": "吹箭枪",
+        "quality": "黄金"
+      },
+      {
+        "name": "Lockbox",
+        "name_zh": "锁匣",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Blowguns Trap",
+    "name_zh": "吹箭枪陷阱",
+    "health": 1925,
+    "skills": [],
+    "items": [
+      {
+        "name": "Blowgun",
+        "name_zh": "吹箭枪",
+        "quality": "黄金"
+      },
+      {
+        "name": "Lockbox",
+        "name_zh": "锁匣",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Blowguns Trap",
+    "name_zh": "吹箭枪陷阱",
+    "health": 1925,
+    "skills": [],
+    "items": [
+      {
+        "name": "Blowgun",
+        "name_zh": "吹箭枪",
+        "quality": "黄金"
+      },
+      {
+        "name": "Lockbox",
+        "name_zh": "锁匣",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Mythkeeper",
+    "name_zh": "神话典守",
+    "health": 1925,
+    "skills": [
+      {
+        "name": "Siphoned Shield",
+        "name_zh": "虹吸护盾",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Wand",
+        "name_zh": "魔杖",
+        "quality": "黄金"
+      },
+      {
+        "name": "Robe",
+        "name_zh": "长袍",
+        "quality": "白银"
+      },
+      {
+        "name": "Zoot Flute",
+        "name_zh": "祖特笛",
+        "quality": "黄金"
+      },
+      {
+        "name": "Forgotten God",
+        "name_zh": "失落神祇",
+        "quality": "黄金"
+      },
+      {
+        "name": "Incense",
+        "name_zh": "熏香",
+        "quality": "黄金"
+      },
+      {
+        "name": "Ectoplasm",
+        "name_zh": "灵质",
+        "quality": "黄金"
+      },
+      {
+        "name": "Fungal Spores",
+        "name_zh": "真菌孢子",
+        "quality": "黄金"
+      },
+      {
+        "name": "Venomous Dose",
+        "name_zh": "毒液注射",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Caltrops Trap",
+    "name_zh": "铁蒺藜陷阱",
+    "health": 2325,
+    "skills": [],
+    "items": [
+      {
+        "name": "Caltrops",
+        "name_zh": "铁蒺藜",
+        "quality": "钻石"
+      },
+      {
+        "name": "Lockbox",
+        "name_zh": "锁匣",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Caltrops Trap",
+    "name_zh": "铁蒺藜陷阱",
+    "health": 2325,
+    "skills": [],
+    "items": [
+      {
+        "name": "Caltrops",
+        "name_zh": "铁蒺藜",
+        "quality": "钻石"
+      },
+      {
+        "name": "Lockbox",
+        "name_zh": "锁匣",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Caltrops Trap",
+    "name_zh": "铁蒺藜陷阱",
+    "health": 2325,
+    "skills": [],
+    "items": [
+      {
+        "name": "Caltrops",
+        "name_zh": "铁蒺藜",
+        "quality": "钻石"
+      },
+      {
+        "name": "Lockbox",
+        "name_zh": "锁匣",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Greenheart Guardian",
+    "name_zh": "碧心守护神",
+    "health": 2325,
+    "skills": [
+      {
+        "name": "Guardian&#x27;s Fury",
+        "name_zh": "",
+        "quality": null
+      }
+    ],
+    "items": [
+      {
+        "name": "Fang",
+        "name_zh": "獠牙",
+        "quality": "黄金"
+      },
+      {
+        "name": "Venom",
+        "name_zh": "毒液",
+        "quality": "黄金"
+      },
+      {
+        "name": "Poppy Field",
+        "name_zh": "罂粟花田",
+        "quality": "黄金"
+      },
+      {
+        "name": "Emerald",
+        "name_zh": "翡翠",
+        "quality": "黄金"
+      },
+      {
+        "name": "Guardian Shell",
+        "name_zh": "守护神之壳",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Mimic",
+    "name_zh": "拟形怪",
+    "health": 2750,
+    "skills": [
+      {
+        "name": "Ravenous",
+        "name_zh": "饕餮",
+        "quality": "传说"
+      },
+      {
+        "name": "Strength",
+        "name_zh": "力量",
+        "quality": "青铜"
+      }
+    ],
+    "items": [
+      {
+        "name": "Fang",
+        "name_zh": "獠牙",
+        "quality": "钻石"
+      }
+    ]
+  },
+  {
+    "name": "Boulder Trap",
+    "name_zh": "滚石陷阱",
+    "health": 2750,
+    "skills": [],
+    "items": [
+      {
+        "name": "The Boulder",
+        "name_zh": "滚石",
+        "quality": "黄金"
+      },
+      {
+        "name": "Tripwire",
+        "name_zh": "绊线",
+        "quality": "黄金"
+      },
+      {
+        "name": "Lockbox",
+        "name_zh": "锁匣",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Boulder Trap",
+    "name_zh": "滚石陷阱",
+    "health": 2750,
+    "skills": [],
+    "items": [
+      {
+        "name": "The Boulder",
+        "name_zh": "滚石",
+        "quality": "黄金"
+      },
+      {
+        "name": "Tripwire",
+        "name_zh": "绊线",
+        "quality": "黄金"
+      },
+      {
+        "name": "Lockbox",
+        "name_zh": "锁匣",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Boulder Trap",
+    "name_zh": "滚石陷阱",
+    "health": 2750,
+    "skills": [],
+    "items": [
+      {
+        "name": "The Boulder",
+        "name_zh": "滚石",
+        "quality": "黄金"
+      },
+      {
+        "name": "Tripwire",
+        "name_zh": "绊线",
+        "quality": "黄金"
+      },
+      {
+        "name": "Lockbox",
+        "name_zh": "锁匣",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Qomatz",
+    "name_zh": "柯玛兹",
+    "health": 2750,
+    "skills": [
+      {
+        "name": "Ancient Vengeance",
+        "name_zh": "远古复仇",
+        "quality": "钻石"
+      }
+    ],
+    "items": [
+      {
+        "name": "Cosmic Plumage",
+        "name_zh": "宇宙炫羽",
+        "quality": "钻石"
+      },
+      {
+        "name": "Claws",
+        "name_zh": "利爪",
+        "quality": "钻石"
+      },
+      {
+        "name": "Viper Cane",
+        "name_zh": "蛇首手杖",
+        "quality": "钻石"
+      },
+      {
+        "name": "Basilisk Fang",
+        "name_zh": "蛇怪之牙",
+        "quality": "黄金"
+      },
+      {
+        "name": "Philosopher&#x27;s Stone",
+        "name_zh": "",
+        "quality": null
+      },
+      {
+        "name": "Ethergy Conduit",
+        "name_zh": "以太能量导体",
+        "quality": "钻石"
+      }
+    ]
+  },
+  {
+    "name": "Aleppa Tantius",
+    "name_zh": "阿莱帕·坦提乌斯",
+    "health": 3050,
+    "skills": [
+      {
+        "name": "Scramble Fighters",
+        "name_zh": "紧急起飞",
+        "quality": "黄金"
+      }
+    ],
+    "items": [
+      {
+        "name": "Security Drone",
+        "name_zh": "安保无人机",
+        "quality": "白银"
+      },
+      {
+        "name": "Tantius Carrier",
+        "name_zh": "坦提乌斯运输舰",
+        "quality": "传说"
+      },
+      {
+        "name": "Rocket Drone",
+        "name_zh": "火箭无人机",
+        "quality": "黄金"
+      },
+      {
+        "name": "Caracara",
+        "name_zh": "卡拉飞艇",
+        "quality": "黄金"
+      },
+      {
+        "name": "Jetpack",
+        "name_zh": "喷气背包",
+        "quality": "黄金"
+      },
+      {
+        "name": "Lightning Butterfly",
+        "name_zh": "闪电蝴蝶",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Bounty Hunter",
+    "name_zh": "赏金猎人",
+    "health": 1550,
+    "skills": [
+      {
+        "name": "Ambush",
+        "name_zh": "伏击",
+        "quality": "白银"
+      }
+    ],
+    "items": [
+      {
+        "name": "Revolver",
+        "name_zh": "左轮手枪",
+        "quality": "黄金"
+      },
+      {
+        "name": "Thrown Net",
+        "name_zh": "投掷捕兽网",
+        "quality": "黄金"
+      },
+      {
+        "name": "Cutlass",
+        "name_zh": "弯刀",
+        "quality": "白银"
+      },
+      {
+        "name": "Wanted Poster",
+        "name_zh": "通缉海报",
+        "quality": "白银"
+      },
+      {
+        "name": "Flashbang",
+        "name_zh": "闪光弹",
+        "quality": "白银"
+      },
+      {
+        "name": "Broken Shackles",
+        "name_zh": "断裂镣铐",
+        "quality": "黄金"
+      }
+    ]
+  },
+  {
+    "name": "Mr. Moo",
+    "name_zh": "黑牛先生",
+    "health": 2325,
+    "skills": [
+      {
+        "name": "Dual Wield",
+        "name_zh": "双持",
+        "quality": "钻石"
+      }
+    ],
+    "items": [
+      {
+        "name": "Incendiary Rounds",
+        "name_zh": "燃烧子弹",
+        "quality": "黄金"
+      },
+      {
+        "name": "Tommoo Gun",
+        "name_zh": "汤哞冲锋枪",
+        "quality": "钻石"
+      }
+    ]
+  }
+]
