@@ -42,11 +42,11 @@ class IconFrame(tk.Frame):
         self.name_container = tk.Frame(self.text_frame, bg=parent_bg)
         self.name_container.pack(fill='x', anchor='w', pady=0)
 
-        # 创建名称标签（测试：所有字体改为绿色）
+        # 创建名称标签
         self.name_label = tk.Label(
             self.name_container,
             font=('Segoe UI', 14, 'bold'),
-            fg='#00FF00',  # 测试：绿色文字
+            fg='#E8D4B9',  # 浅色文字（默认）
             bg=parent_bg,
             anchor='w',
             justify='left'
@@ -61,7 +61,7 @@ class IconFrame(tk.Frame):
         self.quality_label = tk.Label(
             self.quality_container,
             font=('Segoe UI', 10, 'bold'),
-            fg='#00FF00',  # 测试：绿色文字
+            fg='#FFFFFF',  # 默认白色，品质出现时会被覆盖为合适颜色
             bg=parent_bg,  # 默认背景色，会根据品质动态更新
             anchor='w',
             justify='left',
@@ -74,7 +74,7 @@ class IconFrame(tk.Frame):
         self.quantity_label = tk.Label(
             self.name_container,
             font=('Segoe UI', 16, 'bold'),  # 更大的字体
-            fg='#00FF00',  # 测试：绿色文字
+            fg='#FFD700',  # 金色文字（默认数量色）
             bg=parent_bg,
             anchor='w',
             justify='left'
@@ -85,7 +85,7 @@ class IconFrame(tk.Frame):
         self.desc_label = tk.Label(
             self.text_frame,
             font=('Segoe UI', 13),
-            fg='#00FF00',  # 测试：绿色文字
+            fg='#BFA98F',  # 描述默认浅色
             bg=parent_bg,
             anchor='w',
             wraplength=200,  # 初始值，会在update_content中更新
@@ -171,16 +171,8 @@ class IconFrame(tk.Frame):
         logging.info(f"[IconFrame调试] ========== update_content函数被调用 ==========")
         logging.info(f"[IconFrame调试] 参数: name='{name}', description长度={len(description) if description else 0}, icon_path={icon_path}")
         try:
-            # 强制测试：立即改变名称标签颜色，验证函数是否被调用
+            # 调试：记录调用，避免在正常运行中强制修改颜色
             logging.info(f"[IconFrame] update_content被调用: name='{name}' (长度={len(name) if name else 0})")
-            # 先强制设置一个明显的颜色，确保函数被执行
-            try:
-                self.name_label.config(fg='#00FF00')  # 先设置为绿色，确保函数被执行
-                self.name_label['fg'] = '#00FF00'
-                logging.info(f"[IconFrame] 名称标签颜色已强制设置为绿色（测试）")
-            except Exception as e:
-                logging.error(f"[IconFrame] 设置名称标签颜色失败: {e}")
-            
             # 获取当前背景色
             bg_color = self.cget('bg')
 
@@ -211,60 +203,36 @@ class IconFrame(tk.Frame):
                     has_quality = True
                     # 设置品质标签的颜色（使用非常明显的测试样式，验证是否为独立元素）
                     # 测试：使用超大字体、明显边框、大内边距、测试文本
+                    # 将品质颜色映射为接近附件的配色，字体统一为白色，字号比名称略小
                     quality_colors = {
-                        '铜': {'bg': '#FF0000', 'fg': '#FFFF00'},  # 红色背景，黄色文字（非常明显）
-                        '银': {'bg': '#00FF00', 'fg': '#0000FF'},  # 绿色背景，蓝色文字（非常明显）
-                        '金': {'bg': '#0000FF', 'fg': '#FF00FF'},  # 蓝色背景，紫色文字（非常明显）
-                        '钻': {'bg': '#FFFF00', 'fg': '#FF0000'},  # 黄色背景，红色文字（非常明显）
-                        '传': {'bg': '#FF00FF', 'fg': '#00FFFF'}   # 紫色背景，青色文字（非常明显）
+                        '铜': {'bg': '#8B5A2B', 'fg': '#FFFFFF'},    # Bronze (深铜色)
+                        '银': {'bg': '#6E6E6E', 'fg': '#FFFFFF'},    # Silver (深灰/银)
+                        '金': {'bg': '#D4AF37', 'fg': '#FFFFFF'},    # Gold
+                        '钻': {'bg': '#0E9AA7', 'fg': '#FFFFFF'},    # Diamond (青色系)
+                        '传': {'bg': '#8B3E2F', 'fg': '#FFFFFF'}     # Legendary (深褐/酒红)
                     }
-                    quality_color = quality_colors.get(quality_mark, {'bg': '#FF0000', 'fg': '#FFFFFF'})
-                    # 更新品质标签（使用超大字体和明显样式进行测试）
-                    quality_config = {
-                        'text': f'[{quality_mark}]',  # 添加方括号，更容易识别
-                        'bg': quality_color['bg'],
-                        'fg': quality_color['fg'],
-                        'font': ('Segoe UI', 20, 'bold'),  # 超大字体（从10改为20）
-                        'anchor': 'center',
-                        'justify': 'center',
-                        'relief': 'raised',  # 添加明显的3D边框
-                        'bd': 3,  # 粗边框
-                        'padx': 15,  # 超大内边距（从6改为15）
-                        'pady': 8   # 超大内边距（从2改为8）
-                    }
-                    # 配置品质标签
-                    self.quality_label.config(**quality_config)
-                    # 强制更新标签背景色（确保颜色应用）
-                    self.quality_label['bg'] = quality_color['bg']
-                    self.quality_label['fg'] = quality_color['fg']
-                    self.quality_label['font'] = ('Segoe UI', 20, 'bold')
-                    self.quality_label['relief'] = 'raised'
-                    self.quality_label['bd'] = 3
-                    self.quality_label['padx'] = 15
-                    self.quality_label['pady'] = 8
-                    
-                    # 如果是黄金，给容器添加边框
-                    if quality_mark == '金':
-                        self.quality_container.config(
-                            relief='solid',
-                            bd=1,
-                            bg='#FFD700'  # 金色边框（通过容器背景色和bd实现）
-                        )
-                        # 调整标签内边距以适应边框
-                        self.quality_label.config(padx=3, pady=0)
-                    else:
-                        self.quality_container.config(
-                            relief='raised',  # 容器也添加明显边框
-                            bd=3,  # 粗边框
-                            bg=quality_color['bg']  # 容器背景色也设置为品质颜色
-                        )
-                        # 内边距已在上面设置，这里不需要重复
-                    
-                    # 确保标签背景色与容器一致（再次确认）
-                    self.quality_label['bg'] = quality_color['bg']
-                    self.quality_label['fg'] = quality_color['fg']
-                    self.quality_container['bg'] = quality_color['bg']
-                    # 注意：品质标签暂时不pack，等数量标签pack后再pack，以确保顺序为：名称 -> 数量 -> 品质
+                    quality_color = quality_colors.get(quality_mark, {'bg': '#555555', 'fg': '#FFFFFF'})
+
+                    # 设置品质标签样式：字体比名称略小（名称 14 -> 品质 12）
+                    self.quality_label.config(
+                        text=f'[{quality_mark}]',
+                        bg=quality_color['bg'],
+                        fg=quality_color['fg'],
+                        font=('Segoe UI', 12, 'bold'),
+                        anchor='center',
+                        justify='center',
+                        padx=6,
+                        pady=2,
+                        relief='solid',
+                        bd=1
+                    )
+
+                    # 容器采用与标签一致的背景，容器边框保持轻量
+                    self.quality_container.config(
+                        relief='flat',
+                        bd=0,
+                        bg=quality_color['bg']
+                    )
                     logging.info(f"[IconFrame] 解析出品质标签: {quality_mark}, 颜色: {quality_color['bg']}")
                     # 显示基础名称（数量在后面单独显示）
                     name_to_display = base_name
@@ -282,47 +250,21 @@ class IconFrame(tk.Frame):
                         name_to_display = name
                         quantity = None
                 
-                # 显示名称和数量（测试：强制所有文字为绿色）
-                # 强制设置为绿色，不区分是否有品质标记
-                name_color = '#00FF00'  # 强制绿色
-                logging.info(f"[IconFrame] 名称标签颜色强制设置为绿色")
-                
-                # 强制设置所有标签为绿色，多次设置确保生效
+                # 显示名称和数量（恢复默认配色）
                 self.name_label.config(
-                    text=name_to_display, 
-                    anchor='w', 
-                    justify='left', 
+                    text=name_to_display,
+                    anchor='w',
+                    justify='left',
                     bg=bg_color,
-                    fg='#00FF00'  # 测试：强制绿色文字
+                    fg='#E8D4B9'
                 )
-                # 强制设置颜色为绿色（多次设置）
-                self.name_label['fg'] = '#00FF00'
-                try:
-                    self.name_label.configure(fg='#00FF00')
-                except Exception:
-                    pass
-                # 同时强制设置品质标签和数量标签为绿色
-                if quality_match:
-                    self.quality_label['fg'] = '#00FF00'
-                    try:
-                        self.quality_label.configure(fg='#00FF00')
-                    except Exception:
-                        pass
-                if quantity:
-                    self.quantity_label['fg'] = '#00FF00'
-                    try:
-                        self.quantity_label.configure(fg='#00FF00')
-                    except Exception:
-                        pass
-                logging.info(f"[IconFrame] 所有标签颜色已强制设置为绿色: name='{name_to_display}'")
-                logging.info(f"[IconFrame] 名称标签已更新: text='{name_to_display}', fg='{name_color}'")
+                logging.info(f"[IconFrame] 名称标签已更新: text='{name_to_display}', fg='{self.name_label.cget('fg')}'")
                 if quantity:
                     self.quantity_label.config(
-                        text=f"×{quantity}", 
+                        text=f"×{quantity}",
                         bg=bg_color,
-                        fg='#00FF00'  # 测试：强制绿色文字
+                        fg='#FFD700'
                     )
-                    self.quantity_label['fg'] = '#00FF00'  # 强制设置
                     self.quantity_label.pack(side='left', padx=(5, 0))
                 else:
                     self.quantity_label.pack_forget()
@@ -346,7 +288,7 @@ class IconFrame(tk.Frame):
             else:
                 self.name_container.pack_forget()
 
-            # 描述左对齐（格式化描述）
+                # 描述左对齐（格式化描述）
             if description:
                 formatted_description = self.format_description(description)
                 
@@ -369,30 +311,14 @@ class IconFrame(tk.Frame):
                 except Exception:
                     wraplength = 200
                 
-                # 调试：记录设置前的颜色
-                desc_fg_before_set = self.desc_label.cget('fg')
-                logging.info(f"[IconFrame调试] 设置描述标签前颜色: {desc_fg_before_set}")
-                
-                # 强制设置为绿色，多次设置确保生效
+                # 设置描述文本并恢复默认颜色
                 self.desc_label.config(
                     text=formatted_description,
                     anchor='w',
                     justify='left',
                     bg=bg_color,
                     wraplength=wraplength,
-                    fg='#00FF00')  # 测试：强制绿色文字
-                self.desc_label['fg'] = '#00FF00'  # 强制设置
-                # 再次强制设置，确保生效
-                try:
-                    self.desc_label.configure(fg='#00FF00')
-                except Exception:
-                    pass
-                
-                # 调试：记录设置后的颜色
-                desc_fg_after_set = self.desc_label.cget('fg')
-                logging.info(f"[IconFrame调试] 设置描述标签后颜色: {desc_fg_after_set} (期望: #00FF00)")
-                if desc_fg_after_set != '#00FF00':
-                    logging.error(f"[IconFrame调试] 警告：描述标签颜色设置失败！期望#00FF00，实际{desc_fg_after_set}")
+                    fg='#BFA98F')
                 
                 self.desc_label.pack(fill='both', expand=True)
                 logging.info(f"[IconFrame调试] ========== update_content完成 ==========")
@@ -501,7 +427,7 @@ class ScrollableFrame(tk.Frame):
         self.canvas.bind("<Configure>", self._on_canvas_configure)
         self.inner_frame.bind("<Configure>", self._on_frame_configure)
 
-        # 当鼠标进入/离开 canvas 区域时，绑定/解绑滚轮事件（避免全局绑定导致焦点问题）
+        # 当鼠标进入/离开 canvas 区域时，绑定/解绑滚轮事件（仅绑定到 canvas 本身，避免 bind_all 导致全局干扰）
         self.canvas.bind("<Enter>", lambda e: self._bind_mousewheel())
         self.canvas.bind("<Leave>", lambda e: self._unbind_mousewheel())
 
@@ -511,6 +437,12 @@ class ScrollableFrame(tk.Frame):
                 self.scrollbar.grid_remove()
             except Exception:
                 pass
+        # 标记：在处理全局滚轮时可暂时抑制 configure 行为以避免布局重置覆盖滚动
+        self._suspend_configure = False
+        # 本地 MouseWheel 最近一次时间戳（用于优先本地事件）
+        self._local_wheel_last_ts = 0.0
+        # 当启用全局滚轮时，是否优先使用本地 bind_all 事件
+        self._local_wheel_primary = False
 
     def _on_canvas_configure(self, event):
         """当Canvas大小改变时，调整内部窗口宽度"""
@@ -523,66 +455,335 @@ class ScrollableFrame(tk.Frame):
             self.canvas.configure(scrollregion=self.canvas.bbox("all"))
         except Exception:
             pass
+        # 若处于抑制状态，仅更新 scrollregion 并退出，避免显示/隐藏滚动条等操作影响当前滚动
+        try:
+            if getattr(self, '_suspend_configure', False):
+                return
+        except Exception:
+            pass
         # 根据内容高度决定是否显示滚动条（如果存在）
         try:
             if self.scrollbar is not None:
                 inner_height = self.inner_frame.winfo_reqheight()
                 canvas_height = self.canvas.winfo_height()
+                bbox = None
+                try:
+                    bbox = self.canvas.bbox("all")
+                except Exception:
+                    pass
+                logging.info(f"[ScrollableFrame] _on_frame_configure: inner_height={inner_height}, canvas_height={canvas_height}, bbox={bbox}")
                 if inner_height > canvas_height:
                     try:
                         self.scrollbar.grid()
+                        logging.info("[ScrollableFrame] _on_frame_configure: scrollbar shown")
                     except Exception:
-                        pass
+                        logging.exception("[ScrollableFrame] _on_frame_configure: failed to grid scrollbar")
                 else:
                     try:
                         self.scrollbar.grid_remove()
+                        logging.info("[ScrollableFrame] _on_frame_configure: scrollbar hidden")
                     except Exception:
-                        pass
+                        logging.exception("[ScrollableFrame] _on_frame_configure: failed to grid_remove scrollbar")
         except Exception:
             pass
 
     def _bind_mousewheel(self):
         """在鼠标进入时绑定滚轮事件（兼容 Windows/Linux/Mac）"""
-        # 全局滚轮绑定已移除：此函数保留为空以兼容旧调用
-        logging.debug("[ScrollableFrame] _bind_mousewheel skipped (wheel disabled)")
+        try:
+            # 绑定到 canvas 自身事件，而不是全局绑定，避免鼠标移动触发全局滚动
+            self.canvas.bind("<MouseWheel>", self._on_mousewheel)
+            self.canvas.bind("<Button-4>", self._on_mousewheel)
+            self.canvas.bind("<Button-5>", self._on_mousewheel)
+            logging.debug("[ScrollableFrame] bind mousewheel events to canvas")
+        except Exception:
+            logging.exception("[ScrollableFrame] _bind_mousewheel failed")
 
     def _unbind_mousewheel(self):
         """在鼠标离开时解绑全局滚轮事件"""
-        # 全局滚轮绑定已移除：此函数保留为空以兼容旧调用
-        logging.debug("[ScrollableFrame] _unbind_mousewheel skipped (wheel disabled)")
+        try:
+            self.canvas.unbind("<MouseWheel>")
+            self.canvas.unbind("<Button-4>")
+            self.canvas.unbind("<Button-5>")
+            logging.debug("[ScrollableFrame] unbind mousewheel events from canvas")
+        except Exception:
+            logging.exception("[ScrollableFrame] _unbind_mousewheel failed")
 
     def enable_global_scroll(self):
         """显式启用全局滚轮绑定（用于在信息窗口显示时，即使鼠标不在窗口上也能滚动）"""
-        # 全局滚轮功能已移除，保留方法以兼容调用
-        logging.debug("[ScrollableFrame] enable_global_scroll called but wheel functionality is disabled")
+        try:
+            # 恢复综合模式：启动底层 hook（RawInput/WH_MOUSE_LL）并启动轮询，同时也绑定本地 bind_all 作为回退/优先源
+            # Emergency mode: do NOT start low-level hooks here — rely on bind_all only.
+            # This avoids RawInput/WH_MOUSE_LL interference and lets Tkinter bind_all control scrolling.
+            logging.info("[ScrollableFrame] enable_global_scroll: emergency bind_all-only mode (wheel_hook start skipped)")
+
+            # 启动轮询任务（每50ms检查一次 wheel_hook.drain_events）
+            if getattr(self, '_wheel_polling', False):
+                return
+            self._wheel_polling = True
+            # 启动底层 hook 并启动轮询任务（优先使用本地 bind_all，但同时启用 WH_MOUSE_LL 以保证能捕获系统级滚轮）
+            try:
+                from main_script.system import wheel_hook
+                try:
+                    wheel_hook.start_hook(None)
+                    logging.info("[ScrollableFrame] enable_global_scroll: wheel_hook.start_hook() invoked")
+                except Exception:
+                    logging.exception("[ScrollableFrame] enable_global_scroll: wheel_hook.start_hook() failed")
+            except Exception:
+                logging.exception("[ScrollableFrame] enable_global_scroll: unable to import wheel_hook")
+            # 绑定全局鼠标滚轮到本地处理作回退（在启用全局滚轮时临时绑定）
+            try:
+                # bind_all 绑定到顶层窗口，确保无论焦点如何都能接收事件
+                try:
+                    root = self.canvas.winfo_toplevel()
+                except Exception:
+                    root = self.canvas
+                root.bind_all("<MouseWheel>", self._on_mousewheel)
+                root.bind_all("<Button-4>", self._on_mousewheel)
+                root.bind_all("<Button-5>", self._on_mousewheel)
+                self._global_mouse_bound = True
+                logging.info("[ScrollableFrame] enable_global_scroll: bound global mousewheel (bind_all) as fallback")
+            except Exception:
+                logging.exception("[ScrollableFrame] enable_global_scroll: bind_all failed")
+            # 优先使用本地 bind_all 事件（当有本地事件发生时短时间内忽略 hook 事件）
+            self._local_wheel_primary = True
+            self._local_wheel_last_ts = 0.0
+            # 启动轮询以定期从 wheel_hook.drain_events 读取事件并分发到主线程处理
+            try:
+                def _poll_wheel_hook():
+                    try:
+                        from main_script.system import wheel_hook
+                        try:
+                            events = wheel_hook.drain_events()
+                        except Exception:
+                            events = []
+                        if events:
+                            for e in events:
+                                try:
+                                    # 调度到主线程的处理（保持与 _on_hook_scroll 接口一致）
+                                    self.canvas.after(0, lambda val=e: self._on_hook_scroll(val))
+                                except Exception:
+                                    logging.exception("[ScrollableFrame] _poll_wheel_hook dispatch failed")
+                    except Exception:
+                        logging.exception("[ScrollableFrame] _poll_wheel_hook failed")
+                    finally:
+                        try:
+                            if getattr(self, '_wheel_polling', False):
+                                self._wheel_poll_task = self.canvas.after(50, _poll_wheel_hook)
+                        except Exception:
+                            pass
+                # 立即启动一次轮询
+                try:
+                    self._wheel_poll_task = self.canvas.after(50, _poll_wheel_hook)
+                except Exception:
+                    # 退到直接调用以确保至少开始一次
+                    try:
+                        _poll_wheel_hook()
+                    except Exception:
+                        logging.exception("[ScrollableFrame] failed to start wheel_hook poll")
+            except Exception:
+                logging.exception("[ScrollableFrame] enable_global_scroll: failed to schedule wheel_hook polling")
+        except Exception:
+            logging.exception("[ScrollableFrame] enable_global_scroll failed")
 
     def disable_global_scroll(self):
         """显式禁用全局滚轮绑定"""
-        # 全局滚轮功能已移除；取消任何残留轮询任务
         try:
-            if hasattr(self, '_wheel_polling') and getattr(self, '_wheel_polling', False):
+            # 停止轮询任务
+            if getattr(self, '_wheel_polling', False):
                 self._wheel_polling = False
                 try:
                     if getattr(self, '_wheel_poll_task', None):
                         self.canvas.after_cancel(self._wheel_poll_task)
                         self._wheel_poll_task = None
                 except Exception:
-                    pass
+                    logging.exception("[ScrollableFrame] cancel poll task failed")
+            # 停止底层 hook（如果已启动），并记录
+            try:
+                from main_script.system import wheel_hook
+                try:
+                    wheel_hook.stop_hook()
+                    logging.info("[ScrollableFrame] disable_global_scroll: wheel_hook.stop_hook() called")
+                except Exception:
+                    try:
+                        wheel_hook.stop_raw_input_listener()
+                        logging.info("[ScrollableFrame] disable_global_scroll: wheel_hook.stop_raw_input_listener() called")
+                    except Exception:
+                        logging.exception("[ScrollableFrame] wheel_hook stop failed")
+            except Exception:
+                logging.debug("[ScrollableFrame] disable_global_scroll: unable to import wheel_hook (may not be started)")
+            # 解除全局 bind_all 回退（若已绑定）
+            try:
+                if getattr(self, '_global_mouse_bound', False):
+                    try:
+                        root = self.canvas.winfo_toplevel()
+                    except Exception:
+                        root = self.canvas
+                    root.unbind_all("<MouseWheel>")
+                    root.unbind_all("<Button-4>")
+                    root.unbind_all("<Button-5>")
+                    self._global_mouse_bound = False
+                    logging.info("[ScrollableFrame] disable_global_scroll: unbound global mousewheel fallback")
+            except Exception:
+                logging.exception("[ScrollableFrame] disable_global_scroll: unbind_all failed")
         except Exception:
-            pass
+            logging.exception("[ScrollableFrame] disable_global_scroll failed")
 
     def _on_hook_scroll(self, units):
         """被系统钩子线程调用；在主线程中调度实际滚动"""
         try:
-            # units already computed as integer (positive = scroll down)
+            logging.info(f"[ScrollableFrame] _on_hook_scroll called with raw_delta={units}")
+            # 如果本地 bind_all 被启用并且最近收到了本地滚轮事件，则优先使用本地事件，短时间内忽略 hook 事件
+            try:
+                import time as _time
+                last = getattr(self, '_local_wheel_last_ts', 0)
+                if getattr(self, '_local_wheel_primary', False) and ( _time.time() - last ) < 0.35:
+                    logging.debug("[ScrollableFrame] _on_hook_scroll ignored due to recent local mousewheel event")
+                    return
+            except Exception:
+                pass
             if self.canvas:
-                self.canvas.after(0, lambda: self.canvas.yview_scroll(units, "units"))
+                def _do_scroll():
+                    try:
+                        # 进入滚动处理，暂时抑制 _on_frame_configure 的显式显示/隐藏行为
+                        try:
+                            self._suspend_configure = True
+                        except Exception:
+                            pass
+                        # 定义解除抑制函数
+                        def _unsuspend():
+                            try:
+                                self._suspend_configure = False
+                            except Exception:
+                                pass
+                            try:
+                                self.update_scrollregion()
+                            except Exception:
+                                pass
+                        # 辅助：在无法使用 after 时直接调用
+                        def _schedule_unsuspend():
+                            try:
+                                self.canvas.after(100, _unsuspend)
+                            except Exception:
+                                try:
+                                    _unsuspend()
+                                except Exception:
+                                    pass
+                        raw_delta = units
+                        # 先尝试将原始 delta 转为按比例移动（每120为一档）
+                        try:
+                            frac_per_120 = 0.2  # 每120对应该比例步长（可调）
+                            try:
+                                # 反转符号以修正滚动方向：raw_delta 正数（向下）-> delta_frac 负数（向下滚动）
+                                delta_frac = -float(raw_delta) / 120.0 * frac_per_120
+                            except Exception:
+                                delta_frac = -frac_per_120 if raw_delta > 0 else frac_per_120
+
+                            # 最小步长阈值，避免极小 delta 无效（但不要太大）
+                            if 0 < abs(delta_frac) < 0.01:
+                                delta_frac = 0.01 if delta_frac > 0 else -0.01
+
+                            # 限制单次移动幅度，防止一次跳到底
+                            if delta_frac > 0.8:
+                                delta_frac = 0.8
+                            if delta_frac < -0.8:
+                                delta_frac = -0.8
+
+                            # 记录滚动前状态（确保读取最新视图）
+                            try:
+                                self.update_idletasks()
+                            except Exception:
+                                pass
+                            try:
+                                cur = self.canvas.yview()
+                            except Exception:
+                                cur = None
+                            try:
+                                bbox = self.canvas.bbox("all")
+                            except Exception:
+                                bbox = None
+                            try:
+                                canvas_h = self.canvas.winfo_height()
+                            except Exception:
+                                canvas_h = None
+                            logging.info(f"[ScrollableFrame] pre_scroll yview={cur}, bbox={bbox}, canvas_h={canvas_h}")
+
+                            # 计算新的视图位置：基于当前 top（cur[0]）增加或减少 delta_frac
+                            try:
+                                if cur and isinstance(cur, (list, tuple)):
+                                    top = float(cur[0])
+                                else:
+                                    top = 0.0
+                                new = top + delta_frac
+                                # 边界约束
+                                new = max(0.0, min(1.0, new))
+                                # 如果 new 与 top 相等（例如处于边界），仍然尝试小幅回退以允许回弹
+                                if new == top and delta_frac < 0 and top > 0.0:
+                                    # 在到达底部后尝试小步上移
+                                    new = max(0.0, top + max(delta_frac, -0.05))
+                                self.canvas.yview_moveto(new)
+                                logging.info(f"[ScrollableFrame] _on_hook_scroll performed yview_moveto new={new:.4f} (delta_frac={delta_frac:.4f}, raw={raw_delta}, old_top={top:.4f})")
+                            except Exception:
+                                logging.exception("[ScrollableFrame] _on_hook_scroll proportional move failed")
+
+                            # 在返回前安排解除抑制和刷新
+                            _schedule_unsuspend()
+                        except Exception:
+                            logging.exception("[ScrollableFrame] simplified scroll handling failed")
+                    except Exception:
+                        logging.exception("[ScrollableFrame] _on_hook_scroll failed")
+                    finally:
+                        # 确保在所有路径下都会解除抑制（延迟）
+                        _schedule_unsuspend()
+                self.canvas.after(0, _do_scroll)
         except Exception:
             logging.exception("_on_hook_scroll failed")
 
     def _on_mousewheel(self, event):
-        """滚轮事件处理已移除（不再响应滚轮）"""
-        logging.debug("[ScrollableFrame] _on_mousewheel ignored (wheel disabled)")
+        """处理鼠标本地滚轮事件（绑定到 canvas），兼容 Windows/Mac/Linux"""
+        try:
+            # X11: event.num == 4 (up), 5 (down)
+            # 将本地事件转换为与 hook 一致的 raw_delta（positive -> DOWN）
+            if hasattr(event, 'num') and event.num in (4, 5):
+                # num==4 -> up, num==5 -> down
+                raw_delta = -120 if event.num == 4 else 120
+            else:
+                delta = getattr(event, 'delta', 0)
+                try:
+                    # Windows: event.delta is 120 for up, -120 for down. Normalize to hook raw: positive = DOWN
+                    raw_delta = int(-delta)
+                except Exception:
+                    raw_delta = 0
+            logging.debug(f"[ScrollableFrame] _on_mousewheel raw_delta={raw_delta}, event_delta={getattr(event,'delta',None)}")
+            # 记录本地滚轮时间戳，用于优先级判断
+            try:
+                import time as _time
+                self._local_wheel_last_ts = _time.time()
+            except Exception:
+                pass
+            # 使用与 hook 相同的按比例移动逻辑以保持一致性
+            try:
+                # 计算移动比例
+                frac_per_120 = 0.2
+                try:
+                    # 反转符号以修正滚动方向：raw_delta 正数（向下）-> delta_frac 负数（向下滚动）
+                    delta_frac = -float(raw_delta) / 120.0 * frac_per_120
+                except Exception:
+                    delta_frac = -frac_per_120 if raw_delta > 0 else frac_per_120
+                if delta_frac > 0.8:
+                    delta_frac = 0.8
+                if delta_frac < -0.8:
+                    delta_frac = -0.8
+                cur = self.canvas.yview()
+                if cur and isinstance(cur, (list, tuple)):
+                    new = max(0.0, min(1.0, cur[0] + delta_frac))
+                    self.canvas.yview_moveto(new)
+                    logging.info(f"[ScrollableFrame] _on_mousewheel performed yview_moveto new={new:.4f} (delta_frac={delta_frac:.4f}, raw={raw_delta})")
+                else:
+                    logging.debug("[ScrollableFrame] _on_mousewheel: no yview available")
+            except Exception:
+                logging.exception("[ScrollableFrame] _on_mousewheel proportional move failed")
+        except Exception:
+            logging.exception("[ScrollableFrame] _on_mousewheel failed")
 
     def update_scrollregion(self):
         """手动更新滚动区域"""
@@ -595,16 +796,24 @@ class ScrollableFrame(tk.Frame):
             if self.scrollbar is not None:
                 inner_height = self.inner_frame.winfo_reqheight()
                 canvas_height = self.canvas.winfo_height()
+                bbox = None
+                try:
+                    bbox = self.canvas.bbox("all")
+                except Exception:
+                    pass
+                logging.info(f"[ScrollableFrame] update_scrollregion: inner_height={inner_height}, canvas_height={canvas_height}, bbox={bbox}")
                 if inner_height > canvas_height:
                     try:
                         self.scrollbar.grid()
+                        logging.info("[ScrollableFrame] update_scrollregion: scrollbar shown")
                     except Exception:
-                        pass
+                        logging.exception("[ScrollableFrame] update_scrollregion: failed to grid scrollbar")
                 else:
                     try:
                         self.scrollbar.grid_remove()
+                        logging.info("[ScrollableFrame] update_scrollregion: scrollbar hidden")
                     except Exception:
-                        pass
+                        logging.exception("[ScrollableFrame] update_scrollregion: failed to grid_remove scrollbar")
         except Exception:
             logging.debug("[ScrollableFrame] update_scrollregion: 获取高度信息失败")
 

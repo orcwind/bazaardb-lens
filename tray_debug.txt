@@ -467,3 +467,563 @@
 [SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x00000250815FE510>
 [SystemTray] icon类型: <class 'pystray._win32.Icon'>
 [SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 09:33:17.031020] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000002802CF71FD0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 09:35:55.278351] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x0000014038C3E660>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 09:40:21.406836] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000002C65116AA50>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 09:54:10.378913] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000002E80663AA50>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 10:00:12.491736] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x0000026539326A50>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 10:16:00.813779] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000001C274186BA0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 10:16:53.041226] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x00000262BC3AECF0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 10:21:52.924108] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000002028D5FEBA0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 10:23:30.805850] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000001F17F7F6BA0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 10:24:40.782827] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000001B236D2ABA0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 10:25:43.797472] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x0000025E4EFC6BA0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 10:29:02.251160] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000001ADCDA36900>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 10:30:45.856582] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000001F8A4E26BA0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 10:34:36.907226] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000001F6626CEBA0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 10:34:49.136903] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x00000249FA8C6BA0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 10:41:26.685826] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000001841940EBA0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 10:44:20.660053] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x0000024DA0E12BA0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 10:45:47.509510] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x00000208AE8A2BA0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 10:47:40.999464] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000001F4B3F9EBA0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 10:50:36.578974] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x0000019472026BA0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 10:56:41.477614] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000001EACA142BA0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 10:59:14.304862] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x0000023D26062BA0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 10:59:29.950720] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x00000165D6386CF0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 11:00:00.921903] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x0000021B46702CF0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 11:03:01.510625] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000001C65DC8ABA0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 11:03:12.833630] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000002933D076CF0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 11:06:31.190280] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x00000288FCC06BA0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 11:09:11.067856] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000001A9C65EEBA0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 11:15:06.907327] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000002A0A17AABA0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 11:15:37.111151] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000001C4AF6C2BA0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 11:28:50.658834] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x00000199696B2900>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 11:32:45.272254] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x00000259ECED6A50>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 11:39:15.324931] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000001EC0E98AA50>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 11:42:33.742302] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000002B667046CF0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 11:47:35.426594] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000001F7F8EE6CF0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 11:59:27.815284] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000001575ED66CF0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 11:59:36.804366] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x0000018859182CF0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 12:02:45.428755] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x0000021424946BA0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 12:05:43.938141] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x0000026C71A3EE40>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 12:19:45.316091] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000001F3AF3FACF0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 12:20:08.530028] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000001F7419A6CF0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 12:20:43.306261] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000002B610706CF0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 12:25:17.559803] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000002A1BA0E6CF0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 12:27:52.279196] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000001809A69ECF0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 12:29:12.538041] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x00000249E5DCACF0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 12:31:10.034114] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000001E80475EE40>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 12:34:18.735592] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x0000021B16B4ACF0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 12:38:37.842104] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000001F519C5ACF0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 12:42:58.239322] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000002AE5317DBE0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 12:45:17.839309] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x0000023128906CF0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 12:48:03.226562] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000001B5D840ECF0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 12:56:08.549153] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000002B23DFA6E40>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 13:06:03.825695] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x00000201D52E2CF0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 13:08:03.628489] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x00000291DDCB2CF0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 13:10:52.784643] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x0000018C66C52CF0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 13:14:02.273345] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x0000017D1D272CF0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 13:15:06.248706] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000001B91D1D6CF0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 13:25:31.415424] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000001DC20B16E40>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 13:30:14.853371] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x00000287A188ACF0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 13:33:49.399626] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000002E2A8796CF0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 13:36:35.597137] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x00000137EE506CF0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 13:45:04.942185] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000001E29B9B6E40>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 14:48:14.123172] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x00000246A1AA2CF0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 14:48:38.020677] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x0000028D1C6DACF0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 14:52:52.755282] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000002429B22AE40>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 15:10:08.506112] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000001DE1F6F6E40>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 15:14:03.864492] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000002AB49252E40>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 15:15:44.153945] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x00000186AD87EE40>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 15:18:24.409550] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x0000021DA2D1AE40>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 15:18:56.007243] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x00000149E403AE40>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 15:20:51.108968] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000001BB5BDD6E40>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 15:29:07.783501] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x00000205FC0F6E40>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 15:31:18.553190] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x00000274A19AAE40>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 15:41:46.839675] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x0000022FB160AA50>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 15:42:22.325269] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x00000253F4932CF0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 15:42:50.619476] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000001C0CC08ECF0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 15:43:15.688653] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x0000018F0C9EACF0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 15:44:08.269392] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x00000238CA516CF0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 15:49:14.654702] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x000001F6F41DECF0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False
+
+============================================================
+[2026-01-19 15:52:16.414196] SystemTray.__init__ 开始
+[SystemTray] ========== 初始化开始 ==========
+[SystemTray] 初始化完成，icon对象: <pystray._win32.Icon object at 0x00000282B411ACF0>
+[SystemTray] icon类型: <class 'pystray._win32.Icon'>
+[SystemTray] icon is None: False

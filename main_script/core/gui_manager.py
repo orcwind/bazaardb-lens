@@ -34,6 +34,8 @@ class GUIManager:
         self.monster_title_frame = None  # 怪物标题框架（显示名称和HP）
         self.controller = None
         self._is_two_column = False  # 标记是否为两列显示模式
+        # 当启用全局滚轮捕获（按住Ctrl）时，暂停窗口随鼠标移动与调整，避免重置滚动位置
+        self._global_scroll_active = False
 
     def _normalize_name(self, name):
         """标准化名称，将空格、减号、下划线统一处理，用于匹配"""
@@ -152,22 +154,18 @@ class GUIManager:
             self.scrollable_frame = ScrollableFrame(
                 self.info_window, bg=bg_color)
             self.scrollable_frame.pack(fill='both', expand=True, padx=5, pady=5)
-            # 确保不使用滚动条：彻底移除 scrollbar widget（防止残留显示）
+            # 让 ScrollableFrame 能够回报滚动事件时间戳，便于避免在滚动后立即重置滚动位置
             try:
-                if hasattr(self.scrollable_frame, 'scrollbar') and self.scrollable_frame.scrollbar:
-                    try:
-                        self.scrollable_frame.scrollbar.destroy()
-                    except Exception:
-                        pass
-                    self.scrollable_frame.scrollbar = None
-                # 禁用 canvas 的 yscrollcommand，防止任何绑定导致滚动条显示
-                try:
-                    if hasattr(self.scrollable_frame, 'canvas') and self.scrollable_frame.canvas:
-                        self.scrollable_frame.canvas.configure(yscrollcommand=lambda *a: None)
-                except Exception:
-                    pass
+                self.scrollable_frame.gui_manager = self
             except Exception:
-                logging.exception("[GUIManager] Failed to remove scrollbar on info window creation")
+                pass
+            # 不强制移除滚动条：允许 ScrollableFrame 管理自身的滚动条显示/隐藏。
+            # 之前这里强制 destroy scrollbar 并禁用 canvas yscrollcommand，导致滚动条无法显示。
+            # 保留 try-block 以记录兼容性问题但不执行销毁。
+            try:
+                logging.debug("[GUIManager] 保留滚动条控件，由 ScrollableFrame 按需显示")
+            except Exception:
+                pass
 
             # 获取内部框架用于添加内容
             self.content_frame = self.scrollable_frame.get_inner_frame()
@@ -270,28 +268,22 @@ class GUIManager:
                     self.scrollable_frame.update_scrollregion()
                 except Exception:
                     logging.exception("[GUIManager] scrollable_frame.update_scrollregion() failed")
-                # 彻底移除或隐藏任何 scrollbar，防止显示残留
+                # 不再主动移除滚动条；交由 ScrollableFrame.update_scrollregion 管理显示/隐藏
                 try:
-                    if hasattr(self.scrollable_frame, 'scrollbar') and self.scrollable_frame.scrollbar:
-                        try:
-                            self.scrollable_frame.scrollbar.destroy()
-                        except Exception:
-                            pass
-                        self.scrollable_frame.scrollbar = None
-                    if hasattr(self.scrollable_frame, 'canvas') and self.scrollable_frame.canvas:
-                        try:
-                            self.scrollable_frame.canvas.configure(yscrollcommand=lambda *a: None)
-                        except Exception:
-                            pass
+                    logging.debug("[GUIManager] 不再移除滚动条，使用滚动框架自身逻辑")
                 except Exception:
-                    logging.exception("[GUIManager] Failed to ensure scrollbar removed after update")
+                    pass
                 # 如果 info_window 存在，重新计算并调整窗口位置以避免超出底部
                 try:
                     if self.info_window and self.info_window.winfo_exists():
                         try:
                             x = self.info_window.winfo_x()
                             y = self.info_window.winfo_y()
-                            self._do_adjust_window(x, y)
+                            # 如果全局滚轮正在激活，跳过位置/大小调整以避免覆盖用户滚动
+                            if not getattr(self, '_global_scroll_active', False):
+                                self._do_adjust_window(x, y)
+                            else:
+                                logging.debug("[GUIManager] 全局滚轮激活，跳过 _do_adjust_window() 以保留滚动位置")
                         except Exception:
                             # 不能获取位置则调用默认调整（0,0）
                             try:
@@ -503,13 +495,41 @@ class GUIManager:
                 self.info_window.deiconify()
                 self.info_window.lift()
                 self.info_window.attributes('-topmost', True)
-                # 尝试短暂抓取前台焦点（回退方案），然后启用全局滚轮绑定
+                # 立即尝试更强的焦点设置（focus_force + lift + 暂时 topmost）
+                try:
+                    try:
+                        self.info_window.focus_force()
+                        self.info_window.lift()
+                        # 保持 topmost 短时间以确保系统将焦点分配给窗口，然后取消
+                        self.info_window.attributes('-topmost', True)
+                        self.info_window.after(100, lambda: self.info_window.attributes('-topmost', False))
+                        logging.info("[GUIManager] 已强制设置焦点到信息窗口 (focus_force/lift/topmost)")
+                    except Exception:
+                        logging.exception("[GUIManager] 强制设置焦点尝试失败")
+                except Exception:
+                    pass
+                # 尝试短暂抓取前台焦点（回退方案）
                 try:
                     self._grab_focus_temporarily(500)
                 except Exception:
                     logging.exception("[GUIManager] Failed to grab focus temporarily")
-                # 全局滚轮功能已移除；不启动任何系统级监听
-                logging.debug("[GUIManager] global scroll functionality disabled; skipping hook/start")
+                # 启用全局滚轮捕获（当按下Ctrl时允许滚轮控制信息窗口）
+                try:
+                    if self.scrollable_frame and hasattr(self.scrollable_frame, 'enable_global_scroll'):
+                        self.scrollable_frame.enable_global_scroll()
+                        # 标记全局滚轮处于激活状态，避免窗口在此期间被移动或重置
+                        self._global_scroll_active = True
+                        logging.info("[GUIManager] 已启用全局滚轮绑定 enable_global_scroll(), 全局滚轮激活标志已设置")
+                        # 尝试持续抓取焦点以保证本地 MouseWheel 事件也能被窗口接收（回退方式）
+                        try:
+                            # 持续抓取直到禁用全局滚轮（20秒作为上限）
+                            self._grab_focus_temporarily(20000)
+                            self._focus_grabbed_for_scroll = True
+                            logging.info("[GUIManager] 已为全局滚轮尝试抓取焦点（持续模式）")
+                        except Exception:
+                            logging.exception("[GUIManager] 持续抓焦失败（可忽略）")
+                except Exception:
+                    logging.exception("[GUIManager] 启用全局滚轮绑定失败")
             else:
                 logging.warning(f"匹配成功但显示失败，不显示窗口")
             
@@ -526,8 +546,26 @@ class GUIManager:
             if self.info_window:
                 self.info_window.withdraw()
                 # 隐藏时禁用全局滚轮绑定，恢复默认行为
-                # 全局滚轮功能已移除；无需禁用
-                logging.debug("[GUIManager] global scroll disable skipped (wheel disabled)")
+                try:
+                    if self.scrollable_frame and hasattr(self.scrollable_frame, 'disable_global_scroll'):
+                        self.scrollable_frame.disable_global_scroll()
+                        logging.info("[GUIManager] 已调用 disable_global_scroll()")
+                        # 取消全局滚轮激活标志，允许窗口随鼠标移动与调整
+                        try:
+                            self._global_scroll_active = False
+                            logging.info("[GUIManager] 全局滚轮激活标志已清除")
+                        except Exception:
+                            pass
+                        # 如果之前为滚轮抓取了持续焦点，则立即恢复前台
+                        try:
+                            if getattr(self, '_focus_grabbed_for_scroll', False):
+                                self._restore_foreground_immediately()
+                                self._focus_grabbed_for_scroll = False
+                                logging.info("[GUIManager] 已恢复前台（滚轮持续抓焦已取消）")
+                        except Exception:
+                            logging.exception("[GUIManager] 恢复前台/取消滚轮抓焦失败")
+                except Exception:
+                    logging.exception("[GUIManager] 禁用全局滚轮绑定失败")
                 # 如果之前抓取了焦点，尽快恢复原前台窗口
                 try:
                     self._restore_foreground_immediately()
@@ -799,7 +837,26 @@ class GUIManager:
         try:
             if not self.info_window or not self.info_window.winfo_exists():
                 return
-
+            # 如果最近发生过全局滚轮滚动，避免进行完整的重排/重计算以免覆盖用户滚动位置
+            try:
+                import time as _time
+                last_scroll_ts = getattr(self, '_global_scroll_last_scroll_ts', 0)
+                if last_scroll_ts and (_time.time() - float(last_scroll_ts)) < 0.6:
+                    try:
+                        # 仅移动窗口位置，不做复杂的内容重新计算
+                        current_geom = self.info_window.geometry()
+                        parts = current_geom.split('+')
+                        size_part = parts[0] if parts else "600x400"
+                        pos_x = x + 20
+                        pos_y = y - 20
+                        self.info_window.geometry(f"{size_part}+{pos_x}+{pos_y}")
+                        self.info_window.update_idletasks()
+                        logging.debug("[GUIManager] 最近有全局滚动，跳过重计算，仅移动窗口以保留滚动位置")
+                    except Exception:
+                        logging.debug("[GUIManager] recent-scroll 快速移动回退失败")
+                    return
+            except Exception:
+                pass
             # 计算窗口位置（在鼠标右上方）
             offset_x = 20
             offset_y = -20
@@ -1167,6 +1224,10 @@ class GUIManager:
     def _do_move_window(self, pos_x, pos_y):
         """只移动窗口位置，不调整大小（在主线程中调用）"""
         try:
+            # 不再在全局滚轮激活时完全禁止窗口移动。
+            # 窗口应始终跟随鼠标移动；我们通过“最近滚动时间”保护避免重排覆盖滚动条位置。
+            if getattr(self, '_global_scroll_active', False):
+                logging.debug("[窗口移动] 全局滚轮激活，但允许移动以跟随鼠标（保留滚动位置）")
             # 对于移动操作，只需要检查主窗口是否存在
             if not self.info_window:
                 logging.debug("[窗口移动] info_window为None")

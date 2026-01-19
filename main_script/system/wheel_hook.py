@@ -34,8 +34,15 @@ else:
     WM_MOUSEWHEEL = 0x020A
     VK_CONTROL = 0x11
 
-    # Feature flag to disable all wheel/hook behavior when removed
-    WHEEL_FEATURE_ENABLED = False
+    # Feature flag to enable/disable low-level wheel/hook behavior.
+    # 设置为 True 可在 Windows 上启用全局滚轮捕获（需要管理员权限或适当环境）。
+    # 如果遇到兼容性问题，可改回 False。
+    WHEEL_FEATURE_ENABLED = True
+    # Diagnostic flags (set True temporarily to force enqueue for debugging)
+    DIAG_FORCE_ENQUEUE = True
+    # Test mode: when True, skip RawInput and force using WH_MOUSE_LL only.
+    # 已结束临时 WH-only 测试，恢复为 False 以同时使用 RawInput + WH_MOUSE_LL（有过滤策略）。
+    FORCE_WH_ONLY = False
 
     # Define C types for hook prototypes
     LRESULT = ctypes.c_long
@@ -95,22 +102,52 @@ else:
                 except Exception:
                     # fallback: if lParam already a pointer-like object
                     ms = ctypes.cast(lParam, ctypes.POINTER(MSLLHOOKSTRUCT)).contents
-                delta = _get_wheel_delta_from_mouseData(ms.mouseData)
-                # delta is typically +/-120 per notch
-                if _is_ctrl_pressed() and _callback:
-                    # compute units similar to tkinter: -1 * (delta/120)
+                # 计算原始 delta（signed short），通常每档为 +/-120
+                try:
+                    raw_mouseData = ms.mouseData & 0xFFFFFFFF
+                    # log raw mouseData hex for diagnostics
+                    logging.debug(f"wheel_hook: low_level mouseData=0x{raw_mouseData:08X}")
+                    # compute signed hi-word (wheel delta) robustly
+                    delta = _get_wheel_delta_from_mouseData(raw_mouseData)
+                    # also compute via c_short for parity with RawInput path and log both (debug)
+                    try:
+                        alt_signed = ctypes.c_short((raw_mouseData >> 16) & 0xFFFF).value
+                    except Exception:
+                        alt_signed = delta
+                    logging.debug(f"wheel_hook: low_level computed delta={delta}, alt_signed={alt_signed}")
+                except Exception:
+                    delta = 0
+
+                # 仅在 Ctrl 被按下且有回调时入队并记录（避免噪音）
+                ctrl = _is_ctrl_pressed()
+                logging.debug(f"wheel_hook: low_level ctrl_pressed={ctrl}, callback_set={_callback is not None}")
+                direction = "UP" if delta < 0 else ("DOWN" if delta > 0 else "NONE")
+                logging.debug(f"wheel_hook: low_level direction={direction}")
+                # Extra low-level diagnostic: include wParam/hiword and full mouseData for tracing
+                try:
+                    wparam_val = int(wParam)
+                except Exception:
+                    wparam_val = 0
+                logging.debug(f"wheel_hook: LOW_LEVEL summary wParam=0x{wparam_val:08X}, mouseData=0x{raw_mouseData:08X}, delta={delta}, direction={direction}")
+                # For diagnostics we may force enqueue even when Ctrl not pressed
+                if DIAG_FORCE_ENQUEUE or (ctrl and _callback):
+                    # 为兼容之前的单位计算，仍尝试计算 units（不强制使用）
                     try:
                         units = int(-1 * (delta / 120))
                     except Exception:
                         units = 0
-                    if units != 0:
-                        # Enqueue event and return immediately; main thread should drain and handle events.
-                        try:
-                            with _queue_lock:
-                                _event_queue.append(units)
-                            logging.debug(f"wheel_hook: enqueued units={units}")
-                        except Exception:
-                            logging.exception("wheel_hook: enqueue failed")
+                    try:
+                        logging.debug(f"wheel_hook: low_level raw delta={delta}")
+                    except Exception:
+                        pass
+                    try:
+                        with _queue_lock:
+                            _event_queue.append(delta)
+                        logging.debug(f"wheel_hook: enqueued raw delta (low_level)={delta} (0x{(delta & 0xFFFF):04X})")
+                    except Exception:
+                        logging.exception("wheel_hook: enqueue failed (low_level)")
+                    else:
+                        logging.debug("wheel_hook: low_level not enqueued (ctrl not pressed and DIAG_FORCE_ENQUEUE is False)")
         except Exception:
             logging.exception("wheel_hook: low level proc error")
         # Call next hook (ensure proper types)
@@ -171,19 +208,34 @@ else:
     def start_hook(cb):
         """Start the WH_MOUSE_LL hook and set callback(delta_units)."""
         global _hook_thread, _callback, _stop_event, _hook_handle
-        if not WHEEL_FEATURE_ENABLED:
-            logging.debug("wheel_hook: start_hook skipped (feature disabled)")
-            _callback = cb
-            return
         logging.info("wheel_hook: start_hook called")
-        if _hook_thread and _hook_thread.is_alive():
-            logging.info("wheel_hook: already running")
-            _callback = cb
-            return
         _callback = cb
-        _stop_event.clear()
-        _hook_thread = threading.Thread(target=_hook_thread_func, name="WheelHookThread", daemon=True)
-        _hook_thread.start()
+        # Prefer Raw Input listener (more reliable across environments). If the feature flag
+        # is enabled, start the raw input listener; otherwise, fallback to legacy hook thread.
+        try:
+            if WHEEL_FEATURE_ENABLED:
+                # When FORCE_WH_ONLY is set, skip RawInput entirely for a controlled test
+                if FORCE_WH_ONLY:
+                    logging.info("wheel_hook: FORCE_WH_ONLY=True, skipping start_raw_input_listener (using WH_MOUSE_LL only)")
+                else:
+                    # start raw input listener (non-blocking)
+                    try:
+                        start_raw_input_listener()
+                        logging.info("wheel_hook: start_raw_input_listener invoked as primary mechanism")
+                        # DO NOT return here: also try to start legacy WH_MOUSE_LL as a backup
+                        logging.info("wheel_hook: continuing to start WH_MOUSE_LL as backup")
+                    except Exception:
+                        logging.exception("wheel_hook: start_raw_input_listener failed, falling back to hook thread")
+
+            # Fallback: legacy WH_MOUSE_LL hook thread
+            if _hook_thread and _hook_thread.is_alive():
+                logging.info("wheel_hook: hook thread already running")
+                return
+            _stop_event.clear()
+            _hook_thread = threading.Thread(target=_hook_thread_func, name="WheelHookThread", daemon=True)
+            _hook_thread.start()
+        except Exception:
+            logging.exception("wheel_hook: start_hook failed to start any listener")
 
     def drain_events():
         """Drain and return queued wheel events (thread-safe). Called from main thread."""
@@ -196,6 +248,33 @@ else:
                     events.append(_event_queue.popleft())
         except Exception:
             logging.exception("wheel_hook: drain_events failed")
+        try:
+            # If this batch contains any small signed delta (likely from low-level hook),
+            # prefer those and filter out very large RawInput deltas (which may be device-specific)
+            # to avoid large RawInput values (e.g. 1024) overriding small signed deltas (-120).
+            if events:
+                has_small_signed = any(abs(e) <= 120 for e in events)
+                if has_small_signed:
+                    filtered = [e for e in events if abs(e) < 500]
+                    if len(filtered) != len(events):
+                        logging.debug(f"wheel_hook: drain_events filtered {len(events)-len(filtered)} large delta(s) because small signed delta present")
+                    events = filtered
+                # Normalize any remaining excessively large deltas to a single wheel step (±120)
+                # This prevents a single RawInput event with large magnitude (e.g. 1024) from
+                # moving the view multiple pages at once.
+                normalized = []
+                large_count = 0
+                for e in events:
+                    if abs(e) > 500:
+                        large_count += 1
+                        normalized.append(120 if e > 0 else -120)
+                    else:
+                        normalized.append(e)
+                if large_count:
+                    logging.info(f"wheel_hook: drain_events normalized {large_count} large delta(s) to ±120")
+                events = normalized
+        except Exception:
+            logging.exception("wheel_hook: drain_events post-filter failed")
         return events
 
     # ---------------- Raw Input fallback (preferred) ----------------
@@ -244,10 +323,11 @@ else:
     def _wnd_proc(hwnd, msg, wParam, lParam):
         if msg == WM_INPUT:
             try:
-                logging.debug(f"wheel_hook: WM_INPUT received hwnd={hwnd}, wParam={wParam}, lParam={lParam}")
+                # 信息级别记录 Raw Input 收到事件（包括参数），便于判断是否收到了向上滚事件
+                logging.info(f"wheel_hook: WM_INPUT received hwnd={hwnd}, wParam={wParam}, lParam={lParam}")
                 size = ctypes.c_uint(0)
                 res = user32.GetRawInputData(lParam, RID_INPUT, None, ctypes.byref(size), ctypes.sizeof(RAWINPUTHEADER))
-                logging.debug(f"wheel_hook: GetRawInputData(header) res={res}, size={size.value}")
+                logging.info(f"wheel_hook: GetRawInputData(header) res={res}, size={size.value}")
                 if size.value == 0:
                     logging.debug("wheel_hook: WM_INPUT size==0, returning")
                     return user32.DefWindowProcW(hwnd, msg, wParam, lParam)
@@ -260,22 +340,45 @@ else:
                     except Exception:
                         logging.exception("wheel_hook: failed to cast raw input buffer to RAWINPUT")
                         return user32.DefWindowProcW(hwnd, msg, wParam, lParam)
-                    logging.debug(f"wheel_hook: raw.header.dwType={raw.header.dwType}, header.dwSize={raw.header.dwSize}, hDevice={raw.header.hDevice}")
+                    logging.info(f"wheel_hook: raw.header.dwType={raw.header.dwType}, header.dwSize={raw.header.dwSize}, hDevice={raw.header.hDevice}")
                     if raw.header.dwType == RIM_TYPEMOUSE:
                         usButtonFlags = raw.mouse.usButtonFlags
                         usButtonData = raw.mouse.usButtonData
                         lLastX = raw.mouse.lLastX
                         lLastY = raw.mouse.lLastY
-                        logging.debug(f"wheel_hook: RAWMOUSE usButtonFlags={usButtonFlags}, usButtonData={usButtonData}, lLastX={lLastX}, lLastY={lLastY}")
-                        # wheel delta is signed short in usButtonData for wheel events
-                        delta = ctypes.c_short(usButtonData).value
-                        units = int(-1 * (delta / 120)) if delta != 0 else 0
-                        logging.debug(f"wheel_hook: computed delta={delta}, units={units}")
-                        if units != 0:
+                        # Log raw values including hex for diagnostics
+                        logging.info(f"wheel_hook: RAWMOUSE usButtonFlags=0x{usButtonFlags:04X}, usButtonData=0x{usButtonData:04X}, lLastX={lLastX}, lLastY={lLastY}")
+                        # wheel delta is usually in usButtonData (unsigned short) but must be interpreted as signed short
+                        try:
+                            delta = ctypes.c_short(usButtonData).value
+                        except Exception:
+                            delta = 0
+                        # Extra RawInput diagnostics for delta/direction tracing
+                        logging.debug(f"wheel_hook: RAW_INPUT summary usButtonFlags=0x{usButtonFlags:04X}, usButtonData=0x{usButtonData:04X}, derived_delta={delta}, lLastY={lLastY}")
+                        # If usButtonData is zero, only treat lLastY as wheel movement when
+                        # the RAWMOUSE.usButtonFlags indicates a wheel event (RI_MOUSE_WHEEL).
+                        RI_MOUSE_WHEEL = 0x0400
+                        if delta == 0:
+                            if (usButtonFlags & RI_MOUSE_WHEEL) and lLastY != 0:
+                                try:
+                                    # lLastY is usually small integer steps; convert to typical wheel delta scale
+                                    delta = int(lLastY * 120)
+                                    logging.info(f"wheel_hook: derived raw delta from lLastY: lLastY={lLastY} -> delta={delta}")
+                                except Exception:
+                                    pass
+                            else:
+                                # Not a wheel event -- ignore mouse movement deltas
+                                delta = 0
+                        # 直接把原始 delta 入队，避免舍弃小增量；记录 original usButtonData hex for troubleshooting
+                        direction = "UP" if delta < 0 else ("DOWN" if delta > 0 else "NONE")
+                        logging.info(f"wheel_hook: computed raw delta={delta} (usButtonData=0x{usButtonData:04X}), direction={direction}")
+                        if delta != 0:
                             try:
                                 with _queue_lock:
-                                    _event_queue.append(units)
-                                logging.info(f"wheel_hook: enqueued raw units={units}")
+                                    _event_queue.append(delta)
+                                # Preserve explicit debug for sign/preserved value
+                                logging.debug(f"wheel_hook: enqueued raw delta (raw path)={delta} (0x{(delta & 0xFFFF):04X})")
+                                logging.info(f"wheel_hook: enqueued raw delta={delta} (0x{(delta & 0xFFFF):04X})")
                             except Exception:
                                 logging.exception("wheel_hook: enqueue failed (raw)")
             except Exception:
@@ -289,7 +392,6 @@ else:
         user32 = ctypes.windll.user32
         kernel32 = ctypes.windll.kernel32
         hInstance = kernel32.GetModuleHandleW(None)
-        WNDCLASSEX = ctypes.wintypes.WNDCLASSEX
         # Minimal WNDCLASSEX definition
         class WNDCLASSEX(ctypes.Structure):
             _fields_ = [
